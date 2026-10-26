@@ -1,0 +1,13 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=.88\textwidth,height=65mm,axis lines=middle,xlabel={$x$},ylabel={$y$},xmin=-2,xmax=2,ymin=-3.5,ymax=3.5,legend pos=north west,legend style={font=\small},samples=150]
+\addplot[arkivblaa,thick,domain=-1.9:1.9]{x^3-3*x};\addlegendentry{$f=x^3-3x$}
+\addplot[arkivrod,dashed,domain=-1.45:1.45]{3*x^2-3};\addlegendentry{$f'=3x^2-3$}
+\fill[black] (axis cs:-1,2) circle[radius=1.5pt];
+\fill[black] (axis cs:1,-2) circle[radius=1.5pt];
+\fill[black] (axis cs:0,0) circle[radius=1.5pt];
+\end{axis}
+\end{tikzpicture}
+\caption{Afledtens fortegn styrer monotonien. Ved $x=-1$ ligger et maksimum, ved $x=1$ et minimum. Vendepunktet $x=0$ har $f''=0$ med fortegnsskift, men er ikke stationært. Akserne er dimensionsløse.}
+\end{figure}

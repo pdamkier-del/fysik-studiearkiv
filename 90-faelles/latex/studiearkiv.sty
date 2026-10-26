@@ -1,0 +1,45 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{90-faelles/latex/studiearkiv}[2026/10/26 Faelles dansk dokumentdesign]
+\RequirePackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+\RequirePackage{babel}
+\babelprovide[import,main]{danish}
+\RequirePackage{amsmath,amssymb,amsthm,mathtools}
+\RequirePackage[a4paper,margin=26mm,headheight=16pt]{geometry}
+\RequirePackage{microtype,booktabs,longtable,array}
+\tracinglostchars=3
+
+\RequirePackage{xcolor,graphicx,tikz,pgfplots}
+\pgfplotsset{compat=1.18}
+\definecolor{arkivblaa}{HTML}{174B6B}
+\definecolor{arkivrod}{HTML}{B34832}
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily Fysik · matematik}
+\fancyhead[R]{\small\sffamily\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\RequirePackage[unicode,colorlinks=true,linkcolor=arkivblaa,urlcolor=arkivblaa,citecolor=arkivblaa,bookmarksnumbered=true]{hyperref}
+\RequirePackage{bookmark}
+\hypersetup{pdfauthor={Fysik-studiearkiv},pdftitle={Matematik til universitetsfysik},pdfsubject={Dansk studiekompendium}}
+\addto\captionsdanish{\renewcommand{\contentsname}{Indholdsfortegnelse}\renewcommand{\chaptername}{Kapitel}\renewcommand{\figurename}{Figur}\renewcommand{\tablename}{Tabel}}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{saetning}[definition]{Sætning}
+\theoremstyle{remark}
+\newtheorem*{bemaerkning}{Bemærkning}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\dd}{\mathop{}\!\mathrm{d}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\planlagt}[1]{\begin{quote}\small\sffamily\color{arkivblaa}Planlagt kapitel. #1 Dette er en redaktionel disposition, ikke et færdigt fagligt afsnit.\end{quote}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+\emergencystretch=1.5em
+
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{3.0em}}
+\makeatother

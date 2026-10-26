@@ -1,0 +1,11 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=.88\textwidth,height=65mm,axis lines=middle,xlabel={$x$},ylabel={$y$},xmin=-2,xmax=2,ymin=-1.2,ymax=1.2,legend pos=north west,legend style={font=\small},samples=150]
+\addplot[arkivblaa,thick,domain=-2:2]{sin(deg(x))};\addlegendentry{$\sin x$}
+\addplot[black,dotted,domain=-1.2:1.2]{x};\addlegendentry{$T_1=x$}
+\addplot[arkivrod,dashed,thick,domain=-2:2]{x-x^3/6};\addlegendentry{$T_3=x-x^3/6$}
+\end{axis}
+\end{tikzpicture}
+\caption{Taylorpolynomier omkring nul. Den kubiske tilnærmelse følger sinus tættere nær nul end tangenten. For alle reelle $x$ giver Taylor til orden 4, hvor koefficienten til $x^4$ er nul, grænsen $|\sin x-T_3(x)|\le |x|^5/120$. En lille relativ fejl følger ikke automatisk nær sinusfunktionens nulpunkter.}
+\end{figure}

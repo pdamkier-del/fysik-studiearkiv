@@ -1,0 +1,14 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=.88\textwidth,height=65mm,axis lines=middle,xlabel={$x$},ylabel={$y$},xmin=-.2,xmax=2.3,ymin=-.8,ymax=4.8,legend pos=north west,legend style={font=\small},samples=100]
+\addplot[arkivblaa,thick,domain=0:2.15]{x^2};\addlegendentry{$f(x)=x^2$}
+\addplot[arkivrod,thick,domain=0:2.2]{2*x-1};\addlegendentry{Tangent ved $x_0=1$}
+\addplot[black,dashed,domain=.4:2.15]{3*x-2};\addlegendentry{Sekant, $h=1$}
+\fill[black] (axis cs:1,1) circle[radius=1.5pt];
+\fill[black] (axis cs:2,4) circle[radius=1.5pt];
+\end{axis}
+\end{tikzpicture}
+\caption{Sekanten gennem $(1,1)$ og $(2,4)$ har hældning 3; tangenten ved $(1,1)$ har hældning 2. For $h\to0$ går sekantens hældning $2+h$ mod 2. Akserne er dimensionsløse.}
+\label{fig:sekant}
+\end{figure}

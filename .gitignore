@@ -1,0 +1,17 @@
+build/
+__pycache__/
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.pdf
+.env
+.env.*
+!.env.example
