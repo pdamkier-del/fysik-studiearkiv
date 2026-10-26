@@ -1,0 +1,39 @@
+# Dokumenteret pensum og kildestatus
+
+Dette er indgangen til det separate [pensumregister](99-kilder-og-pensum/README.md). De enkelte kildeposter bevarer præcise afgrænsninger og uafklarede oplysninger. Emner fordeles fagligt efter [ROADMAP.md](ROADMAP.md) og [matematikplanen](docs/kapitelplan.md), aldrig som nye kursuskompendier.
+
+## Matematik F 2026
+
+Kilde: brugerens præcise oplysninger. Original dokumentation, bogudgaver, indholdsfortegnelser og tekster er endnu ikke læst. Ingen indholdstitler udledes af kapitelnumrene. Se [FV/EMM-registeret](99-kilder-og-pensum/matematik-f-2026.md).
+
+| Bog | Afgrænsning som oplyst |
+| --- | --- |
+| *Feltteori og vektoranalyse* (FV) | Afsnit 1.5 og 1.6; kapitel 2; kapitel 4–10; tillæg A1, A2 og A3 |
+| *Essential Mathematical Methods* (EMM) | Kapitel 8 til første side af afsnit 8.4.2 (midt på side 310) |
+| EMM | Kapitel 4 |
+| EMM | Kapitel 5 undtagen 5.1.2 og 5.4 |
+| EMM | Kapitel 10 undtagen 10.4, 10.5 og 10.6 |
+| EMM | Kapitel 11 til første side af 11.3.2 (øverst på side 446), undtagen side 436 til midt på side 439 |
+| EMM | Kapitel 9, kun afsnit 9.3 |
+
+Delvise side- og afsnitsgrænser må ikke afrundes til hele afsnit eller sider. FV kapitel 3, andre tillæg og ikke nævnte passager er ikke dokumenteret som pensum.
+
+## LinALys
+
+[KU: Introduktion til lineær algebra og analyse, NMAB20000U, 2025/2026](https://kurser.ku.dk/course/NMAB20000U/2025-2026) er den angivne officielle dokumentation. Det lokale opslag gav HTTP 403. Emnerne grundlæggende analyse, differentialregning, integration, differentialligninger, flervariabel calculus, vektorrum, matricer, lineære afbildninger, egenværdier og spektralsætningen er derfor foreløbigt registreret som brugeroplysninger med denne kildehenvisning, ikke som verificerede citater. Kursusbeskrivelsen må ikke behandles som præcis uge-/sidepensumliste. Se [kildeposten](99-kilder-og-pensum/linalys-2025-2026.md).
+
+## Uafklaret matematik-ugeplan
+
+Oplyste emner: kompleks analyse og Cauchy–Riemann; analytiske og harmoniske funktioner; potens-, Taylor- og Laurentrækker; singulariteter og residuer; konturintegraler og Cauchys sætning; konforme afbildninger; Laplace- og Fouriertransformationer. Kursusnavn og fuld lærebogsreference er ikke verificeret. Emnerne er mappet til eksisterende hovedemner i `00-matematik/`; ingen kursustilknytning gættes. Se [registeret](99-kilder-og-pensum/matematik-ugeplan-uafklaret.md).
+
+## Termodynamik
+
+`Kursusplan_Termodynamik_2026.pdf` er udpeget som autoritativ for gennemgået pensum, men filen er endnu ikke fundet i repositoryet. Brugeren har oplyst kapitel 1–6 og idealgas, hovedsætninger, processer, entropi, multiplicitet, Carnot, potentialer, faseovergange, Boltzmannfordeling, partitionfunktion og Maxwellfordeling. Præcise sider, lærebogsreference og fordeling på kapitler afventer læsning af PDF'en. Ingen udeladte emner eller bestemte ensembler gættes. [Sporbarhedsregister](99-kilder-og-pensum/termodynamik-2026.md).
+
+## Statistik
+
+Hovedreference: Roger Barlow, *Statistics: A Guide to the Use of Statistical Methods in the Physical Sciences*. Selvstændigt fag i `06-statistik/`. Den præcise kursusafgrænsning fastlægges senere. Anvendt udgave, indholdsfortegnelse og notation er ikke verificeret, og den foreløbige redaktionelle struktur påstås ikke at være bogens rækkefølge. [Kildepost](99-kilder-og-pensum/statistik-barlow.md).
+
+## Originaler og øvrige fysikfag
+
+AM-formelsamlingens og det eksisterende matematikkompendiums Drive-links er registreret i [originalregisteret](99-kilder-og-pensum/eksisterende-originaler.md). Indhold og format er ikke læst/verificeret pga. HTTP 403. EM-original og dens Drive-id mangler. Der er ikke dokumenteret præcist pensum for AM, EM, kvantemekanik eller relativitet/gravitation. Deres mapper/skabeloner er ikke en erklæring om fremtidigt pensum. Ingen originale noter er rekonstrueret eller overskrevet.

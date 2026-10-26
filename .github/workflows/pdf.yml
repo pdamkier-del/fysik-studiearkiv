@@ -19,10 +19,17 @@ jobs:
       - run: python -m pip install -r requirements-tools.txt
       - name: Byg og kontroller kompendium
         run: make check
+      - name: Byg statistikstruktur
+        run: make statistik
       - name: Byg faglige skabeloner
         run: make templates
       - uses: actions/upload-artifact@v4
         with:
           name: matematikkompendium
           path: build/matematik/main.pdf
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: statistik-struktur
+          path: build/statistik/main.pdf
           if-no-files-found: error
