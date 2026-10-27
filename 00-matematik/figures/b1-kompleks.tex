@@ -1,0 +1,15 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth,scale=1.15]
+\draw[->,black!50] (-.4,0)--(4.2,0) node[right] {$\operatorname{Re}z$};
+\draw[->,black!50] (0,-2)--(0,2.3) node[above] {$\operatorname{Im}z$};
+\draw[->,arkivblaa] (0,0)--(3,1.5) node[right] {$z=a+ib$};
+\draw[->,black!65,dashed] (0,0)--(3,-1.5) node[right] {$\bar z=a-ib$};
+\draw[black!40,dashed] (3,-1.5)--(3,1.5)--(0,1.5);
+\draw[arkivblaa,->] (.65,0) arc[start angle=0,end angle=26.565,radius=.65];
+\node at (.95,.2) {$\theta$};\node[above] at (1.5,.8) {$r$};
+\node[below left] at (3,0) {$a$};\node[left] at (0,1.5) {$b$};
+\end{tikzpicture}
+\caption{Polarform og konjugation i den dimensionsløse komplekse plan, tegnet for $a,b>0$. Modulus $r$ er afstanden til nul, og konjugation spejler i realaksen. Ved andre fortegn bestemmes argumentet af den korrekte kvadrant.}
+\label{fig:b1-kompleks}
+\end{figure}

@@ -1,0 +1,16 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=.78\textwidth,height=5.5cm,axis lines=middle,
+ xmin=-2.2,xmax=4,ymin=-.3,ymax=4,xlabel={$x$},ylabel={$y$},
+ xtick={-1,0,1,2,3},ytick={1,2,3},samples=100,
+ legend style={draw=none,font=\small,at={(.97,.97)},anchor=north east}]
+\addplot[arkivblaa,domain=-2:2] {x^2};\addlegendentry{$f(x)=x^2$}
+\addplot[black!65,dashed,domain=-1.4:3.4] {.5*(x-1)^2+1};
+\addlegendentry{$\frac12 f(x-1)+1$}
+\fill[arkivblaa] (axis cs:0,0) circle[radius=1.5pt];
+\fill[arkivblaa] (axis cs:1,1) circle[radius=1.5pt];
+\end{axis}\end{tikzpicture}
+\caption{Dimensionsløse grafer: forskydning én enhed mod højre og op samt lodret skalering med $1/2$. Toppunktet flyttes fra $(0,0)$ til $(1,1)$; den vandrette argumentforskydning har modsat fortegn inde i funktionen.}
+\label{fig:b1-graf}
+\end{figure}

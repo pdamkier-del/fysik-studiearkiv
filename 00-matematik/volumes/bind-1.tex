@@ -1,9 +1,10 @@
 \documentclass[11pt,a4paper,oneside]{book}
-\usepackage{90-faelles/latex/studiearkiv}
+\usepackage[bindet]{90-faelles/latex/studiearkiv}
 \hypersetup{pdftitle={Matematik – Bind 1: Algebra og lineær algebra}}
 \setcounter{tocdepth}{2}
 \begin{document}
 \frontmatter
+\hypersetup{pageanchor=false}
 \begin{titlepage}
 \centering
 \vspace*{30mm}
@@ -16,17 +17,48 @@
 \begin{minipage}{0.8\textwidth}
 Tal, funktioner, trigonometriske identiteter, vektorrum og lineære operatorer.
 
-Dette bind genbruger de samme LaTeX-kapitler som det samlede matematikkompendium. Planlagte kapitler er markeret som ufærdige. Der indgår ikke separate gennemregnede opgaveeksempler.
+Dette bind genbruger de samme LaTeX-kapitler som det samlede matematikkompendium. Definitioner, metodevalg og formelopslag er samlet i tre kapitler. Der indgår ikke separate gennemregnede opgaveeksempler.
 \end{minipage}\par
 \vspace{14mm}
 {\small Fysik-studiearkiv · Arbejdsudgave\par}
 \end{titlepage}
+\hypersetup{pageanchor=true}
 \chapter*{Læsevejledning}
 \addcontentsline{toc}{chapter}{Læsevejledning}
-Dette bind er en emneopdelt udgave af det samlede matematikkompendium. Den generelle kilde og alle figurer vedligeholdes centralt under \texttt{00-matematik/chapters} og \texttt{00-matematik/figures}. For hele overblikket samt henvisninger mellem bindene anvendes den samlede udgave. Ufuldstændige kapitler er tydeligt markerede.
+Dette bind er en emneopdelt udgave af det samlede matematikkompendium. Den generelle kilde og alle figurer vedligeholdes centralt under \texttt{00-matematik/chapters} og \texttt{00-matematik/figures}. For hele overblikket samt henvisninger mellem bindene anvendes den samlede udgave. Formelregisteret sidst i bogen giver direkte adgang til de centrale regler.
+\section*{Lær, slå op, forbind}
+Læs kapitlerne i rækkefølge for at bygge fra tal og funktioner til vektorer
+og operatorer. Ved et konkret problem kan formelregisteret bruges som
+indgang; læs altid betingelserne ved formlen, før den anvendes.
+
+\hyperref[ch:algebra]{Algebra og funktioner} fastlægger domæner,
+regneregler og grenvalg. \hyperref[ch:trigonometri]{Trigonometri} samler
+vinkler, identiteter og faser. \hyperref[ch:b1-lineaer]{Lineær algebra}
+samler ligningssystemer, geometri og normalmoder.
+
+\section*{Notation}
+\begin{tabular}{@{}lp{.68\textwidth}@{}}
+\toprule
+Symbol & Betydning\\\midrule
+$\mathbb K$ & $\mathbb R$ eller $\mathbb C$, angivet ved behov\\
+$\mathbb N,\mathbb N_0$ & Positive heltal, henholdsvis med nul\\
+$A^{\mathsf T},A^\dagger$ & Transponeret, henholdsvis konjugeret transponeret\\
+$\langle u,v\rangle$ & Indre produkt, lineært i andet argument\\
+$\|v\|_2$ & Euklidisk norm i ortonormale koordinater\\
+$\operatorname{rank},\ker,\operatorname{im}$ & Rang, kerne og billede\\
+\bottomrule
+\end{tabular}
+
+Vinkler måles i radianer. Figurer bruger dimensionsløse koordinater,
+medmindre en fysisk størrelse er angivet. Bindhenvisninger til senere
+emner angiver deres placering i værket; de lover ikke, at de senere bind
+er færdigskrevet. Ingen gennemregnede opgaveeksempler indgår.
+
 \begingroup\small\tableofcontents\endgroup
 \mainmatter
 \input{00-matematik/chapters/01-algebra}
 \input{00-matematik/chapters/02-trigonometri}
 \input{00-matematik/chapters/09-lineaer-algebra}
+\backmatter
+\formelregister
 \end{document}

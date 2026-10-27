@@ -1,0 +1,15 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=1.05,>=stealth]
+\draw[draw=arkivblaa] (0,0) rectangle (3,3);
+\draw[draw=arkivblaa] (2,0)--(2,3) (0,2)--(3,2);
+\node at (1,1) {$x^2$};\node at (2.5,1) {$hx$};
+\node at (1,2.5) {$hx$};\node at (2.5,2.5) {$h^2$};
+\draw[<->] (0,-.35)--(2,-.35) node[midway,below] {$x$};
+\draw[<->] (2,-.35)--(3,-.35) node[midway,below] {$h$};
+\node[align=left,anchor=west] at (4,1.5)
+ {$x^2+2hx+h^2=(x+h)^2$\\[5pt]$x^2+2hx=(x+h)^2-h^2$};
+\end{tikzpicture}
+\caption{Geometrisk kvadratkomplettering for $x,h>0$: To rektangler med areal $hx$ mangler et hjørne med areal $h^2$ for at danne et kvadrat. Den udledte algebraiske identitet gælder også for negative $x,h$, hvor arealtegningen ikke fortolkes bogstaveligt.}
+\label{fig:b1-kvadrat}
+\end{figure}

@@ -1,758 +1,511 @@
 \chapter{Algebra og funktioner}
 \label{ch:algebra}
-Algebra er sproget, der forbinder en matematisk model med dens ukendte størrelser. I fysik er opgaven sjældent blot at isolere et symbol: Man skal også holde styr på, hvilke værdier det må antage, hvilke omskrivninger der er reversible, og om det endelige udtryk har de rigtige dimensioner. Kapitlet behandler derfor algebra som et \emph{opslagsværktøj} for senere modeller og ikke blot som en samling regneregler.
+Algebra omsætter en fysisk model til relationer mellem størrelser.
+En brugbar omskrivning skal både bevare løsningerne og respektere domæne,
+fortegn og enheder. Kapitlet samler grundbegreberne med opslag ved hver metode.
 
-\section{Tal og mængder}
+\section{Tal, mængder og intervaller}
 \label{sec:tal-maengder}
-En mængde fastlægger, hvilke objekter en matematisk påstand handler om.
-Dette er lige så vigtigt som selve regneoperationen: Et heltalligt antal
-partikler, en reel position og en kompleks amplitude er forskellige slags
-størrelser. En ligning beskriver derfor først et veldefineret problem, når
-både de tilladte værdier og betingelserne for dens udtryk er angivet.
-
-\subsection{Talområder og deres regnemuligheder}
+\subsection{Talområder og regnemuligheder}
 \label{sec:talomraader}
-Vi bruger følgende konventioner:
+Talområdet afgør, hvilke løsninger og operationer der er tilladt.
+Et partikelantal er diskret; en klassisk koordinat beskrives kontinuert;
+en svingningsamplitude kan repræsenteres komplekst.
 \begin{center}
-\begin{tabular}{@{}p{0.16\textwidth}p{0.35\textwidth}p{0.39\textwidth}@{}}
+\begin{tabular}{@{}lp{0.70\textwidth}@{}}
 \toprule
-Talområde & Definition eller beskrivelse & Typisk fysisk rolle\\
-\midrule
-$\mathbb N$ & $\{1,2,3,\ldots\}$ & Positive tælleindekser\\[3pt]
-$\mathbb N_0$ & $\{0,1,2,\ldots\}$ & Antal partikler eller besættelsestal\\[3pt]
-$\mathbb Z$ & $\{\ldots,-1,0,1,\ldots\}$ & Heltallige modeindekser\\[3pt]
-$\mathbb Q$ & $\{p/q:p\in\mathbb Z,\ q\in\mathbb Z\setminus\{0\}\}$ & Rationale forhold og endelige decimaltal\\[3pt]
-$\mathbb R$ & Den fuldstændige ordnede talkrop & Kontinuerte koordinater og parametre\\[3pt]
-$\mathbb C$ & $\{a+ib:a,b\in\mathbb R,\ i^2=-1\}$ & Amplituder og svingningsrepræsentationer\\
-\bottomrule
+Symbol & Konvention og betydning\\\midrule
+$\mathbb N,\mathbb N_0$ & $\{1,2,\ldots\}$ henholdsvis $\{0,1,2,\ldots\}$\\
+$\mathbb Z$ & Hele tal, også negative\\
+$\mathbb Q$ & $p/q$ med $p,q\in\mathbb Z$ og $q\ne0$\\
+$\mathbb R$ & Den fuldstændige ordnede talkrop\\
+$\mathbb C$ & $a+ib$ med $a,b\in\mathbb R$ og $i^2=-1$\\\bottomrule
 \end{tabular}
 \end{center}
-Andre bøger kan medregne nul i $\mathbb N$; her bruges $\mathbb N_0$, når
-nul skal indgå. Med de sædvanlige identifikationer har vi kæden
-\[
-\boxed{\mathbb N\subsetneq\mathbb N_0\subsetneq\mathbb Z
-\subsetneq\mathbb Q\subsetneq\mathbb R\subsetneq\mathbb C.}
-\]
-Symbolet $\subsetneq$ betyder en ægte delmængde: alle elementer i den
-venstre mængde ligger i den højre, men de to mængder er ikke ens.
-Vi bruger $\subseteq$, når lighed er tilladt.
+\formel{eq:b1-tal}{Talområder}{
+\mathbb N\subsetneq\mathbb N_0\subsetneq\mathbb Z\subsetneq
+\mathbb Q\subsetneq\mathbb R\subsetneq\mathbb C.}
+$\mathbb N$ er lukket under addition og multiplikation, men ikke
+subtraktion. $\mathbb Z$ tillader også subtraktion. Talkroppene
+$\mathbb Q,\mathbb R,\mathbb C$ tillader division undtagen med nul.
+Rødder behøver ikke blive i samme område.
 
-Et talområde er \emph{lukket} under en operation, hvis operationens
-resultat igen ligger i området, når den er defineret. De naturlige tal er
-lukkede under addition og multiplikation, men ikke under vilkårlig
-subtraktion. De hele tal tillader også subtraktion, mens division kan kræve
-rationale tal. Både $\mathbb Q$, $\mathbb R$ og $\mathbb C$ er talkroppe:
-de fire regningsarter kan udføres inden for området, bortset fra division
-med nul. Kvadratroden af et positivt rationalt tal behøver derimod ikke
-være rational, så regningsarternes lukkethed dækker ikke alle funktioner.
+Fuldstændighed betyder, at enhver ikke-tom, opadtil begrænset delmængde af
+$\mathbb R$ har en mindste øvre grænse. Det er fundamentet for analyse i
+bind 2. $\mathbb Q$ er tæt i $\mathbb R$ (ethvert åbent interval med
+forskellige endepunkter indeholder rationale tal), men ikke fuldstændig.
+$\mathbb C$ kan ikke ordnes som en ordnet talkrop: både $1=1^2$ og
+$-1=i^2$ skulle da være positive. Brug modulus eller realdel ved
+sammenligning af komplekse størrelser, ikke et generelt $z>0$.
 
-De reelle tal har desuden en fuldstændighedsegenskab: Enhver ikke-tom
-opadtil begrænset delmængde af $\mathbb R$ har en mindste øvre grænse i
-$\mathbb R$. Den egenskab gør det muligt at begrunde grænseværdier og
-konvergens i bind 2. At $\mathbb Q$ ligger tæt i $\mathbb R$ betyder, at
-ethvert åbent interval med forskellige endepunkter indeholder et rationalt
-tal; det betyder ikke, at alle reelle tal er rationale.
-
-Komplekse tal udvider løsningsmulighederne: Ligningen $x^2+1=0$ har ingen
-reel løsning, men løsningerne $\pm i$ i $\mathbb C$. De komplekse tal
-har imidlertid ingen total
-ordensrelation, der gør dem til en ordnet talkrop. Hvis en sådan orden
-fandtes, ville kvadrater af ikke-nul tal være positive; så skulle både
-$1=1^2$ og $-1=i^2$ være positive, hvilket er umuligt. En ulighed som
-$z>0$ bruges derfor ikke for et generelt komplekst tal. Man kan i stedet
-undersøge dets reelle del eller dets reelle modulus, afhængigt af spørgsmålet.
-
-\subsection{Mængdenotation og logiske udsagn}
+\subsection{Mængdesprog, kvantorer og logik}
 \label{sec:maengdenotation}
-En mængde er bestemt af sine elementer; deres rækkefølge og eventuelle
-gentagelser i en opremsning ændrer ikke mængden. Notationen $x\in A$
-betyder, at $x$ tilhører $A$, mens $x\notin A$ betyder det modsatte.
-Den tomme mængde $\varnothing$ har ingen elementer. Bemærk forskellen på
-$\varnothing$ og $\{0\}$: den sidste mængde har ét element.
-
-Mængdebyggernotationen
-\[
-A=\{x\in U:P(x)\}
-\]
-betyder alle de elementer i grundmængden $U$, der opfylder betingelsen
-$P(x)$. Det lodrette skel læses »for hvilke«. En grundmængde kan være et
-talområde, et rum af vektorer eller senere et rum af funktioner.
-\begin{definition}[Delmængde og lighed]
-$A\subseteq B$ betyder, at hvert element i $A$ også ligger i $B$.
-To mængder er ens netop når $A\subseteq B$ og $B\subseteq A$.
-\end{definition}
-At vise mængdelighed kræver således to inklusioner. Det er en generel
-bevismetode, der senere bruges ved sammenligning af kerner, billeder og
-løsningsrum i lineær algebra.
-
-Kvantorerne $\forall$ og $\exists$ betyder henholdsvis »for alle« og
-»der findes«. Deres rækkefølge er afgørende: I
-$\forall x\in A\;\exists y\in B:P(x,y)$ må valget af $y$ afhænge af $x$;
-i $\exists y\in B\;\forall x\in A:P(x,y)$ skal det samme $y$ virke for
-alle $x$. Denne forskel bliver central for punktvis og uniform konvergens
-i bind 2. Negation af en kvantificeret påstand følger reglerne
-\[
-\boxed{\begin{aligned}
-\neg\bigl(\forall x\in A:P(x)\bigr)
-&\ \Longleftrightarrow\ \exists x\in A:\neg P(x),\\
-\neg\bigl(\exists x\in A:P(x)\bigr)
-&\ \Longleftrightarrow\ \forall x\in A:\neg P(x).
+$A=\{x\in U:P(x)\}$ er de elementer i grundmængden $U$, der opfylder
+$P(x)$. $A\subseteq B$ betyder, at ethvert element i $A$ ligger i $B$;
+$\subsetneq$ kræver desuden $A\ne B$. Rækkefølge og gentagelser ændrer ikke
+en mængde. $\varnothing$ er tom; $\{0\}$ har ét element.
+\formel{eq:b1-maengder}{Mængdeoperationer}{\begin{aligned}
+A\cap B&=\{x\in U:x\in A\text{ og }x\in B\},\\
+A\cup B&=\{x\in U:x\in A\text{ eller }x\in B\},\\
+A\setminus B&=\{x\in A:x\notin B\},\qquad A^c=U\setminus A.
 \end{aligned}}
-\]
-Et enkelt modeksempel afkræfter altså en universel påstand. Udsagnet
-$P\Rightarrow Q$ siger, at $P$ er en tilstrækkelig betingelse for $Q$,
-og at $Q$ er en nødvendig betingelse for $P$. En ækvivalens
-$P\Leftrightarrow Q$ kræver begge implikationer. Denne skelnen beskytter
-mod at forveksle en nødvendig kontrol med en fuldstændig karakterisering.
+»Eller« er inklusivt. Snitmængde kombinerer samtidige krav;
+foreningsmængde kombinerer tilladte alternativer. Komplement kræver en
+angivet grundmængde. To mængder er ens, når begge inklusioner gælder.
 
-\subsection{Mængdeoperationer som kombination af betingelser}
-\label{sec:maengdeoperationer}
-Antag, at $A,B\subseteq U$, hvor $U$ er en fast grundmængde. De vigtigste
-operationer er samlet her:
-\begin{center}
-\begin{tabular}{@{}p{0.22\textwidth}p{0.39\textwidth}p{0.29\textwidth}@{}}
-\toprule
-Operation & Elementbetingelse & Betydning\\
-\midrule
-$A\cap B$ & $x\in A$ og $x\in B$ & Begge krav gælder\\[3pt]
-$A\cup B$ & $x\in A$ eller $x\in B$ & Mindst ét krav gælder\\[3pt]
-$A\setminus B$ & $x\in A$ og $x\notin B$ & Udeluk elementer fra $B$\\[3pt]
-$A^c=U\setminus A$ & $x\in U$ og $x\notin A$ & Komplement relativt til $U$\\
-\bottomrule
-\end{tabular}
-\end{center}
-»Eller« er her inklusivt: et element i begge mængder ligger også i deres
-foreningsmængde. Komplementet afhænger af $U$, og grundmængden skal derfor
-fremgå af sammenhængen.
-
-De vigtigste omskrivninger er distributivitet og De Morgans love:
-\[
-\boxed{\begin{aligned}
-A\cap(B\cup C)&=(A\cap B)\cup(A\cap C),\\
-A\cup(B\cap C)&=(A\cup B)\cap(A\cup C),\\
-(A\cup B)^c&=A^c\cap B^c,\\
-(A\cap B)^c&=A^c\cup B^c.
+Kvantorerne $\forall$ og $\exists$ betyder »for alle« og »der findes«.
+I $\forall x\,\exists y:P(x,y)$ må $y$ afhænge af $x$; i
+$\exists y\,\forall x:P(x,y)$ skal ét $y$ virke for alle $x$.
+\formel{eq:b1-logik}{Negation og De Morgans love}{\begin{aligned}
+\neg(\forall x\in A:P(x))&\ \Leftrightarrow\ \exists x\in A:\neg P(x),\\
+\neg(\exists x\in A:P(x))&\ \Leftrightarrow\ \forall x\in A:\neg P(x),\\
+(A\cup B)^c&=A^c\cap B^c,\qquad
+(A\cap B)^c=A^c\cup B^c.
 \end{aligned}}
-\]
-Disse regler følger af betingelserne på hvert enkelt element. For den
-første komplementregel gælder for eksempel
-\[
-x\in(A\cup B)^c
-\ \Longleftrightarrow\ x\notin A\ \text{og}\ x\notin B
-\ \Longleftrightarrow\ x\in A^c\cap B^c.
-\]
-Det er en udledning af en generel identitet, ikke en regel, der blot skal
-huskes fra en tegning.
+Den første komplementregel følger ved at skrive »ikke i $A$ eller $B$«
+som »hverken i $A$ eller i $B$«. Distributivitet følger på samme måde:
+$A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$ og den duale regel med
+$\cap,\cup$ byttet. $\bigcap_j A_j$ kræver alle medlemsbetingelser;
+$\bigcup_j A_j$ kræver mindst én.
 
-For en indekseret familie $(A_j)_{j\in J}$ betyder
-$\bigcup_{j\in J}A_j$, at mindst én betingelse opfyldes, mens
-$\bigcap_{j\in J}A_j$ kræver alle betingelser opfyldt. Når mange fysiske
-bindinger skal gælde samtidig, er snitmængden derfor den naturlige
-beskrivelse af de tilladte tilstande.
+$P\Rightarrow Q$ gør $P$ tilstrækkelig for $Q$ og $Q$ nødvendig for $P$.
+$P\Leftrightarrow Q$ kræver begge retninger. Et enkelt modeksempel
+modbeviser en universel påstand. Kvantorernes rækkefølge vender tilbage
+ved punktvis og uniform konvergens i bind 2.
 
-\subsection{Intervaller, endepunkter og ubegrænsede områder}
+\subsection{Intervaller og produktmængder}
 \label{sec:intervaller}
-For reelle $a<b$ defineres
-\[
-\begin{aligned}
-[a,b]&=\{x\in\mathbb R:a\leq x\leq b\},&
-(a,b)&=\{x\in\mathbb R:a<x<b\},\\
-[a,b)&=\{x\in\mathbb R:a\leq x<b\},&
-(a,b]&=\{x\in\mathbb R:a<x\leq b\}.
-\end{aligned}
-\]
-Runde parenteser udelader endepunktet, firkantede parenteser medtager det.
-I dansk litteratur ses også $]a,b[$ for $(a,b)$. Her bruges den sidstnævnte
-notation konsekvent. Et interval indeholder alle reelle tal mellem to af
-sine punkter; en foreningsmængde af adskilte intervaller behøver ikke selv
-være et interval.
-
-Symbolerne $+\infty$ og $-\infty$ er ikke reelle tal og medtages aldrig
-som intervalendepunkter:
-\[
-[a,\infty)=\{x\in\mathbb R:x\geq a\},\qquad
-(-\infty,b)=\{x\in\mathbb R:x<b\}.
-\]
-En ubegrænset mængde beskriver vilkårligt store eller små værdier; den
-indeholder ikke et særligt tal »uendelig«. Hvis endepunkterne falder sammen,
-er $[a,a]=\{a\}$, mens $(a,a)=\varnothing$.
-
-Figur~\ref{fig:algebra-intervaller} viser forskellen mellem medtagne og
-udeladte punkter og mellem et interval og et område med et hul.
+For $a<b$ betyder $[a,b]$ begge endepunkter medtaget, $(a,b)$ begge
+udeladt og $[a,b)$ eller $(a,b]$ kun ét medtaget. Dansk notation $]a,b[$
+er det samme som $(a,b)$. Uendelig er ikke et reelt endepunkt:
+$[a,\infty)=\{x\in\mathbb R:x\ge a\}$. Desuden er $[a,a]=\{a\}$ og
+$(a,a)=\varnothing$.
 
 \input{00-matematik/figures/algebra-intervaller.tex}
 
-Afstand på talaksen skrives $d(x,y)=|x-y|$. For en radius $r>0$ kan et
-åbent interval derfor også beskrives som
-\[
-\boxed{\{x\in\mathbb R:|x-x_0|<r\}=(x_0-r,x_0+r).}
-\]
-Udledningen følger af $|u|<r\Leftrightarrow-r<u<r$ med $u=x-x_0$.
-For $|x-x_0|\leq r$ medtages begge endepunkter. Denne notation beskriver
-både tolerancer omkring en referenceværdi og de små omgivelser, der bruges
-ved kontinuitet i bind 2. Absolutværdi og fejlgrænser behandles videre i
-afsnittet om uligheder i dette kapitel.
+Et interval indeholder alle punkter mellem to af sine punkter.
+Et hul kan derfor gøre en mængde til en forening af intervaller.
+Produktmængden $A\times B=\{(a,b):a\in A,b\in B\}$ består af
+\emph{ordnede} par. $\mathbb R^n$ er koordinatlister med $n$ reelle tal;
+en binding udvælger en delmængde. Vektorrum tilføjer regneoperationer,
+og en norm tilføjer et længdebegreb (kapitlet om lineær algebra).
 
-\subsection{Produktmængder og flere variable}
-\label{sec:produktmaengder}
-Produktmængden $A\times B$ består af ordnede par:
-\[
-A\times B=\{(a,b):a\in A,\ b\in B\}.
-\]
-Rækkefølgen er en del af informationen. Generelt er $(a,b)$ ikke det
-samme som $(b,a)$, selv om mængderne $\{a,b\}$ og $\{b,a\}$ er ens.
-Notationen $\mathbb R^n$ betyder produktet af $n$ kopier af $\mathbb R$;
-et element er en koordinatliste $(x_1,\ldots,x_n)$.
-
-En produktmængde tillader uafhængige valg fra hver faktor. En binding
-$F(x,y)=0$ udvælger derimod en delmængde af $\mathbb R^2$, hvor
-koordinaterne ikke kan vælges frit. Dette er forudsætningen for senere at
-beskrive løsningsmængder i lineær algebra, niveaukurver i bind 2 og
-geometriske bindinger i bind 5. En koordinatliste alene fastlægger ikke et
-fysisk vektorrum med enheder, norm og basis; den ekstra struktur skal
-angives, når den bruges.
-
-\subsection{Definitionsmængder og reversible omskrivninger}
+\subsection{Definitionsmængder og modelkrav}
 \label{sec:definitionsmaengder}
-Hvis et udtryk $F(x)$ skal være reelt, findes dets naturlige
-\emph{definitionsmængde} ved at kræve, at alle dets dele er definerede.
-Løsningsmængden for en ligning er derefter
-\[
-\boxed{S=\{x\in D:F(x)=0\},}
-\]
-hvor $D$ er den relevante definitionsmængde efter eventuelle yderligere
-modelkrav. Betingelser skal kombineres med snitmængde, når alle dele af
-udtrykket skal være definerede samtidigt:
-\begin{center}
-\begin{tabular}{@{}p{0.33\textwidth}p{0.57\textwidth}@{}}
-\toprule
-Reelt udtryk & Nødvendig definitionsbetingelse\\
-\midrule
-$P(x)/Q(x)$ & $Q(x)\ne0$\\[3pt]
-$\sqrt{g(x)}$ & $g(x)\geq0$\\[3pt]
-$1/\sqrt{g(x)}$ & $g(x)>0$\\[3pt]
-$\ln g(x)$ & $g(x)>0$\\
-\bottomrule
-\end{tabular}
-\end{center}
-Desuden skal de indre udtryk være definerede. En bogstavelig formel kan
-have et snævrere domæne end en forkortet repræsentation. Forkortning
-\[
-\frac{(x-a)P(x)}{x-a}=P(x)\qquad (x\ne a)
-\]
-beviser kun lighed på det oprindelige domæne. At tildele venstresiden en
-værdi ved $x=a$ er en udvidelse af funktionen, ikke blot en omskrivning.
+Et udtryk skal være defineret, før det kan løse en ligning.
+For reelle udtryk kræver $P/Q$ at $Q\ne0$, $\sqrt g$ at $g\ge0$,
+$1/\sqrt g$ at $g>0$ og $\ln g$ at $g>0$; også de indre udtryk skal
+være definerede. Kravene kombineres med snitmængde.
+\formel{eq:b1-loesningsmaengde}{Løsningsmængde}{S=\{x\in D:F(x)=0\}.}
+Forkortning af $(x-a)P(x)/(x-a)$ giver $P(x)$ kun for $x\ne a$.
+At tildele en værdi ved $a$ er en udvidelse, ikke en omskrivning.
+Division med et muligt nulled kan tabe løsninger, multiplikation kan
+indføre dem, og kvadrering kan give fremmede løsninger.
 
-Division med et udtryk, der kan være nul, kan fjerne løsninger, mens
-multiplikation med det kan tilføje løsninger. Kvadrering er heller ikke
-generelt reversibel. For reelle $x,a$ gælder
-\[
-x=\sqrt a\quad\Longleftrightarrow\quad
-\bigl(x^2=a\ \text{og}\ x\geq0\bigr)\qquad(a\geq0).
-\]
-Uden fortegnskravet på $x$ har man kun implikationen fra venstre mod
-højre. Kandidater, der fremkommer ved en sådan omskrivning, skal derfor
-kontrolleres i den oprindelige ligning. Det samme princip gælder, når
-parameterafhængige nævnere eller inversgrene indgår.
-
-\subsection{Metodevalg og fysisk gyldighed}
 \label{sec:maengder-fysik}
-Ved et algebraisk modelproblem er en nyttig rækkefølge at angive
-grundmængden, opstille definitionsbetingelserne, skære dem med de fysiske
-krav og først derefter løse ligningen. Ved flere tilladte alternativer
-bruges en foreningsmængde. En parameter, hvis fortegn påvirker kravene,
-skal behandles særskilt; et formelt resultat for positive parametre kan
-ikke uden kontrol anvendes ved nul eller negative værdier.
+For $m>0$ giver den konservative energirelation
+$E=p^2/(2m)+V(q)$ den nødvendige betingelse $V(q)\le E$ for reelt momentum.
+De tilladte positioner er $A_E=\{q\in D_V:V(q)\le E\}$, eventuelt flere
+adskilte intervaller. Ved $V<E$ findes to momentumgrene
+$p=\pm\sqrt{2m(E-V)}$. Energi alene vælger hverken retning eller fuld
+bevægelse; det kræver begyndelsesdata og dynamik i bind 3.
 
-For en endimensional konservativ bevægelse med konstant masse $m>0$ og
-potentiel energi $V(q)$ giver energirelationen
-\[
-E=\frac{p^2}{2m}+V(q),\qquad
-p^2=2m\bigl(E-V(q)\bigr).
-\]
-Et reelt momentum kræver $V(q)\leq E$. De energitilladte positioner er
-således mængden
-\[
-A_E=\{q\in D_V:V(q)\leq E\}.
-\]
-Den kan bestå af flere adskilte intervaller; en partikel følger ikke
-automatisk alle disse intervaller fra én begyndelsestilstand.
-Ved et regulært vendepunkt med $V(q)=E$ er $p=0$. For $V(q)<E$ giver
-$p=\pm\sqrt{2m(E-V(q))}$ to momentumgrene. Energiens nødvendige
-positionsbetingelse vælger altså hverken bevægelsesretningen eller en
-fuld tidsudvikling. Denne forskel mellem en tilladt mængde og en faktisk
-løsning er vigtig i mekanik og i bind 3 om differentialligninger.
+\section{Absolutværdi og uligheder}
+\label{sec:b1-uligheder}
+Absolutværdi måler afstand til nul, uafhængigt af fortegn.
+Det gør den egnet til tolerancer og fejlgrænser.
+\formel{eq:b1-absolut}{Absolutværdi og afstand}{\begin{gathered}
+|x|=\begin{cases}x,&x\ge0,\\-x,&x<0,\end{cases}\qquad d(x,y)=|x-y|,\\
+|xy|=|x||y|,\quad |x/y|=|x|/|y|\ (y\ne0),\\
+\bigl||x|-|y|\bigr|\le|x-y|,\qquad |x+y|\le|x|+|y|.
+\end{gathered}}
+Trekantsuligheden følger ved $-|x|\le x\le|x|$ og tilsvarende for $y$.
+Anvend den på $x=(x-y)+y$ og byt $x,y$ for at få den omvendte
+ulighed. For $r>0$ er
+\formel{eq:b1-afstand}{Afstandsuligheder}{\begin{aligned}
+|x-x_0|<r&\ \Leftrightarrow\ x_0-r<x<x_0+r,\\
+|x-x_0|\ge r&\ \Leftrightarrow\ x\le x_0-r\ \text{eller}\ x\ge x_0+r.
+\end{aligned}}
+Multiplikation med et positivt tal bevarer en ulighed; et negativt vender
+den. Ved ukendt fortegn opdeles i tilfælde, inklusive nul. For rationelle
+uligheder ordnes nulpunkter og poler på talaksen, fortegnet bestemmes
+mellem dem, og kun definerede punkter medtages. Lige rodmultiplicitet
+bevarer fortegnet, ulige multiplicitet skifter det (figur nedenfor).
+Kvadrering er kun ordensbevarende på ikke-negative tal.
 
-I statistisk fysik kan et besættelsestal ligge i $\mathbb N_0$, mens en
-klassisk koordinat beskrives i $\mathbb R$. En kontinuert approksimation
-til et diskret antal er en modelbeslutning og kræver sin egen begrundelse.
-Mængdenotation holder disse valg synlige uden at foregribe den senere
-fysiske teori.
-
-\paragraph{Forbindelser i værket.}
-Funktionsafsnittet nedenfor bruger domæne, codomæne og billede til at
-præcisere, hvornår en invers eksisterer. Kapitlet om lineær algebra i dette
-bind tilføjer regneoperationer og lineære bindinger på vektormængder.
-Bind 2 bruger intervaller og kvantorer til grænseværdier, og bind 5
-beskriver områder og koordinater i flere dimensioner. Disse henvisninger
-angiver emneplacering; de er ikke en påstand om, at alle senere afsnit er
-færdigskrevet.
+For $u,v\ge0$ giver $(\sqrt u-\sqrt v)^2\ge0$ uligheden
+$\sqrt{uv}\le(u+v)/2$, med lighed ved $u=v$.
+Fejl i en sum kan begrænses af summen af absolutte fejl. Notationen
+$|\varepsilon|\ll1$ er derimod ingen præcis fejlgrænse; restled og
+kontrollerede approksimationer behandles i bind 2.
 
 \section{Potenser, rødder og brøker}
 \label{sec:potenser-broeker}
-Potenser samler gentagen multiplikation i ét symbol. Rødder vender denne
-operation om, og brøker gør division til en del af regningen. De tre
-værktøjer hænger tæt sammen, men deres regneregler har forskellige
-forudsætninger. Særligt fortegn, nulværdier og ikke-heltallige eksponenter
-kræver opmærksomhed, før en formel kan forkortes.
+\subsection{Heltallige, rationale og reelle eksponenter}
+En positiv heltallig potens er gentagen multiplikation.
+For $a\ne0$ defineres $a^0=1$ og $a^{-n}=1/a^n$, så regnereglerne
+fortsat gælder. $0^0$ og negative potenser af nul bruges ikke her.
+\formel{eq:b1-potenser}{Potensregler}{\begin{gathered}
+a^\alpha a^\beta=a^{\alpha+\beta},\quad
+\frac{a^\alpha}{a^\beta}=a^{\alpha-\beta},\quad
+(a^\alpha)^\beta=a^{\alpha\beta},\\
+(ab)^\alpha=a^\alpha b^\alpha,\qquad
+(a/b)^\alpha=a^\alpha/b^\alpha.
+\end{gathered}}
+Et sikkert fælles domæne er $a,b>0$ og $\alpha,\beta\in\mathbb R$.
+For heltallige eksponenter tillades negative baser, når alle nævnere er
+definerede. Reglerne følger af samling af faktorer; for reelle eksponenter
+bruges $a^\alpha=\exp(\alpha\ln a)$.
 
-\subsection{Heltallige potenser og nulværdier}
-For $n\in\mathbb N$ er $a^n$ produktet af $n$ faktorer lig med $a$.
-For $a\ne0$ udvides definitionen ved
-\[
-a^0=1,\qquad a^{-n}=\frac{1}{a^n}.
-\]
-Med disse definitioner gælder for $m,n\in\mathbb Z$ og $a\ne0$
-\[
-\boxed{a^m a^n=a^{m+n},\qquad
-\frac{a^m}{a^n}=a^{m-n},\qquad (a^m)^n=a^{mn}.}
-\]
-For positive eksponenter følger den første regel ved at tælle antallet af
-faktorer. Kravet om at bevare samme regel ved $n=-m$ giver
-$a^m a^{-m}=a^0=1$ og begrunder definitionen af negative potenser.
-For $a=0$ er positive heltallige potenser definerede, men negative potenser
-og $0^0$ bruges ikke her. En forkortning må derfor ikke skjule et
-uoprindeligt defineret nuludtryk.
+For $a>0$, $p\in\mathbb Z$, $q\in\mathbb N$ sættes
+$a^{p/q}=(\sqrt[q]a)^p$. Hvis $p/q=r/s$, har de positive kandidater samme
+$qs$'te potens, så værdien er uafhængig af brøkrepræsentationen.
+Ved $a<0$ tillader den reelle konvention kun en \emph{forkortet} rational
+eksponent med ulige nævner. Generelle sammensatte potensregler kan da
+svigte: $(a^2)^{1/2}=|a|$, men $a^{2(1/2)}=a$.
+For $a=0$ er positive rationale potenser nul.
 
-For heltallige $n$ gælder også
-\[
-(ab)^n=a^n b^n,\qquad
-\left(\frac ab\right)^n=\frac{a^n}{b^n},
-\]
-hvor alle nævnere og negative potenser skal være definerede. En potens
-fordeler sig over et produkt, men ikke generelt over en sum.
-Fortegn og parenteser skal desuden holdes adskilt:
-$(-a)^2=a^2$, mens $-a^2=-(a^2)$.
+\subsection{Rødder, fortegn og rationalisering}
+Lige rødder betegner den ikke-negative rod og kræver ikke-negativ radikand.
+Ulige rødder er entydigt reelle for enhver reel radikand.
+\formel{eq:b1-roedder}{Rodregler}{\begin{gathered}
+\sqrt{x^2}=|x|\ (x\in\mathbb R),\qquad(\sqrt x)^2=x\ (x\ge0),\\
+\sqrt{ab}=\sqrt a\sqrt b\ (a,b\ge0),\qquad
+\sqrt{a/b}=\sqrt a/\sqrt b\ (a\ge0,b>0).
+\end{gathered}}
+Ligningen $x^2=a$ har for $a>0$ to reelle rødder; symbolet $\sqrt a$
+betegner kun én. For $a\ge0$ er $x=\sqrt a$ ækvivalent med
+$x^2=a$ \emph{og} $x\ge0$.
 
-\subsection{Reelle rødder og rationale eksponenter}
-For $n\in\mathbb N$ defineres den reelle $n$'te rod ved
-\[
-\begin{cases}
-\sqrt[n]{a}=\text{det entydige }r\geq0\text{ med }r^n=a,
- & n\text{ lige},\ a\geq0,\\
-\sqrt[n]{a}=\text{det entydige reelle }r\text{ med }r^n=a,
- & n\text{ ulige},\ a\in\mathbb R.
-\end{cases}
-\]
-En lige rod er altså valgt ikke-negativ. Ligningen $x^2=a$ og selve
-symbolet $\sqrt a$ har forskellige roller: for $a>0$ har ligningen to
-rødder, men symbolet betegner kun den positive. Derfor gælder
-\[
-\boxed{\sqrt{x^2}=|x|\quad(x\in\mathbb R),\qquad
-(\sqrt x)^2=x\quad(x\geq0).}
-\]
-Den første identitet følger, fordi $|x|$ er ikke-negativ og har kvadrat
-$x^2$. At fjerne absolutværdien kræver den ekstra betingelse $x\geq0$.
+Den konjugerede faktor giver for $u,v\ge0$, $u+v>0$
+\formel{eq:b1-rationalisering}{Rationalisering}{
+\sqrt u-\sqrt v=\frac{u-v}{\sqrt u+\sqrt v}.}
+Det følger af kvadraternes differens. For $u\ne v$ er også
+$1/(\sqrt u-\sqrt v)=(\sqrt u+\sqrt v)/(u-v)$.
+Brug rationalisering ved rodbrøker og grænseværdier. Den kan undgå
+subtraktion af næsten lige rødder, men nøjagtigheden afhænger også af
+beregningen af $u-v$ (numerisk matematik i bind 4).
 
-For $a>0$ og heltal $p$, $q\in\mathbb N$ sætter man
-\[
-a^{p/q}=\bigl(\sqrt[q]{a}\bigr)^p.
-\]
-Værdien afhænger ikke af valget af brøkrepræsentation: Hvis $p/q=r/s$,
-er de to positive kandidaters $qs$'te potenser begge $a^{ps}=a^{rq}$;
-entydigheden af den positive rod giver samme værdi. Her må $p$ og $r$
-også være negative, da $a\ne0$.
-For $a=0$ kan positive rationale potenser defineres som nul.
-
-For negative baser bruges en mere begrænset reel konvention:
-Er $p/q$ forkortet med $q>0$ ulige, kan man sætte
-$a^{p/q}=(\sqrt[q]{a})^p$. Ved lige nævner findes ingen reel værdi.
-Man skal forkorte eksponenten først; ellers kan et valg af rod i en
-mellemregning give et andet resultat. De generelle regler for sammensatte
-potenser kan ikke overføres uden kontrol: Hvis $a<0$, er
-$(a^2)^{1/2}=|a|\ne a^{2(1/2)}$.
-
-\subsection{Vilkårlige reelle eksponenter og regneoversigt}
-For en positiv base defineres vilkårlige reelle potenser ved
-\[
-\boxed{a^\alpha=\exp(\alpha\ln a)\qquad(a>0,\ \alpha\in\mathbb R).}
-\]
-Denne definition udvider de rationale potenser og giver de almindelige
-potensregler uden grenproblemer. Reglerne følger af
-$\exp(u+v)=\exp u\exp v$ og $\ln(ab)=\ln a+\ln b$ for positive
-argumenter; eksponential- og logaritmefunktionerne behandles samlet
-senere i dette kapitel.
-\begin{center}
-\begin{tabular}{@{}p{0.56\textwidth}p{0.34\textwidth}@{}}
-\toprule
-Regel & Tilstrækkelige reelle betingelser\\
-\midrule
-$a^\alpha a^\beta=a^{\alpha+\beta}$ & $a>0$\\[3pt]
-$a^\alpha/a^\beta=a^{\alpha-\beta}$ & $a>0$\\[3pt]
-$(a^\alpha)^\beta=a^{\alpha\beta}$ & $a>0$\\[3pt]
-$(ab)^\alpha=a^\alpha b^\alpha$ & $a,b>0$\\[3pt]
-$(a/b)^\alpha=a^\alpha/b^\alpha$ & $a,b>0$\\[3pt]
-$\sqrt{ab}=\sqrt a\sqrt b$ & $a,b\geq0$\\[3pt]
-$\sqrt{a/b}=\sqrt a/\sqrt b$ & $a\geq0,\ b>0$\\
-\bottomrule
-\end{tabular}
-\end{center}
-Betingelserne i tabellen er sikre fælles domæner; enkelte identiteter kan
-være gyldige på større områder ved bestemte heltallige eksponenter.
-Den reelle definition giver ikke vilkårlige irrationale potenser af
-negative tal. Komplekse potenser kræver logaritmegrene og hører til bind 4.
-
-\subsection{Brøkregning og fællesnævnere}
-Brøken $a/b$ er for $b\ne0$ det tal, som multipliceret med $b$ giver $a$.
-For reelle tal gælder
-\[
-\boxed{\begin{aligned}
-\frac ab\pm\frac cd&=\frac{ad\pm bc}{bd}
-&& (b,d\ne0),\\
-\frac ab\,\frac cd&=\frac{ac}{bd}
-&& (b,d\ne0),\\
-\frac{a/b}{c/d}&=\frac{ad}{bc}
-&& (b,c,d\ne0).
+\subsection{Brøkregning og enheder}
+Brøken $a/b$ er det tal, der ganget med $b\ne0$ giver $a$.
+\formel{eq:b1-broeker}{Brøkregneregler}{\begin{aligned}
+\frac ab\pm\frac cd&=\frac{ad\pm bc}{bd}\quad(b,d\ne0),\\
+\frac ab\frac cd&=\frac{ac}{bd}\quad(b,d\ne0),\\
+\frac{a/b}{c/d}&=\frac{ad}{bc}\quad(b,c,d\ne0).
 \end{aligned}}
-\]
-Additionsreglen udledes ved at skrive $a/b=ad/(bd)$ og
-$c/d=bc/(bd)$. Man omskriver altså til samme enhed, før tællerne lægges
-sammen. Divisionsreglen følger ved at gange med det reciprokke af den
-ikke-nul divisor $c/d$.
+Addition kræver fællesnævner; division er multiplikation med den
+reciprokke divisor. Forkort kun \emph{faktorer} i hele tæller og nævner,
+ikke enkelte led gennem en sum. Bevar oprindelige domænekrav.
 
-Forkortning er division af hele tælleren og hele nævneren med en fælles
-\emph{faktor}. Man kan ikke forkorte et enkelt led gennem en sum.
-Hvis en fælles faktor afhænger af en variabel, skal dens nulpunkter
-fortsat udelukkes fra det oprindelige domæne, jf.
-afsnit~\ref{sec:definitionsmaengder}. Ved rationelle funktioner vælges en
-fællesnævner efter faktorerne og deres nødvendige potenser; produktet af
-alle nævnere virker, men kan være unødigt stort.
+Addition af fysiske størrelser kræver samme dimension. En potenslov
+skrives tydeligt med referenceskalaer:
+\formel{eq:b1-skalering}{Dimensionsløs skalering}{
+Y=Y_0(X/X_0)^\alpha\qquad (X,X_0>0).}
+$Y_0$ har dimension som $Y$; $X/X_0$ er dimensionsløst.
+I $Y=CX^\alpha$ må $C$ bære den nødvendige, $\alpha$-afhængige dimension.
+En elastisk energi $U=kq^2/2$ med $k>0$ bestemmer
+$|q|=\sqrt{2U/k}$, ikke forskydningens fortegn. Enhederne under roden er
+længde i anden; bevægelsen kræver dynamik.
 
-\subsection{Rationalisering og metodevalg}
-Et rodudtryk i en forskel kan omskrives med den konjugerede faktor.
-For $u,v\geq0$ og $u+v>0$ gælder
-\[
-\sqrt u-\sqrt v=\frac{u-v}{\sqrt u+\sqrt v}.
-\]
-Identiteten kommer af
-$(\sqrt u-\sqrt v)(\sqrt u+\sqrt v)=u-v$.
-Omvendt kan nævneren $\sqrt u-\sqrt v$ rationaliseres, når $u\ne v$:
-\[
-\frac{1}{\sqrt u-\sqrt v}
-=\frac{\sqrt u+\sqrt v}{u-v}.
-\]
-Omskrivningerne er nyttige ved grænseværdier og ved forskelle mellem
-næsten lige rødder. De udvider ikke automatisk domænet. Ved numerisk
-beregning kan den første form reducere tabet af cifre i selve
-rodsubtraktionen, men den samlede nøjagtighed afhænger også af, hvordan
-$u-v$ beregnes; fejlanalyse hører til bind 4.
-
-Vælg heltallige potensregler ved gentagne faktorer og reciprokke udtryk,
-roddefinitionen ved spørgsmål om fortegn og reelle løsninger og positive
-baser, når vilkårlige reelle eksponenter skal samles. Ved summer af brøker
-findes fællesnævneren før forkortning. Ved rodligninger kontrolleres de
-oprindelige fortegnskrav efter enhver kvadrering.
-
-\subsection{Dimensionskontrol og fysiske skaleringslove}
-Hvis $X$ er en fysisk størrelse med dimension $[X]$, har en heltallig
-potens dimension $[X^n]=[X]^n$. Rødder og rationale potenser giver
-tilsvarende brøkpotenser af enhederne, når størrelsen og den valgte
-rodgren er meningsfulde. Addition kræver samme dimension i alle led,
-og en algebraisk lighed kræver samme dimension på begge sider.
-
-For en dimensionsbærende positiv størrelse er en skalering med en
-vilkårlig eksponent klarest skrevet ved en positiv referenceskala $X_0$:
-\[
-\boxed{Y=Y_0\left(\frac{X}{X_0}\right)^\alpha.}
-\]
-Brøken $X/X_0$ er dimensionsløs, mens $Y_0$ har samme dimension som $Y$.
-En potenslov $Y=CX^\alpha$ kan også bruges, men da afhænger dimensionen
-af $C$ af $\alpha$. En variabel eksponent bør derfor ikke sættes på en
-dimensionsbærende størrelse uden referenceskala.
-
-En elastisk energi $U=kq^2/2$ med $k>0$ giver to mulige fortegn for
-forskydningen, når energien og $k$ kendes. Kvadratroden bestemmer
-størrelsen $|q|=\sqrt{2U/k}$, ikke bevægelsesretningen. Med
-$[k]=\text{energi}/\text{længde}^2$ får roden dimension længde.
-Dette forbinder rodens grenvalg med de tilladte tilstande fra
-afsnit~\ref{sec:maengder-fysik}; den faktiske bevægelse kræver dynamik i
-bind 3 og mekaniknoterne.
-
-\section{Polynomier, faktorisering og binomialformlen}
+\section{Summer, produkter og polynomier}
 \label{sec:polynomier}
-Et polynomium bygger en funktion op af endeligt mange heltallige potenser.
-Denne enkle form gør det muligt at samle led, finde nulpunkter og
-omskrive en model uden at ændre dens indhold. Polynomier beskriver både
-præcise algebraiske relationer og lokale tilnærmelser til mere komplicerede
-funktioner. En faktorisering fremhæver rødderne, mens den udfoldede form
-fremhæver koefficienterne; den nyttigste form afhænger af spørgsmålet.
+\subsection{Summationsnotation og endelige summer}
+$\sum_{k=m}^n a_k$ lægger leddene sammen;
+$\prod_{k=m}^n a_k$ ganger dem. Indekset er et hjælpesymbol, der kan
+omdøbes. Den tomme sum er 0, det tomme produkt 1.
+\formel{eq:b1-summer}{Summer og produkter}{\begin{gathered}
+\sum_{k=m}^n(\alpha a_k+\beta b_k)
+=\alpha\sum_{k=m}^n a_k+\beta\sum_{k=m}^n b_k,\\
+\sum_{k=1}^n k=\frac{n(n+1)}2,\qquad
+\sum_{k=1}^n k^2=\frac{n(n+1)(2n+1)}6,\\
+\sum_{k=0}^{n-1}r^k=\frac{1-r^n}{1-r}\quad(r\ne1),\qquad
+\prod_{k=1}^n a=a^n.
+\end{gathered}}
+Her er $n\in\mathbb N$. Den geometriske sum er $n$ ved $r=1$;
+der kræves ikke $|r|<1$ for en \emph{endelig} sum. Multiplikation med
+$1-r$ får alle mellemled til at bortfalde. Den aritmetiske sum fås ved
+at parre første og sidste led. Kvadratsummen følger ved at summere
+$(k+1)^3-k^3=3k^2+3k+1$ og bruge den aritmetiske sum.
+Indeksskift skal flytte både grænser og led: $j=k-m$ giver
+$\sum_{k=m}^n a_k=\sum_{j=0}^{n-m}a_{j+m}$.
+Summer samler diskrete bidrag, fx energier; uendelige rækker hører til bind 2.
 
-\subsection{Koefficienter, grad og polynomiumsidentitet}
-Et polynomium over $\mathbb K=\mathbb R$ eller $\mathbb C$ skrives
-\[
-P(x)=\sum_{k=0}^n a_k x^k=a_0+a_1x+\cdots+a_nx^n,
-\qquad a_k\in\mathbb K.
-\]
-Hvis $a_n\ne0$, er graden $\deg P=n$, og $a_n$ er den ledende
-koefficient. Et ikke-nul konstant polynomium har grad nul; nulpolynomiet
-tilordnes ikke en endelig grad her. For ikke-nul polynomier gælder
-\[
-\deg(PQ)=\deg P+\deg Q.
-\]
-Dette følger, fordi produktets højeste led er
-$a_n b_m x^{n+m}$ med $a_nb_m\ne0$. Derimod kan led annulleres ved
-addition, så $\deg(P+Q)\leq\max(\deg P,\deg Q)$, hvis summen er ikke-nul.
-
-To polynomier er identiske, når koefficienterne for hver potens er ens.
-En identitet gælder for alle $x$ i talområdet; en ligning kan være sand
-kun for bestemte værdier. Over $\mathbb R$ eller $\mathbb C$ giver lighed
-som funktioner også lighed af koefficienter: et ikke-nul polynomium af
-grad $n$ kan højst have $n$ forskellige rødder, som begrundes nedenfor.
-Man kan derfor sammenligne koefficienter, når en omskrivning skal gælde
-identisk. Et tjek i blot nogle få punkter beviser derimod ikke generelt
-en identitet uden kontrol af graden.
-
-\subsection{Standardfaktoriseringer og deres udledning}
-Distributiviteten $a(b+c)=ab+ac$ giver følgende opslag:
-\[
-\boxed{\begin{aligned}
-(a+b)^2&=a^2+2ab+b^2,\\
-(a-b)^2&=a^2-2ab+b^2,\\
+\subsection{Grad, faktorisering og binomialformlen}
+Et polynomium over $\mathbb K=\mathbb R$ eller $\mathbb C$ er
+$P(x)=\sum_{k=0}^n a_kx^k$. Hvis $a_n\ne0$, er graden $n$.
+Nulpolynomiet har ingen endelig grad her.
+For ikke-nul polynomier er $\deg(PQ)=\deg P+\deg Q$;
+summen kan få lavere grad ved annullering. Identiske polynomier har
+samme koefficienter; en ligning kræver derimod kun lighed ved bestemte $x$.
+\formel{eq:b1-kvadratkubik}{Kvadrat- og kubiksætninger}{\begin{aligned}
+(a\pm b)^2&=a^2\pm2ab+b^2,\\
 a^2-b^2&=(a-b)(a+b),\\
-(a+b)^3&=a^3+3a^2b+3ab^2+b^3,\\
-(a-b)^3&=a^3-3a^2b+3ab^2-b^3,\\
-a^3-b^3&=(a-b)(a^2+ab+b^2),\\
-a^3+b^3&=(a+b)(a^2-ab+b^2).
+(a\pm b)^3&=a^3\pm3a^2b+3ab^2\pm b^3,\\
+a^3\pm b^3&=(a\pm b)(a^2\mp ab+b^2).
 \end{aligned}}
-\]
-Kvadratsætningen fås ved at gange to faktorer $(a+b)$ ud; de to blandede
-led er begge $ab$. Kubiksætningen følger ved at gange resultatet endnu
-en gang med $(a+b)$. Det er netop de blandede led, der gør en potens af
-en sum forskellig fra summen af potenser.
+Vælg fortegn konsekvent. Reglerne udledes ved distributivitet.
+Den generelle form er
+\formel{eq:b1-binomial}{Binomialformlen}{\boxed{
+(a+b)^n=\sum_{k=0}^n\binom nk a^{n-k}b^k,\quad
+\binom nk=\frac{n!}{k!(n-k)!}.}}
+Her er $n\in\mathbb N_0$, $0!=1$, og $a,b$ kommuterer.
+Vælg $b$ fra $k$ af de $n$ faktorer: der er
+$n(n-1)\cdots(n-k+1)/k!$ valg. Derfor optræder netop denne koefficient.
+Desuden er $\binom nk=\binom n{n-k}$ og
+$\binom nk=\binom{n-1}{k-1}+\binom{n-1}k$ for $1\le k<n$.
+Sidste identitet skelner mellem valg med og uden sidste position.
+Ved $n=0$ anvendes tomt produkt, ikke en generel definition af $0^0$.
+For ikke-kommuterende matricer er $(A+B)^2=A^2+AB+BA+B^2$.
+Ikke-heltallige binomialrækker kræver konvergensbetingelser i bind 2.
 
-En generel forskel af potenser faktoriseres som
-\[
-a^n-b^n=(a-b)\sum_{k=0}^{n-1}a^{n-1-k}b^k
-\qquad(n\in\mathbb N).
-\]
-Ved udmultiplikation annulleres alle mellemliggende led parvist.
-Hvis $a\ne b$, kan man dividere med $a-b$; ved $a=b$ gælder den
-uforkortede identitet stadig. Med $a=r$, $b=1$ giver samme idé
-\[
-\sum_{k=0}^{n-1}r^k=\frac{1-r^n}{1-r}\quad(r\ne1),
-\qquad \sum_{k=0}^{n-1}1=n.
-\]
-Dette er en \emph{endelig} sum og kræver ingen konvergensbetingelse.
-Uendelige geometriske rækker kræver en særskilt grænseovergang i bind 2.
+\subsection{Division, restsætning og rodmultiplicitet}
+For $Q\ne0$ findes entydige $S,R$ med
+\formel{eq:b1-polynomiumsdivision}{Polynomiumsdivision og restsætning}{\begin{gathered}
+P=QS+R,\qquad R=0\ \text{eller}\ \deg R<\deg Q,\\
+P(x)=(x-a)S(x)+P(a),\qquad
+P(a)=0\ \Leftrightarrow\ (x-a)\mid P(x).
+\end{gathered}}
+Dividér de højeste led, fratræk det fundne multiplum og gentag, til
+resten har lavere grad. Graden falder, så processen stopper.
+To forskellige fremstillinger ville give $Q(S_1-S_2)=R_2-R_1$ med
+uforenelige grader; derfor er fremstillingen entydig. Ved $Q=x-a$
+er resten konstant, og indsættelse af $a$ giver $P(a)$.
 
-\subsection{Binomialkoefficienter og binomialformlen}
-Når produktet af $n$ faktorer $(a+b)$ udfoldes, opstår et led
-$a^{n-k}b^k$ ved at vælge $b$ fra præcis $k$ af faktorerne. Antallet af
-sådanne valg er binomialkoefficienten
-\[
-\binom nk=\frac{n!}{k!(n-k)!},\qquad
-n\in\mathbb N_0,\quad k=0,\ldots,n,\quad 0!=1.
-\]
-Der er $n(n-1)\cdots(n-k+1)$ ordnede valg af $k$ forskellige positioner;
-division med $k!$ fjerner rækkefølgen af de valgte positioner.
-Dermed fås binomialformlen
-\[
-\boxed{(a+b)^n=\sum_{k=0}^n\binom nk a^{n-k}b^k
-\qquad(n\in\mathbb N_0).}
-\]
-Koefficienterne er symmetriske, $\binom nk=\binom n{n-k}$, og opfylder
-Pascals relation
-\[
-\binom nk=\binom{n-1}{k-1}+\binom{n-1}{k}\qquad(1\leq k\leq n-1).
-\]
-Et valg indeholder enten den sidste position eller gør det ikke; det
-opdeler valgene i netop de to grupper. For $n=0$ forstås produktet som
-et tomt produkt lig med 1; dette er ikke en generel definition af $0^0$
-for vilkårlige reelle potenser.
-
-Formlen gælder for almindelige reelle eller komplekse tal, hvor
-multiplikationen er kommutativ. Den må ikke uden videre anvendes på
-matricer: $(A+B)^2=A^2+AB+BA+B^2$ reduceres kun til den almindelige
-kvadratsætning, hvis $AB=BA$. Potenser med ikke-heltallig eksponent giver
-ikke denne endelige sum; binomialrækken behandles med sine
-konvergensbetingelser i bind 2.
-
-\subsection{Polynomiumsdivision, restsætning og rødder}
-For polynomier $P,Q$ over $\mathbb R$ eller $\mathbb C$ med $Q\ne0$
-findes entydige polynomier $S,R$, så
-\[
-\boxed{P(x)=Q(x)S(x)+R(x),\qquad R=0\ \text{eller}\ \deg R<\deg Q.}
-\]
-Metoden er at dividere det aktuelt højeste led i resten med det ledende
-led i $Q$, føje kvotienten til $S$ og trække det tilsvarende multiplum af
-$Q$ fra. Graden af den tilbageværende rest falder ved hvert trin, så
-processen stopper. Hvis der fandtes to fremstillinger, ville
-$Q(S_1-S_2)=R_2-R_1$ have grad mindst $\deg Q$ på venstresiden og mindre
-på højresiden, medmindre begge sider er nul. Det begrunder entydigheden.
-
-Ved division med $x-a$ er resten konstant. Indsættelse af $x=a$ giver
-restsætningen og faktorsætningen:
-\[
-\boxed{P(x)=(x-a)S(x)+P(a),\qquad
-P(a)=0\ \Longleftrightarrow\ (x-a)\text{ er faktor i }P.}
-\]
-Et ikke-nul polynomium af grad $n$ har derfor højst $n$ forskellige
-rødder: Hver forskellig rod fjerner en lineær faktor, og graden falder
-én ad gangen. En rod $a$ har multiplicitet $m$, hvis
-$P(x)=(x-a)^m H(x)$ med $H(a)\ne0$. Multipliciteten er altså antallet af
-gange faktoren forekommer, ikke antallet af forskellige rodværdier.
-
-Algebraens fundamentalsætning siger, at et polynomium af grad $n\geq1$
-over $\mathbb C$ kan faktoriseres i $n$ lineære faktorer talt med
-multiplicitet. Sætningen anføres her uden bevis. Har polynomiet reelle
-koefficienter, gælder $P(\bar z)=\overline{P(z)}$, så ikke-reelle rødder
-kommer i konjugerede par. Et par $a\pm ib$ med $b\ne0$ giver faktoren
-\[
-\bigl(x-(a+ib)\bigr)\bigl(x-(a-ib)\bigr)
-=(x-a)^2+b^2,
-\]
-som er irreducibel over $\mathbb R$. Et reelt polynomium kan derfor
-faktoriseres i reelle lineære og irreducible kvadratiske faktorer.
-Det er grundlaget for partialbrøksopdelingen senere i kapitlet.
-
-\subsection{Metodevalg, fortegn og fysiske forbindelser}
-Faktorisér, når nulpunkter, fælles faktorer eller fortegn er det centrale;
-udfold og sammenlign koefficienter, når en identitet eller en
-parameterbestemmelse skal kontrolleres. Brug polynomiumsdivision, når en
-brøks tæller har mindst samme grad som nævneren, eller når et kendt
-nulpunkt skal skilles ud. En eksakt faktoriseringsmulighed er nyttig,
-men der findes ikke en generel rodformel med radikaler for alle
-polynomier af grad fem eller højere; numeriske rødder behandles i bind 4.
-
-Omkring en reel rod $a$ med multiplicitet $m$ er fortegnet af
-$P(x)=(x-a)^m H(x)$ bestemt af $x-a$ og det lokalt uændrede fortegn af
-$H$. Derfor skifter $P$ fortegn gennem roden ved ulige $m$, men ikke ved
-lige $m$. Denne sammenhæng mellem faktorisering og grafen er vist i
-figur~\ref{fig:algebra-multiplicitet} og bruges ved uligheder og ved
-undersøgelse af, hvor en fysisk størrelse kan være positiv.
+Hver forskellig rod fjerner en lineær faktor; et ikke-nul polynomium af
+grad $n$ har højst $n$ forskellige rødder. Dette begrunder også
+koefficientsammenligning ved funktionsidentitet. Multiplicitet $m$ betyder
+$P(x)=(x-a)^mH(x)$ med $H(a)\ne0$. Lokalt skifter fortegnet ved ulige
+$m$, men ikke ved lige $m$.
 
 \input{00-matematik/figures/algebra-multiplicitet.tex}
 
-For en dimensionsbærende koordinat $q$ skal koefficienterne i en energi
-$V(q)=\sum_k c_k q^k$ opfylde $[c_k]=[\text{energi}]/[q]^k$.
-Ved symmetrien $V(-q)=V(q)$ for alle $q$ må de ulige koefficienter være
-nul; dette følger ved at sammenligne koefficienter. Et lige potentiale
-kan derfor organiseres med lige potenser uden at gætte dets fysiske
-parametre. En lokal polynomiumsapproksimation er derimod ikke en
-identitet for hele potentialet; dens restled og gyldighedsinterval
-behandles i bind 2 om Taylorudvikling.
+Algebraens fundamentalsætning (uden bevis her) giver $n$ komplekse rødder
+talt med multiplicitet. Reelle koefficienter medfører
+$P(\bar z)=\overline{P(z)}$, så ikke-reelle rødder kommer i konjugerede par.
+Parret $a\pm ib$ giver den reelle faktor $(x-a)^2+b^2$, irreducibel for
+$b\ne0$. Et reelt polynomium opløses derfor i lineære og irreducible
+kvadratiske faktorer.
 
-I lineær algebra er $\det(\lambda I-A)$ et polynomium i $\lambda$.
-Faktorisering og multiplicitet vender derfor tilbage ved egenværdier,
-men en gentagen polynomiumsrod garanterer ikke flere uafhængige
-egenvektorer. Den ekstra geometriske betingelse behandles i kapitlet om
-lineær algebra i dette bind.
+Brug faktorform til rødder og fortegn, koefficientform til identiteter og
+division før partialbrøker. En generel radikalformel for grad fem eller
+højere findes ikke; numeriske rødder behandles i bind 4.
+For $V(q)=\sum_k c_kq^k$ har $c_k$ dimension energi$/[q]^k$.
+Symmetrien $V(-q)=V(q)$ tvinger ulige koefficienter til nul.
+En Taylorapproksimation er dog kun lokal og kræver restled (bind 2).
+Karakteristiske polynomier vender tilbage ved egenværdier.
 
-\section{Ligninger og uligheder}
-\subsection{Andengradsligninger og kvadratkomplettering}
-Den generelle andengradsligning $ax^2+bx+c=0$ med $a\ne0$ har rødder
+\section{Ligninger og kvadratkomplettering}
+\label{sec:b1-ligninger}
+En ligning udvælger de værdier, der gør en relation sand.
+Vælg omskrivning efter strukturen og kontrollér altid oprindeligt domæne.
+\subsection{Lineære, kvadratiske og højere ligninger}
+For $ax+b=0$ er $x=-b/a$ ved $a\ne0$. Ved $a=0$ er alle værdier
+løsninger, hvis $b=0$, ellers ingen. Denne parameteropdeling må ikke
+forsvinde ved division.
+\formel{eq:b1-kvadrat}{Kvadratkomplettering og rødder}{\begin{aligned}
+ax^2+bx+c&=a\left(x+\frac{b}{2a}\right)^2+c-\frac{b^2}{4a},\\
+x_\pm&=\frac{-b\pm\sqrt\Delta}{2a},\quad\Delta=b^2-4ac\quad(a\ne0).
+\end{aligned}}
+Det blandede led i $(x+b/(2a))^2$ er $bx/a$; det tilføjede
+$b^2/(4a)$ trækkes fra igen. For reelle koefficienter giver
+$\Delta>0$ to reelle rødder, $\Delta=0$ én dobbeltrod og $\Delta<0$
+et konjugeret par. Kvadratkomplettering viser minimum for $a>0$ og
+maksimum for $a<0$ ved $x=-b/(2a)$.
+
+\input{00-matematik/figures/b1-kvadrat.tex}
+
+En faktorisering reducerer en højere ligning ved nulproduktreglen.
+For $ax^4+bx^2+c=0$ kan $u=x^2\ge0$ bruges, men hver tilladt $u$
+skal oversættes tilbage med begge fortegn. Parameterændringer kan ændre
+både grad og domæne; behandl degenererede værdier separat.
+
+\subsection{Rationelle ligninger og rodligninger}
+Ryd nævnere kun på deres oprindelige ikke-nul domæne.
+For reelle $g,h$ er
+\formel{eq:b1-rodligning}{Reversibel løsning af en rodligning}{
+\sqrt{g(x)}=h(x)\ \Leftrightarrow\
+g(x)=h(x)^2\ \text{og}\ h(x)\ge0,}
+hvor $g,h$ skal være definerede. Højresiden sikrer også $g\ge0$.
+Ved flere rødder gentages domæne- og fortegnskontrol efter hver kvadrering.
+Til energier og vendepunkter er kvadratkomplettering ofte mere informativ
+end en lang rodformel. Til uligheder bruges faktorernes fortegn frem
+for ukontrolleret multiplikation med nævnere.
+
+\section{Partialbrøker}
+\label{sec:b1-partialbroeker}
+Partialbrøker erstatter én rationel funktion med simplere brøker.
+Det gør integration, polstruktur og Laplace-inversion overskuelig.
+Begynd med polynomiumsdivision, hvis tællerens grad ikke er mindre end
+nævnerens.
+\formel{eq:b1-partialbroeker}{Partialbrøksstruktur over de reelle tal}{
+\frac{P(x)}{Q(x)}=S(x)
++\sum_i\sum_{k=1}^{m_i}\frac{A_{ik}}{(x-a_i)^k}
++\sum_j\sum_{k=1}^{n_j}\frac{B_{jk}x+C_{jk}}{q_j(x)^k}.}
+Her er $q_j$ forskellige moniske irreducible reelle andengradsfaktorer,
+og $a_i$ forskellige reelle rødder; $Q$'s konstante faktor indarbejdes i
+koefficienterne. Alle oprindelige nulpunkter i $Q$ udelukkes.
+Hver gentagen faktor kræver \emph{alle} potenser op til sin multiplicitet.
+En kvadratisk faktor kræver en lineær tæller, da resten ved division med
+den har grad højst én.
+
+Gang med $Q$, sammenlign koefficienter, og løs det lineære system.
+Ved en simpel rod $a$ af $Q$ er koefficienten til $1/(x-a)$
+\formel{eq:b1-simpelpol}{Koefficient ved en simpel pol}{
+A=\frac{P(a)}{Q'(a)}.}
+Skriv $Q=(x-a)H$; da er $Q'(a)=H(a)$ og
+$A=\lim_{x\to a}(x-a)P/Q=P(a)/H(a)$.
+For en faktor af multiplicitet $m$ er
+$A_k=G^{(m-k)}(a)/(m-k)!$, hvor $G=(x-a)^mP/Q$ er regulær ved $a$;
+brug dette efter separation af polynomiumsdelen. Definitionen af afledte
+hører til bind 2; koefficientsammenligning virker uden differentialregning.
+
+Den klassiske identitet for $a\ne b$ er
 \[
-\boxed{x_\pm=\frac{-b\pm\sqrt{b^2-4ac}}{2a}}.
+\frac1{(x-a)(x-b)}=\frac1{a-b}
+\left(\frac1{x-a}-\frac1{x-b}\right).
 \]
-Diskriminanten $\Delta=b^2-4ac$ afgør antallet af reelle rødder. Fuldstændiggørelse af kvadratet giver
-\[
-ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2+
-c-\frac{b^2}{4a}.
-\]
-Denne form er ofte mere informativ end rodformlen, når et minimum af en energifunktion eller en kvadratisk approksimation skal bestemmes.
+Ved $a=b$ ændres strukturen til en dobbeltpol; man må ikke indsætte
+$a=b$ i de separate divergerende koefficienter.
+Integralkapitlet i bind 2 bruger netop disse brøker til standardintegraler.
 
-\subsection{Brøker og partialbrøker}
-En rational funktion $P(x)/Q(x)$ kan ofte dekomponeres efter polerne i nævneren. For $a\ne b$ er eksempelvis
-\[
-\frac{1}{(x-a)(x-b)}
-=\frac{1}{a-b}\left(\frac{1}{x-a}-\frac{1}{x-b}\right).
-\]
-Gentagne lineære faktorer $(x-a)^m$ kræver led med alle nævnerpotenser $(x-a)^{-k}$ for $1\leq k\leq m$. Irreducible reelle andengradsfaktorer kræver en lineær tæller. Hvis tællerens grad ikke er mindre end nævnerens, udføres først polynomiumsdivision. Metoden bruges især før integration eller Laplace-inversion.
+\section{Funktioner og grafer}
+\label{sec:b1-funktioner}
+\subsection{Domæne, billede og entydighed}
+En funktion $f:D\to Y$ knytter præcis én værdi til hvert $x\in D$.
+$D$ er definitionsmængde, $Y$ codomæne og $f(D)\subseteq Y$ billedmængde.
+En fysisk models gyldighedsområde kan være mindre end det algebraiske domæne.
+\formel{eq:b1-injektiv}{Injektiv, surjektiv og bijektiv}{\begin{aligned}
+\text{Injektiv: }& f(x_1)=f(x_2)\ \Rightarrow\ x_1=x_2,\\
+\text{Surjektiv: }& \forall y\in Y\ \exists x\in D:f(x)=y,\\
+\text{Bijektiv: }& \text{både injektiv og surjektiv}.
+\end{aligned}}
+Surjektivitet afhænger af det valgte codomæne. En injektiv funktion er
+bijektiv som afbildning $D\to f(D)$, men ikke nødvendigvis $D\to Y$.
 
-\subsection{Uligheder og absolutværdi}
-Absolutværdi er afstanden fra nul på den reelle talakse:
-\[
-|x|=\begin{cases}x,&x\geq0,\\-x,&x<0.\end{cases}
-\qquad |x+y|\leq |x|+|y|.
-\]
-Hvis en ulighed multipliceres med et negativt tal, skifter ulighedstegnet retning. Ved multiplikation med en ukendt parameter skal man derfor skelne mellem dens fortegnstilfælde.
+\input{00-matematik/figures/b1-afbildninger.tex}
 
-For $a>0$ gælder den nyttige ækvivalens
-\[
-|x-x_0|<a\quad\Longleftrightarrow\quad x_0-a<x<x_0+a.
-\]
-I perturbationsteori giver en antagelse som $|\varepsilon|\ll1$ ikke alene en streng matematisk fejlgrænse. En kontrolleret tilnærmelse skal kobles til et restled eller en eksplicit størrelsesorden.
 
-\section{Funktioner, inverse funktioner og sammensætning}
-\subsection{Domæne, billede og sammensætning}
-En funktion $f:D\to Y$ tildeler hvert $x\in D$ præcis én værdi $f(x)\in Y$. Definitionsmængden $D$, codomænet $Y$ og billedmængden $f(D)$ er forskellige begreber. En fysisk formel kan være algebraisk meningsfuld for et større interval end det, hvor modellen faktisk gælder.
+\subsection{Sammensætning og inverse}
+\formel{eq:b1-invers}{Sammensætning og invers}{\begin{gathered}
+(f\circ g)(x)=f(g(x)),\quad D_{f\circ g}=\{x\in D_g:g(x)\in D_f\},\\
+f^{-1}(f(x))=x,\qquad f(f^{-1}(y))=y\quad(y\in f(D)).
+\end{gathered}}
+En entydig invers $f^{-1}:f(D)\to D$ kræver injektivitet.
+Streng monotoni på et interval er tilstrækkelig. Grafen spejles i $y=x$;
+en grenbegrænsning kan gøre en ellers ikke-injektiv funktion invertibel.
+$f^{-1}$ er ikke den reciprokke $1/f$.
+For $f\in C^1$ i en omegn af $x$ og $f'(x)\ne0$
+giver kædereglen $(f^{-1})'(f(x))=1/f'(x)$.
+$x^3$ har en global invers, men ingen endelig inversafledt ved nul.
+For $F(x,y)=0$, $F\in C^1$ og $F_y\ne0$ giver den implicitte
+funktionssætning lokalt $y'=-F_x/F_y$; relationen er ikke nødvendigvis en
+global funktion. Beviser og regularitet behandles i bind 2.
 
-Sammensætningen $f\circ g$ defineres ved $(f\circ g)(x)=f(g(x))$, når $x$ ligger i $g$'s definitionsmængde, og $g(x)$ desuden ligger i $f$'s definitionsmængde. Domænet for den sammensatte funktion er derfor
-\[
-D_{f\circ g}=\{x\in D_g:g(x)\in D_f\}.
-\]
-Et vigtigt modelspørgsmål er, om en funktion er injektiv (forskellige input giver forskellige output), surjektiv (hele codomænet rammes) eller bijektiv (begge dele). Kun en bijektiv funktion har en entydig global invers som afbildning mellem de angivne mængder.
+\subsection{Symmetri, monotoni og stykvise funktioner}
+På et domæne symmetrisk om nul er $f$ lige, hvis $f(-x)=f(x)$, og ulige,
+hvis $f(-x)=-f(x)$. Enhver sådan funktion spaltes entydigt:
+\formel{eq:b1-paritet}{Lige og ulige del}{
+f(x)=\frac{f(x)+f(-x)}2+\frac{f(x)-f(-x)}2.}
+En funktion er voksende, når $x_1<x_2$ medfører $f(x_1)\le f(x_2)$;
+strengt voksende kræver $<$. Aftagende defineres med omvendte tegn.
+Periodisk betyder $f(x+T)=f(x)$ på et translationsinvariant domæne for
+et $T>0$; en mindste positiv periode behøver ikke eksistere (konstanter).
+Stykvise definitioner skal dække domænet entydigt og angive endepunkter.
+Symmetri reducerer integration og modeklassifikation i senere bind.
 
-\subsection{Inverse funktioner og implicitte relationer}
-Hvis $f$ er strengt monoton på et interval, er den injektiv dér og har en invers $f^{-1}:f(D)\to D$. Hvis $f$ er differentiabel, og $f'(x)\ne0$, gælder lokalt
-\[
-\boxed{(f^{-1})'(f(x))=\frac{1}{f'(x)}}.
-\]
-Antagelsen $f'(x)\ne0$ er afgørende. For eksempel har $f(x)=x^3$ en global invers, men formlen giver ingen endelig afledt for inversen ved $f(0)=0$.
+\subsection{Graftransformationer og asymptoter}
+\formel{eq:b1-graf}{Graftransformationer}{
+g(x)=A f(B(x-h))+k\qquad(B\ne0).}
+Et punkt $(u,f(u))$ flyttes til $(h+u/B,k+Af(u))$.
+Dermed er vandret længdeskala $1/|B|$, lodret skala $|A|$, og negative
+faktorer giver spejlinger. Domænet transformeres samtidig.
 
-En implicit relation $F(x,y)=0$ beskriver ikke nødvendigvis en global funktion $y(x)$. Hvis $F$ er kontinuert differentiabel og $F_y(x_0,y_0)\ne0$, garanterer den implicitte funktionssætning en lokal gren med
-\[
-\frac{\dd y}{\dd x}=-\frac{F_x}{F_y}.
-\]
-Det er et typisk værktøj, når en bane eller en bevaret energi definerer en relation mellem størrelser, som er besværlig at løse eksplicit.
+\input{00-matematik/figures/b1-graf.tex}
 
-\subsection{Skalering, dimensionsløse variable og følsomhed}
-En størrelse $x$ med dimension kan gøres dimensionsløs ved $u=x/x_0$, hvor $x_0$ er en referenceværdi med samme dimension. Hvis en model har formen $y=A\,f(x/x_0)$, beskriver $f$ en universel form, mens $A$ og $x_0$ sætter de fysiske skalaer.
-
-For en positiv, differentiabel størrelse $y=f(x)$ med $x>0$ er den logaritmiske følsomhed
-\[
-\frac{\dd\ln y}{\dd\ln x}=\frac{x}{y}\frac{\dd y}{\dd x}.
-\]
-Den måler en relativ ændring i output pr. relativ ændring i input. For en potenslov $y=Cx^\alpha$ er følsomheden netop $\alpha$. Det hjælper med at afgøre, hvilke inputusikkerheder der er mest betydningsfulde, men usikkerhedsforplantning kræver yderligere antagelser om fejl og korrelationer.
+En lodret asymptote $x=a$ kræver divergens i mindst én ensidig grænse;
+et hul fra forkortning er ikke automatisk en asymptote.
+En retlinjet asymptote $y=mx+b$ ved $x\to\pm\infty$ betyder
+$f(x)-(mx+b)\to0$. $m=0$ giver vandret asymptote.
+Polynomiumsdivision viser den skrå asymptote for rationelle funktioner,
+når resten divideret med nævneren går mod nul. Præcise grænseværdier
+behandles i bind 2.
 
 \section{Eksponential- og logaritmefunktioner}
-\subsection{Eksponentiel vækst og henfald}
-For $a>0$ defineres $a^x=e^{x\ln a}$. Eksponentialfunktionen er positiv og opfylder
-\[
-e^{x+y}=e^x e^y,\qquad
-\frac{\dd}{\dd x}e^{kx}=k e^{kx}.
-\]
-Differentialligningen $\dot y=ky$ har løsningen $y(t)=y(0)e^{kt}$ for konstant $k$. Her har $k$ dimension invers tid. Ved $k<0$ beskriver modellen eksponentielt henfald, og karakteristisk tid er $\tau=1/|k|$. Ved $k>0$ beskriver den eksponentiel vækst; fordoblingstiden er $\ln2/k$.
-
-Logaritmen er invers til eksponentialfunktionen på de positive reelle tal. For $x,y>0$ og reel $\alpha$ gælder
-\[
-\ln(xy)=\ln x+\ln y,\qquad
-\ln\frac{x}{y}=\ln x-\ln y,\qquad
-\ln(x^\alpha)=\alpha\ln x.
-\]
-Man må ikke skrive $\ln(x+y)=\ln x+\ln y$. Logaritmen omdanner produkter til summer, ikke addition til en simpel operation.
+\label{sec:b1-log}
+Eksponentialfunktioner omsætter addition til multiplikation; logaritmer
+gør det omvendte. De beskriver vækst, henfald og skalaer over mange størrelsesordener.
+\formel{eq:b1-eksplog}{Eksponential- og logaritmeregler}{\begin{gathered}
+e^{x+y}=e^xe^y,\quad a^x=e^{x\ln a}\ (a>0),\\
+\ln(xy)=\ln x+\ln y,\quad\ln(x/y)=\ln x-\ln y,\\
+\ln(x^\alpha)=\alpha\ln x,\quad
+\log_a x=\frac{\ln x}{\ln a}\ (a>0,a\ne1).
+\end{gathered}}
+De reelle logregler kræver $x,y>0$ og $\alpha\in\mathbb R$.
+De følger ved at anvende den inverse til eksponentialfunktionen.
+$\ln(x+y)$ er ikke $\ln x+\ln y$.
+$e^x$ er voksende med billede $(0,\infty)$; $\ln x$ er dens invers.
+For $0<a<1$ er både $a^x$ og $\log_a x$ aftagende.
 
 \input{00-matematik/figures/algebra-eksplog.tex}
 
-\subsection{Logaritmer, grene og fysiske enheder}
-I en fysisk formel skal et logaritme- eller eksponentialargument være dimensionsløst. Udtrykket $\ln x$ er derfor ikke meningsfuldt, hvis $x$ f.eks. betegner en længde uden en angivet enhedsskala. Brug i stedet $\ln(x/x_0)$ for en positiv referencelængde $x_0$.
+Løs eksponentielle ligninger med logaritmer, når de positive sider kan
+sammenlignes; undersøg domænet før logaritmering. I uligheder bevarer
+$\ln$ ordenen, mens $\log_a$ vender den for $0<a<1$.
+Komplekse logaritmer kræver grenvalg i bind 4.
 
-For $x>0$ gælder den nyttige relation
-\[
-\frac{\dd}{\dd x}\ln x=\frac{1}{x},
-\]
-og for $x\ne0$ er den reelle afledte af $\ln|x|$ også $1/x$. I kompleks analyse bliver logaritmen flerbladet, så en gren skal vælges særskilt; de almindelige reelle logaritmeregler må ikke overføres ukritisk til vilkårlige komplekse argumenter.
+\subsection{Fysiske skalaer og følsomhed}
+Faser, eksponential- og logaritmeargumenter skal være dimensionsløse.
+Brug $\ln(X/X_0)$ frem for logaritmen af en længde uden referenceskala.
+For konstant $k$ løser $y(t)=y(0)e^{kt}$ ligningen $\dot y=ky$;
+$k$ har dimension invers tid. Ved $k<0$ er tidskonstanten $1/|k|$ og
+halveringstiden $\ln2/|k|$; ved $k>0$ er fordoblingstiden $\ln2/k$.
+\formel{eq:b1-foelsomhed}{Logaritmisk følsomhed}{
+\frac{\dd\ln(y/y_0)}{\dd\ln(x/x_0)}=\frac{x}{y}\frac{\dd y}{\dd x}
+\qquad(x,y>0).}
+For $y=Cx^\alpha$ er følsomheden $\alpha$.
+Det følger af kædereglen, som også giver
+$(e^{kx})'=ke^{kx}$, $(\ln x)'=1/x$ og $(\ln|x|)'=1/x$ for $x\ne0$.
+Usikkerhedsforplantning kræver yderligere oplysninger om fejl og korrelationer
+og behandles i det selvstændige statistikværk.
 
-\section{Metodevalg, kontrol og anvendelser i fysik}
-Når en fremtidig mekanik- eller elektromagnetismeopgave reduceres til algebra, kan følgende rækkefølge genbruges:
-\begin{enumerate}
-\item Bestem de ukendte størrelser, deres dimensioner og definitionsmængder.
-\item Identificér mulige symmetrier, bevarede størrelser og dimensionsløse parametre, før du isolerer variable.
-\item Vælg en algebraisk omskrivning, der bevarer ligningens løsninger; noter særskilt, når dette ikke er garanteret.
-\item Brug en relevant repræsentation: faktorisering til rødder, fuldstændigt kvadrat til ekstrema, partialbrøker til integration eller logaritmer til produkter og skalering.
-\item Indsæt resultatet i den oprindelige ligning, og kontrollér grænsetilfælde og enheder.
-\end{enumerate}
-For et central-kraftproblem bruges f.eks. løsning af en andengradsligning til radialvendepunkter, og fuldstændiggørelse af kvadratet kan hjælpe med at undersøge et potentiales form. I lineær mekanik kræver et stort koblet ligningssystem ofte matricemetoder snarere end manuel elimination; disse behandles i kapitlet om lineær algebra.
+\section{Basal kompleks algebra}
+\label{sec:b1-kompleks}
+Komplekse tal holder styr på to reelle komponenter med én regneoperation.
+De er særligt nyttige til fase og lineære svingninger. Konturintegration
+og analytiske funktioner ligger fortsat i bind 4.
+\formel{eq:b1-kompleks}{Konjugation, modulus og division}{\begin{gathered}
+z=a+ib,\quad\bar z=a-ib,\quad |z|=\sqrt{a^2+b^2},\quad z\bar z=|z|^2,\\
+\frac zw=\frac{z\bar w}{|w|^2}\ (w\ne0),\quad
+\overline{zw}=\bar z\bar w,\quad |zw|=|z||w|.
+\end{gathered}}
+Divisionen udledes ved at gange tæller og nævner med $\bar w$.
+Ligningen $x^2+1=0$ har ingen reel løsning, men $\pm i$ i $\mathbb C$.
+\formel{eq:b1-polar}{Polarform, Eulers formel og rødder}{\begin{gathered}
+z=r e^{i\theta}=r(\cos\theta+i\sin\theta),\quad r=|z|>0,\\
+(re^{i\theta})^n=r^ne^{in\theta},\qquad
+z^{1/n}:\ r^{1/n}e^{i(\theta+2\pi k)/n},\quad k=0,\ldots,n-1.
+\end{gathered}}
+Her er $n\in\mathbb N$ og $z\ne0$; nul har kun roden nul.
+Eulers formel kan begrundes ved potensrækkerne for $e^z$, sinus og cosinus
+(bind 2/4). Multiplikation ganger længder og adderer vinkler.
+Argumentet er bestemt modulo $2\pi$; en hovedgren kan vælges i $(-\pi,\pi]$.
+Modulus og argument af nul er henholdsvis nul og udefineret.
+Faser skal derfor findes med begge koordinater, ikke kun $\arctan(b/a)$.
 
-\paragraph{Opslag: hyppige fejl.}
-Undgå division med mulige nulled, forkert fortegn ved uligheder, skjulte inversgrene, eksponentialfunktioner med dimensionsbærende argumenter og antagelser om, at en lokal linearisering gælder globalt. Hvis modellen introducerer en parameter, bør særlige værdier som nul og grænsetilfælde behandles eksplicit.
+\input{00-matematik/figures/b1-kompleks.tex}
+
+I en harmonisk repræsentation er den fysiske størrelse ofte
+$\operatorname{Re}(Ze^{i\omega t})$. Linearitet gør repræsentationen nyttig;
+produkter af realdele er ikke generelt realdelen af produktet.
+
+\section{Metodevalg og videre forbindelser}
+Begynd med domæne, enheder og særlige parameterværdier.
+Faktorisér for rødder og fortegn; kompletter kvadratet for ekstrema;
+brug partialbrøker før integration og logaritmer til produkter og skalering.
+Kontrollér grene og oprindelige ligninger efter ikke-reversible trin.
+
+Funktioner leder til differentialregning i bind 2; polynomier leder til
+karakteristiske polynomier i lineær algebra. Grundlæggende komplekse tal
+bruges straks i trigonometri og hermiteske matricer; den dybere analyse
+udvikles ét sted i bind 4. Til radialvendepunkter i mekanik skal
+algebraiske rødder altid skæres med det fysisk tilladte positionsområde.

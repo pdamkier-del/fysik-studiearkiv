@@ -1,0 +1,23 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth,x=1cm,y=.6cm]
+\foreach \off/\title in {0/Injektiv,4.5/Surjektiv,9/Bijektiv} {
+ \node[font=\small] at (\off+.7,4.5) {\title};
+ \node[font=\small] at (\off,3.7) {$D$};
+ \node[font=\small] at (\off+1.5,3.7) {$Y$};
+ \foreach \y in {1,2,3} {\fill[arkivblaa] (\off,\y) circle(1.8pt);}
+}
+\foreach \y in {0,1,2,3} {\draw[draw=arkivblaa] (1.5,\y) circle(2pt);}
+\foreach \y in {1,2,3} {\draw[->,arkivblaa] (.12,\y)--(1.38,\y);}
+\foreach \y in {1,3} {\draw[draw=arkivblaa] (6,\y) circle(2pt);}
+\draw[->,arkivblaa] (4.62,1)--(5.88,1);
+\draw[->,arkivblaa] (4.62,2)--(5.88,3);
+\draw[->,arkivblaa] (4.62,3)--(5.88,3);
+\foreach \y in {1,2,3} {
+ \draw[draw=arkivblaa] (10.5,\y) circle(2pt);
+ \draw[->,arkivblaa] (9.12,\y)--(10.38,\y);
+}
+\end{tikzpicture}
+\caption{Tre afbildninger mellem endelige mængder. Til venstre rammes et element i codomænet ikke; i midten rammes ét element to gange. Til højre har hvert element præcis ét urbillede. Punktplaceringerne er skematiske, ikke numeriske koordinater.}
+\label{fig:b1-afbildninger}
+\end{figure}
