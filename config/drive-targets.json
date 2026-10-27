@@ -1,0 +1,30 @@
+{
+  "root_folder_id": "16x1VSQ0bwWEhigfwM21LTHYQmcXya9RZ",
+  "areas": {
+    "00-matematik": "1_mJgxHaXD8UcXcJ-pMCpi2mKHLjveXe-",
+    "01-universitetsfag": "1AcWttdE1ywbHgc2gQsnOBGXs0BucIwUr",
+    "02-fysikbibliotek": "1jeQ3qTNRDN7K-dz0UHyOeOQ-A7jJrTB_"
+  },
+  "subjects": {
+    "01-universitetsfag/analytisk-mekanik": "1FUlnUl9htryoL25FOXkQowgaFlMNJ-kc",
+    "01-universitetsfag/elektromagnetisme": "139_R1Spf9E6AimhTfDWFGLnKQTvI0bcY",
+    "02-fysikbibliotek/klassisk-mekanik": "1yErYcpQ5zYvJqNHv43FY-TgoqD4pSYEN",
+    "02-fysikbibliotek/elektromagnetisme": "1BldR2PoxVJS5Nh2cVwirrrXwH7BM6lIv",
+    "02-fysikbibliotek/termodynamik": "1C_4DxXYkRx0GrEcJS4nmuEkJF01rxRIt",
+    "02-fysikbibliotek/statistisk-fysik": "1iy2JBO2e0j_2_6-ja51Mxs1nPf90Qtjh",
+    "02-fysikbibliotek/statistik": "1glVQY3TjG0ua91CyUo8UvHuqsI_D2MFP",
+    "02-fysikbibliotek/kvantemekanik": "17e3aPYlMZp6-gSoxt0pwHP2yghnzwTH0",
+    "02-fysikbibliotek/relativitet-og-gravitation": "1E3BprIycpcVMStXfRgAgCNz8QMPpy0JC"
+  },
+  "files": {
+    "matematik": "1YjrsA63LHS96ShigE7u1i7_kU2zDjO4e",
+    "analytisk-mekanik-formelsamling": "1D0pjoV7JmySzJWmegeGOnvZoLxPrMQNA",
+    "elektromagnetisme-formelsamling": null,
+    "statistik": null
+  },
+  "verification": {
+    "source": "Brugerens oplyste Drive-struktur; ikke API-verificeret",
+    "permissions_verified": false,
+    "publication_enabled": false
+  }
+}

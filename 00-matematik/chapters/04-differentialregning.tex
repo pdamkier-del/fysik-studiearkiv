@@ -38,7 +38,7 @@ Denne formulering er særlig vigtig: differentiabilitet er eksistensen af en lok
 
 Hvis $x$ har enhed $[x]$ og $f$ har enhed $[f]$, har $f'$ enhed $[f]/[x]$. Differentialet har samme enhed som $f$. En logaritme eller en eksponentialfunktion skal i en fysisk model have et dimensionsløst argument.
 
-\input{02-fysikbibliotek/matematik/figures/sekant-tangent.tex}
+\input{00-matematik/figures/sekant-tangent.tex}
 
 \subsection{Kontinuitet er nødvendig, men ikke tilstrækkelig}
 Af \eqref{eq:linear} følger $f(x_0+h)-f(x_0)\to0$, så differentiabilitet medfører kontinuitet. Den omvendte implikation gælder ikke. Funktionen $|x|$ er kontinuert i nul, men har ensidige afledte $-1$ og $1$ og dermed ingen tosidet afledt der.
@@ -160,7 +160,7 @@ For en plan graf $y=f(x)$ med dimensionsløse, lige skalerede koordinater er den
 \]
 Andenafledte og geometrisk krumning er altså forskellige størrelser. Hvis akserne har forskellige fysiske enheder, skal en fysisk indlejring og skalering fastlægges, før denne geometriske formel kan fortolkes.
 
-\input{02-fysikbibliotek/matematik/figures/monotoni.tex}
+\input{00-matematik/figures/monotoni.tex}
 
 \section{Taylorudvikling og kontrollerede restled}
 \label{sec:taylor}
@@ -200,7 +200,7 @@ Logaritmen og den reelle potens kræver $1+z>0$. De tilhørende uendelige potens
 
 At alle afledte findes, sikrer ikke, at en uendelig Taylorrække repræsenterer funktionen. Funktionen $\e^{-1/x^2}$ for $x\ne0$, udvidet med værdien nul i nul, er glat og har alle afledte lig nul i nul, men er positiv uden for nul. Analyticitet er en ekstra egenskab.
 
-\input{02-fysikbibliotek/matematik/figures/taylor.tex}
+\input{00-matematik/figures/taylor.tex}
 
 \section{Grænseværdier og l'Hôpitals regel}
 \label{sec:hopital}
@@ -248,7 +248,7 @@ Mindre $h$ er ikke altid bedre. Hvis hver funktionsværdi har absolut fejl højs
 \]
 Her kommer første led fra trunkering og andet led fra afrunding eller datastøj. Balancen giver skalaen $|h|\sim(\varepsilon_f/C)^{1/3}$ op til konstante faktorer, når $C>0$. Dette er et lokalt skalaestimat, ikke et universelt optimalt skridt. Variabelskalering, støjstruktur og ukendte højere afledte påvirker valget.
 
-\input{02-fysikbibliotek/matematik/figures/fejlbalance.tex}
+\input{00-matematik/figures/fejlbalance.tex}
 
 Automatisk differentiation beregner afledte ved at føre kædereglen gennem programmets operationer. Den undgår differenskvotientens trunkeringsfejl, men hverken diskontinuerte programgrene, afrunding eller en forkert fysisk model forsvinder af den grund. Symbolsk differentiation, automatisk differentiation og numeriske differenser er forskellige redskaber.
 

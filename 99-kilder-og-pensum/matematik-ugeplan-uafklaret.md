@@ -2,7 +2,7 @@
 
 Kilde: brugerens emneliste fra en ugeplan. Original ugeplan, præcist kursusnavn og fuld lærebogsreference er endnu ikke verificeret. Denne post må ikke automatisk tilskrives Matematik F eller LinALys. Der er ingen dokumenterede sidegrænser eller kapitelnumre i den pågældende lærebog.
 
-| Post-id | Oplyst område | Faglig placering i `02-fysikbibliotek/matematik/` |
+| Post-id | Oplyst område | Faglig placering i `00-matematik/` |
 | --- | --- | --- |
 | UG-01 | Kompleks analyse og Cauchy–Riemann | Komplekse tal og kompleks analyse: holomorfi og Cauchy–Riemann |
 | UG-02 | Analytiske og harmoniske funktioner | Komplekse tal og kompleks analyse: analytiske og harmoniske funktioner |

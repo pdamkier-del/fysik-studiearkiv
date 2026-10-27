@@ -6,13 +6,13 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-COURSES = {'analytisk-mekanik', 'elektromagnetisme', 'termodynamik-2026', 'statistik'}
-LIBRARY = {'matematik', 'klassisk-mekanik', 'elektromagnetisme', 'termodynamik',
+COURSES = {'analytisk-mekanik', 'elektromagnetisme'}
+LIBRARY = {'statistik', 'klassisk-mekanik', 'elektromagnetisme', 'termodynamik',
            'statistisk-fysik', 'kvantemekanik', 'relativitet-og-gravitation',
            'optik-og-boelger', 'atom-og-molekylefysik', 'kerne-og-partikelfysik',
            'faststoffysik', 'numeriske-metoder'}
-MATH = ROOT / '02-fysikbibliotek/matematik/main.tex'
-STATISTICS = ROOT / '01-universitetsfag/statistik/main.tex'
+MATH = ROOT / '00-matematik/main.tex'
+STATISTICS = ROOT / '02-fysikbibliotek/statistik/main.tex'
 
 
 def latex_text(path):
@@ -36,7 +36,7 @@ def latex_tree(path, stack=()):
 def main(require_drive_disabled=False):
     courses = {p.name for p in (ROOT / '01-universitetsfag').iterdir() if p.is_dir()}
     library = {p.name for p in (ROOT / '02-fysikbibliotek').iterdir() if p.is_dir()}
-    if courses != COURSES | {'pensum'} or library != LIBRARY:
+    if courses != COURSES or library != LIBRARY:
         raise ValueError('Unexpected course or library structure')
     chapters = re.findall(r'\\input\{([^}]+/chapters/[^}]+)\}', MATH.read_text())
     if len(chapters) != 21 or len(set(chapters)) != 21 or any('statistik' in p for p in chapters):
@@ -53,7 +53,7 @@ def main(require_drive_disabled=False):
         refs = re.findall(r'\\(?:ref|eqref|pageref|nameref)\{([^}]+)\}', text)
         if len(labels) != len(set(labels)) or set(refs) - set(labels):
             raise ValueError(f'Invalid labels/references in {entry.relative_to(ROOT)}')
-    markdown = [p for base in ['01-universitetsfag', '02-fysikbibliotek', '90-faelles', 'docs'] for p in (ROOT / base).rglob('*.md')]
+    markdown = [p for base in ['00-matematik', '01-universitetsfag', '02-fysikbibliotek', '90-faelles', '99-kilder-og-pensum', 'docs'] for p in (ROOT / base).rglob('*.md')]
     markdown += list(ROOT.glob('*.md'))
     link_count = 0
     for source in markdown:
@@ -73,7 +73,7 @@ def main(require_drive_disabled=False):
             link_count += 1
     manifest = json.loads((ROOT / 'config/pdf-publication.json').read_text())
     for document in manifest['documents']:
-        valid_subjects = {'01-universitetsfag/' + item for item in COURSES} | {'02-fysikbibliotek/' + item for item in LIBRARY}
+        valid_subjects = {'00-matematik'} | {'01-universitetsfag/' + item for item in COURSES} | {'02-fysikbibliotek/' + item for item in LIBRARY}
         if document['subject'] not in valid_subjects:
             raise ValueError('Publication subject not migrated')
         for field in ['pdf', 'log']:

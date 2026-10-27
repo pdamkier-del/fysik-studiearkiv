@@ -1,13 +1,7 @@
-# Universitetsfag
+# Aktuelle universitetsfag
 
-Her vedligeholdes konkrete KU-kurser, deres faktiske pensum og undervisnings-/eksamensmateriale. Brugeren har dokumenteret de fire kursusidentiteter Analytisk Mekanik, Elektromagnetisme, Termodynamik 2026 og Statistik. Præcise pensumlister er ikke dermed kendt for alle fire. Opret ikke nye kursusmapper ud fra et generelt fysikområde eller et muligt fremtidigt fag.
+Her ligger kun aktuelle kursusnoter til [Analytisk Mekanik](analytisk-mekanik/README.md) og [Elektromagnetisme](elektromagnetisme/README.md). Nye kursusmapper oprettes først, når brugeren faktisk får kurset og dokumenterer det.
 
-- [Analytisk Mekanik](analytisk-mekanik/README.md)
-- [Elektromagnetisme](elektromagnetisme/README.md)
-- [Termodynamik 2026](termodynamik-2026/README.md)
-- [Statistik](statistik/README.md)
-- [Pensumregister](pensum/README.md): også dokumentation for Matematik F og LinALys, uden nye kursuskompendier eller uverificerede kursusmapper.
+Bevar separate formelsamlinger, udledningsnoter, opgavenoter og opgavesamlinger. Forelæsningsnoter, eksamensmateriale og uændrede originaler har egne pladser. Ingen originale AM-/EM-noter rekonstrueres ud fra hukommelse eller links alene. Matematiske forklaringer og antagelser indgår lokalt; generel teori kan henvises til [matematikkompendiet](../00-matematik/README.md).
 
-Hvert kursus kan have forelæsningsnoter, formelsamling, udledningsnoter, generelle opgavenoter, konkret opgavesamling, eksamensmateriale og uændrede originaler. Tomme dokumentpladser er ikke færdige noter. Matematiske forklaringer integreres lokalt, og den generelle teori kan henvises til i biblioteket.
-
-Det generelle bibliotek i [02-fysikbibliotek](../02-fysikbibliotek/README.md) har selvstændige dokumenter og er ikke underlagt kursernes pensum. Kursusnoter må aldrig overskrives med generelt biblioteksstof. Se [PENSUM.md](../PENSUM.md) for afgrænsninger.
+Termodynamik og Statistik er flyttet til [fysikbiblioteket](../02-fysikbibliotek/README.md) efter seneste brugerbeslutning. Matematik har eget hovedområde. Det fælles [kilde-/pensumregister](../99-kilder-og-pensum/README.md) dokumenterer både aktuelle og historiske kilder uden at oprette ekstra kursusmapper.

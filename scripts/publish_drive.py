@@ -44,12 +44,20 @@ def plan(manifest, targets):
         root = identifier(targets.get('root_folder_id'))
         subject = document['subject']
         parts = subject.split('/')
-        if len(parts) != 2 or parts[0] not in {'01-universitetsfag', '02-fysikbibliotek'} or not re.fullmatch(r'[a-z0-9-]+', parts[1]):
-            raise ValueError('Target must identify a main area and its subject')
-        area = identifier(targets.get('areas', {}).get(parts[0]))
-        folder = identifier(targets.get('subjects', {}).get(subject))
+        if subject == '00-matematik':
+            area = identifier(targets.get('areas', {}).get('00-matematik'))
+            folder = area  # the mathematics PDF lives directly in its main area
+        elif (len(parts) == 2 and parts[0] in {'01-universitetsfag', '02-fysikbibliotek'}
+              and re.fullmatch(r'[a-z0-9-]+', parts[1])):
+            area = identifier(targets.get('areas', {}).get(parts[0]))
+            folder = identifier(targets.get('subjects', {}).get(subject))
+            if area == folder:
+                raise ValueError('Subject must be a separate folder below its main area')
+        else:
+            raise ValueError('Target must identify mathematics or a main area and subject')
         file_id = identifier(targets.get('files', {}).get(key))
-        if len({root, area, folder, file_id}) != 4 or file_id in used:
+        expected_count = 3 if subject == '00-matematik' else 4
+        if len({root, area, folder, file_id}) != expected_count or file_id in used:
             raise ValueError('Duplicate or conflicting Drive targets')
         used.add(file_id)
         selected.append((document, root, area, folder, file_id))
@@ -72,7 +80,10 @@ def metadata(session, file_id):
 
 
 def check_remote(session, root, area, folder, file_id):
-    for folder_id, parent in [(root, None), (area, root), (folder, area)]:
+    hierarchy = [(root, None), (area, root)]
+    if folder != area:
+        hierarchy.append((folder, area))
+    for folder_id, parent in hierarchy:
         info = metadata(session, folder_id).json()
         if info.get('trashed') or info.get('mimeType') != FOLDER:
             raise ValueError('Target folder missing, trashed or wrong type')
@@ -147,7 +158,8 @@ def main():
     parser.add_argument('--backup-dir', default='build/drive-backup')
     args = parser.parse_args()
     manifest = json.loads(Path(args.manifest).read_text())
-    targets = json.loads(Path(args.targets).read_text() if args.targets else os.environ.get('DRIVE_TARGETS_JSON', '{}'))
+    targets = json.loads(Path(args.targets).read_text() if args.targets else
+                         os.environ.get('DRIVE_TARGETS_JSON') or Path('config/drive-targets.json').read_text())
     selected = plan(manifest, targets)
     if not selected:
         print('No approved documents; no Drive requests performed.')

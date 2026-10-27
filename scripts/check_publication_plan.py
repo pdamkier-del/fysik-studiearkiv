@@ -15,9 +15,11 @@ original = manifest_path.read_bytes()
 manifest = json.loads(original)
 targets = {'root_folder_id': 'fake-root', 'areas': {}, 'subjects': {}, 'files': {}}
 for document in manifest['documents']:
-    area, subject = document['subject'].split('/')
+    parts = document['subject'].split('/')
+    area, subject = parts[0], parts[-1]
     targets['areas'][area] = 'fake-area-' + area
-    targets['subjects'][document['subject']] = 'fake-subject-' + area + '-' + subject
+    if len(parts) == 2:
+        targets['subjects'][document['subject']] = 'fake-subject-' + area + '-' + subject
     targets['files'][document['key']] = 'fake-file-' + document['key']
     document['approved'] = True
 with tempfile.TemporaryDirectory() as directory:

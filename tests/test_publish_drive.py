@@ -25,8 +25,8 @@ class Session:
 
 class PublicationTests(unittest.TestCase):
     def setUp(self):
-        self.doc = dict(key='matematik', subject='02-fysikbibliotek/matematik', approved=True)
-        self.targets = dict(root_folder_id='root', areas={'02-fysikbibliotek': 'area'}, subjects={'02-fysikbibliotek/matematik': 'folder'}, files={'matematik': 'file'})
+        self.doc = dict(key='matematik', subject='02-fysikbibliotek/statistik', approved=True)
+        self.targets = dict(root_folder_id='root', areas={'02-fysikbibliotek': 'area'}, subjects={'02-fysikbibliotek/statistik': 'folder'}, files={'matematik': 'file'})
         self.info = dict(id='file', mimeType=drive.PDF, parents=['folder'], version='1', capabilities={'canEdit': True})
     def test_unapproved_documents_need_no_targets(self):
         self.doc['approved'] = False
@@ -60,6 +60,18 @@ class PublicationTests(unittest.TestCase):
         session = Session([Response(dict(mimeType=drive.FOLDER)), Response(dict(mimeType=drive.FOLDER, parents=['root'])), Response(dict(mimeType=drive.FOLDER, parents=['area'])), Response(self.info)])
         drive.check_remote(session, 'root', 'area', 'folder', 'file')
         self.assertEqual([c[0] for c in session.calls], ['GET', 'GET', 'GET', 'GET'])
+    def test_mathematics_pdf_lives_directly_in_main_area(self):
+        doc = dict(self.doc, subject='00-matematik')
+        targets = dict(root_folder_id='root', areas={'00-matematik': 'math-area'}, files={'matematik': 'file'})
+        selected = drive.plan({'documents': [doc]}, targets)
+        self.assertEqual(selected[0][2:4], ('math-area', 'math-area'))
+        info = dict(self.info, parents=['math-area'])
+        session = Session([Response(dict(mimeType=drive.FOLDER)), Response(dict(mimeType=drive.FOLDER, parents=['root'])), Response(info)])
+        drive.check_remote(session, 'root', 'math-area', 'math-area', 'file')
+        self.assertEqual([c[0] for c in session.calls], ['GET', 'GET', 'GET'])
+    def test_nested_mathematics_target_is_rejected(self):
+        with self.assertRaises(ValueError):
+            drive.plan({'documents': [dict(self.doc, subject='00-matematik/extra')]}, self.targets)
     def test_wrong_main_area_aborts_before_file_access(self):
         session = Session([Response(dict(mimeType=drive.FOLDER)), Response(dict(mimeType=drive.FOLDER, parents=['elsewhere']))])
         with self.assertRaises(ValueError):

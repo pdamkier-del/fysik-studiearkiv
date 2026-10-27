@@ -22,15 +22,14 @@
 - Udfør ændringer i overskuelige commits. Rapportér præcist ændrede filer og kapitler samt udførte og ikke udførte kontroller.
 - Spørg ikke om gentagen godkendelse af allerede aftalte tekniske standarder.
 
-## To adskilte hovedområder
-- `01-universitetsfag/` indeholder konkrete dokumenterede KU-kurser. Begynd med Analytisk Mekanik, Elektromagnetisme, Termodynamik 2026 og Statistik. Opret kun nye kursusmapper, når kursusidentiteten er dokumenteret. Mapper med skabeloner dokumenterer ikke kursuspensum.
-- Kursusdokumenter er pensumtro undervisnings-/eksamensmateriale med separate forelæsningsnoter, formelsamlinger, udledningsnoter, opgavenoter, opgavesamlinger, eksamensmateriale og uændrede referenceoriginaler.
-- `02-fysikbibliotek/` indeholder selvstændige generelle referenceværker, hvis faglige omfang ikke begrænses af universiteternes pensum. Bibliotekets kompender og kursusnoter må aldrig sammenblandes eller overskrive hinanden. Genbrug gerne fælles komponenter og fagligt egnede figurer med kildehenvisning.
-- Matematik er ét samlet biblioteksdokument i `02-fysikbibliotek/matematik/main.tex` med 21 hovedemner og underafsnit, omfattende forklaringer, formler, vektorfigurer og klikbar navigation. Der oprettes ikke separate matematiske kursuskompendier uden særskilt instruktion; universiteternes kilder kan kortlægges til biblioteksstoffet uden at gøre dem til samme dokument.
-- Pensumregisteret er knyttet til universitetsfagene i `01-universitetsfag/pensum/`; bibliotekets egen kapitelplan er `02-fysikbibliotek/matematik/PLAN.md`. Bevar præcise inkluderede/udeladte passager, delvise sider, kildeidentitet og kontrolstatus. Gæt ikke indhold uden indholdsfortegnelse eller tekst.
-- `Kursusplan_Termodynamik_2026.pdf` er autoritativ for det konkrete gennemgåede termodynamikpensum, når originalen foreligger. Registrer sporbarhed til kildesteder; organiser kursusstoffet fagligt, ikke efter kalenderen. Bibliotekets termodynamik og statistiske fysik udvikles uafhængigt.
-- Statistisk metode er alene universitetsfaget `01-universitetsfag/statistik/`, baseret på Roger Barlow med selvstændig dansk tekst og verificeret notation/struktur. Der oprettes ikke et statistikbibliotek. Statistisk fysik er et særskilt generelt referenceområde og kan samtidig indgå pensumtro i termodynamikkurset.
-- De tidligere kvante-/relativitetsskabeloner er bevaret som `arkiverede-skabeloner/` i biblioteket. De er hverken færdige generelle kompendier eller dokumenterede KU-kurser. Bevar deres builds.
+## Tre hovedområder (seneste brugerbeslutning)
+- `00-matematik/` er matematik som selvstændigt hovedområde, ikke en undermappe af fysikbiblioteket. Bevar ét LaTeX-dokument med de eksisterende 21 hovedemner, forklaringer, notation, figurer, klikbar indholdsfortegnelse og PDF-bogmærker. MatF1, MatF2, LinALys og Algebra integreres efter emner, ikke som selvstændige kursusmapper eller kompendier. Gæt ikke præcise kursusidentiteter eller referenceækvivalenser.
+- `01-universitetsfag/` indeholder aktuelt kun Analytisk Mekanik og Elektromagnetisme. Bevar adskilte formelsamlinger, udledningsnoter, opgavenoter og opgavesamlinger samt originale referenceversioner, forelæsningsnoter og eksamensmateriale. Tilføj kun senere kursusmapper, når faktisk kursusdeltagelse er dokumenteret.
+- `02-fysikbibliotek/` indeholder brede generelle referencekompendier. Termodynamik og Statistik ligger her, ikke under universitetsfag. Statistik bruger Roger Barlow som hovedreference med selvstændig dansk tekst og verificeret notation/struktur, når bogen foreligger. Hold statistisk metode, statistisk fysik og matematik fagligt adskilt.
+- Den tidligere termodynamikplan er kildegrundlag, ikke bibliotekets endelige afgrænsning. `Kursusplan_Termodynamik_2026.pdf` er autoritativ for det historiske gennemgåede stof, når filen kan læses. Udvidelser ud over denne afgrænsning markeres som generelt bibliotek, ikke som gennemgået pensum.
+- Fælles kilde- og pensumregister ligger i `99-kilder-og-pensum/`; matematikkens egen kapitelplan i `00-matematik/PLAN.md`. Bevar præcise inkluderede/udeladte passager og delvise sidegrænser. Skeln mellem brugeroplysninger, læste originaler og emnemapping. Bibliotekets omfang begrænses ikke automatisk af en kursuskilde.
+- Kursusnoter og generelle referenceværker er forskellige dokumenter. Overskriv aldrig kursusnoter med generelt stof. Genbrug fælles LaTeX-komponenter og fagligt egnede figurer med kildehenvisning. De øvrige fysikområder udfyldes ikke automatisk.
+- Alle tidligere skabeloner og builds bevares, også termodynamikkens fire dokumenttyper og de otte arkiverede kvante-/relativitetsskabeloner. De er ikke dokumentation for nye aktuelle KU-kurser eller færdige kompendier.
 
 ## Konsoliderede standarder og fortsættelse
 - Læs `README.md`, `ROADMAP.md`, `PENSUM.md` og `STATUS.md` før videre arbejde. Status er faktisk evidens; roadmap er plan; pensumregisteret bevarer præcise kildegrænser. Opdater dem ved relevante ændringer.
@@ -43,3 +42,5 @@
 - Publicering må kun ske fra godkendte ændringer på beskyttet main med eksplicitte eksisterende fil-id'er; ingen dubletter. Bevar manuel udgivelse, backup og rollback. Et vellykket lokalt build beviser ikke en GitHub- eller Drive-kørsel.
 
 - Ved migration bruges `git mv`; bevar matematik, figurer, originaler og tests. Opdater imports, builds, manifests, teststier, dokumentlinks og fremtidige Drive-destinationer. Kør alle PDF-builds, sikkerhedstests og link-/referencekontroller. Bevar stabile Drive-fil-id’er, publiceringsnøgler og deaktiveret publicering; foretag ingen automatiske Drive-flytninger.
+
+- Drive-mapper og PDF-id’er registreret i `config/drive-targets.json` er brugeroplyste og ikke API-verificerede. Matematik-PDF’en ligger direkte under `00 Matematik`; øvrige mål følger hovedområde/fag. Aktivér ikke publicering, og overskriv, slet eller flyt ingen eksisterende Drive-filer under denne opgave. Bevar fil-id’er og links; ingen dubletter.

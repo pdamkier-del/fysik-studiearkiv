@@ -1,21 +1,23 @@
 # Sikker migration til universitetsfag og fysikbibliotek
 
+Historisk rapport for den tidligere todeling. Den seneste brugerbeslutning og [migration til tre hovedområder](migration-tre-hovedomraader.md) har forrang.
+
 Udgangspunkt: commit `3bfca2c5717da5fcb378261d8dd0f0c337df8161` på den eksisterende branch `feat/studiearkiv-fundament`. Arbejdsområdet var rent. Ingen worktree eller ny branch er oprettet.
 
 ## Flytninger med git mv
 
 | Tidligere placering | Ny placering |
 | --- | --- |
-| `00-matematik` | `02-fysikbibliotek/matematik` |
+| `00-matematik` | `00-matematik` |
 | `01-analytisk-mekanik` | `01-universitetsfag/analytisk-mekanik` |
 | `02-elektromagnetisme` | `01-universitetsfag/elektromagnetisme` |
-| `04-termodynamik-statistisk-fysik` | `01-universitetsfag/termodynamik-2026` |
-| `06-statistik` | `01-universitetsfag/statistik` |
+| `04-termodynamik-statistisk-fysik` | `02-fysikbibliotek/termodynamik` |
+| `06-statistik` | `02-fysikbibliotek/statistik` |
 | `03-kvantemekanik` | `02-fysikbibliotek/kvantemekanik/arkiverede-skabeloner` |
 | `05-relativitet-og-gravitation` | `02-fysikbibliotek/relativitet-og-gravitation/arkiverede-skabeloner` |
 | `99-kilder-og-pensum/eksisterende-originaler.md` | `docs/originaler.md` |
-| `99-kilder-og-pensum` | `01-universitetsfag/pensum` |
-| `docs/kapitelplan.md` | `02-fysikbibliotek/matematik/PLAN.md` |
+| `99-kilder-og-pensum` | `99-kilder-og-pensum` |
+| `docs/kapitelplan.md` | `00-matematik/PLAN.md` |
 
 Migrationen flyttede alle 86 eksisterende versionsstyrede filer til deres fortsatte placeringer eller bevarede dem på stedet. Før videre fagligt arbejde blev samtlige 54 eksisterende LaTeX-kilder sammenlignet med baseline efter udelukkende nødvendige stierstatninger. Tekst, notation og de fire oprindelige figurkilder var bevaret. De 20 oprindelige fysikskabeloner forbliver i et eksplicit buildmanifest, herunder de otte arkiverede skabeloner.
 

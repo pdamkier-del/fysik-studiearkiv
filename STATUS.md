@@ -1,82 +1,50 @@
 # Faktisk projektstatus
 
-Opdateret 27. oktober 2026. Migrationen tager udgangspunkt i `3bfca2c` på den eksisterende branch `feat/studiearkiv-fundament`. Ingen ny branch eller worktree er oprettet. Se [ROADMAP.md](ROADMAP.md) for planen og [PENSUM.md](PENSUM.md) for universiteternes kilder.
+Opdateret 27. oktober 2026. Arbejdet fortsætter på `feat/studiearkiv-fundament`; integralregning blev leveret i `0ce2b53` efter `07a092a`. Seneste brugerbeslutning om tre hovedområder erstatter den tidligere todeling. [ROADMAP.md](ROADMAP.md) er plan; [PENSUM.md](PENSUM.md) og [kilderegisteret](99-kilder-og-pensum/README.md) angiver dokumentationsstatus.
 
-## Faglig videreudvikling fra 07a092a
+## Aktuel struktur og faktisk indhold
 
-Fokus er matematisk indhold; infrastruktur, kursuspensum og Drive-konfiguration ændres ikke i denne opgave.
+- `00-matematik/`: ét samlet kompendium med 21 hovedemner. Differentialregningspiloten og trigonometri er bevaret. Integralregning er udbygget fra disposition til 11 gennemarbejdede sider med metodeforklaringer, konvergenskrav, 49 stamfunktionsidentiteter og 11 bestemte integralfamilier samt fire originale figurer. ODE-arbejdet fortsætter efter strukturcommit; PDE og øvrige ufyldte hovedemner forbliver dispositioner.
+- MatF1, MatF2, LinALys og Algebra integreres efter matematiske emner i det samme kompendium. Nye ukendte kursusreferencer eller ækvivalenser med Matematik F 2026 gættes ikke.
+- `01-universitetsfag/`: aktuelt kun AM og EM. Separate formelsamlinger, udledningsnoter, opgavenoter og opgavesamlinger samt pladser til forelæsningsnoter, eksamensmateriale og uændrede originaler bevares. Der er ikke importeret originalnoter.
+- `02-fysikbibliotek/`: brede referenceområder, herunder Termodynamik og Statistik. Statistik bygger fortsat på Roger Barlow og holdes adskilt fra statistisk fysik og matematik. Den eksisterende statistikstruktur er ikke et færdigt kompendium eller en verificeret Barlow-kapitelrækkefølge.
+- Termodynamikkens fire skabeloner og dokumentpladser er bevaret. Den tidligere faglige kursusplan er bevaret som `KURSUSGRUNDLAG.md`, mens den generelle README ikke blev overskrevet. Det historiske kursusgrundlag begrænser ikke fremtidig bredde, men bredere stof må ikke markeres som gennemgået kursuspensum.
+- De øvrige fysikkompendier udfyldes ikke automatisk. Otte arkiverede kvante-/relativitetsskabeloner bevares. Samtlige 20 oprindelige skabelonbuilds findes stadig i manifestet: otte AM-/EM-skabeloner, fire termodynamikskabeloner og otte arkiverede skabeloner.
+- Kilde-/pensumregisteret ligger igen samlet i `99-kilder-og-pensum/`. Matematikken har egen `PLAN.md`. Kursusnoter, historiske kildeplaner og brede referenceværker holdes adskilt.
 
-- Integralregning er udbygget fra disposition til et gennemarbejdet første kapitel på 11 sider. Det omfatter hovedsætningen, integrationskonstanter, substitution, partiel integration, partialbrøker, rodsubstitutioner, reduktionsformler, 49 stamfunktionsidentiteter og 11 bestemte standardintegralfamilier med betingelser.
-- Uegentlige integraler, absolut/betinget konvergens, hovedværdi, parameterafledte, Fubini/Tonelli, specialfunktioner og numeriske kvadraturfejl er forklaret særskilt. Fire originale vektorfigurer viser fortegnet areal, integralhaler, Gausskerner og Riemannsummer. Ingen gennemregnede opgaveeksempler er indsat.
-- Alle 49 stamfunktionsidentiteter er kontrolleret med symbolsk differentiation på regulære reelle grene; negative ydre rodgrene er kontrolleret særskilt. De 11 bestemte integralfamilier er stikprøvekontrolleret ved uafhængig højpræcisionskvadratur, herunder negativ oscillationsparameter. Dette er formelkontrol, ikke en udtømmende formel bevisverifikation.
-- `make check` består: 51 sider, 21 hovedemner, 126 bogmærker og 135 links. Ingen overfyldte bokse, manglende tegn eller uafklarede referencer. Alle 11 nye integralsider er renderet og visuelt gennemgået; en splittet sætning og Riemannfigurens rektangler er rettet efter gennemgangen.
-- Næste trin i samme opgave er ordinære differentialligninger. De øvrige generelle fysikkompendier udbygges ikke. Drive-publicering er fortsat deaktiveret, og ingen Drive-operationer udføres.
+## Verificeret indhold og migration
 
-## Implementeret arkitektur
+- Integralregningskapitlet blev kompileret og gennemgået visuelt på alle 11 sider. 49 stamfunktionsidentiteter er kontrolleret ved symbolsk differentiation; negative ydre rodgrene er kontrolleret særskilt. 11 bestemte integralfamilier er stikprøvekontrolleret ved uafhængig højpræcisionskvadratur. Det er ikke en udtømmende formel bevisverifikation.
+- Før ODE-udvidelsen var matematik-PDF'en 51 sider med 126 bogmærker og 135 links uden overfyldte bokse, manglende tegn eller uafklarede referencer.
+- Den nye migration bevarer 131 registrerede eksisterende filer, inklusive den aktive ODE-tekst og tre figurkilder i arbejdsområdet. Alle 62 aktuelle LaTeX-kilder er kontrolleret for bevaring efter nødvendige stirettelser. Se [migrationsrapporten](docs/migration-tre-hovedomraader.md).
+- Imports, buildkommandoer, artifactstier, workflow, teststier og dokumentlinks er migreret. Der er ikke oprettet en ny branch eller worktree. Fælles design og tidligere matematiske kapitler bevares.
+- Alle 20 skabelonbuilds er kørt efter flytningen og består. Statistikstrukturen kompilerer fortsat til 9 sider. Mapper og skabeloner dokumenterer ikke færdige fag.
+- Alle 13 tidligere sikkerhedstests er bevaret og består; to nye tests for direkte matematikdestination og afvisning af en ekstra matematisk undermappe består. I alt 15 sikkerhedstests, udelukkende med fake HTTP.
+- Lokale Markdown-links samt LaTeX-imports og labels/referencer kontrolleres offline. Produktionsmanifestet forbliver deaktiveret; offline-planen bruger syntetiske id'er og ændrer ingen godkendelser.
+- GitHub Actions-definitionen er migreret, men en faktisk GitHub-hostet kørsel er ikke verificeret. Ændringerne er ikke merged til main; tidligere PR-oprettelse via GitHub-API var blokeret med `Forbidden`.
 
-- `01-universitetsfag/`: kun de fire dokumenterede kurser Analytisk Mekanik, Elektromagnetisme, Termodynamik 2026 og Statistik. Kursernes faktiske pensum og noter vedligeholdes separat fra det generelle bibliotek. Der er ikke oprettet kursusmapper for mulige fremtidige fag.
-- `02-fysikbibliotek/`: 12 planlagte referenceområder med eget fagligt omfang uafhængigt af kursusgrænser. Kun matematik har et generelt LaTeX-kompendium under udvikling; de øvrige generelle fysikkompendier er ikke skrevet.
-- Matematik er fortsat ét dokument med 21 hovedemner. Differentialregningspiloten og de fire oprindelige figurer er bevaret. Trigonometri er nu udbygget med radianer, enhedscirkel, identiteter, inverse grene, hyperbolske funktioner og fasefortolkning samt en ny original TikZ-figur. Integralregning er nu udviklet som beskrevet ovenfor; de resterende hovedemner er fortsat dispositioner.
-- Statistik er alene et selvstændigt universitetsfag med Barlow som hovedreference og seks redaktionelle arbejdsområder. Der er intet statistikbibliotek og intet statistikkapitel i matematikdokumentet. Statistikstrukturen er ikke et færdigt fag eller en verificeret gengivelse af bogens struktur.
-- Universiteternes kilderegister er flyttet til `01-universitetsfag/pensum/`. Matematikbibliotekets egen kapitelplan ligger i `02-fysikbibliotek/matematik/PLAN.md`. Kildekobling mellem dem betyder ikke, at et kursuskompendium og et generelt referenceværk er samme dokument.
-- Der er bevaret 12 kursusskabeloner og otte tidligere kvante-/relativitetsskabeloner. De otte er arkiveret i de relevante biblioteksområder, ikke klassificeret som KU-kurser eller færdige generelle kompendier. Alle 20 indgår i `config/latex-templates.json`.
-- Kurserne har særskilte pladser til forelæsningsnoter, eksamensmateriale og uændrede referenceoriginaler. Mapperne indeholder ikke importerede originaler eller færdige nye noter.
-- Imports, byggekommandoer, manifests, teststier, Actions-artifactstier og lokale dokumentlinks er migreret. Fælles LaTeX-design, notation og tests er bevaret. Se [migrationsrapporten](docs/migration-2026-10-27.md).
+## Drive: registreret, ikke aktiveret eller API-verificeret
 
-## Verificeret under migrationen (historik)
+[config/drive-targets.json](config/drive-targets.json) indeholder alle 15 mappe-/fil-id'er fra brugerens seneste opdatering. Matematik-PDF'en ligger efter brugerens oplysninger direkte i `00 Matematik`; AM-PDF'en i AM-mappen under universitetsfag. Begge stabile fil-id'er, deres indhold og links skal bevares. EM-fil-id og statistikfil-id er stadig ukendte og står som `null`.
 
-| Kontrol | Faktisk resultat |
-| --- | --- |
-| Bevaring før videre fagligt arbejde | Alle 86 eksisterende versionsstyrede filer bevaret på nye eller uændrede stier. Alle 54 oprindelige LaTeX-kilder sammenlignet med baseline efter kun stirettelser |
-| Ren migrationsbuild, før trigonometriudvidelsen | Matematik bevarede 38 sider, 123 bogmærker og 125 links; statistik 9 sider, 19 bogmærker og 19 links |
-| Matematik efter videreudvikling | 41 sider, 21 hovedemner, 123 bogmærker og 128 links; ingen overfyldte bokse, manglende tegn eller uafklarede referencer |
-| Statistik | 9 sider med 19 bogmærker og 19 links; selvstændigt kursusdokument |
-| `make templates` | Alle 20 oprindelige skabeloner kompilerer på nye stier. PDF'ernes faktiske skabelontekst og navigation er kontrolleret |
-| Link-/referencekontrol | Alle 55 aktuelle LaTeX-kilder/imports og referencer samt alle lokale Markdown-links kontrolleret offline. Ingen manglende imports, labels eller interne dokumentmål |
-| Sikkerhedstests | Alle 11 oprindelige tests bevaret og bestået; to nye tests af hovedområdehierarki og gammel flad målkonfiguration består. I alt 13 tests |
-| Publiceringskontrol | Begge PDF'er valideres; offline-dry-run med syntetiske mål-id'er består uden credentials eller netværksrequests og uden ændringer af produktionsmanifestet |
-| Deaktivering under migration | `check_repository.py --require-drive-disabled` består. Alle produktionsposter er `approved: false`; normal uploaderkørsel foretager ingen Drive-requests |
-| Workflow | YAML er syntakskontrolleret; build/main/featureflag/environment-krav er bevaret. GitHub-hostet eksekvering er ikke verificeret |
-| Visuel kontrol | Matematikdokumentets sider er renderet i oversigt; nye trigonometrisider, figur, tabeller og navigation er gennemgået ved læsbar opløsning |
+Oplysningerne om eksisterende mapper og gennemførte flytninger kommer fra brugeren. Metadata, ejer, rettigheder og faktisk PDF-indhold er ikke verificeret via API her. Ingen Drive-autentificering, upload, flytning, overskrivning, sletning eller dubletoprettelse er foretaget som led i migrationen.
 
-Migration og videreudvikling er forskellige ændringer: den rene migration bevarede den oprindelige tekst, mens trigonometri derefter fik selvstændigt skrevet nyt biblioteksindhold. Ingen kursuspensumafgrænsninger er udvidet som følge af dette.
+Alle publiceringsposter er `approved: false`. Produktionsworkflow kræver fortsat grøn build, main, featureflag og environment-review. Faktisk branchbeskyttelse, GCP/OIDC, Google-rettigheder, Secrets og backup-/rollbackadfærd skal verificeres før aktivering. De ikke-hemmelige destinations-id'er i Git er ikke adgangsnøgler. Se [Drive-vejledningen](docs/google-drive.md) og [originalregisteret](docs/originaler.md).
 
-## Drive-forberedelse og sikkerhed
+## Manglende materiale og eksterne blokeringer
 
-Workflow og uploader er implementeret og lokalt testet, men ikke aktiveret eller live-verificeret. Fremtidig logisk struktur er arkivrod → hovedområde → fag → eksisterende PDF. `areas` beskriver hovedområderne, og `subjects` bruger fulde fagstier. Gammel flad konfiguration kræver manuel verifikation; mapper og filer flyttes ikke automatisk.
+- Originale AM-, EM- og matematikfiler er ikke læst/importeret. Tidligere hentning fra Drive gav HTTP 403. Brugerens seneste oplysning om filtype og placering er registreret, men er ikke en læsning af deres indhold.
+- `Kursusplan_Termodynamik_2026.pdf` findes endnu ikke lokalt. Præcise sider og emnefordeling samt bogreference afventer originalen; den er fortsat autoritativ for historisk gennemgået stof.
+- FV/EMM-indholdsfortegnelser/tekster, Barlow-udgave og den uafklarede ugeplans fulde reference mangler. KU-kursusbeskrivelsen gav tidligere HTTP 403. Eksisterende præcise FV-/EMM-afgrænsninger er bevaret uændret.
+- MatF1, MatF2 og Algebra har ikke nye verificerede kursuskoder/sideafgrænsninger. De må ikke automatisk identificeres med Matematik F 2026 eller få egne kompendier.
+- Rigtig Google API-adfærd, ETag, live-upload/rollback, GitHub-hostet CI og en ny cloudopgaves snapshotrestaurering er ikke verificeret. Der påstås ingen miljøpublicering.
 
-Dokumentnøglerne `matematik` og `statistik` er bevaret, og de to kendte originale Drive-fil-id'er står uændret i [originalregisteret](docs/originaler.md). AM-/matematiklinks er stadig originalhenvisninger, ikke automatisk godkendte publiceringsmål. Der er ikke foretaget nogen autentificering, upload, oprettelse, flytning eller overskrivning mod Drive under migrationen. Testene bruger fake HTTP og offline-dry-run.
+## Beslutningshistorik og fortsættelse
 
-Uploaderen bevarer metadata-/mapperettighedskontrol, backup før skrivning, versionskontrol via ETag/If-Match, efterfølgende checksum og manuel rollback. Produktionsjob kræver fortsat grøn build, main, featureflag og environment; faktisk branchbeskyttelse og reviewerkrav skal konfigureres i GitHub. En ny offentliggørelse kræver review og godkendelse af dokumentets faktiske indhold, ikke blot et grønt skabelonbuild. Se [Drive-vejledningen](docs/google-drive.md).
+1. Den oprindelige flade struktur blev konsolideret; statistik blev taget ud af matematikken.
+2. `07a092a` indførte en todeling med matematik i referencebiblioteket og fire kurser under universitetsfag. Den historiske rapport bevares i [den tidligere migrationsrapport](docs/migration-2026-10-27.md).
+3. Integralregning blev leveret i separat indholdscommit `0ce2b53`.
+4. Den seneste brugeropdatering flytter matematik til eget hovedområde og Termodynamik/Statistik til fysikbiblioteket. Kun AM og EM forbliver aktuelle universitetsfag. Dette har forrang frem for tidligere mappe- og fagbeslutninger; intet eksisterende kildearbejde slettes.
+5. Efter strukturcommit afsluttes den allerede igangværende ODE-udvidelse med kompilering, visuel gennemgang, referencekontrol og et separat indholdscommit. Fortsæt derefter matematikken trinvist; begynd ikke automatisk at skrive øvrige fysikkompendier.
 
-## Udtrykkeligt ikke verificeret eller endnu manglende
-
-- Originale AM-, EM- og matematikfiler er ikke importeret. Tidligere Drive-downloads gav HTTP 403. AM-/matematik-id'er er kendt; EM-original og -id mangler. Filformat, ejerskab, placering, destinationsrolle og opdateringsrettigheder er ikke verificeret.
-- `Kursusplan_Termodynamik_2026.pdf` findes ikke lokalt. Præcise sideintervaller og emnefordeling afventer læsning. FV/EMM-indholdsfortegnelser/tekster, Barlow-udgave og præcist statistikpensum mangler. Den uafklarede ugeplans fulde reference er ikke verificeret.
-- KU-kursusbeskrivelsen gav tidligere HTTP 403 og er ikke læst her. Registeret skelner mellem officielle kildehenvisninger og brugeroplyst emneindhold.
-- Faktisk GCP/OIDC/Drive-adgang, GitHub Secrets, målmapper, beskyttet main og environment-review er ikke konfigureret/verificeret i denne opgave. En tidligere tilstedeværende ADC-variabel kunne ikke indlæses af google-auth; den dokumenterer ikke brugbar Drive-adgang. Ingen nøgle er lagt i Git.
-- Rigtig Google API-adfærd, herunder ETag og live-upload/rollback, er ikke testet. Der er ikke offentliggjort en PDF eller flyttet en original.
-- GitHub-hostet CI, en ny cloudopgaves snapshotrestaurering og miljøpublicering er ikke verificeret. Ændringerne er ikke merged til main. Tidligere PR-oprettelse var blokeret af GitHub-API'et med `Forbidden`; ingen oprettet PR påstås.
-- De generelle fysikkompendier ud over matematik er planer. Kursusskabeloner, dokumentpladser og kilderegister er ikke gennemarbejdede kursusnoter.
-
-## Beslutningshistorik og konflikter
-
-| Tidligere instruktion/tilstand | Afklaring og behandling |
-| --- | --- |
-| Den oprindelige matematikplan havde statistik som kapitel | Den senere udtrykkelige beslutning fjerner statistik helt fra matematik. Dispositionsemnerne flyttes til statistikfaget; ingen faglige noter slettes |
-| Første matematikstruktur samlede algebra og trigonometri | Seneste hovedemneplan giver trigonometri eget hovedemne i samme dokument; eksisterende trigonometrisk disposition flyttes med |
-| »Komplekse tal« i hovedemnelisten og tidligere kompleksanalysepensum | Begge bevares i ét hovedemne med underafsnit. Der er ikke grundlag for at slette kompleks analyse |
-| Barlows struktur ønskes bevaret, men udgave/indholdsfortegnelse mangler | Foreløbig redaktionel struktur markeres tydeligt; ingen bogkapitelrækkefølge eller notation gættes |
-| Først ingen Drive-id'er, senere to links | De to original-id'er registreres; de bliver ikke automatisk publiceringsmål. EM-id er stadig ukendt |
-| Automatisk Drive-publicering ønskes, men originalsikring og test kræves først | Forbered deaktiveret integration med godkendelseskrav; ingen eksterne writes under testen |
-| Arkivet planlægger flere fag end dokumenteret pensum | Mapper er kun fundament. Fagligt indhold udvikles efter dokumentation; ingen fremtidige kurser markeres som gennemgået |
-| Seneste arkitekturændring: flade fagmapper og bredt matematikkompendium | Konkrete kurser flyttes til universitetsområdet; generelle referencer til biblioteket. Kursusnoter og biblioteksstof er selvstændige dokumenter, også når emnet er det samme |
-| Tidligere kvante-/relativitetsmapper uden dokumenteret kursus | Alle skabeloner bevares som arkiverede biblioteksskabeloner med fortsat buildkontrol; der opfindes ingen KU-kursusidentitet |
-
-Den seneste brugerbeslutning om to hovedområder har forrang frem for den tidligere flade organisering. Ingen uløst konflikt kræver sletning af eksisterende arbejde. Ukendt originalindhold og kildetilhørsforhold afklares ved læsning, ikke ved gæt.
-
-## Fortsættelse
-
-Fortsæt matematikbiblioteket ét fagligt afsnit ad gangen, bevar differentialregningspiloten og det nye trigonometriindhold, og brug bibliotekets PLAN. Begynd ikke at skrive alle generelle fysikkompendier. Afklar og importer først universiteternes originalkilder, før kursusnoter udbygges pensumtro. Aktiver ikke Drive uden særskilt verificeret konfiguration og sikker integrationstest.
-
-`docs/kontrolrapport.md` er historisk dokumentation for første leverance. Dens gamle sidetal og bogmærketal er ikke den aktuelle status. De fem roddokumenter er indgangen for fremtidige opgaver; ingen afhængighed af samtalehistorikken er nødvendig.
+Ingen gennemregnede opgaveeksempler tilføjes. Ingen Drive-publicering aktiveres. `docs/kontrolrapport.md` og den tidligere todelingsrapport er historiske; dette dokument angiver aktuel status.

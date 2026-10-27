@@ -1,10 +1,10 @@
 # Plan for det samlede matematikkompendium
 
-`02-fysikbibliotek/matematik/main.tex` er den eneste matematiske dokumentindgang. Hvert hovedemne har én kapitelkilde i `chapters/` og kan udbygges med underafsnit eller flere underkapitelkilder via `\input`, uden at der oprettes nye kursusmapper eller parallelle kompendier. Klikbar indholdsfortegnelse og PDF-bogmærker afspejler strukturen. Hovedemnernes rækkefølge er faglig, ikke kursus- eller datobaseret.
+`00-matematik/main.tex` er den eneste matematiske dokumentindgang. Hvert hovedemne har én kapitelkilde i `chapters/` og kan udbygges med underafsnit eller flere underkapitelkilder via `\input`, uden at der oprettes nye kursusmapper eller parallelle kompendier. Klikbar indholdsfortegnelse og PDF-bogmærker afspejler strukturen. Hovedemnernes rækkefølge er faglig, ikke kursus- eller datobaseret.
 
 Differentialregning er det eksisterende pilotkapitel og bevares. Trigonometri udbygges med et første sammenhængende afsnit; integralregning er nu et udviklet kapitel; de resterende hovedemner er fortsat dispositioner. Hvert færdigt afsnit skal have introduktion, definitioner, symboler, centrale formler, egenskaber, gyldighedsbetingelser, begrebsforbindelser og relevante fysikanvendelser og figurer. Den oprindelige trigonometri-disposition er flyttet samlet til et selvstændigt hovedemne. Komplekse tal og kompleks analyse behandles sammen med tydelige underafsnit, så det eksisterende analysestof bevares.
 
-Statistik indgår ikke i matematikkompendiet. Den tidligere, endnu ikke fagligt udfyldte statistikdisposition er fordelt på de eksisterende arbejdsområder i `01-universitetsfag/statistik/`; den indlæses ikke længere af matematikdokumentet. Ingen statistiske noter eller formler er slettet: den gamle kilde indeholdt kun overskrifter og dispositionsmarkører.
+Statistik indgår ikke i matematikkompendiet. Den tidligere, endnu ikke fagligt udfyldte statistikdisposition er fordelt på de eksisterende arbejdsområder i `02-fysikbibliotek/statistik/`; den indlæses ikke længere af matematikdokumentet. Ingen statistiske noter eller formler er slettet: den gamle kilde indeholdt kun overskrifter og dispositionsmarkører.
 
 ## 01-algebra · Algebra og funktioner
 
@@ -183,7 +183,7 @@ Udvikl særskilte, matematisk kontrollerede figurer til overlappende koordinatko
 
 ## Pensumkilder og integration
 
-Præcise afgrænsninger opbevares i [pensumregisteret](../../01-universitetsfag/pensum/README.md). Emner integreres ét sted i ovenstående struktur. Kildekoblingen er ikke en påstand om, at hele et hovedemne er kursuspensum eller færdigskrevet.
+Præcise afgrænsninger opbevares i [pensumregisteret](../99-kilder-og-pensum/README.md). Emner integreres ét sted i ovenstående struktur. Kildekoblingen er ikke en påstand om, at hele et hovedemne er kursuspensum eller færdigskrevet.
 
 | Kilde og emne | Destination og integrationsregel |
 | --- | --- |
@@ -204,9 +204,9 @@ LinALys-URL'en er officiel, men dens ordlyd kunne ikke hentes i miljøet (HTTP 4
 
 ## Afgrænsning mod andre fag og eksisterende originaler
 
-Statistisk metode udvikles udelukkende under `01-universitetsfag/statistik/` med Barlow som grundbog; statistisk fysik forbliver under `01-universitetsfag/termodynamik-2026/`. Termodynamikkens præcise pensum afventer den autoritative kursusplan-PDF.
+Statistisk metode udvikles udelukkende under `02-fysikbibliotek/statistik/` med Barlow som grundbog; statistisk fysik forbliver under `02-fysikbibliotek/termodynamik/`. Termodynamikkens præcise pensum afventer den autoritative kursusplan-PDF.
 
-Det eksisterende matematikkompendium på Drive er registreret som original i [originalregisteret](../../docs/originaler.md). Indholdet er endnu ikke læst pga. HTTP 403. Ved adgang skal dets kursus-/bibliotekstilhørsforhold først afklares. Generelt referenceindhold sammenholdes med bibliotekets eksisterende kapitler, mens egentlige kursusnoter bevares separat; der må ikke oprettes en konkurrerende matematiksamling eller overskrives en Drive-fil.
+Det eksisterende matematikkompendium på Drive er registreret som original i [originalregisteret](../docs/originaler.md). Indholdet er endnu ikke læst pga. HTTP 403. Ved adgang skal dets kursus-/bibliotekstilhørsforhold først afklares. Generelt referenceindhold sammenholdes med bibliotekets eksisterende kapitler, mens egentlige kursusnoter bevares separat; der må ikke oprettes en konkurrerende matematiksamling eller overskrives en Drive-fil.
 
 ## Uafhængig biblioteksplan
 

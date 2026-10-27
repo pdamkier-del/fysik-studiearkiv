@@ -1,24 +1,22 @@
-# Generelt matematik- og fysikbibliotek
+# Generelt fysikbibliotek
 
-Selvstændige referenceværker med omfattende forklaringer, generelle formler, udledninger, originale figurer og matematiske sammenhænge. Bibliotekets bredde er ikke begrænset af KU-kursernes pensum. Det er ikke en samling kursusnoter, og det erstatter ikke dokumenterne under `01-universitetsfag/`.
+Brede, selvstændige referenceværker med formler, forklaringer, udledninger, originale figurer og matematiske sammenhænge. Omfanget er ikke begrænset af aktuelle KU-kurser. Matematik har sit eget [hovedområde](../00-matematik/README.md) og ligger ikke her.
 
 | Område | Status |
 | --- | --- |
-| [Matematik](matematik/README.md) | Ét samlet LaTeX-dokument med 21 hovedemner; under udvikling |
-| [Klassisk mekanik](klassisk-mekanik/README.md) | Planlagt; intet generelt kompendium skrevet |
-| [Elektromagnetisme](elektromagnetisme/README.md) | Planlagt; intet generelt kompendium skrevet |
-| [Termodynamik](termodynamik/README.md) | Planlagt; intet generelt kompendium skrevet |
-| [Statistisk fysik](statistisk-fysik/README.md) | Planlagt; intet generelt kompendium skrevet |
-| [Kvantemekanik](kvantemekanik/README.md) | Planlagt; intet generelt kompendium skrevet |
-| [Relativitet og gravitation](relativitet-og-gravitation/README.md) | Planlagt; intet generelt kompendium skrevet |
-| [Optik og bølger](optik-og-boelger/README.md) | Planlagt; intet generelt kompendium skrevet |
-| [Atom- og molekylefysik](atom-og-molekylefysik/README.md) | Planlagt; intet generelt kompendium skrevet |
-| [Kerne- og partikelfysik](kerne-og-partikelfysik/README.md) | Planlagt; intet generelt kompendium skrevet |
-| [Faststoffysik](faststoffysik/README.md) | Planlagt; intet generelt kompendium skrevet |
-| [Numeriske metoder](numeriske-metoder/README.md) | Planlagt; intet generelt kompendium skrevet |
+| [Klassisk mekanik](klassisk-mekanik/README.md) | Planlagt |
+| [Elektromagnetisme](elektromagnetisme/README.md) | Planlagt; separat fra EM-kursusnoterne |
+| [Termodynamik](termodynamik/README.md) | Bevarede skabeloner og historisk kursusgrundlag; senere bred udvidelse |
+| [Statistisk fysik](statistisk-fysik/README.md) | Planlagt; adskilt fra statistisk metode |
+| [Statistik](statistik/README.md) | Eksisterende struktur baseret på Barlow; ikke færdigskrevet |
+| [Kvantemekanik](kvantemekanik/README.md) | Planlagt; fire arkiverede skabeloner bevaret |
+| [Relativitet og gravitation](relativitet-og-gravitation/README.md) | Planlagt; fire arkiverede skabeloner bevaret |
+| [Optik og bølger](optik-og-boelger/README.md) | Planlagt |
+| [Atom- og molekylefysik](atom-og-molekylefysik/README.md) | Planlagt |
+| [Kerne- og partikelfysik](kerne-og-partikelfysik/README.md) | Planlagt |
+| [Faststoffysik](faststoffysik/README.md) | Planlagt |
+| [Numeriske metoder](numeriske-metoder/README.md) | Planlagt |
 
-De otte eksisterende kvante-/relativitetsskabeloner bevares under de relevante områders `arkiverede-skabeloner/`. De er hverken dokumenterede universitetskurser eller færdige generelle kompendier. Alle otte indgår fortsat i buildkontrollen.
+Statistik behandler statistiske metoder med Roger Barlow som hovedreference. Statistisk fysik behandler blandt andet ensembler og partitionfunktioner; disse fag må ikke blandes. De øvrige fysikkompendier udfyldes ikke automatisk. Kun den allerede igangværende matematikudvikling fortsætter efter migrationen.
 
-Statistik er alene et universitetsfag med Barlow som hovedreference; der oprettes ikke et selvstændigt statistikbibliotek. Statistisk fysik er derimod et særskilt planlagt biblioteksområde. Numeriske metoders generelle matematik behandles i matematikkompendiet; et senere fysikbibliotek kan fokusere på fysiske modeller og implementering uden at kopiere teorikapitlet.
-
-Hvert område kan senere få sin egen kapitelplan. Foreløbig udvikles kun det eksisterende matematikkompendium. Genbrug fælles komponenter i `90-faelles/`, men hold kursusdokumenter og biblioteksdokumenter adskilt.
+Kursusnoter og generelle referenceværker vedligeholdes separat. Fælles LaTeX-komponenter og figurer kan genbruges uden at overskrive originale noter.

@@ -42,10 +42,10 @@ jobs:
         with:
           name: validated-pdfs
           path: |
-            build/02-fysikbibliotek/matematik/main.pdf
-            build/02-fysikbibliotek/matematik/main.log
-            build/01-universitetsfag/statistik/main.pdf
-            build/01-universitetsfag/statistik/main.log
+            build/00-matematik/main.pdf
+            build/00-matematik/main.log
+            build/02-fysikbibliotek/statistik/main.pdf
+            build/02-fysikbibliotek/statistik/main.log
           if-no-files-found: error
   drive:
     needs: build

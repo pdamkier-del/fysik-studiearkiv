@@ -26,6 +26,6 @@ Grænserne »midt på« og »øverst på« er kildeoplysninger, ikke hele sidein
 
 ## Integration uden dubletter
 
-Alle poster dokumenterer universitetskurset Matematik F. En senere emnemapping kan pege ind i det selvstændige bibliotek i `02-fysikbibliotek/matematik/`, uden at ændre kursuspensummet eller bibliotekets bredere afgrænsning. Der oprettes ingen særskilt Matematik F-PDF. Ingen af bogens kapitelnumre er endnu knyttet til en emnetitel eller et bestemt kompendiekapitel; det kræver indholdsfortegnelsen eller teksten. Bogens titel alene bruges ikke til at gætte indholdet af bestemte afsnit.
+Alle poster dokumenterer universitetskurset Matematik F. En senere emnemapping kan pege ind i det selvstændige bibliotek i `00-matematik/`, uden at ændre kursuspensummet eller bibliotekets bredere afgrænsning. Der oprettes ingen særskilt Matematik F-PDF. Ingen af bogens kapitelnumre er endnu knyttet til en emnetitel eller et bestemt kompendiekapitel; det kræver indholdsfortegnelsen eller teksten. Bogens titel alene bruges ikke til at gætte indholdet af bestemte afsnit.
 
 Når originalmaterialet foreligger, tilføjes en mapping pr. post-id: præcis kildetitel/sidegrænse → eksisterende matematikkapitel og afsnit → kontrolstatus. Opdel en registerpost, hvis dens emner fordeler sig på flere eksisterende kapitler; kopier ikke undervisningsstoffet til parallelle kursuskompendier. Bevar alle undtagelser ved denne mapping.

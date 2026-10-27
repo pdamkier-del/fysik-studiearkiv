@@ -5,7 +5,7 @@ Links er oplyst af brugeren. Fil-id'erne er dokumentidentifikatorer, ikke adgang
 | Original-id | Oplyst titel | Drive-fil-id | Faglig destination |
 | --- | --- | --- | --- |
 | ORIG-AM | Analytisk Mekanik – formelsamlingsvg | `1D0pjoV7JmySzJWmegeGOnvZoLxPrMQNA` | `01-universitetsfag/analytisk-mekanik/formelsamling/` |
-| ORIG-MAT | Matematik – eksisterende kompendiumsvg | `1YjrsA63LHS96ShigE7u1i7_kU2zDjO4e` | Eksisterende hovedemner i `02-fysikbibliotek/matematik/` |
+| ORIG-MAT | Matematik – eksisterende kompendiumsvg | `1YjrsA63LHS96ShigE7u1i7_kU2zDjO4e` | Eksisterende hovedemner i `00-matematik/` |
 
 - [Original AM-formelsamling](https://drive.google.com/file/d/1D0pjoV7JmySzJWmegeGOnvZoLxPrMQNA/view)
 - [Originalt matematikkompendium](https://drive.google.com/file/d/1YjrsA63LHS96ShigE7u1i7_kU2zDjO4e/view)
@@ -17,3 +17,7 @@ Disse læsehenvisninger giver ikke i sig selv grundlag for automatisk versionsov
 ## Migration til to hovedområder
 
 Fil-id’erne ovenfor er bevaret uændret. AM- og EM-originaler tilhører universitetskursernes `originaler/` som uændrede referenceversioner, når de kan importeres. Matematikoriginalens konkrete indhold skal først læses for at afgøre, hvad der er kursusnoter, og hvad der er generelt referencestof. Ingen fil flyttes i Drive eller godkendes automatisk som bibliotekets publiceringsmål.
+
+## Brugeropdatering: eksisterende destinationer
+
+Brugeren har nu oplyst, at begge originaler er PDF’er og er flyttet til de ønskede mapper. Matematikfilen `1YjrsA63LHS96ShigE7u1i7_kU2zDjO4e` ligger efter brugerens oplysninger i `00 Matematik` (`1_mJgxHaXD8UcXcJ-pMCpi2mKHLjveXe-`). AM-filen `1D0pjoV7JmySzJWmegeGOnvZoLxPrMQNA` ligger i AM-mappen under universitetsområdet. De stabile id’er, indhold og links skal bevares. Destinationerne er registreret i [Drive-konfigurationen](../config/drive-targets.json), men hverken metadata, indhold eller rettigheder er kontrolleret via API her. EM-fil-id er fortsat uverificeret. Ingen Drive-fil er ændret af Codex.
