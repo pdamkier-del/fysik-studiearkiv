@@ -1,0 +1,41 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[name=nodeplot,width=.31\textwidth,height=47mm,
+ xmin=-2,xmax=2,ymin=-2,ymax=2,axis lines=middle,axis equal image,
+ xlabel={$x_1$},ylabel={$x_2$},title={Stabil knude},title style={font=\small},
+ tick label style={font=\scriptsize},samples=90]
+\addplot[arkivblaa,thick,domain=0:2.5] ({1.7*exp(-x)},{1.7*exp(-2*x)});
+\addplot[arkivblaa,thick,domain=0:2.5] ({-1.7*exp(-x)},{1.7*exp(-2*x)});
+\addplot[arkivblaa,thick,domain=0:2.5] ({1.7*exp(-x)},{-1.7*exp(-2*x)});
+\addplot[arkivblaa,thick,domain=0:2.5] ({-1.7*exp(-x)},{-1.7*exp(-2*x)});
+\draw[->,black] (axis cs:1.2,.84706)--(axis cs:1,.58824);
+\end{axis}
+\begin{axis}[at={(nodeplot.east)},anchor=west,xshift=3mm,name=spiralplot,
+ width=.31\textwidth,height=47mm,xmin=-2,xmax=2,ymin=-2,ymax=2,
+ axis lines=middle,axis equal image,xlabel={$x_1$},ylabel={$x_2$},
+ title={Stabil spiral},title style={font=\small},tick label style={font=\scriptsize},samples=180]
+\addplot[arkivblaa,thick,domain=0:9] ({1.7*exp(-.35*x)*cos(deg(2*x))},{1.7*exp(-.35*x)*sin(deg(2*x))});
+\addplot[arkivblaa,dashed,domain=0:9] ({-1.7*exp(-.35*x)*cos(deg(2*x))},{-1.7*exp(-.35*x)*sin(deg(2*x))});
+\draw[->,black] (axis cs:1.7,0)--(axis cs:1.6088,.3261);
+\end{axis}
+\begin{axis}[at={(spiralplot.east)},anchor=west,xshift=3mm,
+ width=.31\textwidth,height=47mm,xmin=-2,xmax=2,ymin=-2,ymax=2,
+ axis lines=middle,axis equal image,xlabel={$x_1$},ylabel={$x_2$},
+ title={Sadel},title style={font=\small},tick label style={font=\scriptsize},samples=80]
+\addplot[arkivrod,thick,domain=-.6:.6] ({exp(x)},{exp(-x)});
+\addplot[arkivrod,thick,domain=-.6:.6] ({-exp(x)},{exp(-x)});
+\addplot[arkivrod,thick,domain=-.6:.6] ({exp(x)},{-exp(-x)});
+\addplot[arkivrod,thick,domain=-.6:.6] ({-exp(x)},{-exp(-x)});
+\draw[->,black] (axis cs:.819,1.221)--(axis cs:1.221,.819);
+\end{axis}
+\end{tikzpicture}
+\caption{Fasebaner for tre lineære systemer $\boldsymbol{x}'=A\boldsymbol{x}$
+i dimensionsløse koordinater. Fra venstre:
+$A=\operatorname{diag}(-1,-2)$,
+$A=\left(\begin{smallmatrix}-.35&-2\\2&-.35\end{smallmatrix}\right)$
+og $A=\operatorname{diag}(1,-1)$. Pile angiver stigende tid.
+Knude og spiral tiltrækker fremad i tiden; sadlen har både en stabil
+og en ustabil retning. Akserne har samme skala i hvert panel.}
+\label{fig:ode-fase}
+\end{figure}

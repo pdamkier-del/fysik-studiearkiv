@@ -1,17 +1,430 @@
 \chapter{Ordinære differentialligninger}
-\planlagt{Definitioner, notation, forudsætninger, centrale resultater og fysikforbindelser udvikles samlet.}
+\label{ch:ode}
+En ordinær differentialligning forbinder en ukendt funktion af én variabel
+med dens afledte. I fysik er den uafhængige variabel ofte tid, men kan
+også være en rumkoordinat, en baneparameter eller en anden kontinuert
+størrelse. Ligningen alene fastlægger sjældent en entydig løsning:
+initialdata, definitionsområde og modellens regularitet er en del af
+problemet.
+
+Kapitlet behandler reelle skalarfunktioner og endeligdimensionale
+systemer. Symbolet $t$ bruges for den uafhængige variabel, og en prik
+eller prim betegner differentiation med hensyn til denne variabel.
+Komplekse eksponentialfunktioner kan bruges som regneredskab, men reelle
+fysiske løsninger skal sammensættes med de korrekte konjugerede bidrag.
+Partielle differentialligninger behandles i det næste hovedemne.
+
 \section{Eksistens, entydighed og begyndelsesbetingelser}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+\label{sec:ode-eksistens}
+\subsection{Orden, normalform og initialdata}
+En ligning af orden $n$ kan på en regulær gren skrives
+\[
+ y^{(n)}=F(t,y,y',\ldots,y^{(n-1)}).
+\]
+En begyndelsesværdiformulering specificerer $y,y',\ldots,y^{(n-1)}$
+i samme punkt $t_0$. Omskrivningen til normalform kan fejle, hvis man
+skal dividere med en koefficient, der er nul. Sådanne punkter er
+singulære for normalformen og skal undersøges særskilt.
+
+Ved at indføre tilstandsvektoren
+$\boldsymbol{x}=(y,y',\ldots,y^{(n-1)})^{\mathsf T}$ omskrives ligningen
+til et førsteordenssystem
+\begin{equation}
+ \dot{\boldsymbol{x}}=\boldsymbol{F}(t,\boldsymbol{x}),\qquad
+ \boldsymbol{x}(t_0)=\boldsymbol{x}_0.
+ \label{eq:ode-ivp}
+\end{equation}
+Denne form samler eksistens- og stabilitetsteorien. Komponenter med
+forskellige fysiske enheder bør skaleres, før en norm bruges som et mål
+for en fysisk fejl. En matematisk tilstandsnorm kræver en fast valgt
+skalering, ikke blot addition af størrelser med forskellige enheder.
+
+\subsection{Lokale sætninger og maksimal fortsættelse}
+\begin{samepage}
+\begin{saetning}[Lokal eksistens og entydighed]
+Lad $\boldsymbol{F}$ være kontinuert i en omegn af
+$(t_0,\boldsymbol{x}_0)$ og lokalt Lipschitz i tilstanden, med en
+Lipschitzkonstant som kan vælges ensartet i $t$ på et tilstrækkeligt
+lille rektangel. Da har \eqref{eq:ode-ivp} en entydig lokal løsning.
+Kontinuerte partielle afledte med hensyn til tilstanden er en
+anvendelig tilstrækkelig betingelse for denne lokale Lipschitzegenskab.
+\end{saetning}
+\end{samepage}
+Kontinuitet alene giver lokal eksistens via Peanos sætning i
+endelig dimension, men ikke nødvendigvis entydighed. En formel løsning
+eller en retningsfeltstegning beviser derfor ikke i sig selv, at
+initialdata bestemmer én bane. Under entydighed kan to løsninger ikke
+mødes i samme tilstand på samme tidspunkt og derefter skilles inden
+for et fælles regulært område.
+
+Den lokale løsning kan fortsættes til et maksimalt interval. Et endeligt
+endepunkt kan skyldes, at tilstanden bliver ubegrænset, eller at banen
+nærmer sig randen af modellens definitionsområde. Glathed af
+$\boldsymbol{F}$ alene forhindrer ikke endeligt blow-up. En
+lineær vækstgrænse
+$\|\boldsymbol{F}(t,\boldsymbol{x})\|\le a(t)+b(t)\|\boldsymbol{x}\|$
+med ikke-negative, lokalt integrable $a,b$ giver derimod kontrol over
+væksten på endelige tidsintervaller, når modellen er defineret for alle
+relevante tilstande.
+
+\subsection{Integralform, iteration og følsomhed}
+For kontinuert $\boldsymbol{F}$ er den differentiable løsning ækvivalent
+med integralrelationen
+\[
+ \boldsymbol{x}(t)=\boldsymbol{x}_0+
+ \int_{t_0}^{t}\boldsymbol{F}(s,\boldsymbol{x}(s))\dd s.
+\]
+Picard-iteration erstatter tilstanden under integralet med den foregående
+approksimation. På et kort interval med $Lh<1$ er den tilsvarende
+operator en kontraktion i supremumsnormen, når en passende invariant
+funktionsmængde er valgt. Kravet om en kort tid er en del af argumentet;
+det er ikke et krav om, at den faktiske løsning kun eksisterer kort tid.
+
+Lad $\boldsymbol{z}$ være en differentiabel approksimation med residual
+$\boldsymbol{r}=\dot{\boldsymbol{z}}-\boldsymbol{F}(t,\boldsymbol{z})$.
+Hvis begge baner bliver i et område med Lipschitzkonstant $L$, giver
+Grönwalls ulighed for $t\ge t_0$
+\begin{align}
+ \|\boldsymbol{z}(t)-\boldsymbol{x}(t)\|
+ &\le\e^{L(t-t_0)}\|\boldsymbol{z}(t_0)-\boldsymbol{x}_0\|\notag\\
+ &\quad+\int_{t_0}^{t}\e^{L(t-s)}\|\boldsymbol{r}(s)\|\dd s.
+ \label{eq:ode-residual}
+\end{align}
+Estimater af residual og initialfejl har dermed en direkte betydning
+for løsningsfejlen. Konstanten $L$ har dimension invers tid, når
+$t$ er tid, så eksponenten er dimensionsløs. Grænsen kan være
+konservativ; den er ikke en påstand om, at alle fejl faktisk vokser
+med den viste eksponentialfunktion.
 
 \section{Førsteordensligninger og integrerende faktor}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+\label{sec:ode-foersteorden}
+\subsection{Separation af variable og tabte løsninger}
+For en separabel ligning $y'=a(t)b(y)$ kan man på et interval med
+$b(y)\ne0$ definere en stamfunktion $H'(y)=1/b(y)$ og skrive
+\[
+ H(y(t))-H(y(t_0))=\int_{t_0}^{t}a(s)\dd s.
+\]
+Relationen kan være en fuldt brugbar implicit beskrivelse. En eksplicit
+funktion $y(t)$ kræver desuden inversion af $H$ på en entydig gren.
+Grænser og konvergens håndteres som i integralregningskapitlet.
+
+Division med $b(y)$ fjerner mulige konstante løsninger med $b(y_*)=0$.
+Disse skal undersøges før divisionen og føres tilbage til den endelige
+løsningsbeskrivelse. At en implicit form indeholder en vilkårlig
+konstant sikrer ikke, at alle ligevægte eller adskilte grene er med.
+Under entydighed kan en ikke-stationær autonom løsning ikke krydse en
+ligevægt i endelig tid i et fælles regulært område.
+
+\input{00-matematik/figures/ode-retningsfelt.tex}
+
+\subsection{Lineære skalarligninger}
+For kontinuerte $p,q$ på et interval er
+$y'+p(t)y=q(t)$ lineær, også når koefficienterne varierer med tiden.
+En normaliseret integrerende faktor og den initialiserede løsning er
+\begin{align}
+ \mu(t)&=\exp\!\left(\int_{t_0}^t p(s)\dd s\right),\notag\\
+ y(t)&=\mu(t)^{-1}\left[y_0+
+                    \int_{t_0}^t\mu(s)q(s)\dd s\right].
+ \label{eq:ode-lineaer-scalar}
+\end{align}
+Produktreglen giver $(\mu y)'=\mu q$, hvilket forklarer konstruktionen.
+Eksponentialfaktoren er forskellig fra nul, så der mistes ingen løsning
+ved division med $\mu$. Funktionen $p$ har dimension invers tid, og
+$q$ har samme dimension som $y'$.
+
+Den homogene løsning beskriver fri udvikling fra initialdata; et
+partikulært bidrag beskriver drivningen. Superposition gælder for en
+lineær operator, men summen af to løsninger til samme inhomogene ligning
+løser ikke automatisk den samme ligning: drivningerne summeres også.
+Forskellen mellem to løsninger til samme drivning er homogen.
+
+\subsection{Bernoulli, eksakte former og kendt partikulær løsning}
+Følgende strukturer giver yderligere generelle transformationsregler.
+Antagelser om ikke-nul størrelser og reelle potensgrene kontrolleres
+før skiftet, ikke efter løsningen.
+\begin{itemize}
+\item \textbf{Bernoulli:} For $y'+py=qy^n$, hvor $n\ne0,1$, giver
+$z=y^{1-n}$ på en positiv gren
+$z'+(1-n)pz=(1-n)q$. For heltallige eller særligt valgte rationale
+potenser kan andre grene også være mulige. En eventuel løsning $y=0$
+skal undersøges i originalligningen; den kan gå tabt ved transformationen.
+\item \textbf{Eksakt differentialform:} Formen
+$M(t,y)\dd t+N(t,y)\dd y=0$ har et potentiale $\Psi$ med
+$\Psi_t=M$, $\Psi_y=N$, hvis $M,N\in C^1$ på et simpelt sammenhængende
+åbent område og $M_y=N_t$. Løsninger ligger på niveaukurver
+$\Psi=C$. En graf $y(t)$ kræver lokalt $N\ne0$.
+\item \textbf{Integrerende faktor til en form:} Hvis en ikke-nul faktor
+$\rho$ gør $\partial_y(\rho M)=\partial_t(\rho N)$, bliver formen
+eksakt. En faktor kun af $t$ kan søges, når
+$(M_y-N_t)/N$ kun afhænger af $t$; da er
+$\rho'/\rho=(M_y-N_t)/N$ på området med $N\ne0$.
+\item \textbf{Riccati:} For $y'=a(t)y^2+b(t)y+c(t)$ og en kendt løsning
+$y_p$ giver $y=y_p+1/u$ den lineære ligning
+$u'+(2ay_p+b)u=-a$ på intervaller med $u\ne0$.
+Den kendte løsning $y_p$ skal bevares som en særskilt mulighed.
+\end{itemize}
+En anden hyppig struktur er $y'=F(y/t)$ for $t\ne0$. Skiftet $v=y/t$
+giver $t v'=F(v)-v$, som er separabel, hvor højresiden ikke er nul.
+Betegnelsen homogen for denne skalastruktur må ikke forveksles med
+betegnelsen homogen for en lineær ligning med drivning nul.
+
+\section{Andenordensligninger, dæmpning og drivning}
+\label{sec:ode-andenorden}
+\subsection{Fundamentalsystem og Wronskideterminant}
+For kontinuerte $p,q,r$ på $I$ er den normaliserede ligning
+\[
+ y''+p(t)y'+q(t)y=r(t).
+\]
+To homogene løsninger $y_1,y_2$ er et fundamentalsystem, hvis
+Wronskideterminanten $W=y_1y_2'-y_1'y_2$ er forskellig fra nul i ét
+punkt. Produktreglen og ligningen giver Abels identitet
+\[
+ W'(t)=-p(t)W(t),\qquad
+ W(t)=W(t_0)\exp\!\left[-\int_{t_0}^{t}p(s)\dd s\right].
+\]
+Dermed forbliver $W$ forskellig fra nul på hele det sammenhængende
+regulære interval. En nul-Wronskian er ikke i sig selv en universel
+afhængighedstest for vilkårlige funktioner; her bruges afgørende, at
+funktionerne løser samme regulære homogene ligning.
+
+Den generelle løsning er $C_1y_1+C_2y_2+y_p$. Initialdata bestemmer
+$C_1,C_2$ gennem en invertibel $2\times2$-matrix. Variation af konstanter
+giver et partikulært bidrag
+\begin{equation}
+ y_p(t)=-y_1(t)\int_{t_0}^{t}\frac{y_2(s)r(s)}{W(s)}\dd s
+        +y_2(t)\int_{t_0}^{t}\frac{y_1(s)r(s)}{W(s)}\dd s.
+ \label{eq:ode-variation-scalar}
+\end{equation}
+De valgte nedre grænser giver $y_p(t_0)=y_p'(t_0)=0$. Andre
+integrationskonstanter kan optages i den homogene del. Division med
+Wronskianen er kun legitim på det regulære interval, hvor den er ikke-nul.
+
+\subsection{Konstante koefficienter og multiplicitet}
+For $a_2y''+a_1y'+a_0y=0$ med $a_2\ne0$ bestemmes de
+karakteristiske rødder af $a_2\lambda^2+a_1\lambda+a_0=0$.
+To forskellige rødder giver uafhængige eksponentialløsninger;
+en dobbelt rod kræver både $\e^{\lambda t}$ og $t\e^{\lambda t}$.
+For reelle koefficienter kommer ikke-reelle rødder som konjugerede par
+og kan kombineres til reelle sinus-/cosinusløsninger.
+
+Mere generelt giver en rod af multiplicitet $m$ bidragene
+$t^j\e^{\lambda t}$ for $0\le j<m$ i en lineær ligning med konstante
+koefficienter. Potenserne er ikke nye eksponentialrødder: de afspejler,
+at operatorens nulrum er større end rummet af rene eksponentialfunktioner.
+Koefficienten foran den højeste afledte skal stadig være ikke-nul.
+
+\subsection{Den normaliserede dæmpede oscillator}
+En nyttig fysisk normalform er
+\begin{equation}
+ y''+2\gamma y'+\omega_0^2y=f(t),\qquad
+ \gamma\ge0,\quad\omega_0>0.
+ \label{eq:ode-oscillator}
+\end{equation}
+Her har $\gamma,\omega_0$ dimension invers tid, og $f$ dimension
+$[y]/[t]^2$. Hvis originalligningen har masse $m>0$, er $f$ kraften
+divideret med $m$. Sæt $\tau=t-t_0$ og
+$\omega_d=\sqrt{\omega_0^2-\gamma^2}$ i det underdæmpede tilfælde.
+De homogene løsningsformer er
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Regime & $y_h(\tau)$\\
+\midrule
+$0\le\gamma<\omega_0$ & $\e^{-\gamma\tau}(C_1\cos\omega_d\tau+C_2\sin\omega_d\tau)$\\[2mm]
+$\gamma=\omega_0$ & $\e^{-\gamma\tau}(C_1+C_2\tau)$\\[2mm]
+$\gamma>\omega_0$ & $C_1\e^{r_+\tau}+C_2\e^{r_-\tau}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+I sidste linje er $r_\pm=-\gamma\pm\sqrt{\gamma^2-\omega_0^2}$.
+Ved positiv dæmpning går alle homogene bidrag mod nul fremad i tiden.
+For $\gamma=0$ består oscillationen; dæmpning og forskydning af frekvens
+er to forskellige virkninger. Figur~\ref{fig:ode-daempning} sammenligner
+regimerne med samme skalerede initialdata.
+
+\input{00-matematik/figures/ode-daempning.tex}
+
+\subsection{Kausal respons og harmonisk drivning}
+For nulinitialdata kan drivningens bidrag skrives
+\[
+ y_p(t)=\int_{t_0}^{t}g(t-s)f(s)\dd s,\qquad t\ge t_0.
+\]
+For $\tau>0$ er responskernen
+\[
+ g(\tau)=
+ \begin{cases}
+ \e^{-\gamma\tau}\sin(\omega_d\tau)/\omega_d,
+     &\gamma<\omega_0,\\
+ \tau\e^{-\gamma\tau},&\gamma=\omega_0,\\
+ (\e^{r_+\tau}-\e^{r_-\tau})/(r_+-r_-),&\gamma>\omega_0.
+ \end{cases}
+\]
+Kernen sættes til nul for $\tau<0$ og har $g(0)=0$, $g'(0^+)=1$.
+Disse betingelser sikrer den korrekte normalisering: to afledte af
+konvolutionen giver drivningen med koefficient 1. Kernens dimension er
+tid. Den mere generelle distributionelle Greenfunktionsteori behandles
+senere; her er integralet en almindelig kausal løsningsformel.
+
+For en harmonisk drivning $f_0\cos(\Omega t)$ kan et stationært bidrag
+repræsenteres som realdelen af $Y(\Omega)\e^{i\Omega t}$ med
+\[
+ Y(\Omega)=\frac{f_0}{\omega_0^2-\Omega^2+2i\gamma\Omega},\qquad
+ |Y|=\frac{|f_0|}{\sqrt{(\omega_0^2-\Omega^2)^2+4\gamma^2\Omega^2}}.
+\]
+For $\gamma>0$ er dette endeligt, og den frie transient dør ud.
+For forskydningsamplituden ligger en indre resonanstop ved
+$\Omega=\sqrt{\omega_0^2-2\gamma^2}$, hvis
+$0<\gamma<\omega_0/\sqrt2$; ellers ligger maksimum for
+$\Omega\ge0$ ved nul. Resonansfrekvensen er derfor generelt hverken
+$\omega_0$ eller den frie dæmpede frekvens $\omega_d$.
+
+Ved $\gamma=0$ og $|\Omega|=\omega_0$ findes ikke et begrænset
+stationært harmonisk bidrag af denne form. Den tidsafhængige resonante
+respons må behandles med et sekulært led. At indsætte nul i nævneren
+er ikke en beregning af en endelig fysisk amplitude.
 
 \section{Lineære systemer og fundamentalløsninger}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+\label{sec:ode-systemer}
+For en kontinuert $n\times n$-matrix $A(t)$ og kontinuert drivning
+$\boldsymbol{b}(t)$ er systemet
+$\dot{\boldsymbol{x}}=A(t)\boldsymbol{x}+\boldsymbol{b}(t)$ lineært.
+En normaliseret fundamentalmatrix opfylder
+\[
+ \Phi'(t)=A(t)\Phi(t),\qquad \Phi(t_0)=I.
+\]
+Kolonnerne er uafhængige homogene løsninger. Liouvilles formel giver
+\[
+ \det\Phi(t)=\exp\!\left(\int_{t_0}^{t}\operatorname{tr}A(s)\dd s\right),
+\]
+så $\Phi$ er invertibel på koefficienternes regulære interval. Systemets
+initialiserede løsning er
+\begin{equation}
+ \boldsymbol{x}(t)=\Phi(t)\left[\boldsymbol{x}_0+
+                  \int_{t_0}^{t}\Phi(s)^{-1}\boldsymbol{b}(s)\dd s\right].
+ \label{eq:ode-variation-matrix}
+\end{equation}
+Formlen følger ved substitutionen $\boldsymbol{x}=\Phi\boldsymbol{c}$:
+produktreglen eliminerer det homogene bidrag og efterlader
+$\boldsymbol{c}'=\Phi^{-1}\boldsymbol{b}$. Matrixrækkefølgen må ikke
+byttes om. Propagatoren $U(t,s)=\Phi(t)\Phi(s)^{-1}$ opfylder
+$U(t,s)U(s,r)=U(t,r)$ og $U(s,s)=I$.
+
+\subsection{Matrixeksponentialet og variable koefficienter}
+For konstant $A$ er $\Phi(t)=\e^{A(t-t_0)}$, hvor
+\[
+ \e^{A\tau}=\sum_{j=0}^{\infty}\frac{\tau^jA^j}{j!}.
+\]
+Hvis $A=V\Lambda V^{-1}$, er $\e^{A\tau}=V\e^{\Lambda\tau}V^{-1}$.
+Hvis $A$ ikke er diagonaliserbar, giver Jordanblokke yderligere
+polynomier i $\tau$ gange eksponentialfunktioner. En gentagen egenværdi
+alene betyder ikke, at en matrix mangler egenvektorer; det skal
+undersøges via egenrummenes dimensioner.
+
+For tidsafhængige matricer er
+$\exp(\int A(t)\dd t)$ generelt ikke fundamentalløsningen, fordi matricer
+på forskellige tidspunkter ikke behøver kommutere. Parvis kommutation
+$A(t)A(s)=A(s)A(t)$ er en tilstrækkelig betingelse for denne enklere
+form med faste integrationsgrænser. Ellers bruges fundamentalmatrix,
+integralligning eller en tidsordnet konstruktion.
 
 \section{Stabilitet, faseportrætter og perturbation}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+\label{sec:ode-stabilitet}
+\subsection{Autonome systemer og linearisering}
+Et autonomt system har formen
+$\dot{\boldsymbol{x}}=\boldsymbol{F}(\boldsymbol{x})$.
+Et ligevægtspunkt $\boldsymbol{x}_*$ opfylder
+$\boldsymbol{F}(\boldsymbol{x}_*)=0$. For $C^1$-funktioner fås den
+lokale udvikling
+\[
+ \dot{\boldsymbol{\eta}}=J\boldsymbol{\eta}+o(\|\boldsymbol{\eta}\|),
+ \qquad
+ J=D\boldsymbol{F}(\boldsymbol{x}_*),\quad
+ \boldsymbol{\eta}=\boldsymbol{x}-\boldsymbol{x}_*.
+\]
+Hvis alle egenværdier af $J$ har negativ realdel, er ligevægten lokalt
+asymptotisk stabil. Hvis mindst én har positiv realdel, er ligevægten
+ustabil. Når ingen har positiv realdel, men mindst én har realdel nul,
+er lineariseringen generelt uafgjort for det ikke-lineære system.
+For en skalar ligning reduceres de første to tests til fortegnet af
+$F'(y_*)$; tilfældet $F'=0$ kræver yderligere analyse.
+
+Et faseportræt viser tilstande og deres tidsretning, ikke direkte en
+graf over tid. For en andenordensligning er de naturlige koordinater
+$y$ og $y'$, eventuelt med en valgt skalering. Figur~\ref{fig:ode-fase}
+viser tre forskellige lineære geometriske typer. Tiltrækning, rotation
+og frastødning er uafhængige egenskaber af feltet.
+
+\input{00-matematik/figures/ode-fase.tex}
+
+\subsection{Normvækst, energi og Lyapunovfunktioner}
+Selv når alle egenværdier af en konstant matrix har negativ realdel,
+kan en valgt norm vokse i en overgangsperiode, særligt for ikke-normale
+matricer. Asymptotisk henfald betyder derfor ikke nødvendigvis
+monotont henfald af hver komponent eller af enhver norm. En praktisk
+eksponentialgrænse har formen
+$\|\e^{At}\|\le M\e^{-\alpha t}$ for $t\ge0$, med $M\ge1$ og
+$\alpha>0$ valgt efter matrixen og normen.
+
+En Lyapunovfunktion er en skalar funktion, der kontrollerer afstanden
+til en ligevægt uden at kræve en eksplicit løsning. For $V\in C^1$
+gælder langs banen
+$\dot V=\nabla V\cdot\boldsymbol{F}$. Lokal positiv definithed af $V$
+og negativ definithed af $\dot V$ giver lokal asymptotisk stabilitet
+under de almindelige lokale regularitetskrav. Et semidefinit fortegn
+alene giver ikke samme konklusion; man skal undersøge den dynamik,
+der kan blive i mængden $\dot V=0$.
+
+For den udrivne normaliserede oscillator er
+\[
+ E=\tfrac12\bigl[(y')^2+\omega_0^2y^2\bigr],\qquad
+ E'=-2\gamma(y')^2.
+\]
+Den fysiske energi er $mE$, hvis massen er $m$. For $\gamma=0$ er
+$E$ bevaret; ved positiv dæmpning er den ikke-voksende. At $E'$ kan
+være nul i isolerede vendepunkter er ikke en ny ligevægt. Henfaldet
+til origo ved $\gamma>0$ følger også direkte af de homogene løsninger.
+
+\subsection{Perturbation, tidsintervaller og numerisk kontrol}
+En formel udvikling
+$y(t;\varepsilon)=y_0(t)+\varepsilon y_1(t)+\cdots$ kræver, at parameteren
+er gjort dimensionsløs, og at størrelsesordener sammenlignes på et
+specificeret tidsinterval. Led, der vokser med tiden, kan ødelægge en
+ellers lille parameterudvikling på lange tider. Et sekulært bidrag er
+derfor en advarsel om manglende uniformitet, ikke nødvendigvis om en
+ustabil fysisk løsning.
+
+Hvis den lille parameter multiplicerer den højeste afledte, kan grænsen
+sænke ligningens orden. Initial- eller randbetingelser kan da ikke alle
+opfyldes af den reducerede ligning, og grænselag kan opstå. Dette er en
+singulær perturbation; den kan ikke håndteres ved ukritisk at indsætte
+en regulær potensrække. En mere omfattende perturbationsteori udvikles
+senere efter behov.
+
+Ved numerisk integration kontrolleres både lokal diskretiseringsfejl og
+stabilitet. Stive systemer kan have hurtigt henfaldende moder, som tvinger
+et eksplicit tidssteg til at være meget mindre end den langsomme fysiske
+tidsskala. En lille residual er nyttig, men løsningsfejlen skal ses i
+lyset af et følsomhedsestimat som \eqref{eq:ode-residual}. Kontrol af
+bevarede størrelser eller dokumenteret energihenfald er et yderligere
+fysisk konsistenstjek, ikke en erstatning for konvergenskontrol.
+
+\section{Randbetingelser og metodeoverblik}
+Initialdata i ét punkt og randbetingelser i flere punkter er forskellige
+problemer. Entydighed for begyndelsesværdiproblemet giver ikke automatisk
+entydighed for et randværdiproblem. Et homogent randproblem kan have
+ikke-trivielle løsninger ved særlige spektralværdier; dette forbindes
+senere med Sturm--Liouville-teori og Greenfunktioner.
+
+Klassificer først orden, linearitet, autonomi og regulære intervaller.
+Undersøg derefter, om ligningen er separabel, lineær, eksakt eller kan
+transformeres til en kendt struktur. Ved lineære ligninger organiseres
+løsningen som et homogent bidrag plus et partikulært bidrag. Ved
+ikke-lineære systemer er kvalitativ analyse og lokale sætninger ofte
+mere informative end et forsøg på en elementær formel.
+
+En færdig løsningsbeskrivelse angiver interval, gren, alle mulige
+ligevægte og de relevante initial-/randdata. Kontroller den i den
+oprindelige ligning og kontroller dimensioner og fortegn. Ved brug af
+egenværdier skal gentagne rødder, manglende egenvektorer og nulegenværdier
+behandles særskilt. Konstante koefficienter, linearisering og små
+parametre er forskellige antagelser og må ikke blandes stiltiende.

@@ -66,8 +66,10 @@ Statistik indgår ikke i matematikkompendiet. Den tidligere, endnu ikke fagligt 
 
 - Eksistens, entydighed og begyndelsesbetingelser
 - Førsteordensligninger og integrerende faktor
+- Andenordensligninger, dæmpning og drivning
 - Lineære systemer og fundamentalløsninger
 - Stabilitet, faseportrætter og perturbation
+- Randbetingelser og metodeoverblik
 
 ## 08-pde · Partielle differentialligninger
 
@@ -218,4 +220,8 @@ Hovedemne 2 har nu et udviklet første afsnit med generelle identiteter, definit
 
 ## Integralregning leveret i denne indholdsopgave
 
-Kapitel 5 er udbygget med 60 standardintegralidentiteter/-familier, integrationsmetoder, reduktion, konvergens, parameterintegration og numeriske fejlgrænser. Fire originale figurer ledsager den forklarende tekst. Kapitlet er et udviklet første referencekapitel, ikke en erklæring om udtømmende dækning. Næste afgrænsede emne er de ordinære differentialligninger.
+Kapitel 5 er udbygget med 60 standardintegralidentiteter/-familier, integrationsmetoder, reduktion, konvergens, parameterintegration og numeriske fejlgrænser. Fire originale figurer ledsager den forklarende tekst. Kapitlet er et udviklet første referencekapitel, ikke en erklæring om udtømmende dækning. Ordinære differentialligninger er efterfølgende udbygget som beskrevet nedenfor.
+
+## Ordinære differentialligninger: udviklet første kapitel
+
+Kapitel 7 er udbygget med lokale eksistens-/entydighedsbetingelser, maksimal fortsættelse, residualestimater, separation og tabte ligevægte, lineære førsteordensmetoder, Bernoulli/exakte former/Riccati, andenordensligninger, dæmpning og resonans, fundamentalmatrix/variation af konstanter samt stabilitet og perturbationsforbehold. Tre originale figurer viser retningsfelt, dæmpningsregimer og faseportrætter. Centrale identiteter og de viste lineære systemer er kontrolleret symbolsk. Kapitlet er et udviklet første referencekapitel; PDE-kapitlet og en udtømmende perturbations-/randværditeori er ikke færdigskrevet.

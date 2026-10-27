@@ -31,4 +31,4 @@ Det eksisterende matematikmateriale på Drive skal læses og bevares før import
 
 ## Seneste prioritet
 
-Efter denne migration fortsættes integralregnings-/ODE-arbejdet under `00-matematik/`. Integralregning er leveret i et separat indholdscommit; ODE gennemgås og kontrolleres derefter. Ingen Drive-publicering aktiveres.
+Efter denne migration fortsættes integralregnings-/ODE-arbejdet under `00-matematik/`. Integralregning er leveret i et separat indholdscommit; ODE er derefter udbygget og gennemgået i et selvstændigt indholdstrin. Ingen Drive-publicering aktiveres.

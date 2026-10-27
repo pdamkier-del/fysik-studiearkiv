@@ -1,0 +1,21 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=.87\textwidth,height=65mm,axis lines=middle,
+ xmin=0,xmax=10,ymin=-1.15,ymax=1.2,xlabel={$\tau$},ylabel={$y$},
+ legend style={font=\small,at={(.97,.97)},anchor=north east},samples=180]
+\addplot[black,dashed,domain=0:10]{cos(deg(x))};\addlegendentry{$\gamma=0$}
+\addplot[arkivblaa,thick,domain=0:10]{exp(-.4*x)*(cos(deg(sqrt(.84)*x))+.4/sqrt(.84)*sin(deg(sqrt(.84)*x)))};
+\addlegendentry{$\gamma=0{,}4$}
+\addplot[arkivrod,thick,domain=0:10]{exp(-x)*(1+x)};\addlegendentry{$\gamma=1$}
+\addplot[black,dotted,very thick,domain=0:10]{exp(-1.5*x)*(cosh(sqrt(1.25)*x)+1.5/sqrt(1.25)*sinh(sqrt(1.25)*x))};
+\addlegendentry{$\gamma=1{,}5$}
+\end{axis}
+\end{tikzpicture}
+\caption{Analytiske homogene oscillatorresponser i dimensionsløse variable
+med $\omega_0=1$ og samme initialdata $y(0)=1$, $y'(0)=0$.
+Uden dæmpning består oscillationen. Under-, kritisk og overdæmpning
+har forskellige tidsforløb; stærkere dæmpning betyder ikke automatisk
+hurtigere sen tilnærmelse til ligevægt.}
+\label{fig:ode-daempning}
+\end{figure}

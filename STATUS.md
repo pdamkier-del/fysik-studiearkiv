@@ -4,7 +4,7 @@ Opdateret 27. oktober 2026. Arbejdet fortsætter på `feat/studiearkiv-fundament
 
 ## Aktuel struktur og faktisk indhold
 
-- `00-matematik/`: ét samlet kompendium med 21 hovedemner. Differentialregningspiloten og trigonometri er bevaret. Integralregning er udbygget fra disposition til 11 gennemarbejdede sider med metodeforklaringer, konvergenskrav, 49 stamfunktionsidentiteter og 11 bestemte integralfamilier samt fire originale figurer. ODE-arbejdet fortsætter efter strukturcommit; PDE og øvrige ufyldte hovedemner forbliver dispositioner.
+- `00-matematik/`: ét samlet kompendium med 21 hovedemner. Differentialregningspiloten og trigonometri er bevaret. Integralregning er udbygget fra disposition til 11 gennemarbejdede sider med metodeforklaringer, konvergenskrav, 49 stamfunktionsidentiteter og 11 bestemte integralfamilier samt fire originale figurer. ODE er efter strukturcommit udbygget til et udviklet første kapitel på 8 sider. PDE og øvrige ufyldte hovedemner forbliver dispositioner.
 - MatF1, MatF2, LinALys og Algebra integreres efter matematiske emner i det samme kompendium. Nye ukendte kursusreferencer eller ækvivalenser med Matematik F 2026 gættes ikke.
 - `01-universitetsfag/`: aktuelt kun AM og EM. Separate formelsamlinger, udledningsnoter, opgavenoter og opgavesamlinger samt pladser til forelæsningsnoter, eksamensmateriale og uændrede originaler bevares. Der er ikke importeret originalnoter.
 - `02-fysikbibliotek/`: brede referenceområder, herunder Termodynamik og Statistik. Statistik bygger fortsat på Roger Barlow og holdes adskilt fra statistisk fysik og matematik. Den eksisterende statistikstruktur er ikke et færdigt kompendium eller en verificeret Barlow-kapitelrækkefølge.
@@ -22,6 +22,15 @@ Opdateret 27. oktober 2026. Arbejdet fortsætter på `feat/studiearkiv-fundament
 - Alle 13 tidligere sikkerhedstests er bevaret og består; to nye tests for direkte matematikdestination og afvisning af en ekstra matematisk undermappe består. I alt 15 sikkerhedstests, udelukkende med fake HTTP.
 - Lokale Markdown-links samt LaTeX-imports og labels/referencer kontrolleres offline. Produktionsmanifestet forbliver deaktiveret; offline-planen bruger syntetiske id'er og ændrer ingen godkendelser.
 - GitHub Actions-definitionen er migreret, men en faktisk GitHub-hostet kørsel er ikke verificeret. Ændringerne er ikke merged til main; tidligere PR-oprettelse via GitHub-API var blokeret med `Forbidden`.
+
+## Afsluttet ODE-udvidelse og aktuel PDF
+
+- Strukturændringen er gemt i `fc4e326`; integralregning i `0ce2b53`. ODE afsluttes i et separat indholdscommit på samme branch.
+- Matematik-PDF'en er nu 58 sider med de samme 21 hovedemner, 128 bogmærker og 141 links. Integralregning fylder 11 sider; ODE 8 sider. Der er ingen overfyldte bokse, manglende tegn eller uafklarede referencer. Alle nye integral- og ODE-sider er renderet og gennemgået visuelt.
+- ODE omfatter eksistens/entydighed, følsomhed, førsteordensmetoder, andenordensligninger, oscillatorrespons, lineære systemer, variation af konstanter, stabilitet, energi, perturbation og randbetingelsesforbehold. Tre originale figurer er tilføjet. Ingen gennemregnede opgaveeksempler er indsat.
+- Symbolsk residualkontrol består for alle tre oscillatorregimer og responskernernes normalisering, resonansbetingelsen, Riccati-transformationen, variationsformlen ved konstante og variable koefficienter samt alle tre faseportrætmatricer og deres Liouville-determinanter. Dette supplerer matematisk gennemlæsning, men er ikke en udtømmende formel bevisverifikation.
+- `make publication-check` består med begge PDF'er, 15 sikkerhedstests, kilde-/referencekontrol og offline-dry-run med syntetiske id'er. Statistikstrukturen er fortsat 9 sider. Alle 20 skabelonbuilds er desuden kørt efter migrationen og består. Aktuelt 62 LaTeX-kilder/imports og referencer er kontrolleret sammen med alle lokale Markdown-links.
+- Fælles design, de tidligere kapitlers faglige indhold og alle oprindelige figurer bevares. Det generelle fysikbiblioteks øvrige kompendier er ikke udfyldt automatisk. Drive er urørt og publicering er deaktiveret.
 
 ## Drive: registreret, ikke aktiveret eller API-verificeret
 
@@ -45,6 +54,6 @@ Alle publiceringsposter er `approved: false`. Produktionsworkflow kræver fortsa
 2. `07a092a` indførte en todeling med matematik i referencebiblioteket og fire kurser under universitetsfag. Den historiske rapport bevares i [den tidligere migrationsrapport](docs/migration-2026-10-27.md).
 3. Integralregning blev leveret i separat indholdscommit `0ce2b53`.
 4. Den seneste brugeropdatering flytter matematik til eget hovedområde og Termodynamik/Statistik til fysikbiblioteket. Kun AM og EM forbliver aktuelle universitetsfag. Dette har forrang frem for tidligere mappe- og fagbeslutninger; intet eksisterende kildearbejde slettes.
-5. Efter strukturcommit afsluttes den allerede igangværende ODE-udvidelse med kompilering, visuel gennemgang, referencekontrol og et separat indholdscommit. Fortsæt derefter matematikken trinvist; begynd ikke automatisk at skrive øvrige fysikkompendier.
+5. Efter strukturcommit er den igangværende ODE-udvidelse afsluttet med kompilering, visuel gennemgang og referencekontrol til et separat indholdscommit. Fortsæt derefter matematikken trinvist; begynd ikke automatisk at skrive øvrige fysikkompendier.
 
 Ingen gennemregnede opgaveeksempler tilføjes. Ingen Drive-publicering aktiveres. `docs/kontrolrapport.md` og den tidligere todelingsrapport er historiske; dette dokument angiver aktuel status.
