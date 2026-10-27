@@ -1,17 +1,119 @@
 \chapter{Lineær algebra}
-\planlagt{Definitioner, notation, forudsætninger, centrale resultater og fysikforbindelser udvikles samlet.}
+Lineær algebra beskriver vektorrum og lineære afbildninger mellem dem. Dens styrke er, at mange problemer inden for mekanik, elektromagnetisme, differentialligninger og kvantemekanik kan samles i den samme struktur: vektorer, operatorer og deres invariant definerede egenskaber. En matrix er en \emph{repræsentation} af en lineær afbildning i valgte baser; afbildningen selv afhænger ikke af basisvalget.
+
 \section{Vektorrum, basis og lineære afbildninger}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+Et vektorrum $V$ over et legeme $\mathbb K$ (typisk $\mathbb R$ eller $\mathbb C$) er lukket under addition og skalarmultiplikation og opfylder vektorrumsaksiomerne. Et sæt $(v_1,\ldots,v_n)$ er en basis, hvis enhver $v\in V$ har en \emph{entydig} fremstilling
+\[
+v=\sum_{i=1}^{n}v^i v_i.
+\]
+Koefficienterne $v^i$ er koordinater i den valgte basis. De er ikke selve vektoren. I et endeligdimensionalt rum har alle baser samme antal elementer, nemlig $\dim V$.
+
+En afbildning $T:V\to W$ er lineær, når
+\[
+T(av+bw)=aT(v)+bT(w)
+\qquad(a,b\in\mathbb K).
+\]
+I baserne $(v_j)$ og $(w_i)$ defineres matricen $A=(A^i{}_j)$ ved
+\[
+T(v_j)=\sum_i A^i{}_j w_i,\qquad [T(v)]_w=A[v]_v.
+\]
+Ved et basisskift $[v]_{\mathrm{gammel}}=S[v]_{\mathrm{ny}}$ for en operator på samme rum gælder
+\[
+A_{\mathrm{ny}}=S^{-1}A_{\mathrm{gammel}}S.
+\]
+Dette er en \emph{similaritetstransformation}. Den bevarer karakteristisk polynomium, egenværdier, determinant og spor. Den må ikke forveksles med omregning af en bilineær form, hvor transformationsloven indeholder en transponeret matrix.
+
+\subsection{Kerne, billede og dimension}
+Kernen og billedet defineres ved
+\[
+\ker T=\{v\in V:T(v)=0\},\qquad
+\operatorname{im}T=\{T(v):v\in V\}.
+\]
+For endeligdimensionalt $V$ giver dimensionssætningen
+\[
+\boxed{\dim V=\dim(\ker T)+\operatorname{rank}T.}
+\]
+En lineær afbildning er injektiv præcis når dens kerne kun består af nulvektoren. For en kvadratisk matrix er injektivitet, surjektivitet og invertibilitet ækvivalente.
 
 \section{Determinanter, rang og lineære ligninger}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+Et lineært ligningssystem $Ax=b$ er konsistent, hvis og kun hvis $b$ ligger i søjlerummet for $A$, eller ækvivalent
+\[
+\operatorname{rank}(A)=\operatorname{rank}([A\mid b]).
+\]
+Hvis løsninger findes, er deres samlede form $x=x_{\mathrm p}+z$, hvor $Az=0$. Antallet af frie parametre er $\dim\ker A$. Gauss-elimination ændrer ikke løsningsmængden, når man udfører elementære rækkeoperationer på den udvidede matrix.
+
+Determinanten findes for kvadratiske matricer. Dens absolutværdi er volumenfaktoren for den tilsvarende lineære transformation, mens fortegnet i reelle rum angiver orienteringsskift:
+\[
+\det(AB)=\det A\det B,\qquad
+\det(A^{\mathsf T})=\det A,\qquad
+\det(A^{-1})=\frac{1}{\det A}\quad(\det A\neq0).
+\]
+En kvadratisk matrix er invertibel præcis når dens determinant er forskellig fra nul. Determinanten kan dog være numerisk uhensigtsmæssig som praktisk test for næsten-singularitet: konditionstal og singularværdier giver ofte en bedre vurdering.
+
+\subsection{Spor og karakteristisk polynomium}
+Sporet er summen af diagonalelementerne og er basisuafhængigt:
+\[
+\operatorname{tr}(A+B)=\operatorname{tr}A+\operatorname{tr}B,\qquad
+\operatorname{tr}(AB)=\operatorname{tr}(BA).
+\]
+For en $n\times n$-matrix er det karakteristiske polynomium
+\[
+p_A(\lambda)=\det(\lambda I-A).
+\]
+Over $\mathbb C$ er summen af egenværdierne med algebraisk multiplicitet $\operatorname{tr}A$, og produktet er $\det A$.
 
 \section{Egenværdier og diagonalisering}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+En ikke-nul vektor $v$ kaldes egenvektor for $A$, hvis $Av=\lambda v$. Egenværdierne opfylder
+\[
+\boxed{\det(A-\lambda I)=0.}
+\]
+Egenvektorer med indbyrdes forskellige egenværdier er lineært uafhængige. Derfor kan en $n\times n$-matrix diagonaliseres, hvis den har $n$ lineært uafhængige egenvektorer:
+\[
+A=PDP^{-1},\qquad D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n).
+\]
+Det er ikke tilstrækkeligt blot at have $n$ egenværdier \emph{talt med algebraisk multiplicitet}: en matrix kan mangle egenvektorer. For en sådan matrix kan Jordan-normalform være relevant.
+
+Når diagonalisering findes, kan man beregne funktioner af matricen ved at anvende funktionen på diagonalelementerne:
+\[
+f(A)=P\,\operatorname{diag}\bigl(f(\lambda_1),\ldots,f(\lambda_n)\bigr)P^{-1}.
+\]
+For den lineære differentialligning $\dot x=Ax$ giver dette særligt
+\[
+x(t)=e^{At}x(0),\qquad
+e^{At}=Pe^{Dt}P^{-1}.
+\]
+Matrixeksponentialen er også defineret, når $A$ ikke kan diagonaliseres, ved sin absolut konvergente potensrække.
 
 \section{Indre produkter, spektralsætning og SVD}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+Et indre produkt $\langle u,v\rangle$ giver et mål for længde og ortogonalitet. På $\mathbb R^n$ bruges typisk $u^{\mathsf T}v$ og på $\mathbb C^n$ det hermiteske produkt $u^\dagger v$ (konjugeret lineært i første argument). Normen er
+\[
+\|v\|=\sqrt{\langle v,v\rangle},\qquad
+|\langle u,v\rangle|\leq \|u\|\|v\|.
+\]
+En ortonormal basis opfylder $\langle e_i,e_j\rangle=\delta_{ij}$. I en sådan basis er den adjungerede operators matrix $A^\dagger$.
+
+\subsection{Selvadjungerede og normale operatorer}
+En kompleks matrix er hermitesk, hvis $A^\dagger=A$, og en reel matrix er symmetrisk, hvis $A^{\mathsf T}=A$. Den endeligdimensionale spektralsætning siger, at en normal kompleks matrix ($AA^\dagger=A^\dagger A$) kan diagonaliseres ved en unitær matrix:
+\[
+A=UDU^\dagger,\qquad U^\dagger U=I.
+\]
+For en hermitesk matrix er egenværdierne reelle. Egenvektorer svarende til forskellige egenværdier er ortogonale; dette er centralt for blandt andet normale svingninger og kvantemekaniske observabler.
+
+\subsection{Singularværdidekomposition}
+Enhver matrix $A\in\mathbb C^{m\times n}$ har en singularværdidekomposition
+\[
+\boxed{A=U\Sigma V^\dagger,}
+\]
+hvor $U,V$ er unitære, og $\Sigma$ er rektangulær diagonal med ikke-negative singularværdier $\sigma_i$. De ikke-nul singularværdier er kvadratrødderne af de positive egenværdier for $A^\dagger A$. Antallet af positive singularværdier er matricens rang.
+
+SVD findes også, når matricen ikke er kvadratisk eller diagonaliserbar. Den er derfor et generelt værktøj til projektion, rangvurdering og mindste-kvadraters problemer. For en matrix med fuld søjlerang er mindste-kvadraters løsningen til $\min_x\|Ax-b\|_2$ entydig; uden fuld rang vælges typisk den løsning, der har mindst norm, ved hjælp af pseudoinversen $A^+$.
+
+\subsection{Ortogonale projektioner}
+For en ortonormal søjlematrix $Q$ med $Q^\dagger Q=I$ er
+\[
+P=QQ^\dagger,\qquad P^2=P,\qquad P^\dagger=P.
+\]
+$P$ projicerer ortogonalt på søjlerummet for $Q$. Det gør relationen mellem lineær algebra, geometri og approksimation tydelig: en bedste approksimation i et underrum fås ved at fjerne den ortogonale restkomponent.
+
+\paragraph{Anvendelser i fysik.}
+Normalmoders frekvenser findes typisk fra generaliserede egenværdiproblemer; lineæriserede bevægelsesligningers stabilitet bestemmes blandt andet af operatorens spektrum; ortonormale baser og selvadjungerede operatorer er centrale i kvantemekanik. For ikke-ortogonale koordinater skal metrikken indgå eksplicit i indre produkter og adjungering.
