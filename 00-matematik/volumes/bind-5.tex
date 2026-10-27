@@ -1,0 +1,32 @@
+\documentclass[11pt,a4paper,oneside]{book}
+\usepackage{90-faelles/latex/studiearkiv}
+\hypersetup{pdftitle={Matematik – Bind 5: Geometri og tensorer}}
+\begin{document}
+\frontmatter
+\begin{titlepage}
+\centering
+\vspace*{30mm}
+{\sffamily\color{arkivblaa}\Large MATEMATIK TIL UNIVERSITETSFYSIK\par}
+\vspace{16mm}
+{\Huge\bfseries Bind 5\\[6mm]Geometri og tensorer\par}
+\vspace{13mm}
+{\Large Formler, begreber og matematisk sammenhæng\par}
+\vfill
+\begin{minipage}{0.8\textwidth}
+Geometri i 2D og 3D, vektorfelter, tensorer og krumme rum.
+
+Dette bind genbruger de samme LaTeX-kapitler som det samlede matematikkompendium. Planlagte kapitler er markeret som ufærdige. Der indgår ikke separate gennemregnede opgaveeksempler.
+\end{minipage}
+\vspace{14mm}
+{\small Fysik-studiearkiv · Arbejdsudgave\par}
+\end{titlepage}
+\chapter*{Læsevejledning}
+\addcontentsline{toc}{chapter}{Læsevejledning}
+Dette bind er en emneopdelt udgave af det samlede matematikkompendium. Den generelle kilde og alle figurer vedligeholdes centralt under \texttt{00-matematik/chapters} og \texttt{00-matematik/figures}. For hele overblikket samt henvisninger mellem bindene anvendes den samlede udgave. Ufuldstændige kapitler er tydeligt markerede.
+\begingroup\small\tableofcontents\endgroup
+\mainmatter
+\input{00-matematik/chapters/10-geometri}
+\input{00-matematik/chapters/12-vektoranalyse}
+\input{00-matematik/chapters/19-tensorer}
+\input{00-matematik/chapters/20-differentialgeometri}
+\end{document}
