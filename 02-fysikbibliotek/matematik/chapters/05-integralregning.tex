@@ -1,17 +1,515 @@
 \chapter{Integralregning og standardintegraler}
-\planlagt{Definitioner, notation, forudsætninger, centrale resultater og fysikforbindelser udvikles samlet.}
+\label{ch:integral}
+Integralregning beskriver akkumulation, sammenhængen mellem lokale ændringer
+og endelige størrelser samt grænseprocesser, hvor mange små bidrag samles.
+Et integral kan være en orienteret sum, en lineær funktional eller en
+parameterafhængig størrelse. Disse synsvinkler supplerer hinanden, men de
+kræver forskellige antagelser. En formeltabel giver derfor kun en del af
+svaret: definitionsområde, integrationsgrænser og konvergens skal også
+kontrolleres.
+
+Kapitlet behandler først integration af én reel variabel og går derefter
+over til uegentlige integraler og parameterafhængighed. Flerdimensionale
+koordinatskift og deres Jacobideterminanter hører til hovedemnet om
+flervariabel analyse. Ingen af standardformlerne nedenfor er en påstand om
+pensum i et bestemt kursus.
+
 \section{Stamfunktioner og analysens hovedsætning}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+\label{sec:integral-grundlag}
+\subsection{Det bestemte integral som grænseværdi}
+For en begrænset funktion $f\colon[a,b]\to\R$, hvor $a<b$, vælges en
+inddeling $a=x_0<x_1<\cdots<x_N=b$ og prøvepunkter
+$\xi_j\in[x_{j-1},x_j]$. Riemannsummen er
+\[
+ S_N=\sum_{j=1}^N f(\xi_j)\Delta x_j,\qquad
+ \Delta x_j=x_j-x_{j-1}.
+\]
+Funktionen er Riemann-integrabel, hvis summerne har samme endelige grænse,
+uanset inddeling og prøvepunkter, når den største delintervalbredde går
+mod nul. Grænsen betegnes $\int_a^b f(x)\dd x$. Kontinuitet på $[a,b]$ er
+en tilstrækkelig betingelse; stykkevis kontinuerte, begrænsede funktioner
+med endeligt mange brud er også integrable.
+
+Integralet er orienteret: $\int_b^a f=-\int_a^b f$, og
+$\int_a^a f=0$. Negativ integrand giver negativt bidrag. Det geometriske
+areal mellem graf og akse er derimod $\int_a^b|f(x)|\dd x$. Et nulresultat
+for det orienterede integral betyder derfor ikke, at funktionen er nul
+eller at arealet er nul. Figur~\ref{fig:integral-fortegn} viser forskellen.
+Hvis $f$ har enhed $[f]$ og $x$ enhed $[x]$, har integralet enhed
+$[f][x]$; integration med hensyn til tid, længde eller energi er ikke
+udskiftelige operationer.
+
+\input{02-fysikbibliotek/matematik/figures/integral-fortegn.tex}
+
+\begin{samepage}
+\subsection{Hovedsætningen og integrationskonstanten}
+\begin{saetning}[Analysens hovedsætning]
+Er $f$ kontinuert på $[a,b]$, er akkumulationsfunktionen
+$F(x)=\int_a^x f(t)\dd t$ differentiabel i det indre med $F'(x)=f(x)$.
+Hvis $G$ er en stamfunktion til $f$, gælder
+\[
+ \int_a^b f(x)\dd x=G(b)-G(a).
+\]
+\end{saetning}
+\end{samepage}
+For det første udsagn er differenskvotienten for $F$ gennemsnittet af $f$
+over et kort interval. Kontinuiteten gør, at dette gennemsnit går mod
+$f(x)$. Det andet udsagn følger, fordi $F-G$ har afledt nul og derfor er
+konstant på intervallet. Denne begrundelse forklarer både den lokale
+forbindelse til differentiation og forskellen mellem bestemt og ubestemt
+integration.
+
+Skrivemåden $\int f(x)\dd x=G(x)+C$ betegner en familie af stamfunktioner,
+ikke én entydig funktion. Konstanten $C$ er vilkårlig på hvert sammenhængende
+interval, hvor $f$ er defineret. To intervaller adskilt af en singularitet
+behøver ikke have samme konstant. En begyndelses- eller randbetingelse kan
+fastlægge konstanten, men en algebraisk manipulation alene kan ikke.
+En stamfunktion kan eksistere uden en elementær lukket form.
+
+\subsection{Linearitet, sammenligning og integralestimater}
+For integrable funktioner på et endeligt interval gælder linearitet og
+additivitet, eksempelvis
+\[
+ \int_a^b(\alpha f+\beta g)\dd x
+ =\alpha\int_a^b f\dd x+\beta\int_a^b g\dd x,\qquad
+ \int_a^c f+\int_c^b f=\int_a^b f.
+\]
+Her er $\alpha,\beta$ konstanter, og sidste lighed bruger orienterede
+integraler. For $a<b$ medfører $f\le g$, at $\int_a^b f\le\int_a^b g$.
+To vigtige størrelsesestimater er
+\[
+ \left|\int_a^b f\dd x\right|\le\int_a^b|f|\dd x,
+ \qquad
+ \left|\int_a^b fg\dd x\right|^2
+ \le\left(\int_a^b|f|^2\dd x\right)
+       \left(\int_a^b|g|^2\dd x\right).
+\]
+Den sidste ulighed er integralformen af Cauchy--Schwarz for kvadratintegrable
+funktioner. Den kontrollerer blandt andet overlap mellem funktioner uden
+at beregne integralet eksplicit. Hvis $m\le f\le M$, er
+$m(b-a)\le\int_a^b f\le M(b-a)$. For kontinuert $f$ findes et
+$c\in[a,b]$ med $\int_a^b f=f(c)(b-a)$; en integrand med spring behøver
+ikke antage sin middelværdi.
 
 \section{Substitution, partiel integration og partialbrøker}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+\label{sec:integral-metoder}
+\subsection{Substitution og orientering}
+For kontinuert $f$ og en $C^1$-funktion $g$ på $[\alpha,\beta]$ gælder
+\begin{equation}
+ \int_\alpha^\beta f(g(t))g'(t)\dd t
+ =\int_{g(\alpha)}^{g(\beta)}f(u)\dd u.
+ \label{eq:substitution}
+\end{equation}
+Dette er kædereglen integreret over et interval. Det orienterede udsagn
+kræver ikke, at $g$ er monoton: tilbagegående gennemløb annulleres med
+fortegn. Hvis man derimod vil omskrive en vilkårlig integralform via en
+invers $t=t(u)$, skal en entydig gren vælges, og intervallet må eventuelt
+opdeles. Grænser og differentialfaktor skal altid transformeres sammen.
+
+For $u=g(x)$ er differentialet $\dd u=g'(x)\dd x$. Denne notation gør
+substitutionen kompakt, men er ikke tilladelse til at kassere faktorer,
+dividere med $g'=0$ uden undersøgelse eller blande gamle og nye variable.
+Ved uegentlige integraler transformeres først et afskåret, egentligt
+integral; grænseprocessen foretages bagefter.
+
+En første genkendelsesregel er at søge en indre funktion, hvis afledte
+allerede optræder som faktor. Skift af skala $u=kx+b$ er et koordinatskift,
+så faktoren $1/k$ i stamfunktionen er nødvendig, også når kun en tabel
+anvendes. Symmetri kan forenkle et integral på $[-a,a]$: en ulige,
+integrabel funktion har integral nul, mens en lige funktion giver det
+dobbelte af integralet på $[0,a]$.
+
+\subsection{Partiel integration og randled}
+For $u,v\in C^1([a,b])$ følger af produktreglen
+\begin{equation}
+ \int_a^b u(x)v'(x)\dd x
+ =[u(x)v(x)]_a^b-\int_a^b u'(x)v(x)\dd x.
+ \label{eq:partiel}
+\end{equation}
+Metoden flytter differentiation fra én faktor til en anden. Et nyttigt
+valg lader differentiation forenkle den ene faktor og lader den anden
+faktor have en kendt stamfunktion. Dette er en strategi, ikke en garanti
+for en kortere beregning. Gentagelse er relevant for polynomier gange
+eksponential- eller trigonometriske funktioner.
+
+Randleddet er en del af identiteten. I fysik forsvinder det kun ved
+konkrete randbetingelser eller et dokumenteret henfald. På uendelige
+intervaller skal både randleddets grænse og integralernes konvergens
+undersøges; en formel cancellation af to divergenser er ikke tilstrækkelig.
+Ved gentagen brug skal fortegnene og hvilket led der differentieres
+holdes adskilt.
+
+\subsection{Rationale funktioner og irreducible faktorer}
+For en rational funktion $P(x)/Q(x)$ udføres først polynomiumsdivision,
+hvis tællerens grad ikke er mindre end nævnerens. Den egentlige brøk
+opløses derefter efter nævnerens reelle faktorer. En gentagen lineær
+faktor $(x-r)^m$ kræver alle led $A_j/(x-r)^j$ for $1\le j\le m$.
+En irreducibel kvadratisk faktor $q(x)^m$ kræver lineære tællere
+$(B_jx+C_j)/q(x)^j$ i hver potens.
+
+Kvadratiske nævnere behandles ved kvadratkomplettering. Positive summer
+af kvadrater leder typisk til arctan, mens en forskel af kvadrater leder
+til logaritmer og reelle intervalgrene. Partialbrøksopløsningen gælder
+på den oprindelige definitionsmængde. Nulpunkter i nævneren må ikke
+overses ved forkortelse, og integrationsintervallet må ikke krydse en
+pol uden særskilt konvergensanalyse.
+
+\subsection{Trigonometriske og hyperbolske substitutioner}
+For $a>0$ kan rodudtryk standardiseres ved
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Rod & Substitution & En anvendelig reel gren\\
+\midrule
+$\sqrt{a^2-x^2}$ & $x=a\sin t$ & $-\pi/2<t<\pi/2$\\
+$\sqrt{x^2+a^2}$ & $x=a\sinh t$ & $t\in\R$\\
+$\sqrt{x^2-a^2}$ & $x=a\cosh t$ & $x>a$, $t>0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Den sidste substitution dækker kun den positive ydre gren; den negative
+skal behandles særskilt. Identiteten $\sqrt{z^2}=|z|$ forklarer,
+hvorfor et kvadratrodstegn ikke uden videre kan fjernes efter et
+trigonometrisk koordinatskift.
+
+For rationale udtryk i sinus og cosinus er halvvinkelskiftet
+\[
+ t=\tan(x/2),\qquad
+ \sin x=\frac{2t}{1+t^2},\quad
+ \cos x=\frac{1-t^2}{1+t^2},\quad
+ \dd x=\frac{2\dd t}{1+t^2}
+\]
+en systematisk rationalisering. Det kræver delintervaller, hvor
+$x\ne(2j+1)\pi$ og den valgte inverse vinkelgren er entydig. Trigonometriske
+identiteter, lige/ulige potenser og produkt-til-sum-formler kan ofte give
+en enklere metode end dette generelle skift.
+
+\subsection{Reduktionsformler}
+En reduktionsformel forbinder en hel familie af integraler. For heltal
+$n\ge2$ følger ved partiel integration
+\begin{align*}
+ \int\sin^n x\dd x
+ &=-\frac{\sin^{n-1}x\cos x}{n}
+   +\frac{n-1}{n}\int\sin^{n-2}x\dd x,\\
+ \int\cos^n x\dd x
+ &=\frac{\cos^{n-1}x\sin x}{n}
+   +\frac{n-1}{n}\int\cos^{n-2}x\dd x.
+\end{align*}
+Konstanterne er implicitte i disse relationer mellem stamfunktioner.
+For $a>0$ og heltal $n\ge2$ kan
+$J_n=\int(x^2+a^2)^{-n}\dd x$ reduceres som
+\[
+ J_n=\frac{x}{2a^2(n-1)(x^2+a^2)^{n-1}}
+       +\frac{2n-3}{2a^2(n-1)}J_{n-1}.
+\]
+Reduktionen gør det muligt at organisere tabeller efter struktur frem for
+at behandle hver potens som en ny metode.
 
 \section{Standardintegraler med gyldighedsbetingelser}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+\label{sec:standardintegraler}
+Alle tabeller angiver $\int f(x)\dd x=F(x)+C$. Konstanten udelades i
+højre kolonne for læsbarhed og vælges uafhængigt på adskilte intervaller.
+Medmindre andet er anført, er $a>0$, $k\ne0$, og alle parametre reelle og
+uafhængige af $x$. Betingelser vedrører et åbent interval; endepunkter
+behandles som grænser. Radianmål anvendes i trigonometriske argumenter.
+Logaritmer af fysiske størrelser forstås med en passende referenceskala,
+så argumentet er dimensionsløst; en konstant skala ændrer kun $C$.
+
+\subsection{Potenser, logaritmer og eksponentialfunktioner}
+\begin{longtable}{@{}p{.23\textwidth}p{.46\textwidth}p{.23\textwidth}@{}}
+\caption{Algebraiske og eksponentielle standardstamfunktioner.}\\
+\toprule $f(x)$ & $F(x)$ & Betingelse\\\midrule\endfirsthead
+\toprule $f(x)$ & $F(x)$ & Betingelse\\\midrule\endhead
+$x^p$ & $x^{p+1}/(p+1)$ & $x>0$, $p\ne-1$\\[2mm]
+$1/x$ & $\ln|x|$ & $x\ne0$\\[2mm]
+$(kx+b)^p$ & $\dfrac{(kx+b)^{p+1}}{k(p+1)}$ & $kx+b>0$, $p\ne-1$\\[3mm]
+$1/(kx+b)$ & $\ln|kx+b|/k$ & $kx+b\ne0$\\[2mm]
+$\ln|x|$ & $x\ln|x|-x$ & $x\ne0$\\[2mm]
+$(\ln|x|)^2$ & $x[(\ln|x|)^2-2\ln|x|+2]$ & $x\ne0$\\[2mm]
+$x^p\ln x$ & $\dfrac{x^{p+1}}{p+1}\left(\ln x-\dfrac1{p+1}\right)$ & $x>0$, $p\ne-1$\\[3mm]
+$1/(x\ln|x|)$ & $\ln\bigl|\ln|x|\bigr|$ & $x\ne0$, $|x|\ne1$\\[2mm]
+$\e^{kx}$ & $\e^{kx}/k$ & $x\in\R$\\[2mm]
+$x\e^{kx}$ & $\e^{kx}(kx-1)/k^2$ & $x\in\R$\\[2mm]
+$x^2\e^{kx}$ & $\e^{kx}(k^2x^2-2kx+2)/k^3$ & $x\in\R$\\[2mm]
+$a^x$ & $a^x/\ln a$ & $a\ne1$\\
+\bottomrule
+\end{longtable}
+For heltallige potenser kan $x^p$ have et større reelt definitionsområde
+end den tilstrækkelige betingelse $x>0$ i tabellen. Udvidelsen skal ske ud
+fra den konkrete potens, ikke ved at give en generel reel potens en
+uvalgt kompleks gren. Tilfældene $p=-1$ og $k=0$ kræver deres særskilte
+formler og må ikke indsættes i udtryk med nul i nævneren.
+
+\subsection{Trigonometriske og hyperbolske funktioner}
+\begin{longtable}{@{}p{.26\textwidth}p{.43\textwidth}p{.23\textwidth}@{}}
+\caption{Periodiske og hyperbolske standardstamfunktioner.}\\
+\toprule $f(x)$ & $F(x)$ & Betingelse\\\midrule\endfirsthead
+\toprule $f(x)$ & $F(x)$ & Betingelse\\\midrule\endhead
+$\sin(kx)$ & $-\cos(kx)/k$ & Alle reelle $x$\\[2mm]
+$\cos(kx)$ & $\sin(kx)/k$ & Alle reelle $x$\\[2mm]
+$\tan(kx)$ & $-\ln|\cos(kx)|/k$ & $\cos(kx)\ne0$\\[2mm]
+$\cot(kx)$ & $\ln|\sin(kx)|/k$ & $\sin(kx)\ne0$\\[2mm]
+$1/\cos^2(kx)$ & $\tan(kx)/k$ & $\cos(kx)\ne0$\\[2mm]
+$1/\sin^2(kx)$ & $-\cot(kx)/k$ & $\sin(kx)\ne0$\\[2mm]
+$\sin(kx)/\cos^2(kx)$ & $1/[k\cos(kx)]$ & $\cos(kx)\ne0$\\[2mm]
+$\cos(kx)/\sin^2(kx)$ & $-1/[k\sin(kx)]$ & $\sin(kx)\ne0$\\[2mm]
+$\sin^2(kx)$ & $x/2-\sin(2kx)/(4k)$ & Alle reelle $x$\\[2mm]
+$\cos^2(kx)$ & $x/2+\sin(2kx)/(4k)$ & Alle reelle $x$\\[2mm]
+$\sin(kx)\cos(kx)$ & $\sin^2(kx)/(2k)$ & Alle reelle $x$\\[2mm]
+$\sinh(kx)$ & $\cosh(kx)/k$ & Alle reelle $x$\\[2mm]
+$\cosh(kx)$ & $\sinh(kx)/k$ & Alle reelle $x$\\[2mm]
+$\tanh(kx)$ & $\ln(\cosh(kx))/k$ & Alle reelle $x$\\[2mm]
+$\coth(kx)$ & $\ln|\sinh(kx)|/k$ & $x\ne0$\\[2mm]
+$1/\cosh^2(kx)$ & $\tanh(kx)/k$ & Alle reelle $x$\\
+\bottomrule
+\end{longtable}
+Polerne i tangens og cotangens er reelle singulariteter, ikke blot en
+begrænsning i tabelnotationen. En logaritmisk stamfunktion på hver side
+af en pol kan ikke anvendes som én ordinær Newton--Leibniz-evaluering
+hen over polen.
+
+\subsection{Rationale udtryk, rødder og inverse funktioner}
+\begin{longtable}{@{}p{.27\textwidth}p{.43\textwidth}p{.22\textwidth}@{}}
+\caption{Kvadratiske nævnere og rødder; $a>0$.}\\
+\toprule $f(x)$ & $F(x)$ & Betingelse\\\midrule\endfirsthead
+\toprule $f(x)$ & $F(x)$ & Betingelse\\\midrule\endhead
+$1/(x^2+a^2)$ & $\arctan(x/a)/a$ & $x\in\R$\\[2mm]
+$1/(a^2-x^2)$ & $\dfrac1{2a}\ln\left|\dfrac{a+x}{a-x}\right|$ & $x\ne\pm a$\\[3mm]
+$1/(x^2-a^2)$ & $\dfrac1{2a}\ln\left|\dfrac{x-a}{x+a}\right|$ & $x\ne\pm a$\\[3mm]
+$x/(x^2+a^2)$ & $\tfrac12\ln(x^2+a^2)$ & $x\in\R$\\[2mm]
+$1/(x^2+a^2)^2$ & $\dfrac{x}{2a^2(x^2+a^2)}+\dfrac{\arctan(x/a)}{2a^3}$ & $x\in\R$\\[3mm]
+$1/\sqrt{a^2-x^2}$ & $\arcsin(x/a)$ & $|x|<a$\\[2mm]
+$1/\sqrt{x^2+a^2}$ & $\operatorname{arsinh}(x/a)$ & $x\in\R$\\[2mm]
+$1/\sqrt{x^2-a^2}$ & $\ln|x+\sqrt{x^2-a^2}|$ & $|x|>a$\\[2mm]
+$x/\sqrt{x^2+a^2}$ & $\sqrt{x^2+a^2}$ & $x\in\R$\\[2mm]
+$x/\sqrt{a^2-x^2}$ & $-\sqrt{a^2-x^2}$ & $|x|<a$\\[2mm]
+$\sqrt{a^2-x^2}$ & $\tfrac12[x\sqrt{a^2-x^2}+a^2\arcsin(x/a)]$ & $|x|<a$\\[2mm]
+$\sqrt{x^2+a^2}$ & $\tfrac12[x\sqrt{x^2+a^2}+a^2\operatorname{arsinh}(x/a)]$ & $x\in\R$\\[2mm]
+$\sqrt{x^2-a^2}$ & $\tfrac12[x\sqrt{x^2-a^2}-a^2\ln|x+\sqrt{x^2-a^2}|]$ & $|x|>a$\\[2mm]
+$1/(x^2\sqrt{x^2+a^2})$ & $-\sqrt{x^2+a^2}/(a^2x)$ & $x\ne0$\\[2mm]
+$\arctan x$ & $x\arctan x-\tfrac12\ln(1+x^2)$ & $x\in\R$\\[2mm]
+$\arcsin x$ & $x\arcsin x+\sqrt{1-x^2}$ & $|x|<1$\\[2mm]
+$\arccos x$ & $x\arccos x-\sqrt{1-x^2}$ & $|x|<1$\\
+\bottomrule
+\end{longtable}
+På den negative ydre gren $x<-a$ er logaritmens absolutværdi afgørende.
+En omskrivning til arcosh uden fortegnskontrol kan give den forkerte
+afledte. Tabellernes hurtigste lokale kontrol er altid differentiation;
+den globale kontrol er fortsat definitionsområde og intervalgrænser.
+
+\subsection{Blandede funktioner og ikke-elementære integraler}
+For reelle $k,b$ med $k^2+b^2>0$ gælder
+\begin{align*}
+ \int\e^{kx}\cos(bx)\dd x
+ &=\frac{\e^{kx}}{k^2+b^2}[k\cos(bx)+b\sin(bx)]+C,\\
+ \int\e^{kx}\sin(bx)\dd x
+ &=\frac{\e^{kx}}{k^2+b^2}[k\sin(bx)-b\cos(bx)]+C.
+\end{align*}
+Disse formler tillader her også $k=0$, så længe $b\ne0$. For $a>0$
+giver kædereglen
+\[
+ \int x\e^{-ax^2}\dd x=-\frac{\e^{-ax^2}}{2a}+C.
+\]
+Uden faktoren $x$ findes ikke en elementær stamfunktion. Fejlfunktionen
+defineres ved
+\[
+ \operatorname{erf}z=\frac2{\sqrt\pi}\int_0^z\e^{-t^2}\dd t,
+ \qquad
+ \int\e^{-ax^2}\dd x=\frac{\sqrt\pi}{2\sqrt a}
+             \operatorname{erf}(\sqrt a\,x)+C.
+\]
+Tilsvarende er en ikke-elementær integralrepræsentation ofte den naturlige
+definition af en specialfunktion. Manglende elementær form siger hverken,
+at integralet divergerer, eller at det ikke kan beregnes præcist numerisk.
 
 \section{Uegentlige integraler og parameterintegration}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+\label{sec:uegentlig-integral}
+\subsection{Separate grænser og absolut konvergens}
+Et integral med uendelig øvre grænse defineres som
+$\int_a^\infty f=\lim_{R\to\infty}\int_a^R f$, hvis grænsen er endelig.
+Ved en singularitet i $c\in(a,b)$ skal de to integraler
+$\int_a^c f$ og $\int_c^b f$ eksistere hver for sig. På hele den reelle
+akse kræves tilsvarende to uafhængige halvakser. En sammenkoblet,
+symmetrisk afskæring er en anden grænseproces.
+
+Absolut konvergens betyder $\int|f|<\infty$ og medfører konvergens.
+Betinget konvergens betyder konvergens uden absolut konvergens. For
+en odd integrand med en simpel pol kan en symmetrisk Cauchy-hovedværdi
+være nul, selv om det almindelige uegentlige integral ikke eksisterer.
+Hovedværdi skal altid mærkes eksplicit, eksempelvis med
+$\operatorname{PV}$; den kan ikke stiltiende erstatte et divergerende integral.
+
+For ikke-negative funktioner kan sammenligning afgøre konvergens.
+Modelgrænserne er
+\[
+ \int_1^\infty x^{-p}\dd x<\infty\ \Longleftrightarrow\ p>1,
+ \qquad
+ \int_0^1 x^{-p}\dd x<\infty\ \Longleftrightarrow\ p<1.
+\]
+Ved $p=1$ er divergensen logaritmisk. Et ekstra logaritmisk led kan
+ændre tærsklen: $\int_{\e}^\infty[x(\ln x)^p]^{-1}\dd x$ konvergerer
+netop for $p>1$. At integranden går mod nul er nødvendigt for mange
+regulære positive modelhaler, men generelt ikke en tilstrækkelig test;
+figur~\ref{fig:integral-hale} viser to sådanne modelhalers akkumulation.
+For vilkårlige kontinuerte, positive funktioner kan selv et konvergent
+integral have smalle toppe uden en punktvis grænse mod nul.
+
+\input{02-fysikbibliotek/matematik/figures/integral-hale.tex}
+
+\subsection{Oscillation og kontrolleret cancellation}
+Dirichlets kriterium er nyttigt ved oscillation: hvis
+$G(R)=\int_a^R g(x)\dd x$ er begrænset, og $h$ er monotont aftagende
+mod nul, konvergerer $\int_a^\infty h(x)g(x)\dd x$ under sædvanlig
+lokal integrabilitet. Dette følger ved partiel integration og kontrol
+af randleddet. Resultatet kræver ikke absolut integrabilitet.
+
+Oscillatoriske integraler er derfor følsomme over for hvilken grænse,
+rækkefølge og regulering der anvendes. Absolut integrabilitet giver
+robusthed over for sådanne omordninger; betinget konvergens giver ikke
+samme frihed. En konvergenspåstand bør angive både singulariteter,
+haleadfærd og den konkrete definition af integralet.
+
+\subsection{Parameterafledte og bevægelige grænser}
+For $f$ og $\partial_\lambda f$ kontinuerte på et passende kompakt
+rektangel samt $C^1$-grænser $a(\lambda),b(\lambda)$ er Leibniz' regel
+\begin{align}
+ \frac{\dd}{\dd\lambda}\int_{a(\lambda)}^{b(\lambda)}f(x,\lambda)\dd x
+ &=f(b(\lambda),\lambda)b'(\lambda)
+   -f(a(\lambda),\lambda)a'(\lambda)\notag\\
+ &\quad+\int_{a(\lambda)}^{b(\lambda)}
+                 \partial_\lambda f(x,\lambda)\dd x.
+ \label{eq:leibniz-integral}
+\end{align}
+De første to led beskriver tilførsel eller tab ved intervallets rande;
+det sidste beskriver ændring af integranden inde i intervallet. Ved faste
+grænser forsvinder kun randleddene, ikke nødvendigvis den indre ændring.
+
+På uendelige intervaller kræves mere end punktvis differentiabilitet.
+En praktisk tilstrækkelig betingelse er en integrabel dominator
+$g(x)$ med $|\partial_\lambda f(x,\lambda)|\le g(x)$ i en hel omegn af
+parameteren, sammen med integrabilitet ved mindst én parameterværdi og
+for næsten alle $x$ differentiabilitet i hele parameteromegnen. Domineret konvergens anvendt
+på differenskvotienterne giver da differentiation under integraltegnet.
+Kontrol ved ét enkelt parameterpunkt alene er ikke denne betingelse.
+
+For grænseovergange $f_n\to f$ næsten overalt er $|f_n|\le g$ med
+$\int g<\infty$ en tilsvarende tilstrækkelig betingelse for
+$\lim_n\int f_n=\int f$. Uniform konvergens på et endeligt interval er
+en enklere tilstrækkelig betingelse. Disse Lebesgue-formulerede resultater
+omfatter mange uegentlige integraler, men må ikke erstattes af argumentet
+``integranden konvergerer punktvist''. Masse kan flytte mod en rand
+eller mod uendelig, uden at integralerne følger den punktvise grænse.
+
+\subsection{Rækkefølge af integraler og parameterfamilier}
+Fubinis sætning tillader ombytning af integrationsrækkefølgen, når
+$\iint|f|<\infty$. For ikke-negative målbare funktioner giver Tonellis
+sætning ombytning også med værdien $+\infty$. Den sidste mulighed er
+ikke en påstand om endelig konvergens. Betinget konvergente dobbeltintegraler
+kan derimod afhænge af rækkefølgen.
+
+Gaussfamilien
+\[
+ g_a(x)=\sqrt{a/\pi}\,\e^{-ax^2},\qquad a>0,
+\]
+har integral 1 på hele den reelle akse. Figur~\ref{fig:integral-gauss}
+viser, at parameteren ændrer bredden og højden samtidig. I en kompakt
+parameteromegn $0<a_0\le a\le a_1$ kan afledte domineres af et
+polynomium gange $\e^{-a_0x^2}$. Der findes ikke automatisk én sådan
+lokal dominator, som også kontrollerer hele grænsen $a\to\infty$.
+Normalisering, punktvis adfærd og fordeling af masse er forskellige spørgsmål.
+
+\input{02-fysikbibliotek/matematik/figures/integral-gauss.tex}
+
+\section{Bestemte standardintegraler og specialfunktioner}
+\label{sec:bestemte-standardintegraler}
+Nedenstående er familier af generelle identiteter, ikke gennemregnede
+opgaveeksempler. Konvergenskravene hører til hver formel. Parametrene
+$a,\beta$ er positive, medmindre andet udtrykkeligt angives.
+\begin{longtable}{@{}p{.44\textwidth}p{.27\textwidth}p{.21\textwidth}@{}}
+\caption{Bestemte integraler med skala-, potens- og oscillationsparametre.}\\
+\toprule Integral & Værdi & Betingelse\\\midrule\endfirsthead
+\toprule Integral & Værdi & Betingelse\\\midrule\endhead
+$\int_{-\infty}^{\infty}\e^{-ax^2}\dd x$ & $\sqrt{\pi/a}$ & $a>0$\\[2mm]
+$\int_0^\infty x^{p-1}\e^{-\beta x}\dd x$ & $\Gamma(p)/\beta^p$ & $p>0$\\[2mm]
+$\int_0^1t^{p-1}(1-t)^{q-1}\dd t$ & $B(p,q)$ & $p,q>0$\\[2mm]
+$\int_0^1x^{p-1}(\ln x)^n\dd x$ & $(-1)^n n!/p^{n+1}$ & $p>0$, $n\ge0$ heltal\\[2mm]
+$\int_0^{\pi/2}\sin^m x\cos^n x\dd x$ & $\tfrac12 B(\tfrac{m+1}2,\tfrac{n+1}2)$ & $m,n>-1$\\[2mm]
+$\int_0^\infty\e^{-ax}\cos(bx)\dd x$ & $a/(a^2+b^2)$ & $b\in\R$\\[2mm]
+$\int_0^\infty\e^{-ax}\sin(bx)\dd x$ & $b/(a^2+b^2)$ & $b\in\R$\\[2mm]
+$\int_0^\infty\e^{-ax}\dfrac{\sin(bx)}x\dd x$ & $\arctan(b/a)$ & $b\in\R$\\[3mm]
+$\int_0^\infty\dfrac{\sin(bx)}x\dd x$ & $\tfrac\pi2\operatorname{sgn}b$ & $b\ne0$, betinget\\[3mm]
+$\int_0^\infty\dfrac{\cos(bx)}{x^2+a^2}\dd x$ & $\dfrac\pi{2a}\e^{-a|b|}$ & $b\in\R$\\[3mm]
+$\int_0^\infty\dfrac{\dd x}{1+x^p}$ & $\dfrac\pi p\csc(\pi/p)$ & $p>1$\\
+\bottomrule
+\end{longtable}
+Her defineres gamma- og betafunktionerne ved de angivne integraler;
+for $p,q>0$ gælder
+\[
+ \Gamma(p+1)=p\Gamma(p),\qquad
+ B(p,q)=\frac{\Gamma(p)\Gamma(q)}{\Gamma(p+q)}.
+\]
+Gamma-rekursionen følger af partiel integration, hvor randleddene
+forsvinder ved de angivne konvergenskrav. Gaussintegralet kan begrundes
+ved at kvadrere integralet og bruge polære koordinater i et ikke-negativt
+dobbeltintegral; Jacobifaktoren er afgørende. En fuld videre behandling
+af specialfunktionerne hører til kompendiets særskilte hovedemne.
+
+\section{Numerisk integration og dokumenteret fejlkontrol}
+\label{sec:integral-numerisk}
+Riemannsummer viser definitionen, men er ikke altid den mest effektive
+numeriske metode. Figur~\ref{fig:integral-riemann} illustrerer, hvordan
+stykvise rektangler approksimerer en glat integrand. Fortegnet af fejlen
+kan ved monotoni kontrolleres uden at kende en stamfunktion.
+
+\input{02-fysikbibliotek/matematik/figures/integral-riemann.tex}
+
+På et endeligt interval med ensartet skridt $h=(b-a)/N$ er den sammensatte
+trapezregel
+\[
+ T_N=h\left[\frac{f(a)+f(b)}2+\sum_{j=1}^{N-1}f(a+jh)\right].
+\]
+Hvis $f\in C^2([a,b])$, fås fejlgrænsen
+\[
+ \left|\int_a^b f-T_N\right|
+ \le\frac{b-a}{12}h^2\max_{[a,b]}|f''|.
+\]
+For lige $N$ og $f\in C^4$ giver den sammensatte Simpsonregel
+\begin{align*}
+ S_N&=\frac h3\left[f(a)+f(b)
+       +4\sum_{\substack{1\le j\le N-1\\j\text{ ulige}}}f(a+jh)
+       +2\sum_{\substack{2\le j\le N-2\\j\text{ lige}}}f(a+jh)\right],\\
+ \left|\int_a^b f-S_N\right|
+ &\le\frac{b-a}{180}h^4\max_{[a,b]}|f^{(4)}|.
+\end{align*}
+Disse grænser gælder ikke uændret ved singulariteter eller utilstrækkelig
+regularitet. Et uendeligt interval kræver både en afskæringsgrænse og en
+kvadraturfejl. En ændring af variabel kan isolere singulariteten eller
+gøre en hale lettere at kontrollere, men erstatter ikke en begrundelse
+for konvergens.
+
+Adaptive metoder vurderer lokal fejl og fordeler evalueringer efter behov.
+At to nærliggende skridtstørrelser giver næsten samme resultat er et
+nyttigt konsistenstjek, men ikke et generelt bevis: begge kan overse en
+smal top eller en hurtig oscillation. Symbolsk beregning, numerisk
+kvadratur og analytiske estimater bør derfor supplere hinanden.
+
+\section{Metodevalg, dimensioner og faglig kontrol}
+Et hensigtsmæssigt metodevalg begynder med integralets type: bestemt eller
+ubestemt, egentligt eller uegentligt, skalar størrelse eller parameterfamilie.
+Fastlæg definitionsområde og singulariteter før algebraiske omskrivninger.
+Søg derefter symmetri, en afledt indre funktion, en produktstruktur eller
+en rational opløsning. Først herefter vælges tabel, specialfunktion eller
+numerisk metode.
+
+Kontroller en stamfunktion ved differentiation på hvert relevant interval.
+Kontroller et bestemt resultat ved dimensioner, fortegn, størrelsesgrænser
+og forventet parameterafhængighed. Ved en substitution skal grænserne,
+differentialet og eventuelle grenvalg følges hele vejen. Ved partiel
+integration skal randleddet medtages. Ved en grænseovergang eller ombytning
+skal en konkret dominans-, konvergens- eller regularitetsbetingelse nævnes.
+
+I fysik repræsenterer integraler blandt andet arbejde langs en valgt
+bevægelse, akkumuleret ladning, samlet energi og normalisering af
+kontinuerte tilstande. Den matematiske integration fastlægger ikke selv
+den fysiske model eller fortegnskonvention. Enhedskontrol og en forklaring
+af, hvad der summeres over, er en del af det færdige resultat.

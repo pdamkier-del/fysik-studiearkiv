@@ -1,0 +1,21 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=.87\textwidth,height=61mm,axis lines=left,
+ xmin=-4,xmax=4,ymin=0,ymax=.88,xlabel={$x$},ylabel={$g_a(x)$},
+ legend style={font=\small},legend pos=north east,samples=160]
+\addplot[arkivblaa,thick,domain=-4:4]{sqrt(.5/pi)*exp(-.5*x^2)};
+\addlegendentry{$a=1/2$}
+\addplot[black,dashed,thick,domain=-4:4]{sqrt(1/pi)*exp(-x^2)};
+\addlegendentry{$a=1$}
+\addplot[arkivrod,dotted,very thick,domain=-4:4]{sqrt(2/pi)*exp(-2*x^2)};
+\addlegendentry{$a=2$}
+\end{axis}
+\end{tikzpicture}
+\caption{Normaliserede analytiske Gausskerner
+$g_a(x)=\sqrt{a/\pi}\,\e^{-ax^2}$. Hver kurve har integral 1 på hele
+$\R$, ikke blot i det viste udsnit. Større $a$ giver en højere og smallere
+kerne. Figuren illustrerer parameterafhængighed og massens fordeling;
+den er ikke et statistisk datasæt. Variable og parametre er dimensionsløse.}
+\label{fig:integral-gauss}
+\end{figure}

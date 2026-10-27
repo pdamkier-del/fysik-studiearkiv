@@ -1,0 +1,26 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=.87\textwidth,height=60mm,axis lines=left,
+ xmin=0,xmax=2.15,ymin=0,ymax=1.15,xlabel={$x$},ylabel={$f(x)$},
+ samples=120]
+\pgfplotsinvokeforeach{0,...,7}{
+ \pgfmathsetmacro{\leftx}{#1/4}
+ \pgfmathsetmacro{\rightx}{(#1+1)/4}
+ \pgfmathsetmacro{\rectheight}{exp(-#1/4)}
+ \edef\rectanglecmd{\noexpand\draw[draw=arkivblaa!65,fill=arkivblaa!13]
+   (axis cs:\leftx,0) rectangle (axis cs:\rightx,\rectheight);}
+ \rectanglecmd
+}
+\addplot[arkivrod,thick,domain=0:2]{exp(-x)};
+\node[anchor=north east,font=\small] at (rel axis cs:.96,.96)
+ {$f(x)=\e^{-x}$, $N=8$};
+\end{axis}
+\end{tikzpicture}
+\caption{Venstre Riemannsum for en monoton aftagende, glat funktion på
+$[0,2]$. Hvert rektangel ligger over den tilhørende grafdel, så summen er
+en øvre approksimation. Højre prøvepunkter ville give en nedre sum.
+Inddelingens bredde skal gå mod nul i definitionen af integralet;
+figuren viser én endelig inddeling i dimensionsløse variable.}
+\label{fig:integral-riemann}
+\end{figure}

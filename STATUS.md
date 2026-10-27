@@ -2,18 +2,28 @@
 
 Opdateret 27. oktober 2026. Migrationen tager udgangspunkt i `3bfca2c` på den eksisterende branch `feat/studiearkiv-fundament`. Ingen ny branch eller worktree er oprettet. Se [ROADMAP.md](ROADMAP.md) for planen og [PENSUM.md](PENSUM.md) for universiteternes kilder.
 
+## Faglig videreudvikling fra 07a092a
+
+Fokus er matematisk indhold; infrastruktur, kursuspensum og Drive-konfiguration ændres ikke i denne opgave.
+
+- Integralregning er udbygget fra disposition til et gennemarbejdet første kapitel på 11 sider. Det omfatter hovedsætningen, integrationskonstanter, substitution, partiel integration, partialbrøker, rodsubstitutioner, reduktionsformler, 49 stamfunktionsidentiteter og 11 bestemte standardintegralfamilier med betingelser.
+- Uegentlige integraler, absolut/betinget konvergens, hovedværdi, parameterafledte, Fubini/Tonelli, specialfunktioner og numeriske kvadraturfejl er forklaret særskilt. Fire originale vektorfigurer viser fortegnet areal, integralhaler, Gausskerner og Riemannsummer. Ingen gennemregnede opgaveeksempler er indsat.
+- Alle 49 stamfunktionsidentiteter er kontrolleret med symbolsk differentiation på regulære reelle grene; negative ydre rodgrene er kontrolleret særskilt. De 11 bestemte integralfamilier er stikprøvekontrolleret ved uafhængig højpræcisionskvadratur, herunder negativ oscillationsparameter. Dette er formelkontrol, ikke en udtømmende formel bevisverifikation.
+- `make check` består: 51 sider, 21 hovedemner, 126 bogmærker og 135 links. Ingen overfyldte bokse, manglende tegn eller uafklarede referencer. Alle 11 nye integralsider er renderet og visuelt gennemgået; en splittet sætning og Riemannfigurens rektangler er rettet efter gennemgangen.
+- Næste trin i samme opgave er ordinære differentialligninger. De øvrige generelle fysikkompendier udbygges ikke. Drive-publicering er fortsat deaktiveret, og ingen Drive-operationer udføres.
+
 ## Implementeret arkitektur
 
 - `01-universitetsfag/`: kun de fire dokumenterede kurser Analytisk Mekanik, Elektromagnetisme, Termodynamik 2026 og Statistik. Kursernes faktiske pensum og noter vedligeholdes separat fra det generelle bibliotek. Der er ikke oprettet kursusmapper for mulige fremtidige fag.
 - `02-fysikbibliotek/`: 12 planlagte referenceområder med eget fagligt omfang uafhængigt af kursusgrænser. Kun matematik har et generelt LaTeX-kompendium under udvikling; de øvrige generelle fysikkompendier er ikke skrevet.
-- Matematik er fortsat ét dokument med 21 hovedemner. Differentialregningspiloten og de fire oprindelige figurer er bevaret. Trigonometri er nu udbygget med radianer, enhedscirkel, identiteter, inverse grene, hyperbolske funktioner og fasefortolkning samt en ny original TikZ-figur. Øvrige hovedemner er fortsat dispositioner.
+- Matematik er fortsat ét dokument med 21 hovedemner. Differentialregningspiloten og de fire oprindelige figurer er bevaret. Trigonometri er nu udbygget med radianer, enhedscirkel, identiteter, inverse grene, hyperbolske funktioner og fasefortolkning samt en ny original TikZ-figur. Integralregning er nu udviklet som beskrevet ovenfor; de resterende hovedemner er fortsat dispositioner.
 - Statistik er alene et selvstændigt universitetsfag med Barlow som hovedreference og seks redaktionelle arbejdsområder. Der er intet statistikbibliotek og intet statistikkapitel i matematikdokumentet. Statistikstrukturen er ikke et færdigt fag eller en verificeret gengivelse af bogens struktur.
 - Universiteternes kilderegister er flyttet til `01-universitetsfag/pensum/`. Matematikbibliotekets egen kapitelplan ligger i `02-fysikbibliotek/matematik/PLAN.md`. Kildekobling mellem dem betyder ikke, at et kursuskompendium og et generelt referenceværk er samme dokument.
 - Der er bevaret 12 kursusskabeloner og otte tidligere kvante-/relativitetsskabeloner. De otte er arkiveret i de relevante biblioteksområder, ikke klassificeret som KU-kurser eller færdige generelle kompendier. Alle 20 indgår i `config/latex-templates.json`.
 - Kurserne har særskilte pladser til forelæsningsnoter, eksamensmateriale og uændrede referenceoriginaler. Mapperne indeholder ikke importerede originaler eller færdige nye noter.
 - Imports, byggekommandoer, manifests, teststier, Actions-artifactstier og lokale dokumentlinks er migreret. Fælles LaTeX-design, notation og tests er bevaret. Se [migrationsrapporten](docs/migration-2026-10-27.md).
 
-## Verificeret efter migration
+## Verificeret under migrationen (historik)
 
 | Kontrol | Faktisk resultat |
 | --- | --- |

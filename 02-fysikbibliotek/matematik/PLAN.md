@@ -2,7 +2,7 @@
 
 `02-fysikbibliotek/matematik/main.tex` er den eneste matematiske dokumentindgang. Hvert hovedemne har én kapitelkilde i `chapters/` og kan udbygges med underafsnit eller flere underkapitelkilder via `\input`, uden at der oprettes nye kursusmapper eller parallelle kompendier. Klikbar indholdsfortegnelse og PDF-bogmærker afspejler strukturen. Hovedemnernes rækkefølge er faglig, ikke kursus- eller datobaseret.
 
-Differentialregning er det eksisterende pilotkapitel og bevares. Trigonometri udbygges med et første sammenhængende afsnit; de øvrige hovedemner er fortsat dispositioner. Hvert færdigt afsnit skal have introduktion, definitioner, symboler, centrale formler, egenskaber, gyldighedsbetingelser, begrebsforbindelser og relevante fysikanvendelser og figurer. Den oprindelige trigonometri-disposition er flyttet samlet til et selvstændigt hovedemne. Komplekse tal og kompleks analyse behandles sammen med tydelige underafsnit, så det eksisterende analysestof bevares.
+Differentialregning er det eksisterende pilotkapitel og bevares. Trigonometri udbygges med et første sammenhængende afsnit; integralregning er nu et udviklet kapitel; de resterende hovedemner er fortsat dispositioner. Hvert færdigt afsnit skal have introduktion, definitioner, symboler, centrale formler, egenskaber, gyldighedsbetingelser, begrebsforbindelser og relevante fysikanvendelser og figurer. Den oprindelige trigonometri-disposition er flyttet samlet til et selvstændigt hovedemne. Komplekse tal og kompleks analyse behandles sammen med tydelige underafsnit, så det eksisterende analysestof bevares.
 
 Statistik indgår ikke i matematikkompendiet. Den tidligere, endnu ikke fagligt udfyldte statistikdisposition er fordelt på de eksisterende arbejdsområder i `01-universitetsfag/statistik/`; den indlæses ikke længere af matematikdokumentet. Ingen statistiske noter eller formler er slettet: den gamle kilde indeholdt kun overskrifter og dispositionsmarkører.
 
@@ -51,6 +51,9 @@ Statistik indgår ikke i matematikkompendiet. Den tidligere, endnu ikke fagligt 
 - Substitution, partiel integration og partialbrøker
 - Standardintegraler med gyldighedsbetingelser
 - Uegentlige integraler og parameterintegration
+- Bestemte standardintegraler og specialfunktioner
+- Numerisk integration og dokumenteret fejlkontrol
+- Metodevalg, dimensioner og faglig kontrol
 
 ## 06-raekker · Rækker, konvergens og approksimationer
 
@@ -212,3 +215,7 @@ Dette er en generel matematisk kapitelplan, ikke et KU-kursuskompendium eller en
 ## Leveret første trigonometriudvidelse
 
 Hovedemne 2 har nu et udviklet første afsnit med generelle identiteter, definitionsområder, inverse grene, hyperbolske funktioner og fasefortolkning. Den originale enhedscirkelfigur forbinder projektioner med symboldefinitionerne. Det er selvstændigt biblioteksstof, ikke en import af ukendt kursusmateriale. Resten af kapitlet kan udbygges; de øvrige planlagte hovedemner er ikke automatisk færdige.
+
+## Integralregning leveret i denne indholdsopgave
+
+Kapitel 5 er udbygget med 60 standardintegralidentiteter/-familier, integrationsmetoder, reduktion, konvergens, parameterintegration og numeriske fejlgrænser. Fire originale figurer ledsager den forklarende tekst. Kapitlet er et udviklet første referencekapitel, ikke en erklæring om udtømmende dækning. Næste afgrænsede emne er de ordinære differentialligninger.

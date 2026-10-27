@@ -1,0 +1,20 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{semilogxaxis}[width=.87\textwidth,height=61mm,xmin=1,xmax=10000,
+ ymin=0,ymax=9.8,xlabel={Afskæring $R$},ylabel={Akkumuleret integral},
+ legend style={font=\small,at={(.03,.97)},anchor=north west},samples=130]
+\addplot[arkivrod,thick,domain=1:10000]{ln(x)};
+\addlegendentry{$\int_1^R x^{-1}\dd x=\ln R$}
+\addplot[arkivblaa,thick,domain=1:10000]{1-1/x};
+\addlegendentry{$\int_1^R x^{-2}\dd x=1-1/R$}
+\addplot[black,dotted,domain=1:10000]{1};
+\addlegendentry{Grænseværdi 1 for $p=2$}
+\end{semilogxaxis}
+\end{tikzpicture}
+\caption{To positive modelhaler med integrander, der begge går mod nul.
+Integralet af $x^{-2}$ nærmer sig en endelig grænse, mens integralet af
+$x^{-1}$ vokser logaritmisk. Den vandrette akse er logaritmisk; tilsyneladende
+langsom vækst er ikke konvergens. Størrelserne er dimensionsløse.}
+\label{fig:integral-hale}
+\end{figure}
