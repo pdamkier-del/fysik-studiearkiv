@@ -243,3 +243,21 @@ Hvert underemne får siden: forståelse, regler/formelopslag, gyldighed, metodev
 6. Differentialregning → variationsregning → symmetrier og Noether.
 
 **Afgrænsning:** Et begreb behandles grundigt på ét primært sted; andre steder henvises der til det. Statistik og selvstændige fysikkurser holdes udenfor.
+
+## Fælles kvalitetsstandard for samtlige seks bind
+
+**Gælder alle hoved- og underemner i bind 1–6**, også når de senere udbygges med Codex. Dette er en redaktionel standard, ikke allerede færdigskrevet indhold.
+
+- **Begynd med forståelsen:** Forklar på klart dansk hvad et begreb betyder, hvorfor det indføres, og hvad den matematiske idé er. Introducér nødvendig notation løbende.
+- **Præcis matematik:** Medtag definition, forudsætninger, gyldighedsområde og relevante sætninger. Adskil identiteter, betingede resultater, approksimationer og modeller.
+- **Formelsamling i kapitlerne:** Saml de klassiske regneregler, standardidentiteter, afledte relationer og nyttige omskrivninger dér, hvor de hører hjemme. Supplér med et samlet formel- og emneregister til hurtigt opslag.
+- **Begreber, ikke kun regning:** Giv lige så gode forklaringer af eksempelvis injektiv/surjektiv/bijektiv, konvergens, ortogonalitet, distributioner, tensorer, symmetrier og andre strukturelle begreber, som af konkrete udregninger.
+- **Visualisering:** Brug originale, nøjagtige grafer, geometriske figurer, afbildningsdiagrammer, feltskitser og andre illustrationer, hvor de øger forståelsen. Akser, enheder, fortegn, grænser og figurtekst skal være korrekte. Grafer bør forklare begreberne snarere end pynte.
+- **Metodevalg og anvendelse:** Vis hvornår reglen bruges, hvad man skal kontrollere, typiske fejl og relevante forbindelser til fysik.
+- **Rød tråd:** Henvis naturligt til tidligere begreber og fremtidige bind uden at gentage hele kapitler. Skeln mellem analogier og matematiske identiteter.
+- **Luftigt boglayout:** Undgå tætte tekstvægge og lange uopdelte formelkæder. Brug korte forklarende afsnit, whitespace, klare overskrifter, læsbare tabeller og overskuelige fremhævede resultater.
+- **Kun én kilde:** Redigér eksisterende LaTeX-kapitler som autoritative kilder, kompilér til PDF, kvalitetssikr figurer og krydshenvisninger; undgå separate appendikser, som ikke indarbejdes i kilden.
+- **Afgrænsning:** Matematik fra KU-fag prioriteres i emnevalget, men hele værket må gerne række videre. SymPy-vejledninger er ikke et krav.
+
+### Særligt for bind 1
+Udvid grundlæggende funktionslære med domæne, codomæne, billede, injektivitet, surjektivitet, bijektivitet, inverse funktioner og illustrative afbildningsdiagrammer. Udvid klassiske regneregler med kvadratkomplettering, potens- og brøkregning, binomialformel, summationsnotation, polynomier og uligheder. Tilføj et visuelt atlas for standardfunktioner, graftransformationer og centrale lineær-algebraiske operationer. Disse eksempler er model for formidlingen i alle bind, ikke en særregel kun for bind 1.
