@@ -1,6 +1,6 @@
 # Plan for det samlede matematikkompendium
 
-`00-matematik/main.tex` er den eneste matematiske dokumentindgang. Hvert hovedemne har én kapitelkilde i `chapters/` og kan udbygges med underafsnit eller flere underkapitelkilder via `\input`, uden at der oprettes nye kursusmapper eller parallelle kompendier. Klikbar indholdsfortegnelse og PDF-bogmærker afspejler strukturen. Hovedemnernes rækkefølge er faglig, ikke kursus- eller datobaseret.
+`00-matematik/main.tex` bygger den samlede udgave; `volumes/bind-1.tex` til `bind-6.tex` bygger seks emnebind fra præcis de samme kapitelkilder. Se [bindplanen](BINDPLAN.md) og [underemnerne](ALLE_BIND_UNDEREMNER.md). Hvert hovedemne har én kapitelkilde i `chapters/` og kan udbygges med underafsnit eller flere underkapitelkilder via `\input`, uden at der oprettes nye kursusmapper eller parallelle kompendier. Klikbar indholdsfortegnelse og PDF-bogmærker afspejler strukturen. Hovedemnernes rækkefølge er faglig, ikke kursus- eller datobaseret.
 
 Differentialregning er det eksisterende pilotkapitel og bevares. Trigonometri udbygges med et første sammenhængende afsnit; integralregning er nu et udviklet kapitel; de resterende hovedemner er fortsat dispositioner. Hvert færdigt afsnit skal have introduktion, definitioner, symboler, centrale formler, egenskaber, gyldighedsbetingelser, begrebsforbindelser og relevante fysikanvendelser og figurer. Den oprindelige trigonometri-disposition er flyttet samlet til et selvstændigt hovedemne. Komplekse tal og kompleks analyse behandles sammen med tydelige underafsnit, så det eksisterende analysestof bevares.
 
@@ -225,3 +225,7 @@ Kapitel 5 er udbygget med 60 standardintegralidentiteter/-familier, integrations
 ## Ordinære differentialligninger: udviklet første kapitel
 
 Kapitel 7 er udbygget med lokale eksistens-/entydighedsbetingelser, maksimal fortsættelse, residualestimater, separation og tabte ligevægte, lineære førsteordensmetoder, Bernoulli/exakte former/Riccati, andenordensligninger, dæmpning og resonans, fundamentalmatrix/variation af konstanter samt stabilitet og perturbationsforbehold. Tre originale figurer viser retningsfelt, dæmpningsregimer og faseportrætter. Centrale identiteter og de viste lineære systemer er kontrolleret symbolsk. Kapitlet er et udviklet første referencekapitel; PDE-kapitlet og en udtømmende perturbations-/randværditeori er ikke færdigskrevet.
+
+## Aktuel arbejdsrækkefølge: bind 1
+
+Den seneste opgave prioriterer en systematisk gennemgang af bindene frem for nye infrastrukturlag. De første tre underemner i algebra er udbygget: tal og mængder; potenser, rødder og brøker; polynomier og binomialformlen. De efterfølgende eksisterende afsnit bevares, men er ikke dermed gennemarbejdet efter alle syv faglige krav. Næste trin er ligninger og kvadratkomplettering, derefter uligheder/absolutværdi og partialbrøker i underemneplanens rækkefølge. Den uddybende bindplan samler visse grundbegreber tidligere; den kræver ikke en ny parallel behandling af dem.

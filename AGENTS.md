@@ -23,7 +23,7 @@
 - Spørg ikke om gentagen godkendelse af allerede aftalte tekniske standarder.
 
 ## Tre hovedområder (seneste brugerbeslutning)
-- `00-matematik/` er matematik som selvstændigt hovedområde, ikke en undermappe af fysikbiblioteket. Bevar ét LaTeX-dokument med de eksisterende 21 hovedemner, forklaringer, notation, figurer, klikbar indholdsfortegnelse og PDF-bogmærker. MatF1, MatF2, LinALys og Algebra integreres efter emner, ikke som selvstændige kursusmapper eller kompendier. Gæt ikke præcise kursusidentiteter eller referenceækvivalenser.
+- `00-matematik/` er matematik som selvstændigt hovedområde, ikke en undermappe af fysikbiblioteket. Bevar ét sammenhængende referenceværk med 21 hovedemner, én samlet udgave (`main.tex`) og seks bindindgange (`volumes/bind-1.tex` til `bind-6.tex`). Hvert kapitel har kun én autoritativ kilde, delt af bind og samlet udgave. Bevar forklaringer, notation, figurer, klikbar indholdsfortegnelse og PDF-bogmærker. MatF1, MatF2, LinALys og Algebra integreres efter emner, ikke som selvstændige kursusmapper eller kompendier. Gæt ikke præcise kursusidentiteter eller referenceækvivalenser.
 - `01-universitetsfag/` indeholder aktuelt kun Analytisk Mekanik og Elektromagnetisme. Bevar adskilte formelsamlinger, udledningsnoter, opgavenoter og opgavesamlinger samt originale referenceversioner, forelæsningsnoter og eksamensmateriale. Tilføj kun senere kursusmapper, når faktisk kursusdeltagelse er dokumenteret.
 - `02-fysikbibliotek/` indeholder brede generelle referencekompendier. Termodynamik og Statistik ligger her, ikke under universitetsfag. Statistik bruger Roger Barlow som hovedreference med selvstændig dansk tekst og verificeret notation/struktur, når bogen foreligger. Hold statistisk metode, statistisk fysik og matematik fagligt adskilt.
 - Den tidligere termodynamikplan er kildegrundlag, ikke bibliotekets endelige afgrænsning. `Kursusplan_Termodynamik_2026.pdf` er autoritativ for det historiske gennemgåede stof, når filen kan læses. Udvidelser ud over denne afgrænsning markeres som generelt bibliotek, ikke som gennemgået pensum.
@@ -44,3 +44,10 @@
 - Ved migration bruges `git mv`; bevar matematik, figurer, originaler og tests. Opdater imports, builds, manifests, teststier, dokumentlinks og fremtidige Drive-destinationer. Kør alle PDF-builds, sikkerhedstests og link-/referencekontroller. Bevar stabile Drive-fil-id’er, publiceringsnøgler og deaktiveret publicering; foretag ingen automatiske Drive-flytninger.
 
 - Drive-mapper og PDF-id’er registreret i `config/drive-targets.json` er brugeroplyste og ikke API-verificerede. Matematik-PDF’en ligger direkte under `00 Matematik`; øvrige mål følger hovedområde/fag. Aktivér ikke publicering, og overskriv, slet eller flyt ingen eksisterende Drive-filer under denne opgave. Bevar fil-id’er og links; ingen dubletter.
+
+## Systematisk faglig udfyldning af matematikbindene
+- Seneste beslutning om seks bind har forrang for ældre krav om kun én PDF-indgang; der oprettes ingen parallelle kapitelkilder eller kursusbøger.
+- Følg `00-matematik/ALLE_BIND_UNDEREMNER.md` og den uddybende `BINDPLAN.md`. Arbejd kronologisk fra bind 1. Gå først til næste bind, når det foregående er fagligt og teknisk gennemarbejdet.
+- Hvert underemne skal have intuition, præcis definition med betingelser, udledning af centrale formler, formelopslag, metodevalg, fysisk anvendelse og naturlige forbindelser i værket. Bevar eksisterende gennemarbejdet indhold.
+- Brug original TikZ/PGFPlots, hvor det forklarer matematikken. Tilføj ikke SymPy-afsnit, programmeringsvejledninger eller gennemregnede opgaveeksempler.
+- Arbejd på en særskilt branch fra `feat/studiearkiv-fundament` med konkrete indholdscommits. Kompilér det berørte bind og den samlede udgave; kontrollér nye sider visuelt. Skeln mellem gennemarbejdede underemner og blot eksisterende overskrifter.

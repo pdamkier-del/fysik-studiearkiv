@@ -30,4 +30,4 @@ alle-bind: $(addprefix bind-,$(BIND_NUMRE))
 $(addprefix bind-,$(BIND_NUMRE)): bind-%:
 	mkdir -p build/00-matematik/bind-$*
 	latexmk -lualatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build/00-matematik/bind-$* 00-matematik/volumes/bind-$*.tex
-	python3 scripts/check_pdf.py build/00-matematik/bind-$*/bind-$*.pdf build/00-matematik/bind-$*/bind-$*.log
+	python3 scripts/check_pdf.py build/00-matematik/bind-$*/bind-$*.pdf build/00-matematik/bind-$*/bind-$*.log --bind $*

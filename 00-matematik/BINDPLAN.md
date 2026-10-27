@@ -1,6 +1,6 @@
 # Plan: matematik i seks bind og én samlet udgave
 
-**Status (27. oktober 2026):** Seks separate LaTeX-indgange er oprettet under `volumes/`, og `Makefile` har mål for bind 1–6. Kildekapitler og den samlede PDF-indgang er bevaret. Bind-builds er **ikke endnu kørt eller godkendt**, og tværbindshenvisninger kræver kontrol. Ingen Drive-filer er ændret.
+**Status (27. oktober 2026):** Seks bindindgange og den samlede udgave genbruger de samme 21 kapitelkilder. Alle seks bind er nu kompileret og har bestået log-, navigations- og emnekontrol. Bind 1 har fået de første tre underemner gennemarbejdet og de berørte sider gennemgået visuelt. Det er **ikke** en faglig færdigmelding af bind 1 eller af de øvrige bind. Ingen Drive-filer er ændret. Aktuel evidens og næste emne står i [STATUS.md](../STATUS.md).
 
 ## Bind og eksisterende kapitelkilder
 
@@ -15,12 +15,12 @@
 
 Ovenstående dækker samtlige 21 kapitler præcis én gang. Rækkefølgen er en redaktionel læseinddeling og ændrer ikke den samlede bogs indholdsfortegnelse.
 
-## Teknisk status og manglende validering
+## Teknisk status og fortsat validering
 
 - Bevar `00-matematik/chapters/*.tex` som **eneste kilde** for hvert kapitel.
 - **Udført:** `volumes/bind-1.tex` til `bind-6.tex` inkluderer de eksisterende kapitelkilder uden kopier.
 - Genbrug samme fælles typografi, makroer og hyperref-opsætning.
-- **Udført i Makefile, endnu ikke kørt:** `make bind-1` ... `make bind-6` og `make alle-bind`; `make pdf` bevares som samlet udgave.
+- **Kørt og lokalt kontrolleret:** `make bind-1` ... `make bind-6` og `make alle-bind`; `make pdf` bevares som samlet udgave.
 - Opbevar hver PDF i et separat build-output, og valider bogmærker, indholdsfortegnelse, figurer, links og referencer.
 - Revider tværbindsreferencer eksplicit. En reference til en udeladt label må ikke bare blive '??'; brug enten en kort tekstlig henvisning med bind og kapitel eller et verificeret eksternt PDF-link.
 - Udgiv ikke bindene i Google Drive, før mål-id'er, godkendelse og særskilt publicering er verificeret.
@@ -29,7 +29,7 @@ Ovenstående dækker samtlige 21 kapitler præcis én gang. Rækkefølgen er en 
 
 ## Indholdsstatus
 
-Et bind må ikke betegnes som færdiggjort blot fordi kapitlets fil er oprettet. Lineær algebra blev udbygget 27. oktober 2026 med definitioner og formelstof om baser, lineære afbildninger, rang, spektralteori og SVD. Kapitlet og bindene afventer kompilering, visuel kontrol og illustrationer. Der må ikke påstås grøn build ud fra blot oprettede kildefiler.
+Et bind må ikke betegnes som færdiggjort blot fordi kapitlets fil er oprettet. Lineær algebra blev udbygget 27. oktober 2026 med definitioner og formelstof om baser, lineære afbildninger, rang, spektralteori og SVD. Den tidligere lineære algebraudvidelse er nu kompileret i bind 1 og den samlede udgave; den systematiske faglige og visuelle gennemgang af alle dens underemner afventer fortsat. Der må ikke påstås grøn build ud fra blot oprettede kildefiler.
 
 ## Bind 1 – første faglige udbygning 27. oktober 2026
 
@@ -37,7 +37,7 @@ Et bind må ikke betegnes som færdiggjort blot fordi kapitlets fil er oprettet.
 - `figures/algebra-eksplog.tex` er en ny original PGFPlots-figur, indsat i kapitlet.
 - `chapters/02-trigonometri.tex` har fået erstattet henvisninger, der pegede på afsnit uden for bind 1, med tekstlige krydsbindshenvisninger.
 - `chapters/09-lineaer-algebra.tex` indeholder den tidligere udvidelse om vektorrum, baser, egenværdier, SVD mv.
-- **Kontrol mangler:** De nye kilder er skrevet til GitHub, men det nye bind er ikke kompilations- eller layoutgodkendt i denne omgang. Krydsreferencer og figurer skal kontrolleres ved `make bind-1` og `make pdf` før publicering.
+- **Historisk kontrolstatus ved oprettelsen:** Kilderne blev først skrevet uden kompilering. Den senere kontrol nedenfor erstatter denne tekniske blokering; publicering er fortsat deaktiveret.
 
 ## Redaktionelt princip: én rød tråd gennem alle seks bind
 
@@ -95,3 +95,11 @@ Dette princip gælder også for senere fysiknoter. Kursusnoterne i AM og EM forb
 - **Visualisér:** originale figurer, når de giver faglig forståelse, frem for pynt.
 
 **Afgrænsning:** Egentlig differential- og integralregning ligger i bind 2; ODE/PDE i bind 3; kompleks analyse, Fourier, specialfunktioner i bind 4; tensorer og geometri i bind 5; variationsregning og symmetrier i bind 6. Gentag kun det, der er nødvendigt for et selvstændigt opslag.
+
+## Systematisk indholdsarbejde: første tre underemner
+
+På `feat/matematik-bind1-fagindhold` fra `e4e4d1b` er de første tre underemner udbygget i den eksisterende algebrafil: tal og mængder; potenser/rødder/brøker; polynomier/binomialformel. De har intuition, definitioner og betingelser, udledninger, formelopslag, metodevalg, fysikforbindelser og lokale eller tekstlige krydsbindshenvisninger. To originale figurer viser intervalendepunkter og rodmultiplicitet. De oprindelige efterfølgende afsnit er bevaret.
+
+Bind 1 har underafsnit i både indholdsfortegnelsen og bogmærkerne. PDF-kontrollen skelner nu mellem indholdet af hvert bind og hele værket; den samme kontrol af overfyldte bokse, tegn og uløste referencer gælder stadig.
+
+**Næste indhold:** Ligninger og kvadratkomplettering, derefter uligheder/absolutværdi og partialbrøker, før resten af algebraen. En vellykket kompilering gør ikke disse eksisterende korte afsnit færdigskrevne. Der er ikke gået videre med nyt indhold i bind 2–6.

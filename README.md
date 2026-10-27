@@ -3,8 +3,8 @@
 Et langsigtet dansk studiearkiv med tre selvstændige hovedområder. GitHub bevarer LaTeX, noter og figurer; Google Drive er læse- og publiceringssted for færdige, godkendte PDF'er. Repositoryet følger brugerens oplyste hovedopdeling i Drive uden at flytte eller overskrive filer dér.
 
 ```text
-00-matematik/              # ét samlet kompendium med 21 hovedemner
-  main.tex, chapters/, figures/, PLAN.md
+00-matematik/              # samlet værk med 21 hovedemner og seks bind
+  main.tex, volumes/, chapters/, figures/, PLAN.md
 01-universitetsfag/        # kun aktuelle kursusnoter
   analytisk-mekanik/
   elektromagnetisme/
@@ -26,7 +26,7 @@ Et langsigtet dansk studiearkiv med tre selvstændige hovedområder. GitHub beva
 config/, scripts/, tests/, docs/
 ```
 
-[Matematik](00-matematik/README.md) er et selvstændigt hovedområde med ét generelt LaTeX-kompendium, omfattende forklaringer, formler, udledninger og originale figurer. MatF1, MatF2, LinALys og Algebra integreres efter matematiske emner, ikke som separate kursusmapper eller PDF'er. Præcise ukendte kursusreferencer gættes ikke.
+[Matematik](00-matematik/README.md) er et selvstændigt hovedområde med ét generelt LaTeX-referenceværk i seks bind og én samlet udgave fra samme kapitelkilder, omfattende forklaringer, formler, udledninger og originale figurer. MatF1, MatF2, LinALys og Algebra integreres efter matematiske emner, ikke som separate kursusmapper eller PDF'er. Præcise ukendte kursusreferencer gættes ikke.
 
 [Universitetsfag](01-universitetsfag/README.md) indeholder kun AM og EM med separate formelsamlinger, udledningsnoter, opgavenoter og opgavesamlinger samt pladser til forelæsningsnoter, eksamensmateriale og uændrede originaler. Nye fag oprettes først efter dokumentation for faktisk kursusdeltagelse. Eksisterende AM-/EM-originaler importeres kun, når de kan læses, og bevares uændret som referencer.
 
@@ -42,6 +42,8 @@ Kør fra repositoryets rod med LuaLaTeX, latexmk, dansk Babel-orddeling, Latin M
 
 ```sh
 make check              # samlet matematik-PDF og navigations-/logkontrol
+make bind-1             # første bind fra de samme kapitelkilder
+make alle-bind          # alle seks bind med egne indholds-/PDF-kontroller
 make statistik          # eksisterende statistikstruktur i fysikbiblioteket
 make templates          # alle 20 oprindelige skabelonbuilds
 make repository-check   # lokale links, LaTeX-imports og referencer
@@ -81,3 +83,7 @@ Publicering er fortsat deaktiveret. Ingen eksisterende Drive-filer er ændret el
 21. Gruppeteori og symmetrier
 
 Alle 21 hovedemner samles i én PDF med underafsnit, klikbar indholdsfortegnelse og PDF-bogmærker. Integralregning er udbygget til et gennemarbejdet kapitel, og arbejdet med ordinære differentialligninger fortsætter på den nye sti. Det allerede udviklede differential- og trigonometriske indhold bevares. Se [PLAN.md](00-matematik/PLAN.md) og [kilderegisteret](99-kilder-og-pensum/README.md). Kvalitet styrer omfanget; 200–400 sider er et langsigtet mål, ikke et fyldkrav.
+
+## Aktuelt matematikarbejde
+
+Følg [bindplanen](00-matematik/BINDPLAN.md) og [underemneplanen](00-matematik/ALLE_BIND_UNDEREMNER.md). Indhold udbygges kronologisk fra bind 1 med forklaringer, definitioner, udledninger, formelopslag, metodevalg, fysik og krydshenvisninger. De første tre algebraemner er udbygget; resten af bind 1 og de senere bind er fortsat under udvikling. Faktisk kontrolstatus står i [STATUS.md](STATUS.md).
