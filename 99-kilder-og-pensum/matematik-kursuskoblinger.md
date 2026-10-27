@@ -12,7 +12,7 @@ LinALys og den tidligere Matematik F 2026-post har de allerede registrerede kild
 | --- | --- | --- |
 | LinALys: komplekse tal, følger, 1-variabel analyse, Taylor | Bind 1 (algebraiske forudsætninger), bind 2 (analyse), bind 4 (komplekse tal) | Dækket i plan på emneniveau |
 | LinALys: simple ODE; flervariabel kontinuitet, topologi, differentiabilitet og betingede ekstrema | Bind 2 (flervariabel), bind 3 (ODE) | Topologi på R^n, niveaukurver og tangentplaner bør ekspliciteres i bind 2 |
-| LinALys: Gauss, matrixregning, determinant, reelle/komplekse vektorrum, indre produkt, spektralsætning, Gram-Schmidt | Bind 1 | Dækket i plan; eksplicit SymPy til kontrol af matrix-/funktionsregning bør tilføjes som metodeboks |
+| LinALys: Gauss, matrixregning, determinant, reelle/komplekse vektorrum, indre produkt, spektralsætning, Gram-Schmidt | Bind 1 | Dækket i plan; metodeafsnit skal kunne bruges uden symbolsk software |
 | MatF: skalar-/vektorfelter, linje-/flade-/rumsintegraler, Gauss/Green/Stokes | Bind 5 | Dækket i plan |
 | MatF: koordinater (kartesisk, polær, sfærisk), kontinuitetsligning, Bernoulli, strømninger og Laplacefelter | Bind 5 | **Tilføj eksplicit kontinuitetsligning, Bernoulli og strømningsfelter som fysikbro i vektoranalysen** |
 | MatF: Hilbertrum, egenfunktioner, Sturm-Liouville, Fourierrækker/-transformation og numerisk Fourier | Bind 3 (spektral/SL), bind 4 (Fourier/numerik) | **Eksplicit Hilbertrumsgrundlag, numerisk DFT/FFT og tids-/frekvensdomæne** i dispositionen |
