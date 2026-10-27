@@ -1,4 +1,38 @@
-# Faktisk projektstatus
+# Aktuel projektstatus
+
+## Seneste arbejde: systematisk bind 1, 27. oktober 2026
+
+**Arbejdsbranch:** `feat/matematik-bind1-fagindhold`, oprettet fra `feat/studiearkiv-fundament` ved `e4e4d1b`. Det tidligere arbejde er hentet ved fast-forward og bevaret. Indholdet er gemt i `8cbaae5`; den nødvendige bindkontrol i `a6c10a3`. De ældre statusafsnit nedenfor er historik; dette afsnit har forrang ved modstridende antal sider og dokumentindgange.
+
+### Implementeret fagligt indhold
+
+De første tre underemner er gennemarbejdet i den fælles kilde `00-matematik/chapters/01-algebra.tex`:
+
+1. **Tal og mængder:** talområder og konventioner, lukkethed og fuldstændighed, mængder og kvantorer, logiske betingelser, operationer og De Morgan, intervaller, produktmængder, definitionsmængder og reversible omskrivninger. Fysikbro til energitilladte positioner og diskrete besættelsestal.
+2. **Potenser, rødder og brøker:** heltallige/rationale/reelle eksponenter med betingelser, rodgrene og absolutværdi, forkortning/fællesnævner, rationalisering, metodevalg, dimensionskontrol og fysiske skaleringer.
+3. **Polynomier og binomialformlen:** grad og koefficienter, standardidentiteter med udledninger, endelige geometriske summer, binomialkoefficienter, polynomiumsdivision og entydighed, restsætning/faktorsætning, multiplicitet og konjugerede rødder. Fundamentalsætningen er udtrykkeligt anført uden bevis. Fysikbro til potentialsymmetri og karakteristiske polynomier.
+
+Alle tre har forklaringer, definitioner, formelopslag, udledninger, metodevalg og forbindelser til resten af værket. To nye originale TikZ/PGFPlots-figurer viser intervalendepunkter og fortegn ved rodmultiplicitet. Den visuelle kontrol opdagede og rettede en farveindstillingsfejl, der først gjorde åbne intervalpunkter fyldte. Eksisterende fagligt indhold er bevaret; der er ingen gennemregnede opgaveeksempler, SymPy-afsnit eller programmeringsvejledninger.
+
+### Lokalt verificeret
+
+- Alle seks bind kompilerer og består emne-, log-, bogmærke- og linkkontrol (`make alle-bind`). De senere bind indeholder fortsat mange dispositioner: build er ikke faglig godkendelse.
+- Bind 1: 29 sider, 60 bogmærker og 65 links. Underafsnit er klikbare i indholdsfortegnelse og bogmærker. Titelbladets sammenløbne bundtekst er rettet. De ændrede algebrasider, figurer, titelblad og indholdsfortegnelse er renderet og visuelt gennemgået.
+- Samlet udgave: 79 sider, 136 bogmærker og 151 links. Ingen overfyldte bokse, manglende tegn eller uafklarede referencer i de kontrollerede PDF-logs. Sideantallet er en observation, ikke et kvalitetsmål.
+- PDF-kontrollen havde tidligere kun krav for hele værket, som fejlagtigt afviste bindene. `--bind N` vælger nu relevante emner og minimumskrav til navigation. Den oprindelige kontrol af den samlede udgave er bevaret. Negative kontroller afviser forkert bind, indsat overfull-advarsel og fjernede bogmærker.
+- De nye udledninger er matematisk gennemlæst med kontrol af nul, fortegn, nævnere, eksponentkonventioner, multiplicitet og enheder. Eksakte supplerende stikprøver består: 512 tripler af delmængder, 1.944 binomial-/potensforskelidentiteter og brøkregning med positive/negative tællere og ikke-nul nævnere. Stikprøver er ikke et formelt generelt bevis.
+- `make publication-check` består: samlet matematik, statistikstrukturen på 9 sider, kilde-/reference- og linkkontrol, alle 15 eksisterende sikkerhedstests samt syntetisk offline-publiceringsplan. `check_repository.py --require-drive-disabled` bekræfter deaktiveret godkendelse. Ingen Google API-kald eller Drive-ændringer er foretaget.
+- Fælles typografipakke og fysikkilder er uændrede. De 20 fysikskabelonbuilds er ikke genkørt i denne indholdsopgave; tidligere kontrol står nedenfor. GitHub-hostet CI er ikke verificeret her.
+
+### Planlagt og næste trin
+
+Bind 1 er **ikke færdigt**. Næste underemne er ligninger og kvadratkomplettering, efterfulgt af uligheder/absolutværdi, partialbrøker, funktioner/inverser og eksponential-/logaritmefunktioner. Bevar og udbyg de eksisterende afsnit frem for dubletter. Derefter følger trigonometri og den systematiske gennemgang af lineær algebra. Bind 2–6 skal først udbygges videre efter faglig og teknisk gennemarbejdning af bind 1.
+
+Den seneste beslutning er seks bind og én samlet udgave fra samme 21 kapitelkilder. Ældre udsagn om kun én dokumentindgang er erstattet i regler og planer; separate kursuskompendier oprettes stadig ikke. Pensumafgrænsninger og kildestatus er ikke ændret af den generelle algebraudvidelse. Drive-publicering er fortsat deaktiveret.
+
+---
+
+# Historisk status før bindarbejdet
 
 Opdateret 27. oktober 2026. Arbejdet fortsætter på `feat/studiearkiv-fundament`; integralregning blev leveret i `0ce2b53` efter `07a092a`. Seneste brugerbeslutning om tre hovedområder erstatter den tidligere todeling. [ROADMAP.md](ROADMAP.md) er plan; [PENSUM.md](PENSUM.md) og [kilderegisteret](99-kilder-og-pensum/README.md) angiver dokumentationsstatus.
 

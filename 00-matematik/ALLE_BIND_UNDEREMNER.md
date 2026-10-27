@@ -1,8 +1,8 @@
 # Samlet underemneplan – seks bind
 
-**Status:** Disposition til godkendelse, ikke påstand om færdigskrevet indhold. 21 hovedkapitler bevares.
+**Status:** Arbejdsdisposition for systematisk udfyldning; de 21 hovedkapitler bevares. Første tre underemner i bind 1 er nu udbygget og lokalt kontrolleret. Resten af listen er ikke dermed færdigskrevet; se [status](../STATUS.md).
 
-Hvert underemne får siden: forståelse, regler/formelopslag, gyldighed, metodevalg, figurer, fysikanvendelse og naturlige krydshenvisninger.
+Hvert underemne skal have: forståelse, regler/formelopslag, gyldighed, metodevalg, figurer, fysikanvendelse og naturlige krydshenvisninger.
 
 ## Bind 1 – Algebra og lineær algebra
 

@@ -1,10 +1,10 @@
 # Faglig udviklingsplan
 
-Projektet har to selvstændige hovedområder. Faktisk status står i [STATUS.md](STATUS.md); universiteternes dokumenterede kilder og afgrænsninger i [PENSUM.md](PENSUM.md). Mapper, planer og skabeloner tæller ikke som færdige fag.
+Projektet har tre selvstændige hovedområder. Faktisk status står i [STATUS.md](STATUS.md); universiteternes dokumenterede kilder og afgrænsninger i [PENSUM.md](PENSUM.md). Mapper, planer og skabeloner tæller ikke som færdige fag.
 
 ## Tre selvstændige hovedområder
 
-1. `00-matematik/`: ét samlet matematisk kompendium med 21 hovedemner. MatF1, MatF2, LinALys og Algebra integreres efter emner; ingen separate kursuskompendier eller mapper. Præcise ukendte kursusreferencer afventer dokumentation.
+1. `00-matematik/`: ét sammenhængende matematisk referenceværk med 21 hovedemner, seks bind og én samlet udgave fra fælles kapitelkilder. MatF1, MatF2, LinALys og Algebra integreres efter emner; ingen separate kursuskompendier eller mapper. Præcise ukendte kursusreferencer afventer dokumentation.
 2. `01-universitetsfag/`: kun aktuelle AM- og EM-kursusnoter med separate dokumenttyper. Nye kurser tilføjes først ved faktisk deltagelse og dokumentation. Originale formelsamlinger bevares uændret før integration.
 3. `02-fysikbibliotek/`: brede referencekompendier i klassisk mekanik, EM, termodynamik, statistisk fysik, statistik, kvantemekanik, relativitet/gravitation og de øvrige allerede planlagte fysikområder. Matematik ligger ikke her. Øvrige kompendier udfyldes ikke automatisk.
 
@@ -14,7 +14,7 @@ Det fælles kilderegister ligger i `99-kilder-og-pensum/`. Aktuelle kursusnoter 
 
 ## Matematikkompendiet
 
-Følg [bibliotekets egen hovedemneplan](00-matematik/PLAN.md). Bevar det eksisterende pilotkapitel om differentialregning. Trigonometri har nu et sammenhængende første afsnit og en faglig figur og kan udbygges videre; de øvrige hovedemner udvikles ét ad gangen. Langsigtet mål er 200–400 sider, men korrekthed og læsbarhed bestemmer omfanget. Ingen gennemregnede opgaveeksempler.
+Følg [bibliotekets egen hovedemneplan](00-matematik/PLAN.md). Bevar det eksisterende pilotkapitel om differentialregning. Trigonometri har nu et sammenhængende første afsnit og en faglig figur og kan udbygges videre; de øvrige hovedemner udvikles ét ad gangen. Korrekthed, forståelse og anvendelighed bestemmer omfanget; tidligere sidetalsmål er ikke et acceptkriterium. Ingen gennemregnede opgaveeksempler.
 
 Greenfunktioner, Sturm–Liouville, konvergens/asymptotik, krumme koordinater, tensorer og differentialgeometri kræver særligt grundige introduktioner. Bevar GR-planens geometriske illustrationsprogram. Et eventuelt senere numerisk fysikkompendium fokuserer på fysiske modeller og beregninger med henvisning til den generelle numeriske matematik uden dubletter.
 
@@ -31,4 +31,4 @@ Det eksisterende matematikmateriale på Drive skal læses og bevares før import
 
 ## Seneste prioritet
 
-Efter denne migration fortsættes integralregnings-/ODE-arbejdet under `00-matematik/`. Integralregning er leveret i et separat indholdscommit; ODE er derefter udbygget og gennemgået i et selvstændigt indholdstrin. Ingen Drive-publicering aktiveres.
+Udbyg matematikbindene systematisk fra bind 1 på en separat arbejdsbranch. Følg [underemnerne](00-matematik/ALLE_BIND_UNDEREMNER.md) og den uddybende [bindplan](00-matematik/BINDPLAN.md). De første tre algebraemner er udbygget; fortsæt med ligninger, uligheder og partialbrøker før de øvrige emner. Bevar tidligere integral-, differential- og ODE-indhold. Gå først videre til næste bind, når bind 1 er fagligt og teknisk gennemarbejdet. Sidetal er ikke et leverancekriterium. Ingen Drive-publicering aktiveres.

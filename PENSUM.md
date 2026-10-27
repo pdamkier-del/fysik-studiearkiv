@@ -40,6 +40,6 @@ AM-formelsamlingens og det eksisterende matematikkompendiums Drive-links er regi
 
 ## Arkitekturgrænse og nye kursusbetegnelser
 
-Kun AM og EM har aktuelle kursusmapper under universitetsfag. Termodynamik og Statistik er nu generelle referenceområder i fysikbiblioteket; de historiske kursuskilder bevares uden at begrænse bibliotekets endelige bredde. Matematik har eget hovedområde med ét kompendium.
+Kun AM og EM har aktuelle kursusmapper under universitetsfag. Termodynamik og Statistik er nu generelle referenceområder i fysikbiblioteket; de historiske kursuskilder bevares uden at begrænse bibliotekets endelige bredde. Matematik har eget hovedområde med ét sammenhængende referenceværk, seks bind og én samlet udgave fra samme kapitelkilder. Bindopdelingen ændrer ikke nogen pensumafgrænsning.
 
 Brugeren har desuden nævnt MatF1, MatF2 og Algebra som bidrag til matematikken. Der er endnu ikke tilstrækkelig dokumentation til præcise nye kursuskoder, årgange, sider eller en ækvivalens med den tidligere Matematik F 2026-post. Disse oplysninger gættes ikke. Se [kursuskoblingerne](99-kilder-og-pensum/matematik-kursuskoblinger.md). Alle eksisterende FV-/EMM-afgrænsninger bevares præcist.
