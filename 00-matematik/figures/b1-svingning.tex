@@ -1,0 +1,14 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=.80\textwidth,height=5.1cm,axis lines=middle,
+ xmin=-.4,xmax=7,ymin=-2.6,ymax=2.7,xlabel={$\tau=\omega t$},ylabel={$x$},
+ xtick={0,1.0472,6.2832},xticklabels={$0$,$\delta$,$2\pi$},ytick={-2,2},
+ yticklabels={$-R$,$R$},samples=120]
+\addplot[black!50,dashed,domain=0:6.6] {2*cos(deg(x))};
+\addplot[arkivblaa,domain=0:6.6] {2*cos(deg(x-pi/3))};
+\draw[<->,arkivblaa] (axis cs:0,2.35)--(axis cs:1.0472,2.35);
+\end{axis}\end{tikzpicture}
+\caption{Faseforskydning af $R\cos\tau$ (stiplet) til $R\cos(\tau-\delta)$ (blå), tegnet med $\delta=\pi/3$. Positiv $\delta$ flytter maksimum mod højre. $\tau$ er dimensionsløs; $x$ måles i samme enhed som amplituden $R$.}
+\label{fig:b1-svingning}
+\end{figure}

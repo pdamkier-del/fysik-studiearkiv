@@ -1,173 +1,195 @@
 \chapter{Trigonometri}
 \label{ch:trigonometri}
-\begin{quote}
-\small\sffamily\color{arkivblaa}
-Første udviklede afsnit i et generelt referencekapitel. Grunddefinitioner,
-centrale identiteter, inverse grene og hyperbolske funktioner behandles nedenfor.
-Udvidet identitetsoversigt og yderligere geometriske forbindelser er fortsat planlagt.
-\end{quote}
-Trigonometri forbinder vinkler, periodiske funktioner og geometri. I fysik
-bruges de samme funktioner til projektioner, rotationer, svingninger og bølger.
-Det er derfor nyttigt at forstå deres definitionsområder og fortegn sammen
-med formlerne. Dette biblioteksafsnit er ikke en angivelse af pensum for et
-bestemt universitetskursus.
+Trigonometri forbinder vinkler med projektioner, rotationer og periodisk
+bevægelse. De samme regler beskriver bølger, svingninger og komplekse faser.
+Alle argumenter nedenfor er i radianer, medmindre andet er angivet.
 
-\section{Trigonometriske identiteter og hyperbolske funktioner}
+\section{Vinkler, enhedscirkel og standardfunktioner}
 \label{sec:trigonometri}
-\subsection{Radianer og enhedscirklen}
-En orienteret vinkel $\theta$ måles i radianer som buelængden $s$ divideret
-med cirklens radius $r>0$: $\theta=s/r$. En positiv vinkel løber mod uret
-med den sædvanlige orientering af planen. En hel omdrejning er $2\pi$
-radianer. I SI er vinklen dimensionsløs, men betegnelsen rad hjælper med
-at skelne vinkler fra andre dimensionsløse størrelser. Gradtal skal omregnes
-før brug i afledte, Taylorudviklinger og faseudtryk.
+\subsection{Radianer og projektioner}
+En orienteret vinkel er buelængde divideret med radius: $\theta=s/r$,
+$r>0$. Positiv retning er mod uret. Vinklen er dimensionsløs i SI;
+rad markerer, at størrelsen er en vinkel.
+\formel{eq:b1-cirkel}{Enhedscirkel og radianer}{\begin{gathered}
+2\pi\ \mathrm{rad}=360^\circ,\qquad
+\theta_{\mathrm{rad}}=\frac{\pi}{180^\circ}\theta_{\mathrm{grad}},\\
+P(\theta)=(\cos\theta,\sin\theta),\qquad
+\cos^2\theta+\sin^2\theta=1.
+\end{gathered}}
+Koordinater har fortegn; de er ikke altid positive længder.
+Cirkelligningen giver identiteten. Spejling i $x$-aksen viser, at cosinus
+er lige og sinus ulige. En omdrejning giver perioden $2\pi$.
 
-På enhedscirklen defineres koordinaterne til punktet med vinkel $\theta$ som
-\[
- P(\theta)=(\cos\theta,\sin\theta).
-\]
-Definitionen gælder alle reelle vinkler, også når punktet ligger uden for
-første kvadrant. Fortegnene er koordinaternes fortegn, ikke længdernes:
-en projektion kan være negativ. Figur~\ref{fig:enhedscirkel} viser geometrien
-for en positiv vinkel i første kvadrant. Cirkelligningen giver straks
-\[
- \cos^2\theta+\sin^2\theta=1.
-\]
-Det samme punkt nås efter en hel omdrejning, mens spejling i $x$-aksen
-vender vinklens fortegn. Dermed er sinus og cosinus $2\pi$-periodiske,
-cosinus er lige og sinus ulige:
-\[
- \cos(-\theta)=\cos\theta,\qquad
- \sin(-\theta)=-\sin\theta.
-\]
 \input{00-matematik/figures/enhedscirkel.tex}
 
-Tangens og cotangens er kvotienter af projektionerne:
-\[
- \tan\theta=\frac{\sin\theta}{\cos\theta},\qquad
- \cot\theta=\frac{\cos\theta}{\sin\theta}.
-\]
-For tangens kræves $\cos\theta\ne0$, altså
-$\theta\ne\pi/2+k\pi$ for $k\in\mathbb{Z}$. For cotangens kræves
-$\sin\theta\ne0$, altså $\theta\ne k\pi$. Begge er $\pi$-periodiske på
-deres definitionsmængder. En identitet mellem kvotienter gælder kun dér,
-hvor de oprindelige nævnere er forskellige fra nul.
+\formel{eq:b1-tan}{Tangens, cotangens og paritet}{\begin{gathered}
+\tan\theta=\frac{\sin\theta}{\cos\theta}\quad(\cos\theta\ne0),\qquad
+\cot\theta=\frac{\cos\theta}{\sin\theta}\quad(\sin\theta\ne0),\\
+\sin(-\theta)=-\sin\theta,\quad\cos(-\theta)=\cos\theta,\\
+\tan(-\theta)=-\tan\theta,\qquad1+\tan^2\theta=\frac1{\cos^2\theta}.
+\end{gathered}}
+Tangens og cotangens har periode $\pi$ på deres domæner. Tangens er
+udefineret ved $\pi/2+k\pi$; cotangens ved $k\pi$, $k\in\mathbb Z$.
+Sidste identitet gælder kun, hvor tangens er defineret.
 
-\subsection{Addition, dobbeltvinkler og produkter}
-Addition af vinkler svarer geometrisk til sammensætning af rotationer.
-Dette ligger bag additionsformlerne: to lokale projektionsretninger skal
-kombineres, når koordinatsystemet roteres. For alle reelle $\alpha,\beta$
-gælder følgende identiteter:
-\begin{align*}
- \sin(\alpha\pm\beta)&=\sin\alpha\cos\beta\pm\cos\alpha\sin\beta,\\
- \cos(\alpha\pm\beta)&=\cos\alpha\cos\beta\mp\sin\alpha\sin\beta,\\
- \sin(2\alpha)&=2\sin\alpha\cos\alpha,\\
- \cos(2\alpha)&=\cos^2\alpha-\sin^2\alpha
-               =2\cos^2\alpha-1=1-2\sin^2\alpha.
-\end{align*}
-I de to første linjer vælges øverste eller nederste fortegn konsekvent.
-Dobbeltvinkelformlerne følger ved at sætte $\beta=\alpha$ i
-additionsformlerne. De giver også halv-vinkelrelationerne
-\[
- \sin^2\frac{\alpha}{2}=\frac{1-\cos\alpha}{2},\qquad
- \cos^2\frac{\alpha}{2}=\frac{1+\cos\alpha}{2}.
-\]
-Kvadraterne er entydige; ved kvadratrodsudtrækning skal fortegnet vælges
-ud fra halvvinklens kvadrant. En positiv kvadratrod giver ikke automatisk
-den korrekte sinus eller cosinus for alle reelle vinkler.
+\subsection{Standardværdier og grafegenskaber}
+\begin{center}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+$\theta$ & $0$ & $\pi/6$ & $\pi/4$ & $\pi/3$ & $\pi/2$\\\midrule
+$\sin\theta$ & $0$ & $1/2$ & $1/\sqrt2$ & $\sqrt3/2$ & $1$\\
+$\cos\theta$ & $1$ & $\sqrt3/2$ & $1/\sqrt2$ & $1/2$ & $0$\\
+$\tan\theta$ & $0$ & $1/\sqrt3$ & $1$ & $\sqrt3$ & udef.\\\bottomrule
+\end{tabular}
+\end{center}
+Værdierne følger af ligebenede retvinklede og ligesidede trekanter.
+Fortegn i andre kvadranter findes fra enhedscirklen.
+Sinus og cosinus har billede $[-1,1]$; tangens vokser fra $-\infty$ til
+$+\infty$ mellem sine lodrette asymptoter. Grader skal omregnes før
+Taylorudvikling, differentiation og faseberegning i senere bind.
 
-Produkter kan omskrives til summer ved at kombinere additionsformlerne:
-\begin{align*}
- \sin\alpha\sin\beta
-   &=\tfrac12\bigl[\cos(\alpha-\beta)-\cos(\alpha+\beta)\bigr],\\
- \cos\alpha\cos\beta
-   &=\tfrac12\bigl[\cos(\alpha-\beta)+\cos(\alpha+\beta)\bigr],\\
- \sin\alpha\cos\beta
-   &=\tfrac12\bigl[\sin(\alpha+\beta)+\sin(\alpha-\beta)\bigr].
-\end{align*}
-Disse former er nyttige ved integration af oscillationer og ved analyse af
-superponerede svingninger. De er eksakte identiteter og kræver ingen
-antagelse om små vinkler. Approksimationer for små vinkler skal i stedet
-ledsages af et kontrolleret restled; se differentialregningens Taylorafsnit i bind 2.
+\section{Identiteter og omskrivningsregler}
+\subsection{Addition og rotationer}
+En rotation sender basisvektorerne til
+$(\cos\alpha,\sin\alpha)$ og $(-\sin\alpha,\cos\alpha)$.
+Derfor er dens matrix
+$R(\alpha)=\bigl(\begin{smallmatrix}\cos\alpha&-\sin\alpha\\
+\sin\alpha&\cos\alpha\end{smallmatrix}\bigr)$.
+Sammenlign $R(\alpha)R(\beta)$ med $R(\alpha+\beta)$:
+\formel{eq:b1-addition}{Additionsformler}{\begin{aligned}
+\sin(\alpha\pm\beta)&=\sin\alpha\cos\beta\pm\cos\alpha\sin\beta,\\
+\cos(\alpha\pm\beta)&=\cos\alpha\cos\beta\mp\sin\alpha\sin\beta,\\
+\tan(\alpha\pm\beta)&=\frac{\tan\alpha\pm\tan\beta}
+ {1\mp\tan\alpha\tan\beta}.
+\end{aligned}}
+De to første gælder alle reelle vinkler; den sidste kræver, at alle
+angivne tangentværdier og nævnere er definerede. Vælg fortegn konsekvent.
+Rotationsmatricer behandles også som ortogonale operatorer senere i bindet.
 
-\subsection{Inverse funktioner og valg af gren}
-Sinus, cosinus og tangens er ikke globalt injektive på deres reelle
-definitionsmængder. Inverse funktioner kræver derfor en valgt monoton gren.
-De sædvanlige reelle hovedgrene er:
+\subsection{Dobbeltvinkel og halvvinkel}
+Sæt $\beta=\alpha$ i additionsreglerne og brug cirkelidentiteten:
+\formel{eq:b1-dobbelt}{Dobbelt- og halvvinkel}{\begin{gathered}
+\sin(2\alpha)=2\sin\alpha\cos\alpha,\\
+\cos(2\alpha)=\cos^2\alpha-\sin^2\alpha
+=2\cos^2\alpha-1=1-2\sin^2\alpha,\\
+\sin^2(\alpha/2)=\frac{1-\cos\alpha}2,\qquad
+\cos^2(\alpha/2)=\frac{1+\cos\alpha}2.
+\end{gathered}}
+Ved kvadratrodsudtrækning vælges fortegn fra halvvinklens kvadrant.
+For $t=\tan(\alpha/2)$ fås
+$\sin\alpha=2t/(1+t^2)$ og $\cos\alpha=(1-t^2)/(1+t^2)$,
+hvor $t$ er defineret. Substitutionen rationaliserer trigonometriske
+integrander i bind 2; den dækker ikke vinklerne $(2k+1)\pi$ med endeligt $t$.
+
+\subsection{Produkter til summer og summer til produkter}
+Læg additionsformlerne sammen eller træk dem fra:
+\formel{eq:b1-produkt}{Produkt til sum}{\begin{aligned}
+\sin\alpha\sin\beta&=\tfrac12[\cos(\alpha-\beta)-\cos(\alpha+\beta)],\\
+\cos\alpha\cos\beta&=\tfrac12[\cos(\alpha-\beta)+\cos(\alpha+\beta)],\\
+\sin\alpha\cos\beta&=\tfrac12[\sin(\alpha+\beta)+\sin(\alpha-\beta)].
+\end{aligned}}
+\formel{eq:b1-sumtrig}{Sum til produkt}{\begin{aligned}
+\sin\alpha+\sin\beta&=2\sin\tfrac{\alpha+\beta}2\cos\tfrac{\alpha-\beta}2,\\
+\sin\alpha-\sin\beta&=2\cos\tfrac{\alpha+\beta}2\sin\tfrac{\alpha-\beta}2,\\
+\cos\alpha+\cos\beta&=2\cos\tfrac{\alpha+\beta}2\cos\tfrac{\alpha-\beta}2,\\
+\cos\alpha-\cos\beta&=-2\sin\tfrac{\alpha+\beta}2\sin\tfrac{\alpha-\beta}2.
+\end{aligned}}
+Brug produkt til sum ved integration og ortogonalitet af svingninger;
+brug sum til produkt til interferens og stød. Identiteterne er eksakte;
+småvinkelapproksimationer kræver særskilte fejlgrænser i bind 2.
+
+\section{Inverse funktioner og trigonometriske ligninger}
+\subsection{Hovedgrene og kvadrantvalg}
+Periodiske funktioner er ikke globalt injektive. En invers kræver en
+monoton gren, jf. algebraens funktionsafsnit.
 \begin{center}
 \begin{tabular}{@{}lll@{}}
 \toprule
-Funktion & Definitionsmængde & Værdimængde\\
-\midrule
+Invers & Domæne & Billede\\\midrule
 $\arcsin x$ & $[-1,1]$ & $[-\pi/2,\pi/2]$\\
 $\arccos x$ & $[-1,1]$ & $[0,\pi]$\\
-$\arctan x$ & $\mathbb{R}$ & $(-\pi/2,\pi/2)$\\
-\bottomrule
+$\arctan x$ & $\mathbb R$ & $(-\pi/2,\pi/2)$\\\bottomrule
 \end{tabular}
 \end{center}
-Således er $\sin(\arcsin x)=x$ for $x\in[-1,1]$, mens
-$\arcsin(\sin\theta)=\theta$ kun gælder på hovedgrenens vinkelinterval.
-Den inverse funktion må ikke forveksles med den reciprokke:
-$\arcsin x$ er ikke $1/\sin x$. Brug gerne den entydige arcsin-notation
-frem for en potensnotation, når der er risiko for tvetydighed.
+$\sin(\arcsin x)=x$ på $[-1,1]$, men
+$\arcsin(\sin\theta)=\theta$ kun på den valgte gren.
+Den inverse er ikke den reciprokke funktion.
 
-Den fulde løsningsmængde til en trigonometrisk relation skal medtage
-periodiciteten. For $s,c\in[-1,1]$ og $t\in\mathbb{R}$ er de generelle
-reelle løsninger
-\begin{align*}
- \sin\theta=s&:\quad \theta=(-1)^k\arcsin s+k\pi,\\
- \cos\theta=c&:\quad \theta=\pm\arccos c+2k\pi,\\
- \tan\theta=t&:\quad \theta=\arctan t+k\pi,
- \qquad k\in\mathbb{Z}.
-\end{align*}
-Et fysisk problem kan yderligere begrænse vinkelintervallet eller fastlægge
-en orientering. Denne information skal anvendes efter den matematiske
-løsningsmængde; den må ikke skjules ved et vilkårligt grenvalg.
+\input{00-matematik/figures/b1-inverstrig.tex}
 
-\subsection{Hyperbolske funktioner}
-De hyperbolske funktioner defineres ved eksponentialfunktionen:
+For $(x,y)\ne(0,0)$ er $\operatorname{atan2}(y,x)$ den vinkel i
+$(-\pi,\pi]$, der opfylder
 \[
- \cosh x=\frac{\e^x+\e^{-x}}{2},\qquad
- \sinh x=\frac{\e^x-\e^{-x}}{2},\qquad
- \tanh x=\frac{\sinh x}{\cosh x}.
+(\cos\theta,\sin\theta)=\frac{(x,y)}{\sqrt{x^2+y^2}}.
 \]
-For reelt $x$ er $\cosh x\ge1$, så den sidste kvotient er altid defineret.
-Direkte multiplikation af definitionerne giver
-\[
- \cosh^2x-\sinh^2x=1.
-\]
-Parret $(\cosh x,\sinh x)$ parametriserer dermed den højre gren af
-enhedshyperblen $X^2-Y^2=1$. Her betegner $x$ parameteren, mens $X,Y$
-er geometriske koordinater. Fortegnet mellem kvadraterne adskiller denne
-relation fra enhedscirklens. $\cosh$ er lige, $\sinh$ er ulige, og de er
-ikke periodiske som reelle funktioner.
+Den bruger begge fortegn og virker også ved $x=0$;
+$\arctan(y/x)$ taber kvadrantinformation. Andre konventioner for
+hovedgrenen skal omregnes eksplicit.
 
-Addition sker efter
-\begin{align*}
- \sinh(x+y)&=\sinh x\cosh y+\cosh x\sinh y,\\
- \cosh(x+y)&=\cosh x\cosh y+\sinh x\sinh y.
-\end{align*}
-De inverse reelle hovedgrene kan skrives
-\begin{align*}
- \operatorname{arsinh}x&=\ln\bigl(x+\sqrt{x^2+1}\bigr), &&x\in\mathbb{R},\\
- \operatorname{arcosh}x&=\ln\bigl(x+\sqrt{x^2-1}\bigr), &&x\ge1,\\
- \operatorname{artanh}x&=\tfrac12\ln\frac{1+x}{1-x}, &&|x|<1.
-\end{align*}
-For arcosh vælges inversen til cosh på $[0,\infty)$; cosh er ikke injektiv
-på hele den reelle akse. Argumenterne i logaritmerne er positive på de
-angivne områder. Afledte og deres strengere indre definitionsområder
-findes i differentialregningens standardtabel i bind 2.
+\subsection{Alle løsninger og domænekontrol}
+\formel{eq:b1-trigloesninger}{Generelle trigonometriske løsninger}{\begin{aligned}
+\sin\theta=s:&\quad\theta=(-1)^k\arcsin s+k\pi,&& |s|\le1,\\
+\cos\theta=c:&\quad\theta=\pm\arccos c+2k\pi,&& |c|\le1,\\
+\tan\theta=t:&\quad\theta=\arctan t+k\pi,&&t\in\mathbb R,
+\end{aligned}}
+hvor $k\in\mathbb Z$. Ved yderværdier kan grenene gentage løsninger.
+Uden for $[-1,1]$ findes ingen reelle sinus-/cosinusløsninger.
+For en lineær fase $\theta=\omega t+\varphi$ med $\omega\ne0$ isoleres
+$t$ efter den fulde vinkelmængde. Ved $\omega=0$ bliver relationen et
+konstant udsagn. Division med $\sin\theta$ eller $\cos\theta$ kræver
+separat kontrol af deres nulpunkter. Skær til sidst med fysiske
+vinkelintervaller og orienteringskrav.
 
-\subsection{Faser og fysiske størrelser}
-En fase $\omega t+\varphi$ i en harmonisk svingning skal være dimensionsløs:
-$\omega$ har dimension tid i minus første, og $\varphi$ er en vinkel.
-Tilsvarende har bølgetallet dimension længde i minus første i en fase
-$kx-\omega t+\varphi$. For konstant $\omega\ne0$ er perioden $T=2\pi/|\omega|$.
-Fortegnet af $\omega$ kan beskrive orientering, men perioden er positiv.
-Skeln mellem vinkelhastighed og antal svingninger pr. tidsenhed, selv om
-begge har samme SI-grunddimension.
+\section{Amplitude, fase og harmoniske svingninger}
+To sinusformede bidrag med samme frekvens kan samles i én amplitude og
+fase. Koefficienterne bestemmer både udsving og orientering i faseplanet.
+\formel{eq:b1-amplitude}{Amplitude og fase}{\begin{gathered}
+A\cos\theta+B\sin\theta=R\cos(\theta-\delta),\\
+R=\sqrt{A^2+B^2},\quad\delta=\operatorname{atan2}(B,A)\quad(R>0).
+\end{gathered}}
+Udvid højresiden med additionsformlen: $A=R\cos\delta$ og
+$B=R\sin\delta$. Ved $R=0$ er signalet nul, og fasen er vilkårlig.
+For $R\sin(\theta+\phi)$ er i stedet
+$\phi=\operatorname{atan2}(A,B)$. Fortegnet afhænger af den valgte form.
 
-Trigonometriske identiteter beskriver her faseforskydninger og projektioner;
-de pålægger ikke i sig selv en bevægelsesligning eller en fysisk model.
-Modelantagelser og randbetingelser hører til den konkrete fysiske
-fremstilling, uanset om den står i et kursusdokument eller i biblioteket.
+\input{00-matematik/figures/b1-svingning.tex}
+
+For $x(t)=R\cos(\omega t+\varphi)$ er perioden
+$T=2\pi/|\omega|$ ved $R>0$, $\omega\ne0$ og frekvensen $f=1/T$.
+En faseforskydning $\varphi$ svarer til tidsforskydning
+$-\varphi/\omega$. Fasen er dimensionsløs: $[\omega]=1/\text{tid}$.
+En bølgefase $kx-\omega t+\varphi$ kræver $[k]=1/\text{længde}$.
+
+Eulers formel giver
+$A\cos\theta+B\sin\theta=\operatorname{Re}[(A-iB)e^{i\theta}]$.
+Identiteterne siger intet om, \emph{hvorfor} systemet svinger; den
+bevægelsesligning behandles i bind 3 og normalmodeafsnittet her.
+Fouriermetoder i bind 4 bruger samme fase- og normaliseringskonventioner.
+
+\section{Hyperbolske funktioner}
+Hyperbolske funktioner parametriserer en hyperbel frem for en cirkel.
+De beskriver vækst, henfald og hyperbolske rotationer, fx rapiditet i relativitet.
+\formel{eq:b1-hyperbolsk}{Hyperbolske definitioner og identiteter}{\begin{gathered}
+\cosh x=\tfrac12(e^x+e^{-x}),\quad\sinh x=\tfrac12(e^x-e^{-x}),\quad
+\tanh x=\sinh x/\cosh x,\\
+\cosh^2x-\sinh^2x=1,\qquad1-\tanh^2x=1/\cosh^2x,\\
+\sinh(x+y)=\sinh x\cosh y+\cosh x\sinh y,\\
+\cosh(x+y)=\cosh x\cosh y+\sinh x\sinh y.
+\end{gathered}}
+Udled identiteterne ved multiplikation af eksponentialudtrykkene.
+$\cosh$ er lige, $\sinh$ ulige; $\cosh x\ge1$, så $\tanh$ er altid
+defineret for reelle $x$. De er ikke periodiske som reelle funktioner.
+
+\input{00-matematik/figures/b1-hyperbel.tex}
+
+\formel{eq:b1-invershyper}{Inverse hyperbolske funktioner}{\begin{aligned}
+\operatorname{arsinh}x&=\ln(x+\sqrt{x^2+1}),&&x\in\mathbb R,\\
+\operatorname{arcosh}x&=\ln(x+\sqrt{x^2-1}),&&x\ge1,\\
+\operatorname{artanh}x&=\tfrac12\ln\frac{1+x}{1-x},&&|x|<1.
+\end{aligned}}
+For $\sinh y=x$ sættes $u=e^y>0$: $u^2-2xu-1=0$, hvor kun
+$u=x+\sqrt{x^2+1}$ er positiv. Logaritmering giver arsinh.
+Samme fremgangsmåde giver de andre; arcosh vælger $y\ge0$, og artanh
+har billede $\mathbb R$. Logargumenterne er positive på de angivne domæner.
+Afledte og integrationssubstitutioner findes i bind 2; hyperbolske
+rotationer og metrikfortegn hører til bind 5.

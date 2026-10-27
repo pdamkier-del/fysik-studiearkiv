@@ -1,0 +1,14 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=.65\textwidth,height=5.5cm,axis equal image,axis lines=middle,
+ xmin=-.2,xmax=2.6,ymin=-2.1,ymax=2.1,xlabel={$X$},ylabel={$Y$},
+ xtick={1,2},ytick={-1,1},samples=120]
+\addplot[arkivblaa,domain=-1.4:1.4,variable=\t] ({cosh(\t)},{sinh(\t)});
+\addplot[black!55,dashed,domain=-.2:2.4] {x};
+\addplot[black!55,dashed,domain=-.2:2.4] {-x};
+\fill[arkivblaa] (axis cs:1,0) circle[radius=1.5pt];
+\end{axis}\end{tikzpicture}
+\caption{Den højre gren af $X^2-Y^2=1$, parametriseret ved $(X,Y)=(\cosh u,\sinh u)$. Stiplede linjer er asymptoterne $Y=\pm X$. Akserne er dimensionsløse og har samme målestok.}
+\label{fig:b1-hyperbel}
+\end{figure}

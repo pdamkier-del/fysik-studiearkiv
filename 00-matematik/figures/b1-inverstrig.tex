@@ -1,0 +1,13 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=.74\textwidth,height=5cm,axis lines=middle,
+ xmin=-5,xmax=5,ymin=-1.25,ymax=1.25,xlabel={$\theta$},ylabel={$\sin\theta$},
+ xtick={-4.7124,-1.5708,1.5708,4.7124},
+ xticklabels={$-3\pi/2$,$-\pi/2$,$\pi/2$,$3\pi/2$},ytick={-1,1},samples=150]
+\addplot[black!50,dashed,domain=-4.8:4.8] {sin(deg(x))};
+\addplot[arkivblaa,thick,domain=-pi/2:pi/2] {sin(deg(x))};
+\end{axis}\end{tikzpicture}
+\caption{Sinus er globalt periodisk. Den blå monotone gren $[-\pi/2,\pi/2]$ har derimod en entydig invers, arcsin. Akserne er dimensionsløse og vinkelaksen er i radianer.}
+\label{fig:b1-inverstrig}
+\end{figure}
