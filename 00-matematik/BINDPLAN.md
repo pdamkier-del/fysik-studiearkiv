@@ -1,6 +1,6 @@
 # Plan: matematik i seks bind og én samlet udgave
 
-**Status:** Arkitekturplan, ikke aktiveret build. Den eksisterende `main.tex` og dens samlede PDF bevares. Ingen Drive-filer ændres.
+**Status (27. oktober 2026):** Seks separate LaTeX-indgange er oprettet under `volumes/`, og `Makefile` har mål for bind 1–6. Kildekapitler og den samlede PDF-indgang er bevaret. Bind-builds er **ikke endnu kørt eller godkendt**, og tværbindshenvisninger kræver kontrol. Ingen Drive-filer er ændret.
 
 ## Bind og eksisterende kapitelkilder
 
@@ -15,12 +15,12 @@
 
 Ovenstående dækker samtlige 21 kapitler præcis én gang. Rækkefølgen er en redaktionel læseinddeling og ændrer ikke den samlede bogs indholdsfortegnelse.
 
-## Implementering ved fremtidig teknisk opdeling
+## Teknisk status og manglende validering
 
 - Bevar `00-matematik/chapters/*.tex` som **eneste kilde** for hvert kapitel.
-- Opret separat `volumes/bind-1.tex` til `bind-6.tex`, der inkluderer de eksisterende kapitelkilder; undgå kopierede kapitler.
+- **Udført:** `volumes/bind-1.tex` til `bind-6.tex` inkluderer de eksisterende kapitelkilder uden kopier.
 - Genbrug samme fælles typografi, makroer og hyperref-opsætning.
-- Tilføj `make bind-1` ... `make bind-6` og `make alle-bind`; bevar `make pdf` som samlet bind.
+- **Udført i Makefile, endnu ikke kørt:** `make bind-1` ... `make bind-6` og `make alle-bind`; `make pdf` bevares som samlet udgave.
 - Opbevar hver PDF i et separat build-output, og valider bogmærker, indholdsfortegnelse, figurer, links og referencer.
 - Revider tværbindsreferencer eksplicit. En reference til en udeladt label må ikke bare blive '??'; brug enten en kort tekstlig henvisning med bind og kapitel eller et verificeret eksternt PDF-link.
 - Udgiv ikke bindene i Google Drive, før mål-id'er, godkendelse og særskilt publicering er verificeret.
@@ -29,4 +29,4 @@ Ovenstående dækker samtlige 21 kapitler præcis én gang. Rækkefølgen er en 
 
 ## Indholdsstatus
 
-Et bind må ikke betegnes som færdiggjort blot fordi kapitlets fil er oprettet. Udbygning af lineær algebra begyndte 27. oktober 2026 med en samlet indføring i baser, lineære afbildninger, rang, spektralteori og SVD. Kapitlet afventer kompilering, visuel kontrol og illustrationer.
+Et bind må ikke betegnes som færdiggjort blot fordi kapitlets fil er oprettet. Lineær algebra blev udbygget 27. oktober 2026 med definitioner og formelstof om baser, lineære afbildninger, rang, spektralteori og SVD. Kapitlet og bindene afventer kompilering, visuel kontrol og illustrationer. Der må ikke påstås grøn build ud fra blot oprettede kildefiler.
