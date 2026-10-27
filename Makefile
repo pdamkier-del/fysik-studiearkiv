@@ -22,3 +22,12 @@ repository-check:
 	python3 scripts/check_repository.py
 clean:
 	rm -rf build
+
+# Seks matematikbind. Kildekapitlerne deles med den samlede PDF.
+BIND_NUMRE := 1 2 3 4 5 6
+.PHONY: bind-1 bind-2 bind-3 bind-4 bind-5 bind-6 alle-bind
+alle-bind: $(addprefix bind-,$(BIND_NUMRE))
+$(addprefix bind-,$(BIND_NUMRE)): bind-%:
+	mkdir -p build/00-matematik/bind-$*
+	latexmk -lualatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build/00-matematik/bind-$* 00-matematik/volumes/bind-$*.tex
+	python3 scripts/check_pdf.py build/00-matematik/bind-$*/bind-$*.pdf build/00-matematik/bind-$*/bind-$*.log
