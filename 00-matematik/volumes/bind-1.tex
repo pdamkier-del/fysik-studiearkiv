@@ -1,0 +1,31 @@
+\documentclass[11pt,a4paper,oneside]{book}
+\usepackage{90-faelles/latex/studiearkiv}
+\hypersetup{pdftitle={Matematik – Bind 1: Algebra og lineær algebra}}
+\begin{document}
+\frontmatter
+\begin{titlepage}
+\centering
+\vspace*{30mm}
+{\sffamily\color{arkivblaa}\Large MATEMATIK TIL UNIVERSITETSFYSIK\par}
+\vspace{16mm}
+{\Huge\bfseries Bind 1\\[6mm]Algebra og lineær algebra\par}
+\vspace{13mm}
+{\Large Formler, begreber og matematisk sammenhæng\par}
+\vfill
+\begin{minipage}{0.8\textwidth}
+Tal, funktioner, trigonometriske identiteter, vektorrum og lineære operatorer.
+
+Dette bind genbruger de samme LaTeX-kapitler som det samlede matematikkompendium. Planlagte kapitler er markeret som ufærdige. Der indgår ikke separate gennemregnede opgaveeksempler.
+\end{minipage}
+\vspace{14mm}
+{\small Fysik-studiearkiv · Arbejdsudgave\par}
+\end{titlepage}
+\chapter*{Læsevejledning}
+\addcontentsline{toc}{chapter}{Læsevejledning}
+Dette bind er en emneopdelt udgave af det samlede matematikkompendium. Den generelle kilde og alle figurer vedligeholdes centralt under \texttt{00-matematik/chapters} og \texttt{00-matematik/figures}. For hele overblikket samt henvisninger mellem bindene anvendes den samlede udgave. Ufuldstændige kapitler er tydeligt markerede.
+\begingroup\small\tableofcontents\endgroup
+\mainmatter
+\input{00-matematik/chapters/01-algebra}
+\input{00-matematik/chapters/02-trigonometri}
+\input{00-matematik/chapters/09-lineaer-algebra}
+\end{document}
