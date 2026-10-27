@@ -32,19 +32,20 @@ jobs:
         run: make check statistik
       - name: Validate publication PDFs and test Drive guards (no network)
         run: |
+          python scripts/check_repository.py
           python scripts/validate_publication.py
           python -m unittest discover -s tests -v
-          python scripts/publish_drive.py
+          python scripts/check_publication_plan.py
       - name: Compile all physics templates
         run: make templates
       - uses: actions/upload-artifact@v4
         with:
           name: validated-pdfs
           path: |
-            build/matematik/main.pdf
-            build/matematik/main.log
-            build/statistik/main.pdf
-            build/statistik/main.log
+            build/02-fysikbibliotek/matematik/main.pdf
+            build/02-fysikbibliotek/matematik/main.log
+            build/01-universitetsfag/statistik/main.pdf
+            build/01-universitetsfag/statistik/main.log
           if-no-files-found: error
   drive:
     needs: build

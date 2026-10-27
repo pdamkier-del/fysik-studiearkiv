@@ -42,12 +42,17 @@ def plan(manifest, targets):
         if not re.fullmatch(r'[a-z0-9-]+', key):
             raise ValueError('Unsafe document key')
         root = identifier(targets.get('root_folder_id'))
-        folder = identifier(targets.get('subjects', {}).get(document['subject']))
+        subject = document['subject']
+        parts = subject.split('/')
+        if len(parts) != 2 or parts[0] not in {'01-universitetsfag', '02-fysikbibliotek'} or not re.fullmatch(r'[a-z0-9-]+', parts[1]):
+            raise ValueError('Target must identify a main area and its subject')
+        area = identifier(targets.get('areas', {}).get(parts[0]))
+        folder = identifier(targets.get('subjects', {}).get(subject))
         file_id = identifier(targets.get('files', {}).get(key))
-        if len({root, folder, file_id}) != 3 or file_id in used:
+        if len({root, area, folder, file_id}) != 4 or file_id in used:
             raise ValueError('Duplicate or conflicting Drive targets')
         used.add(file_id)
-        selected.append((document, root, folder, file_id))
+        selected.append((document, root, area, folder, file_id))
     return selected
 
 
@@ -66,8 +71,8 @@ def metadata(session, file_id):
     })
 
 
-def check_remote(session, root, folder, file_id):
-    for folder_id, parent in [(root, None), (folder, root)]:
+def check_remote(session, root, area, folder, file_id):
+    for folder_id, parent in [(root, None), (area, root), (folder, area)]:
         info = metadata(session, folder_id).json()
         if info.get('trashed') or info.get('mimeType') != FOLDER:
             raise ValueError('Target folder missing, trashed or wrong type')
@@ -149,14 +154,14 @@ def main():
         return
     # All PDFs/backup records must pass before any network mutation.
     payloads = []
-    for document, root, folder, file_id in selected:
+    for document, root, area, folder, file_id in selected:
         if args.restore:
             data = restore_content(args.restore, document['key'], file_id)
         else:
             from validate_publication import validate
             validate(document)
             data = Path(document['pdf']).read_bytes()
-        payloads.append((document, root, folder, file_id, data))
+        payloads.append((document, root, area, folder, file_id, data))
     if not (args.apply or args.check_remote):
         print(f'Dry run: {len(payloads)} approved existing PDF targets. No network requests.')
         return
@@ -165,10 +170,10 @@ def main():
     from google.auth.transport.requests import AuthorizedSession
     credentials, _ = google.auth.default(scopes=['https://www.googleapis.com/auth/drive'])
     session = AuthorizedSession(credentials)
-    for document, root, folder, file_id, data in payloads:
-        check_remote(session, root, folder, file_id)
+    for document, root, area, folder, file_id, data in payloads:
+        check_remote(session, root, area, folder, file_id)
     if args.apply:
-        for document, root, folder, file_id, data in payloads:
+        for document, root, area, folder, file_id, data in payloads:
             replace(session, file_id, folder, data, args.backup_dir, document['key'])
             print(f"Updated existing PDF: {document['key']}")
     else:

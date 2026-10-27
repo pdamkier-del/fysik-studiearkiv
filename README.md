@@ -1,45 +1,64 @@
 # Fysik-studiearkiv
 
-Et dansk, langsigtet LaTeX-arkiv til universitetsfysik. Første leverance er et fælles dokumentdesign, en intern struktur med 21 matematiske hovedemner og et udviklet pilotkapitel om differentialregning. De øvrige matematikkapitler er udtrykkeligt markeret som planlagte. Originale AM-/EM-noter er endnu ikke integreret. Oplyste pensumafgrænsninger og officielle kildehenvisninger er registreret særskilt med tydelig kontrolstatus i `99-kilder-og-pensum/`.
-
-## Projektets faste dokumenter
-
-- [AGENTS.md](AGENTS.md): permanente regler og designstandarder.
-- [ROADMAP.md](ROADMAP.md): fag, dokumenttyper og videre udvikling.
-- [PENSUM.md](PENSUM.md): dokumenterede kilder og afgrænsninger.
-- [STATUS.md](STATUS.md): implementeret, verificeret, manglende og blokeret arbejde.
-
-Repositoryet bevarer kildekode og figurer. Drive er læsested for de færdige PDF'er. Matematiske forklaringer integreres i hvert fysikfag, mens den generelle matematik samles i ét kompendium.
-
-## Byg PDF
-
-Kør fra repositoryets rod. Kræver TeX Live med LuaLaTeX, latexmk, luaotfload, Latin Modern, Babel med dansk orddeling, PGFPlots og de almindelige LaTeX-ekstrapakker. På Debian: `texlive-luatex texlive-latex-extra texlive-lang-european texlive-fonts-recommended latexmk`. PDF-kontrollen kræver Python 3 og PyMuPDF (`python3 -m pip install -r requirements-tools.txt`).
-
-```sh
-make pdf
-make check
-make templates
-make statistik
-make publication-check
-```
-
-Kompendiet ligger i `build/matematik/main.pdf`. `make check` kontrollerer den faktiske PDF for sider, bogmærker, links og forventet tekst og afviser logfiler med overfyldte bokse, manglende tegn eller uafklarede referencer. Visuel kontrol er stadig nødvendig. `make templates` kompilerer alle 20 faglige dokumentskabeloner. `make publication-check` validerer begge PDF-builds og kører Drive-sikkerhedstests samt offline-dry-run. `make clean` fjerner kun `build/`.
+Et langsigtet dansk studiearkiv med to selvstændige hovedområder: konkrete universitetskurser og et bredt matematik-/fysikbibliotek. GitHub bevarer LaTeX-kilder og figurer; Google Drive er læse- og publiceringssted for færdige, godkendte PDF'er.
 
 ## Struktur
 
-- `00-matematik/`: kompendium, et kapitel pr. fil, egne vektorfigurer.
-- `01-analytisk-mekanik/` og `02-elektromagnetisme/`: separate tomme skabeloner til formelsamling, udledningsnoter, opgavenoter og opgavesamling.
-- `03-kvantemekanik/`, `04-termodynamik-statistisk-fysik/`, `05-relativitet-og-gravitation/`: samme udvidelige struktur.
-- `06-statistik/`: selvstændig foreløbig kompendiestruktur med Barlow som grundbog; præcist pensum afventer.
-- `90-faelles/`: fælles LaTeX-design, skabelon, notation og fælles figurer.
-- `99-kilder-og-pensum/`: pensumregister for Matematik F, LinALys, en uafklaret matematik-ugeplan, termodynamik og statistik. Originale sidegrænser bevares uden gæt.
-- `docs/`: redaktionel udviklingsvejledning, kapitelplan, Drive-procedure og kontrolrapport.
+```text
+01-universitetsfag/
+  analytisk-mekanik/
+  elektromagnetisme/
+  termodynamik-2026/
+  statistik/
+  pensum/
+02-fysikbibliotek/
+  matematik/                     # ét LaTeX-dokument, 21 hovedemner
+  klassisk-mekanik/
+  elektromagnetisme/
+  termodynamik/
+  statistisk-fysik/
+  kvantemekanik/                  # bevarer tidligere skabeloner
+  relativitet-og-gravitation/     # bevarer tidligere skabeloner
+  optik-og-boelger/
+  atom-og-molekylefysik/
+  kerne-og-partikelfysik/
+  faststoffysik/
+  numeriske-metoder/
+90-faelles/                       # LaTeX-design, notation og fælles figurer
+config/                          # buildmanifest og deaktiveret publicering
+scripts/, tests/, docs/
+```
 
-GitHub Actions bygger og kontrollerer PDF ved push og pull request og gemmer den som et artifact. Genererede filer og PDF'er versionsstyres ikke. Download PDF'en fra workflowets artifacts for læsning eller manuel Drive-opdatering.
+[Universitetsfag](01-universitetsfag/README.md) indeholder kun dokumenterede kurser og deres faktiske pensum, forelæsningsnoter, formelsamlinger, udledningsnoter, opgavenoter, opgavesamlinger og eksamensmateriale. Originale AM-/EM-formelsamlinger importeres først, når de kan læses, og bevares uændret som referenceversioner.
 
-Læs `AGENTS.md` før ændringer og `docs/udvikling.md` før nye kapitler. Langsigtet mål er 200–400 sider, men korrekthed og brugbarhed styrer omfanget. Drive-integrationens workflow og uploader er implementeret og lokalt testet, men ikke aktiveret eller live-verificeret. Alle publiceringsposter er deaktiverede. Konfiguration, rettigheder, manuel publicering og rollback er beskrevet i [Drive-vejledningen](docs/google-drive.md). Eksisterende filer må ikke overskrives under testen.
+[Fysikbiblioteket](02-fysikbibliotek/README.md) er uafhængige, brede referenceværker. Et generelt mekanikkompendium er ikke AM-kursusnoterne; tilsvarende adskillelse gælder EM og termodynamik. Matematiske forklaringer indgår lokalt i fysikdokumenter, mens generel teori kan henvises til biblioteket. Fælles komponenter genbruges uden at overskrive kursusnoter.
 
-Alle matematikkurser integreres i ét dokument via `00-matematik/main.tex`; der oprettes ingen kursusspecifikke matematikkompendier. Statistik indgår ikke i matematikdokumentet. Statistisk metode ligger i `06-statistik/`, mens statistisk fysik forbliver under termodynamik.
+Statistik er fortsat et selvstændigt universitetsfag med Roger Barlow som hovedreference. Der oprettes intet statistikbibliotek. Bibliotekets statistiske fysik er et andet fagområde.
+
+## Faste dokumenter
+
+- [AGENTS.md](AGENTS.md): permanente regler og designstandarder.
+- [ROADMAP.md](ROADMAP.md): fag, dokumenter og prioriteret udvikling.
+- [PENSUM.md](PENSUM.md): indgang til universiteternes præcise kilderegister.
+- [STATUS.md](STATUS.md): faktisk implementering, kontrolresultater og blokeringer.
+- [Migration](docs/migration-2026-10-27.md): flytninger, bevaring og konsekvenser.
+
+## Byg og kontroller
+
+Kør fra repositoryets rod. Kræver LuaLaTeX, latexmk, luaotfload, dansk Babel-orddeling, Latin Modern, PGFPlots og LaTeX-ekstrapakker. På Debian: `texlive-luatex texlive-latex-extra texlive-lang-european texlive-fonts-recommended latexmk`. Python-værktøjer installeres med `python3 -m pip install -r requirements-tools.txt`; Drive-afhængigheder kræves kun til den ikke-aktiverede integration.
+
+```sh
+make pdf                # bibliotekets samlede matematikkompendium
+make check              # PDF, bogmærker, links og kompilationslog
+make statistik          # universitetsfagets eksisterende statistikstruktur
+make templates          # samtlige 20 bevarede fysikskabeloner
+make repository-check   # lokale dokumentlinks, LaTeX-imports og referencer
+make publication-check  # PDF'er, arkitekturkontrol, Drive-tests og offline-dry-run
+```
+
+PDF'er ligger i `build/02-fysikbibliotek/matematik/main.pdf` og `build/01-universitetsfag/statistik/main.pdf`. De 20 skabelonbuilds spejler deres kildemapper under `build/`. Manifestet `config/latex-templates.json` bevarer 12 kursusskabeloner og otte arkiverede biblioteksskabeloner. Skabeloner og mapper er ikke færdige fag. `make clean` fjerner kun genererede filer i `build/`.
+
+GitHub Actions-definitionen bygger og validerer de samme dokumenter og gemmer deres PDF'er som artifacts. Faktisk GitHub-hostet kørsel er ikke verificeret her. Drive-publicering forbliver deaktiveret; originale fil-id'er er uændrede. Det fremtidige hierarki er arkivrod → hovedområde → fag → eksisterende PDF. Ingen Drive-mapper eller filer flyttes af migrationen. Se [Drive-vejledningen](docs/google-drive.md) og [originalregisteret](docs/originaler.md).
 
 ## Matematikkompendiets hovedemner
 
@@ -65,4 +84,4 @@ Alle matematikkurser integreres i ét dokument via `00-matematik/main.tex`; der 
 20. Differentialgeometri og matematik til GR
 21. Gruppeteori og symmetrier
 
-Hvert hovedemne har sin egen kildefil i `00-matematik/chapters/` og matematiske underafsnit. Én samlet PDF har klikbar indholdsfortegnelse og PDF-bogmærker. Se [den interne plan](docs/kapitelplan.md) og [pensumregisteret](99-kilder-og-pensum/README.md) for emnefordeling og præcise kildeafgrænsninger.
+Hovedemnerne samles i én PDF med underafsnit, klikbar indholdsfortegnelse og PDF-bogmærker. [Bibliotekets kapitelplan](02-fysikbibliotek/matematik/PLAN.md) er uafhængig af kursusgrænserne i [pensumregisteret](01-universitetsfag/pensum/README.md). Det langsigtede mål er 200–400 sider; kvaliteten styrer omfanget. Differentialregningspiloten bevares, og trigonometri udbygges afgrænset. De øvrige generelle fysikkompendier skrives ikke i denne leverance.

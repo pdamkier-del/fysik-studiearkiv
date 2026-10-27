@@ -1,0 +1,24 @@
+{
+  "sources": [
+    "01-universitetsfag/analytisk-mekanik/formelsamling/main.tex",
+    "01-universitetsfag/analytisk-mekanik/opgavenoter/main.tex",
+    "01-universitetsfag/analytisk-mekanik/opgavesamling/main.tex",
+    "01-universitetsfag/analytisk-mekanik/udledningsnoter/main.tex",
+    "01-universitetsfag/elektromagnetisme/formelsamling/main.tex",
+    "01-universitetsfag/elektromagnetisme/opgavenoter/main.tex",
+    "01-universitetsfag/elektromagnetisme/opgavesamling/main.tex",
+    "01-universitetsfag/elektromagnetisme/udledningsnoter/main.tex",
+    "01-universitetsfag/termodynamik-2026/formelsamling/main.tex",
+    "01-universitetsfag/termodynamik-2026/opgavenoter/main.tex",
+    "01-universitetsfag/termodynamik-2026/opgavesamling/main.tex",
+    "01-universitetsfag/termodynamik-2026/udledningsnoter/main.tex",
+    "02-fysikbibliotek/kvantemekanik/arkiverede-skabeloner/formelsamling/main.tex",
+    "02-fysikbibliotek/kvantemekanik/arkiverede-skabeloner/opgavenoter/main.tex",
+    "02-fysikbibliotek/kvantemekanik/arkiverede-skabeloner/opgavesamling/main.tex",
+    "02-fysikbibliotek/kvantemekanik/arkiverede-skabeloner/udledningsnoter/main.tex",
+    "02-fysikbibliotek/relativitet-og-gravitation/arkiverede-skabeloner/formelsamling/main.tex",
+    "02-fysikbibliotek/relativitet-og-gravitation/arkiverede-skabeloner/opgavenoter/main.tex",
+    "02-fysikbibliotek/relativitet-og-gravitation/arkiverede-skabeloner/opgavesamling/main.tex",
+    "02-fysikbibliotek/relativitet-og-gravitation/arkiverede-skabeloner/udledningsnoter/main.tex"
+  ]
+}

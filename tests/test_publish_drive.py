@@ -25,8 +25,8 @@ class Session:
 
 class PublicationTests(unittest.TestCase):
     def setUp(self):
-        self.doc = dict(key='matematik', subject='00-matematik', approved=True)
-        self.targets = dict(root_folder_id='root', subjects={'00-matematik': 'folder'}, files={'matematik': 'file'})
+        self.doc = dict(key='matematik', subject='02-fysikbibliotek/matematik', approved=True)
+        self.targets = dict(root_folder_id='root', areas={'02-fysikbibliotek': 'area'}, subjects={'02-fysikbibliotek/matematik': 'folder'}, files={'matematik': 'file'})
         self.info = dict(id='file', mimeType=drive.PDF, parents=['folder'], version='1', capabilities={'canEdit': True})
     def test_unapproved_documents_need_no_targets(self):
         self.doc['approved'] = False
@@ -52,14 +52,24 @@ class PublicationTests(unittest.TestCase):
                     drive.main()
                 transport.assert_not_called()
     def test_wrong_subject_folder_aborts(self):
-        session = Session([Response(dict(mimeType=drive.FOLDER)), Response(dict(mimeType=drive.FOLDER, parents=['elsewhere']))])
+        session = Session([Response(dict(mimeType=drive.FOLDER)), Response(dict(mimeType=drive.FOLDER, parents=['root'])), Response(dict(mimeType=drive.FOLDER, parents=['elsewhere']))])
         with self.assertRaises(ValueError):
-            drive.check_remote(session, 'root', 'folder', 'file')
+            drive.check_remote(session, 'root', 'area', 'folder', 'file')
         self.assertTrue(all(call[0] == 'GET' for call in session.calls))
     def test_read_only_preflight_checks_full_hierarchy(self):
-        session = Session([Response(dict(mimeType=drive.FOLDER)), Response(dict(mimeType=drive.FOLDER, parents=['root'])), Response(self.info)])
-        drive.check_remote(session, 'root', 'folder', 'file')
-        self.assertEqual([c[0] for c in session.calls], ['GET', 'GET', 'GET'])
+        session = Session([Response(dict(mimeType=drive.FOLDER)), Response(dict(mimeType=drive.FOLDER, parents=['root'])), Response(dict(mimeType=drive.FOLDER, parents=['area'])), Response(self.info)])
+        drive.check_remote(session, 'root', 'area', 'folder', 'file')
+        self.assertEqual([c[0] for c in session.calls], ['GET', 'GET', 'GET', 'GET'])
+    def test_wrong_main_area_aborts_before_file_access(self):
+        session = Session([Response(dict(mimeType=drive.FOLDER)), Response(dict(mimeType=drive.FOLDER, parents=['elsewhere']))])
+        with self.assertRaises(ValueError):
+            drive.check_remote(session, 'root', 'area', 'folder', 'file')
+        self.assertEqual(len(session.calls), 2)
+        self.assertTrue(all(call[0] == 'GET' for call in session.calls))
+    def test_old_flat_targets_require_explicit_migration(self):
+        del self.targets['areas']
+        with self.assertRaises(ValueError):
+            drive.plan({'documents': [self.doc]}, self.targets)
     def test_wrong_mime_or_permission_blocks_write(self):
         for change in [dict(mimeType='image/svg+xml'), dict(capabilities={'canEdit': False}), dict(trashed=True), dict(parents=['elsewhere'])]:
             session = Session([Response(dict(self.info, **change))])

@@ -1,0 +1,173 @@
+\chapter{Trigonometri}
+\label{ch:trigonometri}
+\begin{quote}
+\small\sffamily\color{arkivblaa}
+Første udviklede afsnit i et generelt referencekapitel. Grunddefinitioner,
+centrale identiteter, inverse grene og hyperbolske funktioner behandles nedenfor.
+Udvidet identitetsoversigt og yderligere geometriske forbindelser er fortsat planlagt.
+\end{quote}
+Trigonometri forbinder vinkler, periodiske funktioner og geometri. I fysik
+bruges de samme funktioner til projektioner, rotationer, svingninger og bølger.
+Det er derfor nyttigt at forstå deres definitionsområder og fortegn sammen
+med formlerne. Dette biblioteksafsnit er ikke en angivelse af pensum for et
+bestemt universitetskursus.
+
+\section{Trigonometriske identiteter og hyperbolske funktioner}
+\label{sec:trigonometri}
+\subsection{Radianer og enhedscirklen}
+En orienteret vinkel $\theta$ måles i radianer som buelængden $s$ divideret
+med cirklens radius $r>0$: $\theta=s/r$. En positiv vinkel løber mod uret
+med den sædvanlige orientering af planen. En hel omdrejning er $2\pi$
+radianer. I SI er vinklen dimensionsløs, men betegnelsen rad hjælper med
+at skelne vinkler fra andre dimensionsløse størrelser. Gradtal skal omregnes
+før brug i afledte, Taylorudviklinger og faseudtryk.
+
+På enhedscirklen defineres koordinaterne til punktet med vinkel $\theta$ som
+\[
+ P(\theta)=(\cos\theta,\sin\theta).
+\]
+Definitionen gælder alle reelle vinkler, også når punktet ligger uden for
+første kvadrant. Fortegnene er koordinaternes fortegn, ikke længdernes:
+en projektion kan være negativ. Figur~\ref{fig:enhedscirkel} viser geometrien
+for en positiv vinkel i første kvadrant. Cirkelligningen giver straks
+\[
+ \cos^2\theta+\sin^2\theta=1.
+\]
+Det samme punkt nås efter en hel omdrejning, mens spejling i $x$-aksen
+vender vinklens fortegn. Dermed er sinus og cosinus $2\pi$-periodiske,
+cosinus er lige og sinus ulige:
+\[
+ \cos(-\theta)=\cos\theta,\qquad
+ \sin(-\theta)=-\sin\theta.
+\]
+\input{02-fysikbibliotek/matematik/figures/enhedscirkel.tex}
+
+Tangens og cotangens er kvotienter af projektionerne:
+\[
+ \tan\theta=\frac{\sin\theta}{\cos\theta},\qquad
+ \cot\theta=\frac{\cos\theta}{\sin\theta}.
+\]
+For tangens kræves $\cos\theta\ne0$, altså
+$\theta\ne\pi/2+k\pi$ for $k\in\mathbb{Z}$. For cotangens kræves
+$\sin\theta\ne0$, altså $\theta\ne k\pi$. Begge er $\pi$-periodiske på
+deres definitionsmængder. En identitet mellem kvotienter gælder kun dér,
+hvor de oprindelige nævnere er forskellige fra nul.
+
+\subsection{Addition, dobbeltvinkler og produkter}
+Addition af vinkler svarer geometrisk til sammensætning af rotationer.
+Dette ligger bag additionsformlerne: to lokale projektionsretninger skal
+kombineres, når koordinatsystemet roteres. For alle reelle $\alpha,\beta$
+gælder følgende identiteter:
+\begin{align*}
+ \sin(\alpha\pm\beta)&=\sin\alpha\cos\beta\pm\cos\alpha\sin\beta,\\
+ \cos(\alpha\pm\beta)&=\cos\alpha\cos\beta\mp\sin\alpha\sin\beta,\\
+ \sin(2\alpha)&=2\sin\alpha\cos\alpha,\\
+ \cos(2\alpha)&=\cos^2\alpha-\sin^2\alpha
+               =2\cos^2\alpha-1=1-2\sin^2\alpha.
+\end{align*}
+I de to første linjer vælges øverste eller nederste fortegn konsekvent.
+Dobbeltvinkelformlerne følger ved at sætte $\beta=\alpha$ i
+additionsformlerne. De giver også halv-vinkelrelationerne
+\[
+ \sin^2\frac{\alpha}{2}=\frac{1-\cos\alpha}{2},\qquad
+ \cos^2\frac{\alpha}{2}=\frac{1+\cos\alpha}{2}.
+\]
+Kvadraterne er entydige; ved kvadratrodsudtrækning skal fortegnet vælges
+ud fra halvvinklens kvadrant. En positiv kvadratrod giver ikke automatisk
+den korrekte sinus eller cosinus for alle reelle vinkler.
+
+Produkter kan omskrives til summer ved at kombinere additionsformlerne:
+\begin{align*}
+ \sin\alpha\sin\beta
+   &=\tfrac12\bigl[\cos(\alpha-\beta)-\cos(\alpha+\beta)\bigr],\\
+ \cos\alpha\cos\beta
+   &=\tfrac12\bigl[\cos(\alpha-\beta)+\cos(\alpha+\beta)\bigr],\\
+ \sin\alpha\cos\beta
+   &=\tfrac12\bigl[\sin(\alpha+\beta)+\sin(\alpha-\beta)\bigr].
+\end{align*}
+Disse former er nyttige ved integration af oscillationer og ved analyse af
+superponerede svingninger. De er eksakte identiteter og kræver ingen
+antagelse om små vinkler. Approksimationer for små vinkler skal i stedet
+ledsages af et restled som i afsnit~\ref{sec:taylor}.
+
+\subsection{Inverse funktioner og valg af gren}
+Sinus, cosinus og tangens er ikke globalt injektive på deres reelle
+definitionsmængder. Inverse funktioner kræver derfor en valgt monoton gren.
+De sædvanlige reelle hovedgrene er:
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Funktion & Definitionsmængde & Værdimængde\\
+\midrule
+$\arcsin x$ & $[-1,1]$ & $[-\pi/2,\pi/2]$\\
+$\arccos x$ & $[-1,1]$ & $[0,\pi]$\\
+$\arctan x$ & $\mathbb{R}$ & $(-\pi/2,\pi/2)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Således er $\sin(\arcsin x)=x$ for $x\in[-1,1]$, mens
+$\arcsin(\sin\theta)=\theta$ kun gælder på hovedgrenens vinkelinterval.
+Den inverse funktion må ikke forveksles med den reciprokke:
+$\arcsin x$ er ikke $1/\sin x$. Brug gerne den entydige arcsin-notation
+frem for en potensnotation, når der er risiko for tvetydighed.
+
+Den fulde løsningsmængde til en trigonometrisk relation skal medtage
+periodiciteten. For $s,c\in[-1,1]$ og $t\in\mathbb{R}$ er de generelle
+reelle løsninger
+\begin{align*}
+ \sin\theta=s&:\quad \theta=(-1)^k\arcsin s+k\pi,\\
+ \cos\theta=c&:\quad \theta=\pm\arccos c+2k\pi,\\
+ \tan\theta=t&:\quad \theta=\arctan t+k\pi,
+ \qquad k\in\mathbb{Z}.
+\end{align*}
+Et fysisk problem kan yderligere begrænse vinkelintervallet eller fastlægge
+en orientering. Denne information skal anvendes efter den matematiske
+løsningsmængde; den må ikke skjules ved et vilkårligt grenvalg.
+
+\subsection{Hyperbolske funktioner}
+De hyperbolske funktioner defineres ved eksponentialfunktionen:
+\[
+ \cosh x=\frac{\e^x+\e^{-x}}{2},\qquad
+ \sinh x=\frac{\e^x-\e^{-x}}{2},\qquad
+ \tanh x=\frac{\sinh x}{\cosh x}.
+\]
+For reelt $x$ er $\cosh x\ge1$, så den sidste kvotient er altid defineret.
+Direkte multiplikation af definitionerne giver
+\[
+ \cosh^2x-\sinh^2x=1.
+\]
+Parret $(\cosh x,\sinh x)$ parametriserer dermed den højre gren af
+enhedshyperblen $X^2-Y^2=1$. Her betegner $x$ parameteren, mens $X,Y$
+er geometriske koordinater. Fortegnet mellem kvadraterne adskiller denne
+relation fra enhedscirklens. $\cosh$ er lige, $\sinh$ er ulige, og de er
+ikke periodiske som reelle funktioner.
+
+Addition sker efter
+\begin{align*}
+ \sinh(x+y)&=\sinh x\cosh y+\cosh x\sinh y,\\
+ \cosh(x+y)&=\cosh x\cosh y+\sinh x\sinh y.
+\end{align*}
+De inverse reelle hovedgrene kan skrives
+\begin{align*}
+ \operatorname{arsinh}x&=\ln\bigl(x+\sqrt{x^2+1}\bigr), &&x\in\mathbb{R},\\
+ \operatorname{arcosh}x&=\ln\bigl(x+\sqrt{x^2-1}\bigr), &&x\ge1,\\
+ \operatorname{artanh}x&=\tfrac12\ln\frac{1+x}{1-x}, &&|x|<1.
+\end{align*}
+For arcosh vælges inversen til cosh på $[0,\infty)$; cosh er ikke injektiv
+på hele den reelle akse. Argumenterne i logaritmerne er positive på de
+angivne områder. Afledte og deres strengere indre definitionsområder
+findes i standardtabellen i afsnit~\ref{sec:standard}.
+
+\subsection{Faser og fysiske størrelser}
+En fase $\omega t+\varphi$ i en harmonisk svingning skal være dimensionsløs:
+$\omega$ har dimension tid i minus første, og $\varphi$ er en vinkel.
+Tilsvarende har bølgetallet dimension længde i minus første i en fase
+$kx-\omega t+\varphi$. For konstant $\omega\ne0$ er perioden $T=2\pi/|\omega|$.
+Fortegnet af $\omega$ kan beskrive orientering, men perioden er positiv.
+Skeln mellem vinkelhastighed og antal svingninger pr. tidsenhed, selv om
+begge har samme SI-grunddimension.
+
+Trigonometriske identiteter beskriver her faseforskydninger og projektioner;
+de pålægger ikke i sig selv en bevægelsesligning eller en fysisk model.
+Modelantagelser og randbetingelser hører til den konkrete fysiske
+fremstilling, uanset om den står i et kursusdokument eller i biblioteket.

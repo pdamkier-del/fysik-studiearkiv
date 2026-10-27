@@ -2,18 +2,18 @@
   "documents": [
     {
       "key": "matematik",
-      "subject": "00-matematik",
-      "pdf": "build/matematik/main.pdf",
-      "log": "build/matematik/main.log",
+      "subject": "02-fysikbibliotek/matematik",
+      "pdf": "build/02-fysikbibliotek/matematik/main.pdf",
+      "log": "build/02-fysikbibliotek/matematik/main.log",
       "title": "Matematik til universitetsfysik",
       "minimum_pages": 15,
       "approved": false
     },
     {
       "key": "statistik",
-      "subject": "06-statistik",
-      "pdf": "build/statistik/main.pdf",
-      "log": "build/statistik/main.log",
+      "subject": "01-universitetsfag/statistik",
+      "pdf": "build/01-universitetsfag/statistik/main.pdf",
+      "log": "build/01-universitetsfag/statistik/main.log",
       "title": "Statistik til fysik",
       "minimum_pages": 3,
       "approved": false

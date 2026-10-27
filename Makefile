@@ -2,20 +2,23 @@ SHELL := /bin/bash
 export TEXMFVAR := $(CURDIR)/build/.cache/texmf-var
 export TEXMFCONFIG := $(CURDIR)/build/.cache/texmf-config
 export XDG_CACHE_HOME := $(CURDIR)/build/.cache
-.PHONY: pdf check clean templates statistik publication-check
+.PHONY: pdf check clean templates statistik publication-check repository-check
 pdf:
-	mkdir -p build/matematik
-	latexmk -lualatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build/matematik 00-matematik/main.tex
+	mkdir -p build/02-fysikbibliotek/matematik
+	latexmk -lualatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build/02-fysikbibliotek/matematik 02-fysikbibliotek/matematik/main.tex
 check: pdf
-	python3 scripts/check_pdf.py build/matematik/main.pdf build/matematik/main.log
+	python3 scripts/check_pdf.py build/02-fysikbibliotek/matematik/main.pdf build/02-fysikbibliotek/matematik/main.log
 templates:
-	@set -e; for subject in 0[1-5]-*; do for kind in formelsamling udledningsnoter opgavenoter opgavesamling; do mkdir -p "build/$$subject/$$kind"; latexmk -lualatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir="build/$$subject/$$kind" "$$subject/$$kind/main.tex" > "build/$$subject/$$kind/console.log" 2>&1 || { cat "build/$$subject/$$kind/console.log"; exit 1; }; done; done
+	python3 scripts/build_templates.py
 statistik:
-	mkdir -p build/statistik
-	latexmk -lualatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build/statistik 06-statistik/main.tex
+	mkdir -p build/01-universitetsfag/statistik
+	latexmk -lualatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build/01-universitetsfag/statistik 01-universitetsfag/statistik/main.tex
 publication-check: check statistik
+	python3 scripts/check_repository.py
 	python3 scripts/validate_publication.py
 	python3 -m unittest discover -s tests -v
-	python3 scripts/publish_drive.py
+	python3 scripts/check_publication_plan.py
+repository-check:
+	python3 scripts/check_repository.py
 clean:
 	rm -rf build

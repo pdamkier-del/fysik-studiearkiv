@@ -1,0 +1,63 @@
+\documentclass[11pt,a4paper,oneside]{book}
+\usepackage{90-faelles/latex/studiearkiv}
+\begin{document}
+\frontmatter
+\begin{titlepage}
+\centering
+\vspace*{28mm}
+{\sffamily\color{arkivblaa}\Large FYSIK · STUDIEARKIV\par}
+\vspace{16mm}
+{\Huge\bfseries Matematik til\\[5mm]universitetsfysik\par}
+\vspace{12mm}
+{\Large Håndbog, formler og forståelse\par}
+\vfill
+{\large Generelt referencebibliotek · arbejdsudgave\par}
+\vspace{4mm}
+{\large 27. oktober 2026\par}
+\vspace{14mm}
+\begin{minipage}{0.83\textwidth}
+Denne arbejdsudgave indeholder differentialregningspiloten, et første udviklet trigonometri-afsnit og dispositioner for de øvrige hovedemner. Dispositionerne er markeret som planlagte og skal ikke læses som færdige noter. Kompendiet er ét generelt biblioteksdokument med matematiske hovedemner og underafsnit, uafhængigt af konkrete kursers pensum. Statistik hører til et selvstændigt universitetsfag. Indholdet er selvstændigt udarbejdet; der påstås ingen overensstemmelse med et bestemt KU-pensum.
+\end{minipage}
+\end{titlepage}
+\chapter*{Læsevejledning}
+\addcontentsline{toc}{chapter}{Læsevejledning}
+Brug indholdsfortegnelsen og PDF-bogmærkerne til navigation. Differentialregningskapitlet samler definitioner, præcise forudsætninger, standardformler og metoder uden gennemregnede opgaveeksempler. Figurerne bruger dimensionsløse variable, medmindre andet er angivet. Fysiske variable skal altid fortolkes med deres enheder.
+
+Notation: $\R$ betegner de reelle tal, $I$ et interval, og $f\colon I\to\R$ en reel funktion. $f'$ og $f^{(n)}$ betegner første og $n$-te afledte. $\dd$ er differentialtegnet, og $\e$ er eksponentialfunktionens grundtal. Antagelser står ved hvert resultat og gælder ikke automatisk på tværs af afsnit.
+
+Kapitler udvikles trinvist efter repositoryets udviklingsvejledning. Formelsamlinger og konkrete opgaveløsninger til de enkelte fysikfag opbevares separat.
+\begingroup\small
+\tableofcontents
+\endgroup
+\mainmatter
+\input{02-fysikbibliotek/matematik/chapters/01-algebra}
+\input{02-fysikbibliotek/matematik/chapters/02-trigonometri}
+\input{02-fysikbibliotek/matematik/chapters/03-komplekse-tal-og-analyse}
+\input{02-fysikbibliotek/matematik/chapters/04-differentialregning}
+\input{02-fysikbibliotek/matematik/chapters/05-integralregning}
+\input{02-fysikbibliotek/matematik/chapters/06-raekker}
+\input{02-fysikbibliotek/matematik/chapters/07-ode}
+\input{02-fysikbibliotek/matematik/chapters/08-pde}
+\input{02-fysikbibliotek/matematik/chapters/09-lineaer-algebra}
+\input{02-fysikbibliotek/matematik/chapters/10-geometri}
+\input{02-fysikbibliotek/matematik/chapters/11-flervariabel}
+\input{02-fysikbibliotek/matematik/chapters/12-vektoranalyse}
+\input{02-fysikbibliotek/matematik/chapters/13-transformationer}
+\input{02-fysikbibliotek/matematik/chapters/14-green}
+\input{02-fysikbibliotek/matematik/chapters/15-sturm-liouville}
+\input{02-fysikbibliotek/matematik/chapters/16-specialfunktioner}
+\input{02-fysikbibliotek/matematik/chapters/17-variation}
+\input{02-fysikbibliotek/matematik/chapters/18-numerik}
+\input{02-fysikbibliotek/matematik/chapters/19-tensorer}
+\input{02-fysikbibliotek/matematik/chapters/20-differentialgeometri}
+\input{02-fysikbibliotek/matematik/chapters/21-grupper}
+\backmatter
+\chapter{Kilder og faglig kontrol}
+Pilotkapitlet er selvstændigt skrevet. Følgende standardværker er relevante til videre faglig kontrol, men der angives ingen verificerede sidetal eller kursusbindinger:
+\begin{itemize}
+\item Tom M. Apostol: \emph{Calculus}, bind 1. Differentialregning og Taylors sætning.
+\item Michael Spivak: \emph{Calculus}. Grænseværdier, differentiabilitet og middelværdisætninger.
+\item Bengt Fornberg: \emph{A Practical Guide to Pseudospectral Methods}. Numerisk differentiation og approksimation.
+\end{itemize}
+Pensumafgrænsninger og kildehenvisninger registreres særskilt i repositoryets pensumregister med tydelig kontrolstatus. Alle matematikkurser bidrager til dette ene kompendium; registrering er ikke en påstand om fuldt dækket pensum. Originale noter integreres først, når de foreligger. Kontrolstatus og udviklingsprocedure fremgår af repositoryets dokumentation.
+\end{document}
