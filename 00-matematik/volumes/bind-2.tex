@@ -1,0 +1,32 @@
+\documentclass[11pt,a4paper,oneside]{book}
+\usepackage{90-faelles/latex/studiearkiv}
+\hypersetup{pdftitle={Matematik – Bind 2: Calculus og analyse}}
+\begin{document}
+\frontmatter
+\begin{titlepage}
+\centering
+\vspace*{30mm}
+{\sffamily\color{arkivblaa}\Large MATEMATIK TIL UNIVERSITETSFYSIK\par}
+\vspace{16mm}
+{\Huge\bfseries Bind 2\\[6mm]Calculus og analyse\par}
+\vspace{13mm}
+{\Large Formler, begreber og matematisk sammenhæng\par}
+\vfill
+\begin{minipage}{0.8\textwidth}
+Grænseværdier, afledte, integraler, konvergens og flere variable.
+
+Dette bind genbruger de samme LaTeX-kapitler som det samlede matematikkompendium. Planlagte kapitler er markeret som ufærdige. Der indgår ikke separate gennemregnede opgaveeksempler.
+\end{minipage}
+\vspace{14mm}
+{\small Fysik-studiearkiv · Arbejdsudgave\par}
+\end{titlepage}
+\chapter*{Læsevejledning}
+\addcontentsline{toc}{chapter}{Læsevejledning}
+Dette bind er en emneopdelt udgave af det samlede matematikkompendium. Den generelle kilde og alle figurer vedligeholdes centralt under \texttt{00-matematik/chapters} og \texttt{00-matematik/figures}. For hele overblikket samt henvisninger mellem bindene anvendes den samlede udgave. Ufuldstændige kapitler er tydeligt markerede.
+\begingroup\small\tableofcontents\endgroup
+\mainmatter
+\input{00-matematik/chapters/04-differentialregning}
+\input{00-matematik/chapters/05-integralregning}
+\input{00-matematik/chapters/06-raekker}
+\input{00-matematik/chapters/11-flervariabel}
+\end{document}
