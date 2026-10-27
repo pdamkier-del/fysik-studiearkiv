@@ -30,3 +30,11 @@ Ovenstående dækker samtlige 21 kapitler præcis én gang. Rækkefølgen er en 
 ## Indholdsstatus
 
 Et bind må ikke betegnes som færdiggjort blot fordi kapitlets fil er oprettet. Lineær algebra blev udbygget 27. oktober 2026 med definitioner og formelstof om baser, lineære afbildninger, rang, spektralteori og SVD. Kapitlet og bindene afventer kompilering, visuel kontrol og illustrationer. Der må ikke påstås grøn build ud fra blot oprettede kildefiler.
+
+## Bind 1 – første faglige udbygning 27. oktober 2026
+
+- `chapters/01-algebra.tex` er udbygget fra overskrifter til forklarende referencekapitel om algebra, definitionsområder, ligninger, uligheder, funktioner, inverser, logaritmer, eksponentialfunktioner og fysiske skaleringslove.
+- `figures/algebra-eksplog.tex` er en ny original PGFPlots-figur, indsat i kapitlet.
+- `chapters/02-trigonometri.tex` har fået erstattet henvisninger, der pegede på afsnit uden for bind 1, med tekstlige krydsbindshenvisninger.
+- `chapters/09-lineaer-algebra.tex` indeholder den tidligere udvidelse om vektorrum, baser, egenværdier, SVD mv.
+- **Kontrol mangler:** De nye kilder er skrevet til GitHub, men det nye bind er ikke kompilations- eller layoutgodkendt i denne omgang. Krydsreferencer og figurer skal kontrolleres ved `make bind-1` og `make pdf` før publicering.
