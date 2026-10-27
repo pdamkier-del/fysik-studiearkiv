@@ -9,8 +9,22 @@
 % Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
 
 \section{Kontraktion, symmetri og tensorprodukter}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+\label{sec:tensor-kontraktion}
+Kontraktion forbinder en tensor med et objekt af lavere orden ved at summere over ét øvre og ét nedre indeks. Den lettest genkendelige model er sporet af en lineær operator fra bind 1, hvor $A^i{}_i=\operatorname{tr}A$. Det er ikke det samme som at diagonaliserere en matrix: kontraktion summerer passende komponenter, hvorimod diagonalisering skifter basis, når det er muligt.
+
+For en tensor af typen $(2,1)$ giver kontraktion eksempelvis
+\[
+T^{ij}{}_i=\sum_i T^{ij}{}_i,
+\]
+hvor resultatet har ét frit øvre indeks $j$ og derfor repræsenterer en vektor. Ved et skift af koordinater er det afgørende, at man parrer et kontravariant indeks med et kovariant indeks. At sætte to øvre indekser lig hinanden og summere giver ikke generelt en tensoriel operation.
+
+Har man en ikke-degenereret metrik $g_{ij}$ med invers $g^{ij}$, kan man først sænke eller hæve indeks. For en kovariant tensor $S_{ij}$ fremkommer den metriske kontraktion
+\[
+g^{ij}S_{ij}.
+\]
+Dette bliver blandt andet væsentligt ved $R=g^{ij}R_{ij}$ i differentialgeometri. En fuld behandling af koordinattransformationer, symmetrisering og anti-symmetrisering er fortsat planlagt.
+
+\paragraph{Tilbageblik.} Se kapitlet om lineær algebra i bind 1, afsnittet om sporet og diagonalisering, for den konkrete matrixfortolkning af kontraktion.
 
 \section{Metrik, indeksflytning og orientering}
 \leavevmode\par
