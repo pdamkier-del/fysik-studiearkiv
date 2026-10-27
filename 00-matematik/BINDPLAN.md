@@ -38,3 +38,16 @@ Et bind må ikke betegnes som færdiggjort blot fordi kapitlets fil er oprettet.
 - `chapters/02-trigonometri.tex` har fået erstattet henvisninger, der pegede på afsnit uden for bind 1, med tekstlige krydsbindshenvisninger.
 - `chapters/09-lineaer-algebra.tex` indeholder den tidligere udvidelse om vektorrum, baser, egenværdier, SVD mv.
 - **Kontrol mangler:** De nye kilder er skrevet til GitHub, men det nye bind er ikke kompilations- eller layoutgodkendt i denne omgang. Krydsreferencer og figurer skal kontrolleres ved `make bind-1` og `make pdf` før publicering.
+
+## Redaktionelt princip: én rød tråd gennem alle seks bind
+
+De seks bind er **ét sammenhængende matematisk referenceværk**, ikke seks uafhængige kompendier. Referencer skal gøre det nemmere at forstå et senere emne ud fra tidligere begreber uden at gøre hvert kapitel afhængigt af konstant opslag.
+
+- Forklar først et begreb klart i dets eget kapitel; henvis derefter kort til et tidligere fundament, hvor en forbindelse faktisk hjælper.
+- Introducér avancerede begreber gennem velkendte specialtilfælde, men undgå at påstå, at to forskellige matematiske operationer er det samme.
+- Brug en kort **Forbindelse til tidligere emner** eller **Videre anvendelse** kun hvor den har faglig værdi; ikke obligatorisk i hvert afsnit.
+- Angiv bind og kapitel i selvstændige PDF'er; i den samlede bog kan verificerede LaTeX-krydsreferencer være klikbare. Ingen døde referencer.
+- Prioritér kæderne algebra → lineær algebra → flervariabel analyse → tensorer → differentialgeometri; calculus → ODE/PDE → Fourier, Greenfunktioner og specialfunktioner; differentialregning/integration → variationsregning → Lagrange/Hamilton; egenværdier → koblede oscillatorer, randværdiproblemer og spektralteori.
+- Bevar en læsevenlig forklaring af hvornår et værktøj anvendes og hvilke antagelser der gælder. Undgå at fremhæve enkeltstående eksempler som gennemgående tema, hvis de blot var illustrationer af ønsket om sammenhæng.
+
+Dette princip gælder også for senere fysiknoter. Kursusnoterne i AM og EM forbliver selvstændige originaler.
