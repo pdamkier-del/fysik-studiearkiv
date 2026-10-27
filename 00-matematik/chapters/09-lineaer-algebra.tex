@@ -62,6 +62,45 @@ p_A(\lambda)=\det(\lambda I-A).
 \]
 Over $\mathbb C$ er summen af egenværdierne med algebraisk multiplicitet $\operatorname{tr}A$, og produktet er $\det A$.
 
+
+\section{Fra diagonalelementer til spor og tensorkontraktion}
+\label{sec:spor-kontraktion}
+En vigtig idé, som vender tilbage i tensorregning og differentialgeometri, er at danne en skalar ved at summere over et par sammenhørende indekser. I lineær algebra møder vi den først som \emph{sporet} af en lineær operator.
+
+For en kvadratisk matrix $A=(A^i{}_j)$ er
+\[
+\boxed{\operatorname{tr}A=\sum_{i=1}^{n}A^i{}_i.}
+\]
+Summen løber over \emph{diagonalelementerne}, men sporet er ikke det samme som at finde eller konstruere en diagonal matrix. Som en første illustration er
+\[
+A=\begin{pmatrix}2&5\\-1&3\end{pmatrix},
+\qquad
+\operatorname{tr}A=2+3=5.
+\]
+Derimod betyder \emph{diagonalisering} at finde en basis, hvor matrixrepræsentationen kan skrives $D=P^{-1}AP$ med alle elementer uden for diagonalen lig nul. Dette kræver tilstrækkeligt mange lineært uafhængige egenvektorer.
+
+Hvorfor er sporet uafhængigt af basis? Under et basisskift bliver
+$A'=S^{-1}AS$. Da $\operatorname{tr}(BC)=\operatorname{tr}(CB)$ for kvadratiske matricer med kompatible dimensioner, får vi
+\[
+\operatorname{tr}(S^{-1}AS)
+=\operatorname{tr}(ASS^{-1})
+=\operatorname{tr}A.
+\]
+Den specifikke diagonal ændrer sig altså ved basisskift, men \emph{summen} af dens elementer gør ikke.
+
+I tensorregning generaliseres dette til \emph{kontraktion} af et øvre og et nedre indeks, f.eks.
+\[
+T^i{}_i=\sum_i T^i{}_i.
+\]
+I dette eksempel er kontraktionen netop sporet. For en tensor med flere indekser kan én kontraktion efterlade en tensor af lavere orden. Man kan ikke generelt kontrahere to vilkårlige øvre indekser uden yderligere struktur: en metrik kan bruges til at hæve eller sænke indeks, så parringen giver geometrisk mening.
+
+\paragraph{Forbindelse fremad.}
+I bind 5, kapitlet om tensorregning, bruges samme idé til f.eks.
+$R=g^{ij}R_{ij}$: Ricciskalaren dannes ved at kontrahere Riccitensoren med den inverse metrik. Sporet af en matrix er derfor et første, konkret tilfælde af en langt bredere geometrisk operation.
+
+\paragraph{Hvornår bruger man hvad?}
+Vil man beregne summen af egenværdierne med algebraisk multiplicitet, bruger man sporet. Vil man finde de retninger, hvor en lineær operator virker ved simpel skalering, undersøger man egenvektorer og diagonalisering. Vil man reducere antallet af frie indekser i en tensorlig relation på en koordinatuafhængig måde, bruger man kontraktion.
+
 \section{Egenværdier og diagonalisering}
 En ikke-nul vektor $v$ kaldes egenvektor for $A$, hvis $Av=\lambda v$. Egenværdierne opfylder
 \[
