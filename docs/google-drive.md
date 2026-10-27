@@ -1,17 +1,49 @@
-# Sikker publicering til Google Drive
+# Google Drive-publicering: forberedt, ikke aktiveret
 
-Drive er læsested for færdige PDF'er; Git er kilden til LaTeX og figurer. Der er ikke aktiveret Drive-adgang, automatisering eller overskrivning.
+GitHub bevarer LaTeX og figurer; Drive er læsested for færdige, godkendte PDF'er. Ingen Drive-fil er oprettet, flyttet eller overskrevet under udvikling/test. AM-, EM- og matematikoriginaler bevares. [Originalregisteret](../99-kilder-og-pensum/eksisterende-originaler.md) indeholder kendte læsehenvisninger, ikke automatisk godkendte publiceringsmål.
 
-## Første registrering
+## Implementeret forløb
 
-Fastlæg for hvert dokument det eksisterende Drive-fil-id, dokumenttitel, ejer og destinationsmappe. Verificer med læseadgang, at id'et peger på den rigtige PDF, og at den tiltænkte konto har opdateringsrettigheder. Opbevar en ikke-hemmelig dokument-til-fil-id-tabel i en lokal konfigurationsfil uden for Git, når de faktiske id'er foreligger. Ingen id'er gættes.
+`.github/workflows/pdf.yml` bygger og kontrollerer matematik og statistik på push og PR, tester uploaderens sikkerhedsgrænser med fake HTTP og kompilerer de 20 fysikskabeloner. PDF'er og aktuelle kompilationslogs gemmes i `validated-pdfs`-artifact. Et separat Drive-job afhænger af en vellykket build og validerer de downloadede PDF'er igen.
 
-## Manuel procedure nu
+Drive-jobbet kræver `refs/heads/main`, et event som ikke er PR, repositoryvariablen `DRIVE_PUBLICATION_ENABLED=true` og GitHub environment `drive-production`. Det giver ikke i sig selv beskyttelse af main eller krav om review: disse indstillinger skal konfigureres i GitHub før aktivering. Alle dokumenter i `config/pdf-publication.json` er foreløbigt `approved: false`, fordi strukturudkast og pilotversioner ikke er godkendte færdige kompendier.
 
-1. Byg med `make check`, og kontroller PDF'en visuelt.
-2. Åbn den eksisterende PDF i Drive, verificer titel og fil-id, og brug **Administrer versioner → Upload ny version**. Opret ikke en ny fil.
-3. Kontroller, at det oprindelige link stadig virker, at sidetallet passer, og at den nye PDF kan læses. Bevar den tidligere version til tilbagerulning.
+Uploaderen opdaterer kun eksisterende fil-id'er med Drive `files.update` (HTTP PATCH med media upload). Der findes ingen create-/delete-/move-kald. Manglende mapping, dubleret fil-id, forkert MIME-type, forkert mappe, manglende editoradgang eller manglende versions-/ETag-oplysninger stopper skrivningen. Den kontrollerer fagmappens placering under arkivroden og PDF'ens placering under fagmappen. Den flytter ikke originaler automatisk til en ny mappe.
 
-## Mulig API-integration senere
+Før hver opdatering downloades den eksisterende PDF og gemmes med fil-id, versionsnummer og SHA-256. En ændring under backup eller et mislykket `If-Match` stopper overskrivningen. Efter upload kontrolleres de hentede bytes mod den lokale PDF's checksum. Backup bevares også, når upload fejler. Flere dokumenter er ikke én atomisk transaktion: en senere fejl kan efterlade tidligere dokumenter opdateret, med backup til manuel rollback.
 
-En særskilt opgave kan implementere en eksplicit dokument-til-fil-id-mapping og Drive API `files.update(fileId=..., media_body=...)`, aldrig `files.create` ved opdatering. Hent først filmetadata og rettigheder; afbryd ved manglende id, forkert MIME-type, identitetskonflikt eller manglende adgang. Brug mindst mulige OAuth-rettigheder, sikker hemmelighedslagring og eksplicit valg af opdatering. Tokens må ikke stå i Git, scripts eller logs. Kontrollér checksum/version efter upload, og bevar mulighed for gendannelse. Automatisk skrivning kræver først fastlagte id'er og rettigheder.
+## Konfiguration, der mangler før aktivering
+
+1. **Google Cloud og identitet.** Opret/vælg et GCP-projekt, aktivér Google Drive API og IAM Service Account Credentials API, og opret en dedikeret servicekonto. Konfigurér Workload Identity Federation for GitHubs OIDC-udsteder `https://token.actions.githubusercontent.com`. Begræns providerens attributbetingelser til repositoryet `pdamkier-del/fysik-studiearkiv`, ref `refs/heads/main` og environment `drive-production`. Bind kun den konkrete identitet til `roles/iam.workloadIdentityUser` på servicekontoen. Brug ingen downloadet JSON-privatnøgle og ingen domæneomfattende delegation.
+2. **Drive-adgang.** Del kun den relevante arkivrod/fagmapper og de eksisterende PDF'er med servicekontoen med editorrettighed. Verificer reel skriveadgang til de enkelte filer; Google Cloud IAM giver ikke i sig selv adgang til Drive. Uploaderen bruger OAuth-scopet `https://www.googleapis.com/auth/drive`, da allerede eksisterende brugerfiler ikke nødvendigvis er tilgængelige med `drive.file`. Begræns rækkevidden gennem den dedikerede kontos konkrete Drive-delinger. Godkend scope/politik i organisationen, hvis nødvendigt.
+3. **Mappehierarki.** Verificer én arkivrod og fagmapper med navne svarende til Git-strukturen, fx `00-matematik`, `01-analytisk-mekanik` og `02-elektromagnetisme`. Første oprettelse/placering sker manuelt og separat; uploaderen opretter ikke mapper. Ændr ikke originals placering eller destination uden afklaring.
+4. **Eksisterende fil-id'er.** Bekræft for hvert færdigt dokument id, faktisk PDF-format, titel, ejer, fagmappe og opdateringsrettigheder. AM-/matematiklinkene er endnu kun originalhenvisninger; EM-id mangler. For et helt nyt dokument skal dets første Drive-fil oprettes én gang separat og id'et derefter registreres. Gæt aldrig id'er, og opret ikke en ny fil ved hver kørsel.
+5. **GitHub Secrets i environment `drive-production`.** Opret `GCP_WORKLOAD_IDENTITY_PROVIDER` (fuldt provider-resource-navn), `GCP_DRIVE_SERVICE_ACCOUNT` (servicekonto-email) og `DRIVE_TARGETS_JSON` (målmapping efter `config/drive-targets.example.json`, uden placeholderværdier). Disse værdier er primært konfiguration; de gemmes i Secrets for at undgå logning og holde mål adskilt fra kilderne. OIDC giver kortlivede tokens ved runtime; ingen adgangsnøgle skal gemmes i Git eller chat.
+6. **Godkendelse.** Beskyt main med påkrævet PR-review og grøn buildkontrol. Konfigurer environment `drive-production` med required reviewers, prevention of self-review hvor tilgængeligt og deployment branch policy kun main. Beskyt også workflow, manifest og scripts med review. Uden disse faktiske GitHub-indstillinger er »kun godkendte ændringer« ikke verificeret.
+7. **Læsende integrationstest.** Når konfigurationen er på plads, aktiver kun de konkret godkendte mål i manifestet via review. Kør den manuelle workflowtilstand `validate`: den validerer lokalt og foretager kun metadata-GET mod Drive. Kontrollér id'er, MIME-type, mapper og rettigheder. Den reelle Google-authentificering, ETag-understøttelse og upload/rollback er endnu ikke live-testet. Afprøv om nødvendigt media-opdatering og rollback på en særskilt disponibel test-PDF med et særskilt manifest; aldrig på originalerne. Produktionsaktivering kræver denne test og udtrykkelig godkendelse.
+8. **Aktivering.** Sæt repositoryvariablen `DRIVE_PUBLICATION_ENABLED=true`, når ovenstående er konfigureret og godkendt. Push til main udgiver da kun manifestposter med `approved: true`, efter grøn build og environment-godkendelse. De nuværende ufærdige PDF'er må ikke godkendes blot for at få flowet til at køre. Sæt variablen til false igen for at deaktivere jobben.
+
+Feltet `files` i målkonfigurationen bruger stabile dokumentnøgler, mens `subjects` bruger de faktiske fagmapper. Tilføj først AM-/EM-PDF'er i buildmanifestet og workflowets artifactliste, når deres kilder og byggekommandoer foreligger og er testet. De tomme skabeloner er ikke publiceringsmål.
+
+## Manuel publicering
+
+GitHub Actions → **Build PDFs and prepare Drive publication** → **Run workflow**, vælg **main** og mode **validate** eller **publish**. Samme buildkrav, manifestgodkendelse, featureflag og environment-review gælder. En featurebranch kan ikke bruges til Drive-jobbet.
+
+Uden aktiveret API-integration kan en godkendt PDF fortsat versionsopdateres manuelt i Drive: verificer det eksisterende fil-id, brug **Administrer versioner → Upload ny version**, og kontrollér at linket og den nye PDF virker. Opret ikke en ny fil, og brug ikke denne procedure til at omgå en uafklaret destination.
+
+## Tilbagerulning
+
+Ved opdatering gemmer workflowet artifactet `drive-backup` med de tidligere PDF-bytes og deres metadata. Standardretention er 90 dage, begrænset yderligere af repositoryets indstillinger. Det er ikke en permanent backup: download og bevar godkendte backups sikkert uden for Git, hvis længere retention kræves. Artifactadgang følger repositoryets adgang; et offentligt repository er ikke egnet til private originaler uden særskilt adgangsafklaring.
+
+Manuel workflowkørsel på main med mode **rollback** og **backup_run_id** henter `drive-backup` fra den angivne tidligere kørsel i samme repository. Scriptet afviser ændrede checksums og id'er, der ikke svarer til de aktuelt godkendte mål. Det tager en ny backup af den nuværende version før gendannelse. Delvise backups gendannes ikke automatisk som et fuldt sæt; vælg og kontroller de berørte dokumenter separat. Workflowet kræver fortsat environment-review. Alternativt kan den verificerede backup uploades som ny version til samme id via Drives versionshåndtering.
+
+## Lokale kontroller uden Drive-adgang
+
+```sh
+make check statistik
+python scripts/validate_publication.py
+python -m unittest discover -s tests -v
+python scripts/publish_drive.py
+```
+
+Sidste kommando er offline som standard. Med det nuværende manifest er der ingen godkendte dokumenter og ingen Drive-requests. `--check-remote` tilføjer læsende kontrol; kun et eksplicit `--apply` kan skrive. Lokale fake-HTTP-tests beviser sikkerhedsmekanismerne i koden, ikke Google API-kompatibilitet eller produktionsrettigheder.

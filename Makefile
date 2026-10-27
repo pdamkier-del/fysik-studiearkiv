@@ -2,7 +2,7 @@ SHELL := /bin/bash
 export TEXMFVAR := $(CURDIR)/build/.cache/texmf-var
 export TEXMFCONFIG := $(CURDIR)/build/.cache/texmf-config
 export XDG_CACHE_HOME := $(CURDIR)/build/.cache
-.PHONY: pdf check clean templates statistik
+.PHONY: pdf check clean templates statistik publication-check
 pdf:
 	mkdir -p build/matematik
 	latexmk -lualatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build/matematik 00-matematik/main.tex
@@ -13,5 +13,9 @@ templates:
 statistik:
 	mkdir -p build/statistik
 	latexmk -lualatex -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build/statistik 06-statistik/main.tex
+publication-check: check statistik
+	python3 scripts/validate_publication.py
+	python3 -m unittest discover -s tests -v
+	python3 scripts/publish_drive.py
 clean:
 	rm -rf build

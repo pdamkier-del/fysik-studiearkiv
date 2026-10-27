@@ -20,9 +20,10 @@ make pdf
 make check
 make templates
 make statistik
+make publication-check
 ```
 
-Kompendiet ligger i `build/matematik/main.pdf`. `make check` kontrollerer den faktiske PDF for sider, bogmærker, links og forventet tekst og afviser logfiler med overfyldte bokse, manglende tegn eller uafklarede referencer. Visuel kontrol er stadig nødvendig. `make templates` kompilerer alle 20 faglige dokumentskabeloner. `make clean` fjerner kun `build/`.
+Kompendiet ligger i `build/matematik/main.pdf`. `make check` kontrollerer den faktiske PDF for sider, bogmærker, links og forventet tekst og afviser logfiler med overfyldte bokse, manglende tegn eller uafklarede referencer. Visuel kontrol er stadig nødvendig. `make templates` kompilerer alle 20 faglige dokumentskabeloner. `make publication-check` validerer begge PDF-builds og kører Drive-sikkerhedstests samt offline-dry-run. `make clean` fjerner kun `build/`.
 
 ## Struktur
 
@@ -36,7 +37,7 @@ Kompendiet ligger i `build/matematik/main.pdf`. `make check` kontrollerer den fa
 
 GitHub Actions bygger og kontrollerer PDF ved push og pull request og gemmer den som et artifact. Genererede filer og PDF'er versionsstyres ikke. Download PDF'en fra workflowets artifacts for læsning eller manuel Drive-opdatering.
 
-Læs `AGENTS.md` før ændringer og `docs/udvikling.md` før nye kapitler. Langsigtet mål er 200–400 sider, men korrekthed og brugbarhed styrer omfanget. Drive-integrationen er under forberedelse og er ikke aktiveret; eksisterende filer må ikke overskrives under testen.
+Læs `AGENTS.md` før ændringer og `docs/udvikling.md` før nye kapitler. Langsigtet mål er 200–400 sider, men korrekthed og brugbarhed styrer omfanget. Drive-integrationens workflow og uploader er implementeret og lokalt testet, men ikke aktiveret eller live-verificeret. Alle publiceringsposter er deaktiverede. Konfiguration, rettigheder, manuel publicering og rollback er beskrevet i [Drive-vejledningen](docs/google-drive.md). Eksisterende filer må ikke overskrives under testen.
 
 Alle matematikkurser integreres i ét dokument via `00-matematik/main.tex`; der oprettes ingen kursusspecifikke matematikkompendier. Statistik indgår ikke i matematikdokumentet. Statistisk metode ligger i `06-statistik/`, mens statistisk fysik forbliver under termodynamik.
 

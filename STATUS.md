@@ -1,5 +1,7 @@
 # Faktisk projektstatus
 
+Opdateret 27. oktober 2026.
+
 Status er evidensbaseret, ikke en liste over ambitioner. Genereret PDF, kildefiler, lokal validering, GitHub-hostet CI og Drive-publicering er forskellige resultater. Se [ROADMAP.md](ROADMAP.md) for planen og [PENSUM.md](PENSUM.md) for kilder.
 
 ## Implementeret
@@ -11,17 +13,22 @@ Status er evidensbaseret, ikke en liste over ambitioner. Genereret PDF, kildefil
 - Fagligt organiseret termodynamikplan og kilderegister for FV/EMM, LinALys, den uafklarede ugeplan, termodynamik, Barlow og Drive-originaler.
 - Lokale byggekommandoer, PDF-kontrol og GitHub Actions-builddefinition. PDF'er og hjælpefiler er ignoreret i Git.
 
-## Verificeret før denne konsolidering
+## Verificeret lokalt
 
 - Lokal matematisk PDF-build og `make check`: 38 sider, 123 bogmærker og 125 links efter hovedemneomlægningen; ingen overfyldte bokse, manglende tegn eller uafklarede referencer.
 - Selvstændig statistikstruktur kompilerer til 9 sider. Dette validerer teknisk struktur, ikke et færdigt statistikfag.
 - Alle 20 fysikskabeloner kompilerede under den oprindelige fundamentkontrol. Fællesstilen og disse skabeloner er ikke ændret ved denne konsolidering.
-- Den tidligere pilot-PDF blev visuelt gennemgået. Den nyligt omordnede PDF skal også gennemgås visuelt før endelig levering af de igangværende ændringer.
+- Den omordnede matematik-PDF, de ændrede hovedemner/indholdsfortegnelser og statistikstrukturens sider er renderet og visuelt gennemgået. Pilotindholdet er sammenlignet med den oprindelige kilde: kun nødvendige henvisninger er rettet: flervariabel analyse bruger nu et stabilt label, og statistisk usikkerhed henviser til det selvstændige statistikkompendium.
 - Tidligere Git-push fungerede. PR-oprettelse via GitHub-API var blokeret med `Forbidden`; ingen oprettet PR er verificeret.
 
-## Igangværende opgave, endnu ikke afsluttet
+## Drive-forberedelse implementeret og lokalt testet
 
-Drive-publicering forberedes efter brugerens seneste instruktion. Et uploaderudkast, manifest med alle dokumenter sat til `approved: false` og fake-HTTP-tests findes i arbejdsområdet. Uploaderens testresultater, den endelige workflowkobling og rollback skal verificeres, før de beskrives som implementerede og lokalt testede. Der er ikke foretaget Drive-skrivning. Ingen produktionsintegration eller rigtig OAuth/Drive-opdatering er verificeret.
+- Workflowet har en separat Drive-job, som kræver grøn PDF-build, main, et eksplicit featureflag og environment `drive-production`. Både automatiske main-kørsler, manuel read-only-kontrol, publicering og rollback er defineret. Workflow-YAML er syntakskontrolleret, men GitHub-hostet eksekvering er ikke verificeret.
+- Uploaderen opdaterer kun eksisterende fil-id'er. Den kontrollerer mapper/MIME/editoradgang, tager backup før skrivning, afviser ændrede versioner med ETag/If-Match og kontrollerer checksum efter upload. Rollback validerer backup-id/checksum og tager en ny backup først. Ingen create-/delete-/move-kald er implementeret.
+- `make publication-check` består: begge PDF'er valideres, 11 fake-HTTP-/sikkerhedstests består, og standard-dry-run foretager ingen Drive-kald. En særskilt offline-dry-run med to midlertidigt godkendte poster og falske mål-id'er består også. Produktionsmanifestet har hele tiden haft `approved: false`.
+- Google-auth-/requests-afhængighederne er installeret og indlæselige. En eksisterende `GOOGLE_APPLICATION_CREDENTIALS`-variabel blev fundet; dens fil kunne ikke indlæses af google-auth (`DefaultCredentialsError`). Værdier er ikke udskrevet, og credentials er ikke refreshed. Tilstedeværelsen dokumenterer ikke brugbar Drive-adgang og erstattes ikke med en nøgle i Git.
+- Der er ikke foretaget Drive-skrivning eller live-upload/rollback. OIDC, faktisk API-adfærd (herunder ETag), filrettigheder og main/environment-beskyttelse afventer ekstern konfiguration og sikker integrationstest. Ingen PDF er godkendt til automatisk publicering.
+- Den konkrete opsætning, tre GitHub Secrets, OAuth-scope, mapper, manuelle handlinger og backupbegrænsninger fremgår af [Drive-vejledningen](docs/google-drive.md).
 
 ## Blokeringer og manglende input
 
@@ -47,6 +54,6 @@ Der er ingen uløst konflikt, som kræver sletning af eksisterende arbejde. Uafk
 
 ## Fortsættelse
 
-Afslut den allerede igangværende PDF-/Drive-forberedelse med lokale sikkerhedstests og visuel PDF-kontrol. Opdater denne status med faktiske resultater, commit og push på den eksisterende featurebranch. Publicer ikke ufærdige kompendier eller eksisterende Drive-originaler. Start derefter med kildeafklaring og den prioriterede faglige udvikling i ROADMAP; genstart ikke projektet.
+Den lokale PDF-/Drive-forberedelse og konsolidering er udført. Næste trin kræver verificerede originalkilder og ekstern GitHub/GCP/Drive-konfiguration som beskrevet ovenfor. Fortsæt på den eksisterende featurebranch; ændringer er endnu ikke merged til main. Publicer ikke ufærdige kompendier eller eksisterende Drive-originaler. Følg derefter den prioriterede faglige udvikling i ROADMAP; genstart ikke projektet.
 
 `docs/kontrolrapport.md` beskriver den første leverance og er historisk. Dens tidligere sidenumre og bogmærketal er ikke den aktuelle status efter strukturændringer.

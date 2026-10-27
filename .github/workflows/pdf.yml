@@ -1,15 +1,26 @@
-name: Byg og kontroller PDF
+name: Build PDFs and prepare Drive publication
 on:
   push:
   pull_request:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Drive operation (requires configured protected environment)
+        type: choice
+        options: [validate, publish, rollback]
+        default: validate
+      backup_run_id:
+        description: Previous workflow run with drive-backup artifact (rollback only)
+        type: string
+        required: false
 permissions:
   contents: read
 jobs:
-  pdf:
+  build:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - name: Installer LaTeX
+      - name: Install LaTeX
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends latexmk texlive-luatex texlive-latex-extra texlive-lang-european texlive-fonts-recommended
@@ -17,19 +28,79 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -r requirements-tools.txt
-      - name: Byg og kontroller kompendium
-        run: make check
-      - name: Byg statistikstruktur
-        run: make statistik
-      - name: Byg faglige skabeloner
+      - name: Build and check mathematics and statistics
+        run: make check statistik
+      - name: Validate publication PDFs and test Drive guards (no network)
+        run: |
+          python scripts/validate_publication.py
+          python -m unittest discover -s tests -v
+          python scripts/publish_drive.py
+      - name: Compile all physics templates
         run: make templates
       - uses: actions/upload-artifact@v4
         with:
-          name: matematikkompendium
-          path: build/matematik/main.pdf
+          name: validated-pdfs
+          path: |
+            build/matematik/main.pdf
+            build/matematik/main.log
+            build/statistik/main.pdf
+            build/statistik/main.log
           if-no-files-found: error
-      - uses: actions/upload-artifact@v4
+  drive:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.DRIVE_PUBLICATION_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    environment: drive-production
+    permissions:
+      contents: read
+      actions: read
+      id-token: write
+    concurrency:
+      group: drive-publication
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          name: statistik-struktur
-          path: build/statistik/main.pdf
-          if-no-files-found: error
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-tools.txt -r requirements-drive.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: validated-pdfs
+          path: build
+      - name: Revalidate downloaded artifacts
+        run: python scripts/validate_publication.py
+      - name: Validate requested operation
+        env:
+          MODE: ${{ inputs.mode || 'publish' }}
+          BACKUP_RUN: ${{ inputs.backup_run_id }}
+        run: |
+          case "$MODE" in validate|publish) ;; rollback) [[ "$BACKUP_RUN" =~ ^[0-9]+$ ]] ;; *) exit 1 ;; esac
+      - uses: actions/download-artifact@v4
+        if: inputs.mode == 'rollback'
+        with:
+          name: drive-backup
+          path: build/restore
+          run-id: ${{ inputs.backup_run_id }}
+          github-token: ${{ github.token }}
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_DRIVE_SERVICE_ACCOUNT }}
+      - name: Validate or update existing Drive PDFs
+        env:
+          DRIVE_TARGETS_JSON: ${{ secrets.DRIVE_TARGETS_JSON }}
+          MODE: ${{ inputs.mode || 'publish' }}
+        run: |
+          case "$MODE" in
+            validate) python scripts/publish_drive.py --check-remote ;;
+            publish) python scripts/publish_drive.py --apply ;;
+            rollback) python scripts/publish_drive.py --restore build/restore --apply ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: drive-backup
+          path: build/drive-backup
+          retention-days: 90
+          if-no-files-found: ignore

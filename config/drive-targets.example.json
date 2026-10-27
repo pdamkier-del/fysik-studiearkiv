@@ -1,0 +1,11 @@
+{
+  "root_folder_id": "REPLACE_WITH_VERIFIED_ROOT_FOLDER_ID",
+  "subjects": {
+    "00-matematik": "REPLACE_WITH_VERIFIED_SUBJECT_FOLDER_ID",
+    "06-statistik": "REPLACE_WITH_VERIFIED_SUBJECT_FOLDER_ID"
+  },
+  "files": {
+    "matematik": "REPLACE_WITH_VERIFIED_EXISTING_PDF_ID",
+    "statistik": "REPLACE_WITH_VERIFIED_EXISTING_PDF_ID"
+  }
+}

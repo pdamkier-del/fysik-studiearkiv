@@ -1,5 +1,7 @@
 # Kontrolrapport · 26. oktober 2026
 
+Historisk rapport for første leverance. Aktuel struktur, kontroltal og blokeringer står i [STATUS.md](../STATUS.md).
+
 ## Leverance og afgrænsning
 
 Repositoryet var tomt og uden commits eller fjernbrancher. Første leverance etablerer 21 matematikkapitler, et selvstændigt pilotkapitel om differentialregning, fire originale PGFPlots-figurer, fælles dokumentdesign, permanente agentregler og 20 tomme faglige dokumentskabeloner. Detaljeret kapitelplan og en illustrationsplan til differentialgeometri findes i `kapitelplan.md`. Øvrige kapitler er dispositioner, ikke færdige noter.
