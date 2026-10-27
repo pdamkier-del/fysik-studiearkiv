@@ -156,3 +156,70 @@ $P$ projicerer ortogonalt på søjlerummet for $Q$. Det gør relationen mellem l
 
 \paragraph{Anvendelser i fysik.}
 Normalmoders frekvenser findes typisk fra generaliserede egenværdiproblemer; lineæriserede bevægelsesligningers stabilitet bestemmes blandt andet af operatorens spektrum; ortonormale baser og selvadjungerede operatorer er centrale i kvantemekanik. For ikke-ortogonale koordinater skal metrikken indgå eksplicit i indre produkter og adjungering.
+
+\section{Praktisk metodevalg: lineære systemer og egenværdier}
+\label{sec:la-metode}
+Inden man regner, bør man skelne mellem tre forskellige spørgsmål. Et ligningssystem $Ax=b$ handler om en \emph{løsning}; egenværdiproblemet $Av=\lambda v$ handler om operatorens \emph{naturlige retninger}; og et mindste-kvadraters problem handler om den \emph{bedst mulige approksimation}, når ligningerne ikke kan opfyldes præcist.
+
+\subsection{Sådan vælges metoden}
+\begin{center}
+\begin{tabular}{@{}p{0.32\textwidth}p{0.57\textwidth}@{}}
+\toprule
+Spørgsmål & Typisk fremgangsmåde\\
+\midrule
+Er $Ax=b$ løsbart? & Sammenlign $\operatorname{rank}A$ og $\operatorname{rank}[A\mid b]$.\\
+Er løsningen entydig? & Kræv en konsistent ligning og $\ker A=\{0\}$.\\
+Er en kvadratisk matrix invertibel? & Brug rang eller determinant; numerisk også singularværdier.\\
+Hvilke naturlige moder har systemet? & Stil egenværdiproblemet op, kontroller massen og fortegnene.\\
+Kan operatoren diagonaliseres? & Kontroller antal lineært uafhængige egenvektorer; ikke blot antal rødder.\\
+Hvilken approximation er nærmest $b$? & Benyt ortogonal projektion eller SVD.\\
+\bottomrule
+\end{tabular}
+\end{center}
+I numeriske beregninger bør man normalt løse $Ax=b$ med en faktorisering eller eliminationsmetode i stedet for først at beregne $A^{-1}$. At inversen findes matematisk, siger ikke alene at problemet er numerisk stabilt.
+
+\subsection{Matrix og koordinatvalg}
+Lad $v$ være en geometrisk vektor. Den kan have forskellige koordinatsøjler $[v]_e$ og $[v]_f$ i to baser. Skriver vi $[v]_e=S[v]_f$, følger for en operator $T:V\to V$
+\[
+[T]_f=S^{-1}[T]_eS.
+\]
+Denne formel forklarer, hvorfor eigenværdier og spor er basisuafhængige, selv om alle de enkelte matrixelementer kan ændre sig. Hvis man i stedet skifter baser på både domæne og codomæne i en afbildning $T:V\to W$, bliver den generelle regel $[T]_{\mathrm{ny}}=R^{-1}[T]_{\mathrm{gammel}}S$, hvor $S$ og $R$ beskriver skiftene i henholdsvis $V$ og $W$.
+
+\subsection{Kvadratiske former og positive matricer}
+En kvadratisk form kan skrives
+\[
+Q(x)=x^{\mathsf T}Kx.
+\]
+Kun den symmetriske del af $K$ bidrager, da $x^{\mathsf T}(K-K^{\mathsf T})x=0$. For en reel symmetrisk matrix $K$ gælder: $Q(x)>0$ for alle $x\ne0$ præcis når alle egenværdier af $K$ er positive. Denne karakterisering viser, hvorfor egenværdier bruges til at afgøre, om et stationært punkt er et stabilt lokalt minimum i en lineær eller kvadratisk model.
+
+\section{Fysisk sammenhæng: koblede små svingninger}
+\label{sec:normalmoder}
+For små forskydninger $q$ omkring en ligevægt får man ofte en Lagrangefunktion på formen
+\[
+L=\frac12\dot q^{\mathsf T}M\dot q-\frac12q^{\mathsf T}Kq,
+\]
+hvor $M$ er en symmetrisk positiv definit massematrix, og $K$ er en symmetrisk stivhedsmatrix (Hessianen af potentialet i ligevægten). Euler--Lagrange giver
+\[
+M\ddot q+Kq=0.
+\]
+Ved ansatsen $q(t)=a\cos(\omega t+\varphi)$ fremkommer
+\[
+(K-\omega^2M)a=0,\qquad
+\boxed{\det(K-\omega^2M)=0.}
+\]
+Dette er et \emph{generaliseret egenværdiproblem}. Det reduceres kun direkte til $Ka=\omega^2a$, når $M=I$ i de valgte enheder og koordinater. Hvis $K$ er positiv semidefinit, er de fundne $\omega^2$ ikke-negative; en nulmode kan svare til en fri bevægelsesretning. En negativ egenværdi af det relevante massenormaliserede problem giver i stedet en eksponentielt voksende mode.
+
+Når $M$ er positiv definit, kan man indføre de massenormaliserede koordinater med $u=M^{1/2}a$ og den symmetriske matrix
+\[
+B=M^{-1/2}KM^{-1/2},
+\qquad Bu=\omega^2u.
+\]
+Så kan den almindelige spektralsætning anvendes på $B$. Dette er forbindelsen mellem lineær algebra, andenordens differentialligninger og stabilitet i analytisk mekanik.
+
+\subsection{Hvorfor superposition virker}
+Da bevægelsesligningen er lineær, er summen af løsninger også en løsning. Når massenormaliserede egenvektorer danner en basis, kan de almindelige initialbetingelser opdeles på naturlige moder; hver mode svinger med sin egen frekvens. Superposition gælder i \emph{den lineære model}; store udsving kan kræve højere ordens led i potentialet, hvor normalmoderne ikke længere udvikler sig uafhængigt.
+
+\section{Forbindelser til senere bind}
+De matematiske resultater her er forudsætninger for en række senere emner. Jacobimatricen i flervariabel analyse er den lokale lineære afbildning, der bedst approksimerer et differentiabelt koordinatskift. Fouriermetoder skriver funktioner i en basis af oscillationer; Sturm--Liouville-teori generaliserer egenværdiproblemer til differentialoperatorer. Tensorregning skelner mellem objekter og deres koordinatkomponenter og generaliserer sporet ved kontraktion.
+
+Den røde tråd er derfor ikke, at nye emner er det samme som lineær algebra, men at de ofte \emph{bevarer dens grundstruktur} under mere generelle betingelser.
