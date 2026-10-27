@@ -17,13 +17,13 @@
     "02-fysikbibliotek/relativitet-og-gravitation": "1E3BprIycpcVMStXfRgAgCNz8QMPpy0JC"
   },
   "files": {
-    "matematik": "1YjrsA63LHS96ShigE7u1i7_kU2zDjO4e",
+    "matematik": null,
     "analytisk-mekanik-formelsamling": "1D0pjoV7JmySzJWmegeGOnvZoLxPrMQNA",
     "elektromagnetisme-formelsamling": null,
     "statistik": null
   },
   "verification": {
-    "source": "Brugerens oplyste Drive-struktur; ikke API-verificeret",
+    "source": "Drive-mappe- og PDF-metadata kontrolleret for de to eksisterende AM-originaler 2026-10-27. Andre mål og rettigheder ikke fuldt verificeret.",
     "permissions_verified": false,
     "publication_enabled": false
   }
