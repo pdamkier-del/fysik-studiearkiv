@@ -51,3 +51,47 @@ De seks bind er **ét sammenhængende matematisk referenceværk**, ikke seks uaf
 - Bevar en læsevenlig forklaring af hvornår et værktøj anvendes og hvilke antagelser der gælder. Undgå at fremhæve enkeltstående eksempler som gennemgående tema, hvis de blot var illustrationer af ønsket om sammenhæng.
 
 Dette princip gælder også for senere fysiknoter. Kursusnoterne i AM og EM forbliver selvstændige originaler.
+
+## Bind 1 – fastlagt fuld faglig disposition (27. oktober 2026)
+
+**Arbejdsrækkefølge:** Fastlæg samtlige relevante emner først; udbyg derefter kapitlerne i rækkefølge. De nuværende forklarende tekster bevares. Disposition er **ikke** ensbetydende med, at emnet er færdigskrevet.
+
+### Del I: Algebra og funktioner
+1. Talområder, mængder, intervalnotation, absolutværdi, uligheder og definitionsmængder.
+2. Potenser, rødder, brøker, eksponentregler, rationelle eksponenter og dimensionskontrol.
+3. Polynomier, faktorisering, kvadratsætninger, kubiksætninger, binomialformlen og polynomiumsdivision.
+4. Lineære, kvadratiske og højeregradsligninger; diskriminant; kvadratkomplettering; rational- og rodsligninger; parameterafhængighed.
+5. Partialbrøksopdeling: forskellige og gentagne lineære faktorer, irreducible andengradsfaktorer.
+6. Funktioner: domæne/værdimængde, invers, sammensætning, graftransformationer og stykvist definerede funktioner.
+7. Eksponential- og logaritmefunktioner; logaritmeregler, eksponentielle modeller, skalering og dimensionsløse kombinationer.
+8. Komplekse tal som basal algebra: polarform, konjugation og modulus; dybere kompleks analyse henvises til bind 4.
+
+### Del II: Trigonometri og hyperbolske funktioner
+9. Vinkler, radianer, enhedscirkel, symmetrier og fortegn.
+10. Sinus, cosinus, tangens, perioder, frekvenser og faser; sammenhængen med rotationer.
+11. Additions-, dobbelt-, halv- og produkt-til-sum-formler; identitetsoversigt.
+12. Trigonometriske ligninger, inverse funktioner, grenvalg og atan2.
+13. Harmonske svingninger og omskrivning mellem sinus/cosinus; amplituder og faseforskydning.
+14. Hyperbolske funktioner, identiteter, inverser og geometrisk fortolkning.
+
+### Del III: Lineær algebra
+15. Vektorer, vektorrum, underrum, spænd, basis, dimension og lineær uafhængighed.
+16. Lineære afbildninger, koordinater, repræsentation i baser og basisskift.
+17. Matrixregning: sum, produkt, transponering, adjungering, identitet, inverse og blokmatricer.
+18. Lineære systemer, Gauss- og Gauss–Jordan-elimination, rang, kerne, billede og frihedsgrader.
+19. Determinant, udviklingsregler, orientering, volumenfaktor og invertibilitet.
+20. Spor, egenværdier, egenvektorer, algebraisk/geometrisk multiplicitet, diagonalisering og begrænsninger.
+21. Indre produkter, normer, ortogonalitet, Gram–Schmidt og ortonormale baser.
+22. Symmetriske, hermiteske, unitære og ortogonale operatorer; spektralsætning.
+23. Kvadratiske former, positiv definithed, Hessian og stabilitet.
+24. Ortogonal projektion, mindste kvadrater, QR, singularværdier, SVD, pseudoinvers og konditionstal.
+25. Matrixeksponential, lineære systemer og små koblede svingninger/normalmoder.
+
+### Referenceapparat i hvert kapitel
+- **Lær:** begreb, geometrisk intuition, fuld forklaring og forudsætninger.
+- **Slå op:** kompakte regnetabeller, definitioner, identiteter og standardprocedurer.
+- **Anvend:** typiske opgavemønstre, metodevalg, dimensionskontrol og faldgruber.
+- **Forbind:** korte henvisninger til begreber tidligere i værket og relevante senere bind.
+- **Visualisér:** originale figurer, når de giver faglig forståelse, frem for pynt.
+
+**Afgrænsning:** Egentlig differential- og integralregning ligger i bind 2; ODE/PDE i bind 3; kompleks analyse, Fourier, specialfunktioner i bind 4; tensorer og geometri i bind 5; variationsregning og symmetrier i bind 6. Gentag kun det, der er nødvendigt for et selvstændigt opslag.
