@@ -1,13 +1,133 @@
 \chapter{Algebra og funktioner}
-\planlagt{Definitioner, notation, forudsætninger, centrale resultater og fysikforbindelser udvikles samlet.}
+\label{ch:algebra}
+Algebra er sproget, der forbinder en matematisk model med dens ukendte størrelser. I fysik er opgaven sjældent blot at isolere et symbol: Man skal også holde styr på, hvilke værdier det må antage, hvilke omskrivninger der er reversible, og om det endelige udtryk har de rigtige dimensioner. Kapitlet behandler derfor algebra som et \emph{opslagsværktøj} for senere modeller og ikke blot som en samling regneregler.
+
 \section{Talområder, ligninger og uligheder}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+\subsection{Tal, definitionsmængder og logisk ækvivalens}
+De naturlige tal $\mathbb N$, de hele tal $\mathbb Z$, de rationale tal $\mathbb Q$, de reelle tal $\mathbb R$ og de komplekse tal $\mathbb C$ har forskellige egenskaber. Eksempelvis har $x^2+1=0$ ingen løsning i $\mathbb R$, men løsningerne $\pm i$ i $\mathbb C$. En påstand om en lignings løsninger er derfor ikke fuldstændig uden et angivet talområde.
+
+Når man løser $F(x)=0$, skal definitionsmængden bestemmes før omskrivning. Nævnere må ikke være nul, reelle lige rødder kræver ikke-negative radikander, og $\ln x$ kræver $x>0$ i real analyse. Multiplikation af en ligning med et udtryk, der kan være nul, er ikke uden videre en ækvivalens; division kan tabe løsninger. Kvadrering kan omvendt skabe fremmede løsninger:
+\[
+x=\sqrt{a}\ \Longrightarrow\ x^2=a,
+\]
+men den modsatte implikation kræver både $a\geq0$ og $x\geq0$. Derfor bør en kandidat kontrolleres i \emph{den oprindelige} ligning.
+
+\subsection{Potenser, faktorisering og standardidentiteter}
+For heltallige eksponenter gælder sædvanlige potensregler, hvor nævnerne er definerede:
+\[
+a^m a^n=a^{m+n},\qquad
+\frac{a^m}{a^n}=a^{m-n}\ (a\ne0),\qquad
+(a^m)^n=a^{mn}.
+\]
+For vilkårlige reelle eksponenter defineres $a^x=\exp(x\ln a)$ for $a>0$. Man må således ikke bruge regler for ikke-heltallige potenser uden at undersøge fortegn og grenvalg.
+
+Tre særligt nyttige faktoriseringer er
+\begin{align*}
+(a+b)^2&=a^2+2ab+b^2,\\
+a^2-b^2&=(a-b)(a+b),\\
+a^3-b^3&=(a-b)(a^2+ab+b^2).
+\end{align*}
+Den generelle andengradsligning $ax^2+bx+c=0$ med $a\ne0$ har rødder
+\[
+\boxed{x_\pm=\frac{-b\pm\sqrt{b^2-4ac}}{2a}}.
+\]
+Diskriminanten $\Delta=b^2-4ac$ afgør antallet af reelle rødder. Fuldstændiggørelse af kvadratet giver
+\[
+ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2+
+c-\frac{b^2}{4a}.
+\]
+Denne form er ofte mere informativ end rodformlen, når et minimum af en energifunktion eller en kvadratisk approksimation skal bestemmes.
+
+\subsection{Brøker og partialbrøker}
+En rational funktion $P(x)/Q(x)$ kan ofte dekomponeres efter polerne i nævneren. For $a\ne b$ er eksempelvis
+\[
+\frac{1}{(x-a)(x-b)}
+=\frac{1}{a-b}\left(\frac{1}{x-a}-\frac{1}{x-b}\right).
+\]
+Gentagne lineære faktorer $(x-a)^m$ kræver led med alle nævnerpotenser $(x-a)^{-k}$ for $1\leq k\leq m$. Irreducible reelle andengradsfaktorer kræver en lineær tæller. Hvis tællerens grad ikke er mindre end nævnerens, udføres først polynomiumsdivision. Metoden bruges især før integration eller Laplace-inversion.
+
+\subsection{Uligheder og absolutværdi}
+Absolutværdi er afstanden fra nul på den reelle talakse:
+\[
+|x|=\begin{cases}x,&x\geq0,\\-x,&x<0.\end{cases}
+\qquad |x+y|\leq |x|+|y|.
+\]
+Hvis en ulighed multipliceres med et negativt tal, skifter ulighedstegnet retning. Ved multiplikation med en ukendt parameter skal man derfor skelne mellem dens fortegnstilfælde.
+
+For $a>0$ gælder den nyttige ækvivalens
+\[
+|x-x_0|<a\quad\Longleftrightarrow\quad x_0-a<x<x_0+a.
+\]
+I perturbationsteori giver en antagelse som $|\varepsilon|\ll1$ ikke alene en streng matematisk fejlgrænse. En kontrolleret tilnærmelse skal kobles til et restled eller en eksplicit størrelsesorden.
 
 \section{Funktioner, inverse funktioner og sammensætning}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+\subsection{Domæne, billede og sammensætning}
+En funktion $f:D\to Y$ tildeler hvert $x\in D$ præcis én værdi $f(x)\in Y$. Definitionsmængden $D$, codomænet $Y$ og billedmængden $f(D)$ er forskellige begreber. En fysisk formel kan være algebraisk meningsfuld for et større interval end det, hvor modellen faktisk gælder.
+
+Sammensætningen $f\circ g$ defineres ved $(f\circ g)(x)=f(g(x))$, når $x$ ligger i $g$'s definitionsmængde, og $g(x)$ desuden ligger i $f$'s definitionsmængde. Domænet for den sammensatte funktion er derfor
+\[
+D_{f\circ g}=\{x\in D_g:g(x)\in D_f\}.
+\]
+Et vigtigt modelspørgsmål er, om en funktion er injektiv (forskellige input giver forskellige output), surjektiv (hele codomænet rammes) eller bijektiv (begge dele). Kun en bijektiv funktion har en entydig global invers som afbildning mellem de angivne mængder.
+
+\subsection{Inverse funktioner og implicitte relationer}
+Hvis $f$ er strengt monoton på et interval, er den injektiv dér og har en invers $f^{-1}:f(D)\to D$. Hvis $f$ er differentiabel, og $f'(x)\ne0$, gælder lokalt
+\[
+\boxed{(f^{-1})'(f(x))=\frac{1}{f'(x)}}.
+\]
+Antagelsen $f'(x)\ne0$ er afgørende. For eksempel har $f(x)=x^3$ en global invers, men formlen giver ingen endelig afledt for inversen ved $f(0)=0$.
+
+En implicit relation $F(x,y)=0$ beskriver ikke nødvendigvis en global funktion $y(x)$. Hvis $F$ er kontinuert differentiabel og $F_y(x_0,y_0)\ne0$, garanterer den implicitte funktionssætning en lokal gren med
+\[
+\frac{\dd y}{\dd x}=-\frac{F_x}{F_y}.
+\]
+Det er et typisk værktøj, når en bane eller en bevaret energi definerer en relation mellem størrelser, som er besværlig at løse eksplicit.
+
+\subsection{Skalering, dimensionsløse variable og følsomhed}
+En størrelse $x$ med dimension kan gøres dimensionsløs ved $u=x/x_0$, hvor $x_0$ er en referenceværdi med samme dimension. Hvis en model har formen $y=A\,f(x/x_0)$, beskriver $f$ en universel form, mens $A$ og $x_0$ sætter de fysiske skalaer.
+
+For en positiv, differentiabel størrelse $y=f(x)$ med $x>0$ er den logaritmiske følsomhed
+\[
+\frac{\dd\ln y}{\dd\ln x}=\frac{x}{y}\frac{\dd y}{\dd x}.
+\]
+Den måler en relativ ændring i output pr. relativ ændring i input. For en potenslov $y=Cx^\alpha$ er følsomheden netop $\alpha$. Det hjælper med at afgøre, hvilke inputusikkerheder der er mest betydningsfulde, men usikkerhedsforplantning kræver yderligere antagelser om fejl og korrelationer.
 
 \section{Eksponential- og logaritmefunktioner}
-\leavevmode\par
-% Redaktionelt: tilføj definitioner, gyldighed, relationer og relevante figurer.
+\subsection{Eksponentiel vækst og henfald}
+For $a>0$ defineres $a^x=e^{x\ln a}$. Eksponentialfunktionen er positiv og opfylder
+\[
+e^{x+y}=e^x e^y,\qquad
+\frac{\dd}{\dd x}e^{kx}=k e^{kx}.
+\]
+Differentialligningen $\dot y=ky$ har løsningen $y(t)=y(0)e^{kt}$ for konstant $k$. Her har $k$ dimension invers tid. Ved $k<0$ beskriver modellen eksponentielt henfald, og karakteristisk tid er $\tau=1/|k|$. Ved $k>0$ beskriver den eksponentiel vækst; fordoblingstiden er $\ln2/k$.
+
+Logaritmen er invers til eksponentialfunktionen på de positive reelle tal. For $x,y>0$ og reel $\alpha$ gælder
+\[
+\ln(xy)=\ln x+\ln y,\qquad
+\ln\frac{x}{y}=\ln x-\ln y,\qquad
+\ln(x^\alpha)=\alpha\ln x.
+\]
+Man må ikke skrive $\ln(x+y)=\ln x+\ln y$. Logaritmen omdanner produkter til summer, ikke addition til en simpel operation.
+
+\subsection{Logaritmer, grene og fysiske enheder}
+I en fysisk formel skal et logaritme- eller eksponentialargument være dimensionsløst. Udtrykket $\ln x$ er derfor ikke meningsfuldt, hvis $x$ f.eks. betegner en længde uden en angivet enhedsskala. Brug i stedet $\ln(x/x_0)$ for en positiv referencelængde $x_0$.
+
+For $x>0$ gælder den nyttige relation
+\[
+\frac{\dd}{\dd x}\ln x=\frac{1}{x},
+\]
+og for $x\ne0$ er den reelle afledte af $\ln|x|$ også $1/x$. I kompleks analyse bliver logaritmen flerbladet, så en gren skal vælges særskilt; de almindelige reelle logaritmeregler må ikke overføres ukritisk til vilkårlige komplekse argumenter.
+
+\section{Metodevalg, kontrol og anvendelser i fysik}
+Når en fremtidig mekanik- eller elektromagnetismeopgave reduceres til algebra, kan følgende rækkefølge genbruges:
+\begin{enumerate}
+\item Bestem de ukendte størrelser, deres dimensioner og definitionsmængder.
+\item Identificér mulige symmetrier, bevarede størrelser og dimensionsløse parametre, før du isolerer variable.
+\item Vælg en algebraisk omskrivning, der bevarer ligningens løsninger; noter særskilt, når dette ikke er garanteret.
+\item Brug en relevant repræsentation: faktorisering til rødder, fuldstændigt kvadrat til ekstrema, partialbrøker til integration eller logaritmer til produkter og skalering.
+\item Indsæt resultatet i den oprindelige ligning, og kontrollér grænsetilfælde og enheder.
+\end{enumerate}
+For et central-kraftproblem bruges f.eks. løsning af en andengradsligning til radialvendepunkter, og fuldstændiggørelse af kvadratet kan hjælpe med at undersøge et potentiales form. I lineær mekanik kræver et stort koblet ligningssystem ofte matricemetoder snarere end manuel elimination; disse behandles i kapitlet om lineær algebra.
+
+\paragraph{Opslag: hyppige fejl.}
+Undgå division med mulige nulled, forkert fortegn ved uligheder, skjulte inversgrene, eksponentialfunktioner med dimensionsbærende argumenter og antagelser om, at en lokal linearisering gælder globalt. Hvis modellen introducerer en parameter, bør særlige værdier som nul og grænsetilfælde behandles eksplicit.
