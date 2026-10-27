@@ -1,0 +1,41 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=0.92cm,y=0.85cm,>=stealth,
+  every node/.style={font=\small}]
+\foreach \y in {0,1.3,2.6} {
+  \draw[->,gray] (-0.4,\y)--(7,\y) node[right] {$x$};
+}
+\draw[very thick,arkivblaa] (1,2.6)--(5.6,2.6);
+\draw[thick,draw=arkivblaa,fill=white] (1,2.6) circle (2.7pt);
+\fill[arkivblaa] (5.6,2.6) circle (2.7pt);
+\node[below] at (1,2.5) {$a$};
+\node[below] at (5.6,2.5) {$b$};
+\node[anchor=east] at (-0.6,2.6) {$(a,b]$};
+\draw[very thick,arkivblaa] (1,1.3)--(3.2,1.3);
+\draw[very thick,arkivblaa] (3.2,1.3)--(5.6,1.3);
+\foreach \x in {1,5.6} {
+  \draw[thick,draw=arkivblaa,fill=white] (\x,1.3) circle (2.7pt);
+}
+\draw[thick,draw=arkivrod,fill=white] (3.2,1.3) circle (2.7pt);
+\node[below] at (1,1.2) {$a$};
+\node[below] at (3.2,1.2) {$c$};
+\node[below] at (5.6,1.2) {$b$};
+\node[anchor=east] at (-0.6,1.3) {$(a,b)\setminus\{c\}$};
+\draw[very thick,arkivblaa] (1.4,0)--(5.2,0);
+\foreach \x in {1.4,5.2} {
+  \draw[thick,draw=arkivblaa,fill=white] (\x,0) circle (2.7pt);
+}
+\draw (3.3,-0.08)--(3.3,0.08);
+\node[below] at (3.3,-0.1) {$x_0$};
+\draw[<->,arkivrod] (3.3,0.4)--(5.2,0.4)
+  node[midway,above] {$r$};
+\node[below] at (1.4,-0.1) {$x_0-r$};
+\node[below] at (5.2,-0.1) {$x_0+r$};
+\node[anchor=east] at (-0.6,0) {$|x-x_0|<r$};
+\end{tikzpicture}
+\caption{Intervaller på en skematisk, dimensionsløs talakse. En fyldt prik
+medtager et endepunkt, mens en åben prik udelader det. I midten antages
+$a<c<b$: udeladelsen af $c$ deler området i to intervaller. Nederst vises
+afstandsbetingelsen omkring $x_0$ med $r>0$.}
+\label{fig:algebra-intervaller}
+\end{figure}
