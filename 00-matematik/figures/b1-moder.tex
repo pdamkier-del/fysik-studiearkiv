@@ -1,0 +1,17 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth,x=1cm,y=1cm]
+\foreach \y/\title in {1.7/Samme fase,0/Modsat fase} {
+\node[anchor=east,font=\small] at (-.5,\y) {\title};
+\draw[black!50] (0,\y-.3)--(0,\y+.3) (6,\y-.3)--(6,\y+.3);
+\draw[black!50] (0,\y)--(2,\y)--(4,\y)--(6,\y);
+\draw[fill=white,draw=arkivblaa] (1.75,\y-.2) rectangle (2.25,\y+.2);
+\draw[fill=white,draw=arkivblaa] (3.75,\y-.2) rectangle (4.25,\y+.2);
+\draw[->,arkivblaa] (2,\y+.4)--(2.7,\y+.4);
+}
+\draw[->,arkivblaa] (4,2.1)--(4.7,2.1);
+\draw[->,arkivblaa] (4,.4)--(3.3,.4);
+\end{tikzpicture}
+\caption{Skematiske normalmoder for to ens masser, tre ens fjedre og faste ender. For $M=mI$ og $K=k\bigl(\begin{smallmatrix}2&-1\\-1&2\end{smallmatrix}\bigr)$ har retningerne $(1,1)$ og $(1,-1)$ frekvenskvadrater $k/m$ og $3k/m$. Pilene viser forskydninger ved én valgt fase, ikke massernes permanente bevægelsesretning.}
+\label{fig:b1-moder}
+\end{figure}

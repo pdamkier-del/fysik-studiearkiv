@@ -1,0 +1,13 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth,scale=1.15]
+\draw[black!45] (-.4,0)--(4,0) node[right] {$U=\operatorname{span}(q_1)$};
+\draw[->,arkivblaa] (0,0)--(2.6,1.8) node[above] {$v_2$};
+\draw[->,black!70] (0,0)--(2.6,0) node[midway,below] {$Pv_2$};
+\draw[->,arkivblaa] (2.6,0)--(2.6,1.8) node[right] {$w_2=v_2-Pv_2$};
+\draw[black!50] (2.4,0)--(2.4,.2)--(2.6,.2);
+\draw[->,black!65] (0,0)--(1,0) node[midway,above] {$q_1$};
+\end{tikzpicture}
+\caption{Ortogonal projektion og første trin i Gram--Schmidt: Træk komponenten langs $q_1$ fra $v_2$. Resten $w_2$ er vinkelret og normaliseres til $q_2$. Den skematiske geometri bruger euklidisk indre produkt og samme målestok på de to retninger.}
+\label{fig:b1-projektion}
+\end{figure}

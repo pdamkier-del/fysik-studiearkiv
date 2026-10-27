@@ -1,225 +1,469 @@
 \chapter{Lineær algebra}
-Lineær algebra beskriver vektorrum og lineære afbildninger mellem dem. Dens styrke er, at mange problemer inden for mekanik, elektromagnetisme, differentialligninger og kvantemekanik kan samles i den samme struktur: vektorer, operatorer og deres invariant definerede egenskaber. En matrix er en \emph{repræsentation} af en lineær afbildning i valgte baser; afbildningen selv afhænger ikke af basisvalget.
+\label{ch:b1-lineaer}
+Lineær algebra handler om vektorer og afbildninger, der bevarer addition
+og skalarmultiplikation. En matrix repræsenterer en afbildning i valgte
+baser; objekt og koordinater skal holdes adskilt. Med dette skel bliver
+ligningssystemer, geometri og normalmoder dele af samme teori.
 
-\section{Vektorrum, basis og lineære afbildninger}
-Et vektorrum $V$ over et legeme $\mathbb K$ (typisk $\mathbb R$ eller $\mathbb C$) er lukket under addition og skalarmultiplikation og opfylder vektorrumsaksiomerne. Et sæt $(v_1,\ldots,v_n)$ er en basis, hvis enhver $v\in V$ har en \emph{entydig} fremstilling
-\[
-v=\sum_{i=1}^{n}v^i v_i.
-\]
-Koefficienterne $v^i$ er koordinater i den valgte basis. De er ikke selve vektoren. I et endeligdimensionalt rum har alle baser samme antal elementer, nemlig $\dim V$.
+\section{Vektorer, vektorrum og baser}
+\subsection{Vektorrumsstruktur og underrum}
+Vektorer kan være pile, koordinatlister, polynomier eller funktioner.
+Det afgørende er deres regneregler, ikke deres udseende.
+Et vektorrum $V$ over $\mathbb K=\mathbb R$ eller $\mathbb C$ har addition
+og skalarmultiplikation, der opfylder følgende aksiomer:
+\formel{eq:b1-vektorrum}{Vektorrumsaksiomer}{\begin{gathered}
+u+v=v+u,\quad(u+v)+w=u+(v+w),\quad v+0=v,\quad v+(-v)=0,\\
+a(u+v)=au+av,\quad(a+b)v=av+bv,\\
+(ab)v=a(bv),\qquad1v=v.
+\end{gathered}}
+Alle resultater skal blive i $V$. Et underrum $U\subseteq V$ er et
+vektorrum med de samme operationer. En effektiv test er
+$U\ne\varnothing$ og $au+bv\in U$ for alle $u,v\in U$, $a,b\in\mathbb K$.
+Testen sikrer også $0\in U$; en linje, der ikke går gennem nul, er derfor
+ikke et underrum. Løsninger til homogene lineære ligninger er underrum;
+til inhomogene ligninger er de typisk affine forskydninger.
 
-En afbildning $T:V\to W$ er lineær, når
-\[
-T(av+bw)=aT(v)+bT(w)
-\qquad(a,b\in\mathbb K).
-\]
-I baserne $(v_j)$ og $(w_i)$ defineres matricen $A=(A^i{}_j)$ ved
-\[
-T(v_j)=\sum_i A^i{}_j w_i,\qquad [T(v)]_w=A[v]_v.
-\]
-Ved et basisskift $[v]_{\mathrm{gammel}}=S[v]_{\mathrm{ny}}$ for en operator på samme rum gælder
-\[
-A_{\mathrm{ny}}=S^{-1}A_{\mathrm{gammel}}S.
-\]
-Dette er en \emph{similaritetstransformation}. Den bevarer karakteristisk polynomium, egenværdier, determinant og spor. Den må ikke forveksles med omregning af en bilineær form, hvor transformationsloven indeholder en transponeret matrix.
+\subsection{Spænd, uafhængighed og dimension}
+Spændet af $v_1,\ldots,v_k$ er alle linearkombinationer.
+Uafhængighed betyder, at nul kun kan fremstilles med nulkoefficienter.
+\formel{eq:b1-basis}{Spænd og basis}{\begin{gathered}
+\operatorname{span}(v_1,\ldots,v_k)=\left\{\sum_{j=1}^k c_jv_j:c_j\in\mathbb K\right\},\\
+\sum_j c_jv_j=0\ \Rightarrow\ c_1=\cdots=c_k=0\quad
+\text{(lineær uafhængighed)},\\
+v=\sum_{j=1}^n v^j e_j\quad\text{entydigt, hvis }(e_j)\text{ er en basis}.
+\end{gathered}}
+En basis spænder og er uafhængig. Træk to fremstillinger fra hinanden;
+uafhængighed giver entydighed af koordinaterne $v^j$.
+Alle baser i et endeligdimensionalt rum har samme antal elementer,
+dimensionen $n$: en uafhængig familie kan ikke have flere elementer end
+en udspændende familie (successiv udskiftning af basisvektorer).
+Et spændende sæt med $n$ elementer i dimension $n$ er dermed automatisk en basis.
 
-\subsection{Kerne, billede og dimension}
-Kernen og billedet defineres ved
-\[
-\ker T=\{v\in V:T(v)=0\},\qquad
-\operatorname{im}T=\{T(v):v\in V\}.
-\]
-For endeligdimensionalt $V$ giver dimensionssætningen
-\[
-\boxed{\dim V=\dim(\ker T)+\operatorname{rank}T.}
-\]
-En lineær afbildning er injektiv præcis når dens kerne kun består af nulvektoren. For en kvadratisk matrix er injektivitet, surjektivitet og invertibilitet ækvivalente.
 
-\section{Determinanter, rang og lineære ligninger}
-Et lineært ligningssystem $Ax=b$ er konsistent, hvis og kun hvis $b$ ligger i søjlerummet for $A$, eller ækvivalent
-\[
-\operatorname{rank}(A)=\operatorname{rank}([A\mid b]).
-\]
-Hvis løsninger findes, er deres samlede form $x=x_{\mathrm p}+z$, hvor $Az=0$. Antallet af frie parametre er $\dim\ker A$. Gauss-elimination ændrer ikke løsningsmængden, når man udfører elementære rækkeoperationer på den udvidede matrix.
+\input{00-matematik/figures/b1-basis.tex}
 
-Determinanten findes for kvadratiske matricer. Dens absolutværdi er volumenfaktoren for den tilsvarende lineære transformation, mens fortegnet i reelle rum angiver orienteringsskift:
-\[
-\det(AB)=\det A\det B,\qquad
-\det(A^{\mathsf T})=\det A,\qquad
-\det(A^{-1})=\frac{1}{\det A}\quad(\det A\neq0).
-\]
-En kvadratisk matrix er invertibel præcis når dens determinant er forskellig fra nul. Determinanten kan dog være numerisk uhensigtsmæssig som praktisk test for næsten-singularitet: konditionstal og singularværdier giver ofte en bedre vurdering.
+Vælg en basis, som respekterer symmetri eller bindinger.
+Fysiske koordinater kan have forskellige enheder; summen beskriver da
+et objekt med tilhørende dimensionsbærende basis, ikke addition af
+uforenelige skalare størrelser. Uendelige funktionsrum kræver desuden
+konvergensbegreber i bind 3 og 4.
+
+\section{Lineære afbildninger og basisskift}
+\subsection{Linearitet og matrixrepræsentation}
+\formel{eq:b1-lineaer}{Lineær afbildning}{
+T(au+bv)=aT(u)+bT(v)\qquad(T:V\to W).}
+Billederne af en basis bestemmer $T$ overalt, fordi
+$T(\sum_j v^je_j)=\sum_j v^jT(e_j)$.
+I baser $e$ for $V$ og $f$ for $W$ sættes
+\formel{eq:b1-matrixrep}{Matrixrepræsentation og basisskift}{\begin{gathered}
+T(e_j)=\sum_i A^i{}_j f_i,\qquad[T(v)]_f=A[v]_e,\\
+[v]_e=S[v]_{\tilde e},\quad[w]_f=R[w]_{\tilde f}
+\quad\Rightarrow\quad A_{\mathrm{ny}}=R^{-1}AS.
+\end{gathered}}
+Søjle $j$ er billedet af basisvektor $j$.
+Indsæt koordinatskiftene i $[T(v)]_f=A[v]_e$ for at udlede reglen.
+For $T:V\to V$ med samme basisskift i begge ender fås
+$A_{\mathrm{ny}}=S^{-1}AS$, en similaritetstransformation.
+Den bevarer spor, determinant og egenværdier. En bilineær form
+transformeres anderledes, med en transponeret/adjungeret matrix.
+
+\input{00-matematik/figures/b1-transformation.tex}
+
+Basisskift ændrer beskrivelsen, ikke vektoren.
+Tensorer i bind 5 generaliserer netop forskellen mellem objekt og komponenter.
+
+\subsection{Kerne, billede og dimensionssætningen}
+\formel{eq:b1-kerne}{Kerne, billede og rang-nullitet}{\begin{gathered}
+\ker T=\{v:T(v)=0\},\quad\operatorname{im}T=\{T(v):v\in V\},\\
+\dim V=\dim\ker T+\operatorname{rank}T,
+\qquad\operatorname{rank}T=\dim\operatorname{im}T.
+\end{gathered}}
+Kerne og billede er underrum ved linearitet. Udvid en basis for kernen
+til en basis for $V$: billederne af de tilføjede vektorer danner en basis
+for billedet, hvilket beviser dimensionssætningen.
+Injektivitet svarer til $\ker T=\{0\}$; surjektivitet til
+$\operatorname{im}T=W$. I samme endelige dimension er de ækvivalente.
+Bindinger fjerner frihedsgrader; kernen måler de variationer, som
+observationen eller operatoren ikke registrerer.
+
+\section{Matrixregning og inverse}
+\subsection{Operationer, transponering og adjungering}
+For $A\in\mathbb K^{m\times n}$ og $B\in\mathbb K^{n\times p}$ repræsenterer
+$AB$ sammensætning: $B$ virker først. Dimensionerne bestemmer, om produktet findes.
+\formel{eq:b1-matrixregler}{Matrixregneregler}{\begin{gathered}
+(AB)_{ij}=\sum_{k=1}^n A_{ik}B_{kj},\quad(AB)C=A(BC),\\
+A(B+C)=AB+AC,\qquad AB\ne BA\ \text{generelt},\\
+(A^{\mathsf T})_{ij}=A_{ji},\quad A^\dagger=\bar A^{\mathsf T},\\
+(AB)^{\mathsf T}=B^{\mathsf T}A^{\mathsf T},\qquad
+(AB)^\dagger=B^\dagger A^\dagger.
+\end{gathered}}
+Transponering bytter række og søjle; adjungering konjugerer også.
+En blokmatrix følger samme regler, når alle blokdimensioner passer og
+rækkefølgen bevares. Identiteten $I_n$ har $\delta_{ij}$ som elementer;
+den er neutral under kompatibel multiplikation.
+
+\subsection{Invertibilitet og blokmetoder}
+En kvadratisk matrix er invertibel, hvis $A^{-1}A=AA^{-1}=I$.
+Det svarer til fuld rang, triviel kerne og $\det A\ne0$.
+\formel{eq:b1-inversmatrix}{Inverse matricer}{\begin{gathered}
+(AB)^{-1}=B^{-1}A^{-1},\quad(A^{-1})^\dagger=(A^\dagger)^{-1},\\
+\begin{pmatrix}a&b\\c&d\end{pmatrix}^{-1}
+=\frac1{ad-bc}\begin{pmatrix}d&-b\\-c&a\end{pmatrix}
+\quad(ad-bc\ne0).
+\end{gathered}}
+Rækkefølgen følger ved at multiplicere og få identiteten.
+En venstre- eller højreinvers for en rektangulær matrix er ikke en
+tosidet invers. Løs normalt $Ax=b$ med elimination eller faktorisering;
+beregn ikke først hele $A^{-1}$.
+
+For bloksystemet $Ax+By=f$, $Cx+Dy=g$ med invertibel $A$ giver
+$x=A^{-1}(f-By)$ Schurkomplementet
+$S=D-CA^{-1}B$ og $Sy=g-CA^{-1}f$. Det eliminerer én variabelgruppe;
+en invers af hele systemet kræver også invertibelt $S$.
+Metoden er nyttig til koblede frihedsgrader i mekanik.
+
+\section{Lineære ligningssystemer og elimination}
+\subsection{Gauss og Gauss--Jordan}
+Rækkeoperationerne er: byt to rækker, gang en række med en ikke-nul
+skalar, og læg et multiplum af en række til en anden. De er reversible
+og skal udføres på hele den udvidede matrix $[A\mid b]$.
+
+Gauss-elimination vælger en ikke-nul pivot, nulstiller elementer under
+den og fortsætter i den resterende blok. Rækker med nul i alle
+koefficienter men ikke i højresiden gør systemet inkonsistent.
+Tilbageløsning bestemmer pivotvariable ud fra de frie variable.
+Gauss--Jordan normaliserer pivoter til 1 og nulstiller også ovenover;
+$[A\mid I]\to[I\mid A^{-1}]$ virker netop for invertibelt $A$.
+
+\formel{eq:b1-system}{Løselighed og generel løsning}{\begin{gathered}
+Ax=b\text{ er løselig}\ \Leftrightarrow\
+\operatorname{rank}A=\operatorname{rank}[A\mid b],\\
+x=x_{\mathrm p}+z,\qquad z\in\ker A,\qquad
+\text{antal frie parametre}=n-\operatorname{rank}A.
+\end{gathered}}
+Her er $n$ antal ukendte. To løsninger har forskel i kernen, og en
+partikulær løsning plus et kerneelement er igen en løsning.
+Pivotpositionerne giver rang; pivot\emph{søjlerne i den oprindelige matrix}
+giver en basis for søjlerummet. Rækkeoperationer bevarer ikke de
+oprindelige søjlevektorer. I flydende komma vælges typisk den største
+mulige pivot i søjlen i absolutværdi; det reducerer problemer med små
+divisorer, men erstatter ikke konditionskontrol (bind 4).
+
+\subsection{LU-faktorisering}
+\formel{eq:b1-lu}{LU med rækkepivotering}{
+PA=LU,\qquad Ly=Pb,\qquad Ux=y.}
+For en invertibel kvadratisk matrix kan rækkebytningerne samles i
+permutationen $P$. $L$ er nedre trekant med enere på diagonalen, og
+$U$ er øvre trekant. Uden rækkebytning kræves ikke-nul pivoter;
+invertibilitet alene garanterer ikke dette.
+Eliminationsmultiplikatorerne lagres i $L$, fordi hver elimination kan
+vendes med en nedre trekantsmatrix. Brug faktoriseringen ved mange
+højresider med samme $A$; fremad- og tilbageløsning er da tilstrækkeligt.
+
+\section{Determinant og spor}
+\subsection{Definition, volumen og orientering}
+Determinanten er den alternerende multilineære funktion af søjlerne,
+der er 1 på identitetsmatricen. Det betyder linearitet i hver søjle og
+fortegnsskift, når to søjler byttes.
+\formel{eq:b1-det}{Determinantregler}{\begin{gathered}
+\det A=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+\prod_{i=1}^n A_{i,\sigma(i)},\quad
+\det(AB)=\det A\det B,\\
+\det A^{\mathsf T}=\det A,\quad
+\det A^{-1}=1/\det A,\\
+\det\begin{pmatrix}a&b\\c&d\end{pmatrix}=ad-bc.
+\end{gathered}}
+$S_n$ er permutationerne af $1,\ldots,n$. I tre dimensioner er
+$\det[u\ v\ w]=u\cdot(v\times w)$ med standardorientering.
+Absolutværdien er volumenfaktoren; fortegnet angiver orientering.
+Lineært afhængige søjler giver nul volumen og nul determinant.
+
+\input{00-matematik/figures/b1-determinant.tex}
+
+Udvikling langs række $i$ er
+$\det A=\sum_j(-1)^{i+j}A_{ij}\det A_{\hat i\hat j}$.
+En trekantsmatrix har determinant lig produktet af diagonalen.
+Rækkebytning skifter fortegn, rækkeskalering ganger determinanten,
+og addition af en anden rækkes multiplum ændrer den ikke.
+Brug elimination ved store matricer; determinantens størrelse alene
+måler ikke næsten-singularitet, fordi den afhænger af skalaen.
 
 \subsection{Spor og karakteristisk polynomium}
-Sporet er summen af diagonalelementerne og er basisuafhængigt:
-\[
-\operatorname{tr}(A+B)=\operatorname{tr}A+\operatorname{tr}B,\qquad
-\operatorname{tr}(AB)=\operatorname{tr}(BA).
-\]
-For en $n\times n$-matrix er det karakteristiske polynomium
-\[
-p_A(\lambda)=\det(\lambda I-A).
-\]
-Over $\mathbb C$ er summen af egenværdierne med algebraisk multiplicitet $\operatorname{tr}A$, og produktet er $\det A$.
-
-
-\section{Fra diagonalelementer til spor og tensorkontraktion}
 \label{sec:spor-kontraktion}
-En vigtig idé, som vender tilbage i tensorregning og differentialgeometri, er at danne en skalar ved at summere over et par sammenhørende indekser. I lineær algebra møder vi den først som \emph{sporet} af en lineær operator.
+Sporet summerer diagonalelementer, uden at matrixen behøver være diagonal.
+\formel{eq:b1-spor}{Spor og karakteristisk polynomium}{\begin{gathered}
+\operatorname{tr}A=\sum_i A_{ii},\quad
+\operatorname{tr}(A+B)=\operatorname{tr}A+\operatorname{tr}B,\\
+\operatorname{tr}(AB)=\operatorname{tr}(BA),\qquad
+p_A(\lambda)=\det(\lambda I-A).
+\end{gathered}}
+Cycliciteten følger ved at bytte summationsrækkefølge i
+$\sum_{i,j}A_{ij}B_{ji}$ og gælder også kompatible rektangulære $A,B$.
+Derfor er $\operatorname{tr}(S^{-1}AS)=\operatorname{tr}A$.
+Over $\mathbb C$ er summen af egenværdier med algebraisk multiplicitet
+sporet, og produktet er determinanten, som ses af $p_A$'s koefficienter.
 
-For en kvadratisk matrix $A=(A^i{}_j)$ er
-\[
-\boxed{\operatorname{tr}A=\sum_{i=1}^{n}A^i{}_i.}
-\]
-Summen løber over \emph{diagonalelementerne}, men sporet er ikke det samme som at finde eller konstruere en diagonal matrix. Som en første illustration er
-\[
-A=\begin{pmatrix}2&5\\-1&3\end{pmatrix},
-\qquad
-\operatorname{tr}A=2+3=5.
-\]
-Derimod betyder \emph{diagonalisering} at finde en basis, hvor matrixrepræsentationen kan skrives $D=P^{-1}AP$ med alle elementer uden for diagonalen lig nul. Dette kræver tilstrækkeligt mange lineært uafhængige egenvektorer.
-
-Hvorfor er sporet uafhængigt af basis? Under et basisskift bliver
-$A'=S^{-1}AS$. Da $\operatorname{tr}(BC)=\operatorname{tr}(CB)$ for kvadratiske matricer med kompatible dimensioner, får vi
-\[
-\operatorname{tr}(S^{-1}AS)
-=\operatorname{tr}(ASS^{-1})
-=\operatorname{tr}A.
-\]
-Den specifikke diagonal ændrer sig altså ved basisskift, men \emph{summen} af dens elementer gør ikke.
-
-I tensorregning generaliseres dette til \emph{kontraktion} af et øvre og et nedre indeks, f.eks.
-\[
-T^i{}_i=\sum_i T^i{}_i.
-\]
-I dette eksempel er kontraktionen netop sporet. For en tensor med flere indekser kan én kontraktion efterlade en tensor af lavere orden. Man kan ikke generelt kontrahere to vilkårlige øvre indekser uden yderligere struktur: en metrik kan bruges til at hæve eller sænke indeks, så parringen giver geometrisk mening.
-
-\paragraph{Forbindelse fremad.}
-I bind 5, kapitlet om tensorregning, bruges samme idé til f.eks.
-$R=g^{ij}R_{ij}$: Ricciskalaren dannes ved at kontrahere Riccitensoren med den inverse metrik. Sporet af en matrix er derfor et første, konkret tilfælde af en langt bredere geometrisk operation.
-
-\paragraph{Hvornår bruger man hvad?}
-Vil man beregne summen af egenværdierne med algebraisk multiplicitet, bruger man sporet. Vil man finde de retninger, hvor en lineær operator virker ved simpel skalering, undersøger man egenvektorer og diagonalisering. Vil man reducere antallet af frie indekser i en tensorlig relation på en koordinatuafhængig måde, bruger man kontraktion.
+Sporet er en kontraktion $A^i{}_i$. I tensorregning kan ét øvre og ét
+nedre indeks parres; to øvre kræver ekstra struktur såsom en metrik.
+$R=g^{ij}R_{ij}$ i bind 5 generaliserer samme idé, men er ikke en
+matrixdiagonalisering. Sporet opsummerer egenværdier; diagonalisering
+finder deres naturlige retninger.
 
 \section{Egenværdier og diagonalisering}
-En ikke-nul vektor $v$ kaldes egenvektor for $A$, hvis $Av=\lambda v$. Egenværdierne opfylder
-\[
-\boxed{\det(A-\lambda I)=0.}
-\]
-Egenvektorer med indbyrdes forskellige egenværdier er lineært uafhængige. Derfor kan en $n\times n$-matrix diagonaliseres, hvis den har $n$ lineært uafhængige egenvektorer:
-\[
-A=PDP^{-1},\qquad D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n).
-\]
-Det er ikke tilstrækkeligt blot at have $n$ egenværdier \emph{talt med algebraisk multiplicitet}: en matrix kan mangle egenvektorer. For en sådan matrix kan Jordan-normalform være relevant.
+\subsection{Egenrum og multipliciteter}
+\formel{eq:b1-egen}{Egenværdiproblem og diagonalisering}{\begin{gathered}
+Av=\lambda v,\quad v\ne0,\qquad\det(A-\lambda I)=0,\\
+E_\lambda=\ker(A-\lambda I),\qquad
+A=PDP^{-1},\quad D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n).
+\end{gathered}}
+Den sidste form findes netop, når egenvektorer kan danne en basis;
+$P$ har disse som søjler. Egenvektorer for forskellige egenværdier er
+uafhængige: anvend $A-\lambda_k I$ på en kortest mulig afhængighedsrelation
+for at få en kortere, hvilket er en modstrid.
 
-Når diagonalisering findes, kan man beregne funktioner af matricen ved at anvende funktionen på diagonalelementerne:
+\input{00-matematik/figures/b1-egen.tex}
+
+Algebraisk multiplicitet er rodmultipliciteten i $p_A$; geometrisk
+multiplicitet er $\dim E_\lambda$. For hver egenværdi gælder
+$1\le m_{\mathrm g}\le m_{\mathrm a}$. Diagonalisering over $\mathbb C$
+kræver lighed for alle egenværdier. Over $\mathbb R$ skal egenværdierne
+desuden være reelle. At tælle rødder med multiplicitet er ikke nok.
+En defekt matrix har i stedet Jordanblokke; en blok
+$J=\lambda I+N$ med nilpotent $N$ giver polynomielle faktorer i $e^{Jt}$.
+
+\subsection{Funktioner af matricer og spektralprojektioner}
+Ved en diagonalisering er
+$f(A)=P\operatorname{diag}(f(\lambda_i))P^{-1}$ for polynomier og for
+analytiske funktioner defineret på spektret.
+For hermitesk $A$ samles ortonormale egenvektorer ved samme egenværdi i
+projektionen $P_\lambda$, så
 \[
-f(A)=P\,\operatorname{diag}\bigl(f(\lambda_1),\ldots,f(\lambda_n)\bigr)P^{-1}.
+A=\sum_\lambda\lambda P_\lambda,\qquad
+I=\sum_\lambda P_\lambda,\quad P_\lambda P_\mu=0\ (\lambda\ne\mu).
 \]
-For den lineære differentialligning $\dot x=Ax$ giver dette særligt
-\[
-x(t)=e^{At}x(0),\qquad
-e^{At}=Pe^{Dt}P^{-1}.
-\]
-Matrixeksponentialen er også defineret, når $A$ ikke kan diagonaliseres, ved sin absolut konvergente potensrække.
+Brug disse former til gentagne anvendelser, udvikling i normalmoder og
+funktionsberegning. En degenereret egenværdi har mange mulige baser i
+sit egenrum; projektionen på hele egenrummet er entydig.
 
-\section{Indre produkter, spektralsætning og SVD}
-Et indre produkt $\langle u,v\rangle$ giver et mål for længde og ortogonalitet. På $\mathbb R^n$ bruges typisk $u^{\mathsf T}v$ og på $\mathbb C^n$ det hermiteske produkt $u^\dagger v$ (konjugeret lineært i første argument). Normen er
-\[
-\|v\|=\sqrt{\langle v,v\rangle},\qquad
-|\langle u,v\rangle|\leq \|u\|\|v\|.
-\]
-En ortonormal basis opfylder $\langle e_i,e_j\rangle=\delta_{ij}$. I en sådan basis er den adjungerede operators matrix $A^\dagger$.
+\section{Indre produkter, normer og ortogonalitet}
+\subsection{Indre produkt og Cauchy--Schwarz}
+Et indre produkt giver længde og vinkel. Vi vælger fysikkens konvention:
+konjugeret lineært i første argument, lineært i andet.
+\formel{eq:b1-indre}{Indre produkt, norm og Cauchy--Schwarz}{\begin{gathered}
+\langle u,v\rangle=\overline{\langle v,u\rangle},\quad
+\langle v,v\rangle>0\ (v\ne0),\quad\|v\|=\sqrt{\langle v,v\rangle},\\
+|\langle u,v\rangle|\le\|u\|\|v\|,\qquad
+\|u+v\|\le\|u\|+\|v\|.
+\end{gathered}}
+For koordinater i en ortonormal basis er $\langle u,v\rangle=u^\dagger v$.
+For $u\ne0$ udvides
+$0\le\|v-u\langle u,v\rangle/\langle u,u\rangle\|^2$
+til Cauchy--Schwarz; trekantsuligheden følger ved at udvide
+$\|u+v\|^2$. Lighed i Cauchy--Schwarz kræver lineær afhængighed.
+I reelle rum er $\cos\theta=\langle u,v\rangle/(\|u\|\|v\|)$ for ikke-nul vektorer.
 
-\subsection{Selvadjungerede og normale operatorer}
-En kompleks matrix er hermitesk, hvis $A^\dagger=A$, og en reel matrix er symmetrisk, hvis $A^{\mathsf T}=A$. Den endeligdimensionale spektralsætning siger, at en normal kompleks matrix ($AA^\dagger=A^\dagger A$) kan diagonaliseres ved en unitær matrix:
-\[
-A=UDU^\dagger,\qquad U^\dagger U=I.
-\]
-For en hermitesk matrix er egenværdierne reelle. Egenvektorer svarende til forskellige egenværdier er ortogonale; dette er centralt for blandt andet normale svingninger og kvantemekaniske observabler.
+Ortogonalitet betyder $\langle u,v\rangle=0$.
+For en ortonormal basis $(e_i)$ er $\langle e_i,e_j\rangle=\delta_{ij}$,
+$v=\sum_i e_i\langle e_i,v\rangle$ og $\|v\|^2=\sum_i|\langle e_i,v\rangle|^2$.
+For en ikke-ortonormal basis indgår Gram-matricen
+$G_{ij}=\langle e_i,e_j\rangle$: $\|v\|^2=[v]^\dagger G[v]$.
+Det er det endeligdimensionale udgangspunkt for metrikker i bind 5.
 
-\subsection{Singularværdidekomposition}
-Enhver matrix $A\in\mathbb C^{m\times n}$ har en singularværdidekomposition
-\[
-\boxed{A=U\Sigma V^\dagger,}
-\]
-hvor $U,V$ er unitære, og $\Sigma$ er rektangulær diagonal med ikke-negative singularværdier $\sigma_i$. De ikke-nul singularværdier er kvadratrødderne af de positive egenværdier for $A^\dagger A$. Antallet af positive singularværdier er matricens rang.
+\subsection{Projektion og Gram--Schmidt}
+\formel{eq:b1-projektion}{Ortogonale projektioner}{\begin{gathered}
+\operatorname{proj}_u v=u\frac{\langle u,v\rangle}{\langle u,u\rangle}
+\quad(u\ne0),\\
+P=QQ^\dagger\quad(Q^\dagger Q=I),\qquad P^2=P=P^\dagger.
+\end{gathered}}
+Resten $v-Pv$ er ortogonal på søjlerummet.
+For enhver $w$ i dette rum giver Pythagoras
+$\|v-w\|^2=\|v-Pv\|^2+\|Pv-w\|^2$, så $Pv$ er den entydige nærmeste
+vektor. Dette er geometrien bag mindste kvadrater og approksimation.
 
-SVD findes også, når matricen ikke er kvadratisk eller diagonaliserbar. Den er derfor et generelt værktøj til projektion, rangvurdering og mindste-kvadraters problemer. For en matrix med fuld søjlerang er mindste-kvadraters løsningen til $\min_x\|Ax-b\|_2$ entydig; uden fuld rang vælges typisk den løsning, der har mindst norm, ved hjælp af pseudoinversen $A^+$.
+\input{00-matematik/figures/b1-projektion.tex}
 
-\subsection{Ortogonale projektioner}
-For en ortonormal søjlematrix $Q$ med $Q^\dagger Q=I$ er
-\[
-P=QQ^\dagger,\qquad P^2=P,\qquad P^\dagger=P.
-\]
-$P$ projicerer ortogonalt på søjlerummet for $Q$. Det gør relationen mellem lineær algebra, geometri og approksimation tydelig: en bedste approksimation i et underrum fås ved at fjerne den ortogonale restkomponent.
+\formel{eq:b1-gramschmidt}{Gram--Schmidt}{
+w_j=v_j-\sum_{i<j}q_i\langle q_i,v_j\rangle,\qquad
+q_j=\frac{w_j}{\|w_j\|}.}
+Start med $w_1=v_1$. Ved uafhængige input er alle rester ikke-nul.
+Indre produkt med hvert tidligere $q_i$ giver nul og beviser
+ortogonaliteten. Afhængige input kan give nulrest og skal springes over,
+hvis målet blot er en basis for spændet; nummerér da de beholdte $q_i$ fortløbende.
+I numerisk regning er modificeret Gram--Schmidt eller Householder-QR
+ofte mere stabil end den klassiske form (bind 4).
 
-\paragraph{Anvendelser i fysik.}
-Normalmoders frekvenser findes typisk fra generaliserede egenværdiproblemer; lineæriserede bevægelsesligningers stabilitet bestemmes blandt andet af operatorens spektrum; ortonormale baser og selvadjungerede operatorer er centrale i kvantemekanik. For ikke-ortogonale koordinater skal metrikken indgå eksplicit i indre produkter og adjungering.
+\section{Adjungering og spektralsætningen}
+Den adjungerede operator er defineret ved
+$\langle u,Tv\rangle=\langle T^*u,v\rangle$.
+Dens matrix er $A^\dagger$ i ortonormale baser; med samme Gram-matrix
+$G$ på domæne og codomæne er den $G^{-1}A^\dagger G$.
+\formel{eq:b1-operatorer}{Vigtige operatorklasser}{\begin{aligned}
+\text{Hermitesk: }&A^\dagger=A, &\text{normal: }&A^\dagger A=AA^\dagger,\\
+\text{Unitær: }&U^\dagger U=I,&\text{ortogonal (reel): }&Q^{\mathsf T}Q=I.
+\end{aligned}}
+For reelle matricer er hermitesk det samme som symmetrisk.
+Unitære matricer bevarer indre produkter og dermed længder.
+Ortogonalitet giver $\det Q=\pm1$; $+1$ er orienteringsbevarende.
 
-\section{Praktisk metodevalg: lineære systemer og egenværdier}
+\formel{eq:b1-spektral}{Den endeligdimensionale spektralsætning}{
+A\text{ normal over }\mathbb C\quad\Longleftrightarrow\quad
+A=UDU^\dagger\text{ med unitær }U\text{ og diagonal }D.}
+En kompleks matrix har en unitær trekantsform (Schur): vælg en normaliseret
+egenvektor, udvid til en ortonormal basis og gentag i den resterende blok.
+En normal trekantsmatrix er diagonal: lighed af normen af første række
+og første søjle tvinger de øvre led i første række til nul; fortsæt induktivt.
+Dette begrunder sætningen uden at antage forskellige egenværdier.
+
+For hermitesk $A$ er $v^\dagger Av$ reelt, så en egenværdi
+$\lambda=v^\dagger Av/(v^\dagger v)$ er reel.
+For $Av=\lambda v$ og $Aw=\mu w$ giver adjungering
+$(\lambda-\mu)\langle v,w\rangle=0$; forskellige egenværdier er ortogonale.
+Reelle symmetriske matricer kan diagonaliseres reelt ortogonalt.
+Kvantemekaniske observabler og små svingninger bruger dette; uendelige
+operatorer kræver yderligere domæne- og selvadjungeringsbetingelser.
+
+\section{Kvadratiske former og positiv definithed}
+En kvadratisk form måler en andenordens ændring, ofte en energi.
+For reelle $x$ bidrager kun den symmetriske del af en matrix:
+$x^{\mathsf T}(K-K^{\mathsf T})x=0$.
+\formel{eq:b1-positiv}{Kvadratiske former og definithed}{\begin{gathered}
+Q(x)=x^\dagger Hx\quad(H=H^\dagger),\\
+H>0\ \Leftrightarrow\ Q(x)>0\ (x\ne0)
+\ \Leftrightarrow\ \lambda_i(H)>0\ \text{for alle }i,\\
+H\ge0\ \Leftrightarrow\ Q(x)\ge0\ \text{for alle }x
+\ \Leftrightarrow\ \lambda_i(H)\ge0\ \text{for alle }i.
+\end{gathered}}
+Indsæt $x=Uy$ fra spektralsætningen: $Q=\sum_i\lambda_i|y_i|^2$.
+Både positive og negative egenværdier giver en indefinit form.
+For hermitesk $H$ er positiv definithed også ækvivalent med positive
+\emph{førende} hovedminorer (Sylvesters kriterium).
+Positiv semidefinithed kræver derimod alle hovedminorer ikke-negative;
+kun de førende er ikke nok.
+
+Ved koordinatskift $x=Sy$ bliver formens matrix $S^\dagger HS$,
+en kongruens, ikke en similaritet. Antallet af positive, negative og
+nulretninger bevares, men ikke de enkelte egenværdier.
+I flervariabel analyse er en positiv definit Hessian ved et stationært
+punkt tilstrækkelig for et strengt lokalt minimum. En semidefinit Hessian
+afgør ikke alene højereordens stabilitet (bind 2 og 6).
+
+\section{Mindste kvadrater, QR og SVD}
+\subsection{Normalrelation og QR}
+Ved overbestemte eller inkonsistente ligninger minimeres
+$\|Ax-b\|_2$. Resten skal være ortogonal på søjlerummet:
+\formel{eq:b1-mindstekvadrat}{Mindste kvadrater og QR}{\begin{gathered}
+A^\dagger(Ax-b)=0,\\
+A=QR,\quad Q^\dagger Q=I_n,\qquad Rx=Q^\dagger b.
+\end{gathered}}
+For $A\in\mathbb K^{m\times n}$ med fuld søjlerang og $m\ge n$ er
+løsningen entydig, og den reducerede QR har $Q$ af størrelse $m\times n$
+og invertibel øvre trekantsmatrix $R$.
+Gram--Schmidt på søjlerne giver $R_{ij}=\langle q_i,a_j\rangle$ for $i\le j$.
+Pythagoras splitter fejlen i en påvirkelig del i søjlerummet og en fast
+ortogonal rest og beviser normalrelationen. Normalmatrixen
+$A^\dagger A$ kvadrerer konditionstallet ved fuld søjlerang; QR er derfor
+typisk bedre til beregning end eksplicit løsning via normalmatrixen.
+
+\subsection{Singularværdier og pseudoinvers}
+SVD findes også for rektangulære og defekte matricer.
+\formel{eq:b1-svd}{SVD og pseudoinvers}{\begin{gathered}
+A=U\Sigma V^\dagger,\qquad \sigma_1\ge\cdots\ge\sigma_r>0,\\
+A^+=V\Sigma^+U^\dagger,\qquad x_{\min}=A^+b.
+\end{gathered}}
+$U,V$ er unitære, $\Sigma$ er rektangulær diagonal, $r=\operatorname{rank}A$.
+De positive $\sigma_i$ er kvadratrødder af egenværdierne for $A^\dagger A$.
+Vælg ortonormale egenvektorer $v_i$ og sæt $u_i=Av_i/\sigma_i$.
+Da $\langle u_i,u_j\rangle=\delta_{ij}$, kan begge familier udvides til
+ortonormale baser; det udleder SVD.
+
+\input{00-matematik/figures/b1-svd.tex}
+
+$\Sigma^+$ transponerer formen og erstatter positive $\sigma_i$ med
+$1/\sigma_i$, mens nuller forbliver nul. I disse koordinater løses hvert
+skaleret delproblem separat. Derfor er $A^+b$ mindste-normsløsningen
+blandt alle mindste-kvadraters løsninger; ved rangmangel er de øvrige
+$x=A^+b+z$, $z\in\ker A$.
+$AA^+$ og $A^+A$ er ortogonale projektioner på henholdsvis billedet
+og det ortogonale komplement til kernen.
+
+Operatornormen er $\|A\|_2=\sup_{x\ne0}\|Ax\|_2/\|x\|_2=\sigma_{\max}$.
+For invertibel $A$ er
+\formel{eq:b1-kondition}{Konditionstal i 2-normen}{
+\kappa_2(A)=\|A\|_2\|A^{-1}\|_2=\frac{\sigma_{\max}}{\sigma_{\min}}.}
+Ved rektangulær fuld rang bruges samme forhold mellem største og mindste
+positive singularværdi på det relevante underrum.
+En lille singularværdi forstærker fejl i den tilsvarende retning.
+Trunkering ændrer problemet og kræver en begrundet tolerance; statistisk
+vægtning og usikkerheder hører til statistik, numerisk stabilitet til bind 4.
+
+\section{Matrixeksponential og lineære systemer}
+\formel{eq:b1-matrixexp}{Matrixeksponential}{\begin{gathered}
+e^{At}=\sum_{k=0}^\infty\frac{t^kA^k}{k!},\quad
+\frac{\dd}{\dd t}e^{At}=Ae^{At},\quad x(t)=e^{At}x(0),\\
+A=PDP^{-1}\ \Rightarrow\ e^{At}=Pe^{Dt}P^{-1}.
+\end{gathered}}
+Rækken konvergerer absolut i endelig dimension; sammenligning med
+$e^{|t|\|A\|}$ tillader ledvis differentiation.
+Ved en Jordanblok $\lambda I+N$, $N^m=0$, er
+$e^{t(\lambda I+N)}=e^{\lambda t}\sum_{k=0}^{m-1}t^kN^k/k!$.
+Diagonalisering er altså ikke nødvendig for eksistensen.
+$e^{A+B}=e^Ae^B$ er sikret, hvis $AB=BA$, men gælder ikke generelt.
+Tidsafhængige matricer kræver en fundamentalmatrix frem for ukritisk
+$e^{\int A\dd t}$; udledning og drivning behandles i bind 3.
+
+\section{Normalmoder og stabilitet i mekanik}
+\label{sec:normalmoder}
+Omkring en ligevægt giver små udsving ofte
+$L=\tfrac12\dot q^{\mathsf T}M\dot q-\tfrac12q^{\mathsf T}Kq$,
+med $M=M^{\mathsf T}>0$ og $K=K^{\mathsf T}$.
+Euler--Lagrange giver $M\ddot q+Kq=0$.
+\formel{eq:b1-normalmode}{Generaliserede egenværdier og normalmoder}{\begin{gathered}
+q(t)=a\cos(\omega t+\varphi)\quad\Rightarrow\quad Ka=\omega^2Ma,\\
+\det(K-\omega^2M)=0,\quad
+B=M^{-1/2}KM^{-1/2},\quad u=M^{1/2}a,\quad Bu=\omega^2u.
+\end{gathered}}
+$M^{1/2}$ findes ved spektralsætningen og er positiv definit.
+$B$ er symmetrisk, så normalmoderne kan vælges ortonormalt i
+massenormaliserede koordinater, dvs. $a_i^{\mathsf T}Ma_j=\delta_{ij}$.
+Ansatsen om en cosinus er passende for positive $\omega^2$;
+negative værdier giver eksponentielle bevægelser, nul giver frie lineære
+bevægelser. Ved degenererede frekvenser vælges en ortonormal basis i
+hele egenrummet.
+
+\input{00-matematik/figures/b1-moder.tex}
+
+$K>0$ giver positive frekvenskvadrater og begrænsede svingninger i den
+lineære model. $K\ge0$ tillader nulmoder, hvor en initialhastighed kan
+give drift; det er ikke automatisk stabilitet om én bestemt ligevægt.
+En negativ egenværdi af $B$ giver en voksende mode.
+Superposition følger af linearitet, men store udsving kan koble
+moderne gennem højereordens potentialled.
+
+I et førstordenssystem $\dot x=Ax$ giver negative realdele af alle
+egenværdier asymptotisk stabilitet. Positive realdele giver ustabilitet;
+ved realdel nul skal Jordanblokke undersøges, og i ikke-lineære systemer
+kan højereordens led afgøre stabiliteten (bind 3).
+Et spektrum alene beskriver ikke nødvendigvis transient vækst for en
+ikke-normal matrix.
+
+\section{Metodeoversigt og forbindelser}
 \label{sec:la-metode}
-Inden man regner, bør man skelne mellem tre forskellige spørgsmål. Et ligningssystem $Ax=b$ handler om en \emph{løsning}; egenværdiproblemet $Av=\lambda v$ handler om operatorens \emph{naturlige retninger}; og et mindste-kvadraters problem handler om den \emph{bedst mulige approksimation}, når ligningerne ikke kan opfyldes præcist.
-
-\subsection{Sådan vælges metoden}
 \begin{center}
-\begin{tabular}{@{}p{0.32\textwidth}p{0.57\textwidth}@{}}
+\begin{tabular}{@{}p{.32\textwidth}p{.60\textwidth}@{}}
 \toprule
-Spørgsmål & Typisk fremgangsmåde\\
-\midrule
-Er $Ax=b$ løsbart? & Sammenlign $\operatorname{rank}A$ og $\operatorname{rank}[A\mid b]$.\\
-Er løsningen entydig? & Kræv en konsistent ligning og $\ker A=\{0\}$.\\
-Er en kvadratisk matrix invertibel? & Brug rang eller determinant; numerisk også singularværdier.\\
-Hvilke naturlige moder har systemet? & Stil egenværdiproblemet op, kontroller massen og fortegnene.\\
-Kan operatoren diagonaliseres? & Kontroller antal lineært uafhængige egenvektorer; ikke blot antal rødder.\\
-Hvilken approximation er nærmest $b$? & Benyt ortogonal projektion eller SVD.\\
-\bottomrule
+Spørgsmål & Værktøj og kontrol\\\midrule
+$Ax=b$ præcist? & Gauss/LU; sammenlign rang og udvidet rang.\\
+Entydig løsning? & Konsistens og triviel kerne.\\
+Nærmeste approksimation? & QR ved fuld søjlerang, SVD ved rangmangel.\\
+Naturlige retninger? & Egenrum; kontrollér geometrisk multiplicitet.\\
+Længder og vinkler? & Indre produkt, Gram-matrix og projektion.\\
+Energi og minimum? & Hermitesk/symmetrisk form, spektrum og definithed.\\
+Koblede svingninger? & Generaliseret egenværdiproblem med massematrix.\\\bottomrule
 \end{tabular}
 \end{center}
-I numeriske beregninger bør man normalt løse $Ax=b$ med en faktorisering eller eliminationsmetode i stedet for først at beregne $A^{-1}$. At inversen findes matematisk, siger ikke alene at problemet er numerisk stabilt.
-
-\subsection{Matrix og koordinatvalg}
-Lad $v$ være en geometrisk vektor. Den kan have forskellige koordinatsøjler $[v]_e$ og $[v]_f$ i to baser. Skriver vi $[v]_e=S[v]_f$, følger for en operator $T:V\to V$
-\[
-[T]_f=S^{-1}[T]_eS.
-\]
-Denne formel forklarer, hvorfor eigenværdier og spor er basisuafhængige, selv om alle de enkelte matrixelementer kan ændre sig. Hvis man i stedet skifter baser på både domæne og codomæne i en afbildning $T:V\to W$, bliver den generelle regel $[T]_{\mathrm{ny}}=R^{-1}[T]_{\mathrm{gammel}}S$, hvor $S$ og $R$ beskriver skiftene i henholdsvis $V$ og $W$.
-
-\subsection{Kvadratiske former og positive matricer}
-En kvadratisk form kan skrives
-\[
-Q(x)=x^{\mathsf T}Kx.
-\]
-Kun den symmetriske del af $K$ bidrager, da $x^{\mathsf T}(K-K^{\mathsf T})x=0$. For en reel symmetrisk matrix $K$ gælder: $Q(x)>0$ for alle $x\ne0$ præcis når alle egenværdier af $K$ er positive. Denne karakterisering viser, hvorfor egenværdier bruges til at afgøre, om et stationært punkt er et stabilt lokalt minimum i en lineær eller kvadratisk model.
-
-\section{Fysisk sammenhæng: koblede små svingninger}
-\label{sec:normalmoder}
-For små forskydninger $q$ omkring en ligevægt får man ofte en Lagrangefunktion på formen
-\[
-L=\frac12\dot q^{\mathsf T}M\dot q-\frac12q^{\mathsf T}Kq,
-\]
-hvor $M$ er en symmetrisk positiv definit massematrix, og $K$ er en symmetrisk stivhedsmatrix (Hessianen af potentialet i ligevægten). Euler--Lagrange giver
-\[
-M\ddot q+Kq=0.
-\]
-Ved ansatsen $q(t)=a\cos(\omega t+\varphi)$ fremkommer
-\[
-(K-\omega^2M)a=0,\qquad
-\boxed{\det(K-\omega^2M)=0.}
-\]
-Dette er et \emph{generaliseret egenværdiproblem}. Det reduceres kun direkte til $Ka=\omega^2a$, når $M=I$ i de valgte enheder og koordinater. Hvis $K$ er positiv semidefinit, er de fundne $\omega^2$ ikke-negative; en nulmode kan svare til en fri bevægelsesretning. En negativ egenværdi af det relevante massenormaliserede problem giver i stedet en eksponentielt voksende mode.
-
-Når $M$ er positiv definit, kan man indføre de massenormaliserede koordinater med $u=M^{1/2}a$ og den symmetriske matrix
-\[
-B=M^{-1/2}KM^{-1/2},
-\qquad Bu=\omega^2u.
-\]
-Så kan den almindelige spektralsætning anvendes på $B$. Dette er forbindelsen mellem lineær algebra, andenordens differentialligninger og stabilitet i analytisk mekanik.
-
-\subsection{Hvorfor superposition virker}
-Da bevægelsesligningen er lineær, er summen af løsninger også en løsning. Når massenormaliserede egenvektorer danner en basis, kan de almindelige initialbetingelser opdeles på naturlige moder; hver mode svinger med sin egen frekvens. Superposition gælder i \emph{den lineære model}; store udsving kan kræve højere ordens led i potentialet, hvor normalmoderne ikke længere udvikler sig uafhængigt.
-
-\section{Forbindelser til senere bind}
-De matematiske resultater her er forudsætninger for en række senere emner. Jacobimatricen i flervariabel analyse er den lokale lineære afbildning, der bedst approksimerer et differentiabelt koordinatskift. Fouriermetoder skriver funktioner i en basis af oscillationer; Sturm--Liouville-teori generaliserer egenværdiproblemer til differentialoperatorer. Tensorregning skelner mellem objekter og deres koordinatkomponenter og generaliserer sporet ved kontraktion.
-
-Den røde tråd er derfor ikke, at nye emner er det samme som lineær algebra, men at de ofte \emph{bevarer dens grundstruktur} under mere generelle betingelser.
+Linearisering i bind 2 bruger Jacobimatricen; Sturm--Liouville i bind 3
+generaliserer egenværdier til differentialoperatorer. Fouriermetoder i
+bind 4 udvikler funktioner i oscillationsbaser. Bind 5 generaliserer
+basisskift, metrik og kontraktion, mens kvadratiske former bliver anden
+variation i bind 6. Disse forbindelser kræver deres egne forudsætninger;
+de endeligdimensionale resultater overføres ikke automatisk.
