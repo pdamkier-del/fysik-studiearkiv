@@ -23,6 +23,8 @@ Testen sikrer også $0\in U$; en linje, der ikke går gennem nul, er derfor
 ikke et underrum. Løsninger til homogene lineære ligninger er underrum;
 til inhomogene ligninger er de typisk affine forskydninger.
 
+\input{00-matematik/figures/b1-vektorskalering.tex}
+
 \subsection{Spænd, uafhængighed og dimension}
 Spændet af $v_1,\ldots,v_k$ er alle linearkombinationer.
 Uafhængighed betyder, at nul kun kan fremstilles med nulkoefficienter.
@@ -71,6 +73,8 @@ transformeres anderledes, med en transponeret/adjungeret matrix.
 
 Basisskift ændrer beskrivelsen, ikke vektoren.
 Tensorer i bind 5 generaliserer netop forskellen mellem objekt og komponenter.
+
+\input{00-matematik/figures/b1-basisskift.tex}
 
 \subsection{Kerne, billede og dimensionssætningen}
 \formel{eq:b1-kerne}{Kerne, billede og rang-nullitet}{\begin{gathered}
@@ -292,6 +296,8 @@ hvis målet blot er en basis for spændet; nummerér da de beholdte $q_i$ fortl�
 I numerisk regning er modificeret Gram--Schmidt eller Householder-QR
 ofte mere stabil end den klassiske form (bind 4).
 
+\input{00-matematik/figures/b1-gramtrin.tex}
+
 \section{Adjungering og spektralsætningen}
 Den adjungerede operator er defineret ved
 $\langle u,Tv\rangle=\langle T^*u,v\rangle$.
@@ -304,6 +310,10 @@ $G$ på domæne og codomæne er den $G^{-1}A^\dagger G$.
 For reelle matricer er hermitesk det samme som symmetrisk.
 Unitære matricer bevarer indre produkter og dermed længder.
 Ortogonalitet giver $\det Q=\pm1$; $+1$ er orienteringsbevarende.
+
+\input{00-matematik/figures/b1-rotation.tex}
+
+\input{00-matematik/figures/b1-operatorgeometri.tex}
 
 \formel{eq:b1-spektral}{Den endeligdimensionale spektralsætning}{
 A\text{ normal over }\mathbb C\quad\Longleftrightarrow\quad
@@ -346,6 +356,8 @@ nulretninger bevares, men ikke de enkelte egenværdier.
 I flervariabel analyse er en positiv definit Hessian ved et stationært
 punkt tilstrækkelig for et strengt lokalt minimum. En semidefinit Hessian
 afgør ikke alene højereordens stabilitet (bind 2 og 6).
+
+\input{00-matematik/figures/b1-kvadratiskniveau.tex}
 
 \section{Mindste kvadrater, QR og SVD}
 \subsection{Normalrelation og QR}

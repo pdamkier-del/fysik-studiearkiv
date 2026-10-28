@@ -1,0 +1,17 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth,scale=1.15]
+\draw[->,black!40] (-.2,0)--(3.5,0);
+\draw[->,black!40] (0,-.2)--(0,2.6);
+\draw[->,black!65,dashed] (0,0)--(2.7,1.8) node[right] {$v_2$};
+\draw[->,arkivblaa] (0,0)--(0,1.8) node[left] {$w_2$};
+\draw[black!45,dotted] (0,1.8)--(2.7,1.8);
+\draw[->,arkivblaa] (0,0)--(0,1) node[right] {$q_2$};
+\draw[->,arkivblaa] (0,0)--(1,0) node[below] {$q_1$};
+\node[anchor=west,align=left] at (4,1.3)
+ {$w_2=v_2-q_1\langle q_1,v_2\rangle$\\[5pt]
+ $q_2=w_2/\|w_2\|$};
+\end{tikzpicture}
+\caption{Gram--Schmidt i to trin: Fjern først den vandrette komponent af $v_2$ (se projektionen tidligere); normalisér derefter den lodrette rest $w_2$. De nye $q_1,q_2$ har længde 1 og er ortogonale. Dimensionsløs geometri med samme målestok.}
+\label{fig:b1-gramtrin}
+\end{figure}

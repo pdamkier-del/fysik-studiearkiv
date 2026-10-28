@@ -1,0 +1,20 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[at={(0,0)},anchor=south west,width=6.1cm,height=5cm,axis equal image,
+ axis lines=middle,xmin=-2,xmax=2,ymin=-2,ymax=2,xtick={-1,1},ytick={-1,1},
+ xlabel={$x$},ylabel={$y$},title={$Q=x^2+2y^2$},title style={font=\small}]
+\addplot[arkivblaa,domain=0:360,samples=100] ({cos(x)},{sin(x)/sqrt(2)});
+\addplot[black!65,domain=0:360,samples=100] ({sqrt(2)*cos(x)},{sin(x)});
+\end{axis}
+\begin{axis}[at={(6.7cm,0)},anchor=south west,width=6.1cm,height=5cm,axis equal image,
+ axis lines=middle,xmin=-2,xmax=2,ymin=-2,ymax=2,xtick={-1,1},ytick={-1,1},
+ xlabel={$x$},ylabel={$y$},title={$Q=x^2-y^2$},title style={font=\small}]
+\addplot[arkivblaa,domain=-1.2:1.2,samples=90,variable=\t] ({cosh(\t)},{sinh(\t)});
+\addplot[arkivblaa,domain=-1.2:1.2,samples=90,variable=\t] ({-cosh(\t)},{sinh(\t)});
+\addplot[black!65,dashed,domain=-1.2:1.2,samples=90,variable=\t] ({sinh(\t)},{cosh(\t)});
+\addplot[black!65,dashed,domain=-1.2:1.2,samples=90,variable=\t] ({sinh(\t)},{-cosh(\t)});
+\end{axis}\end{tikzpicture}
+\caption{Niveaukurver skelner definithed. Til venstre er $Q=1$ (blå) og $Q=2$ lukkede ellipser om et minimum. Til højre er $Q=1$ (blå) og $Q=-1$ (stiplet) hyperbler: formen har både positive og negative retninger. Dimensionsløse akser med samme målestok i hvert panel.}
+\label{fig:b1-kvadratiskniveau}
+\end{figure}

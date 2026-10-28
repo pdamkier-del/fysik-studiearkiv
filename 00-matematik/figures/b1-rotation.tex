@@ -1,0 +1,15 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth,scale=1.6]
+\draw[->,black!45] (-.2,0)--(2.2,0) node[right] {$x$};
+\draw[->,black!45] (0,-.2)--(0,1.8) node[above] {$y$};
+\draw[->,black!70] (0,0)--(1.6,0) node[below] {$v$};
+\draw[->,arkivblaa] (0,0)--({1.6*cos(40)},{1.6*sin(40)}) node[above] {$R(\theta)v$};
+\draw[->,arkivblaa] (.45,0) arc[start angle=0,end angle=40,radius=.45];
+\node at (.65,.2) {$\theta$};
+\node[anchor=west] at (2.6,.8) {$R(\theta)=\begin{pmatrix}
+\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$};
+\end{tikzpicture}
+\caption{Aktiv rotation af en vektor med positiv vinkel mod uret. Matricen og pilenes geometri beskriver samme afbildning; længde og orientering bevares, $R^{\mathsf T}R=I$ og $\det R=1$. Dimensionsløse akser med samme målestok. Et passivt skift til drejede akser bruger den inverse matrix.}
+\label{fig:b1-rotation}
+\end{figure}
