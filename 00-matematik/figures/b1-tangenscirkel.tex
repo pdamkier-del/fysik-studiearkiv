@@ -1,0 +1,18 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth,scale=2]
+\draw[->,black!45] (-1.2,0)--(1.6,0) node[right] {$x$};
+\draw[->,black!45] (0,-1.1)--(0,1.2) node[above] {$y$};
+\draw[arkivblaa] (0,0) circle(1);
+\draw[black!60] (1,-.2)--(1,1.15) node[above] {$x=1$};
+\draw[->,arkivblaa] (0,0)--(1,{tan(35)});
+\draw[black!55,dashed] ({cos(35)},{sin(35)})--({cos(35)},0);
+\draw[arkivblaa] (1,0)--(1,{tan(35)}) node[midway,right] {$\tan\theta$};
+\draw[arkivblaa,->] (.25,0) arc[start angle=0,end angle=35,radius=.25];
+\node at (.4,.11) {$\theta$};
+\node[below,font=\small] at (.42,0) {$\cos\theta$};
+\fill[arkivblaa] ({cos(35)},{sin(35)}) circle(.012);
+\end{tikzpicture}
+\caption{Tangens på cirklens tangent: Strålen i vinkel $\theta$ møder $x=1$ i $(1,\tan\theta)$. Dens hældning er $\sin\theta/\cos\theta$. Tegnet for $0<\theta<\pi/2$; ved $\cos\theta=0$ er skæringen ikke endelig. Dimensionsløse akser med samme målestok.}
+\label{fig:b1-tangenscirkel}
+\end{figure}

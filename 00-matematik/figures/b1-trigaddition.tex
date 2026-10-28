@@ -1,0 +1,19 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth,scale=2]
+\draw[->,black!45] (-.2,0)--(1.65,0) node[right] {$x$};
+\draw[->,black!45] (0,-.2)--(0,1.45) node[above] {$y$};
+\coordinate (B) at ({cos(25)*cos(40)},{sin(25)*cos(40)});
+\coordinate (P) at ({cos(65)},{sin(65)});
+\draw[black!50,dashed] (0,0)--({1.5*cos(25)},{1.5*sin(25)}) node[right] {$e^{\prime}_1$};
+\draw[->,arkivblaa] (0,0)--(B) node[midway,below right] {$\cos\beta$};
+\draw[->,black!65] (B)--(P) node[midway,right] {$\sin\beta$};
+\draw[->,arkivblaa] (0,0)--(P);
+\draw[black!50] (.28,0) arc[start angle=0,end angle=25,radius=.28];
+\draw[black!50] ({.43*cos(25)},{.43*sin(25)}) arc[start angle=25,end angle=65,radius=.43];
+\node at (.4,.08) {$\alpha$};\node at (.4,.4) {$\beta$};
+\node[above] at (P) {$P$};
+\end{tikzpicture}
+\caption{Geometrien bag additionsformlerne. Den drejede basis har $e^{\prime}_1=(\cos\alpha,\sin\alpha)$ og $e^{\prime}_2=(-\sin\alpha,\cos\alpha)$. Punktet $P=e^{\prime}_1\cos\beta+e^{\prime}_2\sin\beta$ har vinkel $\alpha+\beta$. Læs komponenterne i de oprindelige akser for at få sinus- og cosinusformlen. Dimensionsløs tegning med samme målestok.}
+\label{fig:b1-trigaddition}
+\end{figure}

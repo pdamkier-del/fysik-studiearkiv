@@ -1,0 +1,12 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=.77\textwidth,height=4.7cm,axis lines=middle,
+ xmin=-2.1,xmax=2.1,ymin=-.7,ymax=4,xlabel={$x$},ylabel={$y$},xtick={-2,0,2},ytick={1,3},samples=100,
+ legend style={draw=none,font=\small,at={(.02,.97)},anchor=north west}]
+\addplot[arkivblaa,domain=-2:2] {cosh(x)};\addlegendentry{$\cosh x$}
+\addplot[black!65,dashed,domain=-2:2] {cos(deg(x))};\addlegendentry{$\cos x$}
+\end{axis}\end{tikzpicture}
+\caption{Cosinus og hyperbolsk cosinus er begge lige og har værdien 1 ved nul, men har forskellig krumning: $\cosh x\ge1$, mens $-1\le\cos x\le1$. Kun cosinus er periodisk på den reelle akse. Akserne er dimensionsløse.}
+\label{fig:b1-hyperbolsksammenligning}
+\end{figure}
