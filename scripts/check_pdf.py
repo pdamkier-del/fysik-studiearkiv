@@ -2,6 +2,7 @@
 from pathlib import Path
 import fitz
 import argparse
+import re
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('pdf', type=Path)
 parser.add_argument('log', type=Path)
@@ -39,6 +40,29 @@ with fitz.open(pdf) as doc:
         'Differentialregning', 'Taylorudvikling', 'Numerisk differentiation', 'Greenfunktioner']
     for heading in headings:
         assert heading in contents, f'Mangler: {heading}'
+    if args.bind == 1:
+        # Check both printed page labels and actual destinations, including
+        # formulas adjacent to a page break (the two can otherwise disagree).
+        entries = re.findall(
+            r'\\contentsline \{section\}.*?\{(\d+)\}\{(equation\.[^}]+)\}',
+            pdf.with_suffix('.for').read_text())
+        expected = {destination: page for page, destination in entries}
+        assert len(entries) == len(expected) >= 60, 'Formelregisterposter mangler'
+        start = next(page - 1 for _, title, page in toc if title == 'Formelregister')
+        found = set()
+        for page in list(doc)[start:]:
+            for link in page.get_links():
+                destination = link.get('nameddest')
+                if destination not in expected:
+                    continue
+                target = doc[link['page']]
+                assert target.get_label() == expected[destination], (
+                    f'Forkert sidetal i formelregister: {destination}')
+                assert destination.removeprefix('equation.') in target.get_text(), (
+                    f'Formelnummer mangler ved destination: {destination}')
+                found.add(destination)
+        assert found == set(expected), 'Formelregisterlinks mangler'
+        print(f'Formelregister: {len(found)} links og trykte sidetal kontrolleret.')
     assert '\ufffd' not in contents, 'Ugyldige teksttegn i PDF'
     print(f'PDF: {len(doc)} sider, {len(toc)} bogmærker, {links} links.')
 if problems:

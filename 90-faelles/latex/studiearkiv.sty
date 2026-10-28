@@ -49,8 +49,9 @@
 
 % Opt-in: kun bind 1 bruger det nye bogdesign. Standardudgaver bevares.
 \newcommand{\formel}[3]{%
-  \begin{equation}\label{#1}#3\end{equation}%
+  \begin{equation}\label{#1}%
   \addcontentsline{for}{section}{\protect\numberline{\theequation}#2}%
+  #3\end{equation}%
 }
 \newcommand{\formelhenvisning}[2]{%
   \phantomsection\addcontentsline{for}{section}{#2: \protect\ref{#1}}}
