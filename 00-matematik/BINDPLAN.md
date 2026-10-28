@@ -1,6 +1,6 @@
 # Plan: matematik i seks bind og én samlet udgave
 
-**Status (27. oktober 2026):** Seks bindindgange og den samlede udgave genbruger de samme 21 kapitelkilder. Alle seks bind er nu kompileret og har bestået log-, navigations- og emnekontrol. Bind 1 har fået de første tre underemner gennemarbejdet og de berørte sider gennemgået visuelt. Det er **ikke** en faglig færdigmelding af bind 1 eller af de øvrige bind. Ingen Drive-filer er ændret. Aktuel evidens og næste emne står i [STATUS.md](../STATUS.md).
+**Status (28. oktober 2026):** Hele den planlagte emnedækning for bind 1 er nu skrevet, kompileret og visuelt gennemgået som en kortfattet lærebog/formelsamling. Leveringen har 33 sider, 18 figurer og 60 registrerede centrale formler. [PDF](udgivelser/bind-1.pdf), [buildmetadata](udgivelser/bind-1.json) og [kontrolrapport](../docs/kontrol-bind-1.md). Bind 2–6 er bevaret uændrede og teknisk genkontrolleret; deres faglige udfyldning er ikke en del af denne levering. Ingen Drive-filer er ændret. Tidligere delstatus nedenfor er udviklingshistorik.
 
 ## Bind og eksisterende kapitelkilder
 
@@ -29,9 +29,9 @@ Ovenstående dækker samtlige 21 kapitler præcis én gang. Rækkefølgen er en 
 
 ## Indholdsstatus
 
-Et bind må ikke betegnes som færdiggjort blot fordi kapitlets fil er oprettet. Lineær algebra blev udbygget 27. oktober 2026 med definitioner og formelstof om baser, lineære afbildninger, rang, spektralteori og SVD. Den tidligere lineære algebraudvidelse er nu kompileret i bind 1 og den samlede udgave; den systematiske faglige og visuelle gennemgang af alle dens underemner afventer fortsat. Der må ikke påstås grøn build ud fra blot oprettede kildefiler.
+Et bind må ikke betegnes som færdiggjort blot fordi kapitlets fil er oprettet. Lineær algebra blev udbygget 27. oktober 2026 med definitioner og formelstof om baser, lineære afbildninger, rang, spektralteori og SVD. Den tidligere lineære algebraudvidelse er bevaret gennem redaktionel genopbygning; den aktuelle dækning og kontrol fremgår af den afsluttende leverance nedenfor. Der må ikke påstås grøn build ud fra blot oprettede kildefiler.
 
-## Bind 1 – første faglige udbygning 27. oktober 2026
+## Historik: bind 1 – første faglige udbygning 27. oktober 2026
 
 - `chapters/01-algebra.tex` er udbygget fra overskrifter til forklarende referencekapitel om algebra, definitionsområder, ligninger, uligheder, funktioner, inverser, logaritmer, eksponentialfunktioner og fysiske skaleringslove.
 - `figures/algebra-eksplog.tex` er en ny original PGFPlots-figur, indsat i kapitlet.
@@ -96,10 +96,16 @@ Dette princip gælder også for senere fysiknoter. Kursusnoterne i AM og EM forb
 
 **Afgrænsning:** Egentlig differential- og integralregning ligger i bind 2; ODE/PDE i bind 3; kompleks analyse, Fourier, specialfunktioner i bind 4; tensorer og geometri i bind 5; variationsregning og symmetrier i bind 6. Gentag kun det, der er nødvendigt for et selvstændigt opslag.
 
-## Systematisk indholdsarbejde: første tre underemner
+## Historik: systematisk indholdsarbejde med første tre underemner
 
 På `feat/matematik-bind1-fagindhold` fra `e4e4d1b` er de første tre underemner udbygget i den eksisterende algebrafil: tal og mængder; potenser/rødder/brøker; polynomier/binomialformel. De har intuition, definitioner og betingelser, udledninger, formelopslag, metodevalg, fysikforbindelser og lokale eller tekstlige krydsbindshenvisninger. To originale figurer viser intervalendepunkter og rodmultiplicitet. De oprindelige efterfølgende afsnit er bevaret.
 
 Bind 1 har underafsnit i både indholdsfortegnelsen og bogmærkerne. PDF-kontrollen skelner nu mellem indholdet af hvert bind og hele værket; den samme kontrol af overfyldte bokse, tegn og uløste referencer gælder stadig.
 
 **Næste indhold:** Ligninger og kvadratkomplettering, derefter uligheder/absolutværdi og partialbrøker, før resten af algebraen. En vellykket kompilering gør ikke disse eksisterende korte afsnit færdigskrevne. Der er ikke gået videre med nyt indhold i bind 2–6.
+
+## Genopbygget bind 1 – aktuel leverance
+
+Alle 25 punkter i den uddybende bind-1-disposition har nu fagtekst i de eksisterende tre kapitelkilder. Funktioner og komplekse tal har selvstændige afsnit; summer/produkter, asymptoter og LU er eksplicit medtaget. Detaljeret dækning og præcise kontrolresultater står i [kontrolrapporten](../docs/kontrol-bind-1.md).
+
+Teksten er redigeret til korte begrebsforklaringer, definitioner, formelopslag, begrundelser og anvendelser med minimalistiske figurer. Formelregisterets 60 poster er klikbare og kontrolleret mod de faktiske formelsider. Ingen faglige underemner i den aftalte introducerende bind-1-plan står tilbage som dispositionsmarkører. Senere emners fulde teori er fortsat afgrænset til deres respektive bind.

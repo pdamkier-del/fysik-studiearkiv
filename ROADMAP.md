@@ -14,7 +14,7 @@ Det fælles kilderegister ligger i `99-kilder-og-pensum/`. Aktuelle kursusnoter 
 
 ## Matematikkompendiet
 
-Følg [bibliotekets egen hovedemneplan](00-matematik/PLAN.md). Bevar det eksisterende pilotkapitel om differentialregning. Trigonometri har nu et sammenhængende første afsnit og en faglig figur og kan udbygges videre; de øvrige hovedemner udvikles ét ad gangen. Korrekthed, forståelse og anvendelighed bestemmer omfanget; tidligere sidetalsmål er ikke et acceptkriterium. Ingen gennemregnede opgaveeksempler.
+Følg [bibliotekets egen hovedemneplan](00-matematik/PLAN.md). Bevar det eksisterende pilotkapitel om differentialregning. Algebra/funktioner, trigonometri og lineær algebra er nu samlet i den gennemarbejdede bind-1-levering; senere bind udvikles særskilt. Korrekthed, forståelse og anvendelighed bestemmer omfanget; tidligere sidetalsmål er ikke et acceptkriterium. Ingen gennemregnede opgaveeksempler.
 
 Greenfunktioner, Sturm–Liouville, konvergens/asymptotik, krumme koordinater, tensorer og differentialgeometri kræver særligt grundige introduktioner. Bevar GR-planens geometriske illustrationsprogram. Et eventuelt senere numerisk fysikkompendium fokuserer på fysiske modeller og beregninger med henvisning til den generelle numeriske matematik uden dubletter.
 
@@ -31,4 +31,4 @@ Det eksisterende matematikmateriale på Drive skal læses og bevares før import
 
 ## Seneste prioritet
 
-Udbyg matematikbindene systematisk fra bind 1 på en separat arbejdsbranch. Følg [underemnerne](00-matematik/ALLE_BIND_UNDEREMNER.md) og den uddybende [bindplan](00-matematik/BINDPLAN.md). De første tre algebraemner er udbygget; fortsæt med ligninger, uligheder og partialbrøker før de øvrige emner. Bevar tidligere integral-, differential- og ODE-indhold. Gå først videre til næste bind, når bind 1 er fagligt og teknisk gennemarbejdet. Sidetal er ikke et leverancekriterium. Ingen Drive-publicering aktiveres.
+Udbyg matematikbindene systematisk fra bind 1 på en separat arbejdsbranch. Følg [underemnerne](00-matematik/ALLE_BIND_UNDEREMNER.md) og den uddybende [bindplan](00-matematik/BINDPLAN.md). Hele bind 1 er nu genopbygget og lokalt kvalitetskontrolleret; se [kontrolrapporten](docs/kontrol-bind-1.md) og [leverings-PDF](00-matematik/udgivelser/bind-1.pdf). Bevar tidligere integral-, differential- og ODE-indhold. Bind 2–6 er uændrede ved bind-1-leveringen; deres videre udfyldning er en senere opgave. Sidetal er ikke et leverancekriterium. Ingen Drive-publicering aktiveres.

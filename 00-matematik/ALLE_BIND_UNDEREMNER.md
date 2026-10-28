@@ -1,6 +1,6 @@
 # Samlet underemneplan – seks bind
 
-**Status:** Arbejdsdisposition for systematisk udfyldning; de 21 hovedkapitler bevares. Første tre underemner i bind 1 er nu udbygget og lokalt kontrolleret. Resten af listen er ikke dermed færdigskrevet; se [status](../STATUS.md).
+**Status:** Arbejdsdisposition for systematisk udfyldning; de 21 hovedkapitler bevares. Hele den planlagte emnedækning i bind 1 er nu skrevet og lokalt kvalitetskontrolleret; se [leverings-PDF](udgivelser/bind-1.pdf) og [kontrolrapport](../docs/kontrol-bind-1.md). Bind 2–6 er ikke dermed færdigskrevet; se [status](../STATUS.md).
 
 Hvert underemne skal have: forståelse, regler/formelopslag, gyldighed, metodevalg, figurer, fysikanvendelse og naturlige krydshenvisninger.
 

@@ -16,7 +16,7 @@
 ## Teknik og kontrol
 - Genbrug `90-faelles/latex/studiearkiv.sty`; ét kapitel pr. kildefil, særskilte figurfiler. Udvid den eksisterende fælles stil i stedet for at kopiere design.
 - Kør `make pdf` og `make check`. Se også `docs/udvikling.md`. Kontrollér alle nye sider visuelt: sideskift, tabeller, figurer, navigation og læsbarhed.
-- Genererede PDF'er og hjælpefiler skal ligge i `build/`, aldrig i Git-historikken. CI offentliggør PDF som artifact.
+- Genererede PDF'er og hjælpefiler ligger normalt i `build/`; CI offentliggør artifacts. Efter brugerens udtrykkelige leveringskrav er netop `00-matematik/udgivelser/bind-1.pdf` en versionsstyret undtagelse, ledsaget af kildecommit og SHA-256. Redigér aldrig PDF'en separat fra LaTeX-kilden.
 - Gem aldrig tokens eller hemmeligheder i repositoryet. Drive-opdatering er blokeret, indtil fil-id'er og adgangsrettigheder er fastlagt; brug eksisterende fil-id frem for at oprette dubletter.
 - Brug det eksisterende checkout i cloudopgaver; opret kun worktrees efter udtrykkeligt ønske.
 - Udfør ændringer i overskuelige commits. Rapportér præcist ændrede filer og kapitler samt udførte og ikke udførte kontroller.
@@ -51,3 +51,10 @@
 - Hvert underemne skal have intuition, præcis definition med betingelser, udledning af centrale formler, formelopslag, metodevalg, fysisk anvendelse og naturlige forbindelser i værket. Bevar eksisterende gennemarbejdet indhold.
 - Brug original TikZ/PGFPlots, hvor det forklarer matematikken. Tilføj ikke SymPy-afsnit, programmeringsvejledninger eller gennemregnede opgaveeksempler.
 - Arbejd på en særskilt branch fra `feat/studiearkiv-fundament` med konkrete indholdscommits. Kompilér det berørte bind og den samlede udgave; kontrollér nye sider visuelt. Skeln mellem gennemarbejdede underemner og blot eksisterende overskrifter.
+
+## Bind 1: kortfattet lærebog og samlet formelregister
+- Seneste opgave tillader fagligt begrundet omskrivning og omstrukturering af eksisterende bind-1-tekst. Bevar begreber og korrekt matematik; ingen parallelle versioner eller løsrevne tillæg.
+- Prioritér korte forklaringer, præcise definitioner og betingelser, enkle relevante figurer samt korte metode-/fysikforbindelser. Længere udledninger bruges, når de bærer forståelsen. Ingen programmeringsvejledninger.
+- Bind 1 bruger `bindet`-optionen i fællespakken: hvid baggrund, mørk tekst, én afdæmpet blå accent og tynde linjer. Bind 2–6 bruger fortsat standarddesignet; deres kilder og figurer ændres ikke som led i bind-1-opgaven.
+- Centrale regler registreres med `\formel` ved deres faglige primærsted. Formelregisteret genereres fra dem; `make bind-1` skal kontrollere både linkdestination og registerets trykte sidetal, også ved sideskift.
+- En udgivelses-PDF og dens metadata opdateres samlet efter build og visuel kontrol. De eksisterende Drive-id'er bevares; ingen upload uden verificeret destination, adgang og godkendelse.

@@ -50,7 +50,7 @@ make repository-check   # lokale links, LaTeX-imports og referencer
 make publication-check  # begge PDF'er, sikkerhedstests og offline-dry-run
 ```
 
-Output er `build/00-matematik/main.pdf` og `build/02-fysikbibliotek/statistik/main.pdf`. Skabelonoutput spejler kildeplaceringerne under `build/`. Alle 20 builds bevares: otte aktuelle kursusskabeloner, fire bevarede termodynamikskabeloner samt otte arkiverede kvante-/relativitetsskabeloner. Mapper og skabeloner er ikke færdige noter. PDF'er og buildfiler versionsstyres ikke; `make clean` fjerner kun `build/`.
+Output er `build/00-matematik/main.pdf` og `build/02-fysikbibliotek/statistik/main.pdf`. Skabelonoutput spejler kildeplaceringerne under `build/`. Alle 20 builds bevares: otte aktuelle kursusskabeloner, fire bevarede termodynamikskabeloner samt otte arkiverede kvante-/relativitetsskabeloner. Mapper og skabeloner er ikke færdige noter. Buildfiler versionsstyres ikke; `make clean` fjerner kun `build/`. Den brugerbestilte [leverings-PDF for bind 1](00-matematik/udgivelser/bind-1.pdf) er en udtrykkelig undtagelse med kildecommit og checksum.
 
 ## Drive og publiceringsstatus
 
@@ -86,4 +86,4 @@ Alle 21 hovedemner samles i én PDF med underafsnit, klikbar indholdsfortegnelse
 
 ## Aktuelt matematikarbejde
 
-Følg [bindplanen](00-matematik/BINDPLAN.md) og [underemneplanen](00-matematik/ALLE_BIND_UNDEREMNER.md). Indhold udbygges kronologisk fra bind 1 med forklaringer, definitioner, udledninger, formelopslag, metodevalg, fysik og krydshenvisninger. De første tre algebraemner er udbygget; resten af bind 1 og de senere bind er fortsat under udvikling. Faktisk kontrolstatus står i [STATUS.md](STATUS.md).
+Følg [bindplanen](00-matematik/BINDPLAN.md) og [underemneplanen](00-matematik/ALLE_BIND_UNDEREMNER.md). Indhold udbygges kronologisk fra bind 1 med forklaringer, definitioner, udledninger, formelopslag, metodevalg, fysik og krydshenvisninger. Hele den aftalte emnedækning i bind 1 er nu skrevet og kvalitetskontrolleret: [PDF](00-matematik/udgivelser/bind-1.pdf) og [kontrolrapport](docs/kontrol-bind-1.md). Bind 2–6 er bevaret uændrede og er ikke færdigmeldt fagligt. Faktisk kontrolstatus står i [STATUS.md](STATUS.md).
