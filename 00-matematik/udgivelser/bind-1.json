@@ -1,15 +1,15 @@
 {
   "document": "Bind 1 – Algebra og lineær algebra",
   "source_entry": "00-matematik/volumes/bind-1.tex",
-  "source_commit": "f53816b6e0a9548bb18d82e4a2ae68db58fa331e",
+  "source_commit": "c997e1c1e434140f43122c30795974bc8d017f03",
   "build_command": "make bind-1",
   "pdf": "bind-1.pdf",
-  "sha256": "d559f48cd4ec3bd2ee6264324dde0e5fb662ebd6c75aa05e0213683847feb240",
-  "pages": 33,
+  "sha256": "c06b598ace547eecd311406d5de767aa662b266659ad494fc069d7e64e04a71f",
+  "pages": 40,
   "bookmarks": 73,
   "links": 136,
   "formula_register_entries": 60,
-  "figures": 18,
+  "figures": 34,
   "review_date": "2026-10-28",
   "drive_published": false
 }

@@ -1,6 +1,6 @@
 # Plan: matematik i seks bind og én samlet udgave
 
-**Status (28. oktober 2026):** Hele den planlagte emnedækning for bind 1 er nu skrevet, kompileret og visuelt gennemgået som en kortfattet lærebog/formelsamling. Leveringen har 33 sider, 18 figurer og 60 registrerede centrale formler. [PDF](udgivelser/bind-1.pdf), [buildmetadata](udgivelser/bind-1.json) og [kontrolrapport](../docs/kontrol-bind-1.md). Bind 2–6 er bevaret uændrede og teknisk genkontrolleret; deres faglige udfyldning er ikke en del af denne levering. Ingen Drive-filer er ændret. Tidligere delstatus nedenfor er udviklingshistorik.
+**Status (28. oktober 2026):** Hele den planlagte emnedækning for bind 1 er nu skrevet, kompileret og visuelt gennemgået som en kortfattet lærebog/formelsamling. Leveringen har 40 sider, 34 figurer og 60 registrerede centrale formler. [PDF](udgivelser/bind-1.pdf), [buildmetadata](udgivelser/bind-1.json) og [kontrolrapport](../docs/kontrol-bind-1.md). Bind 2–6 er bevaret uændrede og teknisk genkontrolleret; deres faglige udfyldning er ikke en del af denne levering. Ingen Drive-filer er ændret. Tidligere delstatus nedenfor er udviklingshistorik.
 
 ## Bind og eksisterende kapitelkilder
 
@@ -109,3 +109,7 @@ Bind 1 har underafsnit i både indholdsfortegnelsen og bogmærkerne. PDF-kontrol
 Alle 25 punkter i den uddybende bind-1-disposition har nu fagtekst i de eksisterende tre kapitelkilder. Funktioner og komplekse tal har selvstændige afsnit; summer/produkter, asymptoter og LU er eksplicit medtaget. Detaljeret dækning og præcise kontrolresultater står i [kontrolrapporten](../docs/kontrol-bind-1.md).
 
 Teksten er redigeret til korte begrebsforklaringer, definitioner, formelopslag, begrundelser og anvendelser med minimalistiske figurer. Formelregisterets 60 poster er klikbare og kontrolleret mod de faktiske formelsider. Ingen faglige underemner i den aftalte introducerende bind-1-plan står tilbage som dispositionsmarkører. Senere emners fulde teori er fortsat afgrænset til deres respektive bind.
+
+## Visuel opslagsudgave – 28. oktober 2026
+
+Den eksisterende genopbygning er udbygget på `feat/bind1-visuel-opslagsbog` fra `74136b1`. 16 nye figurer giver nu 34 faglige illustrationer. De 60 centrale formelopslag har ensartede, tynde bokse. De nye figurer prioriterer absolutværdi, standardgrafer, spejling, asymptoter, inverse, trigonometri, komplekse rødder, basisskift, rotation/projektion/spejling, Gram–Schmidt og kvadratiske former. Determinanten vises som en konkret afbildning af enhedskvadratets areal. Emnernes primære hjem og alle kilder til bind 2–6 er bevaret.

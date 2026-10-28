@@ -58,3 +58,8 @@
 - Bind 1 bruger `bindet`-optionen i fællespakken: hvid baggrund, mørk tekst, én afdæmpet blå accent og tynde linjer. Bind 2–6 bruger fortsat standarddesignet; deres kilder og figurer ændres ikke som led i bind-1-opgaven.
 - Centrale regler registreres med `\formel` ved deres faglige primærsted. Formelregisteret genereres fra dem; `make bind-1` skal kontrollere både linkdestination og registerets trykte sidetal, også ved sideskift.
 - En udgivelses-PDF og dens metadata opdateres samlet efter build og visuel kontrol. De eksisterende Drive-id'er bevares; ingen upload uden verificeret destination, adgang og godkendelse.
+
+## Visuel opslagsværdi i bind 1
+- Prioritér mange relevante geometriske forklaringer frem for mere løbende tekst. Ved matrixoperationer vises så vidt muligt både matrix, geometrisk virkning og deres relation; brug fælles målestok, hvor længder/vinkler sammenlignes.
+- Bevar enkle 2D-grafer, tynde streger, én blå accent, korte figurtekster og tydelige formelbokse. Ingen dekorative illustrationer, personlige eksempler eller 3D for 3D's skyld.
+- Den visuelle udbygning foretages på en separat branch fra den aktuelle leveringsbranch. Bevar bind 2–6 og deres allerede eksisterende pilotindhold; »skeletter« er ikke en tilladelse til at slette tidligere arbejde.

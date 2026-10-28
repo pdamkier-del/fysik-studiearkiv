@@ -10,8 +10,10 @@ Integralregning er udbygget til et sammenhængende kapitel med standardintegrale
 
 Matematik er flyttet ud af fysikbiblioteket som eget hovedområde. MatF1, MatF2, LinALys og Algebra skal integreres efter matematiske emner; der oprettes ikke separate kompendier. De præcise referencer og forholdet mellem kursusbetegnelserne skal verificeres fra kilder, før nye pensumpåstande tilføjes.
 
-Byg bind 1 med `make bind-1` og alle seks med `make alle-bind`. Bind-PDF'er ligger under `build/00-matematik/bind-N/bind-N.pdf`. Udviklingen følger nu underemnerne i bind 1 fra begyndelsen. Hele bind 1 er nu genopbygget med den aftalte emnedækning, 18 minimalistiske figurer og et samlet klikbart formelregister. Se [aktuel status](../STATUS.md).
+Byg bind 1 med `make bind-1` og alle seks med `make alle-bind`. Bind-PDF'er ligger under `build/00-matematik/bind-N/bind-N.pdf`. Udviklingen følger nu underemnerne i bind 1 fra begyndelsen. Hele bind 1 er nu genopbygget med den aftalte emnedækning, 34 minimalistiske figurer og et samlet klikbart formelregister. Se [aktuel status](../STATUS.md).
 
 ## Leveret bind 1
 
 [Download den kvalitetskontrollerede PDF](udgivelser/bind-1.pdf). Den er gemt i Git efter brugerens udtrykkelige leveringskrav; alle øvrige genererede PDF'er bliver i `build/`. [Metadata](udgivelser/bind-1.json) registrerer kildecommit og checksum, og [kontrolrapporten](../docs/kontrol-bind-1.md) beskriver dækning, tests og afgrænsninger. Bind 2–6 er uændrede. Drive er ikke opdateret.
+
+Den seneste visuelle udgave har 40 sider og 34 figurer (16 flere end den foregående levering). Formelregisterets 60 opslag har tydelige, diskrete bokse, og matrixfigurerne forbinder selve matricen med den geometriske virkning. Alle sider og registerlinks er kontrolleret efter udvidelsen.

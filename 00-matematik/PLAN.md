@@ -228,4 +228,4 @@ Kapitel 7 er udbygget med lokale eksistens-/entydighedsbetingelser, maksimal for
 
 ## Aktuel levering: hele bind 1
 
-Hele den planlagte bind-1-struktur er genopbygget i de tre eksisterende kilder om algebra/funktioner, trigonometri og lineær algebra. Korte forklaringer, formelopslag, relevante udledninger og 18 figurer ledsages af et samlet formelregister med 60 poster. [Leverings-PDF](udgivelser/bind-1.pdf) og [kontrolrapport](../docs/kontrol-bind-1.md) er tilgængelige. Der er ikke oprettet parallelle kapitelkilder eller løsrevne tillæg. Bind 2–6 og deres indlæste figurer er uændrede; denne levering er ikke deres faglige færdigmelding.
+Hele den planlagte bind-1-struktur er genopbygget i de tre eksisterende kilder om algebra/funktioner, trigonometri og lineær algebra. Korte forklaringer, formelopslag, relevante udledninger og 34 figurer ledsages af et samlet formelregister med 60 poster. [Leverings-PDF](udgivelser/bind-1.pdf) og [kontrolrapport](../docs/kontrol-bind-1.md) er tilgængelige. Der er ikke oprettet parallelle kapitelkilder eller løsrevne tillæg. Bind 2–6 og deres indlæste figurer er uændrede; denne levering er ikke deres faglige færdigmelding.
