@@ -1,0 +1,16 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=7cm,height=7cm,axis equal image,axis lines=middle,
+ xmin=-.3,xmax=3.2,ymin=-.3,ymax=3.2,xlabel={$x$},ylabel={$y$},xtick={1,2,3},ytick={1,2,3},samples=100,
+ legend style={draw=none,font=\small,at={(.02,.98)},anchor=north west}]
+\addplot[arkivblaa,domain=0:1.78] {x^2};\addlegendentry{$f(x)=x^2,\ x\ge0$}
+\addplot[black!65,domain=0:3.2] {sqrt(x)};\addlegendentry{$f^{-1}(x)=\sqrt{x}$}
+\addplot[black!45,dashed,domain=0:3.1] {x};
+\draw[black!50,dotted] (axis cs:1.5,2.25)--(axis cs:2.25,1.5);
+\fill[arkivblaa] (axis cs:1.5,2.25) circle(1.5pt);
+\fill[black!65] (axis cs:2.25,1.5) circle(1.5pt);
+\end{axis}\end{tikzpicture}
+\caption{En invers bytter input og output: $(a,b)$ bliver $(b,a)$. Spejling i den stiplede linje $y=x$ kræver samme målestok på akserne, som her. Begrænsningen $x\ge0$ gør kvadratfunktionen injektiv.}
+\label{fig:b1-invers}
+\end{figure}

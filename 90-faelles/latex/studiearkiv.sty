@@ -51,7 +51,11 @@
 \newcommand{\formel}[3]{%
   \begin{equation}\label{#1}%
   \addcontentsline{for}{section}{\protect\numberline{\theequation}#2}%
-  #3\end{equation}%
+  \ifarkivbindet
+    \begingroup\setlength{\fboxrule}{0.3pt}\setlength{\fboxsep}{6pt}%
+    \fcolorbox{arkivblaa!65}{white}{$\displaystyle #3$}%
+    \endgroup
+  \else #3\fi\end{equation}%
 }
 \newcommand{\formelhenvisning}[2]{%
   \phantomsection\addcontentsline{for}{section}{#2: \protect\ref{#1}}}

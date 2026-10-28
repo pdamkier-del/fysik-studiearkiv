@@ -126,6 +126,8 @@ ulighed. For $r>0$ er
 |x-x_0|<r&\ \Leftrightarrow\ x_0-r<x<x_0+r,\\
 |x-x_0|\ge r&\ \Leftrightarrow\ x\le x_0-r\ \text{eller}\ x\ge x_0+r.
 \end{aligned}}
+\input{00-matematik/figures/b1-afstand.tex}
+
 Multiplikation med et positivt tal bevarer en ulighed; et negativt vender
 den. Ved ukendt fortegn opdeles i tilfælde, inklusive nul. For rationelle
 uligheder ordnes nulpunkter og poler på talaksen, fortegnet bestemmes
@@ -245,9 +247,9 @@ a^3\pm b^3&=(a\pm b)(a^2\mp ab+b^2).
 \end{aligned}}
 Vælg fortegn konsekvent. Reglerne udledes ved distributivitet.
 Den generelle form er
-\formel{eq:b1-binomial}{Binomialformlen}{\boxed{
+\formel{eq:b1-binomial}{Binomialformlen}{\begin{gathered}
 (a+b)^n=\sum_{k=0}^n\binom nk a^{n-k}b^k,\quad
-\binom nk=\frac{n!}{k!(n-k)!}.}}
+\binom nk=\frac{n!}{k!(n-k)!}.\end{gathered}}
 Her er $n\in\mathbb N_0$, $0!=1$, og $a,b$ kommuterer.
 Vælg $b$ fra $k$ af de $n$ faktorer: der er
 $n(n-1)\cdots(n-k+1)/k!$ valg. Derfor optræder netop denne koefficient.
@@ -385,6 +387,8 @@ bijektiv som afbildning $D\to f(D)$, men ikke nødvendigvis $D\to Y$.
 \input{00-matematik/figures/b1-afbildninger.tex}
 
 
+\input{00-matematik/figures/b1-standardfunktioner.tex}
+
 \subsection{Sammensætning og inverse}
 \formel{eq:b1-invers}{Sammensætning og invers}{\begin{gathered}
 (f\circ g)(x)=f(g(x)),\quad D_{f\circ g}=\{x\in D_g:g(x)\in D_f\},\\
@@ -400,6 +404,8 @@ $x^3$ har en global invers, men ingen endelig inversafledt ved nul.
 For $F(x,y)=0$, $F\in C^1$ og $F_y\ne0$ giver den implicitte
 funktionssætning lokalt $y'=-F_x/F_y$; relationen er ikke nødvendigvis en
 global funktion. Beviser og regularitet behandles i bind 2.
+
+\input{00-matematik/figures/b1-invers.tex}
 
 \subsection{Symmetri, monotoni og stykvise funktioner}
 På et domæne symmetrisk om nul er $f$ lige, hvis $f(-x)=f(x)$, og ulige,
@@ -422,6 +428,8 @@ faktorer giver spejlinger. Domænet transformeres samtidig.
 
 \input{00-matematik/figures/b1-graf.tex}
 
+\input{00-matematik/figures/b1-spejling.tex}
+
 En lodret asymptote $x=a$ kræver divergens i mindst én ensidig grænse;
 et hul fra forkortning er ikke automatisk en asymptote.
 En retlinjet asymptote $y=mx+b$ ved $x\to\pm\infty$ betyder
@@ -429,6 +437,8 @@ $f(x)-(mx+b)\to0$. $m=0$ giver vandret asymptote.
 Polynomiumsdivision viser den skrå asymptote for rationelle funktioner,
 når resten divideret med nævneren går mod nul. Præcise grænseværdier
 behandles i bind 2.
+
+\input{00-matematik/figures/b1-asymptoter.tex}
 
 \section{Eksponential- og logaritmefunktioner}
 \label{sec:b1-log}
@@ -474,7 +484,7 @@ Komplekse tal holder styr på to reelle komponenter med én regneoperation.
 De er særligt nyttige til fase og lineære svingninger. Konturintegration
 og analytiske funktioner ligger fortsat i bind 4.
 \formel{eq:b1-kompleks}{Konjugation, modulus og division}{\begin{gathered}
-z=a+ib,\quad\bar z=a-ib,\quad |z|=\sqrt{a^2+b^2},\quad z\bar z=|z|^2,\\
+z=a+ib,\quad\operatorname{Re}z=a,\quad\operatorname{Im}z=b,\quad\bar z=a-ib,\quad |z|=\sqrt{a^2+b^2},\quad z\bar z=|z|^2,\\
 \frac zw=\frac{z\bar w}{|w|^2}\ (w\ne0),\quad
 \overline{zw}=\bar z\bar w,\quad |zw|=|z||w|.
 \end{gathered}}
@@ -486,13 +496,16 @@ z=r e^{i\theta}=r(\cos\theta+i\sin\theta),\quad r=|z|>0,\\
 z^{1/n}:\ r^{1/n}e^{i(\theta+2\pi k)/n},\quad k=0,\ldots,n-1.
 \end{gathered}}
 Her er $n\in\mathbb N$ og $z\ne0$; nul har kun roden nul.
-Eulers formel kan begrundes ved potensrækkerne for $e^z$, sinus og cosinus
+Potensreglen er de Moivres formel. Eulers formel kan begrundes ved potensrækkerne for $e^z$, sinus og cosinus
 (bind 2/4). Multiplikation ganger længder og adderer vinkler.
 Argumentet er bestemt modulo $2\pi$; en hovedgren kan vælges i $(-\pi,\pi]$.
 Modulus og argument af nul er henholdsvis nul og udefineret.
 Faser skal derfor findes med begge koordinater, ikke kun $\arctan(b/a)$.
 
 \input{00-matematik/figures/b1-kompleks.tex}
+
+\clearpage
+\input{00-matematik/figures/b1-komplekseroedder.tex}
 
 I en harmonisk repræsentation er den fysiske størrelse ofte
 $\operatorname{Re}(Ze^{i\omega t})$. Linearitet gør repræsentationen nyttig;

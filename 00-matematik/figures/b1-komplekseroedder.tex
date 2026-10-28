@@ -1,0 +1,21 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=stealth,scale=2]
+\draw[->,black!45] (-1.3,0)--(1.4,0) node[right] {$\operatorname{Re}z$};
+\draw[->,black!45] (0,-1.3)--(0,1.4) node[above] {$\operatorname{Im}z$};
+\draw[black!40] (0,0) circle(1);
+\foreach \k in {0,1,2,3,4} {
+ \draw[arkivblaa,thin] (0,0)--({cos(72*\k)},{sin(72*\k)});
+ \fill[arkivblaa] ({cos(72*\k)},{sin(72*\k)}) circle(.014);
+ \ifnum\k=0
+  \node[font=\small,above] at (1.08,0) {$z_0$};
+ \else
+  \node[font=\small] at ({1.16*cos(72*\k)},{1.16*sin(72*\k)}) {$z_{\k}$};
+ \fi
+}
+\draw[->,arkivblaa] (.28,0) arc[start angle=0,end angle=72,radius=.28];
+\node at (.39,.28) {$\frac{2\pi}{5}$};
+\end{tikzpicture}
+\caption{De fem rødder i $z^5=1$: $z_k=e^{2\pi ik/5}$, $k=0,\ldots,4$. De ligger jævnt fordelt på enhedscirklen. For $w=re^{i\theta}\ne0$ skaleres radius til $r^{1/n}$ og vinklerne til $(\theta+2\pi k)/n$. Dimensionsløse akser med samme målestok.}
+\label{fig:b1-komplekseroedder}
+\end{figure}

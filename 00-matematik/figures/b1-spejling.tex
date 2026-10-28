@@ -1,0 +1,13 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=.78\textwidth,height=5cm,axis lines=middle,xmin=-3.2,xmax=3.2,
+ ymin=-2.5,ymax=2.5,xlabel={$x$},ylabel={$y$},xtick={-2,2},ytick={-2,2},samples=80,
+ legend style={draw=none,font=\small,at={(.02,.98)},anchor=north west}]
+\addplot[arkivblaa,domain=-3:3] {exp(x/2)-1};\addlegendentry{$f(x)=e^{x/2}-1$}
+\addplot[black!65,dashed,domain=-3:3] {exp(-x/2)-1};\addlegendentry{$f(-x)$}
+\addplot[black!65,dotted,domain=-3:3] {1-exp(x/2)};\addlegendentry{$-f(x)$}
+\end{axis}\end{tikzpicture}
+\caption{Vandret spejling $f(-x)$ og lodret spejling $-f(x)$ er forskellige operationer. Den første spejler i $y$-aksen, den anden i $x$-aksen. Figuren viser dimensionsløse udsnit; en spejling kræver også transformation af domænet.}
+\label{fig:b1-spejling}
+\end{figure}

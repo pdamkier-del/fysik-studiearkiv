@@ -1,0 +1,24 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[at={(0,4.2cm)},anchor=south west,width=6.1cm,height=4cm,
+ axis lines=middle,xmin=-2,xmax=2,ymin=-.3,ymax=3,xlabel={$x$},ylabel={$y$},
+ xtick={-1,1},ytick={1,2},title={$y=x^2$},title style={font=\small},samples=80]
+\addplot[arkivblaa,domain=-1.7:1.7] {x^2};\end{axis}
+\begin{axis}[at={(6.5cm,4.2cm)},anchor=south west,width=6.1cm,height=4cm,
+ axis lines=middle,xmin=-2,xmax=2,ymin=-.3,ymax=2.2,xlabel={$x$},ylabel={$y$},
+ xtick={-1,1},ytick={1,2},title={$y=|x|$},title style={font=\small},samples=81]
+\addplot[arkivblaa,domain=-2:2] {abs(x)};\end{axis}
+\begin{axis}[at={(0,0)},anchor=south west,width=6.1cm,height=4cm,
+ axis lines=middle,xmin=-.3,xmax=4,ymin=-.2,ymax=2.3,xlabel={$x$},ylabel={$y$},
+ xtick={1,4},ytick={1,2},title={$y=\sqrt{x}$},title style={font=\small},samples=90]
+\addplot[arkivblaa,domain=0:4] {sqrt(x)};\end{axis}
+\begin{axis}[at={(6.5cm,0)},anchor=south west,width=6.1cm,height=4cm,
+ axis lines=middle,xmin=-3,xmax=3,ymin=-3,ymax=3,xlabel={$x$},ylabel={$y$},
+ xtick={-1,1},ytick={-1,1},title={$y=1/x$},title style={font=\small},samples=80]
+\addplot[arkivblaa,domain=-3:-.34] {1/x};
+\addplot[arkivblaa,domain=.34:3] {1/x};\end{axis}
+\end{tikzpicture}
+\caption{Atlas over dimensionsløse standardfunktioner. Kvadratet og absolutværdien er lige og har billede $[0,\infty)$; kvadratroden kræver $x\ge0$ og er voksende. Den reciprokke funktion er ulige, udelukker nul og har asymptoter langs akserne. Panelerne har hver deres tydeligt angivne skala.}
+\label{fig:b1-standardfunktioner}
+\end{figure}
