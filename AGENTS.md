@@ -1,5 +1,8 @@
 # Faste regler for fysik-studiearkiv
 
+## Obligatorisk før enhver note- eller PDF-ændring
+**Læs og følg [NOTESTANDARD.md](NOTESTANDARD.md) fra ende til anden før arbejdet.** Den fastlægger både didaktik, visuel stil og den tekniske proces. Redigér autoritative LaTeX-kilder og genkompilér hele dokumentet; PDF-overlay, indsatte løse tillægssider og små overlejrede tekstfelter er ikke acceptable som integrerede ændringer. Kontrollér alle sider visuelt samt indholdsfortegnelse, sidetal og links før publicering. Hvis kildekoden mangler, rapportér blokeringen og genskab en redigerbar kilde før større redigeringer. Bevar én aktiv Drive-version og arkivér gamle versioner.
+
 ## Indhold og redaktion
 1. Opdater eksisterende dokumenter frem for at oprette dubletter. Find det relevante fag, dokument og kapitel først.
 2. Bevar korrekt eksisterende indhold; integrer udvidelser under fagligt relevante afsnit.
