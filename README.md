@@ -34,7 +34,7 @@ config/, scripts/, tests/, docs/
 
 ## Faste dokumenter
 
-[AGENTS.md](AGENTS.md) fastlægger regler og design. [ROADMAP.md](ROADMAP.md) indeholder planen. [PENSUM.md](PENSUM.md) peger på kilder og præcise afgrænsninger. [STATUS.md](STATUS.md) skelner mellem faktisk indhold, implementering, verificerede resultater og blokeringer. [Migrationsrapporten](docs/migration-tre-hovedomraader.md) dokumenterer den seneste strukturændring.
+[AGENTS.md](AGENTS.md) fastlægger projektregler, og **[NOTESTANDARD.md](NOTESTANDARD.md) skal læses før enhver ændring af noter og PDF'er**; den fastlægger den obligatoriske LaTeX-, layout- og kvalitetskontrol. [ROADMAP.md](ROADMAP.md) indeholder planen. [PENSUM.md](PENSUM.md) peger på kilder og præcise afgrænsninger. [STATUS.md](STATUS.md) skelner mellem faktisk indhold, implementering, verificerede resultater og blokeringer. [Migrationsrapporten](docs/migration-tre-hovedomraader.md) dokumenterer den seneste strukturændring.
 
 ## Byg og kontroller
 
