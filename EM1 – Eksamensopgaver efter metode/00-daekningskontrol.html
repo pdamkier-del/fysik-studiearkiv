@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="da-DK" xml:lang="da-DK">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Dækningskontrol og kildebemærkninger</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="stil.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Dækningskontrol og kildebemærkninger</h1>
+</header>
+<h1 id="leverancen">Leverancen</h1>
+<p>Tre metodedokumenter i HTML, PDF og redigerbar Markdown. HTML-filerne
+bruger indbygget MathML og lokale billeder: ingen internetforbindelse
+eller eksterne scripts er nødvendige. Start i <code>START.html</code>.
+PDF har klikbar indholdsfortegnelse og bogmærker. Kilde-PDF’er og
+maskinlæsbart opgaveindeks ligger i <code>kilder</code>.</p>
+<h1 id="komplet-sortering-og-kontrol">Komplet sortering og kontrol</h1>
+<p>63 originale hovedopgaver fra 11 sæt. Hvert sæt har 14
+bogstavdelspørgsmål, i alt 154. Januar 2026–2 er delt i E/V (a–b) og DYN
+(c–d), så der er 64 løsningsafsnit. Ingen bogstavdel er udeladt eller
+løst to gange. Underpunkterne i november 2025–2c og januar 2026–4a er
+også behandlet.</p>
+<p>Klassifikationstabellen blev etableret for samtlige opgaver, før
+dokumenterne blev færdiggjort. Kontrollen sammenligner kildens
+opgavenumre og bogstaver med de konkrete løsningsafsnit. Tabellen gør
+ikke krav på, at et program beviser de fysiske udledninger; disse er
+særskilt gennemgået og sammenholdt med facit.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Eksamen</th>
+<th style="text-align: right;">Hovedopgaver</th>
+<th style="text-align: right;">Bogstavdele</th>
+<th>Dækket</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Juni 2021</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">14</td>
+<td>Alle</td>
+</tr>
+<tr class="even">
+<td>November 2021</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">14</td>
+<td>Alle</td>
+</tr>
+<tr class="odd">
+<td>Februar 2022</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">14</td>
+<td>Alle</td>
+</tr>
+<tr class="even">
+<td>November 2022</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">14</td>
+<td>Alle</td>
+</tr>
+<tr class="odd">
+<td>Februar 2023</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">14</td>
+<td>Alle</td>
+</tr>
+<tr class="even">
+<td>November 2023</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">14</td>
+<td>Alle</td>
+</tr>
+<tr class="odd">
+<td>Februar 2024</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">14</td>
+<td>Alle</td>
+</tr>
+<tr class="even">
+<td>November 2024</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">14</td>
+<td>Alle</td>
+</tr>
+<tr class="odd">
+<td>Januar 2025</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">14</td>
+<td>Alle</td>
+</tr>
+<tr class="even">
+<td>November 2025</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">14</td>
+<td>Alle</td>
+</tr>
+<tr class="odd">
+<td>Januar 2026</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">14</td>
+<td>Alle</td>
+</tr>
+</tbody>
+</table>
+<h1 id="opgave-for-opgave-register">Opgave-for-opgave-register</h1>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kilde</th>
+<th>Delspørgsmål</th>
+<th>Dokument / emne / type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="01-E_V.html#op-2021-06-1">Juni 2021 – 1</a> (s. 1)</td>
+<td>a, b, c</td>
+<td>01-E_V / Ledere og hulrum / Forskudt punktladning i kugleskal</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2021-06-2">Juni 2021 – 2</a> (s. 2)</td>
+<td>a</td>
+<td>01-E_V / Grundlæggende felt-/potentialeopgaver / Punktladninger:
+energi</td>
+</tr>
+<tr class="odd">
+<td><a href="02-B_A.html#op-2021-06-3">Juni 2021 – 3</a> (s. 2)</td>
+<td>a, b</td>
+<td>02-B_A / Find B fra strøm og geometri / Koaksiale systemer og kraft
+mellem ledere</td>
+</tr>
+<tr class="even">
+<td><a href="02-B_A.html#op-2021-06-4">Juni 2021 – 4</a> (s. 3)</td>
+<td>a</td>
+<td>02-B_A / Lorentzkraft og partikelbevægelse / Spændingsacceleration
+og massespektrometer</td>
+</tr>
+<tr class="odd">
+<td><a href="01-E_V.html#op-2021-06-5">Juni 2021 – 5</a> (s. 3)</td>
+<td>a, b, c</td>
+<td>01-E_V / Givet felt → ladning / Kartesisk divergens og
+feltkriterier</td>
+</tr>
+<tr class="even">
+<td><a href="03-DYN.html#op-2021-06-6">Juni 2021 – 6</a> (s. 4)</td>
+<td>a, b, c, d</td>
+<td>03-DYN / Simpel motional EMF / Bevægelig stang i homogent B</td>
+</tr>
+<tr class="odd">
+<td><a href="01-E_V.html#op-2021-11-1">November 2021 – 1</a> (s. 5)</td>
+<td>a, b</td>
+<td>01-E_V / Grundlæggende felt-/potentialeopgaver / Kontinuerte
+ladninger: halvkugleskal</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2021-11-2">November 2021 – 2</a> (s. 6)</td>
+<td>a, b, c, d</td>
+<td>01-E_V / Region-for-region / Koncentriske ledere og
+dielektrikum</td>
+</tr>
+<tr class="odd">
+<td><a href="01-E_V.html#op-2021-11-3">November 2021 – 3</a> (s. 6)</td>
+<td>a, b</td>
+<td>01-E_V / Laplace / randværdiproblemer / Muligt elektrostatisk felt i
+ladningsfrit område</td>
+</tr>
+<tr class="even">
+<td><a href="02-B_A.html#op-2021-11-4">November 2021 – 4</a> (s. 7)</td>
+<td>a, b</td>
+<td>02-B_A / Givet B → find strøm / Cylindrisk curl og lokal
+Lorentzkraft</td>
+</tr>
+<tr class="odd">
+<td><a href="02-B_A.html#op-2021-11-5">November 2021 – 5</a> (s. 7)</td>
+<td>a</td>
+<td>02-B_A / Find B fra strøm og geometri / Roterende massiv cylinder:
+solenoidesuperposition</td>
+</tr>
+<tr class="even">
+<td><a href="03-DYN.html#op-2021-11-6">November 2021 – 6</a> (s. 8)</td>
+<td>a, b, c</td>
+<td>03-DYN / Induceret elektrisk felt / Kondensator: forskydningsstrøm
+og tilbagekobling</td>
+</tr>
+<tr class="odd">
+<td><a href="01-E_V.html#op-2022-02-1">Februar 2022 – 1</a> (s. 9)</td>
+<td>a, b, c</td>
+<td>01-E_V / Grundlæggende felt-/potentialeopgaver / Punktladninger:
+superposition og multipoler</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2022-02-2">Februar 2022 – 2</a> (s. 10)</td>
+<td>a, b, c</td>
+<td>01-E_V / Gauss efter geometri / Cylinder: koaksial leder og
+dielektrikum</td>
+</tr>
+<tr class="odd">
+<td><a href="02-B_A.html#op-2022-02-3">Februar 2022 – 3</a> (s. 10)</td>
+<td>a</td>
+<td>02-B_A / Kraft på strømførende leder / Lige og krum leder i homogent
+felt</td>
+</tr>
+<tr class="even">
+<td><a href="02-B_A.html#op-2022-02-4">Februar 2022 – 4</a> (s. 11)</td>
+<td>a, b</td>
+<td>02-B_A / Find B fra strøm og geometri / Hul/boring i strømleder</td>
+</tr>
+<tr class="odd">
+<td><a href="01-E_V.html#op-2022-02-5">Februar 2022 – 5</a> (s. 11)</td>
+<td>a, b</td>
+<td>01-E_V / Felt ↔︎ potentiale / E → V og arbejde</td>
+</tr>
+<tr class="even">
+<td><a href="03-DYN.html#op-2022-02-6">Februar 2022 – 6</a> (s. 11)</td>
+<td>a</td>
+<td>03-DYN / Fast spole + B(t) / Sinusformet homogent felt</td>
+</tr>
+<tr class="odd">
+<td><a href="02-B_A.html#op-2022-02-7">Februar 2022 – 7</a> (s. 12)</td>
+<td>a, b</td>
+<td>02-B_A / Vektorpotentiale / A → B og Poissons ligning i
+cylinder</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2022-11-1">November 2022 – 1</a> (s.
+13)</td>
+<td>a, b, c</td>
+<td>01-E_V / Grundlæggende felt-/potentialeopgaver / Punktladninger:
+nulpunkter og arbejde</td>
+</tr>
+<tr class="odd">
+<td><a href="01-E_V.html#op-2022-11-2">November 2022 – 2</a> (s.
+13)</td>
+<td>a, b</td>
+<td>01-E_V / Givet felt → ladning / Kuglesymmetrisk divergens</td>
+</tr>
+<tr class="even">
+<td><a href="03-DYN.html#op-2022-11-3">November 2022 – 3</a> (s.
+14)</td>
+<td>a, b, c, d</td>
+<td>03-DYN / Selvinduktion / Solenoide: selvinduktans, RL-opladning og
+energi</td>
+</tr>
+<tr class="odd">
+<td><a href="02-B_A.html#op-2022-11-4">November 2022 – 4</a> (s.
+15)</td>
+<td>a, b</td>
+<td>02-B_A / Magnetisk dipol / Roterende ladet ring og skive</td>
+</tr>
+<tr class="even">
+<td><a href="02-B_A.html#op-2022-11-5">November 2022 – 5</a> (s.
+16)</td>
+<td>a, b</td>
+<td>02-B_A / Magnetiske materialer / Indfrosset magnetisering i
+cylinder</td>
+</tr>
+<tr class="odd">
+<td><a href="03-DYN.html#op-2022-11-6">November 2022 – 6</a> (s.
+16)</td>
+<td>a</td>
+<td>03-DYN / Fast spole + B(t) / Rumligt ikke-uniformt
+eksponentialfelt</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2023-02-1">Februar 2023 – 1</a> (s. 17)</td>
+<td>a, b, c</td>
+<td>01-E_V / Grundlæggende felt-/potentialeopgaver / Punktladninger:
+kraft og energi</td>
+</tr>
+<tr class="odd">
+<td><a href="01-E_V.html#op-2023-02-2">Februar 2023 – 2</a> (s. 18)</td>
+<td>a, b, c</td>
+<td>01-E_V / Gauss efter geometri / Kugle: ikke-uniform fri ladning i
+dielektrikum</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2023-02-3">Februar 2023 – 3</a> (s. 18)</td>
+<td>a</td>
+<td>01-E_V / Multipoler / Quadrupol: felt på aksen</td>
+</tr>
+<tr class="odd">
+<td><a href="02-B_A.html#op-2023-02-4">Februar 2023 – 4</a> (s. 18)</td>
+<td>a, b</td>
+<td>02-B_A / Vektorpotentiale / Kartesisk A → B → J og orienteret
+strøm</td>
+</tr>
+<tr class="even">
+<td><a href="03-DYN.html#op-2023-02-5">Februar 2023 – 5</a> (s. 19)</td>
+<td>a, b, c, d</td>
+<td>03-DYN / Gensidig induktion / Lang leder og nærliggende rektangulær
+løkke</td>
+</tr>
+<tr class="odd">
+<td><a href="03-DYN.html#op-2023-02-6">Februar 2023 – 6</a> (s. 20)</td>
+<td>a</td>
+<td>03-DYN / Forskydningsstrøm / Ampère-Maxwell / Cirkulære
+kondensatorplader</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2023-11-1">November 2023 – 1</a> (s.
+21)</td>
+<td>a, b, c</td>
+<td>01-E_V / Grundlæggende felt-/potentialeopgaver / Punktladninger:
+ligevægt og energi</td>
+</tr>
+<tr class="odd">
+<td><a href="03-DYN.html#op-2023-11-2">November 2023 – 2</a> (s.
+22)</td>
+<td>a, b</td>
+<td>03-DYN / Magnetisk energi / Transmissionslinje af to parallelle
+strømflader</td>
+</tr>
+<tr class="even">
+<td><a href="03-DYN.html#op-2023-11-3">November 2023 – 3</a> (s.
+22)</td>
+<td>a, b</td>
+<td>03-DYN / Maxwell-opgaver / Givet elektrisk felt med ikke-nul
+curl</td>
+</tr>
+<tr class="odd">
+<td><a href="01-E_V.html#op-2023-11-4">November 2023 – 4</a> (s.
+23)</td>
+<td>a, b, c</td>
+<td>01-E_V / Elektriske materialer / Leder ved grænse mellem to
+dielektrika</td>
+</tr>
+<tr class="even">
+<td><a href="03-DYN.html#op-2023-11-5">November 2023 – 5</a> (s.
+24)</td>
+<td>a, b, c, d</td>
+<td>03-DYN / Motional EMF + mekanisk feedback / Faldende ring i
+feltgradient</td>
+</tr>
+<tr class="odd">
+<td><a href="01-E_V.html#op-2024-02-1">Februar 2024 – 1</a> (s. 25)</td>
+<td>a, b, c, d</td>
+<td>01-E_V / Grundlæggende felt-/potentialeopgaver / Kontinuerte
+ladninger: halvcirkel og diskret sum</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2024-02-2">Februar 2024 – 2</a> (s. 26)</td>
+<td>a, b</td>
+<td>01-E_V / Elektriske materialer / Polarisation: bundne volumen- og
+overfladeladninger</td>
+</tr>
+<tr class="odd">
+<td><a href="02-B_A.html#op-2024-02-3">Februar 2024 – 3</a> (s. 26)</td>
+<td>a, b</td>
+<td>02-B_A / Kraft på strømførende leder / Kraft mellem lang leder og
+rektangulær løkke</td>
+</tr>
+<tr class="even">
+<td><a href="02-B_A.html#op-2024-02-4">Februar 2024 – 4</a> (s. 27)</td>
+<td>a, b</td>
+<td>02-B_A / Find B fra strøm og geometri / Massiv cylinder:
+ikke-uniform J(s)</td>
+</tr>
+<tr class="odd">
+<td><a href="03-DYN.html#op-2024-02-5">Februar 2024 – 5</a> (s. 27)</td>
+<td>a, b, c, d</td>
+<td>03-DYN / Ændrende geometri / areal / Voksende ligesidet trekant</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2024-11-1">November 2024 – 1</a> (s.
+29)</td>
+<td>a, b</td>
+<td>01-E_V / Spejlingsmetode / To vinkelrette jordede planer</td>
+</tr>
+<tr class="odd">
+<td><a href="01-E_V.html#op-2024-11-2">November 2024 – 2</a> (s.
+30)</td>
+<td>a, b</td>
+<td>01-E_V / Gauss efter geometri / Cylinder: ikke-uniform
+volumenladning</td>
+</tr>
+<tr class="even">
+<td><a href="02-B_A.html#op-2024-11-3">November 2024 – 3</a> (s.
+30)</td>
+<td>a, b</td>
+<td>02-B_A / Biot–Savart-geometrier / Langt strømførende bånd som sum af
+tråde</td>
+</tr>
+<tr class="odd">
+<td><a href="03-DYN.html#op-2024-11-4">November 2024 – 4</a> (s.
+31)</td>
+<td>a, b</td>
+<td>03-DYN / Strøm og modstand / Varierende ledningsevne σ(x)</td>
+</tr>
+<tr class="even">
+<td><a href="03-DYN.html#op-2024-11-5">November 2024 – 5</a> (s.
+31)</td>
+<td>a, b, c</td>
+<td>03-DYN / Gensidig induktion / Små cirkelløkker på akse og i
+ækvatorialplan</td>
+</tr>
+<tr class="odd">
+<td><a href="02-B_A.html#op-2024-11-6">November 2024 – 6</a> (s.
+32)</td>
+<td>a, b, c</td>
+<td>02-B_A / Magnetiske materialer / Toroide med lineær kerne og
+luftgab</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2025-01-1">Januar 2025 – 1</a> (s. 33)</td>
+<td>a, b</td>
+<td>01-E_V / Felt ↔︎ potentiale / E → V: kartesisk felt</td>
+</tr>
+<tr class="odd">
+<td><a href="01-E_V.html#op-2025-01-2">Januar 2025 – 2</a> (s. 34)</td>
+<td>a, b, c</td>
+<td>01-E_V / Region-for-region / Koncentriske ledere: felt og
+energi</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2025-01-3">Januar 2025 – 3</a> (s. 34)</td>
+<td>a, b</td>
+<td>01-E_V / Grundlæggende felt-/potentialeopgaver / Kontinuerte
+ladninger: skive og plan ring</td>
+</tr>
+<tr class="odd">
+<td><a href="02-B_A.html#op-2025-01-4">Januar 2025 – 4</a> (s. 35)</td>
+<td>a</td>
+<td>02-B_A / Lorentzkraft og partikelbevægelse / Kartesisk
+krydsprodukt</td>
+</tr>
+<tr class="even">
+<td><a href="02-B_A.html#op-2025-01-5">Januar 2025 – 5</a> (s. 35)</td>
+<td>a, b, c</td>
+<td>02-B_A / Find B fra strøm og geometri / Flere parallelle ledere og
+halvcylindrisk strømflade</td>
+</tr>
+<tr class="odd">
+<td><a href="03-DYN.html#op-2025-01-6">Januar 2025 – 6</a> (s. 36)</td>
+<td>a, b, c</td>
+<td>03-DYN / Fast spole + B(t) / Eksponentielt felt med konstant
+offset</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2025-11-1">November 2025 – 1</a> (s.
+37)</td>
+<td>a, b</td>
+<td>01-E_V / Spejlingsmetode / En ledende plan og to virkelige
+ladninger</td>
+</tr>
+<tr class="odd">
+<td><a href="01-E_V.html#op-2025-11-2">November 2025 – 2</a> (s.
+38)</td>
+<td>a, b, c</td>
+<td>01-E_V / Felt ↔︎ potentiale / V → E → rho: sfærisk logaritme</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2025-11-3">November 2025 – 3</a> (s.
+38)</td>
+<td>a, b</td>
+<td>01-E_V / Region-for-region / Koncentriske ledere: potentialnul og
+dielektrikum</td>
+</tr>
+<tr class="odd">
+<td><a href="02-B_A.html#op-2025-11-4">November 2025 – 4</a> (s.
+39)</td>
+<td>a, b, c</td>
+<td>02-B_A / Find B fra strøm og geometri / Massiv cylinder og
+linseformet hulrum</td>
+</tr>
+<tr class="even">
+<td><a href="03-DYN.html#op-2025-11-5">November 2025 – 5</a> (s.
+40)</td>
+<td>a, b, c, d</td>
+<td>03-DYN / Motional EMF + mekanisk feedback / Batteridrevet stang med
+mod-EMF</td>
+</tr>
+<tr class="odd">
+<td><a href="01-E_V.html#op-2026-01-1">Januar 2026 – 1</a> (s. 41)</td>
+<td>a, b, c</td>
+<td>01-E_V / Multipoler / Dipol: to punkter og to ladede kvartbuer</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2026-01-2">Januar 2026 – 2</a> (s. 42)</td>
+<td>a, b</td>
+<td>01-E_V / Kapacitans og elektrisk energi / Pladekondensator med
+dielektrikum</td>
+</tr>
+<tr class="odd">
+<td><a href="03-DYN.html#op-2026-01-2">Januar 2026 – 2</a> (s. 42)</td>
+<td>c, d</td>
+<td>03-DYN / Strøm og modstand / RC-afladning og magnetisk kraft</td>
+</tr>
+<tr class="even">
+<td><a href="03-DYN.html#op-2026-01-3">Januar 2026 – 3</a> (s. 43)</td>
+<td>a, b, c</td>
+<td>03-DYN / Fast spole + B(t) / Cylinderkoordinater: vinkel- og
+radiusafhængigt felt</td>
+</tr>
+<tr class="odd">
+<td><a href="02-B_A.html#op-2026-01-4">Januar 2026 – 4</a> (s. 43)</td>
+<td>a</td>
+<td>02-B_A / Vektorpotentiale / Kartesiske og cylindriske udtryk for
+samme A</td>
+</tr>
+<tr class="even">
+<td><a href="01-E_V.html#op-2026-01-5">Januar 2026 – 5</a> (s. 43)</td>
+<td>a, b, c</td>
+<td>01-E_V / Laplace / randværdiproblemer / Kugle: Legendre og
+quadrupolrandværdi</td>
+</tr>
+</tbody>
+</table>
+<h1 id="facitkontrol-og-dokumenterede-afvigelser">Facitkontrol og
+dokumenterede afvigelser</h1>
+<p>Facit er kontrolkilde, ikke en erstatning for udledning. Ved
+afvigelser er originaltekst, figur, enheder og fysisk lov anvendt til at
+afgøre resultatet.</p>
+<ul>
+<li><a href="03-DYN.html#op-2021-06-6">Juni 2021 – 6</a> —
+<strong>Facitafvigelse:</strong> facit skriver »mod uret«. Originalens
+felt er ud af papiret og arealet vokser. Faraday og v × B giver med
+uret; de numeriske størrelser stemmer.</li>
+<li><a href="01-E_V.html#op-2021-11-1">November 2021 – 1</a> —
+<strong>OCR-kontrol:</strong> originalen angiver Q=0,75 µC, ikke mC som
+tekstudtrækket fejlagtigt viste. Den visuelle original og facits 4,3 J /
+9,75 N er lagt til grund.</li>
+<li><a href="01-E_V.html#op-2021-11-2">November 2021 – 2</a> —
+<strong>Facitfortolkning:</strong> i c) angiver facit nettotæthederne
+fri + bundet ved b og c, dvs. faktoren 1/εr. Her vises fri og bundet
+tæthed separat som efterspurgt. Facits sidste σb betegner fysisk fladen
+d.</li>
+<li><a href="03-DYN.html#op-2021-11-6">November 2021 – 6</a> —
+<strong>Modelbetingelse:</strong> facits E₁ kræver valget E₁(a)=0.
+Faraday alene efterlader en rumligt homogen tidsfunktion. Denne
+forudsætning er vist eksplicit.</li>
+<li><a href="02-B_A.html#op-2024-02-4">Februar 2024 – 4</a> —
+<strong>Facitafvigelse:</strong> det trykte facit siger 70 kA. Det
+symbolske facit, opgavens J₀=96,0 A/mm² og S=3,1 mm giver 966 A. Facits
+62 mT ved kanten svarer også til 966 A, ikke 70 kA.</li>
+<li><a href="01-E_V.html#op-2025-01-1">Januar 2025 – 1</a> —
+<strong>Datering:</strong> facit har overskriften »Februar 2025«, men
+originalen er 31. januar 2025. Samlingen følger originaldatoen.</li>
+<li><a href="01-E_V.html#op-2026-01-1">Januar 2026 – 1</a> —
+<strong>Datering:</strong> facit har overskriften »Februar 2026«, men
+originalen er 30. januar 2026. Samlingen følger originaldatoen.</li>
+</ul>
+<p><strong>Datoer:</strong> originalerne er 31. januar 2025 og 30.
+januar 2026; facit kalder dem februar. Opgaveidentiteterne er
+sammenholdt på indhold, ikke kun overskrifter.</p>
+<p><strong>Formelsamling:</strong> ikke vedhæftet. Emnehierarkiet følger
+brugerens eksplicitte liste; eksakt match til formelsamlingens
+metodekoder kan først kontrolleres, når den foreligger.</p>
+<p><strong>Figurer:</strong> seks nye undervisningsfigurer viser
+metodevalg og retninger. Hver originalopgave har også et lokalt
+billedudsnit med original ordlyd og figur, så OCR ikke skal bruges til
+fortegnskontrol. Sidehenvisninger er til den samlede opgave-PDF,
+inklusive den blanke side 28. Originalens fortsættelse af november
+2022–3d findes på side 15.</p>
+<p><strong>Afgrænsning:</strong> ingen opdigtede gamle eksamensopgaver
+er tilføjet under emner, der ikke forekommer i materialet. Der er bl.a.
+ingen selvstændig helix-, dipoltorque- eller induceret-E-solenoideopgave
+med inside/outside. Disse huller er markeret i de relevante
+metodedokumenter.</p>
+<h1 id="teknisk-slutkontrol">Teknisk slutkontrol</h1>
+<p>Alle lokale HTML-henvisninger, ankre og billedfiler er kontrolleret.
+De tre dokumenter har indbygget MathML uden fejlmeldinger om
+ukonverterede formler. PDF-filerne har klikbare bogmærker og
+indholdsfortegnelser; figurerne følger deres opgaver. Udvalgte PDF-sider
+er visuelt gennemgået. PDF-omfang: E/V 58 sider, B/A 36 sider og DYN 41
+sider.</p>
+<p>Talindsættelser er efterprøvet særskilt for bl.a.
+massespektrometeret, motional EMF, CMS-solenoiden, lederkræfter,
+ikke-uniform cylinder, toroide, varmeudvikling og RC-afladning.
+Symbolske kontroller omfatter ladningsintegraler, curl-operationer,
+Laplace for quadrupolpotentialet og energibalance for den voksende
+trekant. <a href="kilder/validering.txt">Detaljeret kontrollog</a>.
+Disse kontroller er supplerende stikprøver af udledningerne;
+dækningskontrollen omfatter alle opgaver.</p>
+</body>
+</html>

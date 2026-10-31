@@ -1,0 +1,1142 @@
+1140 kontroller bestået.
+
+2021-06-4 diameter
+2021-06-6 current
+2021-06-6 force
+2021-06-6 heat
+2021-11-1 energy with visually verified microcoulomb
+2021-11-1 force
+2021-11-2 capacitance
+2022-02-2 voltage
+2022-02-3 force
+2022-11-1 work
+2022-11-3 field
+2022-11-3 L
+2022-11-3 energy
+2022-11-3 charging time
+2022-11-3 aluminium power
+2023-02-1 energy
+2023-02-5 amplitude
+2023-11-2 energy
+2024-02-3 force
+2024-02-3 work
+2024-02-4 corrected current
+2024-02-4 edge field
+2024-11-6 amplification
+2025-01-4 force magnitude
+2025-01-6 heat
+2025-01-6 wire area
+2025-11-2 total charge
+2026-01-2 area
+2026-01-2 energy
+2026-01-2 1pct time
+Sphere kr charge integral
+Cylinder alpha s² integral
+Nonuniform cylinder current
+2021 electric field curl zero
+2023 vector potential curl
+2023 source curl
+Quadrupole potential satisfies Laplace
+Growing triangle mechanical and Joule power
+Local asset 03-DYN.html: stil.css
+Local asset 03-DYN.html: kilder/eksamen_alle.pdf
+Local asset 03-DYN.html: kilder/eksamen_facits.pdf
+Local asset 03-DYN.html: 00-daekningskontrol.html
+Local asset 03-DYN.html: 01-E_V.html
+Local asset 03-DYN.html: 02-B_A.html
+Local asset 03-DYN.html: 03-DYN.html
+Local asset 03-DYN.html: #emne-1
+Anchor 03-DYN.html: #emne-1
+Local asset 03-DYN.html: #type-1-1
+Anchor 03-DYN.html: #type-1-1
+Local asset 03-DYN.html: #op-2024-11-4
+Anchor 03-DYN.html: #op-2024-11-4
+Local asset 03-DYN.html: #type-1-2
+Anchor 03-DYN.html: #type-1-2
+Local asset 03-DYN.html: #op-2026-01-2
+Anchor 03-DYN.html: #op-2026-01-2
+Local asset 03-DYN.html: #ovrige-1
+Anchor 03-DYN.html: #ovrige-1
+Local asset 03-DYN.html: #emne-2
+Anchor 03-DYN.html: #emne-2
+Local asset 03-DYN.html: #type-2-1
+Anchor 03-DYN.html: #type-2-1
+Local asset 03-DYN.html: #op-2021-06-6
+Anchor 03-DYN.html: #op-2021-06-6
+Local asset 03-DYN.html: #emne-3
+Anchor 03-DYN.html: #emne-3
+Local asset 03-DYN.html: #type-3-1
+Anchor 03-DYN.html: #type-3-1
+Local asset 03-DYN.html: #op-2023-11-5
+Anchor 03-DYN.html: #op-2023-11-5
+Local asset 03-DYN.html: #type-3-2
+Anchor 03-DYN.html: #type-3-2
+Local asset 03-DYN.html: #op-2025-11-5
+Anchor 03-DYN.html: #op-2025-11-5
+Local asset 03-DYN.html: #emne-4
+Anchor 03-DYN.html: #emne-4
+Local asset 03-DYN.html: #type-4-1
+Anchor 03-DYN.html: #type-4-1
+Local asset 03-DYN.html: #op-2024-02-5
+Anchor 03-DYN.html: #op-2024-02-5
+Local asset 03-DYN.html: #emne-5
+Anchor 03-DYN.html: #emne-5
+Local asset 03-DYN.html: #type-5-1
+Anchor 03-DYN.html: #type-5-1
+Local asset 03-DYN.html: #op-2022-02-6
+Anchor 03-DYN.html: #op-2022-02-6
+Local asset 03-DYN.html: #type-5-2
+Anchor 03-DYN.html: #type-5-2
+Local asset 03-DYN.html: #op-2022-11-6
+Anchor 03-DYN.html: #op-2022-11-6
+Local asset 03-DYN.html: #type-5-3
+Anchor 03-DYN.html: #type-5-3
+Local asset 03-DYN.html: #op-2025-01-6
+Anchor 03-DYN.html: #op-2025-01-6
+Local asset 03-DYN.html: #type-5-4
+Anchor 03-DYN.html: #type-5-4
+Local asset 03-DYN.html: #op-2026-01-3
+Anchor 03-DYN.html: #op-2026-01-3
+Local asset 03-DYN.html: #emne-6
+Anchor 03-DYN.html: #emne-6
+Local asset 03-DYN.html: #type-6-1
+Anchor 03-DYN.html: #type-6-1
+Local asset 03-DYN.html: #op-2021-11-6
+Anchor 03-DYN.html: #op-2021-11-6
+Local asset 03-DYN.html: #kryds-6
+Anchor 03-DYN.html: #kryds-6
+Local asset 03-DYN.html: #ovrige-6
+Anchor 03-DYN.html: #ovrige-6
+Local asset 03-DYN.html: #emne-7
+Anchor 03-DYN.html: #emne-7
+Local asset 03-DYN.html: #type-7-1
+Anchor 03-DYN.html: #type-7-1
+Local asset 03-DYN.html: #op-2022-11-3
+Anchor 03-DYN.html: #op-2022-11-3
+Local asset 03-DYN.html: #kryds-7
+Anchor 03-DYN.html: #kryds-7
+Local asset 03-DYN.html: #emne-8
+Anchor 03-DYN.html: #emne-8
+Local asset 03-DYN.html: #type-8-1
+Anchor 03-DYN.html: #type-8-1
+Local asset 03-DYN.html: #op-2023-02-5
+Anchor 03-DYN.html: #op-2023-02-5
+Local asset 03-DYN.html: #type-8-2
+Anchor 03-DYN.html: #type-8-2
+Local asset 03-DYN.html: #op-2024-11-5
+Anchor 03-DYN.html: #op-2024-11-5
+Local asset 03-DYN.html: #emne-9
+Anchor 03-DYN.html: #emne-9
+Local asset 03-DYN.html: #type-9-1
+Anchor 03-DYN.html: #type-9-1
+Local asset 03-DYN.html: #op-2023-11-2
+Anchor 03-DYN.html: #op-2023-11-2
+Local asset 03-DYN.html: #kryds-9
+Anchor 03-DYN.html: #kryds-9
+Local asset 03-DYN.html: #emne-10
+Anchor 03-DYN.html: #emne-10
+Local asset 03-DYN.html: #type-10-1
+Anchor 03-DYN.html: #type-10-1
+Local asset 03-DYN.html: #op-2023-02-6
+Anchor 03-DYN.html: #op-2023-02-6
+Local asset 03-DYN.html: #kryds-10
+Anchor 03-DYN.html: #kryds-10
+Local asset 03-DYN.html: #emne-11
+Anchor 03-DYN.html: #emne-11
+Local asset 03-DYN.html: #type-11-1
+Anchor 03-DYN.html: #type-11-1
+Local asset 03-DYN.html: #op-2023-11-3
+Anchor 03-DYN.html: #op-2023-11-3
+Local asset 03-DYN.html: #kryds-11
+Anchor 03-DYN.html: #kryds-11
+Local asset 03-DYN.html: #op-2024-11-4
+Anchor 03-DYN.html: #op-2024-11-4
+Local asset 03-DYN.html: #op-2026-01-2
+Anchor 03-DYN.html: #op-2026-01-2
+Local asset 03-DYN.html: #op-2021-06-6
+Anchor 03-DYN.html: #op-2021-06-6
+Local asset 03-DYN.html: #op-2023-11-5
+Anchor 03-DYN.html: #op-2023-11-5
+Local asset 03-DYN.html: #op-2025-11-5
+Anchor 03-DYN.html: #op-2025-11-5
+Local asset 03-DYN.html: #op-2024-02-5
+Anchor 03-DYN.html: #op-2024-02-5
+Local asset 03-DYN.html: #op-2022-02-6
+Anchor 03-DYN.html: #op-2022-02-6
+Local asset 03-DYN.html: #op-2022-11-6
+Anchor 03-DYN.html: #op-2022-11-6
+Local asset 03-DYN.html: #op-2025-01-6
+Anchor 03-DYN.html: #op-2025-01-6
+Local asset 03-DYN.html: #op-2026-01-3
+Anchor 03-DYN.html: #op-2026-01-3
+Local asset 03-DYN.html: #op-2021-11-6
+Anchor 03-DYN.html: #op-2021-11-6
+Local asset 03-DYN.html: #op-2022-11-3
+Anchor 03-DYN.html: #op-2022-11-3
+Local asset 03-DYN.html: #op-2023-02-5
+Anchor 03-DYN.html: #op-2023-02-5
+Local asset 03-DYN.html: #op-2024-11-5
+Anchor 03-DYN.html: #op-2024-11-5
+Local asset 03-DYN.html: #op-2023-11-2
+Anchor 03-DYN.html: #op-2023-11-2
+Local asset 03-DYN.html: #op-2023-02-6
+Anchor 03-DYN.html: #op-2023-02-6
+Local asset 03-DYN.html: #op-2023-11-3
+Anchor 03-DYN.html: #op-2023-11-3
+Local asset 03-DYN.html: figurer/2024-11-4.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: 01-E_V.html#op-2026-01-2
+Anchor 03-DYN.html: 01-E_V.html#op-2026-01-2
+Local asset 03-DYN.html: figurer/2026-01-2.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: figurer/metode-stang.png
+Local asset 03-DYN.html: figurer/2021-06-6.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: figurer/2023-11-5.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: figurer/2025-11-5.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: figurer/metode-trekant.png
+Local asset 03-DYN.html: figurer/2024-02-5.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: figurer/2022-02-6.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: figurer/2022-11-6.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: figurer/2025-01-6.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: figurer/2026-01-3.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: figurer/metode-kondensator.png
+Local asset 03-DYN.html: figurer/2021-11-6.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: 03-DYN.html#op-2023-02-6
+Anchor 03-DYN.html: 03-DYN.html#op-2023-02-6
+Local asset 03-DYN.html: figurer/2022-11-3.png
+Local asset 03-DYN.html: figurer/2022-11-3-fortsaettelse.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: 03-DYN.html#op-2023-11-2
+Anchor 03-DYN.html: 03-DYN.html#op-2023-11-2
+Local asset 03-DYN.html: figurer/2023-02-5.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: figurer/2024-11-5.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: figurer/2023-11-2.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: 03-DYN.html#op-2022-11-3
+Anchor 03-DYN.html: 03-DYN.html#op-2022-11-3
+Local asset 03-DYN.html: figurer/metode-kondensator.png
+Local asset 03-DYN.html: figurer/2023-02-6.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: 03-DYN.html#op-2021-11-6
+Anchor 03-DYN.html: 03-DYN.html#op-2021-11-6
+Local asset 03-DYN.html: figurer/2023-11-3.png
+Local asset 03-DYN.html: #indhold
+Anchor 03-DYN.html: #indhold
+Local asset 03-DYN.html: #opgaveindeks
+Anchor 03-DYN.html: #opgaveindeks
+Local asset 03-DYN.html: 01-E_V.html#op-2021-06-5
+Anchor 03-DYN.html: 01-E_V.html#op-2021-06-5
+Local asset 03-DYN.html: 01-E_V.html#op-2021-11-3
+Anchor 03-DYN.html: 01-E_V.html#op-2021-11-3
+Local asset 03-DYN.html: 02-B_A.html#op-2023-02-4
+Anchor 03-DYN.html: 02-B_A.html#op-2023-02-4
+Local asset 01-E_V.html: stil.css
+Local asset 01-E_V.html: kilder/eksamen_alle.pdf
+Local asset 01-E_V.html: kilder/eksamen_facits.pdf
+Local asset 01-E_V.html: 00-daekningskontrol.html
+Local asset 01-E_V.html: 01-E_V.html
+Local asset 01-E_V.html: 02-B_A.html
+Local asset 01-E_V.html: 03-DYN.html
+Local asset 01-E_V.html: #emne-1
+Anchor 01-E_V.html: #emne-1
+Local asset 01-E_V.html: #type-1-1
+Anchor 01-E_V.html: #type-1-1
+Local asset 01-E_V.html: #op-2021-06-2
+Anchor 01-E_V.html: #op-2021-06-2
+Local asset 01-E_V.html: #type-1-2
+Anchor 01-E_V.html: #type-1-2
+Local asset 01-E_V.html: #op-2021-11-1
+Anchor 01-E_V.html: #op-2021-11-1
+Local asset 01-E_V.html: #type-1-3
+Anchor 01-E_V.html: #type-1-3
+Local asset 01-E_V.html: #op-2022-02-1
+Anchor 01-E_V.html: #op-2022-02-1
+Local asset 01-E_V.html: #type-1-4
+Anchor 01-E_V.html: #type-1-4
+Local asset 01-E_V.html: #op-2022-11-1
+Anchor 01-E_V.html: #op-2022-11-1
+Local asset 01-E_V.html: #type-1-5
+Anchor 01-E_V.html: #type-1-5
+Local asset 01-E_V.html: #op-2023-02-1
+Anchor 01-E_V.html: #op-2023-02-1
+Local asset 01-E_V.html: #type-1-6
+Anchor 01-E_V.html: #type-1-6
+Local asset 01-E_V.html: #op-2023-11-1
+Anchor 01-E_V.html: #op-2023-11-1
+Local asset 01-E_V.html: #type-1-7
+Anchor 01-E_V.html: #type-1-7
+Local asset 01-E_V.html: #op-2024-02-1
+Anchor 01-E_V.html: #op-2024-02-1
+Local asset 01-E_V.html: #type-1-8
+Anchor 01-E_V.html: #type-1-8
+Local asset 01-E_V.html: #op-2025-01-3
+Anchor 01-E_V.html: #op-2025-01-3
+Local asset 01-E_V.html: #ovrige-1
+Anchor 01-E_V.html: #ovrige-1
+Local asset 01-E_V.html: #emne-2
+Anchor 01-E_V.html: #emne-2
+Local asset 01-E_V.html: #type-2-1
+Anchor 01-E_V.html: #type-2-1
+Local asset 01-E_V.html: #op-2022-02-2
+Anchor 01-E_V.html: #op-2022-02-2
+Local asset 01-E_V.html: #type-2-2
+Anchor 01-E_V.html: #type-2-2
+Local asset 01-E_V.html: #op-2023-02-2
+Anchor 01-E_V.html: #op-2023-02-2
+Local asset 01-E_V.html: #type-2-3
+Anchor 01-E_V.html: #type-2-3
+Local asset 01-E_V.html: #op-2024-11-2
+Anchor 01-E_V.html: #op-2024-11-2
+Local asset 01-E_V.html: #kryds-2
+Anchor 01-E_V.html: #kryds-2
+Local asset 01-E_V.html: #ovrige-2
+Anchor 01-E_V.html: #ovrige-2
+Local asset 01-E_V.html: #emne-3
+Anchor 01-E_V.html: #emne-3
+Local asset 01-E_V.html: #type-3-1
+Anchor 01-E_V.html: #type-3-1
+Local asset 01-E_V.html: #op-2022-02-5
+Anchor 01-E_V.html: #op-2022-02-5
+Local asset 01-E_V.html: #type-3-2
+Anchor 01-E_V.html: #type-3-2
+Local asset 01-E_V.html: #op-2025-01-1
+Anchor 01-E_V.html: #op-2025-01-1
+Local asset 01-E_V.html: #type-3-3
+Anchor 01-E_V.html: #type-3-3
+Local asset 01-E_V.html: #op-2025-11-2
+Anchor 01-E_V.html: #op-2025-11-2
+Local asset 01-E_V.html: #kryds-3
+Anchor 01-E_V.html: #kryds-3
+Local asset 01-E_V.html: #emne-4
+Anchor 01-E_V.html: #emne-4
+Local asset 01-E_V.html: #type-4-1
+Anchor 01-E_V.html: #type-4-1
+Local asset 01-E_V.html: #op-2021-06-5
+Anchor 01-E_V.html: #op-2021-06-5
+Local asset 01-E_V.html: #type-4-2
+Anchor 01-E_V.html: #type-4-2
+Local asset 01-E_V.html: #op-2022-11-2
+Anchor 01-E_V.html: #op-2022-11-2
+Local asset 01-E_V.html: #kryds-4
+Anchor 01-E_V.html: #kryds-4
+Local asset 01-E_V.html: #emne-5
+Anchor 01-E_V.html: #emne-5
+Local asset 01-E_V.html: #type-5-1
+Anchor 01-E_V.html: #type-5-1
+Local asset 01-E_V.html: #op-2021-11-2
+Anchor 01-E_V.html: #op-2021-11-2
+Local asset 01-E_V.html: #type-5-2
+Anchor 01-E_V.html: #type-5-2
+Local asset 01-E_V.html: #op-2025-01-2
+Anchor 01-E_V.html: #op-2025-01-2
+Local asset 01-E_V.html: #type-5-3
+Anchor 01-E_V.html: #type-5-3
+Local asset 01-E_V.html: #op-2025-11-3
+Anchor 01-E_V.html: #op-2025-11-3
+Local asset 01-E_V.html: #emne-6
+Anchor 01-E_V.html: #emne-6
+Local asset 01-E_V.html: #type-6-1
+Anchor 01-E_V.html: #type-6-1
+Local asset 01-E_V.html: #op-2021-06-1
+Anchor 01-E_V.html: #op-2021-06-1
+Local asset 01-E_V.html: #kryds-6
+Anchor 01-E_V.html: #kryds-6
+Local asset 01-E_V.html: #emne-7
+Anchor 01-E_V.html: #emne-7
+Local asset 01-E_V.html: #type-7-1
+Anchor 01-E_V.html: #type-7-1
+Local asset 01-E_V.html: #op-2024-11-1
+Anchor 01-E_V.html: #op-2024-11-1
+Local asset 01-E_V.html: #type-7-2
+Anchor 01-E_V.html: #type-7-2
+Local asset 01-E_V.html: #op-2025-11-1
+Anchor 01-E_V.html: #op-2025-11-1
+Local asset 01-E_V.html: #emne-8
+Anchor 01-E_V.html: #emne-8
+Local asset 01-E_V.html: #type-8-1
+Anchor 01-E_V.html: #type-8-1
+Local asset 01-E_V.html: #op-2021-11-3
+Anchor 01-E_V.html: #op-2021-11-3
+Local asset 01-E_V.html: #type-8-2
+Anchor 01-E_V.html: #type-8-2
+Local asset 01-E_V.html: #op-2026-01-5
+Anchor 01-E_V.html: #op-2026-01-5
+Local asset 01-E_V.html: #kryds-8
+Anchor 01-E_V.html: #kryds-8
+Local asset 01-E_V.html: #emne-9
+Anchor 01-E_V.html: #emne-9
+Local asset 01-E_V.html: #type-9-1
+Anchor 01-E_V.html: #type-9-1
+Local asset 01-E_V.html: #op-2023-02-3
+Anchor 01-E_V.html: #op-2023-02-3
+Local asset 01-E_V.html: #type-9-2
+Anchor 01-E_V.html: #type-9-2
+Local asset 01-E_V.html: #op-2026-01-1
+Anchor 01-E_V.html: #op-2026-01-1
+Local asset 01-E_V.html: #kryds-9
+Anchor 01-E_V.html: #kryds-9
+Local asset 01-E_V.html: #emne-10
+Anchor 01-E_V.html: #emne-10
+Local asset 01-E_V.html: #type-10-1
+Anchor 01-E_V.html: #type-10-1
+Local asset 01-E_V.html: #op-2023-11-4
+Anchor 01-E_V.html: #op-2023-11-4
+Local asset 01-E_V.html: #type-10-2
+Anchor 01-E_V.html: #type-10-2
+Local asset 01-E_V.html: #op-2024-02-2
+Anchor 01-E_V.html: #op-2024-02-2
+Local asset 01-E_V.html: #kryds-10
+Anchor 01-E_V.html: #kryds-10
+Local asset 01-E_V.html: #emne-11
+Anchor 01-E_V.html: #emne-11
+Local asset 01-E_V.html: #type-11-1
+Anchor 01-E_V.html: #type-11-1
+Local asset 01-E_V.html: #op-2026-01-2
+Anchor 01-E_V.html: #op-2026-01-2
+Local asset 01-E_V.html: #kryds-11
+Anchor 01-E_V.html: #kryds-11
+Local asset 01-E_V.html: #op-2021-06-2
+Anchor 01-E_V.html: #op-2021-06-2
+Local asset 01-E_V.html: #op-2021-11-1
+Anchor 01-E_V.html: #op-2021-11-1
+Local asset 01-E_V.html: #op-2022-02-1
+Anchor 01-E_V.html: #op-2022-02-1
+Local asset 01-E_V.html: #op-2022-11-1
+Anchor 01-E_V.html: #op-2022-11-1
+Local asset 01-E_V.html: #op-2023-02-1
+Anchor 01-E_V.html: #op-2023-02-1
+Local asset 01-E_V.html: #op-2023-11-1
+Anchor 01-E_V.html: #op-2023-11-1
+Local asset 01-E_V.html: #op-2024-02-1
+Anchor 01-E_V.html: #op-2024-02-1
+Local asset 01-E_V.html: #op-2025-01-3
+Anchor 01-E_V.html: #op-2025-01-3
+Local asset 01-E_V.html: #op-2022-02-2
+Anchor 01-E_V.html: #op-2022-02-2
+Local asset 01-E_V.html: #op-2023-02-2
+Anchor 01-E_V.html: #op-2023-02-2
+Local asset 01-E_V.html: #op-2024-11-2
+Anchor 01-E_V.html: #op-2024-11-2
+Local asset 01-E_V.html: #op-2022-02-5
+Anchor 01-E_V.html: #op-2022-02-5
+Local asset 01-E_V.html: #op-2025-01-1
+Anchor 01-E_V.html: #op-2025-01-1
+Local asset 01-E_V.html: #op-2025-11-2
+Anchor 01-E_V.html: #op-2025-11-2
+Local asset 01-E_V.html: #op-2021-06-5
+Anchor 01-E_V.html: #op-2021-06-5
+Local asset 01-E_V.html: #op-2022-11-2
+Anchor 01-E_V.html: #op-2022-11-2
+Local asset 01-E_V.html: #op-2021-11-2
+Anchor 01-E_V.html: #op-2021-11-2
+Local asset 01-E_V.html: #op-2025-01-2
+Anchor 01-E_V.html: #op-2025-01-2
+Local asset 01-E_V.html: #op-2025-11-3
+Anchor 01-E_V.html: #op-2025-11-3
+Local asset 01-E_V.html: #op-2021-06-1
+Anchor 01-E_V.html: #op-2021-06-1
+Local asset 01-E_V.html: #op-2024-11-1
+Anchor 01-E_V.html: #op-2024-11-1
+Local asset 01-E_V.html: #op-2025-11-1
+Anchor 01-E_V.html: #op-2025-11-1
+Local asset 01-E_V.html: #op-2021-11-3
+Anchor 01-E_V.html: #op-2021-11-3
+Local asset 01-E_V.html: #op-2026-01-5
+Anchor 01-E_V.html: #op-2026-01-5
+Local asset 01-E_V.html: #op-2023-02-3
+Anchor 01-E_V.html: #op-2023-02-3
+Local asset 01-E_V.html: #op-2026-01-1
+Anchor 01-E_V.html: #op-2026-01-1
+Local asset 01-E_V.html: #op-2023-11-4
+Anchor 01-E_V.html: #op-2023-11-4
+Local asset 01-E_V.html: #op-2024-02-2
+Anchor 01-E_V.html: #op-2024-02-2
+Local asset 01-E_V.html: #op-2026-01-2
+Anchor 01-E_V.html: #op-2026-01-2
+Local asset 01-E_V.html: figurer/2021-06-2.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2021-11-1.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2022-02-1.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2022-11-1.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2023-02-1.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2023-11-1.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2024-02-1.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2025-01-3.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2022-02-2.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2023-02-2.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/metode-cylinder.png
+Local asset 01-E_V.html: figurer/2024-11-2.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: 01-E_V.html#op-2023-02-2
+Anchor 01-E_V.html: 01-E_V.html#op-2023-02-2
+Local asset 01-E_V.html: 01-E_V.html#op-2022-11-2
+Anchor 01-E_V.html: 01-E_V.html#op-2022-11-2
+Local asset 01-E_V.html: 01-E_V.html#op-2025-11-2
+Anchor 01-E_V.html: 01-E_V.html#op-2025-11-2
+Local asset 01-E_V.html: 01-E_V.html#op-2025-01-2
+Anchor 01-E_V.html: 01-E_V.html#op-2025-01-2
+Local asset 01-E_V.html: figurer/2022-02-5.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2025-01-1.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2025-11-2.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: 01-E_V.html#op-2025-01-3
+Anchor 01-E_V.html: 01-E_V.html#op-2025-01-3
+Local asset 01-E_V.html: 01-E_V.html#op-2022-02-2
+Anchor 01-E_V.html: 01-E_V.html#op-2022-02-2
+Local asset 01-E_V.html: figurer/2021-06-5.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2022-11-2.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: 01-E_V.html#op-2025-11-2
+Anchor 01-E_V.html: 01-E_V.html#op-2025-11-2
+Local asset 01-E_V.html: 01-E_V.html#op-2025-01-1
+Anchor 01-E_V.html: 01-E_V.html#op-2025-01-1
+Local asset 01-E_V.html: 03-DYN.html#op-2023-11-3
+Anchor 01-E_V.html: 03-DYN.html#op-2023-11-3
+Local asset 01-E_V.html: 03-DYN.html#op-2024-11-4
+Anchor 01-E_V.html: 03-DYN.html#op-2024-11-4
+Local asset 01-E_V.html: figurer/2021-11-2.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2025-01-2.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2025-11-3.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/metode-hulrum-E.png
+Local asset 01-E_V.html: figurer/2021-06-1.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: 01-E_V.html#op-2025-01-2
+Anchor 01-E_V.html: 01-E_V.html#op-2025-01-2
+Local asset 01-E_V.html: 01-E_V.html#op-2021-11-2
+Anchor 01-E_V.html: 01-E_V.html#op-2021-11-2
+Local asset 01-E_V.html: 01-E_V.html#op-2025-11-3
+Anchor 01-E_V.html: 01-E_V.html#op-2025-11-3
+Local asset 01-E_V.html: figurer/2024-11-1.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2025-11-1.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2021-11-3.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2026-01-5.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: 01-E_V.html#op-2024-11-1
+Anchor 01-E_V.html: 01-E_V.html#op-2024-11-1
+Local asset 01-E_V.html: 01-E_V.html#op-2023-11-4
+Anchor 01-E_V.html: 01-E_V.html#op-2023-11-4
+Local asset 01-E_V.html: figurer/2023-02-3.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2026-01-1.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: 01-E_V.html#op-2022-02-1
+Anchor 01-E_V.html: 01-E_V.html#op-2022-02-1
+Local asset 01-E_V.html: 01-E_V.html#op-2026-01-5
+Anchor 01-E_V.html: 01-E_V.html#op-2026-01-5
+Local asset 01-E_V.html: figurer/2023-11-4.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: figurer/2024-02-2.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: 01-E_V.html#op-2021-11-2
+Anchor 01-E_V.html: 01-E_V.html#op-2021-11-2
+Local asset 01-E_V.html: 01-E_V.html#op-2022-02-2
+Anchor 01-E_V.html: 01-E_V.html#op-2022-02-2
+Local asset 01-E_V.html: 01-E_V.html#op-2023-02-2
+Anchor 01-E_V.html: 01-E_V.html#op-2023-02-2
+Local asset 01-E_V.html: 01-E_V.html#op-2025-11-3
+Anchor 01-E_V.html: 01-E_V.html#op-2025-11-3
+Local asset 01-E_V.html: 03-DYN.html#op-2026-01-2
+Anchor 01-E_V.html: 03-DYN.html#op-2026-01-2
+Local asset 01-E_V.html: figurer/2026-01-2.png
+Local asset 01-E_V.html: #indhold
+Anchor 01-E_V.html: #indhold
+Local asset 01-E_V.html: #opgaveindeks
+Anchor 01-E_V.html: #opgaveindeks
+Local asset 01-E_V.html: 01-E_V.html#op-2021-11-2
+Anchor 01-E_V.html: 01-E_V.html#op-2021-11-2
+Local asset 01-E_V.html: 01-E_V.html#op-2025-01-2
+Anchor 01-E_V.html: 01-E_V.html#op-2025-01-2
+Local asset 01-E_V.html: 01-E_V.html#op-2021-06-2
+Anchor 01-E_V.html: 01-E_V.html#op-2021-06-2
+Local asset 00-daekningskontrol.html: stil.css
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2021-06-1
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2021-06-1
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2021-06-2
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2021-06-2
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2021-06-3
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2021-06-3
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2021-06-4
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2021-06-4
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2021-06-5
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2021-06-5
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2021-06-6
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2021-06-6
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2021-11-1
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2021-11-1
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2021-11-2
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2021-11-2
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2021-11-3
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2021-11-3
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2021-11-4
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2021-11-4
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2021-11-5
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2021-11-5
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2021-11-6
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2021-11-6
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2022-02-1
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2022-02-1
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2022-02-2
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2022-02-2
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2022-02-3
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2022-02-3
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2022-02-4
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2022-02-4
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2022-02-5
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2022-02-5
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2022-02-6
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2022-02-6
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2022-02-7
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2022-02-7
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2022-11-1
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2022-11-1
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2022-11-2
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2022-11-2
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2022-11-3
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2022-11-3
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2022-11-4
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2022-11-4
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2022-11-5
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2022-11-5
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2022-11-6
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2022-11-6
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2023-02-1
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2023-02-1
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2023-02-2
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2023-02-2
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2023-02-3
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2023-02-3
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2023-02-4
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2023-02-4
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2023-02-5
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2023-02-5
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2023-02-6
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2023-02-6
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2023-11-1
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2023-11-1
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2023-11-2
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2023-11-2
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2023-11-3
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2023-11-3
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2023-11-4
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2023-11-4
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2023-11-5
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2023-11-5
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2024-02-1
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2024-02-1
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2024-02-2
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2024-02-2
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2024-02-3
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2024-02-3
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2024-02-4
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2024-02-4
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2024-02-5
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2024-02-5
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2024-11-1
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2024-11-1
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2024-11-2
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2024-11-2
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2024-11-3
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2024-11-3
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2024-11-4
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2024-11-4
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2024-11-5
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2024-11-5
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2024-11-6
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2024-11-6
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2025-01-1
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2025-01-1
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2025-01-2
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2025-01-2
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2025-01-3
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2025-01-3
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2025-01-4
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2025-01-4
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2025-01-5
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2025-01-5
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2025-01-6
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2025-01-6
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2025-11-1
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2025-11-1
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2025-11-2
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2025-11-2
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2025-11-3
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2025-11-3
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2025-11-4
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2025-11-4
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2025-11-5
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2025-11-5
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2026-01-1
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2026-01-1
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2026-01-2
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2026-01-2
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2026-01-2
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2026-01-2
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2026-01-3
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2026-01-3
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2026-01-4
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2026-01-4
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2026-01-5
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2026-01-5
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2021-06-6
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2021-06-6
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2021-11-1
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2021-11-1
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2021-11-2
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2021-11-2
+Local asset 00-daekningskontrol.html: 03-DYN.html#op-2021-11-6
+Anchor 00-daekningskontrol.html: 03-DYN.html#op-2021-11-6
+Local asset 00-daekningskontrol.html: 02-B_A.html#op-2024-02-4
+Anchor 00-daekningskontrol.html: 02-B_A.html#op-2024-02-4
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2025-01-1
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2025-01-1
+Local asset 00-daekningskontrol.html: 01-E_V.html#op-2026-01-1
+Anchor 00-daekningskontrol.html: 01-E_V.html#op-2026-01-1
+Local asset 00-daekningskontrol.html: kilder/validering.txt
+Local asset 02-B_A.html: stil.css
+Local asset 02-B_A.html: kilder/eksamen_alle.pdf
+Local asset 02-B_A.html: kilder/eksamen_facits.pdf
+Local asset 02-B_A.html: 00-daekningskontrol.html
+Local asset 02-B_A.html: 01-E_V.html
+Local asset 02-B_A.html: 02-B_A.html
+Local asset 02-B_A.html: 03-DYN.html
+Local asset 02-B_A.html: #emne-1
+Anchor 02-B_A.html: #emne-1
+Local asset 02-B_A.html: #type-1-1
+Anchor 02-B_A.html: #type-1-1
+Local asset 02-B_A.html: #op-2021-06-3
+Anchor 02-B_A.html: #op-2021-06-3
+Local asset 02-B_A.html: #type-1-2
+Anchor 02-B_A.html: #type-1-2
+Local asset 02-B_A.html: #op-2021-11-5
+Anchor 02-B_A.html: #op-2021-11-5
+Local asset 02-B_A.html: #type-1-3
+Anchor 02-B_A.html: #type-1-3
+Local asset 02-B_A.html: #op-2022-02-4
+Anchor 02-B_A.html: #op-2022-02-4
+Local asset 02-B_A.html: #type-1-4
+Anchor 02-B_A.html: #type-1-4
+Local asset 02-B_A.html: #op-2024-02-4
+Anchor 02-B_A.html: #op-2024-02-4
+Local asset 02-B_A.html: #type-1-5
+Anchor 02-B_A.html: #type-1-5
+Local asset 02-B_A.html: #op-2025-01-5
+Anchor 02-B_A.html: #op-2025-01-5
+Local asset 02-B_A.html: #type-1-6
+Anchor 02-B_A.html: #type-1-6
+Local asset 02-B_A.html: #op-2025-11-4
+Anchor 02-B_A.html: #op-2025-11-4
+Local asset 02-B_A.html: #kryds-1
+Anchor 02-B_A.html: #kryds-1
+Local asset 02-B_A.html: #emne-2
+Anchor 02-B_A.html: #emne-2
+Local asset 02-B_A.html: #type-2-1
+Anchor 02-B_A.html: #type-2-1
+Local asset 02-B_A.html: #op-2024-11-3
+Anchor 02-B_A.html: #op-2024-11-3
+Local asset 02-B_A.html: #ovrige-2
+Anchor 02-B_A.html: #ovrige-2
+Local asset 02-B_A.html: #emne-3
+Anchor 02-B_A.html: #emne-3
+Local asset 02-B_A.html: #type-3-1
+Anchor 02-B_A.html: #type-3-1
+Local asset 02-B_A.html: #op-2021-11-4
+Anchor 02-B_A.html: #op-2021-11-4
+Local asset 02-B_A.html: #kryds-3
+Anchor 02-B_A.html: #kryds-3
+Local asset 02-B_A.html: #emne-4
+Anchor 02-B_A.html: #emne-4
+Local asset 02-B_A.html: #type-4-1
+Anchor 02-B_A.html: #type-4-1
+Local asset 02-B_A.html: #op-2021-06-4
+Anchor 02-B_A.html: #op-2021-06-4
+Local asset 02-B_A.html: #type-4-2
+Anchor 02-B_A.html: #type-4-2
+Local asset 02-B_A.html: #op-2025-01-4
+Anchor 02-B_A.html: #op-2025-01-4
+Local asset 02-B_A.html: #ovrige-4
+Anchor 02-B_A.html: #ovrige-4
+Local asset 02-B_A.html: #emne-5
+Anchor 02-B_A.html: #emne-5
+Local asset 02-B_A.html: #type-5-1
+Anchor 02-B_A.html: #type-5-1
+Local asset 02-B_A.html: #op-2022-02-3
+Anchor 02-B_A.html: #op-2022-02-3
+Local asset 02-B_A.html: #type-5-2
+Anchor 02-B_A.html: #type-5-2
+Local asset 02-B_A.html: #op-2024-02-3
+Anchor 02-B_A.html: #op-2024-02-3
+Local asset 02-B_A.html: #kryds-5
+Anchor 02-B_A.html: #kryds-5
+Local asset 02-B_A.html: #emne-6
+Anchor 02-B_A.html: #emne-6
+Local asset 02-B_A.html: #type-6-1
+Anchor 02-B_A.html: #type-6-1
+Local asset 02-B_A.html: #op-2022-11-4
+Anchor 02-B_A.html: #op-2022-11-4
+Local asset 02-B_A.html: #kryds-6
+Anchor 02-B_A.html: #kryds-6
+Local asset 02-B_A.html: #ovrige-6
+Anchor 02-B_A.html: #ovrige-6
+Local asset 02-B_A.html: #emne-7
+Anchor 02-B_A.html: #emne-7
+Local asset 02-B_A.html: #type-7-1
+Anchor 02-B_A.html: #type-7-1
+Local asset 02-B_A.html: #op-2022-02-7
+Anchor 02-B_A.html: #op-2022-02-7
+Local asset 02-B_A.html: #type-7-2
+Anchor 02-B_A.html: #type-7-2
+Local asset 02-B_A.html: #op-2023-02-4
+Anchor 02-B_A.html: #op-2023-02-4
+Local asset 02-B_A.html: #type-7-3
+Anchor 02-B_A.html: #type-7-3
+Local asset 02-B_A.html: #op-2026-01-4
+Anchor 02-B_A.html: #op-2026-01-4
+Local asset 02-B_A.html: #emne-8
+Anchor 02-B_A.html: #emne-8
+Local asset 02-B_A.html: #type-8-1
+Anchor 02-B_A.html: #type-8-1
+Local asset 02-B_A.html: #op-2022-11-5
+Anchor 02-B_A.html: #op-2022-11-5
+Local asset 02-B_A.html: #type-8-2
+Anchor 02-B_A.html: #type-8-2
+Local asset 02-B_A.html: #op-2024-11-6
+Anchor 02-B_A.html: #op-2024-11-6
+Local asset 02-B_A.html: #op-2021-06-3
+Anchor 02-B_A.html: #op-2021-06-3
+Local asset 02-B_A.html: #op-2021-11-5
+Anchor 02-B_A.html: #op-2021-11-5
+Local asset 02-B_A.html: #op-2022-02-4
+Anchor 02-B_A.html: #op-2022-02-4
+Local asset 02-B_A.html: #op-2024-02-4
+Anchor 02-B_A.html: #op-2024-02-4
+Local asset 02-B_A.html: #op-2025-01-5
+Anchor 02-B_A.html: #op-2025-01-5
+Local asset 02-B_A.html: #op-2025-11-4
+Anchor 02-B_A.html: #op-2025-11-4
+Local asset 02-B_A.html: #op-2024-11-3
+Anchor 02-B_A.html: #op-2024-11-3
+Local asset 02-B_A.html: #op-2021-11-4
+Anchor 02-B_A.html: #op-2021-11-4
+Local asset 02-B_A.html: #op-2021-06-4
+Anchor 02-B_A.html: #op-2021-06-4
+Local asset 02-B_A.html: #op-2025-01-4
+Anchor 02-B_A.html: #op-2025-01-4
+Local asset 02-B_A.html: #op-2022-02-3
+Anchor 02-B_A.html: #op-2022-02-3
+Local asset 02-B_A.html: #op-2024-02-3
+Anchor 02-B_A.html: #op-2024-02-3
+Local asset 02-B_A.html: #op-2022-11-4
+Anchor 02-B_A.html: #op-2022-11-4
+Local asset 02-B_A.html: #op-2022-02-7
+Anchor 02-B_A.html: #op-2022-02-7
+Local asset 02-B_A.html: #op-2023-02-4
+Anchor 02-B_A.html: #op-2023-02-4
+Local asset 02-B_A.html: #op-2026-01-4
+Anchor 02-B_A.html: #op-2026-01-4
+Local asset 02-B_A.html: #op-2022-11-5
+Anchor 02-B_A.html: #op-2022-11-5
+Local asset 02-B_A.html: #op-2024-11-6
+Anchor 02-B_A.html: #op-2024-11-6
+Local asset 02-B_A.html: figurer/2021-06-3.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: figurer/2021-11-5.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: figurer/metode-hulrum.png
+Local asset 02-B_A.html: figurer/2022-02-4.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: figurer/metode-cylinder.png
+Local asset 02-B_A.html: figurer/2024-02-4.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: figurer/2025-01-5.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: figurer/2025-11-4.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: 03-DYN.html#op-2022-11-3
+Anchor 02-B_A.html: 03-DYN.html#op-2022-11-3
+Local asset 02-B_A.html: 03-DYN.html#op-2023-11-2
+Anchor 02-B_A.html: 03-DYN.html#op-2023-11-2
+Local asset 02-B_A.html: 02-B_A.html#op-2024-11-6
+Anchor 02-B_A.html: 02-B_A.html#op-2024-11-6
+Local asset 02-B_A.html: figurer/2024-11-3.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: figurer/2021-11-4.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: 02-B_A.html#op-2023-02-4
+Anchor 02-B_A.html: 02-B_A.html#op-2023-02-4
+Local asset 02-B_A.html: figurer/2021-06-4.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: figurer/2025-01-4.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: figurer/2022-02-3.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: figurer/2024-02-3.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: 02-B_A.html#op-2021-06-3
+Anchor 02-B_A.html: 02-B_A.html#op-2021-06-3
+Local asset 02-B_A.html: 01-E_V.html#op-2026-01-2
+Anchor 02-B_A.html: 01-E_V.html#op-2026-01-2
+Local asset 02-B_A.html: figurer/2022-11-4.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: 03-DYN.html#op-2024-11-5
+Anchor 02-B_A.html: 03-DYN.html#op-2024-11-5
+Local asset 02-B_A.html: figurer/2022-02-7.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: figurer/2023-02-4.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: figurer/2026-01-4.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: figurer/2022-11-5.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset 02-B_A.html: figurer/2024-11-6.png
+Local asset 02-B_A.html: #indhold
+Anchor 02-B_A.html: #indhold
+Local asset 02-B_A.html: #opgaveindeks
+Anchor 02-B_A.html: #opgaveindeks
+Local asset START.html: stil.css
+Local asset START.html: 01-E_V.html
+Local asset START.html: 01-E_V.pdf
+Local asset START.html: 02-B_A.html
+Local asset START.html: 02-B_A.pdf
+Local asset START.html: 03-DYN.html
+Local asset START.html: 03-DYN.pdf
+Local asset START.html: 01-E_V.html#op-2024-11-2
+Anchor START.html: 01-E_V.html#op-2024-11-2
+Local asset START.html: 01-E_V.html#op-2023-02-2
+Anchor START.html: 01-E_V.html#op-2023-02-2
+Local asset START.html: 02-B_A.html#op-2025-11-4
+Anchor START.html: 02-B_A.html#op-2025-11-4
+Local asset START.html: 02-B_A.html#op-2022-02-4
+Anchor START.html: 02-B_A.html#op-2022-02-4
+Local asset START.html: 03-DYN.html#op-2021-06-6
+Anchor START.html: 03-DYN.html#op-2021-06-6
+Local asset START.html: 03-DYN.html#op-2025-11-5
+Anchor START.html: 03-DYN.html#op-2025-11-5
+Local asset START.html: 03-DYN.html#op-2024-02-5
+Anchor START.html: 03-DYN.html#op-2024-02-5
+Local asset START.html: 00-daekningskontrol.html
+01-E_V native math
+01-E_V no unrendered TeX warning
+01-E_V PDF outline
+01-E_V PDF equations/text
+02-B_A native math
+02-B_A no unrendered TeX warning
+02-B_A PDF outline
+02-B_A PDF equations/text
+03-DYN native math
+03-DYN no unrendered TeX warning
+03-DYN PDF outline
+03-DYN PDF equations/text
+64 classified entries
+154 classified letter parts

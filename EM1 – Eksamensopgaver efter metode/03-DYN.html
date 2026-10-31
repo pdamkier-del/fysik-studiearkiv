@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="da-DK" xml:lang="da-DK">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>03-DYN</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="stil.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">03 – DYN – Tidsafhængig elektromagnetisme</h1>
+</header>
+<p>Dette er en selvstændig opgavesamling, ikke en erstatning for
+formelsamlingen. Find først emne og geometri, slå en gammel opgave op,
+og følg udledningen.</p>
+<p><strong>Kilder:</strong> 11 eksamenssæt (juni 2021–januar 2026) og
+det vedhæftede facitark dateret 6. august 2026. <a
+href="kilder/eksamen_alle.pdf">Originale opgaver</a> · <a
+href="kilder/eksamen_facits.pdf">Originalt facit</a> · <a
+href="00-daekningskontrol.html">Dækningskontrol og
+facitafvigelser</a>.</p>
+<p><strong>Notation:</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>e</mi></msub><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><mi>π</mi><msub><mi>ε</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">k_e=(4\pi\varepsilon_0)^{-1}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>c</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><mo>=</mo><msub><mi>μ</mi><mn>0</mn></msub><msub><mi>ε</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">c^{-2}=\mu_0\varepsilon_0</annotation></semantics></math>.
+Cylindrisk radius er normalt
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,
+sfærisk radius
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>.
+Plusomløb følger højrehåndsreglen omkring den valgte normal. Kildernes
+symboler bevares lokalt;
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ρ</mi><mi>e</mi></msub><annotation encoding="application/x-tex">\rho_e</annotation></semantics></math>
+bruges til resistivitet, når den ellers kunne forveksles med
+ladningstæthed. V/m = N/C; T = N/(A·m); Wb = V·s; H = Wb/A.</p>
+<p><strong>Sværhedsgrad:</strong> ★ grundlæggende · ★★ flere trin · ★★★
+sammensat. Markeringen er en repetitionshjælp, ikke en officiel
+bedømmelse.</p>
+<p><strong>Sammenhæng med formelsamlingen:</strong> emnenavne og
+rækkefølge følger din specifikation. Formelsamlingen selv er ikke
+vedhæftet; dens præcise metodekoder og notation er derfor ikke
+verificeret. Der er ikke opfundet DYN-numre. Emner uden en opgave i de
+leverede sæt markeres eksplicit.</p>
+<p><strong>Dokumenter:</strong> <a href="01-E_V.html">01-E_V</a> · <a
+href="02-B_A.html">02-B_A</a> · <a href="03-DYN.html">03-DYN</a></p>
+<h1 id="indhold">Indholdsfortegnelse</h1>
+<ul>
+<li><a href="#emne-1">Strøm og modstand</a>
+<ul>
+<li><a href="#type-1-1">Varierende ledningsevne σ(x)</a>
+<ul>
+<li><a href="#op-2024-11-4">November 2024 – 4ab: Stationær strøm i
+inhomogent materiale</a></li>
+</ul></li>
+<li><a href="#type-1-2">RC-afladning og magnetisk kraft</a>
+<ul>
+<li><a href="#op-2026-01-2">Januar 2026 – 2cd: Afladningsstrøm og
+frastødning mellem parallelle stænger</a></li>
+</ul></li>
+<li><a href="#ovrige-1">Øvrige geometrier / dækning</a></li>
+</ul></li>
+<li><a href="#emne-2">Simpel motional EMF</a>
+<ul>
+<li><a href="#type-2-1">Bevægelig stang i homogent B</a>
+<ul>
+<li><a href="#op-2021-06-6">Juni 2021 – 6abcd: Stang med konstant fart:
+strøm, kraft, effekt og arbejde</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#emne-3">Motional EMF + mekanisk feedback</a>
+<ul>
+<li><a href="#type-3-1">Faldende ring i feltgradient</a>
+<ul>
+<li><a href="#op-2023-11-5">November 2023 – 5abcd: Magnetisk bremsning
+og terminalfart</a></li>
+</ul></li>
+<li><a href="#type-3-2">Batteridrevet stang med mod-EMF</a>
+<ul>
+<li><a href="#op-2025-11-5">November 2025 – 5abcd: Acceleration,
+terminalfart og batteriets totalenergi</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#emne-4">Ændrende geometri / areal</a>
+<ul>
+<li><a href="#type-4-1">Voksende ligesidet trekant</a>
+<ul>
+<li><a href="#op-2024-02-5">Februar 2024 – 5abcd: Tidsvoksende EMF men
+konstant strøm</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#emne-5">Fast spole + B(t)</a>
+<ul>
+<li><a href="#type-5-1">Sinusformet homogent felt</a>
+<ul>
+<li><a href="#op-2022-02-6">Februar 2022 – 6a: Strøm i ring ved bestemt
+fase</a></li>
+</ul></li>
+<li><a href="#type-5-2">Rumligt ikke-uniformt eksponentialfelt</a>
+<ul>
+<li><a href="#op-2022-11-6">November 2022 – 6a: Flux gennem kvadratisk
+løkke</a></li>
+</ul></li>
+<li><a href="#type-5-3">Eksponentielt felt med konstant offset</a>
+<ul>
+<li><a href="#op-2025-01-6">Januar 2025 – 6abc: EMF, varmeenergi og
+ledningstværsnit</a></li>
+</ul></li>
+<li><a href="#type-5-4">Cylinderkoordinater: vinkel- og radiusafhængigt
+felt</a>
+<ul>
+<li><a href="#op-2026-01-3">Januar 2026 – 3abc: Flux og varme fra
+ikke-uniformt harmonisk B</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#emne-6">Induceret elektrisk felt</a>
+<ul>
+<li><a href="#type-6-1">Kondensator: forskydningsstrøm og
+tilbagekobling</a>
+<ul>
+<li><a href="#op-2021-11-6">November 2021 – 6abc: Harmonisk E giver B og
+induceret E-korrektion</a></li>
+</ul></li>
+<li><a href="#kryds-6">Krydshenvisninger</a></li>
+<li><a href="#ovrige-6">Øvrige geometrier / dækning</a></li>
+</ul></li>
+<li><a href="#emne-7">Selvinduktion</a>
+<ul>
+<li><a href="#type-7-1">Solenoide: selvinduktans, RL-opladning og
+energi</a>
+<ul>
+<li><a href="#op-2022-11-3">November 2022 – 3abcd:
+CMS-solenoiden</a></li>
+</ul></li>
+<li><a href="#kryds-7">Krydshenvisninger</a></li>
+</ul></li>
+<li><a href="#emne-8">Gensidig induktion</a>
+<ul>
+<li><a href="#type-8-1">Lang leder og nærliggende rektangulær løkke</a>
+<ul>
+<li><a href="#op-2023-02-5">Februar 2023 – 5abcd: Fluxkobling, induceret
+EMF og middelvarme</a></li>
+</ul></li>
+<li><a href="#type-8-2">Små cirkelløkker på akse og i ækvatorialplan</a>
+<ul>
+<li><a href="#op-2024-11-5">November 2024 – 5abc: Gensidig induktans fra
+magnetisk dipolfelt</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#emne-9">Magnetisk energi</a>
+<ul>
+<li><a href="#type-9-1">Transmissionslinje af to parallelle
+strømflader</a>
+<ul>
+<li><a href="#op-2023-11-2">November 2023 – 2ab: Feltenergi og
+selvinduktans mellem bånd</a></li>
+</ul></li>
+<li><a href="#kryds-9">Krydshenvisninger</a></li>
+</ul></li>
+<li><a href="#emne-10">Forskydningsstrøm / Ampère-Maxwell</a>
+<ul>
+<li><a href="#type-10-1">Cirkulære kondensatorplader</a>
+<ul>
+<li><a href="#op-2023-02-6">Februar 2023 – 6a: B fra harmonisk elektrisk
+felt</a></li>
+</ul></li>
+<li><a href="#kryds-10">Krydshenvisninger</a></li>
+</ul></li>
+<li><a href="#emne-11">Maxwell-opgaver</a>
+<ul>
+<li><a href="#type-11-1">Givet elektrisk felt med ikke-nul curl</a>
+<ul>
+<li><a href="#op-2023-11-3">November 2023 – 3ab: Rumlig ladning og
+nødvendig tidsvariation af B</a></li>
+</ul></li>
+<li><a href="#kryds-11">Krydshenvisninger</a></li>
+</ul></li>
+</ul>
+<h1 id="opgaveindeks">Opgaveindeks</h1>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Opgave</th>
+<th>Opgavetype</th>
+<th>Metode</th>
+<th>Nøgleord</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#op-2024-11-4">November 2024 – 4ab</a></td>
+<td>Varierende ledningsevne σ(x)</td>
+<td>Kontinuitet; J=σE; potentialeintegral; Gauss</td>
+<td>σ(x), J, E, R, rho, grænseladning</td>
+</tr>
+<tr class="even">
+<td><a href="#op-2026-01-2">Januar 2026 – 2cd</a></td>
+<td>RC-afladning og magnetisk kraft</td>
+<td>Kirchhoff; separabel ODE; trådfelt</td>
+<td>RC, eksponential, parallelle strømme</td>
+</tr>
+<tr class="odd">
+<td><a href="#op-2021-06-6">Juni 2021 – 6abcd</a></td>
+<td>Bevægelig stang i homogent B</td>
+<td>BLv; Ohm; Lenz; energibalance</td>
+<td>stang, skinner, konstant v</td>
+</tr>
+<tr class="even">
+<td><a href="#op-2023-11-5">November 2023 – 5abcd</a></td>
+<td>Faldende ring i feltgradient</td>
+<td>Faraday; Ohm; mekanisk effekt</td>
+<td>ring, tyngdekraft, gradient, terminalhastighed</td>
+</tr>
+<tr class="odd">
+<td><a href="#op-2025-11-5">November 2025 – 5abcd</a></td>
+<td>Batteridrevet stang med mod-EMF</td>
+<td>Kredsligning; Newton; separabel ODE; energiintegral</td>
+<td>batteri, mod-EMF, eksponential, feedback</td>
+</tr>
+<tr class="even">
+<td><a href="#op-2024-02-5">Februar 2024 – 5abcd</a></td>
+<td>Voksende ligesidet trekant</td>
+<td>Geometri; Faraday; tidsafhængig modstand; kraft</td>
+<td>trekant, voksende areal, modstand pr. længde</td>
+</tr>
+<tr class="odd">
+<td><a href="#op-2022-02-6">Februar 2022 – 6a</a></td>
+<td>Sinusformet homogent felt</td>
+<td>Flux; Faraday; Ohm</td>
+<td>sinus, fase, strømretning</td>
+</tr>
+<tr class="even">
+<td><a href="#op-2022-11-6">November 2022 – 6a</a></td>
+<td>Rumligt ikke-uniformt eksponentialfelt</td>
+<td>Arealintegral; Faraday</td>
+<td>kvadrat, x²+y², eksponential</td>
+</tr>
+<tr class="odd">
+<td><a href="#op-2025-01-6">Januar 2025 – 6abc</a></td>
+<td>Eksponentielt felt med konstant offset</td>
+<td>Fluxkobling; Faraday; Jouleintegral; resistivitet</td>
+<td>spole, N vindinger, offset, aluminium</td>
+</tr>
+<tr class="even">
+<td><a href="#op-2026-01-3">Januar 2026 – 3abc</a></td>
+<td>Cylinderkoordinater: vinkel- og radiusafhængigt felt</td>
+<td>Polært arealintegral; Faraday; periodeintegral</td>
+<td>sin²φ, s ds dφ, varme</td>
+</tr>
+<tr class="odd">
+<td><a href="#op-2021-11-6">November 2021 – 6abc</a></td>
+<td>Kondensator: forskydningsstrøm og tilbagekobling</td>
+<td>Ampère-Maxwell; Faraday; randbetingelse</td>
+<td>kvasistatisk, cirkelplader, E1</td>
+</tr>
+<tr class="even">
+<td><a href="#op-2022-11-3">November 2022 – 3abcd</a></td>
+<td>Solenoide: selvinduktans, RL-opladning og energi</td>
+<td>Ampère; fluxkobling; RL-ligning; Joulevarme</td>
+<td>solenoide, GJ, tidskonstant</td>
+</tr>
+<tr class="odd">
+<td><a href="#op-2023-02-5">Februar 2023 – 5abcd</a></td>
+<td>Lang leder og nærliggende rektangulær løkke</td>
+<td>Trådfelt; fluxintegral; Faraday; sinusmiddel</td>
+<td>gensidig induktion, AC, middelværdi</td>
+</tr>
+<tr class="even">
+<td><a href="#op-2024-11-5">November 2024 – 5abc</a></td>
+<td>Små cirkelløkker på akse og i ækvatorialplan</td>
+<td>Dipolmoment; dipolfelt; flux; Faraday</td>
+<td>små løkker, fortegn, MAB, MAC</td>
+</tr>
+<tr class="odd">
+<td><a href="#op-2023-11-2">November 2023 – 2ab</a></td>
+<td>Transmissionslinje af to parallelle strømflader</td>
+<td>Strømflade; superposition; B²-energi</td>
+<td>parallelle bånd, induktans, feltenergi</td>
+</tr>
+<tr class="even">
+<td><a href="#op-2023-02-6">Februar 2023 – 6a</a></td>
+<td>Cirkulære kondensatorplader</td>
+<td>Forskydningsstrøm; Ampère-Maxwell</td>
+<td>kondensator, s≤R, E(t)</td>
+</tr>
+<tr class="odd">
+<td><a href="#op-2023-11-3">November 2023 – 3ab</a></td>
+<td>Givet elektrisk felt med ikke-nul curl</td>
+<td>Divergens; Faraday</td>
+<td>Maxwell, ladning, ikke-elektrostatisk</td>
+</tr>
+</tbody>
+</table>
+<h1 id="emne-1">Strøm og modstand</h1>
+<h2 id="type-1-1">Varierende ledningsevne σ(x)</h2>
+<h3 id="op-2024-11-4">November 2024 – Opgave 4ab · Stationær strøm i
+inhomogent materiale</h3>
+<p>★★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 31; del a,
+b.</p>
+<h4 id="opgavebeskrivelse">Opgavebeskrivelse</h4>
+<p>Et materiale med længde d og areal A ligger mellem perfekte ledere
+ved
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>V</mi><mn>0</mn></msub><mo>,</mo><mi>V</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>d</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">V(0)=V_0,V(d)=0</annotation></semantics></math>.
+Konduktiviteten er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>b</mi><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\sigma(x)=1/(bx)</annotation></semantics></math>,
+b&gt;0, og permittiviteten er ε₀. Find J,R,E, grænseladninger og
+volumenladning.</p>
+<h4 id="genkendelse">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> Konstant tværsnit
+og stationær strøm trods stedafhængig ledningsevne.</p>
+<p><strong>Metodevalg:</strong> Kontinuitet; J=σE; potentialeintegral;
+Gauss.</p>
+<h4 id="idé">Idé</h4>
+<p>Stationær ladningsbevarelse kræver konstant J. E varierer, fordi σ
+varierer.</p>
+<h4 id="løsning">Løsning</h4>
+<p><strong>a)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mo>⋅</mo><mi>J</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\nabla\cdot J=0</annotation></semantics></math>
+giver
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msub><mi>J</mi><mi>x</mi></msub><mi>/</mi><mi>d</mi><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">dJ_x/dx=0</annotation></semantics></math>.
+Lokal Ohms lov giver
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>J</mi><mi>/</mi><mi>σ</mi><mo>=</mo><mi>J</mi><mi>b</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">E=J/\sigma=Jbx</annotation></semantics></math>.
+Spændingen er
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mn>0</mn></msub><mo>=</mo><mi>V</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>V</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>d</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>d</mi></msubsup><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>d</mi><mi>x</mi><mo>=</mo><mi>J</mi><mi>b</mi><mfrac><msup><mi>d</mi><mn>2</mn></msup><mn>2</mn></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">V_0=V(0)-V(d)=\int_0^dE(x)dx=Jb\frac{d^2}{2}.</annotation></semantics></math>
+Altså
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mn>2</mn><msub><mi>V</mi><mn>0</mn></msub><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>b</mi><msup><mi>d</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">J=2V_0/(bd^2)</annotation></semantics></math>
+og
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mi>J</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">I=JA</annotation></semantics></math>,
+så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><msub><mi>V</mi><mn>0</mn></msub><mi>/</mi><mi>I</mi><mo>=</mo><mi>b</mi><msup><mi>d</mi><mn>2</mn></msup><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>A</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">R=V_0/I=bd^2/(2A)</annotation></semantics></math>.</p>
+<p><strong>b)</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐄</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>V</mi><mn>0</mn></msub><mi>x</mi></mrow><msup><mi>d</mi><mn>2</mn></msup></mfrac><mover><mi>x</mi><mo accent="true">̂</mo></mover><mi>.</mi></mrow><annotation encoding="application/x-tex">\mathbf E(x)=\frac{2V_0x}{d^2}\hat x.</annotation></semantics></math>
+Ved venstre metalflade er normalen ind i materialet
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mover><mi>x</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">+\hat x</annotation></semantics></math>,
+men
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E(0)=0</annotation></semantics></math>,
+så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\sigma_1=0</annotation></semantics></math>.
+Ved højre metalflade er normal fra metal til materiale
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mover><mi>x</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">-\hat x</annotation></semantics></math>,
+så
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mn>2</mn></msub><mo>=</mo><msub><mi>ε</mi><mn>0</mn></msub><mi>𝐄</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>d</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mover><mi>x</mi><mo accent="true">̂</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><msub><mi>ε</mi><mn>0</mn></msub><msub><mi>V</mi><mn>0</mn></msub></mrow><mi>d</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">\sigma_2=\varepsilon_0\mathbf E(d)\cdot(-\hat x)=-\frac{2\varepsilon_0V_0}{d}.</annotation></semantics></math>
+I volumen er
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><msub><mi>ε</mi><mn>0</mn></msub><mi>∇</mi><mo>⋅</mo><mi>E</mi><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>ε</mi><mn>0</mn></msub><msub><mi>V</mi><mn>0</mn></msub></mrow><msup><mi>d</mi><mn>2</mn></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">\rho=\varepsilon_0\nabla\cdot E=\frac{2\varepsilon_0V_0}{d^2}.</annotation></semantics></math>
+Potentialeprofilen er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>V</mi><mn>0</mn></msub><mrow><mo stretchy="true" form="prefix">[</mo><mn>1</mn><mo>−</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mi>/</mi><mi>d</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">V(x)=V_0[1-(x/d)^2]</annotation></semantics></math>.</p>
+<h4 id="slutresultat">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>J</mi><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>V</mi><mn>0</mn></msub></mrow><mrow><mi>b</mi><msup><mi>d</mi><mn>2</mn></msup></mrow></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>R</mi><mo>=</mo><mfrac><mrow><mi>b</mi><msup><mi>d</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>A</mi></mrow></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>E</mi><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>V</mi><mn>0</mn></msub><mi>x</mi></mrow><msup><mi>d</mi><mn>2</mn></msup></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>σ</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>σ</mi><mn>2</mn></msub><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><msub><mi>ε</mi><mn>0</mn></msub><msub><mi>V</mi><mn>0</mn></msub></mrow><mi>d</mi></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>ρ</mi><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>ε</mi><mn>0</mn></msub><msub><mi>V</mi><mn>0</mn></msub></mrow><msup><mi>d</mi><mn>2</mn></msup></mfrac></mtd></mtr></mtable></menclose><annotation encoding="application/x-tex">
+\boxed{\begin{gathered}J=\frac{2V_0}{bd^2} \\ R=\frac{bd^2}{2A} \\ E=\frac{2V_0x}{d^2} \\ \sigma_1=0 \\ \sigma_2=-\frac{2\varepsilon_0V_0}d \\ \rho=\frac{2\varepsilon_0V_0}{d^2}\end{gathered}}
+</annotation></semantics></math></p>
+<h4 id="kontrol">Kontrol</h4>
+<p>Volumenladningen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mi>A</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">\rho Ad</annotation></semantics></math>
+ophæves af den højre grænseladning
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mn>2</mn></msub><mi>A</mi></mrow><annotation encoding="application/x-tex">\sigma_2A</annotation></semantics></math>
+i denne endeflademodel. σ divergerer ved x=0, men E→0, og J har en
+endelig grænse. Dette er en stationær ledningsmodel, ikke en
+elektrostatisk leder med E=0 overalt.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske">Metode at huske</h4>
+<p><strong>Variabel
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math>
+→ konstant
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>J</mi><mi>/</mi><mi>σ</mi></mrow><annotation encoding="application/x-tex">E=J/\sigma</annotation></semantics></math>
+→ spændingsintegral →
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
+og ladning.</strong></p>
+<h4 id="originalfigur-og-ordlyd">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2024-11-4.png" style="width:90.0%"
+alt="Originaludsnit: November 2024 – Opgave 4; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: November 2024 – Opgave 4;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h2 id="type-1-2">RC-afladning og magnetisk kraft</h2>
+<h3 id="op-2026-01-2">Januar 2026 – Opgave 2cd · Afladningsstrøm og
+frastødning mellem parallelle stænger</h3>
+<p>★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 42; del c,
+d.</p>
+<h4 id="opgavebeskrivelse-1">Opgavebeskrivelse</h4>
+<p>Kun del c–d: C=0.091 F oplades til Q₀=5.7 C og aflades gennem R=0.25
+Ω. To parallelle stænger med længde l=0.83 m og afstand d=0.052 m indgår
+i samme seriekrans. Find I(t), I₀, 1%-tid og stangkraft. Se E/V for
+a–b.</p>
+<h4 id="genkendelse-1">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> Afladende
+kondensator uden selvinduktans; strømmen går ud og hjem ad parallelle
+stænger.</p>
+<p><strong>Metodevalg:</strong> Kirchhoff; separabel ODE; trådfelt.</p>
+<h4 id="idé-1">Idé</h4>
+<p>Kirchhoffs spændingslov giver en førsteordens ODE. Kraften er
+proportional med strømmen i anden potens.</p>
+<h4 id="løsning-1">Løsning</h4>
+<p><strong>c)</strong> Vælg I positiv som afladningsstrøm, så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mi>−</mi><mover><mi>Q</mi><mo accent="true">̇</mo></mover></mrow><annotation encoding="application/x-tex">I=-\dot Q</annotation></semantics></math>.
+Kirchhoff giver
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mi>/</mi><mi>C</mi><mo>−</mo><mi>R</mi><mi>I</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Q/C-RI=0</annotation></semantics></math>,
+dvs.
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>Q</mi><mo accent="true">̇</mo></mover><mo>=</mo><mi>−</mi><mi>Q</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>R</mi><mi>C</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\dot Q=-Q/(RC).</annotation></semantics></math>
+Integrér
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>Q</mi><mi>/</mi><mi>Q</mi><mo>=</mo><mi>−</mi><mi>d</mi><mi>t</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>R</mi><mi>C</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">dQ/Q=-dt/(RC)</annotation></semantics></math>
+med Q(0)=Q₀:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><msub><mi>Q</mi><mn>0</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>R</mi><mi>C</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msup></mrow><annotation encoding="application/x-tex">Q=Q_0e^{-t/(RC)}</annotation></semantics></math>.
+Derfor
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><msub><mi>Q</mi><mn>0</mn></msub><mrow><mi>R</mi><mi>C</mi></mrow></mfrac><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>R</mi><mi>C</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msup><mo>,</mo><mspace width="1.0em"></mspace><mi>τ</mi><mo>=</mo><mi>R</mi><mi>C</mi><mo>=</mo><mn>0.02275</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">s</mi><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>I</mi><mn>0</mn></msub><mo>=</mo><mn>250</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">A</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">I(t)=\frac{Q_0}{RC}e^{-t/(RC)},\quad \tau=RC=0.02275\,\mathrm s,\quad I_0=250\,\mathrm A.</annotation></semantics></math>
+Sæt
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><msub><mi>I</mi><mn>0</mn></msub><mo>=</mo><mn>0.01</mn></mrow><annotation encoding="application/x-tex">I(T)/I_0=0.01</annotation></semantics></math>,
+så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mi>R</mi><mi>C</mi><mo>ln</mo><mn>100</mn><mo>=</mo><mn>0.1048</mn></mrow><annotation encoding="application/x-tex">T=RC\ln100=0.1048</annotation></semantics></math>
+s=105 ms.</p>
+<p><strong>d)</strong> Strømmen løber i modsatte retninger gennem
+stængerne, som derfor frastøder hinanden. Feltet fra den ene ved den
+anden er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><msub><mi>μ</mi><mn>0</mn></msub><mi>I</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>π</mi><mi>d</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">B=\mu_0I/(2\pi d)</annotation></semantics></math>,
+så
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>I</mi><mi>l</mi><mi>B</mi><mo>=</mo><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><mi>l</mi></mrow><mrow><mn>2</mn><mi>π</mi><mi>d</mi></mrow></mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msub><mi>Q</mi><mn>0</mn></msub><mrow><mi>R</mi><mi>C</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>t</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>R</mi><mi>C</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">F(t)=IlB=\frac{\mu_0l}{2\pi d}\left(\frac{Q_0}{RC}\right)^2e^{-2t/(RC)}.</annotation></semantics></math>
+Ved start er kraftstørrelsen cirka 0.200 N. Stængernes position
+fastholdes, og endefelter ignoreres som i opgaven.</p>
+<h4 id="slutresultat-1">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><msub><mi>Q</mi><mn>0</mn></msub><mrow><mi>R</mi><mi>C</mi></mrow></mfrac><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>R</mi><mi>C</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>I</mi><mn>0</mn></msub><mo>=</mo><mn>250</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">A</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>T</mi><mrow><mn>1</mn><mi>%</mi></mrow></msub><mo>=</mo><mn>105</mn><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">s</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>F</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><mi>l</mi></mrow><mrow><mn>2</mn><mi>π</mi><mi>d</mi></mrow></mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msub><mi>Q</mi><mn>0</mn></msub><mrow><mi>R</mi><mi>C</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>t</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>R</mi><mi>C</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msup></mtd></mtr></mtable></menclose><annotation encoding="application/x-tex">
+\boxed{\begin{gathered}I(t)=\frac{Q_0}{RC}e^{-t/(RC)} \\ I_0=250\,\mathrm A \\ T_{1\%}=105\,\mathrm{ms} \\ F(t)=\frac{\mu_0l}{2\pi d}\left(\frac{Q_0}{RC}\right)^2e^{-2t/(RC)}\end{gathered}}
+</annotation></semantics></math></p>
+<h4 id="kontrol-1">Kontrol</h4>
+<p>Kraften falder med dobbelt eksponent i forhold til strømmen. Hele den
+oprindelige kondensatorenergi bliver varme i modellen uden mekanisk
+arbejde og uden induktans.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske-1">Metode at huske</h4>
+<p><strong>RC-afladning → Q(t) → I(t) → modsat strøm i parallelstænger →
+F∝I².</strong></p>
+<p><strong>Samme opgave, øvrige dele:</strong> <a
+href="01-E_V.html#op-2026-01-2">åbn 01-E_V</a>.</p>
+<h4 id="originalfigur-og-ordlyd-1">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2026-01-2.png" style="width:90.0%"
+alt="Originaludsnit: Januar 2026 – Opgave 2; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: Januar 2026 – Opgave 2;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h2 id="ovrige-1">Øvrige geometrier / dækning</h2>
+<p><strong>Uniform ledningsevne.</strong> Januar 2025–6c bruger uniform
+resistivitet; de selvstændige ledningsopgaver handler om varierende
+ledningsevne eller RC.</p>
+<h1 id="emne-2">Simpel motional EMF</h1>
+<h2 id="type-2-1">Bevægelig stang i homogent B</h2>
+<h3 id="op-2021-06-6">Juni 2021 – Opgave 6abcd · Stang med konstant
+fart: strøm, kraft, effekt og arbejde</h3>
+<p>★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 4; del a, b, c,
+d.</p>
+<h4 id="opgavebeskrivelse-2">Opgavebeskrivelse</h4>
+<p>Skinneafstand
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>0.20</mn></mrow><annotation encoding="application/x-tex">L=0.20</annotation></semantics></math>
+m,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>0.30</mn><mspace width="0.167em"></mspace><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R=0.30\,\Omega</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><mn>1.2</mn></mrow><annotation encoding="application/x-tex">B=1.2</annotation></semantics></math>
+T ud af papiret. Stangen trækkes mod højre, væk fra modstanden, med
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mn>3.4</mn></mrow><annotation encoding="application/x-tex">v=3.4</annotation></semantics></math>
+m/s over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mn>1.2</mn></mrow><annotation encoding="application/x-tex">d=1.2</annotation></semantics></math>
+m. Find I, ekstern F, P og varmeenergi.</p>
+<figure>
+<img src="figurer/metode-stang.png" style="width:85.0%"
+alt="Undervisningsfigur: Bevægelig stang i homogent B" />
+<figcaption aria-hidden="true">Undervisningsfigur: Bevægelig stang i
+homogent B</figcaption>
+</figure>
+<h4 id="genkendelse-2">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> Bevægelig stang,
+konstant fart og homogent magnetfelt.</p>
+<p><strong>Metodevalg:</strong> BLv; Ohm; Lenz; energibalance.</p>
+<h4 id="idé-2">Idé</h4>
+<p>Vælg +z ud af papiret og positiv omløbsretning mod uret. Det voksende
+areal giver voksende positiv flux, så strømmen skal være negativ i denne
+konvention.</p>
+<h4 id="løsning-2">Løsning</h4>
+<p><strong>a)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mi>L</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">A=Lx</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mo>=</mo><mi>B</mi><mi>L</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">\Phi=BLx</annotation></semantics></math>,
+så
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℰ</mi><mo>=</mo><mi>−</mi><mfrac><mrow><mi>d</mi><mi>Φ</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>−</mi><mi>B</mi><mi>L</mi><mi>v</mi><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>I</mi><mrow><mi mathvariant="normal">f</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mi>−</mi><mfrac><mrow><mi>B</mi><mi>L</mi><mi>v</mi></mrow><mi>R</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">\mathcal E=-\frac{d\Phi}{dt}=-BLv,\quad I_{\mathrm{fortegnet}}=-\frac{BLv}{R}.</annotation></semantics></math>
+Strømmen går <strong>med uret</strong>, ned gennem stangen og op gennem
+modstanden. Det stemmer også med
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>×</mo><mi>𝐁</mi><mo>=</mo><mover><mi>x</mi><mo accent="true">̂</mo></mover><mo>×</mo><mover><mi>z</mi><mo accent="true">̂</mo></mover><mo>=</mo><mi>−</mi><mover><mi>y</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\mathbf v\times\mathbf B=\hat x\times\hat z=-\hat y</annotation></semantics></math>.
+Størrelsen er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mn>1.2</mn><mo>⋅</mo><mn>0.20</mn><mo>⋅</mo><mn>3.4</mn><mi>/</mi><mn>0.30</mn><mo>=</mo><mn>2.72</mn></mrow><annotation encoding="application/x-tex">I=1.2\cdot0.20\cdot3.4/0.30=2.72</annotation></semantics></math>
+A.</p>
+<p><strong>b)</strong> Magnetkraften bremser stangen mod venstre:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">g</mi></mrow></msub><mo>=</mo><mi>I</mi><mi>L</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">F_{\mathrm{mag}}=ILB</annotation></semantics></math>.
+Den nødvendige eksterne kraft er mod højre med
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mrow><mi mathvariant="normal">e</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mfrac><mrow><msup><mi>B</mi><mn>2</mn></msup><msup><mi>L</mi><mn>2</mn></msup><mi>v</mi></mrow><mi>R</mi></mfrac><mo>=</mo><mn>0.653</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">N</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">F_{\mathrm{ekst}}=\frac{B^2L^2v}{R}=0.653\,\mathrm N.</annotation></semantics></math>
+<strong>c)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mi>F</mi><mi>v</mi><mo>=</mo><msup><mi>B</mi><mn>2</mn></msup><msup><mi>L</mi><mn>2</mn></msup><msup><mi>v</mi><mn>2</mn></msup><mi>/</mi><mi>R</mi><mo>=</mo><mn>2.22</mn></mrow><annotation encoding="application/x-tex">P=Fv=B^2L^2v^2/R=2.22</annotation></semantics></math>
+W, identisk med
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>I</mi><mn>2</mn></msup><mi>R</mi></mrow><annotation encoding="application/x-tex">I^2R</annotation></semantics></math>.</p>
+<p><strong>d)</strong> Rejsetiden er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mi>d</mi><mi>/</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">t=d/v</annotation></semantics></math>,
+og derfor
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>=</mo><mi>P</mi><mfrac><mi>d</mi><mi>v</mi></mfrac><mo>=</mo><mfrac><mrow><msup><mi>B</mi><mn>2</mn></msup><msup><mi>L</mi><mn>2</mn></msup><mi>v</mi><mi>d</mi></mrow><mi>R</mi></mfrac><mo>=</mo><mn>0.783</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">J</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">W=P\frac dv=\frac{B^2L^2vd}{R}=0.783\,\mathrm J.</annotation></semantics></math></p>
+<h4 id="slutresultat-2">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mo stretchy="true" form="prefix">|</mo><mi>I</mi><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mn>2.72</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">A</mi><mspace width="0.222em"></mspace><mtext mathvariant="normal">med uret</mtext></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>F</mi><mrow><mi mathvariant="normal">e</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mn>0.653</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">N</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>P</mi><mo>=</mo><mn>2.22</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">W</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>W</mi><mo>=</mo><mn>0.783</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">J</mi></mtd></mtr></mtable></menclose><annotation encoding="application/x-tex">
+\boxed{\begin{gathered}|I|=2.72\,\mathrm A\ \text{med uret} \\ F_{\mathrm{ekst}}=0.653\,\mathrm N \\ P=2.22\,\mathrm W \\ W=0.783\,\mathrm J\end{gathered}}
+</annotation></semantics></math></p>
+<h4 id="kontrol-2">Kontrol</h4>
+<p>Lenz kræver modstand mod voksende udadrettet flux. Facitarkets »mod
+uret« er modsat originalfigurens og tekstens feltretning; størrelserne i
+facit stemmer.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">k</mi></mrow></msub><mo>=</mo><msub><mi>P</mi><mrow><mi mathvariant="normal">v</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">e</mi></mrow></msub></mrow><annotation encoding="application/x-tex">P_{\mathrm{mekanisk}}=P_{\mathrm{varme}}</annotation></semantics></math>.</p>
+<blockquote>
+<p><strong>Facitafvigelse:</strong> facit skriver »mod uret«.
+Originalens felt er ud af papiret og arealet vokser. Faraday og v × B
+giver med uret; de numeriske størrelser stemmer.</p>
+</blockquote>
+<h4 id="metode-at-huske-2">Metode at huske</h4>
+<p><strong>Bevægelig stang →
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℰ</mi><mo>=</mo><mi>B</mi><mi>L</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">\mathcal E=BLv</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math>.</strong></p>
+<h4 id="originalfigur-og-ordlyd-2">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2021-06-6.png" style="width:90.0%"
+alt="Originaludsnit: Juni 2021 – Opgave 6; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: Juni 2021 – Opgave 6; til
+kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h1 id="emne-3">Motional EMF + mekanisk feedback</h1>
+<h2 id="type-3-1">Faldende ring i feltgradient</h2>
+<h3 id="op-2023-11-5">November 2023 – Opgave 5abcd · Magnetisk bremsning
+og terminalfart</h3>
+<p>★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 24; del a, b, c,
+d.</p>
+<h4 id="opgavebeskrivelse-3">Opgavebeskrivelse</h4>
+<p>En vandret ring med masse m, areal A og modstand R falder med fart v.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>z</mi></msub><mo>=</mo><msub><mi>B</mi><mn>0</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>κ</mi><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">B_z=B_0(1-\kappa z)</annotation></semantics></math>,
++z opad,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mn>0</mn></msub><mo>,</mo><mi>κ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">B_0,\kappa&gt;0</annotation></semantics></math>.
+Find EMF, varmeeffekt, terminalfart og virkningen af κ&lt;0.</p>
+<h4 id="genkendelse-3">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> Bevægelse gennem et
+rumligt varierende felt ændrer fluxen.</p>
+<p><strong>Metodevalg:</strong> Faraday; Ohm; mekanisk effekt.</p>
+<h4 id="idé-3">Idé</h4>
+<p>Brug dz/dt=-v. Ved terminalfart omsættes hele tyngdekraftens effekt
+mgv til varme.</p>
+<h4 id="løsning-3">Løsning</h4>
+<p><strong>a)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mo>=</mo><mi>A</mi><msub><mi>B</mi><mn>0</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>κ</mi><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Phi=AB_0(1-\kappa z)</annotation></semantics></math>,
+så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>Φ</mi><mo accent="true">̇</mo></mover><mo>=</mo><mi>−</mi><mi>A</mi><msub><mi>B</mi><mn>0</mn></msub><mi>κ</mi><mover><mi>z</mi><mo accent="true">̇</mo></mover><mo>=</mo><mi>A</mi><msub><mi>B</mi><mn>0</mn></msub><mi>κ</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">\dot\Phi=-AB_0\kappa\dot z=AB_0\kappa v</annotation></semantics></math>
+og
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℰ</mi><mo>=</mo><mi>−</mi><mi>A</mi><msub><mi>B</mi><mn>0</mn></msub><mi>κ</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">\mathcal E=-AB_0\kappa v</annotation></semantics></math>
+for +z-normal. Størrelsen er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><msub><mi>B</mi><mn>0</mn></msub><mi>κ</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">AB_0\kappa v</annotation></semantics></math>;
+strømmen går med uret set ovenfra.</p>
+<p><strong>b)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>I</mi><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mi>A</mi><msub><mi>B</mi><mn>0</mn></msub><mi>κ</mi><mi>v</mi><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">|I|=AB_0\kappa v/R</annotation></semantics></math>,
+og
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><msup><mi>I</mi><mn>2</mn></msup><mi>R</mi><mo>=</mo><mfrac><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><msub><mi>B</mi><mn>0</mn></msub><mi>κ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><msup><mi>v</mi><mn>2</mn></msup></mrow><mi>R</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">P=I^2R=\frac{(AB_0\kappa)^2v^2}{R}.</annotation></semantics></math>
+<strong>c)</strong> Ved terminalfart gælder
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>g</mi><msub><mi>v</mi><mi>∞</mi></msub><mo>=</mo><mi>P</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>∞</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">mgv_\infty=P(v_\infty)</annotation></semantics></math>.
+For den positive, ikke-trivielle fart:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>∞</mi></msub><mo>=</mo><mfrac><mrow><mi>m</mi><mi>g</mi><mi>R</mi></mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><msub><mi>B</mi><mn>0</mn></msub><mi>κ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">v_\infty=\frac{mgR}{(AB_0\kappa)^2}.</annotation></semantics></math>
+Det svarer til en bremsekraft
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi>b</mi></msub><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><msub><mi>B</mi><mn>0</mn></msub><mi>κ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mi>v</mi><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">F_b=(AB_0\kappa)^2v/R</annotation></semantics></math>
+opad og bevægelsesligning
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mover><mi>v</mi><mo accent="true">̇</mo></mover><mo>=</mo><mi>m</mi><mi>g</mi><mo>−</mo><msub><mi>F</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">m\dot v=mg-F_b</annotation></semantics></math>.</p>
+<p><strong>d)</strong> Ved
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\kappa&lt;0</annotation></semantics></math>
+skifter EMF og strøm fortegn. P og bremsekraften afhænger af κ² og
+ændres ikke ved samme |κ|. Terminalfarten er derfor den samme; ved κ=0
+er der ingen induktiv bremsevirkning i denne model.</p>
+<h4 id="slutresultat-3">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>ℰ</mi><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mi>A</mi><msub><mi>B</mi><mn>0</mn></msub><mrow><mo stretchy="true" form="prefix">|</mo><mi>κ</mi><mo stretchy="true" form="postfix">|</mo></mrow><mi>v</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>P</mi><mo>=</mo><mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><msub><mi>B</mi><mn>0</mn></msub><mi>κ</mi><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mi>R</mi></mfrac><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>v</mi><mi>∞</mi></msub><mo>=</mo><mfrac><mrow><mi>m</mi><mi>g</mi><mi>R</mi></mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><msub><mi>B</mi><mn>0</mn></msub><mi>κ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mfrac></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{|\mathcal E|=A B_0|\kappa|v,\quad P=\frac{(AB_0\kappa v)^2}{R},\quad v_\infty=\frac{mgR}{(AB_0\kappa)^2}}
+</annotation></semantics></math></p>
+<h4 id="kontrol-3">Kontrol</h4>
+<p>Bremsning kræver en fysisk divergensfri fuld B-geometri; det angivne
+Bz er fluxkomponenten, ikke nødvendigvis hele feltet. Kraftresultatet
+udledes robust via energi og gælder uden
+selvinduktans/randeffektkorrektioner.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske-3">Metode at huske</h4>
+<p><strong>Bevægelse i gradient → fluxændring → strøm → varme →
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>g</mi><mi>v</mi><mo>=</mo><mi>P</mi></mrow><annotation encoding="application/x-tex">mgv=P</annotation></semantics></math>.</strong></p>
+<h4 id="originalfigur-og-ordlyd-3">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2023-11-5.png" style="width:90.0%"
+alt="Originaludsnit: November 2023 – Opgave 5; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: November 2023 – Opgave 5;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h2 id="type-3-2">Batteridrevet stang med mod-EMF</h2>
+<h3 id="op-2025-11-5">November 2025 – Opgave 5abcd · Acceleration,
+terminalfart og batteriets totalenergi</h3>
+<p>★★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 40; del a, b,
+c, d.</p>
+<h4 id="opgavebeskrivelse-4">Opgavebeskrivelse</h4>
+<p>Skinner med afstand d, batterispænding V og modstand R; en stang med
+masse m er først i hvile. B peger ud af papiret. Batteriets +pol
+forbindes via øverste skinne; stangen accelererer mod venstre. Find
+a₀,v∞,v(t) og batteriets samlede afgivne energi.</p>
+<h4 id="genkendelse-4">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> En elektrisk kraft
+sætter stangen i bevægelse; bevægelsen skaber en mod-EMF.</p>
+<p><strong>Metodevalg:</strong> Kredsligning; Newton; separabel ODE;
+energiintegral.</p>
+<h4 id="idé-4">Idé</h4>
+<p>Vælg positiv fart mod venstre. Batteriets EMF er V, mens den
+bevægelsesinducerede EMF Bdv modvirker strømmen.</p>
+<h4 id="løsning-4">Løsning</h4>
+<p><strong>a)</strong> Strømmen løber fra batteriets +pol gennem øverste
+skinne og ned gennem stangen. Dermed er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐅</mi><mo>=</mo><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>−</mi><mi>d</mi><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mo>×</mo><mi>B</mi><mover><mi>z</mi><mo accent="true">̂</mo></mover><mo>=</mo><mi>−</mi><mi>I</mi><mi>B</mi><mi>d</mi><mover><mi>x</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\mathbf F=I(-d\hat y)\times B\hat z=-IBd\hat x</annotation></semantics></math>,
+mod venstre. Ved start er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v=0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mn>0</mn></msub><mo>=</mo><mi>V</mi><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">I_0=V/R</annotation></semantics></math>,
+så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>0</mn></msub><mo>=</mo><mi>B</mi><mi>V</mi><mi>d</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>m</mi><mi>R</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">a_0=BVd/(mR)</annotation></semantics></math>.</p>
+<p><strong>b)</strong> Når v vokser, er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo>−</mo><mi>B</mi><mi>d</mi><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">I=(V-Bdv)/R</annotation></semantics></math>.
+Kraften aftager og går mod nul ved
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>∞</mi></msub><mo>=</mo><mi>V</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>B</mi><mi>d</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">v_\infty=V/(Bd)</annotation></semantics></math>.
+Konstant acceleration kan derfor ikke fortsætte.</p>
+<p><strong>c)</strong> Newton giver
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mover><mi>v</mi><mo accent="true">̇</mo></mover><mo>=</mo><mfrac><mrow><mi>B</mi><mi>d</mi></mrow><mi>R</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mo>−</mo><mi>B</mi><mi>d</mi><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mrow><msup><mi>B</mi><mn>2</mn></msup><msup><mi>d</mi><mn>2</mn></msup></mrow><mi>R</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>∞</mi></msub><mo>−</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">m\dot v=\frac{Bd}{R}(V-Bdv)=\frac{B^2d^2}{R}(v_\infty-v).</annotation></semantics></math>
+Sæt
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>=</mo><mi>m</mi><mi>R</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>B</mi><mn>2</mn></msup><msup><mi>d</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\tau=mR/(B^2d^2)</annotation></semantics></math>.
+Så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>v</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>∞</mi></msub><mo>−</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>d</mi><mi>t</mi><mi>/</mi><mi>τ</mi></mrow><annotation encoding="application/x-tex">dv/(v_\infty-v)=dt/\tau</annotation></semantics></math>;
+integration med v(0)=0 giver
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mo>ln</mo><mfrac><mrow><msub><mi>v</mi><mi>∞</mi></msub><mo>−</mo><mi>v</mi></mrow><msub><mi>v</mi><mi>∞</mi></msub></mfrac><mo>=</mo><mi>t</mi><mi>/</mi><mi>τ</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>v</mi><mo>=</mo><msub><mi>v</mi><mi>∞</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mi>τ</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">-\ln\frac{v_\infty-v}{v_\infty}=t/\tau,\qquad v=v_\infty(1-e^{-t/\tau}).</annotation></semantics></math>
+<strong>d)</strong> Strømmen er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>V</mi><mi>/</mi><mi>R</mi><mo stretchy="true" form="postfix">)</mo></mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mi>τ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">I(t)=(V/R)e^{-t/\tau}</annotation></semantics></math>.
+Batteriets effekt er VI, og den asymptotiske fart nås kun som t→∞:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mrow><mi mathvariant="normal">b</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><mi>V</mi><mi>I</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>t</mi><mo>=</mo><mfrac><msup><mi>V</mi><mn>2</mn></msup><mi>R</mi></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mi>τ</mi></mrow></msup><mi>d</mi><mi>t</mi><mo>=</mo><mfrac><mrow><msup><mi>V</mi><mn>2</mn></msup><mi>τ</mi></mrow><mi>R</mi></mfrac><mo>=</mo><mfrac><mrow><mi>m</mi><msup><mi>V</mi><mn>2</mn></msup></mrow><mrow><msup><mi>B</mi><mn>2</mn></msup><msup><mi>d</mi><mn>2</mn></msup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">U_{\mathrm{bat}}=\int_0^\infty VI\,dt=\frac{V^2}{R}\int_0^\infty e^{-t/\tau}dt
+=\frac{V^2\tau}{R}=\frac{mV^2}{B^2d^2}.</annotation></semantics></math></p>
+<h4 id="slutresultat-4">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>0</mn></msub><mo>=</mo><mfrac><mrow><mi>B</mi><mi>V</mi><mi>d</mi></mrow><mrow><mi>m</mi><mi>R</mi></mrow></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>v</mi><mi>∞</mi></msub><mo>=</mo><mfrac><mi>V</mi><mrow><mi>B</mi><mi>d</mi></mrow></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>τ</mi><mo>=</mo><mfrac><mrow><mi>m</mi><mi>R</mi></mrow><mrow><msup><mi>B</mi><mn>2</mn></msup><msup><mi>d</mi><mn>2</mn></msup></mrow></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>v</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mi>V</mi><mrow><mi>B</mi><mi>d</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mi>τ</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>U</mi><mrow><mi mathvariant="normal">b</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mfrac><mrow><mi>m</mi><msup><mi>V</mi><mn>2</mn></msup></mrow><mrow><msup><mi>B</mi><mn>2</mn></msup><msup><mi>d</mi><mn>2</mn></msup></mrow></mfrac></mtd></mtr></mtable></menclose><annotation encoding="application/x-tex">
+\boxed{\begin{gathered}a_0=\frac{BVd}{mR} \\ v_\infty=\frac V{Bd} \\ \tau=\frac{mR}{B^2d^2} \\ v(t)=\frac V{Bd}(1-e^{-t/\tau}) \\ U_{\mathrm{bat}}=\frac{mV^2}{B^2d^2}\end{gathered}}
+</annotation></semantics></math></p>
+<h4 id="kontrol-4">Kontrol</h4>
+<p>Slutkinetikken er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><msubsup><mi>v</mi><mi>∞</mi><mn>2</mn></msubsup><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">mv_\infty^2/2</annotation></semantics></math>.
+Joulevarmen er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><msup><mi>I</mi><mn>2</mn></msup><mi>R</mi><mi>d</mi><mi>t</mi><mo>=</mo><msup><mi>V</mi><mn>2</mn></msup><mi>τ</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>R</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\int I^2Rdt=V^2\tau/(2R)</annotation></semantics></math>,
+samme beløb; deres sum er batteriets energi. Positiv v betyder venstre,
+så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐯</mi><mo>=</mo><mi>−</mi><mi>v</mi><mover><mi>x</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\mathbf v=-v\hat x</annotation></semantics></math>.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske-4">Metode at huske</h4>
+<p><strong>Batteri minus mod-EMF → I(v) → Newton → v(t) → integrér
+VI.</strong></p>
+<h4 id="originalfigur-og-ordlyd-4">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2025-11-5.png" style="width:90.0%"
+alt="Originaludsnit: November 2025 – Opgave 5; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: November 2025 – Opgave 5;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h1 id="emne-4">Ændrende geometri / areal</h1>
+<h2 id="type-4-1">Voksende ligesidet trekant</h2>
+<h3 id="op-2024-02-5">Februar 2024 – Opgave 5abcd · Tidsvoksende EMF men
+konstant strøm</h3>
+<p>★★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 27; del a, b,
+c, d.</p>
+<h4 id="opgavebeskrivelse-5">Opgavebeskrivelse</h4>
+<p>To ledningsgrene danner 60°. En tværstang flyttes med konstant v
+vinkelret på sig selv, så kredsen er en ligesidet trekant. Felt B peger
+ind i papiret. Modstand pr. længde er r. Ved t=0 er stangen i hjørnet.
+Find l, EMF, R,I,F og varme fra 0 til T.</p>
+<figure>
+<img src="figurer/metode-trekant.png" style="width:85.0%"
+alt="Undervisningsfigur: Voksende ligesidet trekant" />
+<figcaption aria-hidden="true">Undervisningsfigur: Voksende ligesidet
+trekant</figcaption>
+</figure>
+<h4 id="genkendelse-5">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> B er konstant, men
+både areal og ledningslængde ændres.</p>
+<p><strong>Metodevalg:</strong> Geometri; Faraday; tidsafhængig
+modstand; kraft.</p>
+<h4 id="idé-5">Idé</h4>
+<p>Find højden vt og derfra sidelængde og areal. Modstanden følger hele
+trekantens omkreds.</p>
+<h4 id="løsning-5">Løsning</h4>
+<p><strong>a)</strong> Højden i en ligesidet trekant er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mn>3</mn></msqrt><mi>l</mi><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\sqrt3l/2</annotation></semantics></math>,
+så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo>=</mo><mn>2</mn><mi>v</mi><mi>t</mi><mi>/</mi><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">l=2vt/\sqrt3</annotation></semantics></math>.
+Arealet er
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mfrac><msqrt><mn>3</mn></msqrt><mn>4</mn></mfrac><msup><mi>l</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><msup><mi>v</mi><mn>2</mn></msup><msup><mi>t</mi><mn>2</mn></msup></mrow><msqrt><mn>3</mn></msqrt></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">A=\frac{\sqrt3}{4}l^2=\frac{v^2t^2}{\sqrt3}.</annotation></semantics></math>
+Vælg normal ud af papiret, så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mo>=</mo><mi>−</mi><mi>B</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">\Phi=-BA</annotation></semantics></math>.
+Derfor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℰ</mi><mo>=</mo><mi>−</mi><mover><mi>Φ</mi><mo accent="true">̇</mo></mover><mo>=</mo><mn>2</mn><mi>B</mi><msup><mi>v</mi><mn>2</mn></msup><mi>t</mi><mi>/</mi><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">\mathcal E=-\dot\Phi=2Bv^2t/\sqrt3</annotation></semantics></math>.</p>
+<p><strong>b)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>3</mn><mi>r</mi><mi>l</mi><mo>=</mo><mn>2</mn><msqrt><mn>3</mn></msqrt><mi>r</mi><mi>v</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">R(t)=3rl=2\sqrt3rvt</annotation></semantics></math>.
+Dermed
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>ℰ</mi><mi>/</mi><mi>R</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>B</mi><msup><mi>v</mi><mn>2</mn></msup><mi>t</mi><mi>/</mi><msqrt><mn>3</mn></msqrt></mrow><mrow><mn>2</mn><msqrt><mn>3</mn></msqrt><mi>r</mi><mi>v</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>B</mi><mi>v</mi></mrow><mrow><mn>3</mn><mi>r</mi></mrow></mfrac><mo>,</mo><mspace width="1.0em"></mspace><mi>t</mi><mo>&gt;</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">I(t)=\mathcal E/R=\frac{2Bv^2t/\sqrt3}{2\sqrt3rvt}=\frac{Bv}{3r},\quad t&gt;0.</annotation></semantics></math>
+Strømmen går mod uret, som er figurens positive omløbsretning: den
+modvirker voksende indadrettet flux.</p>
+<p><strong>c)</strong> Stangens længde er l og dens magnetkraft er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>I</mi><mi>B</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">F=IBl</annotation></semantics></math>,
+modsat v. Den eksterne kraft har størrelse
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mrow><mi mathvariant="normal">e</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi></mrow></msub><mo>=</mo><mfrac><mrow><mi>B</mi><mi>v</mi></mrow><mrow><mn>3</mn><mi>r</mi></mrow></mfrac><mi>B</mi><mfrac><mrow><mn>2</mn><mi>v</mi><mi>t</mi></mrow><msqrt><mn>3</mn></msqrt></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><msup><mi>B</mi><mn>2</mn></msup><msup><mi>v</mi><mn>2</mn></msup></mrow><mrow><mn>3</mn><msqrt><mn>3</mn></msqrt><mi>r</mi></mrow></mfrac><mi>t</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">F_{\mathrm{ekst}}=\frac{Bv}{3r}B\frac{2vt}{\sqrt3}=\frac{2B^2v^2}{3\sqrt3r}t.</annotation></semantics></math>
+<strong>d)</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>T</mi></msubsup><msup><mi>I</mi><mn>2</mn></msup><mi>R</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>d</mi><mi>t</mi><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>T</mi></msubsup><mfrac><mrow><msup><mi>B</mi><mn>2</mn></msup><msup><mi>v</mi><mn>2</mn></msup></mrow><mrow><mn>9</mn><msup><mi>r</mi><mn>2</mn></msup></mrow></mfrac><mn>2</mn><msqrt><mn>3</mn></msqrt><mi>r</mi><mi>v</mi><mi>t</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>t</mi><mo>=</mo><mfrac><mrow><msup><mi>B</mi><mn>2</mn></msup><msup><mi>v</mi><mn>3</mn></msup><msup><mi>T</mi><mn>2</mn></msup></mrow><mrow><mn>3</mn><msqrt><mn>3</mn></msqrt><mi>r</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">W=\int_0^TI^2R(t)dt=\int_0^T\frac{B^2v^2}{9r^2}2\sqrt3rvt\,dt
+=\frac{B^2v^3T^2}{3\sqrt3r}.</annotation></semantics></math></p>
+<h4 id="slutresultat-5">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><mi>l</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>v</mi><mi>t</mi></mrow><msqrt><mn>3</mn></msqrt></mfrac><mo>,</mo><mspace width="1.0em"></mspace><mi>I</mi><mo>=</mo><mfrac><mrow><mi>B</mi><mi>v</mi></mrow><mrow><mn>3</mn><mi>r</mi></mrow></mfrac><mo>,</mo><mspace width="1.0em"></mspace><mi>F</mi><mo>=</mo><mfrac><mrow><mn>2</mn><msup><mi>B</mi><mn>2</mn></msup><msup><mi>v</mi><mn>2</mn></msup><mi>t</mi></mrow><mrow><mn>3</mn><msqrt><mn>3</mn></msqrt><mi>r</mi></mrow></mfrac><mo>,</mo><mspace width="1.0em"></mspace><mi>W</mi><mo>=</mo><mfrac><mrow><msup><mi>B</mi><mn>2</mn></msup><msup><mi>v</mi><mn>3</mn></msup><msup><mi>T</mi><mn>2</mn></msup></mrow><mrow><mn>3</mn><msqrt><mn>3</mn></msqrt><mi>r</mi></mrow></mfrac></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{l=\frac{2vt}{\sqrt3},\quad I=\frac{Bv}{3r},\quad F=\frac{2B^2v^2t}{3\sqrt3r},\quad W=\frac{B^2v^3T^2}{3\sqrt3r}}
+</annotation></semantics></math></p>
+<h4 id="kontrol-5">Kontrol</h4>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>v</mi><mo>=</mo><msup><mi>I</mi><mn>2</mn></msup><mi>R</mi></mrow><annotation encoding="application/x-tex">Fv=I^2R</annotation></semantics></math>.
+Ved t=0 er både R og EMF nul; den konstante strøm er t→0⁺-grænsen i en
+idealiseret model uden selvinduktans, ikke en veldefineret strøm i et
+kredsløb af nul størrelse.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske-5">Metode at huske</h4>
+<p><strong>Geometri →
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">A(t)</annotation></semantics></math>
+→ flux → EMF →
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">R(t)</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>,</mo><mi>P</mi><mo>,</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">F,P,W</annotation></semantics></math>.</strong></p>
+<h4 id="originalfigur-og-ordlyd-5">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2024-02-5.png" style="width:90.0%"
+alt="Originaludsnit: Februar 2024 – Opgave 5; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: Februar 2024 – Opgave 5;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h1 id="emne-5">Fast spole + B(t)</h1>
+<h2 id="type-5-1">Sinusformet homogent felt</h2>
+<h3 id="op-2022-02-6">Februar 2022 – Opgave 6a · Strøm i ring ved
+bestemt fase</h3>
+<p>★ · <strong>Kilde:</strong> samlet opgave-PDF, side 11; del a.</p>
+<h4 id="opgavebeskrivelse-6">Opgavebeskrivelse</h4>
+<p>En cirkulær ring med radius a og modstand R ligger vinkelret på
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐁</mi><mo>=</mo><msub><mi>B</mi><mn>0</mn></msub><mo>sin</mo><mi>ω</mi><mi>t</mi><mover><mi>z</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\mathbf B=B_0\sin\omega t\hat z</annotation></semantics></math>.
+Find strømmen ved
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mi>π</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mi>ω</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">T=\pi/(3\omega)</annotation></semantics></math>.</p>
+<h4 id="genkendelse-6">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> Fast areal og et
+tidsvarierende homogent B-felt.</p>
+<p><strong>Metodevalg:</strong> Flux; Faraday; Ohm.</p>
+<h4 id="idé-6">Idé</h4>
+<p>Vælg normal +z og positiv strøm mod uret. Differentiér fluxen før
+tidspunktet indsættes.</p>
+<h4 id="løsning-6">Løsning</h4>
+<p><strong>a)</strong> Fluxen er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>π</mi><msup><mi>a</mi><mn>2</mn></msup><msub><mi>B</mi><mn>0</mn></msub><mo>sin</mo><mi>ω</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\Phi(t)=\pi a^2B_0\sin\omega t</annotation></semantics></math>.
+Faraday giver
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℰ</mi><mo>=</mo><mi>−</mi><mfrac><mrow><mi>d</mi><mi>Φ</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>−</mi><mi>π</mi><msup><mi>a</mi><mn>2</mn></msup><msub><mi>B</mi><mn>0</mn></msub><mi>ω</mi><mo>cos</mo><mi>ω</mi><mi>t</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">\mathcal E=-\frac{d\Phi}{dt}=-\pi a^2B_0\omega\cos\omega t,</annotation></semantics></math>
+og uden mærkbar selvinduktans er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>ℰ</mi><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">I(t)=\mathcal E/R</annotation></semantics></math>.
+Ved
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mi>π</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mi>ω</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">T=\pi/(3\omega)</annotation></semantics></math>
+er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mi>T</mi><mo>=</mo><mi>π</mi><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">\omega T=\pi/3</annotation></semantics></math>
+og
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>π</mi><mi>/</mi><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\cos(\pi/3)=1/2</annotation></semantics></math>,
+derfor
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>−</mi><mfrac><mrow><mi>π</mi><msup><mi>a</mi><mn>2</mn></msup><msub><mi>B</mi><mn>0</mn></msub><mi>ω</mi></mrow><mrow><mn>2</mn><mi>R</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">I(T)=-\frac{\pi a^2B_0\omega}{2R}.</annotation></semantics></math>
+Minusfortegnet betyder negativ omløbsretning set fra +z, altså med uret.
+Feltet i +z vokser i dette øjeblik, og strømmen frembringer et modfelt i
+-z.</p>
+<h4 id="slutresultat-6">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>−</mi><mfrac><mrow><mi>π</mi><msup><mi>a</mi><mn>2</mn></msup><msub><mi>B</mi><mn>0</mn></msub><mi>ω</mi></mrow><mrow><mn>2</mn><mi>R</mi></mrow></mfrac><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">med uret set fra </mtext><mspace width="0.333em"></mspace></mrow><mo>+</mo><mi>z</mi></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{I(T)=-\frac{\pi a^2B_0\omega}{2R}\quad\text{med uret set fra }+z}
+</annotation></semantics></math></p>
+<h4 id="kontrol-6">Kontrol</h4>
+<p>Strømmen afhænger af
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>B</mi><mi>/</mi><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">dB/dt</annotation></semantics></math>,
+ikke af værdien af B alene.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mn>0</mn></msub><mi>ω</mi><msup><mi>a</mi><mn>2</mn></msup><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">B_0\omega a^2/R</annotation></semantics></math>
+har enhed A.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske-6">Metode at huske</h4>
+<p><strong>Fast ring → flux → differentiér → indsæt fase → Ohm og
+Lenz.</strong></p>
+<h4 id="originalfigur-og-ordlyd-6">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2022-02-6.png" style="width:90.0%"
+alt="Originaludsnit: Februar 2022 – Opgave 6; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: Februar 2022 – Opgave 6;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h2 id="type-5-2">Rumligt ikke-uniformt eksponentialfelt</h2>
+<h3 id="op-2022-11-6">November 2022 – Opgave 6a · Flux gennem kvadratisk
+løkke</h3>
+<p>★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 16; del a.</p>
+<h4 id="opgavebeskrivelse-7">Opgavebeskrivelse</h4>
+<p>En kvadratisk løkke fylder
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>&lt;</mo><mi>L</mi></mrow><annotation encoding="application/x-tex">0&lt;x,y&lt;L</annotation></semantics></math>
+og har modstand R. Feltet er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐁</mi><mo>=</mo><msub><mi>B</mi><mn>0</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mi>τ</mi></mrow></msup><mover><mi>z</mi><mo accent="true">̂</mo></mover><mi>/</mi><msup><mi>L</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\mathbf B=B_0(x^2+y^2)e^{-t/\tau}\hat z/L^2</annotation></semantics></math>.
+Find den inducerede strøm.</p>
+<h4 id="genkendelse-7">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> Fast flade med både
+rumlig og tidslig feltvariation.</p>
+<p><strong>Metodevalg:</strong> Arealintegral; Faraday.</p>
+<h4 id="idé-7">Idé</h4>
+<p>Integrér B over hele fladen; feltet kan ikke erstattes af værdien i
+ét tilfældigt punkt.</p>
+<h4 id="løsning-7">Løsning</h4>
+<p><strong>a)</strong> Vælg +z-normal. Fluxen bliver
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mo>=</mo><mfrac><mrow><msub><mi>B</mi><mn>0</mn></msub><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mi>τ</mi></mrow></msup></mrow><msup><mi>L</mi><mn>2</mn></msup></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><msubsup><mo>∫</mo><mn>0</mn><mi>L</mi></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>d</mi><mi>x</mi><mi>d</mi><mi>y</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">\Phi=\frac{B_0e^{-t/\tau}}{L^2}\int_0^L\int_0^L(x^2+y^2)dxdy.</annotation></semantics></math>
+Første led integrerer til
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>L</mi><mn>3</mn></msup><mi>/</mi><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>L</mi><mo>=</mo><msup><mi>L</mi><mn>4</mn></msup><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">(L^3/3)L=L^4/3</annotation></semantics></math>;
+det andet giver det samme. Altså
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mo>=</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><msub><mi>B</mi><mn>0</mn></msub><msup><mi>L</mi><mn>2</mn></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mi>τ</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">\Phi=\frac23B_0L^2e^{-t/\tau}.</annotation></semantics></math>
+Faraday og Ohm giver
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℰ</mi><mo>=</mo><mi>−</mi><mover><mi>Φ</mi><mo accent="true">̇</mo></mover><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>B</mi><mn>0</mn></msub><msup><mi>L</mi><mn>2</mn></msup></mrow><mrow><mn>3</mn><mi>τ</mi></mrow></mfrac><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mi>τ</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>I</mi><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>B</mi><mn>0</mn></msub><msup><mi>L</mi><mn>2</mn></msup></mrow><mrow><mn>3</mn><mi>τ</mi><mi>R</mi></mrow></mfrac><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mi>τ</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">\mathcal E=-\dot\Phi=\frac{2B_0L^2}{3\tau}e^{-t/\tau},\qquad I=\frac{2B_0L^2}{3\tau R}e^{-t/\tau}.</annotation></semantics></math>
+Strømmen er positiv, mod uret set fra +z. Den faldende positive flux
+erstattes delvist af løkkens eget positive felt.</p>
+<h4 id="slutresultat-7">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>B</mi><mn>0</mn></msub><msup><mi>L</mi><mn>2</mn></msup></mrow><mrow><mn>3</mn><mi>τ</mi><mi>R</mi></mrow></mfrac><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mi>τ</mi></mrow></msup><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">mod uret set fra </mtext><mspace width="0.333em"></mspace></mrow><mo>+</mo><mi>z</mi></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{I(t)=\frac{2B_0L^2}{3\tau R}e^{-t/\tau}\quad\text{mod uret set fra }+z}
+</annotation></semantics></math></p>
+<h4 id="kontrol-7">Kontrol</h4>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">I\to0</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">t\to\infty</annotation></semantics></math>
+og for meget langsom feltændring
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">\tau\to\infty</annotation></semantics></math>.
+Selvinduktans er udeladt som i opgaven.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske-7">Metode at huske</h4>
+<p><strong>Rumligt felt → arealintegral først → tidsafledt → Ohm →
+Lenz.</strong></p>
+<h4 id="originalfigur-og-ordlyd-7">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2022-11-6.png" style="width:90.0%"
+alt="Originaludsnit: November 2022 – Opgave 6; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: November 2022 – Opgave 6;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h2 id="type-5-3">Eksponentielt felt med konstant offset</h2>
+<h3 id="op-2025-01-6">Januar 2025 – Opgave 6abc · EMF, varmeenergi og
+ledningstværsnit</h3>
+<p>★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 36; del a, b,
+c.</p>
+<h4 id="opgavebeskrivelse-8">Opgavebeskrivelse</h4>
+<p>Spole med N=12, radius r=0.20 m, R=1.2 Ω og
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>z</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>a</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mi>τ</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">B_z(t)=a(1-e^{-t/\tau})+b</annotation></semantics></math>,
+a=5.0 T, b=-2.0 T, τ=60 s. Find EMF, varme til T=55 s og lederareal med
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mi>e</mi></msub><mo>=</mo><mn>2.8</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>8</mn></mrow></msup><mspace width="0.167em"></mspace><mi>Ω</mi></mrow><annotation encoding="application/x-tex">\rho_e=2.8\cdot10^{-8}\,\Omega</annotation></semantics></math>m.</p>
+<h4 id="genkendelse-8">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> Fast spole med N
+vindinger; feltet har et konstant offset og en tidsvarierende del.</p>
+<p><strong>Metodevalg:</strong> Fluxkobling; Faraday; Jouleintegral;
+resistivitet.</p>
+<h4 id="idé-8">Idé</h4>
+<p>Fluxkoblingen er N gange enkeltvindingens flux. Offsettet forsvinder
+ved differentiation.</p>
+<h4 id="løsning-8">Løsning</h4>
+<p><strong>a)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Λ</mi><mo>=</mo><mi>N</mi><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><msub><mi>B</mi><mi>z</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\Lambda=N\pi r^2B_z(t)</annotation></semantics></math>,
+derfor
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℰ</mi><mo>=</mo><mi>−</mi><mover><mi>Λ</mi><mo accent="true">̇</mo></mover><mo>=</mo><mi>−</mi><mfrac><mrow><mi>N</mi><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mi>a</mi></mrow><mi>τ</mi></mfrac><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mi>τ</mi></mrow></msup><mo>=</mo><mi>−</mi><msub><mi>ℰ</mi><mo>*</mo></msub><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mi>τ</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">\mathcal E=-\dot\Lambda=-\frac{N\pi r^2a}{\tau}e^{-t/\tau}=-\mathcal E_*e^{-t/\tau}.</annotation></semantics></math>
+Den er negativ, med uret set fra +z, fordi Bz vokser for alle t≥0, også
+mens det stadig er negativt.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ℰ</mi><mo>*</mo></msub><mo>=</mo><mn>0.1257</mn></mrow><annotation encoding="application/x-tex">\mathcal E_*=0.1257</annotation></semantics></math>
+V.</p>
+<p><strong>b)</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>T</mi></msubsup><mfrac><msup><mi>ℰ</mi><mn>2</mn></msup><mi>R</mi></mfrac><mi>d</mi><mi>t</mi><mo>=</mo><mfrac><msubsup><mi>ℰ</mi><mo>*</mo><mn>2</mn></msubsup><mi>R</mi></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>T</mi></msubsup><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>t</mi><mi>/</mi><mi>τ</mi></mrow></msup><mi>d</mi><mi>t</mi><mo>=</mo><mfrac><mrow><msubsup><mi>ℰ</mi><mo>*</mo><mn>2</mn></msubsup><mi>τ</mi></mrow><mrow><mn>2</mn><mi>R</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>T</mi><mi>/</mi><mi>τ</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">W=\int_0^T\frac{\mathcal E^2}{R}dt=\frac{\mathcal E_*^2}{R}\int_0^Te^{-2t/\tau}dt
+=\frac{\mathcal E_*^2\tau}{2R}(1-e^{-2T/\tau})</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>N</mi><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mrow><mn>2</mn><mi>τ</mi><mi>R</mi></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><mn>2</mn><mi>T</mi><mi>/</mi><mi>τ</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0.332</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">J</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">=\frac{(N\pi r^2a)^2}{2\tau R}(1-e^{-2T/\tau})=0.332\,\mathrm J.</annotation></semantics></math>
+<strong>c)</strong> Ledningslængden er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mi>w</mi></msub><mo>≃</mo><mn>2</mn><mi>π</mi><mi>r</mi><mi>N</mi></mrow><annotation encoding="application/x-tex">l_w\simeq2\pi rN</annotation></semantics></math>.
+Fra
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><msub><mi>ρ</mi><mi>e</mi></msub><msub><mi>l</mi><mi>w</mi></msub><mi>/</mi><msub><mi>A</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">R=\rho_el_w/A_w</annotation></semantics></math>
+fås
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>w</mi></msub><mo>=</mo><mfrac><mrow><msub><mi>ρ</mi><mi>e</mi></msub><mn>2</mn><mi>π</mi><mi>r</mi><mi>N</mi></mrow><mi>R</mi></mfrac><mo>=</mo><mn>3.52</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>7</mn></mrow></msup><mspace width="0.167em"></mspace><msup><mi mathvariant="normal">m</mi><mn mathvariant="normal">2</mn></msup><mo>=</mo><mn>0.352</mn><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">m</mi><msup><mi mathvariant="normal">m</mi><mn mathvariant="normal">2</mn></msup></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">A_w=\frac{\rho_e2\pi rN}{R}=3.52\cdot10^{-7}\,\mathrm{m^2}=0.352\,\mathrm{mm^2}.</annotation></semantics></math></p>
+<h4 id="slutresultat-8">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>ℰ</mi><mo>=</mo><mi>−</mi><mn>0.1257</mn><msup><mi>e</mi><mrow><mi>−</mi><mi>t</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>60</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msup><mspace width="0.167em"></mspace><mi mathvariant="normal">V</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>W</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>55</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0.332</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">J</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>A</mi><mi>w</mi></msub><mo>=</mo><mn>0.352</mn><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">m</mi><msup><mi mathvariant="normal">m</mi><mn mathvariant="normal">2</mn></msup></mrow></mtd></mtr></mtable></menclose><annotation encoding="application/x-tex">
+\boxed{\begin{gathered}\mathcal E=-0.1257e^{-t/(60\,\mathrm s)}\,\mathrm V \\ W(55\,\mathrm s)=0.332\,\mathrm J \\ A_w=0.352\,\mathrm{mm^2}\end{gathered}}
+</annotation></semantics></math></p>
+<h4 id="kontrol-8">Kontrol</h4>
+<p>Offsettet b påvirker hverken EMF eller varmen. Ved T=0 er W=0; ved
+T→∞ bliver varmen endelig. Ekstra tilslutningsledning og selvinduktans
+negligeres i facitmodellen.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske-8">Metode at huske</h4>
+<p><strong>Fast spole →
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>Φ</mi></mrow><annotation encoding="application/x-tex">N\Phi</annotation></semantics></math>
+→ differentiér → integrér
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ℰ</mi><mn>2</mn></msup><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">\mathcal E^2/R</annotation></semantics></math>
+→ brug
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mi>ρ</mi><mi>l</mi><mi>/</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">R=\rho l/A</annotation></semantics></math>.</strong></p>
+<h4 id="originalfigur-og-ordlyd-8">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2025-01-6.png" style="width:90.0%"
+alt="Originaludsnit: Januar 2025 – Opgave 6; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: Januar 2025 – Opgave 6;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h2 id="type-5-4">Cylinderkoordinater: vinkel- og radiusafhængigt
+felt</h2>
+<h3 id="op-2026-01-3">Januar 2026 – Opgave 3abc · Flux og varme fra
+ikke-uniformt harmonisk B</h3>
+<p>★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 43; del a, b,
+c.</p>
+<h4 id="opgavebeskrivelse-9">Opgavebeskrivelse</h4>
+<p>En cirkulær løkke med radius S og modstand R har
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐁</mi><mo>=</mo><mi>k</mi><mi>s</mi><msup><mo>sin</mo><mn>2</mn></msup><mi>ϕ</mi><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mi>/</mi><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mover><mi>z</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\mathbf B=ks\sin^2\phi\cos(t/T)\hat z</annotation></semantics></math>.
+k,T&gt;0; selvinduktans negligeres. Find initial flux, I(t), retning ved
+5T og varme over 0≤t≤2πT.</p>
+<h4 id="genkendelse-9">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> Et ikke-uniformt
+felt gennem en cirkelflade; både s og φ skal integreres.</p>
+<p><strong>Metodevalg:</strong> Polært arealintegral; Faraday;
+periodeintegral.</p>
+<h4 id="idé-9">Idé</h4>
+<p>Brug arealelementet s ds dφ og adskil rumlig og tidslig
+afhængighed.</p>
+<h4 id="løsning-9">Løsning</h4>
+<p><strong>a)</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>k</mi><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mi>/</mi><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><msubsup><mo>∫</mo><mn>0</mn><mi>S</mi></msubsup><msup><mi>s</mi><mn>2</mn></msup><mi>d</mi><mi>s</mi><msubsup><mo>∫</mo><mn>0</mn><mrow><mn>2</mn><mi>π</mi></mrow></msubsup><msup><mo>sin</mo><mn>2</mn></msup><mi>ϕ</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>ϕ</mi><mo>=</mo><mfrac><mrow><mi>k</mi><mi>π</mi><msup><mi>S</mi><mn>3</mn></msup></mrow><mn>3</mn></mfrac><mo>cos</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mi>/</mi><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\Phi(t)=k\cos(t/T)\int_0^Ss^2ds\int_0^{2\pi}\sin^2\phi\,d\phi
+=\frac{k\pi S^3}{3}\cos(t/T).</annotation></semantics></math> Så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Φ</mi><mn>0</mn></msub><mo>=</mo><mi>k</mi><mi>π</mi><msup><mi>S</mi><mn>3</mn></msup><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">\Phi_0=k\pi S^3/3</annotation></semantics></math>.</p>
+<p><strong>b)</strong> Med +z-normal og positiv strøm mod uret er
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℰ</mi><mo>=</mo><mfrac><mrow><mi>k</mi><mi>π</mi><msup><mi>S</mi><mn>3</mn></msup></mrow><mrow><mn>3</mn><mi>T</mi></mrow></mfrac><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mi>/</mi><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mrow><mi>k</mi><mi>π</mi><msup><mi>S</mi><mn>3</mn></msup></mrow><mrow><mn>3</mn><mi>R</mi><mi>T</mi></mrow></mfrac><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mi>/</mi><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\mathcal E=\frac{k\pi S^3}{3T}\sin(t/T),\qquad I(t)=\frac{k\pi S^3}{3RT}\sin(t/T).</annotation></semantics></math>
+Ved t=5T er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>sin</mo><mn>5</mn><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\sin5&lt;0</annotation></semantics></math>,
+så strømmen er negativ: <strong>med uret</strong> set fra +z. Det er den
+lokale ændring af fluxen, ikke alene fortegnet af cos 5, der afgør
+retningen.</p>
+<p><strong>c)</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mrow><mn>2</mn><mi>π</mi><mi>T</mi></mrow></msubsup><msup><mi>I</mi><mn>2</mn></msup><mi>R</mi><mi>d</mi><mi>t</mi><mo>=</mo><mfrac><mrow><msup><mi>k</mi><mn>2</mn></msup><msup><mi>π</mi><mn>2</mn></msup><msup><mi>S</mi><mn>6</mn></msup></mrow><mrow><mn>9</mn><mi>R</mi><msup><mi>T</mi><mn>2</mn></msup></mrow></mfrac><msubsup><mo>∫</mo><mn>0</mn><mrow><mn>2</mn><mi>π</mi><mi>T</mi></mrow></msubsup><msup><mo>sin</mo><mn>2</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mi>/</mi><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>d</mi><mi>t</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">W=\int_0^{2\pi T}I^2Rdt=\frac{k^2\pi^2S^6}{9RT^2}\int_0^{2\pi T}\sin^2(t/T)dt.</annotation></semantics></math>
+Sæt u=t/T, dt=Tdu, og brug
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∫</mo><mn>0</mn><mrow><mn>2</mn><mi>π</mi></mrow></msubsup><msup><mo>sin</mo><mn>2</mn></msup><mi>u</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>u</mi><mo>=</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">\int_0^{2\pi}\sin^2u\,du=\pi</annotation></semantics></math>.
+Dermed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mo>=</mo><msup><mi>π</mi><mn>3</mn></msup><msup><mi>k</mi><mn>2</mn></msup><msup><mi>S</mi><mn>6</mn></msup><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>9</mn><mi>R</mi><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">W=\pi^3k^2S^6/(9RT)</annotation></semantics></math>.</p>
+<h4 id="slutresultat-9">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><msub><mi>Φ</mi><mn>0</mn></msub><mo>=</mo><mfrac><mrow><mi>k</mi><mi>π</mi><msup><mi>S</mi><mn>3</mn></msup></mrow><mn>3</mn></mfrac><mo>,</mo><mspace width="1.0em"></mspace><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mrow><mi>k</mi><mi>π</mi><msup><mi>S</mi><mn>3</mn></msup></mrow><mrow><mn>3</mn><mi>R</mi><mi>T</mi></mrow></mfrac><mo>sin</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mi>/</mi><mi>T</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><mi>W</mi><mo>=</mo><mfrac><mrow><msup><mi>π</mi><mn>3</mn></msup><msup><mi>k</mi><mn>2</mn></msup><msup><mi>S</mi><mn>6</mn></msup></mrow><mrow><mn>9</mn><mi>R</mi><mi>T</mi></mrow></mfrac></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{\Phi_0=\frac{k\pi S^3}3,\quad I(t)=\frac{k\pi S^3}{3RT}\sin(t/T),\quad W=\frac{\pi^3k^2S^6}{9RT}}
+</annotation></semantics></math></p>
+<h4 id="kontrol-9">Kontrol</h4>
+<p>Rumdifferentialet s ds dφ giver S³, ikke S². T er en tidsskala;
+perioden er 2πT. Varmeenergien er positiv uanset fortegnet af
+strømmen.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske-9">Metode at huske</h4>
+<p><strong>Ikke-uniformt B → polært fluxintegral → Faraday → Ohm →
+integrér I²R.</strong></p>
+<h4 id="originalfigur-og-ordlyd-9">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2026-01-3.png" style="width:90.0%"
+alt="Originaludsnit: Januar 2026 – Opgave 3; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: Januar 2026 – Opgave 3;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h1 id="emne-6">Induceret elektrisk felt</h1>
+<h2 id="type-6-1">Kondensator: forskydningsstrøm og tilbagekobling</h2>
+<h3 id="op-2021-11-6">November 2021 – Opgave 6abc · Harmonisk E giver B
+og induceret E-korrektion</h3>
+<p>★★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 8; del a, b,
+c.</p>
+<h4 id="opgavebeskrivelse-10">Opgavebeskrivelse</h4>
+<p>Cirkulære kondensatorplader med radius a og afstand d har
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>A</mi></msub><mo>−</mo><msub><mi>V</mi><mi>B</mi></msub><mo>=</mo><msub><mi>V</mi><mn>0</mn></msub><mo>cos</mo><mi>ω</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">V_A-V_B=V_0\cos\omega t</annotation></semantics></math>.
+Nederste plade er A, +z opad. Find E₀, Jd, B₁ og
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>1</mn></msub><mo>=</mo><mi>χ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>E</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">E_1=\chi(s)E_0</annotation></semantics></math>,
+samt frekvens for 1% korrektion ved a=1 cm.</p>
+<figure>
+<img src="figurer/metode-kondensator.png" style="width:85.0%"
+alt="Undervisningsfigur: Kondensator: forskydningsstrøm og tilbagekobling" />
+<figcaption aria-hidden="true">Undervisningsfigur: Kondensator:
+forskydningsstrøm og tilbagekobling</figcaption>
+</figure>
+<h4 id="genkendelse-10">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> Tidsvarierende
+kondensatorfelt og en efterfølgende Faraday-korrektion.</p>
+<p><strong>Metodevalg:</strong> Ampère-Maxwell; Faraday;
+randbetingelse.</p>
+<h4 id="idé-10">Idé</h4>
+<p>Brug først Ampère-Maxwell på en cirkel. Brug så Faraday i et
+radialt-aksialt rektangel; korrektionen vælges nul ved pladernes rand
+s=a som i facitmodellens kvasistatiske matching.</p>
+<h4 id="løsning-10">Løsning</h4>
+<p><strong>a)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐄</mi><mn>0</mn></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>V</mi><mn>0</mn></msub><mi>/</mi><mi>d</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>cos</mo><mi>ω</mi><mi>t</mi><mover><mi>z</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\mathbf E_0=(V_0/d)\cos\omega t\hat z</annotation></semantics></math>.
+Skriv amplituden
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mo>*</mo></msub><mo>=</mo><msub><mi>V</mi><mn>0</mn></msub><mi>/</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">E_* = V_0/d</annotation></semantics></math>
+og
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>c</mi><mrow><mi>−</mi><mn>2</mn></mrow></msup><mo>=</mo><msub><mi>μ</mi><mn>0</mn></msub><msub><mi>ε</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">c^{-2}=\mu_0\varepsilon_0</annotation></semantics></math>.</p>
+<p><strong>b)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐉</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ε</mi><mn>0</mn></msub><msub><mi>∂</mi><mi>t</mi></msub><msub><mi>𝐄</mi><mn>0</mn></msub><mo>=</mo><mi>−</mi><msub><mi>ε</mi><mn>0</mn></msub><msub><mi>E</mi><mo>*</mo></msub><mi>ω</mi><mo>sin</mo><mi>ω</mi><mi>t</mi><mover><mi>z</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\mathbf J_d=\varepsilon_0\partial_t\mathbf E_0=-\varepsilon_0E_*\omega\sin\omega t\hat z</annotation></semantics></math>.
+På radius s&lt;a giver
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mrow><mn>1</mn><mo>,</mo><mi>ϕ</mi></mrow></msub><mn>2</mn><mi>π</mi><mi>s</mi><mo>=</mo><msub><mi>μ</mi><mn>0</mn></msub><msub><mi>ε</mi><mn>0</mn></msub><mi>π</mi><msup><mi>s</mi><mn>2</mn></msup><msub><mi>∂</mi><mi>t</mi></msub><msub><mi>E</mi><mrow><mn>0</mn><mo>,</mo><mi>z</mi></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>B</mi><mrow><mn>1</mn><mo>,</mo><mi>ϕ</mi></mrow></msub><mo>=</mo><mi>−</mi><mfrac><mrow><msub><mi>E</mi><mo>*</mo></msub><mi>ω</mi><mi>s</mi></mrow><mrow><mn>2</mn><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac><mo>sin</mo><mi>ω</mi><mi>t</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">B_{1,\phi}2\pi s=\mu_0\varepsilon_0\pi s^2\partial_tE_{0,z},\qquad B_{1,\phi}=-\frac{E_*\omega s}{2c^2}\sin\omega t.</annotation></semantics></math>
+<strong>c)</strong> Antag
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐄</mi><mn>1</mn></msub><mo>=</mo><msub><mi>E</mi><mrow><mn>1</mn><mo>,</mo><mi>z</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mover><mi>z</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\mathbf E_1=E_{1,z}(s,t)\hat z</annotation></semantics></math>.
+Da
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>∇</mi><mo>×</mo><msub><mi>E</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>ϕ</mi></msub><mo>=</mo><mi>−</mi><msub><mi>∂</mi><mi>s</mi></msub><msub><mi>E</mi><mrow><mn>1</mn><mo>,</mo><mi>z</mi></mrow></msub></mrow><annotation encoding="application/x-tex">(\nabla\times E_1)_\phi=-\partial_sE_{1,z}</annotation></semantics></math>,
+giver Faraday
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>s</mi></msub><msub><mi>E</mi><mrow><mn>1</mn><mo>,</mo><mi>z</mi></mrow></msub><mo>=</mo><msub><mi>∂</mi><mi>t</mi></msub><msub><mi>B</mi><mrow><mn>1</mn><mo>,</mo><mi>ϕ</mi></mrow></msub><mo>=</mo><mi>−</mi><mfrac><mrow><msup><mi>ω</mi><mn>2</mn></msup><mi>s</mi></mrow><mrow><mn>2</mn><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac><msub><mi>E</mi><mo>*</mo></msub><mo>cos</mo><mi>ω</mi><mi>t</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">\partial_sE_{1,z}=\partial_tB_{1,\phi}=-\frac{\omega^2s}{2c^2}E_*\cos\omega t.</annotation></semantics></math>
+Integrér i s:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mrow><mn>1</mn><mo>,</mo><mi>z</mi></mrow></msub><mo>=</mo><mi>−</mi><mfrac><mrow><msup><mi>ω</mi><mn>2</mn></msup><msup><mi>s</mi><mn>2</mn></msup></mrow><mrow><mn>4</mn><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac><msub><mi>E</mi><mrow><mn>0</mn><mo>,</mo><mi>z</mi></mrow></msub><mo>+</mo><mi>C</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">E_{1,z}=-\frac{\omega^2s^2}{4c^2}E_{0,z}+C(t).</annotation></semantics></math>
+Med
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mrow><mn>1</mn><mo>,</mo><mi>z</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E_{1,z}(a)=0</annotation></semantics></math>
+fås
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mi>ω</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup><msub><mi>E</mi><mrow><mn>0</mn><mo>,</mo><mi>z</mi></mrow></msub><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><msup><mi>c</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">C(t)=\omega^2a^2E_{0,z}/(4c^2)</annotation></semantics></math>
+og
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>χ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><msup><mi>ω</mi><mn>2</mn></msup><mrow><mn>4</mn><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><msup><mi>s</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\chi(s)=\frac{\omega^2}{4c^2}(a^2-s^2).</annotation></semantics></math>
+Maksimum er på aksen. Sæt
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><msup><mi>c</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0.01</mn></mrow><annotation encoding="application/x-tex">\omega^2a^2/(4c^2)=0.01</annotation></semantics></math>,
+så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><mn>0.2</mn><mi>c</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">\omega=0.2c/a</annotation></semantics></math>
+og
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mo>=</mo><mi>ω</mi><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mi>π</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0.954</mn></mrow><annotation encoding="application/x-tex">\nu=\omega/(2\pi)=0.954</annotation></semantics></math>
+GHz for a=0.010 m.</p>
+<h4 id="slutresultat-10">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>𝐁</mi><mn>1</mn></msub><mo>=</mo><mi>−</mi><mfrac><mrow><msub><mi>E</mi><mo>*</mo></msub><mi>ω</mi><mi>s</mi></mrow><mrow><mn>2</mn><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac><mo>sin</mo><mi>ω</mi><mi>t</mi><mover><mi>ϕ</mi><mo accent="true">̂</mo></mover></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>χ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mrow><msup><mi>ω</mi><mn>2</mn></msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><msup><mi>s</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mn>4</mn><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>ν</mi><mrow><mn>1</mn><mi>%</mi></mrow></msub><mo>=</mo><mn>0.954</mn><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">H</mi><mi mathvariant="normal">z</mi></mrow></mtd></mtr></mtable></menclose><annotation encoding="application/x-tex">
+\boxed{\begin{gathered}\mathbf B_1=-\frac{E_*\omega s}{2c^2}\sin\omega t\hat\phi \\ \chi(s)=\frac{\omega^2(a^2-s^2)}{4c^2} \\ \nu_{1\%}=0.954\,\mathrm{GHz}\end{gathered}}
+</annotation></semantics></math></p>
+<h4 id="kontrol-10">Kontrol</h4>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>χ</mi><annotation encoding="application/x-tex">\chi</annotation></semantics></math>
+er dimensionsløs. Faraday bestemmer kun den s-afhængige del; en homogen
+tidsfunktion kræver en rand-/matchingbetingelse. Resultatet følger
+facitmodellens valg
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E_1(a)=0</annotation></semantics></math>,
+ikke en generel eksakt løsning for endelige plader.</p>
+<blockquote>
+<p><strong>Modelbetingelse:</strong> facits E₁ kræver valget E₁(a)=0.
+Faraday alene efterlader en rumligt homogen tidsfunktion. Denne
+forudsætning er vist eksplicit.</p>
+</blockquote>
+<h4 id="metode-at-huske-10">Metode at huske</h4>
+<p><strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">E(t)</annotation></semantics></math>
+→ forskydningsstrøm →
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>ϕ</mi></msub><annotation encoding="application/x-tex">B_\phi</annotation></semantics></math>
+→ Faraday → integrér og fastlæg randkonstant.</strong></p>
+<h4 id="originalfigur-og-ordlyd-10">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2021-11-6.png" style="width:90.0%"
+alt="Originaludsnit: November 2021 – Opgave 6; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: November 2021 – Opgave 6;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h2 id="kryds-6">Krydshenvisninger</h2>
+<ul>
+<li><a href="03-DYN.html#op-2023-02-6">Februar 2023 – 6</a> —
+Forskydningsstrøm og B mellem plader.</li>
+</ul>
+<h2 id="ovrige-6">Øvrige geometrier / dækning</h2>
+<p><strong>Solenoide: inside/outside.</strong> Ingen selvstændig
+induceret-E-opgave med både indre og ydre solenoideregion.
+Kondensatorens E₁-korrektion er behandlet; der er ikke opfundet en
+gammel opgave til den manglende type.</p>
+<h1 id="emne-7">Selvinduktion</h1>
+<h2 id="type-7-1">Solenoide: selvinduktans, RL-opladning og energi</h2>
+<h3 id="op-2022-11-3">November 2022 – Opgave 3abcd · CMS-solenoiden</h3>
+<p>★★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 14; del a, b,
+c, d.</p>
+<h4 id="opgavebeskrivelse-11">Opgavebeskrivelse</h4>
+<p>Solenoide: N=2180, længde l=12.5 m, radius r=3.00 m, nominel I=18.2
+kA. Forsyning
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ℰ</mi><mi>R</mi></msub><mo>=</mo><mn>26</mn></mrow><annotation encoding="application/x-tex">\mathcal E_R=26</annotation></semantics></math>
+V og kredsmodstand
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>c</mi></msub><mo>=</mo><mn>75</mn><mspace width="0.167em"></mspace><mi>μ</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_c=75\,\mu\Omega</annotation></semantics></math>.
+Ledertværsnit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>30.0</mn><mo>×</mo><mn>26.6</mn></mrow><annotation encoding="application/x-tex">30.0\times26.6</annotation></semantics></math>
+mm²; aluminiumresistivitet
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mi>e</mi></msub><mo>=</mo><mn>2.65</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>8</mn></mrow></msup><mspace width="0.167em"></mspace><mi>Ω</mi></mrow><annotation encoding="application/x-tex">\rho_e=2.65\cdot10^{-8}\,\Omega</annotation></semantics></math>m.
+Find B,L,U, opladningstid, holdespænding og hypotetisk varmeeffekt.</p>
+<h4 id="genkendelse-11">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> Lang solenoide og
+strømopbygning gennem en induktans.</p>
+<p><strong>Metodevalg:</strong> Ampère; fluxkobling; RL-ligning;
+Joulevarme.</p>
+<h4 id="idé-11">Idé</h4>
+<p>Bestem B og fluxkobling først. Brug derefter kredsligningen med
+konstant forsyning.</p>
+<h4 id="løsning-11">Løsning</h4>
+<p><strong>a)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><msub><mi>μ</mi><mn>0</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>N</mi><mi>/</mi><mi>l</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>I</mi><mo>=</mo><mn>3.99</mn></mrow><annotation encoding="application/x-tex">B=\mu_0(N/l)I=3.99</annotation></semantics></math>
+T i langsolenoideapproksimationen.</p>
+<p><strong>b)</strong> Flux pr. vinding er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mo>=</mo><mi>B</mi><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\Phi=B\pi r^2</annotation></semantics></math>.
+Da
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi>Φ</mi><mo>=</mo><mi>L</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">N\Phi=LI</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mfrac><mrow><mi>N</mi><msub><mi>μ</mi><mn>0</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>N</mi><mi>/</mi><mi>l</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>I</mi><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow><mi>I</mi></mfrac><mo>=</mo><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><msup><mi>N</mi><mn>2</mn></msup><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow><mi>l</mi></mfrac><mo>=</mo><mn>13.5</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">H</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">L=\frac{N\mu_0(N/l)I\pi r^2}{I}=\frac{\mu_0N^2\pi r^2}{l}=13.5\,\mathrm H.</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi>I</mi></msubsup><mi>L</mi><mi>I</mi><mi>′</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>I</mi><mi>′</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>L</mi><msup><mi>I</mi><mn>2</mn></msup><mo>=</mo><mn>2.24</mn><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">J</mi></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">U=\int_0^ILI&#39;\,dI&#39;=\frac12LI^2=2.24\,\mathrm{GJ}.</annotation></semantics></math>
+<strong>c)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mover><mi>I</mi><mo accent="true">̇</mo></mover><mo>+</mo><msub><mi>R</mi><mi>c</mi></msub><mi>I</mi><mo>=</mo><msub><mi>ℰ</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">L\dot I+R_cI=\mathcal E_R</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">I(0)=0</annotation></semantics></math>.
+Separation eller integrerende faktor giver
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><msub><mi>ℰ</mi><mi>R</mi></msub><msub><mi>R</mi><mi>c</mi></msub></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mi>−</mi><msub><mi>R</mi><mi>c</mi></msub><mi>t</mi><mi>/</mi><mi>L</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">I(t)=\frac{\mathcal E_R}{R_c}(1-e^{-R_ct/L}).</annotation></semantics></math>
+Sæt I til den nominelle værdi og isolér tiden:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>=</mo><mi>−</mi><mfrac><mi>L</mi><msub><mi>R</mi><mi>c</mi></msub></mfrac><mo>ln</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mfrac><mrow><msub><mi>R</mi><mi>c</mi></msub><mi>I</mi></mrow><msub><mi>ℰ</mi><mi>R</mi></msub></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>2.70</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">h</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">T=-\frac L{R_c}\ln\left(1-\frac{R_cI}{\mathcal E_R}\right)=2.70\,\mathrm h.</annotation></semantics></math>
+Derefter kræves kun
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ℰ</mi><mi>S</mi></msub><mo>=</mo><msub><mi>R</mi><mi>c</mi></msub><mi>I</mi><mo>=</mo><mn>1.37</mn></mrow><annotation encoding="application/x-tex">\mathcal E_S=R_cI=1.37</annotation></semantics></math>
+V.</p>
+<p><strong>d)</strong> Den oprullede leders længde er cirka
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mi>w</mi></msub><mo>=</mo><mi>N</mi><mn>2</mn><mi>π</mi><mi>r</mi><mo>=</mo><mn>4.11</mn><mo>⋅</mo><msup><mn>10</mn><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">l_w=N2\pi r=4.11\cdot10^4</annotation></semantics></math>
+m. Arealet er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>w</mi></msub><mo>=</mo><mn>30.0</mn><mo>⋅</mo><mn>26.6</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>6</mn></mrow></msup><mo>=</mo><mn>7.98</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>4</mn></mrow></msup></mrow><annotation encoding="application/x-tex">A_w=30.0\cdot26.6\cdot10^{-6}=7.98\cdot10^{-4}</annotation></semantics></math>
+m². Hypotetisk normalledermodstand er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">l</mi></mrow></msub><mo>=</mo><msub><mi>ρ</mi><mi>e</mi></msub><msub><mi>l</mi><mi>w</mi></msub><mi>/</mi><msub><mi>A</mi><mi>w</mi></msub><mo>=</mo><mn>1.36</mn><mspace width="0.167em"></mspace><mi>Ω</mi></mrow><annotation encoding="application/x-tex">R_{\mathrm{Al}}=\rho_el_w/A_w=1.36\,\Omega</annotation></semantics></math>.
+Derfor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><msup><mi>I</mi><mn>2</mn></msup><msub><mi>R</mi><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">l</mi></mrow></msub><mo>=</mo><mn>452</mn></mrow><annotation encoding="application/x-tex">P=I^2R_{\mathrm{Al}}=452</annotation></semantics></math>
+MW.</p>
+<h4 id="slutresultat-11">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>B</mi><mo>=</mo><mn>3.99</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">T</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>L</mi><mo>=</mo><mn>13.5</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">H</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>U</mi><mo>=</mo><mn>2.24</mn><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">J</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>T</mi><mo>=</mo><mn>2.70</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">h</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>ℰ</mi><mi>S</mi></msub><mo>=</mo><mn>1.37</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">V</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>P</mi><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">l</mi></mrow></msub><mo>=</mo><mn>452</mn><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">M</mi><mi mathvariant="normal">W</mi></mrow></mtd></mtr></mtable></menclose><annotation encoding="application/x-tex">
+\boxed{\begin{gathered}B=3.99\,\mathrm T \\ L=13.5\,\mathrm H \\ U=2.24\,\mathrm{GJ} \\ T=2.70\,\mathrm h \\ \mathcal E_S=1.37\,\mathrm V \\ P_{\mathrm{Al}}=452\,\mathrm{MW}\end{gathered}}
+</annotation></semantics></math></p>
+<h4 id="kontrol-11">Kontrol</h4>
+<p>Opladningen kan nå I, da
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ℰ</mi><mi>R</mi></msub><mi>/</mi><msub><mi>R</mi><mi>c</mi></msub><mo>&gt;</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">\mathcal E_R/R_c&gt;I</annotation></semantics></math>.
+R_c og den hypotetiske R_Al beskriver forskellige situationer og må ikke
+forveksles. Endefelter ignoreres som opgaven kræver.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske-11">Metode at huske</h4>
+<p><strong>Solenoide →
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+→ fluxkobling →
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math>
+→ RL-opladning → energi og varme.</strong></p>
+<h4 id="originalfigur-og-ordlyd-11">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2022-11-3.png" style="width:90.0%"
+alt="Originaludsnit: November 2022 – Opgave 3; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: November 2022 – Opgave 3;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<figure>
+<img src="figurer/2022-11-3-fortsaettelse.png" style="width:90.0%"
+alt="Original fortsættelse af november 2022–3d" />
+<figcaption aria-hidden="true">Original fortsættelse af november
+2022–3d</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h2 id="kryds-7">Krydshenvisninger</h2>
+<ul>
+<li><a href="03-DYN.html#op-2023-11-2">November 2023 – 2</a> —
+Transmissionslinjens L fra feltenergi.</li>
+</ul>
+<h1 id="emne-8">Gensidig induktion</h1>
+<h2 id="type-8-1">Lang leder og nærliggende rektangulær løkke</h2>
+<h3 id="op-2023-02-5">Februar 2023 – Opgave 5abcd · Fluxkobling,
+induceret EMF og middelvarme</h3>
+<p>★★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 19; del a, b,
+c, d.</p>
+<h4 id="opgavebeskrivelse-12">Opgavebeskrivelse</h4>
+<p>Løkke med sider b parallelle med en lang leder, højde h og nærmeste
+afstand a. Strømmen i lederen er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mn>1</mn></msub><mo>=</mo><msub><mi>I</mi><mn>0</mn></msub><mo>cos</mo><mi>ω</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">I_1=I_0\cos\omega t</annotation></semantics></math>.
+Løkkens modstand er R, selvinduktans negligeres. Brug b=0.140 m, h=0.100
+m, a=0.050 m, R=0.0100 Ω, f=50 Hz og
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mrow><mi mathvariant="normal">a</mi><mi mathvariant="normal">v</mi><mi mathvariant="normal">g</mi></mrow></msub><mo>=</mo><mn>1.90</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">P_{\mathrm{avg}}=1.90\cdot10^{-5}</annotation></semantics></math>
+W.</p>
+<h4 id="genkendelse-12">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> En strøm i kreds 1
+skaber tidsvarierende flux i kreds 2.</p>
+<p><strong>Metodevalg:</strong> Trådfelt; fluxintegral; Faraday;
+sinusmiddel.</p>
+<h4 id="idé-12">Idé</h4>
+<p>Integrér trådens 1/s-felt over løkken og anvend Faraday på den
+samlede flux.</p>
+<h4 id="løsning-12">Løsning</h4>
+<p><strong>a)</strong> Vælg normal ud af papiret som figurens positive
+flux. Med lederens viste strøm er feltet udad gennem løkken. Et
+strimmelareal er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>d</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">bds</annotation></semantics></math>,
+og
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mo>=</mo><msubsup><mo>∫</mo><mi>a</mi><mrow><mi>a</mi><mo>+</mo><mi>h</mi></mrow></msubsup><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><msub><mi>I</mi><mn>1</mn></msub></mrow><mrow><mn>2</mn><mi>π</mi><mi>s</mi></mrow></mfrac><mi>b</mi><mi>d</mi><mi>s</mi><mo>=</mo><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><mi>b</mi></mrow><mrow><mn>2</mn><mi>π</mi></mrow></mfrac><mo>ln</mo><mfrac><mrow><mi>a</mi><mo>+</mo><mi>h</mi></mrow><mi>a</mi></mfrac><mspace width="0.167em"></mspace><msub><mi>I</mi><mn>1</mn></msub><mo>=</mo><mi>C</mi><msub><mi>I</mi><mn>1</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">\Phi=\int_a^{a+h}\frac{\mu_0I_1}{2\pi s}bds=\frac{\mu_0b}{2\pi}\ln\frac{a+h}a\,I_1=CI_1.</annotation></semantics></math>
+<strong>b)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℰ</mi><mo>=</mo><mi>−</mi><mi>C</mi><msub><mover><mi>I</mi><mo accent="true">̇</mo></mover><mn>1</mn></msub><mo>=</mo><mi>C</mi><msub><mi>I</mi><mn>0</mn></msub><mi>ω</mi><mo>sin</mo><mi>ω</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\mathcal E=-C\dot I_1=CI_0\omega\sin\omega t</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>t</mi><mo>&lt;</mo><mi>π</mi><mi>/</mi><mi>ω</mi></mrow><annotation encoding="application/x-tex">0&lt;t&lt;\pi/\omega</annotation></semantics></math>
+er dette positivt: mod uret set ud fra papiret. Den udadrettede flux
+falder, og strømmen understøtter den.</p>
+<p><strong>c)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mn>2</mn></msub><mo>=</mo><mi>ℰ</mi><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">I_2=\mathcal E/R</annotation></semantics></math>,
+så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><msubsup><mi>I</mi><mn>2</mn><mn>2</mn></msubsup><mi>R</mi><mo>=</mo><msup><mi>C</mi><mn>2</mn></msup><msubsup><mi>I</mi><mn>0</mn><mn>2</mn></msubsup><msup><mi>ω</mi><mn>2</mn></msup><msup><mo>sin</mo><mn>2</mn></msup><mi>ω</mi><mi>t</mi><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">P=I_2^2R=C^2I_0^2\omega^2\sin^2\omega t/R</annotation></semantics></math>.</p>
+<p><strong>d)</strong> Da middelværdien af
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mo>sin</mo><mn>2</mn></msup><annotation encoding="application/x-tex">\sin^2</annotation></semantics></math>
+er 1/2:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mrow><mi mathvariant="normal">a</mi><mi mathvariant="normal">v</mi><mi mathvariant="normal">g</mi></mrow></msub><mo>=</mo><mfrac><mrow><msup><mi>C</mi><mn>2</mn></msup><msubsup><mi>I</mi><mn>0</mn><mn>2</mn></msubsup><msup><mi>ω</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>R</mi></mrow></mfrac><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><msub><mi>I</mi><mn>0</mn></msub><mo>=</mo><mfrac><msqrt><mrow><mn>2</mn><mi>R</mi><msub><mi>P</mi><mrow><mi mathvariant="normal">a</mi><mi mathvariant="normal">v</mi><mi mathvariant="normal">g</mi></mrow></msub></mrow></msqrt><mrow><mi>C</mi><mi>ω</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">P_{\mathrm{avg}}=\frac{C^2I_0^2\omega^2}{2R}\quad\Rightarrow\quad I_0=\frac{\sqrt{2RP_{\mathrm{avg}}}}{C\omega}.</annotation></semantics></math>
+Her er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mn>3.08</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>8</mn></mrow></msup></mrow><annotation encoding="application/x-tex">C=3.08\cdot10^{-8}</annotation></semantics></math>
+H og
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>f</mi><mo>=</mo><mn>314</mn></mrow><annotation encoding="application/x-tex">\omega=2\pi f=314</annotation></semantics></math>
+s⁻¹, så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mn>0</mn></msub><mo>=</mo><mn>63.8</mn></mrow><annotation encoding="application/x-tex">I_0=63.8</annotation></semantics></math>
+A.</p>
+<h4 id="slutresultat-12">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mrow><mi>C</mi><mo>=</mo><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><mi>b</mi></mrow><mrow><mn>2</mn><mi>π</mi></mrow></mfrac><mo>ln</mo><mfrac><mrow><mi>a</mi><mo>+</mo><mi>h</mi></mrow><mi>a</mi></mfrac><mo>,</mo><mspace width="1.0em"></mspace><mi>ℰ</mi><mo>=</mo><mi>C</mi><msub><mi>I</mi><mn>0</mn></msub><mi>ω</mi><mo>sin</mo><mi>ω</mi><mi>t</mi><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>I</mi><mn>0</mn></msub><mo>=</mo><mn>63.8</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">A</mi></mrow></menclose><annotation encoding="application/x-tex">
+\boxed{C=\frac{\mu_0b}{2\pi}\ln\frac{a+h}a,\quad\mathcal E=CI_0\omega\sin\omega t,\quad I_0=63.8\,\mathrm A}
+</annotation></semantics></math></p>
+<h4 id="kontrol-12">Kontrol</h4>
+<p>C har enhed H, og samme geometri giver gensidig induktans i en
+passende lukket kredsmodel. Brug amplituden I₀, ikke RMS-strømmen, i de
+viste sinusudtryk.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske-12">Metode at huske</h4>
+<p><strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mn>1</mn></msub><annotation encoding="application/x-tex">I_1</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">B_1(s)</annotation></semantics></math>
+→ flux →
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+→ Faraday → middelværdi af
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mo>sin</mo><mn>2</mn></msup><annotation encoding="application/x-tex">\sin^2</annotation></semantics></math>.</strong></p>
+<h4 id="originalfigur-og-ordlyd-12">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2023-02-5.png" style="width:90.0%"
+alt="Originaludsnit: Februar 2023 – Opgave 5; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: Februar 2023 – Opgave 5;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h2 id="type-8-2">Små cirkelløkker på akse og i ækvatorialplan</h2>
+<h3 id="op-2024-11-5">November 2024 – Opgave 5abc · Gensidig induktans
+fra magnetisk dipolfelt</h3>
+<p>★★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 31; del a, b,
+c.</p>
+<h4 id="opgavebeskrivelse-13">Opgavebeskrivelse</h4>
+<p>Tre løkker med radius a≪b har centre A=(0,0,0), B=(0,0,b), C=(0,b,0),
+alle i planer parallelle med xy. R er hver modstand. Positive strømme
+giver +z-normal som i figuren. Find MAB, MAC og inducerede strømme, når
+IA vokser.</p>
+<h4 id="genkendelse-13">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> Løkkerne er små i
+forhold til deres afstand og kan erstattes af magnetiske dipoler.</p>
+<p><strong>Metodevalg:</strong> Dipolmoment; dipolfelt; flux;
+Faraday.</p>
+<h4 id="idé-13">Idé</h4>
+<p>Brug dipolfeltet fra A på henholdsvis aksen og ækvator; feltet regnes
+uniformt over modtagerløkken.</p>
+<h4 id="løsning-13">Løsning</h4>
+<p><strong>a)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐦</mi><mi>A</mi></msub><mo>=</mo><msub><mi>I</mi><mi>A</mi></msub><mi>π</mi><msup><mi>a</mi><mn>2</mn></msup><mover><mi>z</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\mathbf m_A=I_A\pi a^2\hat z</annotation></semantics></math>.
+På aksen i afstand b:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mrow><mi>A</mi><mo>,</mo><mi>z</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><msub><mi>μ</mi><mn>0</mn></msub><mrow><mn>4</mn><mi>π</mi></mrow></mfrac><mfrac><mrow><mn>2</mn><msub><mi>m</mi><mi>A</mi></msub></mrow><msup><mi>b</mi><mn>3</mn></msup></mfrac><mo>=</mo><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><msub><mi>I</mi><mi>A</mi></msub><msup><mi>a</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><msup><mi>b</mi><mn>3</mn></msup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">B_{A,z}(B)=\frac{\mu_0}{4\pi}\frac{2m_A}{b^3}=\frac{\mu_0I_Aa^2}{2b^3}.</annotation></semantics></math>
+Fluxen er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Φ</mi><mi>B</mi></msub><mo>≃</mo><msub><mi>B</mi><mi>z</mi></msub><mi>π</mi><msup><mi>a</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\Phi_B\simeq B_z\pi a^2</annotation></semantics></math>,
+så
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><mo>=</mo><msub><mi>Φ</mi><mi>B</mi></msub><mi>/</mi><msub><mi>I</mi><mi>A</mi></msub><mo>=</mo><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><mi>π</mi><msup><mi>a</mi><mn>4</mn></msup></mrow><mrow><mn>2</mn><msup><mi>b</mi><mn>3</mn></msup></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">M_{AB}=\Phi_B/I_A=\frac{\mu_0\pi a^4}{2b^3}.</annotation></semantics></math>
+<strong>b)</strong> I ækvatorialplanet er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐁</mi><mi>A</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>C</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>−</mi><msub><mi>μ</mi><mn>0</mn></msub><msub><mi>𝐦</mi><mi>A</mi></msub><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><mi>π</mi><msup><mi>b</mi><mn>3</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf B_A(C)=-\mu_0\mathbf m_A/(4\pi b^3)</annotation></semantics></math>,
+så
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mrow><mi>A</mi><mi>C</mi></mrow></msub><mo>=</mo><mi>−</mi><msub><mi>μ</mi><mn>0</mn></msub><mi>π</mi><msup><mi>a</mi><mn>4</mn></msup><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><msup><mi>b</mi><mn>3</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">M_{AC}=-\mu_0\pi a^4/(4b^3)</annotation></semantics></math>.</p>
+<p><strong>c)</strong> Uden selvinduktiv og sekundær gensidig
+tilbagekobling er
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>B</mi></msub><mo>=</mo><mi>−</mi><mfrac><msub><mi>M</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><mi>R</mi></mfrac><mfrac><mrow><mi>d</mi><msub><mi>I</mi><mi>A</mi></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>−</mi><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><mi>π</mi><msup><mi>a</mi><mn>4</mn></msup></mrow><mrow><mn>2</mn><msup><mi>b</mi><mn>3</mn></msup><mi>R</mi></mrow></mfrac><msub><mover><mi>I</mi><mo accent="true">̇</mo></mover><mi>A</mi></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">I_B=-\frac{M_{AB}}R\frac{dI_A}{dt}=-\frac{\mu_0\pi a^4}{2b^3R}\dot I_A,</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>C</mi></msub><mo>=</mo><mi>−</mi><mfrac><msub><mi>M</mi><mrow><mi>A</mi><mi>C</mi></mrow></msub><mi>R</mi></mfrac><mfrac><mrow><mi>d</mi><msub><mi>I</mi><mi>A</mi></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mi>+</mi><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><mi>π</mi><msup><mi>a</mi><mn>4</mn></msup></mrow><mrow><mn>4</mn><msup><mi>b</mi><mn>3</mn></msup><mi>R</mi></mrow></mfrac><msub><mover><mi>I</mi><mo accent="true">̇</mo></mover><mi>A</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">I_C=-\frac{M_{AC}}R\frac{dI_A}{dt}=+\frac{\mu_0\pi a^4}{4b^3R}\dot I_A.</annotation></semantics></math>
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>I</mi><mo accent="true">̇</mo></mover><mi>A</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\dot I_A&gt;0</annotation></semantics></math>
+går B i negativ omløbsretning og C i positiv. Set fra +z er det
+henholdsvis med og mod uret.</p>
+<h4 id="slutresultat-13">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>M</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><mo>=</mo><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><mi>π</mi><msup><mi>a</mi><mn>4</mn></msup></mrow><mrow><mn>2</mn><msup><mi>b</mi><mn>3</mn></msup></mrow></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>M</mi><mrow><mi>A</mi><mi>C</mi></mrow></msub><mo>=</mo><mi>−</mi><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><mi>π</mi><msup><mi>a</mi><mn>4</mn></msup></mrow><mrow><mn>4</mn><msup><mi>b</mi><mn>3</mn></msup></mrow></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>I</mi><mi>B</mi></msub><mo>=</mo><mi>−</mi><msub><mi>M</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><msub><mover><mi>I</mi><mo accent="true">̇</mo></mover><mi>A</mi></msub><mi>/</mi><mi>R</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>I</mi><mi>C</mi></msub><mo>=</mo><mi>−</mi><msub><mi>M</mi><mrow><mi>A</mi><mi>C</mi></mrow></msub><msub><mover><mi>I</mi><mo accent="true">̇</mo></mover><mi>A</mi></msub><mi>/</mi><mi>R</mi></mtd></mtr></mtable></menclose><annotation encoding="application/x-tex">
+\boxed{\begin{gathered}M_{AB}=\frac{\mu_0\pi a^4}{2b^3} \\ M_{AC}=-\frac{\mu_0\pi a^4}{4b^3} \\ I_B=-M_{AB}\dot I_A/R \\ I_C=-M_{AC}\dot I_A/R\end{gathered}}
+</annotation></semantics></math></p>
+<h4 id="kontrol-13">Kontrol</h4>
+<p>M kan være negativ på grund af orienteringen. Facit anvender den
+samme ledende approksimation; uden forsømmelse af modtagerløkkernes
+induktive spændinger kræves koblede kredsligninger.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske-13">Metode at huske</h4>
+<p><strong>Lille kildeløkke → dipolfelt → modtagerflux → fortegnet
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>M</mi><mover><mi>I</mi><mo accent="true">̇</mo></mover><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">-M\dot I/R</annotation></semantics></math>.</strong></p>
+<h4 id="originalfigur-og-ordlyd-13">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2024-11-5.png" style="width:90.0%"
+alt="Originaludsnit: November 2024 – Opgave 5; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: November 2024 – Opgave 5;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h1 id="emne-9">Magnetisk energi</h1>
+<h2 id="type-9-1">Transmissionslinje af to parallelle strømflader</h2>
+<h3 id="op-2023-11-2">November 2023 – Opgave 2ab · Feltenergi og
+selvinduktans mellem bånd</h3>
+<p>★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 22; del a,
+b.</p>
+<h4 id="opgavebeskrivelse-14">Opgavebeskrivelse</h4>
+<p>To brede parallelle bånd med længde l=4.00 m, bredde b=0.300 m og
+afstand h=0.0120 m fører modsatrettede strømme I=9.5 kA. Antag b≫h og se
+bort fra randeffekter. Find B, U og L.</p>
+<h4 id="genkendelse-14">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> To modsatrettede
+uniforme strømflader.</p>
+<p><strong>Metodevalg:</strong> Strømflade; superposition;
+B²-energi.</p>
+<h4 id="idé-14">Idé</h4>
+<p>En flade giver μ₀K/2 på hver side. Mellem modstrømmende flader lægges
+bidragene sammen; udenfor ophæves de.</p>
+<h4 id="løsning-14">Løsning</h4>
+<p><strong>a)</strong> Overfladestrømmen er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mi>I</mi><mi>/</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">K=I/b</annotation></semantics></math>.
+Derfor er feltets størrelse mellem båndene
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>=</mo><msub><mi>μ</mi><mn>0</mn></msub><mi>K</mi><mo>=</mo><msub><mi>μ</mi><mn>0</mn></msub><mi>I</mi><mi>/</mi><mi>b</mi><mo>=</mo><mn>39.8</mn></mrow><annotation encoding="application/x-tex">B=\mu_0K=\mu_0I/b=39.8</annotation></semantics></math>
+mT. Med originalfigurens strømretninger er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐁</mi><mo>=</mo><mi>−</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>μ</mi><mn>0</mn></msub><mi>I</mi><mi>/</mi><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mover><mi>z</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\mathbf B=-(\mu_0I/b)\hat z</annotation></semantics></math>.
+Over og under båndparret er B=0 i denne approksimation.</p>
+<p><strong>b)</strong> Det feltfyldte volumen er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>b</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">lbh</annotation></semantics></math>.
+Energitætheden er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>B</mi></msub><mo>=</mo><msup><mi>B</mi><mn>2</mn></msup><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><msub><mi>μ</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">u_B=B^2/(2\mu_0)</annotation></semantics></math>,
+så
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><msub><mi>μ</mi><mn>0</mn></msub></mrow></mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><mi>I</mi></mrow><mi>b</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mi>l</mi><mi>b</mi><mi>h</mi><mo>=</mo><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><msup><mi>I</mi><mn>2</mn></msup><mi>l</mi><mi>h</mi></mrow><mrow><mn>2</mn><mi>b</mi></mrow></mfrac><mo>=</mo><mn>9.07</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">J</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">U=\frac1{2\mu_0}\left(\frac{\mu_0I}{b}\right)^2lbh=\frac{\mu_0I^2lh}{2b}=9.07\,\mathrm J.</annotation></semantics></math>
+Sammenlign med
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><mi>L</mi><msup><mi>I</mi><mn>2</mn></msup><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">U=LI^2/2</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>U</mi></mrow><msup><mi>I</mi><mn>2</mn></msup></mfrac><mo>=</mo><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><mi>l</mi><mi>h</mi></mrow><mi>b</mi></mfrac><mo>=</mo><mn>2.01</mn><mo>⋅</mo><msup><mn>10</mn><mrow><mi>−</mi><mn>7</mn></mrow></msup><mspace width="0.167em"></mspace><mi mathvariant="normal">H</mi><mo>=</mo><mn>201</mn><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">n</mi><mi mathvariant="normal">H</mi></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">L=\frac{2U}{I^2}=\frac{\mu_0lh}{b}=2.01\cdot10^{-7}\,\mathrm H=201\,\mathrm{nH}.</annotation></semantics></math>
+Dette er den eksterne induktans i den ideelle tyndbåndsmodel.</p>
+<h4 id="slutresultat-14">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>𝐁</mi><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">m</mi></mrow></msub><mo>=</mo><mi>−</mi><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><mi>I</mi></mrow><mi>b</mi></mfrac><mover><mi>z</mi><mo accent="true">̂</mo></mover></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>U</mi><mo>=</mo><mn>9.07</mn><mspace width="0.167em"></mspace><mi mathvariant="normal">J</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>L</mi><mo>=</mo><mn>201</mn><mspace width="0.167em"></mspace><mrow><mi mathvariant="normal">n</mi><mi mathvariant="normal">H</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>B</mi><mrow><mi mathvariant="normal">u</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">f</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi></mrow></msub><mo>=</mo><mn>0</mn></mtd></mtr></mtable></menclose><annotation encoding="application/x-tex">
+\boxed{\begin{gathered}\mathbf B_{\mathrm{mellem}}=-\frac{\mu_0I}{b}\hat z \\ U=9.07\,\mathrm J \\ L=201\,\mathrm{nH} \\ B_{\mathrm{udenfor}}=0\end{gathered}}
+</annotation></semantics></math></p>
+<h4 id="kontrol-14">Kontrol</h4>
+<p>L vokser med længde og afstand, men falder med bredde. Nul felt
+udenfor kræver idealiseret brede bånd og præcis modsatrettede
+strømme.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske-14">Metode at huske</h4>
+<p><strong>To strømflader → superponér B →
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>B</mi></msub><annotation encoding="application/x-tex">u_B</annotation></semantics></math>
+gange volumen →
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mn>2</mn><mi>U</mi><mi>/</mi><msup><mi>I</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">L=2U/I^2</annotation></semantics></math>.</strong></p>
+<h4 id="originalfigur-og-ordlyd-14">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2023-11-2.png" style="width:90.0%"
+alt="Originaludsnit: November 2023 – Opgave 2; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: November 2023 – Opgave 2;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h2 id="kryds-9">Krydshenvisninger</h2>
+<ul>
+<li><a href="03-DYN.html#op-2022-11-3">November 2022 – 3</a> — CMS:
+energi fra L og I.</li>
+</ul>
+<h1 id="emne-10">Forskydningsstrøm / Ampère-Maxwell</h1>
+<h2 id="type-10-1">Cirkulære kondensatorplader</h2>
+<h3 id="op-2023-02-6">Februar 2023 – Opgave 6a · B fra harmonisk
+elektrisk felt</h3>
+<p>★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 20; del a.</p>
+<h4 id="opgavebeskrivelse-15">Opgavebeskrivelse</h4>
+<p>Mellem cirkulære plader med radius R og lille afstand er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐄</mi><mo>=</mo><msub><mi>E</mi><mn>0</mn></msub><mo>sin</mo><mi>ω</mi><mi>t</mi><mover><mi>z</mi><mo accent="true">̂</mo></mover></mrow><annotation encoding="application/x-tex">\mathbf E=E_0\sin\omega t\hat z</annotation></semantics></math>.
+Find forskydningsstrøm gennem en koncentrisk cirkelflade med radius
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≤</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">s\le R</annotation></semantics></math>
+og tilhørende B.</p>
+<figure>
+<img src="figurer/metode-kondensator.png" style="width:85.0%"
+alt="Undervisningsfigur: Cirkulære kondensatorplader" />
+<figcaption aria-hidden="true">Undervisningsfigur: Cirkulære
+kondensatorplader</figcaption>
+</figure>
+<h4 id="genkendelse-15">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> Tidsvarierende
+elektrisk felt i et område uden ledningsstrøm.</p>
+<p><strong>Metodevalg:</strong> Forskydningsstrøm; Ampère-Maxwell.</p>
+<h4 id="idé-15">Idé</h4>
+<p>Forskydningsstrømmen erstatter ledningsstrømmen i Ampères lov.</p>
+<h4 id="løsning-15">Løsning</h4>
+<p><strong>a)</strong> Det elektriske fluxintegral gennem fladen er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Φ</mi><mi>E</mi></msub><mo>=</mo><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>π</mi><msup><mi>s</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\Phi_E=E(t)\pi s^2</annotation></semantics></math>.
+Derfor er den fortegnede forskydningsstrøm i +z-retning
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ε</mi><mn>0</mn></msub><mfrac><mrow><mi>d</mi><msub><mi>Φ</mi><mi>E</mi></msub></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><msub><mi>ε</mi><mn>0</mn></msub><mi>π</mi><msup><mi>s</mi><mn>2</mn></msup><msub><mi>E</mi><mn>0</mn></msub><mi>ω</mi><mo>cos</mo><mi>ω</mi><mi>t</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">I_d=\varepsilon_0\frac{d\Phi_E}{dt}=\varepsilon_0\pi s^2E_0\omega\cos\omega t.</annotation></semantics></math>
+Symmetrien kræver et azimutalt magnetfelt. Ampère-Maxwell giver
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>ϕ</mi></msub><mn>2</mn><mi>π</mi><mi>s</mi><mo>=</mo><msub><mi>μ</mi><mn>0</mn></msub><msub><mi>I</mi><mi>d</mi></msub><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><msub><mi>B</mi><mi>ϕ</mi></msub><mo>=</mo><mfrac><mrow><msub><mi>μ</mi><mn>0</mn></msub><msub><mi>ε</mi><mn>0</mn></msub><msub><mi>E</mi><mn>0</mn></msub><mi>ω</mi><mi>s</mi></mrow><mn>2</mn></mfrac><mo>cos</mo><mi>ω</mi><mi>t</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">B_\phi2\pi s=\mu_0I_d\quad\Rightarrow\quad B_\phi=\frac{\mu_0\varepsilon_0E_0\omega s}{2}\cos\omega t.</annotation></semantics></math>
+Positiv cosinus giver positiv
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>ϕ</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat\phi</annotation></semantics></math>,
+dvs. mod uret set fra +z; negativ cosinus vender retningen. Ved aksen er
+B=0.</p>
+<h4 id="slutresultat-15">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>I</mi><mi>d</mi></msub><mo>=</mo><msub><mi>ε</mi><mn>0</mn></msub><mi>π</mi><msup><mi>s</mi><mn>2</mn></msup><msub><mi>E</mi><mn>0</mn></msub><mi>ω</mi><mo>cos</mo><mi>ω</mi><mi>t</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>𝐁</mi><mo>=</mo><mfrac><mrow><msub><mi>E</mi><mn>0</mn></msub><mi>ω</mi><mi>s</mi></mrow><mrow><mn>2</mn><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac><mo>cos</mo><mi>ω</mi><mi>t</mi><mover><mi>ϕ</mi><mo accent="true">̂</mo></mover><mspace width="1.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>≤</mo><mi>R</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable></menclose><annotation encoding="application/x-tex">
+\boxed{\begin{gathered}I_d=\varepsilon_0\pi s^2E_0\omega\cos\omega t \\ \mathbf B=\frac{E_0\omega s}{2c^2}\cos\omega t\hat\phi\quad(s\le R)\end{gathered}}
+</annotation></semantics></math></p>
+<h4 id="kontrol-15">Kontrol</h4>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mi>d</mi></msub><annotation encoding="application/x-tex">I_d</annotation></semantics></math>
+er en skalar gennem en orienteret flade; Jd er vektoren
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ε</mi><mn>0</mn></msub><msub><mi>∂</mi><mi>t</mi></msub><mi>E</mi></mrow><annotation encoding="application/x-tex">\varepsilon_0\partial_tE</annotation></semantics></math>.
+For s&gt;R kan samme ensartede felt ikke indsættes over hele fladen; den
+opgivne opgave gælder s≤R.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske-15">Metode at huske</h4>
+<p><strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">E(t)</annotation></semantics></math>
+→
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ε</mi><mn>0</mn></msub><mi>d</mi><msub><mi>Φ</mi><mi>E</mi></msub><mi>/</mi><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\varepsilon_0d\Phi_E/dt</annotation></semantics></math>
+→ Ampère-Maxwell →
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>ϕ</mi></msub><annotation encoding="application/x-tex">B_\phi</annotation></semantics></math>.</strong></p>
+<h4 id="originalfigur-og-ordlyd-15">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2023-02-6.png" style="width:90.0%"
+alt="Originaludsnit: Februar 2023 – Opgave 6; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: Februar 2023 – Opgave 6;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h2 id="kryds-10">Krydshenvisninger</h2>
+<ul>
+<li><a href="03-DYN.html#op-2021-11-6">November 2021 – 6</a> —
+Kondensator med efterfølgende induceret E.</li>
+</ul>
+<h1 id="emne-11">Maxwell-opgaver</h1>
+<h2 id="type-11-1">Givet elektrisk felt med ikke-nul curl</h2>
+<h3 id="op-2023-11-3">November 2023 – Opgave 3ab · Rumlig ladning og
+nødvendig tidsvariation af B</h3>
+<p>★★ · <strong>Kilde:</strong> samlet opgave-PDF, side 22; del a,
+b.</p>
+<h4 id="opgavebeskrivelse-16">Opgavebeskrivelse</h4>
+<p>I kuben
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">0&lt;x,y,z&lt;a</annotation></semantics></math>
+er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐄</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>E</mi><mn>0</mn></msub><mi>/</mi><msup><mi>a</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>z</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mover><mi>x</mi><mo accent="true">̂</mo></mover><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>z</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mover><mi>z</mi><mo accent="true">̂</mo></mover><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbf E=(E_0/a^2)[(x^2+z^2)\hat x+(y^2+x^2)\hat y+(z^2+y^2)\hat z]</annotation></semantics></math>.
+Find ρ,Q og hvad der kan sluttes om B.</p>
+<h4 id="genkendelse-16">Genkendelse</h4>
+<p><strong>Denne type opgave genkendes ved:</strong> Feltet er ikke
+automatisk elektrostatisk, blot fordi udtrykket ikke viser t.</p>
+<p><strong>Metodevalg:</strong> Divergens; Faraday.</p>
+<h4 id="idé-16">Idé</h4>
+<p>Divergens bestemmer ρ; curl bestemmer kun tidsafledningen af B, ikke
+hele B.</p>
+<h4 id="løsning-16">Løsning</h4>
+<p><strong>a)</strong>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><msub><mi>ε</mi><mn>0</mn></msub><mi>∇</mi><mo>⋅</mo><mi>E</mi><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>ε</mi><mn>0</mn></msub><msub><mi>E</mi><mn>0</mn></msub></mrow><msup><mi>a</mi><mn>2</mn></msup></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\rho=\varepsilon_0\nabla\cdot E=\frac{2\varepsilon_0E_0}{a^2}(x+y+z).</annotation></semantics></math>
+Hvert af integralerne
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∫</mo><mi>x</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>τ</mi><mo>,</mo><mo>∫</mo><mi>y</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>τ</mi><mo>,</mo><mo>∫</mo><mi>z</mi><mspace width="0.167em"></mspace><mi>d</mi><mi>τ</mi></mrow><annotation encoding="application/x-tex">\int x\,d\tau,\int y\,d\tau,\int z\,d\tau</annotation></semantics></math>
+over kuben er
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mn>4</mn></msup><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">a^4/2</annotation></semantics></math>.
+Derfor
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>ε</mi><mn>0</mn></msub><msub><mi>E</mi><mn>0</mn></msub></mrow><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo>⋅</mo><mfrac><mrow><mn>3</mn><msup><mi>a</mi><mn>4</mn></msup></mrow><mn>2</mn></mfrac><mo>=</mo><mn>3</mn><msub><mi>ε</mi><mn>0</mn></msub><msub><mi>E</mi><mn>0</mn></msub><msup><mi>a</mi><mn>2</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">Q=\frac{2\varepsilon_0E_0}{a^2}\cdot\frac{3a^4}{2}=3\varepsilon_0E_0a^2.</annotation></semantics></math>
+<strong>b)</strong> Komponentvis curl:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mo>×</mo><mi>E</mi><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>E</mi><mn>0</mn></msub></mrow><msup><mi>a</mi><mn>2</mn></msup></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mover><mi>x</mi><mo accent="true">̂</mo></mover><mo>+</mo><mi>z</mi><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo>+</mo><mi>x</mi><mover><mi>z</mi><mo accent="true">̂</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\nabla\times E=\frac{2E_0}{a^2}(y\hat x+z\hat y+x\hat z).</annotation></semantics></math>
+Faraday kræver altså
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>𝐁</mi><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><msub><mi>E</mi><mn>0</mn></msub></mrow><msup><mi>a</mi><mn>2</mn></msup></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mover><mi>x</mi><mo accent="true">̂</mo></mover><mo>+</mo><mi>z</mi><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo>+</mo><mi>x</mi><mover><mi>z</mi><mo accent="true">̂</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\partial_t\mathbf B=-\frac{2E_0}{a^2}(y\hat x+z\hat y+x\hat z).</annotation></semantics></math>
+Hvis E-udtrykket gælder uændret over et tidsinterval, er
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐁</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐫</mi><mo>,</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>𝐁</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐫</mi><mo>,</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mfrac><mrow><mn>2</mn><msub><mi>E</mi><mn>0</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo>−</mo><msub><mi>t</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><msup><mi>a</mi><mn>2</mn></msup></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mover><mi>x</mi><mo accent="true">̂</mo></mover><mo>+</mo><mi>z</mi><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo>+</mo><mi>x</mi><mover><mi>z</mi><mo accent="true">̂</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\mathbf B(\mathbf r,t)=\mathbf B(\mathbf r,t_0)-\frac{2E_0(t-t_0)}{a^2}(y\hat x+z\hat y+x\hat z).</annotation></semantics></math>
+Startfeltet kan ikke bestemmes af de givne data alene, men skal bl.a.
+opfylde
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mo>⋅</mo><mi>B</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\nabla\cdot B=0</annotation></semantics></math>.</p>
+<h4 id="slutresultat-16">Slutresultat</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><menclose notation="box"><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>ρ</mi><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>ε</mi><mn>0</mn></msub><msub><mi>E</mi><mn>0</mn></msub></mrow><msup><mi>a</mi><mn>2</mn></msup></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>Q</mi><mo>=</mo><mn>3</mn><msub><mi>ε</mi><mn>0</mn></msub><msub><mi>E</mi><mn>0</mn></msub><msup><mi>a</mi><mn>2</mn></msup></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>∂</mi><mi>t</mi></msub><mi>𝐁</mi><mo>=</mo><mi>−</mi><mfrac><mrow><mn>2</mn><msub><mi>E</mi><mn>0</mn></msub></mrow><msup><mi>a</mi><mn>2</mn></msup></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mover><mi>x</mi><mo accent="true">̂</mo></mover><mo>+</mo><mi>z</mi><mover><mi>y</mi><mo accent="true">̂</mo></mover><mo>+</mo><mi>x</mi><mover><mi>z</mi><mo accent="true">̂</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable></menclose><annotation encoding="application/x-tex">
+\boxed{\begin{gathered}\rho=\frac{2\varepsilon_0E_0}{a^2}(x+y+z) \\ Q=3\varepsilon_0E_0a^2 \\ \partial_t\mathbf B=-\frac{2E_0}{a^2}(y\hat x+z\hat y+x\hat z)\end{gathered}}
+</annotation></semantics></math></p>
+<h4 id="kontrol-16">Kontrol</h4>
+<p>Curlfeltets divergens er nul, som nødvendigt for at bevare
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mo>⋅</mo><mi>B</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\nabla\cdot B=0</annotation></semantics></math>.
+Givet E fastlægger ikke en unik absolut B-værdi.</p>
+<p><strong>Facitkontrol:</strong> de efterspurgte slutresultater er
+sammenholdt med det leverede facit; ekstra retninger, mellemregninger og
+forudsætninger er forklaret ovenfor.</p>
+<h4 id="metode-at-huske-16">Metode at huske</h4>
+<p><strong>Givet
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>
+→ divergens for ladning → curl for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>t</mi></msub><mi>B</mi></mrow><annotation encoding="application/x-tex">\partial_tB</annotation></semantics></math>
+→ nævn ubestemt startfelt.</strong></p>
+<h4 id="originalfigur-og-ordlyd-16">Originalfigur og ordlyd</h4>
+<figure>
+<img src="figurer/2023-11-3.png" style="width:90.0%"
+alt="Originaludsnit: November 2023 – Opgave 3; til kontrol af geometri og symboler" />
+<figcaption aria-hidden="true">Originaludsnit: November 2023 – Opgave 3;
+til kontrol af geometri og symboler</figcaption>
+</figure>
+<p><a href="#indhold">Til indholdsfortegnelsen</a> · <a
+href="#opgaveindeks">Til opgaveindeks</a></p>
+<h2 id="kryds-11">Krydshenvisninger</h2>
+<ul>
+<li><a href="01-E_V.html#op-2021-06-5">Juni 2021 – 5</a> —
+Curl/divergens-test for E og B.</li>
+<li><a href="01-E_V.html#op-2021-11-3">November 2021 – 3</a> —
+Elektrostatisk muligt/umuligt felt.</li>
+<li><a href="02-B_A.html#op-2023-02-4">Februar 2023 – 4</a> — A → B →
+J.</li>
+</ul>
+</body>
+</html>

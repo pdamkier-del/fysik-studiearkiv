@@ -1,0 +1,924 @@
+[
+  {
+    "id": "2021-06-1",
+    "eksamen": "Juni 2021",
+    "opgave": 1,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 1,
+    "dokument": "01-E_V",
+    "emne": "Ledere og hulrum",
+    "type": "Forskudt punktladning i kugleskal",
+    "metode": "Gauss; lederpotentiale"
+  },
+  {
+    "id": "2021-06-2",
+    "eksamen": "Juni 2021",
+    "opgave": 2,
+    "delspoergsmaal": [
+      "a"
+    ],
+    "kildeside": 2,
+    "dokument": "01-E_V",
+    "emne": "Grundlæggende felt-/potentialeopgaver",
+    "type": "Punktladninger: energi",
+    "metode": "Parvis energi"
+  },
+  {
+    "id": "2021-06-3",
+    "eksamen": "Juni 2021",
+    "opgave": 3,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 2,
+    "dokument": "02-B_A",
+    "emne": "Find B fra strøm og geometri",
+    "type": "Koaksiale systemer og kraft mellem ledere",
+    "metode": "Ampère; kraft på parallelleder"
+  },
+  {
+    "id": "2021-06-4",
+    "eksamen": "Juni 2021",
+    "opgave": 4,
+    "delspoergsmaal": [
+      "a"
+    ],
+    "kildeside": 3,
+    "dokument": "02-B_A",
+    "emne": "Lorentzkraft og partikelbevægelse",
+    "type": "Spændingsacceleration og massespektrometer",
+    "metode": "Energi; Lorentzkraft; centripetalkraft"
+  },
+  {
+    "id": "2021-06-5",
+    "eksamen": "Juni 2021",
+    "opgave": 5,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 3,
+    "dokument": "01-E_V",
+    "emne": "Givet felt → ladning",
+    "type": "Kartesisk divergens og feltkriterier",
+    "metode": "Curl; divergens; volumenintegral"
+  },
+  {
+    "id": "2021-06-6",
+    "eksamen": "Juni 2021",
+    "opgave": 6,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "kildeside": 4,
+    "dokument": "03-DYN",
+    "emne": "Simpel motional EMF",
+    "type": "Bevægelig stang i homogent B",
+    "metode": "BLv; Ohm; Lenz; energibalance"
+  },
+  {
+    "id": "2021-11-1",
+    "eksamen": "November 2021",
+    "opgave": 1,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 5,
+    "dokument": "01-E_V",
+    "emne": "Grundlæggende felt-/potentialeopgaver",
+    "type": "Kontinuerte ladninger: halvkugleskal",
+    "metode": "Coulomb-integration"
+  },
+  {
+    "id": "2021-11-2",
+    "eksamen": "November 2021",
+    "opgave": 2,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "kildeside": 6,
+    "dokument": "01-E_V",
+    "emne": "Region-for-region",
+    "type": "Koncentriske ledere og dielektrikum",
+    "metode": "Gauss med D; kapacitans"
+  },
+  {
+    "id": "2021-11-3",
+    "eksamen": "November 2021",
+    "opgave": 3,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 6,
+    "dokument": "01-E_V",
+    "emne": "Laplace / randværdiproblemer",
+    "type": "Muligt elektrostatisk felt i ladningsfrit område",
+    "metode": "Curl; Laplace"
+  },
+  {
+    "id": "2021-11-4",
+    "eksamen": "November 2021",
+    "opgave": 4,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 7,
+    "dokument": "02-B_A",
+    "emne": "Givet B → find strøm",
+    "type": "Cylindrisk curl og lokal Lorentzkraft",
+    "metode": "Lorentzkraft; Ampère differentialt"
+  },
+  {
+    "id": "2021-11-5",
+    "eksamen": "November 2021",
+    "opgave": 5,
+    "delspoergsmaal": [
+      "a"
+    ],
+    "kildeside": 7,
+    "dokument": "02-B_A",
+    "emne": "Find B fra strøm og geometri",
+    "type": "Roterende massiv cylinder: solenoidesuperposition",
+    "metode": "J=ρv; curl B; solenoidesum"
+  },
+  {
+    "id": "2021-11-6",
+    "eksamen": "November 2021",
+    "opgave": 6,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 8,
+    "dokument": "03-DYN",
+    "emne": "Induceret elektrisk felt",
+    "type": "Kondensator: forskydningsstrøm og tilbagekobling",
+    "metode": "Ampère-Maxwell; Faraday; randbetingelse"
+  },
+  {
+    "id": "2022-02-1",
+    "eksamen": "Februar 2022",
+    "opgave": 1,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 9,
+    "dokument": "01-E_V",
+    "emne": "Grundlæggende felt-/potentialeopgaver",
+    "type": "Punktladninger: superposition og multipoler",
+    "metode": "Parsum; Coulomb; dipoludvikling"
+  },
+  {
+    "id": "2022-02-2",
+    "eksamen": "Februar 2022",
+    "opgave": 2,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 10,
+    "dokument": "01-E_V",
+    "emne": "Gauss efter geometri",
+    "type": "Cylinder: koaksial leder og dielektrikum",
+    "metode": "Gauss med E og D; potentialeintegral"
+  },
+  {
+    "id": "2022-02-3",
+    "eksamen": "Februar 2022",
+    "opgave": 3,
+    "delspoergsmaal": [
+      "a"
+    ],
+    "kildeside": 10,
+    "dokument": "02-B_A",
+    "emne": "Kraft på strømførende leder",
+    "type": "Lige og krum leder i homogent felt",
+    "metode": "Integreret Lorentzkraft"
+  },
+  {
+    "id": "2022-02-4",
+    "eksamen": "Februar 2022",
+    "opgave": 4,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 11,
+    "dokument": "02-B_A",
+    "emne": "Find B fra strøm og geometri",
+    "type": "Hul/boring i strømleder",
+    "metode": "Ampère; superposition med negativ J"
+  },
+  {
+    "id": "2022-02-5",
+    "eksamen": "Februar 2022",
+    "opgave": 5,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 11,
+    "dokument": "01-E_V",
+    "emne": "Felt ↔ potentiale",
+    "type": "E → V og arbejde",
+    "metode": "Curl; potentiale; arbejde"
+  },
+  {
+    "id": "2022-02-6",
+    "eksamen": "Februar 2022",
+    "opgave": 6,
+    "delspoergsmaal": [
+      "a"
+    ],
+    "kildeside": 11,
+    "dokument": "03-DYN",
+    "emne": "Fast spole + B(t)",
+    "type": "Sinusformet homogent felt",
+    "metode": "Flux; Faraday; Ohm"
+  },
+  {
+    "id": "2022-02-7",
+    "eksamen": "Februar 2022",
+    "opgave": 7,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 12,
+    "dokument": "02-B_A",
+    "emne": "Vektorpotentiale",
+    "type": "A → B og Poissons ligning i cylinder",
+    "metode": "Laplacian; curl; kontinuitet"
+  },
+  {
+    "id": "2022-11-1",
+    "eksamen": "November 2022",
+    "opgave": 1,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 13,
+    "dokument": "01-E_V",
+    "emne": "Grundlæggende felt-/potentialeopgaver",
+    "type": "Punktladninger: nulpunkter og arbejde",
+    "metode": "Superposition; intervalopdeling"
+  },
+  {
+    "id": "2022-11-2",
+    "eksamen": "November 2022",
+    "opgave": 2,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 13,
+    "dokument": "01-E_V",
+    "emne": "Givet felt → ladning",
+    "type": "Kuglesymmetrisk divergens",
+    "metode": "Gauss; sfærisk divergens"
+  },
+  {
+    "id": "2022-11-3",
+    "eksamen": "November 2022",
+    "opgave": 3,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "kildeside": 14,
+    "dokument": "03-DYN",
+    "emne": "Selvinduktion",
+    "type": "Solenoide: selvinduktans, RL-opladning og energi",
+    "metode": "Ampère; fluxkobling; RL-ligning; Joulevarme"
+  },
+  {
+    "id": "2022-11-4",
+    "eksamen": "November 2022",
+    "opgave": 4,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 15,
+    "dokument": "02-B_A",
+    "emne": "Magnetisk dipol",
+    "type": "Roterende ladet ring og skive",
+    "metode": "I=Q/T; m=IA; ringintegration"
+  },
+  {
+    "id": "2022-11-5",
+    "eksamen": "November 2022",
+    "opgave": 5,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 16,
+    "dokument": "02-B_A",
+    "emne": "Magnetiske materialer",
+    "type": "Indfrosset magnetisering i cylinder",
+    "metode": "curl M; M cross normal; Ampère med H"
+  },
+  {
+    "id": "2022-11-6",
+    "eksamen": "November 2022",
+    "opgave": 6,
+    "delspoergsmaal": [
+      "a"
+    ],
+    "kildeside": 16,
+    "dokument": "03-DYN",
+    "emne": "Fast spole + B(t)",
+    "type": "Rumligt ikke-uniformt eksponentialfelt",
+    "metode": "Arealintegral; Faraday"
+  },
+  {
+    "id": "2023-02-1",
+    "eksamen": "Februar 2023",
+    "opgave": 1,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 17,
+    "dokument": "01-E_V",
+    "emne": "Grundlæggende felt-/potentialeopgaver",
+    "type": "Punktladninger: kraft og energi",
+    "metode": "Coulomb; superposition; parenergi"
+  },
+  {
+    "id": "2023-02-2",
+    "eksamen": "Februar 2023",
+    "opgave": 2,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 18,
+    "dokument": "01-E_V",
+    "emne": "Gauss efter geometri",
+    "type": "Kugle: ikke-uniform fri ladning i dielektrikum",
+    "metode": "Gauss med D; polarisation"
+  },
+  {
+    "id": "2023-02-3",
+    "eksamen": "Februar 2023",
+    "opgave": 3,
+    "delspoergsmaal": [
+      "a"
+    ],
+    "kildeside": 18,
+    "dokument": "01-E_V",
+    "emne": "Multipoler",
+    "type": "Quadrupol: felt på aksen",
+    "metode": "Coulomb; Taylorudvikling"
+  },
+  {
+    "id": "2023-02-4",
+    "eksamen": "Februar 2023",
+    "opgave": 4,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 18,
+    "dokument": "02-B_A",
+    "emne": "Vektorpotentiale",
+    "type": "Kartesisk A → B → J og orienteret strøm",
+    "metode": "To curloperationer; fladeintegral"
+  },
+  {
+    "id": "2023-02-5",
+    "eksamen": "Februar 2023",
+    "opgave": 5,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "kildeside": 19,
+    "dokument": "03-DYN",
+    "emne": "Gensidig induktion",
+    "type": "Lang leder og nærliggende rektangulær løkke",
+    "metode": "Trådfelt; fluxintegral; Faraday; sinusmiddel"
+  },
+  {
+    "id": "2023-02-6",
+    "eksamen": "Februar 2023",
+    "opgave": 6,
+    "delspoergsmaal": [
+      "a"
+    ],
+    "kildeside": 20,
+    "dokument": "03-DYN",
+    "emne": "Forskydningsstrøm / Ampère-Maxwell",
+    "type": "Cirkulære kondensatorplader",
+    "metode": "Forskydningsstrøm; Ampère-Maxwell"
+  },
+  {
+    "id": "2023-11-1",
+    "eksamen": "November 2023",
+    "opgave": 1,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 21,
+    "dokument": "01-E_V",
+    "emne": "Grundlæggende felt-/potentialeopgaver",
+    "type": "Punktladninger: ligevægt og energi",
+    "metode": "Kraftbalance; parenergi"
+  },
+  {
+    "id": "2023-11-2",
+    "eksamen": "November 2023",
+    "opgave": 2,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 22,
+    "dokument": "03-DYN",
+    "emne": "Magnetisk energi",
+    "type": "Transmissionslinje af to parallelle strømflader",
+    "metode": "Strømflade; superposition; B²-energi"
+  },
+  {
+    "id": "2023-11-3",
+    "eksamen": "November 2023",
+    "opgave": 3,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 22,
+    "dokument": "03-DYN",
+    "emne": "Maxwell-opgaver",
+    "type": "Givet elektrisk felt med ikke-nul curl",
+    "metode": "Divergens; Faraday"
+  },
+  {
+    "id": "2023-11-4",
+    "eksamen": "November 2023",
+    "opgave": 4,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 23,
+    "dokument": "01-E_V",
+    "emne": "Elektriske materialer",
+    "type": "Leder ved grænse mellem to dielektrika",
+    "metode": "Randbetingelser; Gauss med D; entydighed"
+  },
+  {
+    "id": "2023-11-5",
+    "eksamen": "November 2023",
+    "opgave": 5,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "kildeside": 24,
+    "dokument": "03-DYN",
+    "emne": "Motional EMF + mekanisk feedback",
+    "type": "Faldende ring i feltgradient",
+    "metode": "Faraday; Ohm; mekanisk effekt"
+  },
+  {
+    "id": "2024-02-1",
+    "eksamen": "Februar 2024",
+    "opgave": 1,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "kildeside": 25,
+    "dokument": "01-E_V",
+    "emne": "Grundlæggende felt-/potentialeopgaver",
+    "type": "Kontinuerte ladninger: halvcirkel og diskret sum",
+    "metode": "Coulomb; symmetri; vinkelintegral"
+  },
+  {
+    "id": "2024-02-2",
+    "eksamen": "Februar 2024",
+    "opgave": 2,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 26,
+    "dokument": "01-E_V",
+    "emne": "Elektriske materialer",
+    "type": "Polarisation: bundne volumen- og overfladeladninger",
+    "metode": "P dot normal; minus divergens"
+  },
+  {
+    "id": "2024-02-3",
+    "eksamen": "Februar 2024",
+    "opgave": 3,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 26,
+    "dokument": "02-B_A",
+    "emne": "Kraft på strømførende leder",
+    "type": "Kraft mellem lang leder og rektangulær løkke",
+    "metode": "B fra lang leder; I dl cross B; arbejde"
+  },
+  {
+    "id": "2024-02-4",
+    "eksamen": "Februar 2024",
+    "opgave": 4,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 27,
+    "dokument": "02-B_A",
+    "emne": "Find B fra strøm og geometri",
+    "type": "Massiv cylinder: ikke-uniform J(s)",
+    "metode": "Strømintegral; Ampère"
+  },
+  {
+    "id": "2024-02-5",
+    "eksamen": "Februar 2024",
+    "opgave": 5,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "kildeside": 27,
+    "dokument": "03-DYN",
+    "emne": "Ændrende geometri / areal",
+    "type": "Voksende ligesidet trekant",
+    "metode": "Geometri; Faraday; tidsafhængig modstand; kraft"
+  },
+  {
+    "id": "2024-11-1",
+    "eksamen": "November 2024",
+    "opgave": 1,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 29,
+    "dokument": "01-E_V",
+    "emne": "Spejlingsmetode",
+    "type": "To vinkelrette jordede planer",
+    "metode": "Coulomb; spejling; entydighed"
+  },
+  {
+    "id": "2024-11-2",
+    "eksamen": "November 2024",
+    "opgave": 2,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 30,
+    "dokument": "01-E_V",
+    "emne": "Gauss efter geometri",
+    "type": "Cylinder: ikke-uniform volumenladning",
+    "metode": "Ladningsintegral; Gauss"
+  },
+  {
+    "id": "2024-11-3",
+    "eksamen": "November 2024",
+    "opgave": 3,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 30,
+    "dokument": "02-B_A",
+    "emne": "Biot–Savart-geometrier",
+    "type": "Langt strømførende bånd som sum af tråde",
+    "metode": "Trådintegration; logaritme; grænseudvikling"
+  },
+  {
+    "id": "2024-11-4",
+    "eksamen": "November 2024",
+    "opgave": 4,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 31,
+    "dokument": "03-DYN",
+    "emne": "Strøm og modstand",
+    "type": "Varierende ledningsevne σ(x)",
+    "metode": "Kontinuitet; J=σE; potentialeintegral; Gauss"
+  },
+  {
+    "id": "2024-11-5",
+    "eksamen": "November 2024",
+    "opgave": 5,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 31,
+    "dokument": "03-DYN",
+    "emne": "Gensidig induktion",
+    "type": "Små cirkelløkker på akse og i ækvatorialplan",
+    "metode": "Dipolmoment; dipolfelt; flux; Faraday"
+  },
+  {
+    "id": "2024-11-6",
+    "eksamen": "November 2024",
+    "opgave": 6,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 32,
+    "dokument": "02-B_A",
+    "emne": "Magnetiske materialer",
+    "type": "Toroide med lineær kerne og luftgab",
+    "metode": "Ampère med H; kontinuitet af B"
+  },
+  {
+    "id": "2025-01-1",
+    "eksamen": "Januar 2025",
+    "opgave": 1,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 33,
+    "dokument": "01-E_V",
+    "emne": "Felt ↔ potentiale",
+    "type": "E → V: kartesisk felt",
+    "metode": "Potentialeintegral; divergens"
+  },
+  {
+    "id": "2025-01-2",
+    "eksamen": "Januar 2025",
+    "opgave": 2,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 34,
+    "dokument": "01-E_V",
+    "emne": "Region-for-region",
+    "type": "Koncentriske ledere: felt og energi",
+    "metode": "Gauss; lederbetingelser; feltenergi"
+  },
+  {
+    "id": "2025-01-3",
+    "eksamen": "Januar 2025",
+    "opgave": 3,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 34,
+    "dokument": "01-E_V",
+    "emne": "Grundlæggende felt-/potentialeopgaver",
+    "type": "Kontinuerte ladninger: skive og plan ring",
+    "metode": "Ringintegration; minus gradient"
+  },
+  {
+    "id": "2025-01-4",
+    "eksamen": "Januar 2025",
+    "opgave": 4,
+    "delspoergsmaal": [
+      "a"
+    ],
+    "kildeside": 35,
+    "dokument": "02-B_A",
+    "emne": "Lorentzkraft og partikelbevægelse",
+    "type": "Kartesisk krydsprodukt",
+    "metode": "F=q v cross B"
+  },
+  {
+    "id": "2025-01-5",
+    "eksamen": "Januar 2025",
+    "opgave": 5,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 35,
+    "dokument": "02-B_A",
+    "emne": "Find B fra strøm og geometri",
+    "type": "Flere parallelle ledere og halvcylindrisk strømflade",
+    "metode": "Ampère for enkelttråd; superposition"
+  },
+  {
+    "id": "2025-01-6",
+    "eksamen": "Januar 2025",
+    "opgave": 6,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 36,
+    "dokument": "03-DYN",
+    "emne": "Fast spole + B(t)",
+    "type": "Eksponentielt felt med konstant offset",
+    "metode": "Fluxkobling; Faraday; Jouleintegral; resistivitet"
+  },
+  {
+    "id": "2025-11-1",
+    "eksamen": "November 2025",
+    "opgave": 1,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 37,
+    "dokument": "01-E_V",
+    "emne": "Spejlingsmetode",
+    "type": "En ledende plan og to virkelige ladninger",
+    "metode": "Coulomb; spejlingsmetode"
+  },
+  {
+    "id": "2025-11-2",
+    "eksamen": "November 2025",
+    "opgave": 2,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 38,
+    "dokument": "01-E_V",
+    "emne": "Felt ↔ potentiale",
+    "type": "V → E → rho: sfærisk logaritme",
+    "metode": "Gradient; divergens; ladningsintegral"
+  },
+  {
+    "id": "2025-11-3",
+    "eksamen": "November 2025",
+    "opgave": 3,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 38,
+    "dokument": "01-E_V",
+    "emne": "Region-for-region",
+    "type": "Koncentriske ledere: potentialnul og dielektrikum",
+    "metode": "Gauss med D; potentialeintegral"
+  },
+  {
+    "id": "2025-11-4",
+    "eksamen": "November 2025",
+    "opgave": 4,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 39,
+    "dokument": "02-B_A",
+    "emne": "Find B fra strøm og geometri",
+    "type": "Massiv cylinder og linseformet hulrum",
+    "metode": "Ampère; superposition"
+  },
+  {
+    "id": "2025-11-5",
+    "eksamen": "November 2025",
+    "opgave": 5,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "kildeside": 40,
+    "dokument": "03-DYN",
+    "emne": "Motional EMF + mekanisk feedback",
+    "type": "Batteridrevet stang med mod-EMF",
+    "metode": "Kredsligning; Newton; separabel ODE; energiintegral"
+  },
+  {
+    "id": "2026-01-1",
+    "eksamen": "Januar 2026",
+    "opgave": 1,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 41,
+    "dokument": "01-E_V",
+    "emne": "Multipoler",
+    "type": "Dipol: to punkter og to ladede kvartbuer",
+    "metode": "Coulomb; bueintegration; dipolmoment"
+  },
+  {
+    "id": "2026-01-2",
+    "eksamen": "Januar 2026",
+    "opgave": 2,
+    "delspoergsmaal": [
+      "a",
+      "b"
+    ],
+    "kildeside": 42,
+    "dokument": "01-E_V",
+    "emne": "Kapacitans og elektrisk energi",
+    "type": "Pladekondensator med dielektrikum",
+    "metode": "C=εA/d; Q=CV; energi"
+  },
+  {
+    "id": "2026-01-2",
+    "eksamen": "Januar 2026",
+    "opgave": 2,
+    "delspoergsmaal": [
+      "c",
+      "d"
+    ],
+    "kildeside": 42,
+    "dokument": "03-DYN",
+    "emne": "Strøm og modstand",
+    "type": "RC-afladning og magnetisk kraft",
+    "metode": "Kirchhoff; separabel ODE; trådfelt"
+  },
+  {
+    "id": "2026-01-3",
+    "eksamen": "Januar 2026",
+    "opgave": 3,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 43,
+    "dokument": "03-DYN",
+    "emne": "Fast spole + B(t)",
+    "type": "Cylinderkoordinater: vinkel- og radiusafhængigt felt",
+    "metode": "Polært arealintegral; Faraday; periodeintegral"
+  },
+  {
+    "id": "2026-01-4",
+    "eksamen": "Januar 2026",
+    "opgave": 4,
+    "delspoergsmaal": [
+      "a"
+    ],
+    "kildeside": 43,
+    "dokument": "02-B_A",
+    "emne": "Vektorpotentiale",
+    "type": "Kartesiske og cylindriske udtryk for samme A",
+    "metode": "Curl; basisskift"
+  },
+  {
+    "id": "2026-01-5",
+    "eksamen": "Januar 2026",
+    "opgave": 5,
+    "delspoergsmaal": [
+      "a",
+      "b",
+      "c"
+    ],
+    "kildeside": 43,
+    "dokument": "01-E_V",
+    "emne": "Laplace / randværdiproblemer",
+    "type": "Kugle: Legendre og quadrupolrandværdi",
+    "metode": "Separation; Legendre; gradient"
+  }
+]
