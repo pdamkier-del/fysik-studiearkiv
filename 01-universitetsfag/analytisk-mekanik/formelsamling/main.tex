@@ -1,8 +1,31 @@
-\documentclass[11pt,a4paper,oneside]{book}
-\usepackage{90-faelles/latex/studiearkiv}
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage[margin=26mm,headheight=15pt,footskip=12mm]{geometry}
+\usepackage{fontspec}\setmainfont{Latin Modern Roman}
+\usepackage[danish]{babel}\usepackage{amsmath,amssymb,mathtools,booktabs,array,microtype,xcolor,tikz,pgfplots,fancyhdr,hyperref,titlesec,enumitem,longtable}
+\pgfplotsset{compat=1.18}
+\definecolor{accent}{HTML}{315D77}\definecolor{rulegray}{HTML}{CFD8DD}
+\hypersetup{colorlinks=true,linkcolor=accent,bookmarksnumbered=true,pdfauthor={Fysik-studiearkiv},pdftitle={Analytisk Mekanik – Formelsamling}}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}\setlength{\emergencystretch}{3em}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small\textsc{Analytisk mekanik}}\fancyhead[R]{\small\color{accent} Formelsamling}\fancyfoot[L]{\footnotesize Definitioner \textperiodcentered\ metode \textperiodcentered\ kontrol}\fancyfoot[R]{\footnotesize\thepage}\renewcommand{\headrulewidth}{0.35pt}
+\titleformat{\section}{\Large\bfseries\color{accent}}{\thesection}{0.9em}{}[\vspace{-3pt}\color{rulegray}\titlerule]
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.65em}{}
+\titlespacing*{\section}{0pt}{17pt}{10pt}\titlespacing*{\subsection}{0pt}{15pt}{6pt}
+\newcommand{\dd}{\mathrm d}\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}\newcommand{\od}[2]{\frac{\dd #1}{\dd #2}}\newcommand{\vv}[1]{\boldsymbol{#1}}\newcommand{\PB}[2]{\left\{#1,#2\right\}}
+\newcommand{\key}[1]{\par\medskip\begingroup\color{accent}\rule{\linewidth}{0.4pt}\par\vspace{3pt}\color{black}\ensuremath{\displaystyle #1}\par\vspace{3pt}\color{accent}\rule{\linewidth}{0.4pt}\endgroup\medskip}
+\newenvironment{method}{\par\smallskip\noindent\textbf{Fremgangsmåde.}\ }{\par\smallskip}
+\newenvironment{note}{\par\smallskip\noindent\textcolor{accent}{\textbf{Bemærk.}}\ }{\par\smallskip}
 \begin{document}
-\title{Formelsamling}
-\author{Fysik-studiearkiv}\date{\today}\maketitle\tableofcontents
-\chapter{Status og afgrænsning}
-Skabelon uden fagligt indhold. Originale noter integreres først, når de foreligger.
+
+{\huge\bfseries Analytisk Mekanik}\par\vspace{5pt}
+{\Large\color{accent}Formelsamling og opgavemetoder}\par\medskip
+\textit{Definitioner, anvendelige komponentformler og sammenhængende metoder.}
+\vspace{5pt}\tableofcontents\clearpage
+\input{chapters/01.tex}
+\input{chapters/02.tex}
+\input{chapters/03.tex}
+\input{chapters/04.tex}
+\input{chapters/05.tex}
+\input{chapters/06.tex}
+\input{chapters/07.tex}
+\input{chapters/08.tex}
 \end{document}
