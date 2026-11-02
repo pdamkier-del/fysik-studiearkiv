@@ -1,0 +1,40 @@
+\clearpage\section{Hamiltonformalismen}
+\subsection{Legendretransformation og Hamiltons EOM}
+Find $p_i=\partial\mathcal L/\partial\dot q_i$, løs $\dot q_i(q,p,t)$, og definér Hamiltonfunktionen
+\key{H(q,p,t)=\sum_i p_i\dot q_i-\mathcal L,\qquad \dot q_i=\pd H{p_i},\quad\dot p_i=-\pd H{q_i}.}
+\begin{method}Givet $H$: beregn de to partielle afledte; find $\dot q,\dot p$; hvis opgaven kræver en andenordens EOM, differentier $\dot q$ og eliminer $p$ ved brug af begge Hamiltonligninger. Kontroller ved tilbageindsættelse.\end{method}
+
+
+\subsubsection*{Fire trin: den omvendte hastighed--impuls-relation}
+\begin{method}\textbf{1.} Differentier den givne $\mathcal L(q,\dot q,t)$: $p_i=\partial\mathcal L/\partial\dot q_i$. \textbf{2.} Isolér $\dot q_i=\dot q_i(q,p,t)$ \emph{fra impulsligningen}. \textbf{3.} Indsæt hastighederne alle steder i $H=\sum_i p_i\dot q_i-\mathcal L$, også inde i $\mathcal L$. \textbf{4.} Find eventuelt EOM fra $\dot q_i=\partial H/\partial p_i$ og $\dot p_i=-\partial H/\partial q_i$.\end{method}
+For $\mathcal L=\tfrac12m\dot q^2+a(q,t)\dot q-V(q,t)$:
+\[p=m\dot q+a(q,t)\ \Rightarrow\ \dot q=\frac{p-a(q,t)}m\ \Rightarrow\ \boxed{H=\frac{[p-a(q,t)]^2}{2m}+V(q,t)}.\]
+\textbf{Kædereglen:} Ved $\partial H/\partial q$ holdes $p,t$ faste; ved $\partial H/\partial p$ holdes $q,t$ faste. Ved total tidsafledning indgår også $q(t)$: $\mathrm d[tV'(q(t))]/\mathrm dt=V'(q)+tV''(q)\dot q$. Den almindelige Legendretransformation kræver, at impulsligningerne kan inverteres lokalt.
+
+\subsection{Legendretransformationen i et konkret mekanisk system}
+For $\mathcal L=\tfrac12m\dot q^2-V(q)$ er $p=m\dot q$. Inversion giver $\dot q=p/m$ og dermed
+\[H(q,p)=p\frac pm-\left(\frac12m\frac{p^2}{m^2}-V(q)\right)=\frac{p^2}{2m}+V(q).\]
+Hamiltonligningerne bliver $\dot q=p/m$, $\dot p=-V'(q)$, så $m\ddot q=-V'(q)$; dette er en direkte konsistenskontrol. Hvis Hessianen $\partial^2\mathcal L/\partial\dot q_i\partial\dot q_j$ er singulær, kan hastighederne ikke nødvendigvis elimineres, og den almindelige Legendretransformation er ikke regulær.
+
+\subsection{Tidsudvikling og bevarelse}
+For $F(q,p,t)$ langs Hamiltons bevægelse gælder
+\[\od Ft=\PB FH+\pd Ft,\qquad \od Ht=\pd Ht.\]
+En størrelses $F$ bevarelse kræver $\PB FH+\partial F/\partial t=0$ langs bevægelsen.
+\subsection{Hamiltons ligninger på matrixform og fasevirkningen}
+Med $z=(q_1,\dots,q_n,p_1,\dots,p_n)^T$ og $J=\bigl(\begin{smallmatrix}0&I\\-I&0\end{smallmatrix}\bigr)$:
+\[\dot z=J\nabla_z H,\qquad S[q,p]=\int\left(\sum_i p_i\dot q_i-H\right)\dd t.\]
+
+
+\subsection{Roterende Hamiltonfunktion}
+Når rotationshastigheden er konstant og $\vv p_R=m(\vv v_R+\vv\Omega\times\vv r)$, giver Legendretransformationen
+\[H_R=\vv p_R\cdot\vv v_R-\mathcal L_R=\frac{|\vv p_R|^2}{2m}+V-\vv\Omega\cdot(\vv r\times\vv p_R).\]
+Altså $H_R=H_{\rm inertiel}-\vv\Omega\cdot\vv L$ i den tilsvarende kanoniske beskrivelse. For eksplicit tidsafhængig $\vv\Omega$ kræves særlig omhu med koordinattransformationen og potentiellets tidsafhængighed.
+
+\subsection{Udledning af Hamiltons ligninger fra fasevirkningen}
+Variér $S[q,p]=\int_{t_1}^{t_2}(\sum_i p_i\dot q_i-H)\,\dd t$, med $\delta q_i(t_1)=\delta q_i(t_2)=0$ og uafhængige variationer $\delta p_i$:
+\[\delta S=\int\sum_i\left[\delta p_i\dot q_i+p_i\delta\dot q_i-\pd H{q_i}\delta q_i-\pd H{p_i}\delta p_i\right]\dd t.\]
+Ved integration ved dele af $p_i\delta\dot q_i$ forsvinder randleddene, og
+\[\delta S=\int\sum_i\left[\left(\dot q_i-\pd H{p_i}\right)\delta p_i-\left(\dot p_i+\pd H{q_i}\right)\delta q_i\right]\dd t.\]
+Uafhængigheden af variationerne giver Hamiltons to ligninger.
+
+
