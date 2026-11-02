@@ -12,7 +12,7 @@ Hver parentes rummer summen over $k=1,2$ af afledte i $(q_k,p_k)$.
 \key{\PB FG=\sum_{k=1}^n\left(\pd F{q_k}\pd G{p_k}-\pd F{p_k}\pd G{q_k}\right).}
 \[\PB F{q_i}=-\pd F{p_i},\qquad\PB F{p_i}=\pd F{q_i},\qquad\PB FG=-\PB GF.\]
 \begin{note}Eksempel fra rotationsgeneratoren, jf. afsnit~\ref{sec:angular}: $L_x=yp_z-zp_y$, derfor $\{L_x,y\}=-\partial L_x/\partial p_y=z$ og $\{L_x,p_y\}=\partial L_x/\partial y=p_z$.\end{note}
-\subsection{Genererende funktioner $F_1$--$F_4$}
+\subsection{Genererende funktioner: fire typer}
 Alle fire typer antages at definere en lokalt invertibel kanonisk transformation. I en standardkonvention:
 \begin{center}\begin{tabular}{llll}\toprule Type & Variable & Gammel impuls/koordinat & Ny impuls/koordinat\\\midrule
 $F_1$&$(q,Q,t)$&$p=\partial_qF_1$&$P=-\partial_QF_1$\\
@@ -20,7 +20,7 @@ $F_2$&$(q,P,t)$&$p=\partial_qF_2$&$Q=\partial_PF_2$\\
 $F_3$&$(p,Q,t)$&$q=-\partial_pF_3$&$P=-\partial_QF_3$\\
 $F_4$&$(p,P,t)$&$q=-\partial_pF_4$&$Q=\partial_PF_4$\\\bottomrule\end{tabular}\end{center}
 For alle typer er $K=H+\partial F_a/\partial t$ med den afledte taget ved fastholdte \emph{uafhængige argumenter til den valgte type}.
-\subsection{Den transformerede Hamiltonfunktion $\widetilde H(Q,P,t)$}\label{sec:newH}
+\subsection{Den transformerede Hamiltonfunktion}\label{sec:newH}
 \begin{method}\textbf{1.} Identificér transformationen og den korrekte genererende funktion $F_a$. \textbf{2.} Beregn $\partial F_a/\partial t$ ved fastholdte argumenter. \textbf{3.} Invertér for $q=q(Q,P,t)$ og $p=p(Q,P,t)$. \textbf{4.} Indsæt begge i den oprindelige $H$ og tilføj tidsleddet.\end{method}
 \key{\widetilde H(Q,P,t)=H(q,p,t)+\left.\pd{F_a}{t}\right|_{\text{egne argumenter}}.}
 Her skal højresiden til sidst omskrives til $(Q,P,t)$. Hvis $F_a$ er \emph{eksplicit} tidsuafhængig, er tidsleddet nul, men $H$ skal stadig omskrives til $(Q,P)$.
