@@ -1,0 +1,15 @@
+\clearpage\section{Fra Newton til generaliserede koordinater}
+\subsection{Arbejde, potentiale og generaliserede kræfter}
+Ved en infinitesimal forskydning er $\dd W=\vv F\cdot \dd\vv r$. For en konservativ kraft kan der vælges et potentiale $V$ således, at $\vv F=-\nabla V$. Med $\vv r_a=\vv r_a(q_1,\ldots,q_n,t)$ er
+\begin{align}
+\delta\vv r_a&=\sum_i\pd{\vv r_a}{q_i}\delta q_i,&\delta W&=\sum_i Q_i\delta q_i,\\[-2pt]
+Q_i&=\sum_a\vv F_a\cdot\pd{\vv r_a}{q_i},&Q_i^{\rm kons}&=-\pd V{q_i}.
+\end{align}
+\begin{note}Generaliserede kræfter har ikke nødvendigvis enheden newton: en vinkelkoordinat har eksempelvis drejningsmoment som tilhørende generaliseret kraft.\end{note}
+\subsection{Bindinger og koordinatvalg}
+En holonom binding skrives $f_\alpha(q,t)=0$; en tidsuafhængig binding er skleronom, en eksplicit tidsafhængig er reonom. Bindinger kan enten løses på forhånd ved et egnet koordinatvalg eller indføres via multiplikatorer (afsnit~\ref{sec:lambda}).
+\begin{center}\begin{tabular}{lll}\toprule System & Binding & Frie koordinater \\\midrule
+Partikel på cirkel & $x^2+y^2=R^2$ & $\phi$\\
+Pendul i plan & $x^2+y^2=\ell^2$ & $\phi$\\
+Partikel på kugle & $x^2+y^2+z^2=R^2$ & $(\theta,\phi)$\\\bottomrule\end{tabular}\end{center}
+
