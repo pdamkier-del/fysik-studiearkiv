@@ -5,6 +5,24 @@ Find $p_i=\partial\mathcal L/\partial\dot q_i$, løs $\dot q_i(q,p,t)$, og defin
 \begin{method}Givet $H$: beregn de to partielle afledte; find $\dot q,\dot p$; hvis opgaven kræver en andenordens EOM, differentier $\dot q$ og eliminer $p$ ved brug af begge Hamiltonligninger. Kontroller ved tilbageindsættelse.\end{method}
 
 
+\subsubsection*{Hvorfor Legendretransformationen giver Hamiltons ligninger}
+Antag en regulær Lagrangefunktion $\mathcal L(q_i,\dot q_i,t)$, hvor $p_i=\partial\mathcal L/\partial\dot q_i$ kan inverteres til $\dot q_i(q,p,t)$. Udgangspunktet er
+\[H(q,p,t)=\sum_i p_i\dot q_i-\mathcal L(q,\dot q,t).\]
+Produktreglen og det totale differential giver
+\begin{align*}
+\dd H&=\sum_i\bigl(\dot q_i\,\dd p_i+p_i\,\dd\dot q_i\bigr)-\dd\mathcal L,\\
+\dd\mathcal L&=\sum_i\left(\pd{\mathcal L}{q_i}\,\dd q_i+\pd{\mathcal L}{\dot q_i}\,\dd\dot q_i\right)+\pd{\mathcal L}{t}\,\dd t.
+\end{align*}
+Da $p_i=\partial\mathcal L/\partial\dot q_i$, annullerer leddene med $\dd\dot q_i$ hinanden:
+\[\boxed{\dd H=\sum_i\left(\dot q_i\,\dd p_i-\pd{\mathcal L}{q_i}\,\dd q_i\right)-\pd{\mathcal L}{t}\,\dd t.}\]
+Men fordi $H=H(q,p,t)$, gælder samtidig
+\[\dd H=\sum_i\left(\pd H{q_i}\,\dd q_i+\pd H{p_i}\,\dd p_i\right)+\pd Ht\,\dd t.\]
+Sammenligning af koefficienter giver $\partial H/\partial p_i=\dot q_i$, $\partial H/\partial q_i=-\partial\mathcal L/\partial q_i$ og $\partial H/\partial t=-\partial\mathcal L/\partial t$. Med Euler--Lagrange,
+$\dd(\partial\mathcal L/\partial\dot q_i)/\dd t=\partial\mathcal L/\partial q_i$, fås derfor
+\key{\dot q_i=\pd H{p_i},\qquad\dot p_i=-\pd H{q_i}.}
+Dette er samme metode i et variationsproblem med $\mathcal L\to f$, $H\to g$, $q\to y$, $p\to z$ og $t\to x.
+
+
 \subsubsection*{Fire trin: den omvendte hastighed--impuls-relation}
 \begin{method}\textbf{1.} Differentier den givne $\mathcal L(q,\dot q,t)$: $p_i=\partial\mathcal L/\partial\dot q_i$. \textbf{2.} Isolér $\dot q_i=\dot q_i(q,p,t)$ \emph{fra impulsligningen}. \textbf{3.} Indsæt hastighederne alle steder i $H=\sum_i p_i\dot q_i-\mathcal L$, også inde i $\mathcal L$. \textbf{4.} Find eventuelt EOM fra $\dot q_i=\partial H/\partial p_i$ og $\dot p_i=-\partial H/\partial q_i$.\end{method}
 For $\mathcal L=\tfrac12m\dot q^2+a(q,t)\dot q-V(q,t)$:
