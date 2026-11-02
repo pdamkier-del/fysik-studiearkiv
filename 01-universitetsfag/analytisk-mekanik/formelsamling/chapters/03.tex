@@ -9,6 +9,7 @@ Da $\phi$ er cyklisk, gælder
 \[\boxed{\ell=\frac{\partial\mathcal L}{\partial\dot\phi}=\mu r^{2}\dot\phi=\mathrm{konstant}},\qquad\frac{\mathrm dA}{\mathrm dt}=\frac{\ell}{2\mu}.\]
 For én partikel om et fast kraftcentrum erstattes $\mu$ af dens masse $m$.
 
+
 \subsection{Det effektive potentiale: hvad bestemmer det?}\label{sec:veff}
 \key{E=\frac12\mu\dot r^2+V_{\rm eff}(r),\qquad V_{\rm eff}(r)=V(r)+\frac{\ell^2}{2\mu r^2}.}
 Den radiale bevægelse svarer til én dimension med et effektivt potentiale. Centrifugalleddet er ikke et nyt fysisk potentiale, men kommer fra den bevarede vinkelbevægelse.
@@ -25,7 +26,11 @@ Er en begrænset bane lukket? & Kræver også $\Delta\phi_{\rm radial}/(2\pi)\in
 \addplot[accent,thick]{1/(2*x*x)-1/x};\addlegendentry{$-k/r+\ell^2/(2\mu r^2)$ (skaleret)}
 \addplot[black!65,dashed,domain=.55:5.9]{-.18};\addlegendentry{$E$ (eksempel)}
 \addplot[only marks,mark=*,mark size=1.5pt] coordinates {(.556,-.18) (5,-.18)};
+\node[anchor=north,font=\scriptsize] at (axis cs:.556,-.18) {$r_{\min}$};
+\node[anchor=north,font=\scriptsize] at (axis cs:5,-.18) {$r_{\max}$};
+\node[anchor=north,font=\scriptsize] at (axis cs:1,-.5) {$r_0$};
 \end{axis}\end{tikzpicture}\\[-1mm]{\small \itshape Et Kepler-eksempel: skæringer med energilinjen giver de radiale vendepunkter. Figuren er skematisk og dimensionsløs.}\end{center}
+
 
 \subsection{Cirkulære baner og stabilitet}\label{sec:circular}
 Radialligningen er
@@ -36,6 +41,7 @@ En cirkelbane har konstant $r=r_0$ og opfylder $V_{\rm eff}'(r_0)=0$. Sæt $r=r_
 \textbf{Potenspotentiale:} Hvis $V=-a/r^{\alpha}$ med $a>0$, fås fra $V_{\rm eff}'(r_0)=0$
 \[\frac{\ell^2}{\mu}=a\alpha r_0^{2-\alpha},\qquad V_{\rm eff}''(r_0)=\frac{\ell^2}{\mu r_0^4}(2-\alpha).\]
 Altså er en eksisterende cirkelbane lineært stabil for $0<\alpha<2$ og ustabil for $\alpha>2$ (for $\alpha=2$ kræves særskilt analyse). Dette er \emph{ikke} en Kepler-specifik excentricitetsregel.
+
 
 \subsection{Binet: fra $r(t)$ til $u(\phi)$}\label{sec:binet}
 Sæt $u(\phi)=1/r$ og lad prim betegne afledning efter $\phi$, punkt efter $t$. Under bevaret $\ell\ne0$:
@@ -49,11 +55,16 @@ Fra kædereglen $\dot r=(\mathrm dr/\mathrm d\phi)\dot\phi$ får man $\dot r=-\e
 \key{u''+u=-\frac{\mu}{\ell^2u^2}F(1/u),\qquad r(\phi)=\frac{1}{u(\phi)}.}
 Samtidig er energiudtrykket
 \[\boxed{E=\frac{\ell^2}{2\mu}\big[(u')^2+u^2\big]+V(1/u)}.\]
+\textbf{Genkend ODE-typen:} For eksempel giver en kraft $F(r)=-\mu A/r^3$ ligningen
+\[u''+\left(1-\frac{\mu^2A}{\ell^2}\right)u=0.\]
+Koefficientens fortegn afgør, om løsningen er trigonometrisk ($>0$), lineær ($=0$) eller hyperbolsk/eksponentiel ($<0$). De generelle konstanter bestemmes derefter af energien og begyndelsesdata; en $\cosh$-form repræsenterer kun bestemte integrationskonstanter.
 \begin{method}Ud fra en radialkraft: find $F(1/u)$, opstil Binet-ODE'en, klassificér differentialligningen (harmonisk, eksponentiel osv.), løs $u(\phi)$, og brug energien eller begyndelsesdata til at bestemme integrationskonstanter.\end{method}
+
 
 \subsection{Keplerbaner: energi, excentricitet og banetype}\label{sec:kepler}
 \textbf{Kun for} $V(r)=-k/r$, $k>0$, gælder
 \[u''+u=\frac{\mu k}{\ell^2},\qquad\boxed{r(\phi)=\frac{p}{1+e\cos(\phi-\phi_0)},\quad p=\frac{\ell^2}{\mu k}},\qquad\boxed{e=\sqrt{1+\frac{2E\ell^2}{\mu k^2}}}.\]
+Ved fast $\ell\neq0$ er den mindste mulige Keplerenergi $E_{\min}=-\mu k^2/(2\ell^2)$, og $e=0$ netop når $E=E_{\min}$. En negativ energi alene er ikke et universelt kriterium for bundne baner ved vilkårlige potentialer.
 \begin{center}\small\renewcommand{\arraystretch}{1.18}\begin{tabular}{lll}\toprule Energi $E$ & Excentricitet $e$ & Banetype\\\midrule
 $E<0$ & $0\le e<1$ & Ellipse (cirkel ved $e=0$)\\
 $E=0$ & $e=1$ & Parabel\\
@@ -80,6 +91,7 @@ $E>0$ & $e>1$ & Hyperbel\\\bottomrule\end{tabular}\end{center}
 \end{tikzpicture}\\{\small\itshape Keplerellipsens fokus ligger forskudt fra ellipsens centrum.}\end{center}
 \textbf{Ellipseformler:} $E=-k/(2a)$, $r_{\min}=a(1-e)$, $r_{\max}=a(1+e)$, og Keplers tredje lov er $T^2=4\pi^2\mu a^3/k$. Arealloven $\dot A=\ell/(2\mu)$ gælder derimod for enhver central kraft.
 
+
 \subsection{Udledning og kontrol af excentriciteten}
 Med $V=-ku$ og $\dot r=-\ell u'/\mu$ er
 \[E=\frac{\ell^2}{2\mu}[(u')^2+u^2]-ku.\]
@@ -87,28 +99,18 @@ Sæt $u=(\mu k/\ell^2)(1+e\cos\phi)$ (periapsis ved $\phi=0$):
 \[E=\frac{\mu k^2}{2\ell^2}\big[e^2\sin^2\phi+(1+e\cos\phi)^2-2(1+e\cos\phi)\big]=\frac{\mu k^2}{2\ell^2}(e^2-1).\]
 Det giver excentricitetsformlen ovenfor. Ellipsens areal $\pi ab$ og $b^2=ap$ sammen med arealhastigheden giver $T^2=4\pi^2\mu a^3/k$.
 
-\subsection{Radialperiode, lukning og præcession}
-Hvis der findes to radiale vendepunkter, er vinkelændringen mellem dem
-\[\Delta\phi_{1/2}=\int_{r_{\min}}^{r_{\max}}\frac{\ell\,\mathrm dr}{r^2\sqrt{2\mu[E-V_{\rm eff}(r)]}},\qquad\Delta\phi_{\rm radial}=2\Delta\phi_{1/2}.\]
-En bane er lukket, når $\Delta\phi_{\rm radial}/(2\pi)$ er rationalt. Ved Keplerpotentialet er den $1$, mens andre centralpotentialer kan give præcession. Forskydning fra én periapsis til den næste er $\Delta\phi_{\rm radial}-2\pi$ ved sammenligning med én fuld omdrejning.
 
-\subsection{Modificeret Keplerpotentiale og præcession}
-For $F(r)=-k/r^2+\gamma/r^3$ med $k>0$ svarer potentialet til $V(r)=-k/r+\gamma/(2r^2)$. Binet giver
-\[u''+\left(1+\frac{\mu\gamma}{\ell^2}\right)u=\frac{\mu k}{\ell^2}.\]
-Sæt $\nu^2=1+\mu\gamma/\ell^2>0$. En oscillerende løsning er
-\[\boxed{r(\phi)=\frac{\ell^2\nu^2/(\mu k)}{1+e\cos[\nu(\phi-\phi_0)]}},\qquad
-\Delta\phi_{\rm radial}=\frac{2\pi}{\nu}.\]
-For $\nu\ne1$ er den næste periapsis generelt forskudt i forhold til én fuld omdrejning; banen er kun lukket for rationelle forhold mellem radial- og vinkelperioderne. Ved en næsten cirkulær bane er $\Delta\phi_{\rm radial}\simeq2\pi\omega_\phi/\omega_r$, hvor $\omega_\phi=\ell/(\mu r_0^2)$.
+\subsection{Keplers tre love og periodetid}
+\textbf{Første lov:} For et attraktivt Keplerpotentiale og $E<0$ er banen en ellipse med kraftcentrum i det ene brændpunkt (inklusive cirkelgrænsen $e=0$).
 
-\subsection{Scattering og virialsætning}
-Ved asymptotisk hastighed $v_\infty$ og anslagsparameter $b$ er $E=\tfrac12\mu v_\infty^2$, $\ell=\mu v_\infty b$. For en enkeltvendepunktsbane kan afbøjningsvinklen findes fra
-\[\phi_0=\int_{r_{\min}}^\infty\frac{\ell\,\mathrm dr}{r^2\sqrt{2\mu[E-V_{\rm eff}(r)]}},\qquad\Theta=\pi-2\phi_0,\]
-med valgt fortegnskonvention. Det differentielle tværsnit er $\mathrm d\sigma/\mathrm d\Omega=(b/\sin\Theta)|\mathrm db/\mathrm d\Theta|$ for én gren; summer over grene, hvis flere $b$ giver samme $\Theta$.
-For en bundet Keplerbane med $V=-k/r$ følger særligt $\langle T\rangle=-E$ og $\langle V\rangle=2E$, hvor $E<0$. Virialen $G=\mathbf r\cdot\mathbf p$ er i sig selv generelt ikke bevaret: $G>0$ når afstanden vokser og $G<0$ når den aftager.
+\textbf{Anden lov:} For enhver central kraft (ikke kun $1/r^2$) er arealhastigheden konstant, $\mathrm dA/\mathrm dt=\ell/(2\mu)$. Dette er den geometriske formulering af bevaret impulsmoment.
 
-For en bundet bevægelse med veldefineret langtidsgennemsnit sættes $G=\vv r\cdot\vv p$, så
-\[\frac{\mathrm dG}{\mathrm dt}=2T-\vv r\cdot\nabla V,\qquad2\langle T\rangle=\langle\vv r\cdot\nabla V\rangle.\]
-Ved homogent $V\propto r^n$ giver det $2\langle T\rangle=n\langle V\rangle$.
+\textbf{Tredje lov:} For en Keplerellipse er det overstrøgne areal $A=\pi ab$ med $b^2=a^2(1-e^2)=ap$. Af arealloven fås
+\[T=\frac{A}{\dot A}=\frac{2\pi\mu ab}{\ell},\qquad
+T^2=\frac{4\pi^2\mu^2a^2b^2}{\ell^2}=\frac{4\pi^2\mu a^3}{k}.\]
+For Newtonsk gravitation $k=Gm_1m_2$ og $\mu/k=1/[G(m_1+m_2)]$:
+\[\boxed{T^2=\frac{4\pi^2a^3}{G(m_1+m_2)}}.\]
+Denne periodeformel gælder for bundne Keplerellipser, ikke for alle centralpotentialer.
 
 \subsection{Laplace--Runge--Lenz-vektoren}
 \begin{center}\begin{tikzpicture}[scale=.72]
@@ -120,3 +122,45 @@ For $V=-k/r$ er den bevarede vektor $\vv A=\vv p\times\vv L-\mu k\hat{\vv r}$ me
 \[\dot{\vv p}\times\vv L=\mu k\left(\frac{\dot{\vv r}}r-\frac{\vv r(\vv r\cdot\dot{\vv r})}{r^3}\right)=\mu k\frac{\mathrm d\hat{\vv r}}{\mathrm dt},\]
 så $\dot{\vv A}=0$. Desuden er $\vv A\cdot\vv r=\ell^2-\mu kr$, som giver banens polarform med periapsis i retning af $\vv A$.
 
+
+\subsection{Virialsætningen og tidsmidler}
+\textbf{Hvorfor indføre virialen?} Definér $G(t)=\mathbf r(t)\cdot\mathbf p(t)=\mu r\dot r$. Det er en hjælpefunktion, ikke en generelt bevaret størrelse. Ved udadgående bevægelse er $G>0$, indadgående $G<0$, og i et radialt vendepunkt er $G=0$.
+For en bundet bevægelse med veldefineret langtidsgennemsnit sættes $G=\vv r\cdot\vv p$, så
+\[\frac{\mathrm dG}{\mathrm dt}=2T-\vv r\cdot\nabla V,\qquad2\langle T\rangle=\langle\vv r\cdot\nabla V\rangle.\]
+Ved homogent $V\propto r^n$ giver det $2\langle T\rangle=n\langle V\rangle$.
+
+For en periodisk bane er $\langle\dot G\rangle=[G(T)-G(0)]/T=0$; for en generel bundet bane kræves blot, at det langsigtede randbidrag $[G(T)-G(0)]/T$ forsvinder. For et bundet Keplersystem ($V=-k/r$) følger med $E=\langle T\rangle+\langle V\rangle$:
+\[\boxed{\langle T\rangle=-E,\qquad\langle V\rangle=2E},\qquad E<0.\]
+
+\subsection{Modificeret Keplerpotentiale og præcession}
+For $F(r)=-k/r^2+\gamma/r^3$ med $k>0$ svarer potentialet til $V(r)=-k/r+\gamma/(2r^2)$. Binet giver
+\[u''+\left(1+\frac{\mu\gamma}{\ell^2}\right)u=\frac{\mu k}{\ell^2}.\]
+Sæt $\nu^2=1+\mu\gamma/\ell^2>0$. En oscillerende løsning er
+\[\boxed{r(\phi)=\frac{\ell^2\nu^2/(\mu k)}{1+e\cos[\nu(\phi-\phi_0)]}},\qquad
+\Delta\phi_{\rm radial}=\frac{2\pi}{\nu}.\]
+For $\nu\ne1$ er den næste periapsis generelt forskudt i forhold til én fuld omdrejning; banen er kun lukket for rationelle forhold mellem radial- og vinkelperioderne. Ved en næsten cirkulær bane er $\Delta\phi_{\rm radial}\simeq2\pi\omega_\phi/\omega_r$, hvor $\omega_\phi=\ell/(\mu r_0^2)$.
+
+
+\subsection{Radialperiode, lukning og præcession}
+Hvis der findes to radiale vendepunkter, er vinkelændringen mellem dem
+\[\Delta\phi_{1/2}=\int_{r_{\min}}^{r_{\max}}\frac{\ell\,\mathrm dr}{r^2\sqrt{2\mu[E-V_{\rm eff}(r)]}},\qquad\Delta\phi_{\rm radial}=2\Delta\phi_{1/2}.\]
+En bane er lukket, når $\Delta\phi_{\rm radial}/(2\pi)$ er rationalt. Ved Keplerpotentialet er den $1$, mens andre centralpotentialer kan give præcession. Forskydning fra én periapsis til den næste er $\Delta\phi_{\rm radial}-2\pi$ ved sammenligning med én fuld omdrejning.
+
+
+\subsection{Scattering i centralfelter}
+For en indkommende ubundet bane i et potentiale med $V(\infty)=0$ er $r_{\min}$ det største positive nulpunkt i $E-V_{\rm eff}(r)=0$. \emph{Anslagsparameteren} $b$ er den vinkelrette afstand mellem kraftcentrum og den uforstyrrede indkommende asymptote.
+Ved asymptotisk hastighed $v_\infty$ og anslagsparameter $b$ er $E=\tfrac12\mu v_\infty^2$, $\ell=\mu v_\infty b$. For en enkeltvendepunktsbane kan afbøjningsvinklen findes fra
+\[\phi_0=\int_{r_{\min}}^\infty\frac{\ell\,\mathrm dr}{r^2\sqrt{2\mu[E-V_{\rm eff}(r)]}},\qquad\Theta=\pi-2\phi_0,\]
+med valgt fortegnskonvention. Det differentielle tværsnit er $\mathrm d\sigma/\mathrm d\Omega=(b/\sin\Theta)|\mathrm db/\mathrm d\Theta|$ for én gren; summer over grene, hvis flere $b$ giver samme $\Theta$.
+\begin{method}Givet $F(r)$ og en indkommende partikel: (1) Integrér $F=-V'$ og vælg potentialets nulpunkt. (2) Find $E=\mu v_\infty^2/2$ og $\ell=\mu v_\infty b$. (3) Find $r_{\min}$ fra $E=V_{\rm eff}(r_{\min})$. (4) Beregn $\phi_0$ og afbøjningsvinklen. (5) Differentier $b(\Theta)$ for at bestemme tværsnittet; tjek eventuelle flere grene.\end{method}
+
+\subsection{Centralbevægelse: hurtigt metodevalg}
+\begin{center}\small\renewcommand{\arraystretch}{1.19}\begin{tabular}{p{50mm}p{86mm}}\toprule
+\textbf{Opgavespørgsmål} & \textbf{Vælg metode}\\\midrule
+Mulige radier og vendepunkter & $E\ge V_{\rm eff}$ og $E=V_{\rm eff}$, jf. afsnit~\ref{sec:veff}.\\
+Cirkulær bane og stabilitet & $V_{\rm eff}'(r_0)=0$, $V_{\rm eff}''(r_0)$, jf. afsnit~\ref{sec:circular}.\\
+Find banen $r(\phi)$ fra kraften & $u=1/r$ og Binet, jf. afsnit~\ref{sec:binet}.\\
+Bestem Keplerbanetype & $e=\sqrt{1+2E\ell^2/(\mu k^2)}$, \emph{kun} ved $V=-k/r$.\\
+Er en begrænset bane lukket? & Beregn $\Delta\phi_{\rm radial}/(2\pi)$ og test rationalitet.\\
+Scattering og tværsnit & $E,\ell$ fra $v_\infty,b$; vendepunkt, afbøjningsintegral.\\
+\bottomrule\end{tabular}\end{center}
