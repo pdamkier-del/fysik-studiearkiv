@@ -4,6 +4,12 @@ For en almindelig konservativ mekanisk model er $\mathcal L=T-V$. Hamiltons prin
 \key{\frac{\dd}{\dd t}\pd{\mathcal L}{\dot q_i}-\pd{\mathcal L}{q_i}=0,\qquad p_i=\pd{\mathcal L}{\dot q_i}.}
 Den generaliserede impuls $p_i$ er ikke generelt $m\dot q_i$; dens form afhænger af kinetisk energi, koordinatvalg og eventuelle hastighedsafhængige led.
 \begin{method}Vælg uafhængige koordinater $q_i$; find $T,V$; opstil $\mathcal L$; differentier efter $q_i$ og $\dot q_i$; anvend Euler--Lagrange; indsæt eventuelle begyndelsesbetingelser.\end{method}
+\subsection{Harmonisk oscillator: standardform}
+For $m>0$ og $k>0$:
+\[\mathcal L=\tfrac12m\dot q^2-\tfrac12kq^2,\qquad \omega_0=\sqrt{k/m}.\]
+Euler--Lagrange giver $m\ddot q+kq=0$, og derfor
+\key{q(t)=A\cos(\omega_0 t)+B\sin(\omega_0 t).}
+\begin{method}Genkend det kvadratiske potentiale og den kvadratiske kinetiske energi. Aflæs $\omega_0=\sqrt{k/m}$, og skriv den generelle løsning. For to uafhængige koordinater gælder én sådan løsning for hver. Hastighedslineære led eller koblinger skal først behandles.\end{method}
 \subsection{Cykliske koordinater og symmetrier}
 Er $\partial\mathcal L/\partial q_i=0$, er $q_i$ cyklisk, og $p_i$ er bevaret. Er $\partial \mathcal L/\partial t=0$, er energifunktionen bevaret (se nedenfor).
 \begin{center}\begin{tabular}{>{\raggedright\arraybackslash}p{34mm}p{54mm}p{57mm}}\toprule Symmetri & Kontrol & Bevaret størrelse\\\midrule
