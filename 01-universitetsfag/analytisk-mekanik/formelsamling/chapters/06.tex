@@ -1,0 +1,51 @@
+\clearpage\section{Kanoniske transformationer og Poissonparenteser}
+\subsection{Definition og Kroneckers delta}\label{sec:canon}
+En lokalt invertibel transformation $(q,p)\mapsto(Q,P)$ er kanonisk, hvis de fundamentale Poissonparenteser bevares:
+\key{\PB{Q_i}{Q_j}=0,\qquad\PB{P_i}{P_j}=0,\qquad\PB{Q_i}{P_j}=\delta_{ij}.}
+Kroneckers delta er $\delta_{ij}=1$ for $i=j$ og $0$ for $i\ne j$. Parenteser beregnes altid i de \emph{oprindelige} kanoniske variable.
+\begin{note}\textbf{Ét koordinatpar:} $\{Q,Q\}=\{P,P\}=0$ automatisk; kontrollér kun $\{Q,P\}=Q_qP_p-Q_pP_q=1$.\end{note}
+\textbf{To koordinatpar:} Kontrollér de seks uafhængige relationer
+\[\PB{Q_1}{P_1}=\PB{Q_2}{P_2}=1,\qquad\PB{Q_1}{P_2}=\PB{Q_2}{P_1}=0,\]
+\[\PB{Q_1}{Q_2}=\PB{P_1}{P_2}=0.\]
+Hver parentes rummer summen over $k=1,2$ af afledte i $(q_k,p_k)$.
+\subsection{Poissonparenteser og regneregler}\label{sec:pb}
+\key{\PB FG=\sum_{k=1}^n\left(\pd F{q_k}\pd G{p_k}-\pd F{p_k}\pd G{q_k}\right).}
+\[\PB F{q_i}=-\pd F{p_i},\qquad\PB F{p_i}=\pd F{q_i},\qquad\PB FG=-\PB GF.\]
+\begin{note}Eksempel fra rotationsgeneratoren, jf. afsnit~\ref{sec:angular}: $L_x=yp_z-zp_y$, derfor $\{L_x,y\}=-\partial L_x/\partial p_y=z$ og $\{L_x,p_y\}=\partial L_x/\partial y=p_z$.\end{note}
+\subsection{Genererende funktioner $F_1$--$F_4$}
+Alle fire typer antages at definere en lokalt invertibel kanonisk transformation. I en standardkonvention:
+\begin{center}\begin{tabular}{llll}\toprule Type & Variable & Gammel impuls/koordinat & Ny impuls/koordinat\\\midrule
+$F_1$&$(q,Q,t)$&$p=\partial_qF_1$&$P=-\partial_QF_1$\\
+$F_2$&$(q,P,t)$&$p=\partial_qF_2$&$Q=\partial_PF_2$\\
+$F_3$&$(p,Q,t)$&$q=-\partial_pF_3$&$P=-\partial_QF_3$\\
+$F_4$&$(p,P,t)$&$q=-\partial_pF_4$&$Q=\partial_PF_4$\\\bottomrule\end{tabular}\end{center}
+For alle typer er $K=H+\partial F_a/\partial t$ med den afledte taget ved fastholdte \emph{uafhængige argumenter til den valgte type}.
+\subsection{Den transformerede Hamiltonfunktion $\widetilde H(Q,P,t)$}\label{sec:newH}
+\begin{method}\textbf{1.} Identificér transformationen og den korrekte genererende funktion $F_a$. \textbf{2.} Beregn $\partial F_a/\partial t$ ved fastholdte argumenter. \textbf{3.} Invertér for $q=q(Q,P,t)$ og $p=p(Q,P,t)$. \textbf{4.} Indsæt begge i den oprindelige $H$ og tilføj tidsleddet.\end{method}
+\key{\widetilde H(Q,P,t)=H(q,p,t)+\left.\pd{F_a}{t}\right|_{\text{egne argumenter}}.}
+Her skal højresiden til sidst omskrives til $(Q,P,t)$. Hvis $F_a$ er \emph{eksplicit} tidsuafhængig, er tidsleddet nul, men $H$ skal stadig omskrives til $(Q,P)$.
+\textbf{Mini-eksempel.} For $Q=aq$, $P=p/a$ med konstant $a\ne0$ og $H=p^2/(2m)+kq^2/2$ fås $q=Q/a$, $p=aP$, og
+\[K(Q,P)=\frac{a^2P^2}{2m}+\frac{kQ^2}{2a^2}.\]
+\begin{note}Tidsafhængige kanoniske transformationer kræver omhu: $\partial F/\partial t$ er ikke den totale afledte $\dd F/\dd t$.\end{note}
+
+
+\subsubsection*{Omvendt opgavetype: find $F$ fra den ønskede $\widetilde H$}
+\begin{method}\textbf{1.} Undersøg, om man kan vælge $\partial F/\partial t=0$ og dermed $\widetilde H=H$. Det er et muligt valg, ikke en almen regel. \textbf{2.} Brug den ønskede $\widetilde H$ til at vælge nye variable, fx $P=H$ hvis $\widetilde H=P$. \textbf{3.} Identificér $F_1$--$F_4$ og isolér den gamle variabel, der passer til dens argumenter. \textbf{4.} Integrér den tilhørende transformationsrelation og husk en vilkårlig funktion af de andre argumenter. \textbf{5.} Differentier for at bestemme den anden nye variabel, og kontrollér begge relationer samt $\widetilde H=H+F_t$.\end{method}
+Eksempel: $H=p^2/(2m)+mgq$, ønsket $\widetilde H=P$ og en type 4-funktion $U(p,P)$. Vælg $U_t=0$ og $P=H$, så
+\[q=\frac{P}{mg}-\frac{p^2}{2m^2g},\quad q=-U_p\quad\Rightarrow\quad\boxed{U(p,P)=-\frac{pP}{mg}+\frac{p^3}{6m^2g}+f(P)},\]
+\[Q=U_P=-\frac{p}{mg}+f'(P).\]
+Vælg eksempelvis $f=0$; $\{Q,P\}_{q,p}=1$. En direkte integration af $F_t=\widetilde H-H$ er generelt utilstrækkelig, fordi den ukendte transformation også bestemmer $q,p$ på højresiden.
+
+\subsection{Oprindelse af de genererende funktioner}
+En kanonisk transformation bevarer Hamiltons variationsprincip, hvis fase-rummets én-former opfylder
+\[\sum_i p_i\,\dd q_i-H\,\dd t=\sum_i P_i\,\dd Q_i-K\,\dd t+\dd F_1(q,Q,t).\]
+Sammenligning af koefficienterne foran $\dd q_i$, $\dd Q_i$ og $\dd t$ giver $p_i=\partial F_1/\partial q_i$, $P_i=-\partial F_1/\partial Q_i$ og $K=H+\partial F_1/\partial t$.
+Ved Legendreomformninger fås $F_2=F_1+\sum_iP_iQ_i$, $F_3=F_1-\sum_i p_iq_i$ og $F_4=F_1+\sum_iP_iQ_i-\sum_i p_iq_i$; dette forklarer fortegnstabellen ovenfor.
+\subsection{Symplektisk Jacobimatrix}
+Sæt $z=(q,p)^T$, $Z=(Q,P)^T$, $M=\partial Z/\partial z$, $J=\left(\begin{smallmatrix}0&I\\-I&0\end{smallmatrix}\right)$. Den kompakte kanonicitetsbetingelse er
+\[\boxed{MJM^T=J.}\]
+Dette er ækvivalent med samtlige fundamentale Poissonparentesbetingelser. Under standardantagelser følger også $M^TJM=J$.
+
+\subsection{Rotationsgeneratorer og bevarelse}
+Den mekaniske rotationsgenerator i kanoniske kartesiske variable har $\vv L=\vv r\times\vv p$ for sædvanlige systemer; så $\PB{L_x}{y}=z$, $\PB{L_x}{z}=-y$, $\PB{L_x}{p_y}=p_z$. \emph{Generatorvirkningen} skal ikke forveksles med \emph{bevarelse}: for en tidsuafhængig rotationsinvariant $H$ er $\PB{L_x}{H}=0$, og dermed er $L_x$ bevaret.
+
