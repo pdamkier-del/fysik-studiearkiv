@@ -1,0 +1,51 @@
+\clearpage\section{Lagrange, symmetrier og bevarelse}
+\subsection{Euler--Lagrange og generaliseret impuls}
+For en almindelig konservativ mekanisk model er $\mathcal L=T-V$. Hamiltons princip $\delta S=0$ med $S[q]=\int_{t_1}^{t_2}\mathcal L\,\dd t$ og faste endepunkter fører til
+\key{\frac{\dd}{\dd t}\pd{\mathcal L}{\dot q_i}-\pd{\mathcal L}{q_i}=0,\qquad p_i=\pd{\mathcal L}{\dot q_i}.}
+Den generaliserede impuls $p_i$ er ikke generelt $m\dot q_i$; dens form afhænger af kinetisk energi, koordinatvalg og eventuelle hastighedsafhængige led.
+\begin{method}Vælg uafhængige koordinater $q_i$; find $T,V$; opstil $\mathcal L$; differentier efter $q_i$ og $\dot q_i$; anvend Euler--Lagrange; indsæt eventuelle begyndelsesbetingelser.\end{method}
+\subsection{Cykliske koordinater og symmetrier}
+Er $\partial\mathcal L/\partial q_i=0$, er $q_i$ cyklisk, og $p_i$ er bevaret. Er $\partial \mathcal L/\partial t=0$, er energifunktionen bevaret (se nedenfor).
+\begin{center}\begin{tabular}{>{\raggedright\arraybackslash}p{34mm}p{54mm}p{57mm}}\toprule Symmetri & Kontrol & Bevaret størrelse\\\midrule
+Translation i $x$ & $\partial\mathcal L/\partial x=0$ & $p_x=\partial\mathcal L/\partial\dot x$\\
+Rotation om $z$ & $\partial\mathcal L/\partial\phi=0$ & $p_\phi=\partial\mathcal L/\partial\dot\phi$\\
+Tidsforskydning & $\partial\mathcal L/\partial t=0$ & $h=\sum_i\dot q_i p_i-\mathcal L$\\\bottomrule\end{tabular}\end{center}
+\begin{note}Ved centralbevægelse er $p_\phi=mr^2\dot\phi$, men \textbf{ikke} for alle rotationssymmetriske systemer. Udtrykket bestemmes altid fra $\partial\mathcal L/\partial\dot\phi$.\end{note}
+\subsection{Impulsmoment: definition og komponenter}\label{sec:angular}
+For en partikel i et inertialsystem med \emph{mekanisk} impuls $\vv p=m\dot{\vv r}$ defineres impulsmomentet omkring origo som
+\key{\vv L=\vv r\times\vv p,\quad L_x=yp_z-zp_y,\quad L_y=zp_x-xp_z,\quad L_z=xp_y-yp_x.}
+\begin{center}\begin{tikzpicture}[scale=.78,>=stealth]
+\draw[->,gray](-.3,0)--(4.2,0)node[right]{$x$};\draw[->,gray](0,-.3)--(0,2.6)node[above]{$y$};
+\draw[->,thick,accent](0,0)--(2.65,1.75)node[above right]{$\vv r$};\draw[->,thick](2.65,1.75)--(3.63,2.3)node[right]{$\vv p$};
+\draw[accent] (1.15,0) arc (0:33.4:1.15);\node[accent] at(1.39,.42){$\phi$};\node at(1.1,-.65){$L_z=xp_y-yp_x$};
+\end{tikzpicture}\end{center}
+Med centrale kræfter er $\vv\tau=\vv r\times\vv F=0$, så $\dd\vv L/\dd t=0$. I plan polarbevægelse er den mekaniske $z$-komponent $L_z=mr^2\dot\phi$; i et generelt kanonisk system må man skelne mellem mekanisk og kanonisk impuls.
+\subsection{Energifunktionen og tidsafhængighed}
+Definér $h=\sum_i\dot q_i p_i-\mathcal L$. På en løsning af Euler--Lagrange gælder
+\key{\od ht=-\pd{\mathcal L}{t}.}
+Hvis $\mathcal L$ er tidsuafhængig, er $h$ konstant. For sædvanlig kinetisk energi kvadratisk i hastigheder og hastighedsuafhængigt $V$ er $h=T+V$.
+\subsection{Ækvivalente Lagrangefunktioner}
+Lagrangefunktioner, som adskiller sig med en total tidsafledt $\dd F(q,t)/\dd t$, giver de samme Euler--Lagrange-ligninger:
+\[\mathcal L'=\mathcal L+\od Ft,\qquad \od Ft=\sum_i\pd F{q_i}\dot q_i+\pd Ft.\]
+
+\subsubsection*{Kontrol af en total tidsafledt}
+\[\boxed{\mathcal L_2-\mathcal L_1=\frac{\mathrm dF(q,t)}{\mathrm dt},\qquad \frac{\mathrm dF}{\mathrm dt}=\sum_i\frac{\partial F}{\partial q_i}\dot q_i+\frac{\partial F}{\partial t}.}\]
+\begin{method}Beregn forskellen $\mathcal L_2-\mathcal L_1$. Sammenlign hastighedsleddene med $\partial F/\partial q_i$ og de øvrige led med $\partial F/\partial t$. Verificér hele udtrykket; én matchende del er ikke nok.\end{method}
+For $\mathcal L_2-\mathcal L_1=V(q)+tV'(q)\dot q$ kan vælges $F=tV(q)$, fordi $\mathrm d(tV(q(t)))/\mathrm dt=V(q)+tV'(q)\dot q$. Virkningen ændres kun med randleddet $F(q(t_2),t_2)-F(q(t_1),t_1)$, hvis variation er nul ved faste endepunkter. De kanoniske impulser kan derimod forskydes: $p_i^{(2)}=p_i^{(1)}+\partial F/\partial q_i$.
+
+\subsection{Hamiltons princip og variation}
+Lad $S[q]=\int_{t_1}^{t_2}\mathcal L(q,\dot q,t)\dd t$. Den fysiske bane opfylder $\delta S=0$ med $\delta q_i(t_1)=\delta q_i(t_2)=0$. Integration ved dele giver
+\[\delta S=\int_{t_1}^{t_2}\sum_i\left(\pd{\mathcal L}{q_i}-\od{}{t}\pd{\mathcal L}{\dot q_i}\right)\delta q_i\,\dd t=0.\]
+Derved fremkommer Euler--Lagrange-ligningerne.
+
+\subsection{Invertibilitet ved koordinatskift}
+Et almindeligt koordinatskift $Q_i=Q_i(q_1,\ldots,q_n,t)$ skal kunne inverteres lokalt. Den inverse funktionssætning giver den praktiske betingelse
+\[\boxed{\det\left(\frac{\partial Q_i}{\partial q_j}\right)\neq0.}\]
+Hvis determinanten forsvinder, kan de nye koordinater ikke bruges som et lokalt uafhængigt koordinatsystem. \textbf{Dette er ikke kanonicitetstesten}: et skift i faserummet skal desuden bevare de fundamentale Poissonparenteser (afsnit~\ref{sec:canon}).
+
+\subsection{Lagrange-multiplikatorer}\label{sec:lambda}
+For holonome bindinger $f_\alpha(q,t)=0$ kan man bruge $\mathcal L'=\mathcal L+\sum_\alpha\lambda_\alpha f_\alpha$. Dermed
+\key{\od{}{t}\pd{\mathcal L}{\dot q_i}-\pd{\mathcal L}{q_i}=\sum_\alpha\lambda_\alpha\pd{f_\alpha}{q_i},\qquad f_\alpha=0.}
+\begin{method}Opstil almindelig $\mathcal L$ og bindinger $f_\alpha=0$; skriv modifierede Euler--Lagrange-ligninger; brug $f_\alpha=0$ samt tidsafledte; løs for $q_i$ og $\lambda_\alpha$; oversæt multiplikatorerne til de fysiske bindingskræfter.\end{method}
+\begin{note}Multiplikatoren afhænger af bindingens normalisering. For kontaktbetingelser kontrolleres normalreaktionen $N\geq0$ og løft fra underlaget ved $N=0$.\end{note}
+
