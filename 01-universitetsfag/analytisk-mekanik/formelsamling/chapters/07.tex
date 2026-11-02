@@ -1,0 +1,43 @@
+\clearpage\section{Hamilton--Jacobi-teori}
+\subsection{Hovedligningen og hovedfunktionen}
+Den tidsafhængige Hamilton--Jacobi-ligning for hovedfunktionen $S(q,\alpha,t)$ er
+\key{H\left(q,\pd S q,t\right)+\pd St=0,\qquad p_i=\pd S{q_i}.}
+En \emph{fuldstændig} løsning afhænger af $n$ uafhængige konstanter $\alpha_i$, og yderligere konstanter findes af $\beta_i=\partial S/\partial\alpha_i$.
+\subsection{Tidsuafhængig Hamiltonfunktion}
+Hvis $H$ ikke afhænger eksplicit af $t$, kan man forsøge $S=W(q,\alpha)-Et$, som giver
+\[H\left(q,\pd Wq\right)=E.\]
+Ved én frihedsgrad for $H=p^2/(2m)+V(q)$ har man
+\[W(q,E)=\int^q\sqrt{2m\big(E-V(s)\big)}\,\dd s,\]
+for den valgte fortegnsgren og det klassisk tilladte område. Tiden kan derefter bestemmes via $\beta=\partial S/\partial E$.
+\subsection{Trinvis eksamensmetode}
+\begin{method}Skriv $H$. Vælg separationsansats, typisk $S=W-Et$ ved tidsuafhængighed. Løs for gradienten $\partial W/\partial q$; integrér til $W$; brug $p_i=\partial S/\partial q_i$ og $\beta_i=\partial S/\partial\alpha_i$ til at finde bevægelsen. Kontroller i Hamiltons ligninger.\end{method}
+
+\subsubsection*{Eksamensguide: fra $H$ til $W$ og derfra til bevægelsen}
+For \emph{én frihedsgrad og tidsuafhængig} $H(q,p)$:
+\begin{method}\textbf{1.} Skriv $H(q,p)$. \textbf{2.} Vælg $S(q,E,t)=W(q,E)-Et$. \textbf{3.} Udskift \emph{direkte i Hamiltonfunktionen} $p\mapsto\partial W/\partial q$ og sæt $H(q,W')=E$. \textbf{4.} Isolér $W'$ (ofte en andengradsligning) og integrér $W=\int W'\mathrm dq$. \textbf{5.} Differentier med hensyn til $E$ ved fastholdt $q$: $\boxed{\partial W/\partial E=t+\beta}$. \textbf{6.} Løs denne relation for $q(t)$, og gå eventuelt tilbage gennem en tidligere kanonisk transformation.\end{method}
+For $H=p^2/(2m)+V(q)$ fås $W'=\pm\sqrt{2m[E-V(q)]}$. For $n$ frihedsgrader erstattes \emph{alle} $p_i$ med $\partial W/\partial q_i$; øvrige separationskonstanter opfylder $\beta_j=\partial W/\partial\alpha_j$, mens $-t$ kun optræder ved differentiering efter energi-parameteren i ansatsen $S=W-Et$.
+\textbf{Et vigtigt notationsskel:} I et problem med en forudgående transformation $(q,p)\to(Q,P)$ er den efterfølgende HJ-koordinat $\beta=\partial S/\partial E$ ikke det samme som $Q$.
+
+\subsubsection*{HJ efter en første kanonisk transformation (2020.1)}
+Antag, at en tidligere transformation $(q,p)\mapsto(Q,P)$ har givet den tidsuafhængige Hamiltonfunktion
+\[\widetilde H(Q,P)=\frac{P^2}{2m}+\frac{kQ^2}{2}+\frac{\gamma}{2m}QP.\]
+Ved HJ-metoden er det nu $P=W_Q$ (\emph{ikke} den oprindelige $p$), og derfor bliver
+\[\frac{(W_Q)^2}{2m}+\frac{kQ^2}{2}+\frac{\gamma Q}{2m}W_Q=E.\]
+Dette er en andengradsligning i $W_Q$. Med $\omega^2=k/m-\gamma^2/(4m^2)>0$ fås
+\[W_Q=-\frac{\gamma Q}{2}\pm\sqrt{2mE-m^2\omega^2Q^2},\qquad
+\boxed{W=-\frac{\gamma Q^2}{4}\pm\int^Q\sqrt{2mE-m^2\omega^2s^2}\,\mathrm ds}.\]
+Ved efterfølgende differentiation med hensyn til $E$ (mens $Q$ holdes fast) og brug af $\partial W/\partial E=t+\beta$ får man en oscillatorrelation, som kan inverteres til
+\[Q(t)=\sqrt{\frac{2E}{m\omega^2}}\cos(\omega t+\varphi_0).\]
+Fortegn og fase bestemmes af begyndelsesdata. Hvis første transformation havde $Q=e^{\gamma t/(2m)}q$, skal man til sidst bruge $q(t)=e^{-\gamma t/(2m)}Q(t)$. HJ-konstanten $\beta$ er ikke den tidligere koordinat $Q$.
+
+\subsection{Éndimensional fri partikel}
+For $H=p^2/(2m)$ giver $W'=\pm\sqrt{2mE}$ og dermed $S=\pm q\sqrt{2mE}-Et$. Differentiering med hensyn til $E$ giver $t-\beta=\pm q\sqrt{m/(2E)}$ med passende konstantvalg. Dette svarer til konstant impuls og retlinet bevægelse.
+
+\subsection{Hamilton--Jacobi som kanonisk transformation}
+En fuldstændig løsning $S(q,\alpha,t)$ kan bruges som genererende funktion af type $F_2(q,P,t)$ ved at sætte $P_i=\alpha_i$. Den transformerede Hamiltonfunktion opfylder
+\[K=H+\pd St=0,\qquad p_i=\pd S{q_i},\qquad Q_i=\pd S{\alpha_i}=\beta_i.\]
+De nye variable $(\alpha_i,\beta_i)$ er derfor konstante; bevægelsen i gamle variable findes ved at løse $\beta_i=\partial S/\partial\alpha_i$ og derefter $p_i=\partial S/\partial q_i$. Det kræver en ikke-degenereret fuldstændig løsning.
+\subsection{Tidsafhængig Hamiltonian: hvad ændres?}
+For eksplicit tidsafhængig $H(q,p,t)$ er separationen $S=W(q)-Et$ ikke generelt mulig. Hovedligningen er stadig $H(q,\partial_qS,t)+\partial_tS=0$, og den nye Hamiltonfunktion kan stadig vælges $K=0$ ved en passende fuldstændig løsning. Genererende funktioner kan afhænge eksplicit af tid, selv når den oprindelige Hamiltonfunktion ikke gør det.
+
+
