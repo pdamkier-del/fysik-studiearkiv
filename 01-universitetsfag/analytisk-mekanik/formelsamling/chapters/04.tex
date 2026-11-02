@@ -1,0 +1,26 @@
+\clearpage\section{Accelererede og roterende referencesystemer}
+\subsection{Accelereret translation}
+For et observationssystem med translationsacceleration $\vv a_0$ er den tilsyneladende kraft $-m\vv a_0$.
+\subsection{Tidsafledte ved rotation}
+For en vektor $\vv A$ og vinkelhastigheden $\vv\Omega$ gælder
+\key{\left(\od{\vv A}{t}\right)_{\!I}=\left(\od{\vv A}{t}\right)_{\!R}+\vv\Omega\times\vv A.}
+\subsection{Acceleration og fiktive kræfter}
+For et system med fast roterende origo og generelt tidsafhængig $\vv\Omega$:
+\[\vv a_I=\vv a_R+2\vv\Omega\times\vv v_R+\vv\Omega\times(\vv\Omega\times\vv r)+\dot{\vv\Omega}\times\vv r.\]
+\[m\vv a_R=\vv F_{\rm reel}-2m\vv\Omega\times\vv v_R-m\vv\Omega\times(\vv\Omega\times\vv r)-m\dot{\vv\Omega}\times\vv r.\]
+De tre led er Coriolis-, centrifugal- og Eulerkraft. Ved et samtidigt accelererende origo tilføjes $-m\vv a_0$.
+\subsection{Lagrangefunktion i roterende system}
+For inertielt potentiale $V(\vv r,t)$ og $\vv v_I=\vv v_R+\vv\Omega\times\vv r$:
+\[\mathcal L_R=\tfrac12m\lvert\vv v_R+\vv\Omega\times\vv r\rvert^2-V.\]
+Det kanoniske momentum er $\vv p_R=m(\vv v_R+\vv\Omega\times\vv r)$, ikke nødvendigvis $m\vv v_R$.
+
+\subsection{Udledning af acceleration og praktiske anvendelser}
+Transportformlen på den relative hastighed giver $(\dd\vv v_R/\dd t)_I=\vv a_R+\vv\Omega\times\vv v_R$. Produktreglen på $\vv\Omega\times\vv r$ giver
+\[\left(\od{}{t}(\vv\Omega\times\vv r)\right)_I=\dot{\vv\Omega}\times\vv r+\vv\Omega\times(\vv v_R+\vv\Omega\times\vv r).\]
+Når de to led lægges sammen, optræder $\vv\Omega\times\vv v_R$ to gange, hvilket forklarer Coriolisfaktoren $2$.
+
+\textbf{Jordrotation og frit fald.} For små $\Omega$ kan man ofte først løse den uforstyrrede bane, beregne $-2m\vv\Omega\times\vv v_0$ og derefter integrere denne som en førsteordens korrektion. Vælg akser og breddegrad før krydsproduktet beregnes.
+
+\textbf{Foucaultpendul.} I en lokal vandret plan og under små-udsving-approksimationen er den langsomme præcession proportional med den lodrette komponent $\Omega\sin\lambda$, hvor $\lambda$ er geografisk breddegrad. Fortegn afhænger af halvkugle og aksekonvention.
+
+
