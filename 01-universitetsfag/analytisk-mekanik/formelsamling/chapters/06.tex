@@ -2,8 +2,13 @@
 \subsection{Definition og Kroneckers delta}\label{sec:canon}
 En lokalt invertibel transformation $(q,p)\mapsto(Q,P)$ er kanonisk, hvis de fundamentale Poissonparenteser bevares:
 \key{\PB{Q_i}{Q_j}=0,\qquad\PB{P_i}{P_j}=0,\qquad\PB{Q_i}{P_j}=\delta_{ij}.}
-Kroneckers delta er $\delta_{ij}=1$ for $i=j$ og $0$ for $i\ne j$. Parenteser beregnes altid i de \emph{oprindelige} kanoniske variable.
+Kroneckers delta er $\delta_{ij}=1$ for $i=j$ og $0$ for $i\ne j$. Ved den direkte test af $(Q,P)$ beregnes parenteserne i de \emph{gamle} variable $(q,p)$. For den inverse transformation kan man i stedet teste de gamle variable i de nye kanoniske variable.
 \begin{note}\textbf{Ét koordinatpar:} $\{Q,Q\}=\{P,P\}=0$ automatisk; kontrollér kun $\{Q,P\}=Q_qP_p-Q_pP_q=1$.\end{note}
+\begin{method}\textbf{Vælg det sæt, funktionerne er udtrykt ved.} Hvis $Q=Q(q,p)$ og $P=P(q,p)$ er opgivet, beregn
+\[\PB QP_{q,p}=\pd Qq\pd Pp-\pd Qp\pd Pq=1.\]
+Hvis der i stedet er opgivet $q=q(Q,P)$ og $p=p(Q,P)$, beregn
+\[\PB qp_{Q,P}=\pd qQ\pd pP-\pd qP\pd pQ=1.\]
+For \emph{én frihedsgrad} og en lokalt invertibel transformation er testene ækvivalente. For flere frihedsgrader skal alle de fundamentale parenteser testes, enten for den direkte eller for den inverse transformation. Bland ikke afledte med hensyn til forskellige koordinatsæt.\end{method}
 \textbf{To koordinatpar:} Kontrollér de seks uafhængige relationer
 \[\PB{Q_1}{P_1}=\PB{Q_2}{P_2}=1,\qquad\PB{Q_1}{P_2}=\PB{Q_2}{P_1}=0,\]
 \[\PB{Q_1}{Q_2}=\PB{P_1}{P_2}=0.\]
@@ -20,6 +25,15 @@ $F_2$&$(q,P,t)$&$p=\partial_qF_2$&$Q=\partial_PF_2$\\
 $F_3$&$(p,Q,t)$&$q=-\partial_pF_3$&$P=-\partial_QF_3$\\
 $F_4$&$(p,P,t)$&$q=-\partial_pF_4$&$Q=\partial_PF_4$\\\bottomrule\end{tabular}\end{center}
 For alle typer er $K=H+\partial F_a/\partial t$ med den afledte taget ved fastholdte \emph{uafhængige argumenter til den valgte type}.
+\subsubsection*{Genererende funktioner skrevet med Leibniz-notation}
+\[\begin{aligned}
+F_1(q,Q,t):\quad &p_i=\pd{F_1}{q_i}, &P_i&=-\pd{F_1}{Q_i},\\
+F_2(q,P,t):\quad &p_i=\pd{F_2}{q_i}, &Q_i&=\pd{F_2}{P_i},\\
+F_3(p,Q,t):\quad &q_i=-\pd{F_3}{p_i}, &P_i&=-\pd{F_3}{Q_i},\\
+F_4(p,P,t):\quad &q_i=-\pd{F_4}{p_i}, &Q_i&=\pd{F_4}{P_i}.
+\end{aligned}\]
+\begin{method}\textbf{Kontrollér en given genererende funktion.} Find typen ud fra dens uafhængige argumenter; differentier med hensyn til begge argumenter; sammenlign de resulterende udtryk med den ønskede transformation. For eksempel kræver $S(q,P,t)$, at $p=\partial S/\partial q$ og $Q=\partial S/\partial P$. Tidsleddet $\partial S/\partial t$ bestemmer derimod ændringen af Hamiltonfunktionen og tester ikke alene transformationen.\end{method}
+\begin{method}\textbf{Løs bevægelsen via en kanonisk transformation.} Omskriv $H(q,p,t)$ til $\widetilde H(Q,P,t)$, løs $\dot Q=\partial\widetilde H/\partial P$ og $\dot P=-\partial\widetilde H/\partial Q$, og indsæt derefter $Q(t),P(t)$ i $q(Q,P,t),p(Q,P,t)$.\end{method}
 \subsection{Den transformerede Hamiltonfunktion}\label{sec:newH}
 \begin{method}\textbf{1.} Identificér transformationen og den korrekte genererende funktion $F_a$. \textbf{2.} Beregn $\partial F_a/\partial t$ ved fastholdte argumenter. \textbf{3.} Invertér for $q=q(Q,P,t)$ og $p=p(Q,P,t)$. \textbf{4.} Indsæt begge i den oprindelige $H$ og tilføj tidsleddet.\end{method}
 \key{\widetilde H(Q,P,t)=H(q,p,t)+\left.\pd{F_a}{t}\right|_{\text{egne argumenter}}.}
