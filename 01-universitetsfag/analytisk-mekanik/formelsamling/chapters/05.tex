@@ -1,58 +1,184 @@
-\clearpage\section{Hamiltonformalismen}
-\subsection{Legendretransformation og Hamiltons EOM}
-Find $p_i=\partial\mathcal L/\partial\dot q_i$, løs $\dot q_i(q,p,t)$, og definér Hamiltonfunktionen
-\key{H(q,p,t)=\sum_i p_i\dot q_i-\mathcal L,\qquad \dot q_i=\pd H{p_i},\quad\dot p_i=-\pd H{q_i}.}
-\begin{method}Givet $H$: beregn de to partielle afledte; find $\dot q,\dot p$; hvis opgaven kræver en andenordens EOM, differentier $\dot q$ og eliminer $p$ ved brug af begge Hamiltonligninger. Kontroller ved tilbageindsættelse.\end{method}
+\clearpage\section{Fra Lagrange til Hamilton}\label{sec:hamilton}
+\textbf{Fysisk problem.} Vi kender Lagrangefunktionen $\mathcal L(q,\dot q,t)$ og dens Euler--Lagrange-ligninger. Hvordan beskrives \emph{samme} bevægelse med koordinater og kanoniske impulser $(q,p)$ frem for $(q,\dot q)$? Hamiltonformalismen giver et ækvivalent system af førsteordensligninger på faserummet, når Legendretransformationen er regulær.
 
+\subsection{Udgangspunktet: en harmonisk oscillator}
+For et system, vi allerede kender fra kapitel~2, er
+\[
+\mathcal L(q,\dot q)=\frac12m\dot q^2-\frac12kq^2,
+\qquad m,k>0.
+\]
+Euler--Lagrange giver
+$\dd(\partial\mathcal L/\partial\dot q)/\dd t-\partial\mathcal L/\partial q
+=m\ddot q+kq=0$.
+Vi ønsker nu et nyt par af dynamiske variable $(q,p)$ i stedet for $(q,\dot q)$; deres startværdier skal beskrive den samme fysiske begyndelsestilstand.
 
-\subsubsection*{Hvorfor Legendretransformationen giver Hamiltons ligninger}
-Antag en regulær Lagrangefunktion $\mathcal L(q_i,\dot q_i,t)$, hvor $p_i=\partial\mathcal L/\partial\dot q_i$ kan inverteres til $\dot q_i(q,p,t)$. Udgangspunktet er
-\[H(q,p,t)=\sum_i p_i\dot q_i-\mathcal L(q,\dot q,t).\]
-Produktreglen og det totale differential giver
+\subsection{Generaliseret impuls og regulær Legendretransformation}\label{sec:legendre}
+Den konjugerede impuls er $p_i=\partial\mathcal L/\partial\dot q_i$, som allerede blev defineret i kapitel~1. Hvis impulsrelationerne lokalt kan inverteres til $\dot q_i=v_i(q,p,t)$, kan vi definere
+\key{H(q,p,t)=\left[\sum_i p_i\dot q_i-\mathcal L(q,\dot q,t)\right]_{\dot q=v(q,p,t)}.}
+Det er afgørende, at \emph{alle} hastigheder elimineres, også dem inde i $\mathcal L$, så $H$ kun afhænger af $(q,p,t)$. En tilstrækkelig lokal betingelse for inversion er
+\key{\det\left(\frac{\partial^2\mathcal L}{\partial\dot q_i\partial\dot q_j}\right)\ne0.}
+Det er Hessianen i hastighederne; hvis den er singulær, kræves en særskilt analyse af bindinger og eventuelle primære constraints.
+\begin{method}Beregn alle $p_i=\partial\mathcal L/\partial\dot q_i$. Kontrollér Hessianen, løs efter $\dot q_i(q,p,t)$, indsæt i $H=\sum_i p_i\dot q_i-\mathcal L$, og fjern samtlige resterende $\dot q_i$. Kontrollér dimension og fortegn.\end{method}
+For en Lagrangefunktion med hastighedslineært led,
+\[
+\mathcal L=\frac12m\dot q^2+a(q,t)\dot q-V(q,t),
+\]
+er $p=m\dot q+a(q,t)$, og derfor
+\[
+\boxed{H=\frac{[p-a(q,t)]^2}{2m}+V(q,t).}
+\]
+Kanonisk impuls er altså ikke universelt lig den mekaniske impuls $m\dot q$.
+
+\subsection{Udledning af Hamiltons ligninger}
+Start med totaldifferentialet af Legendretransformationen:
 \begin{align*}
-\dd H&=\sum_i\bigl(\dot q_i\,\dd p_i+p_i\,\dd\dot q_i\bigr)-\dd\mathcal L,\\
-\dd\mathcal L&=\sum_i\left(\pd{\mathcal L}{q_i}\,\dd q_i+\pd{\mathcal L}{\dot q_i}\,\dd\dot q_i\right)+\pd{\mathcal L}{t}\,\dd t.
+\dd H&=\sum_i(\dot q_i\,\dd p_i+p_i\,\dd\dot q_i)-\dd\mathcal L,\\
+\dd\mathcal L&=\sum_i\left(
+\frac{\partial\mathcal L}{\partial q_i}\dd q_i+
+\frac{\partial\mathcal L}{\partial\dot q_i}\dd\dot q_i\right)
++\frac{\partial\mathcal L}{\partial t}\dd t.
 \end{align*}
-Da $p_i=\partial\mathcal L/\partial\dot q_i$, annullerer leddene med $\dd\dot q_i$ hinanden:
-\[\boxed{\dd H=\sum_i\left(\dot q_i\,\dd p_i-\pd{\mathcal L}{q_i}\,\dd q_i\right)-\pd{\mathcal L}{t}\,\dd t.}\]
-Men fordi $H=H(q,p,t)$, gælder samtidig
-\[\dd H=\sum_i\left(\pd H{q_i}\,\dd q_i+\pd H{p_i}\,\dd p_i\right)+\pd Ht\,\dd t.\]
-Sammenligning af koefficienter giver $\partial H/\partial p_i=\dot q_i$, $\partial H/\partial q_i=-\partial\mathcal L/\partial q_i$ og $\partial H/\partial t=-\partial\mathcal L/\partial t$. Med Euler--Lagrange,
-$\dd(\partial\mathcal L/\partial\dot q_i)/\dd t=\partial\mathcal L/\partial q_i$, fås derfor
-\key{\dot q_i=\pd H{p_i},\qquad\dot p_i=-\pd H{q_i}.}
-Dette er samme metode i et variationsproblem med $\mathcal L\to f$, $H\to g$, $q\to y$, $p\to z$ og $t\to x$.
+Da $p_i=\partial\mathcal L/\partial\dot q_i$, annulleres alle $\dd\dot q_i$-led:
+\[
+\dd H=\sum_i\left(\dot q_i\,\dd p_i-
+\frac{\partial\mathcal L}{\partial q_i}\dd q_i\right)
+-\frac{\partial\mathcal L}{\partial t}\dd t.
+\]
+Men $H(q,p,t)$ har også det almindelige differential
+\[
+\dd H=\sum_i\left(\frac{\partial H}{\partial q_i}\dd q_i+
+\frac{\partial H}{\partial p_i}\dd p_i\right)
++\frac{\partial H}{\partial t}\dd t.
+\]
+Koefficientvis sammenligning og Euler--Lagrange giver
+\[
+\frac{\partial H}{\partial p_i}=\dot q_i,\quad
+\frac{\partial H}{\partial q_i}=-\frac{\partial\mathcal L}{\partial q_i}
+=-\dot p_i.
+\]
+Dermed får vi
+\key{\dot q_i=\frac{\partial H}{\partial p_i},\qquad
+\dot p_i=-\frac{\partial H}{\partial q_i}.}
+En andenordensligning i konfigurationsrummet er blevet to førsteordensligninger på faserummet. Den samme sammenligning giver også
+\[
+\boxed{\left.\frac{\partial H}{\partial t}\right|_{q,p}
+=-\left.\frac{\partial\mathcal L}{\partial t}\right|_{q,\dot q},}
+\]
+hvor impuls--hastighedsrelationen er indsat. Bemærk de \emph{forskellige} variable, der fastholdes. Omvendt kan en regulær $H$ bruges til at løse $\dot q_i=\partial H/\partial p_i$ efter $p_i(q,\dot q,t)$ og danne $\mathcal L=\sum_i p_i\dot q_i-H$.
 
+\subsection{Harmonisk oscillator: begge formalismer giver samme bane}
+Her er $p=m\dot q$, $\dot q=p/m$, og
+\[
+H=p\frac pm-\left(\frac{p^2}{2m}-\frac{kq^2}{2}\right)
+=\boxed{\frac{p^2}{2m}+\frac12kq^2}.
+\]
+Hamiltons ligninger er
+\[
+\dot q=\frac pm,\qquad \dot p=-kq
+\quad\Longrightarrow\quad m\ddot q+kq=0.
+\]
+Det er nøjagtig ligningen fra Euler--Lagrange; transformationen ændrer ikke bevægelsen. Koordinaten $q$ beskriver et punkt i \emph{konfigurationsrummet}, mens $(q,p)$ beskriver et punkt i \emph{faserummet}. Initialdata $q(t_0),\dot q(t_0)$ oversættes til $q(t_0),p(t_0)$ med $p_0=m\dot q(t_0)$.
 
-\subsubsection*{Fire trin: den omvendte hastighed--impuls-relation}
-\begin{method}\textbf{1.} Differentier den givne $\mathcal L(q,\dot q,t)$: $p_i=\partial\mathcal L/\partial\dot q_i$. \textbf{2.} Isolér $\dot q_i=\dot q_i(q,p,t)$ \emph{fra impulsligningen}. \textbf{3.} Indsæt hastighederne alle steder i $H=\sum_i p_i\dot q_i-\mathcal L$, også inde i $\mathcal L$. \textbf{4.} Find eventuelt EOM fra $\dot q_i=\partial H/\partial p_i$ og $\dot p_i=-\partial H/\partial q_i$.\end{method}
-For $\mathcal L=\tfrac12m\dot q^2+a(q,t)\dot q-V(q,t)$:
-\[p=m\dot q+a(q,t)\ \Rightarrow\ \dot q=\frac{p-a(q,t)}m\ \Rightarrow\ \boxed{H=\frac{[p-a(q,t)]^2}{2m}+V(q,t)}.\]
-\textbf{Kædereglen:} Ved $\partial H/\partial q$ holdes $p,t$ faste; ved $\partial H/\partial p$ holdes $q,t$ faste. Ved total tidsafledning indgår også $q(t)$: $\mathrm d[tV'(q(t))]/\mathrm dt=V'(q)+tV''(q)\dot q$. Den almindelige Legendretransformation kræver, at impulsligningerne kan inverteres lokalt.
+\subsection{Hastighedsafhængigt eksempel: eksamen 2024.1c}
+Opgaven angiver en partikel med
+\[
+\mathcal L(x,\dot x,t)=\frac12m\dot x^2-mgx-\frac12\alpha t^2\dot x.
+\]
+Den generaliserede impuls og dens inverse er
+\[
+p=m\dot x-\frac12\alpha t^2,\qquad
+\dot x=\frac{p+\frac12\alpha t^2}{m}.
+\]
+Legendretransformationen giver
+\key{H(x,p,t)=\frac{\left(p+\frac12\alpha t^2\right)^2}{2m}+mgx.}
+Fra Hamilton fås
+\[
+\dot x=\frac{p+\frac12\alpha t^2}{m},\qquad
+\dot p=-mg.
+\]
+Differentier relationen for $p$: $\dot p=m\ddot x-\alpha t$. Derved
+\[
+\boxed{m\ddot x=-mg+\alpha t,}
+\]
+præcis som fra Euler--Lagrange.
+Kontrollér også den eksplicitte tidsafledte:
+\[
+\left.\frac{\partial\mathcal L}{\partial t}\right|_{x,\dot x}
+=-\alpha t\dot x,\qquad
+\left.\frac{\partial H}{\partial t}\right|_{x,p}
+=\frac{\alpha t}{m}\left(p+\frac12\alpha t^2\right)=\alpha t\dot x.
+\]
+Fortegnsrelationen fra den generelle udledning er dermed verificeret. Det er \emph{partielle} afledte med angivne fastholdte variable, ikke to totalafledte.
+\begin{method}Ved tids- og hastighedsafhængige led: udled $p$ fra den faktiske $\mathcal L$, ikke fra $m\dot q$; inverter; konstruér $H$; kontrollér begge Hamiltonligninger og eliminér $p$ for at sammenligne med Euler--Lagrange. Kontrollér eksplicit tid ved at fastholde henholdsvis $(q,\dot q)$ og $(q,p)$.\end{method}
 
-\subsection{Legendretransformationen i et konkret mekanisk system}
-For $\mathcal L=\tfrac12m\dot q^2-V(q)$ er $p=m\dot q$. Inversion giver $\dot q=p/m$ og dermed
-\[H(q,p)=p\frac pm-\left(\frac12m\frac{p^2}{m^2}-V(q)\right)=\frac{p^2}{2m}+V(q).\]
-Hamiltonligningerne bliver $\dot q=p/m$, $\dot p=-V'(q)$, så $m\ddot q=-V'(q)$; dette er en direkte konsistenskontrol. Hvis Hessianen $\partial^2\mathcal L/\partial\dot q_i\partial\dot q_j$ er singulær, kan hastighederne ikke nødvendigvis elimineres, og den almindelige Legendretransformation er ikke regulær.
+\subsection{Hamiltonfunktion, energi og bevarelse}
+Kapitel~2 indførte $h=\sum_i p_i\dot q_i-\mathcal L$. Hamiltonfunktionen er dette \emph{samme} udtryk omskrevet til $(q,p,t)$. At identificere den med mekanisk energi $T+V$ kræver bl.a.\ sædvanlig kinetisk energi kvadratisk i hastighederne og et hastighedsuafhængigt potentiale (samt passende antagelser om koordinaternes tidsafhængighed).
 
-\subsection{Tidsudvikling og bevarelse}
-For $F(q,p,t)$ langs Hamiltons bevægelse gælder
-\[\od Ft=\PB FH+\pd Ft,\qquad \od Ht=\pd Ht.\]
-En størrelses $F$ bevarelse kræver $\PB FH+\partial F/\partial t=0$ langs bevægelsen.
-\subsection{Hamiltons ligninger på matrixform og fasevirkningen}
-Med $z=(q_1,\dots,q_n,p_1,\dots,p_n)^T$ og $J=\bigl(\begin{smallmatrix}0&I\\-I&0\end{smallmatrix}\bigr)$:
-\[\dot z=J\nabla_z H,\qquad S[q,p]=\int\left(\sum_i p_i\dot q_i-H\right)\dd t.\]
+Langs en Hamiltonsk bane har vi
+\begin{align*}
+\frac{\dd H}{\dd t}
+&=\sum_i\left(\frac{\partial H}{\partial q_i}\dot q_i+
+\frac{\partial H}{\partial p_i}\dot p_i\right)+\frac{\partial H}{\partial t}\\
+&=\sum_i\left(\frac{\partial H}{\partial q_i}\frac{\partial H}{\partial p_i}
+-\frac{\partial H}{\partial p_i}\frac{\partial H}{\partial q_i}\right)
++\frac{\partial H}{\partial t}.
+\end{align*}
+Således er
+\key{\frac{\dd H}{\dd t}=\left.\frac{\partial H}{\partial t}\right|_{q,p}.}
+Er $H$ eksplicit tidsuafhængig, er den bevaret; i et tidsafhængigt koordinatsystem kan $H$ variere, selv når man beskriver samme bevægelse. Undersøg derfor separat fysisk energi, og antag ikke $H=T+V$ automatisk.
+\begin{method}Test energibevarelse ved først at finde den korrekte $H$, dernæst at beregne $\partial H/\partial t$ med $(q,p)$ faste, og til sidst afgøre om $H$ virkelig svarer til mekanisk energi. Brug eventuelle startdata til at bestemme en bevaret konstant.\end{method}
 
+\subsection{Matrixform og fasevirkningen}
+Ordnes fasevariablene som $z=(q_1,\ldots,q_n,p_1,\ldots,p_n)^T$, og sættes
+\[
+J=\begin{pmatrix}0&I\\-I&0\end{pmatrix},
+\]
+kan Hamiltons ligninger skrives
+\key{\dot z=J\nabla_z H.}
+Denne symplektiske struktur bliver vigtig for de kanoniske transformationer i kapitel~6. Fasevirkningen er
+\[
+S[q,p]=\int_{t_1}^{t_2}
+\left(\sum_i p_i\dot q_i-H(q,p,t)\right)\dd t.
+\]
+Variér $q_i$ og $p_i$ uafhængigt, og sæt $\delta q_i(t_1)=\delta q_i(t_2)=0$. Vi kræver ikke, at $\delta p_i$ forsvinder på randen:
+\[
+\delta S=\int_{t_1}^{t_2}\sum_i
+\left[\delta p_i\dot q_i+p_i\delta\dot q_i
+-\frac{\partial H}{\partial q_i}\delta q_i
+-\frac{\partial H}{\partial p_i}\delta p_i\right]\dd t.
+\]
+Efter integration ved dele af $p_i\delta\dot q_i$ er randleddet
+$[p_i\delta q_i]_{t_1}^{t_2}=0$, og
+\[
+\delta S=\int_{t_1}^{t_2}\sum_i
+\left[\left(\dot q_i-\frac{\partial H}{\partial p_i}\right)\delta p_i
+-\left(\dot p_i+\frac{\partial H}{\partial q_i}\right)\delta q_i\right]\dd t.
+\]
+Stationariteten giver begge Hamiltonligninger. At to fasevirkninger kan adskille sig ved et randled forklarer siden de \emph{genererende funktioner} i kapitel~6.
 
-\subsection{Roterende Hamiltonfunktion}
-Når rotationshastigheden er konstant og $\vv p_R=m(\vv v_R+\vv\Omega\times\vv r)$, giver Legendretransformationen
-\[H_R=\vv p_R\cdot\vv v_R-\mathcal L_R=\frac{|\vv p_R|^2}{2m}+V-\vv\Omega\cdot(\vv r\times\vv p_R).\]
-Altså $H_R=H_{\rm inertiel}-\vv\Omega\cdot\vv L$ i den tilsvarende kanoniske beskrivelse. For eksplicit tidsafhængig $\vv\Omega$ kræves særlig omhu med koordinattransformationen og potentiellets tidsafhængighed.
+\subsection{Hamiltonfunktionen i et roterende system}
+Kapitel~\ref{sec:roterende} udledte for rotation om et fast origo og almindelig kinetisk energi
+\[
+\mathcal L_R=\frac12m|\dot{\vv r}+\vv\Omega\times\vv r|^2-V_R(\vv r,t).
+\]
+Her er alle vektorer i roterende komponenter. Den kanoniske impuls er
+\[
+\vv p_R=m(\dot{\vv r}+\vv\Omega\times\vv r),\quad
+\dot{\vv r}=\frac{\vv p_R}{m}-\vv\Omega\times\vv r.
+\]
+Legendretransformationen giver
+\[
+H_R=\vv p_R\cdot\dot{\vv r}-\mathcal L_R
+=\frac{|\vv p_R|^2}{2m}+V_R-\vv\Omega\cdot(\vv r\times\vv p_R).
+\]
+Altså, for en passende omskrivning af den inertielle Hamiltonfunktion til de roterende kanoniske variable,
+\key{H_R=H_I(\vv r,\vv p_R,t)-\vv\Omega\cdot\vv L,\quad
+\vv L=\vv r\times\vv p_R.}
+Leddet $-\vv\Omega\cdot\vv L$ følger af transformationen og er ikke en ekstra fysisk vekselvirkning. Formlen kræver her fast origo; translation giver yderligere led. Hvis $\vv\Omega$ eller $V_R$ afhænger eksplicit af tiden, er $H_R$ generelt heller ikke bevaret. Forveksl ikke den kanoniske $\vv p_R$ med $m\dot{\vv r}$.
+\begin{method}Start altid med hele den transformerede $\mathcal L_R$, beregn dens kanoniske impuls, og udfør derefter Legendretransformationen. Kontrollér fortegnet af rotationsleddet og tidsafhængigheden.\end{method}
 
-\subsection{Udledning af Hamiltons ligninger fra fasevirkningen}
-Variér $S[q,p]=\int_{t_1}^{t_2}(\sum_i p_i\dot q_i-H)\,\dd t$, med $\delta q_i(t_1)=\delta q_i(t_2)=0$ og uafhængige variationer $\delta p_i$:
-\[\delta S=\int\sum_i\left[\delta p_i\dot q_i+p_i\delta\dot q_i-\pd H{q_i}\delta q_i-\pd H{p_i}\delta p_i\right]\dd t.\]
-Ved integration ved dele af $p_i\delta\dot q_i$ forsvinder randleddene, og
-\[\delta S=\int\sum_i\left[\left(\dot q_i-\pd H{p_i}\right)\delta p_i-\left(\dot p_i+\pd H{q_i}\right)\delta q_i\right]\dd t.\]
-Uafhængigheden af variationerne giver Hamiltons to ligninger.
-
-
+\subsection{Samlet eksamensmetode og overgang}
+\begin{method}
+Fra $\mathcal L$ til $H$: find impulser, kontrollér invertibilitet, eliminér hastigheder og kontrollér Hamiltons ligninger. Fra $H$ til $\mathcal L$: isolér om muligt $p_i(q,\dot q,t)$ fra $\dot q_i=\partial H/\partial p_i$, og dan $\mathcal L=\sum_i p_i\dot q_i-H$. Løs førsteordenssystemet med initialbetingelser og bevarede størrelser, og verificér ved at genfinde Euler--Lagrange-ligningen. Kontrollér altid eksplicit tidsafhængighed og forskellen på mekanisk og kanonisk impuls.
+\end{method}
+Vi kan nu beskrive dynamikken med $q,p$. Næste spørgsmål er, om der findes \emph{andre} kanoniske variable $(Q,P)$, hvor Hamiltonfunktionen og bevægelsesligningerne bliver enklere. Det er formålet med kapitel~6.
