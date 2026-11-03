@@ -188,6 +188,12 @@ Samtidig er energiudtrykket
 Koefficientens fortegn afgør, om løsningen er trigonometrisk ($>0$), lineær ($=0$) eller hyperbolsk/eksponentiel ($<0$). De generelle konstanter bestemmes derefter af energien og begyndelsesdata; en $\cosh$-form repræsenterer kun bestemte integrationskonstanter.
 \begin{method}Ud fra en radialkraft: find $F(1/u)$, opstil Binet-ODE'en, klassificér differentialligningen (harmonisk, eksponentiel osv.), løs $u(\phi)$, og brug energien eller begyndelsesdata til at bestemme integrationskonstanter.\end{method}
 
+\textbf{Fra fysiske begyndelsesdata til Binetkonstanter.}
+Når $r(\phi_0)=r_0$ og $\dot r(\phi_0)=v_{r,0}$, følger direkte af $u=1/r$ og $\dot r=-(\ell/\mu)u'$
+\key{u(\phi_0)=\frac1{r_0},\qquad
+u'(\phi_0)=-\frac{\mu v_{r,0}}{\ell}.}
+Brug disse \emph{to} betingelser på den generelle ODE-løsning for at bestemme dens to integrationskonstanter. Derefter beregnes $r(\phi)=1/u(\phi)$ kun på de intervaller, hvor $u>0$; ønskes også $t$, integreres $\dot\phi=\ell/(\mu r^2)$ særskilt.
+
 \subsubsection*{Hvordan løses den fremkomne differentialligning?}
 For en ligning $u''+\omega^2u=c$ er det afgørende først at undersøge fortegnet af $\omega^2$. Ved $\omega^2>0$ er
 $u=c/\omega^2+A\cos(\omega\phi)+B\sin(\omega\phi)$; ved $\omega^2=0$ fås $u=c\phi^2/2+A\phi+B$; og ved $\omega^2<0$ er
