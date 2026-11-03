@@ -152,6 +152,13 @@ Med den indadgående gren beskrives samme løsning for $t<0$. Kontrollen er \emp
 De sidste to ligheder bruger $q_0^2=k/E$ og $q^2=q_0^2+2Et^2/m$. Dermed opfyldes både bevægelsesligningen og energiligningen, præcis som i opgave 4c--d.
 \begin{method}Vælg energiintegration, når der spørges efter $q(t)$ eller $r(t)$: bestem energi og fortegnsgren fra initialdata, separér, integrér, håndtér vendepunkter stykkevist, og verificér løsning, initialdata og begge bevægelses-/energiligninger. For centralbevægelse integreres dernæst $\dot\phi$.\end{method}
 
+\textbf{Alternativ til Binet: baneintegralet.} Kombinationen af
+$\dot\phi=\ell/(\mu r^2)$ og
+$\dot r=\pm\sqrt{2[E-V_{\mathrm{eff}}(r)]/\mu}$ giver på en monoton radial gren
+\key{\phi(r)-\phi(r_0)=\pm\int_{r_0}^{r}
+\frac{\ell\,\dd\rho}{\rho^2\sqrt{2\mu[E-V_{\mathrm{eff}}(\rho)]}}.}
+Det bestemmer banen implicit uden at løse Binets ODE. Metoden er særlig nyttig for generelle centralpotentialer; fortegnet skifter ved almindelige radiale vendepunkter, og $\ell=0$ kræver en særskilt radial analyse.
+
 \subsubsection*{Metode 3: Banens form fra Binets ligning}\label{sec:binet}
 Når $r(\phi)$ ønskes, er det mere praktisk at benytte den bevarede størrelse $\ell=\mu r^2\dot\phi$ til at skifte uafhængig variabel fra tid til vinkel. Denne fremgangsmåde forudsætter $\ell\ne0$ og $r>0$.
 
@@ -280,15 +287,19 @@ Sæt $\nu^2=1+\mu\gamma/\ell^2>0$. En oscillerende løsning er
 For $\nu\ne1$ er den næste periapsis generelt forskudt i forhold til én fuld omdrejning; banen er kun lukket for rationelle forhold mellem radial- og vinkelperioderne. Ved en næsten cirkulær bane er $\Delta\phi_{\rm radial}\simeq2\pi\omega_\phi/\omega_r$, hvor $\omega_\phi=\ell/(\mu r_0^2)$.
 
 \subsubsection*{Radialperiode og lukning}
+\textbf{Hvad skal kontrolleres?} To vendepunkter giver kun en begrænset radialbevægelse; den plane bane lukker først, hvis dens vinkelændring over en veldefineret radialperiode er et rationalt multiplum af $2\pi$.
+
 Hvis der findes to radiale vendepunkter, er vinkelændringen mellem dem
 \[\Delta\phi_{1/2}=\int_{r_{\min}}^{r_{\max}}\frac{\ell\,\mathrm dr}{r^2\sqrt{2\mu[E-V_{\rm eff}(r)]}},\qquad\Delta\phi_{\rm radial}=2\Delta\phi_{1/2}.\]
 En bane er lukket, når $\Delta\phi_{\rm radial}/(2\pi)$ er rationalt. Ved Keplerpotentialet er den $1$, mens andre centralpotentialer kan give præcession. Forskydning fra én periapsis til den næste er $\Delta\phi_{\rm radial}-2\pi$ ved sammenligning med én fuld omdrejning.
 
 \subsubsection*{Spredning og differentialt tværsnit}
+\textbf{Fysisk problem:} Fra indkommende hastighed og anslagsparameter søger vi afbøjningsvinklen og det differentielle tværsnit. De sædvanlige formler kræver en asymptotisk fri indkommende/udgående bane, fx et potentiale der aftager tilstrækkeligt hurtigt ved stor afstand.
+
 For en indkommende ubundet bane i et potentiale med $V(\infty)=0$ er $r_{\min}$ det største positive nulpunkt i $E-V_{\rm eff}(r)=0$. \emph{Anslagsparameteren} $b$ er den vinkelrette afstand mellem kraftcentrum og den uforstyrrede indkommende asymptote.
 Ved asymptotisk hastighed $v_\infty$ og anslagsparameter $b$ er $E=\tfrac12\mu v_\infty^2$, $\ell=\mu v_\infty b$. For en enkeltvendepunktsbane kan afbøjningsvinklen findes fra
 \[\phi_0=\int_{r_{\min}}^\infty\frac{\ell\,\mathrm dr}{r^2\sqrt{2\mu[E-V_{\rm eff}(r)]}},\qquad\Theta=\pi-2\phi_0,\]
-med valgt fortegnskonvention. Det differentielle tværsnit er $\mathrm d\sigma/\mathrm d\Omega=(b/\sin\Theta)|\mathrm db/\mathrm d\Theta|$ for én gren; summer over grene, hvis flere $b$ giver samme $\Theta$.
+med valgt fortegnskonvention. Det differentielle tværsnit er $\mathrm d\sigma/\mathrm d\Omega=(b/\sin\Theta)|\mathrm db/\mathrm d\Theta|$ for én monotont invertibel gren; summer over grene, hvis flere $b$ giver samme $\Theta$. Ved $\sin\Theta=0$, vendepunktsdegeneration og flerværdige afbøjningsfunktioner kræves særskilt grænse-/grenanalyse.
 \begin{method}Givet $F(r)$ og en indkommende partikel: (1) Integrér $F=-V'$ og vælg potentialets nulpunkt. (2) Find $E=\mu v_\infty^2/2$ og $\ell=\mu v_\infty b$. (3) Find $r_{\min}$ fra $E=V_{\rm eff}(r_{\min})$. (4) Beregn $\phi_0$ og afbøjningsvinklen. (5) Differentier $b(\Theta)$ for at bestemme tværsnittet; tjek eventuelle flere grene.\end{method}
 
 \subsection{Opsummering: praktisk metodevalg}
