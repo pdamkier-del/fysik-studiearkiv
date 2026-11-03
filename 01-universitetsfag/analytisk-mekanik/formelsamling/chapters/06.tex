@@ -51,6 +51,63 @@ Derfor
 En størrelse er bevaret, hvis højresiden er nul langs bevægelsen. Uden eksplicit tidsafhængighed reduceres betingelsen til $\PB FH=0$. Beregn altså $\PB FH$ før en størrelse påstås bevaret; eksempelvis følger $L_z$-bevarelse kun af passende rotationssymmetri af $H$.
 \begin{method}Skriv $F(q,p,t)$, beregn de partielle afledte og indsæt i $\PB FH+\partial F/\partial t$. Kontrollér, om resultatet er nul på det relevante område. Dette er også metoden ved hand-in-opgaver om bevarede størrelser; en præcis reference til Hand-in 3 fra 2026 kræver selve opgaveteksten.\end{method}
 
+\subsection{Systematisk søgning efter bevarede størrelser}\label{sec:find-conserved}
+\textbf{Problem.} En bevaret størrelse er en funktion $F(q,p,t)$, der har samme værdi langs løsningen, ikke nødvendigvis én af de enkelte impulser. Den generelle \emph{nødvendige og tilstrækkelige lokale test} er
+\key{\boxed{\frac{\dd F}{\dd t}
+=\PB FH+\frac{\partial F}{\partial t}=0}.}
+Før vi gætter på en kompliceret kandidat, leder vi efter symmetrier: en manglende koordinat i $H$ giver en bevaret $p_i$, tidsuafhængighed giver bevaret $H$, og invarians under translation eller rotation giver bevarede generatorer. I kartesiske kanoniske koordinater er henholdsvis $\vv p$ og $\vv L=\vv r\times\vv p$ generatorer; kontrollen er dog stadig $\PB{G}{H}+\partial G/\partial t=0$. At en størrelse genererer en transformation er \emph{ikke i sig selv} en bevarelseslov.
+
+\textbf{Eksempel fra eksamen 2024, opgave 3: skjult integral uden rotationssymmetri.}
+For
+\[
+H=\frac{p_r^2}{2m}+\frac{p_\phi^2}{2mr^2}+V(r)+\frac{G(\phi)}{r^2}
+\]
+er $\phi$ ikke cyklisk. Alligevel virker kandidaten
+$I=p_\phi^2+2mG(\phi)$. Sæt $\ell=p_\phi$ og beregn kun de relevante led:
+\begin{align*}
+\PB IH
+&=\frac{\partial I}{\partial\phi}\frac{\partial H}{\partial p_\phi}
+-\frac{\partial I}{\partial p_\phi}\frac{\partial H}{\partial\phi}\\
+&=2mG'(\phi)\frac{\ell}{mr^2}
+-2\ell\frac{G'(\phi)}{r^2}=0.
+\end{align*}
+Altså er $I$ bevaret, selv om $\ell$ \emph{ikke} er det. Dette viser, hvorfor manglende rotationssymmetri ikke udelukker andre bevarede kombinationer.
+
+\textbf{Eksempel fra eksamen 2019, opgave 3: systematisk kvadratisk ansatz.}
+For den isotrope oscillator i kartesiske koordinater,
+$H=\sum_i p_i^2/(2m)+k\sum_i r_i^2/2$,
+søger vi en kandidat af typen
+$F_{ij}=a\,p_ip_j+b\,r_ir_j$.
+Da $\dot r_i=p_i/m$ og $\dot p_i=-kr_i$, fås
+\[
+\frac{\dd F_{ij}}{\dd t}
+=\left(-ak+\frac bm\right)(r_ip_j+p_ir_j).
+\]
+Vælg derfor $b=amk$. Med $a=1/(2m)$ fås
+\[
+\boxed{A_{ij}=\frac{p_ip_j}{2m}+\frac{k}{2}r_ir_j},
+\qquad \frac{\dd A_{ij}}{\dd t}=0.
+\]
+Opgaven illustrerer algoritmen \emph{vælg en generel form, indsæt i $\PB FH=0$, og bestem koefficienter ved at samle uafhængige monomier}. Ikke alle systemer har et integral af den valgte grad.
+
+\textbf{Eksempel fra eksamen 2025, opgave 4: resterende rotationssymmetri.}
+Hvis $m\ddot{\vv r}=-k\hat{\vv r}/r^2+\vv C$ med en konstant vektor $\vv C$, gælder
+\[
+\dot{\vv L}=\vv r\times\vv C,\qquad
+\frac{\dd}{\dd t}(\vv C\cdot\vv L)
+=\vv C\cdot(\vv r\times\vv C)=0.
+\]
+Det er altså $D=\vv C\cdot\vv L$, der bevares, selv om hele $\vv L$ ikke er konstant. Her betegner eksamensopgavens øvrige vektor $\vv K$ \emph{ikke} den transformerede Hamiltonfunktion og skal derfor ikke omdøbes.
+
+\textbf{Tidsafhængige integraler.} Et bevaret $F$ behøver ikke være eksplicit tidsuafhængigt. For en fri partikel med $H=p^2/(2m)$ er
+\[
+F(q,p,t)=q-\frac{p}{m}t,\qquad
+\PB FH=\frac pm,\quad \frac{\partial F}{\partial t}=-\frac pm,
+\]
+så $F$ er bevaret. Det er den fulde test, ikke $\PB FH=0$ alene, der er afgørende.
+
+\begin{method}\textbf{Genbrugelig søgemetode:} (1) opstil og kontrollér $H(q,p,t)$; (2) find manglende koordinater, eksplicit tidsinvarians og kontinuerte symmetrigeneratorer; (3) vælg ved behov en ansatz $F(q,p,t)=\sum_\alpha c_\alpha(t)M_\alpha(q,p)$ med monomier eller fysisk motiverede led; (4) beregn $\PB FH+\partial_tF$; (5) saml uafhængige monomier og løs ligningerne for $c_\alpha$; (6) kontroller kandidaten i de originale Hamiltonligninger, ved initialdata og på dens definitionsområde. En ukendt koefficient kan være tidsafhængig, og en konstant kan være funktionelt afhængig af andre integraler.\end{method}
+
 \subsection{Kanonicitet: test den givne transformation}
 En lokalt invertibel transformation er kanonisk, hvis alle fundamentale parenteser opfylder
 \key{\PB{Q_i}{Q_j}=0,\quad\PB{P_i}{P_j}=0,\quad
