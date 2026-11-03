@@ -46,6 +46,8 @@ jobs:
             build/00-matematik/main.log
             build/02-fysikbibliotek/statistik/main.pdf
             build/02-fysikbibliotek/statistik/main.log
+            build/01-universitetsfag/analytisk-mekanik/formelsamling/main.pdf
+            build/01-universitetsfag/analytisk-mekanik/formelsamling/main.log
           if-no-files-found: error
   drive:
     needs: build
