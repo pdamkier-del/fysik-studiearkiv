@@ -1,15 +1,151 @@
-\clearpage\section{Fra Newton til generaliserede koordinater}
-\subsection{Arbejde, potentiale og generaliserede kræfter}
-Ved en infinitesimal forskydning er $\dd W=\vv F\cdot \dd\vv r$. For en konservativ kraft kan der vælges et potentiale $V$ således, at $\vv F=-\nabla V$. Med $\vv r_a=\vv r_a(q_1,\ldots,q_n,t)$ er
-\begin{align}
-\delta\vv r_a&=\sum_i\pd{\vv r_a}{q_i}\delta q_i,&\delta W&=\sum_i Q_i\delta q_i,\\[-2pt]
-Q_i&=\sum_a\vv F_a\cdot\pd{\vv r_a}{q_i},&Q_i^{\rm kons}&=-\pd V{q_i}.
-\end{align}
-\begin{note}Generaliserede kræfter har ikke nødvendigvis enheden newton: en vinkelkoordinat har eksempelvis drejningsmoment som tilhørende generaliseret kraft.\end{note}
-\subsection{Bindinger og koordinatvalg}
-En holonom binding skrives $f_\alpha(q,t)=0$; en tidsuafhængig binding er skleronom, en eksplicit tidsafhængig er reonom. Bindinger kan enten løses på forhånd ved et egnet koordinatvalg eller indføres via multiplikatorer (afsnit~\ref{sec:lambda}).
-\begin{center}\begin{tabular}{lll}\toprule System & Binding & Frie koordinater \\\midrule
-Partikel på cirkel & $x^2+y^2=R^2$ & $\phi$\\
-Pendul i plan & $x^2+y^2=\ell^2$ & $\phi$\\
-Partikel på kugle & $x^2+y^2+z^2=R^2$ & $(\theta,\phi)$\\\bottomrule\end{tabular}\end{center}
+\clearpage\section{Generaliserede koordinater og mekaniske størrelser}\label{sec:gen-coordinates}
+\textbf{Fysisk problem.} Før vi kan udlede en bevægelsesligning, må vi beskrive systemets mulige positioner, bevægelser og kræfter korrekt. Vi går fra bindinger og koordinatvalg til hastigheder, energi og impulser og slutter med en Lagrangefunktion $\mathcal L(q,\dot q,t)$, som anvendes i kapitel~2.
 
+\subsection{Frihedsgrader, bindinger og koordinatvalg}
+Et system af $N$ punktpartikler i tre dimensioner har oprindeligt $3N$ kartesiske koordinater. Har det $k$ \emph{uafhængige, regulære holonome} bindinger $f_\alpha(\vv r_1,\dots,\vv r_N,t)=0$, er antallet af lokale frihedsgrader
+\key{n=3N-k.}
+Formlen gælder ikke uden videre for vilkårlige hastighedsbindinger eller afhængige bindinger. \emph{Holonome} bindinger kan udtrykkes som ligninger mellem positioner og eventuelt tid; ikke-holonome bindinger kan generelt ikke integreres til sådanne ligninger. \emph{Skleronom} betyder uden eksplicit tid; \emph{reonom} betyder eksplicit tidsafhængig.
+\begin{center}\small
+\begin{tabular}{p{36mm}p{54mm}p{48mm}}\toprule
+System & Binding & Mulige frie koordinater\\\midrule
+Partikel på cirkel & $x^2+y^2=R^2$ & $\phi$\\
+Partikel på kugle & $x^2+y^2+z^2=R^2$ & $(\theta,\phi)$\\
+Simpelt pendul i plan & $x^2+y^2=l^2$ & $\theta$\\\bottomrule
+\end{tabular}\end{center}
+\textbf{Pendul som gennemgående eksempel.} Lad ophængspunktet være origo, $y$ pege opad, og længden være $l>0$. Vælg
+\[
+x=l\sin\theta,\qquad y=-l\cos\theta.
+\]
+Bindingen $x^2+y^2=l^2$ er dermed opfyldt identisk. I stedet for at løse for to afhængige variable $(x,y)$ kan vi arbejde med én uafhængig vinkel $\theta$. En generaliseret koordinat er altså \emph{enhver} egnet parameter for konfigurationsrummet, ikke nødvendigvis en længde.
+
+Et koordinatkort skal være lokalt uafhængigt og regulært. For et kvadratisk skift $Q_i=Q_i(q,t)$ med samme dimension er den lokale invertibilitet sikret af
+\[
+\boxed{\det\left(\frac{\partial Q_i}{\partial q_j}\right)\ne0.}
+\]
+Mere generelt kræves, at koordinatparametriseringen har fuld rang. Et polært kort bliver eksempelvis singulært i $r=0$. Dette er en \emph{koordinatbetingelse}, ikke kanonicitetstesten for en transformation i faserummet (se afsnit~\ref{sec:canon}).
+\begin{method}Optæl uafhængige bindinger; vælg $n$ uafhængige $q_i$; skriv hver partikelposition $\vv r_a(q,t)$; kontrollér bindinger og eventuelle koordinatsingulariteter, før hastigheder og energi beregnes.\end{method}
+
+\subsection{Koordinattransformationer, hastigheder og accelerationer}
+Lad $\vv r_a=\vv r_a(q_1,\ldots,q_n,t)$ være positionen af partikel $a$. Langs den faktiske bane bliver $\vv r_a$ tidsafhængig både gennem $q_i(t)$ og gennem en mulig eksplicit tidsafhængighed. Kædereglen giver
+\key{\dot{\vv r}_a=\sum_{i=1}^n
+\frac{\partial\vv r_a}{\partial q_i}\dot q_i+
+\left.\frac{\partial\vv r_a}{\partial t}\right|_q.}
+I $\partial\vv r_a/\partial q_j$ holdes de andre koordinater og tiden faste; i $\partial\vv r_a/\partial t|_q$ holdes alle $q_i$ faste. Punktet angiver derimod den \emph{totale} tidsafledte langs $q_i(t)$.
+Fordi $\dot q_i$ betragtes som uafhængige argumenter i tangentbundtet, følger direkte
+\key{\frac{\partial\dot{\vv r}_a}{\partial\dot q_j}
+=\frac{\partial\vv r_a}{\partial q_j}.}
+Differentieres hastigheden endnu en gang, fås
+\[
+\ddot{\vv r}_a=
+\sum_i\frac{\partial\vv r_a}{\partial q_i}\ddot q_i+
+\sum_{i,j}\frac{\partial^2\vv r_a}{\partial q_i\partial q_j}\dot q_i\dot q_j+
+2\sum_i\frac{\partial^2\vv r_a}{\partial t\partial q_i}\dot q_i+
+\left.\frac{\partial^2\vv r_a}{\partial t^2}\right|_q.
+\]
+Denne form forudsætter tilstrækkeligt glatte transformationer; ved tidsafhængige og roterende referencebaser er det særligt vigtigt at differentiere basisvektorerne (kapitel~4).
+
+\textbf{Eksamen 2023, opgave 4a:} Betragt den lokale punkttransformation
+\[
+x=\tfrac12(u^2-v^2),\qquad y=uv.
+\]
+Da koordinatskiftet ikke afhænger eksplicit af tiden, giver kædereglen
+\[
+\dot x=u\dot u-v\dot v,\qquad
+\dot y=v\dot u+u\dot v.
+\]
+Og dermed
+\[
+\frac{\partial\dot x}{\partial\dot u}=u,\quad
+\frac{\partial\dot x}{\partial\dot v}=-v,\quad
+\frac{\partial\dot y}{\partial\dot u}=v,\quad
+\frac{\partial\dot y}{\partial\dot v}=u.
+\]
+Jacobideterminanten er $u^2+v^2$; den er positiv bortset fra $(u,v)=(0,0)$. Skiftet er derfor lokalt invertibelt væk fra origo, men globalt er $(u,v)$ og $(-u,-v)$ samme punkt i $(x,y)$.
+\begin{method}Skriv først de gamle koordinater som funktioner af de nye og tiden; anvend kædereglen på hver koordinat; differentier med hensyn til én $\dot q_j$ ad gangen, mens alle øvrige $q,\dot q,t$ fastholdes. Kontrollér eventuelt Jacobien.\end{method}
+
+\subsection{Kinetisk energi, potentiale og Lagrangefunktionen}
+For punktmasser i et inertielt kartesisk system er
+\[
+T=\frac12\sum_a m_a\dot{\vv r}_a\cdot\dot{\vv r}_a.
+\]
+Indsæt de transformerede hastigheder for at få $T(q,\dot q,t)$. Den generaliserede kinetiske energi behøver ikke være summen af udtryk $\frac12m\dot q_i^2$; der kan være metrikkens faktorer, krydsled og ved reonome koordinater også hastighedslineære led.
+
+I plan polære koordinater er $\vv r=r(\cos\phi,\sin\phi)$ og
+\[
+\dot x=\dot r\cos\phi-r\dot\phi\sin\phi,\qquad
+\dot y=\dot r\sin\phi+r\dot\phi\cos\phi.
+\]
+Krydsleddene ophæves i $\dot x^2+\dot y^2$, så
+\key{T=\frac12m(\dot r^2+r^2\dot\phi^2).}
+For pendulet indsættes $x=l\sin\theta$, $y=-l\cos\theta$:
+\[
+\dot x=l\cos\theta\,\dot\theta,\quad
+\dot y=l\sin\theta\,\dot\theta,\quad
+T=\frac12ml^2\dot\theta^2.
+\]
+En \emph{konservativ} kraft kan lokalt skrives $\vv F=-\nabla V$. I én dimension er $F_x=-\mathrm dV/\mathrm dx$, altså $V(x)=-\int F_x(x)\,\dd x+C$. I flere dimensioner kræver et potentiale passende integrabilitetsbetingelser og domæneforhold; en hastighedsafhængig friktionskraft er ikke en almindelig konservativ potentialkraft. For pendulet er $V=mgy=-mgl\cos\theta$ (additive konstanter kan udelades). Derfor
+\[
+\boxed{\mathcal L=T-V=\frac12ml^2\dot\theta^2+mgl\cos\theta.}
+\]
+Her stopper vi ved \emph{opstillingen} af systemet; Euler--Lagrange giver bevægelsesligningen i næste kapitel.
+
+\subsection{Generaliseret impuls og impulsens transformation}
+Den impuls, som er konjugeret til $q_i$, defineres ved
+\key{p_i=\frac{\partial\mathcal L}{\partial\dot q_i}.}
+Den er ikke nødvendigvis en komponent af kartesisk lineær impuls. For $T=\frac12m(\dot r^2+r^2\dot\phi^2)$ og hastighedsuafhængigt potentiale fås
+\[
+p_r=m\dot r,\qquad p_\phi=mr^2\dot\phi.
+\]
+$p_\phi$ er et impulsmoment, mens $p_r$ er radial impuls; begge har de enheder, som følger af deres tilhørende koordinater. For eksempel er pendulets $p_\theta=ml^2\dot\theta$.
+
+\textbf{Punkttransformation:} Lad de gamle koordinater $x_i$ være givet ved $x_i=x_i(Q,t)$, og antag en regulær transformation samt en Lagrangefunktion, der blot omskrives ved substitution, $\mathcal L'(Q,\dot Q,t)=\mathcal L(x(Q,t),\dot x(Q,\dot Q,t),t)$. Kædereglen og hastighedsidentiteten giver
+\[
+P_j=\frac{\partial\mathcal L'}{\partial\dot Q_j}
+=\sum_i\frac{\partial\mathcal L}{\partial\dot x_i}
+\frac{\partial\dot x_i}{\partial\dot Q_j}
+=\boxed{\sum_i p_i\frac{\partial x_i}{\partial Q_j}}.
+\]
+Dette er transformationen af \emph{kanoniske} impulskomponenter for punkttransformationer; hastighedsafhængige potentialer ændrer definitionen af $p_i$, og en ekstra total tidsafledt i Lagrangefunktionen kan forskyde impulserne.
+
+For koordinatskiftet fra 2023.4a bliver
+\[
+\boxed{p_u=up_x+vp_y,\qquad p_v=-vp_x+up_y.}
+\]
+\begin{method}Skriv gamle koordinater som funktion af nye; beregn Jacobimatricen $\partial x_i/\partial Q_j$; transformér impulserne med dens transponerede matrix. Kontrollér, at alle termer og enheder passer, samt hvor Jacobien er invertibel.\end{method}
+
+\subsection{Generaliserede kræfter og virtuelt arbejde}
+En \emph{virtuel forskydning} $\delta\vv r_a$ er en infinitesimal ændring i konfigurationen ved fast tid, der respekterer de valgte holonome bindinger:
+\[
+\delta\vv r_a=\sum_i\frac{\partial\vv r_a}{\partial q_i}\delta q_i.
+\]
+For påførte fysiske kræfter fås virtuelt arbejde
+\[
+\delta W=\sum_a\vv F_a\cdot\delta\vv r_a
+=\sum_i\underbrace{\left(\sum_a\vv F_a\cdot
+\frac{\partial\vv r_a}{\partial q_i}\right)}_{\mathcal Q_i}\delta q_i.
+\]
+Derfor er
+\key{\mathcal Q_i=\sum_a\vv F_a\cdot
+\frac{\partial\vv r_a}{\partial q_i},\qquad
+\mathcal Q_i^{\rm kons}=-\frac{\partial V}{\partial q_i}.}
+Dette er \emph{generaliseret kraft}, ikke en ny koordinat $Q_i$; store $Q_i$ bruges senere om nye kanoniske koordinater. Enheden bestemmes af $\delta W=\mathcal Q_i\delta q_i$: for en længde er den newton, for en dimensionsløs vinkel er den newtonmeter.
+
+Ved ideelle bindinger gør bindingskræfterne intet virtuelt arbejde. D'Alemberts princip udtrykker da
+$\sum_a(\vv F_a-m_a\ddot{\vv r}_a)\cdot\delta\vv r_a=0$,
+hvilket er et andet udgangspunkt for Lagrangeformalismen; den fulde udledning via stationær virkning følger i kapitel~2. For ikke-ideelle bindinger skal de ikke-nul virtuelle bindingsarbejder medtages særskilt.
+
+\subsection{Samlet opstilling: det simple pendul}
+Et punktlegeme med masse $m$ hænger i en masseløs, ustrækkelig snor af længde $l$ i et homogent tyngdefelt. Den regulære binding begrænser bevægelsen til én vinkel $\theta$:
+\[
+(x,y)=(l\sin\theta,-l\cos\theta)
+\ \Rightarrow\
+(\dot x,\dot y)=(l\cos\theta\,\dot\theta,l\sin\theta\,\dot\theta).
+\]
+Dermed
+\[
+T=\frac12ml^2\dot\theta^2,\quad V=-mgl\cos\theta,\quad
+\boxed{\mathcal L=\frac12ml^2\dot\theta^2+mgl\cos\theta},\quad
+p_\theta=ml^2\dot\theta.
+\]
+Bemærk, at $p_\theta$ ikke er en kartesisk impuls; og at bindingen allerede er elimineret med koordinatvalget. Bevægelsesligningen udledes først i afsnit~2.2.
+\begin{method}\textbf{Fra opgavetekst til $\mathcal L$:} (1) find system og bindinger, (2) vælg uafhængige $q_i$, (3) skriv $\vv r_a(q,t)$ og $\dot{\vv r}_a$, (4) beregn $T$ og $V$, (5) opstil $\mathcal L=T-V$, (6) find eventuelt $p_i=\partial\mathcal L/\partial\dot q_i$. Kontrollér enheder, koordinatdomæne og alle bindingsrelationer.\end{method}
