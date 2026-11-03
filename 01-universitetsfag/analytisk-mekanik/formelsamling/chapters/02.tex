@@ -3,7 +3,7 @@
 For en almindelig konservativ mekanisk model er $\mathcal L=T-V$. Hamiltons princip $\delta S=0$ med $S[q]=\int_{t_1}^{t_2}\mathcal L\,\dd t$ og faste endepunkter fører til
 \key{\frac{\dd}{\dd t}\pd{\mathcal L}{\dot q_i}-\pd{\mathcal L}{q_i}=0,\qquad p_i=\pd{\mathcal L}{\dot q_i}.}
 Den generaliserede impuls $p_i$ er ikke generelt $m\dot q_i$; dens form afhænger af kinetisk energi, koordinatvalg og eventuelle hastighedsafhængige led.
-\begin{method}Vælg uafhængige koordinater $q_i$; find $T,V$; opstil $\mathcal L$; differentier efter $q_i$ og $\dot q_i$; anvend Euler--Lagrange; indsæt eventuelle begyndelsesbetingelser.\end{method}
+
 \textbf{Fra fysisk system til den ligning, der faktisk skal løses.}
 Når en opgave giver positioner, bindinger og kræfter frem for $\mathcal L$, er det første arbejde at vælge de \emph{uafhængige} koordinater. Brug $\vv r_a(q,t)$ og kædereglen fra kapitel~1 til at finde $\dot{\vv r}_a$; beregn dernæst $T=\sum_a m_a|\dot{\vv r}_a|^2/2$ og et eventuelt $V(q,t)$. Først nu opstilles $\mathcal L=T-V$ og
 \[
@@ -18,10 +18,6 @@ Når en opgave giver positioner, bindinger og kræfter frem for $\mathcal L$, er
 (5) genkend den resterende ODE, bestem dens \emph{fulde} løsning med frie konstanter, og fastlæg dem fra begyndelsesdata;
 (6) kontrollér både bindingerne og de oprindelige ligninger.
 Hvis det er \emph{bindingskraften}, der efterspørges, må bindingen i stedet ofte fastholdes med multiplikatorer (afsnit~\ref{sec:lambda}).\end{method}
-
-\textbf{Fra problem til bevægelsesligning.}
-Når opgaven giver en fysisk opstilling, er $\mathcal L$ endnu ikke kendt. Vælg uafhængige $q_i$, udtryk alle $\vv r_a(q,t)$, brug kædereglen til $\dot{\vv r}_a$, og beregn $T=\sum_a m_a|\dot{\vv r}_a|^2/2$ samt $V$. Opstil først derefter $\mathcal L=T-V$.
-\begin{method}Søg efter $q_i(t)$: (1) udled alle Euler--Lagrange-ligninger; (2) test cykliske koordinater og tidssymmetri; (3) brug bevarede impulser/energi til at reducere ligningerne; (4) identificér ODE-typen og skriv dens generelle løsning, ikke blot en enkelt gren; (5) bestem konstanterne fra begyndelsesdata og kontrollér både de oprindelige ligninger og bindingerne. Spørges i stedet efter en bindingskraft, skal bindingen ofte beholdes via multiplikatorer, jf. afsnit~\ref{sec:lambda}.\end{method}
 
 \subsection{Harmonisk oscillator: standardform}
 For $m>0$ og $k>0$:
