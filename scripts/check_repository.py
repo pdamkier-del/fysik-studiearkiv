@@ -26,7 +26,10 @@ def latex_tree(path, stack=()):
     text = latex_text(path)
     sources = {path: text}
     for name in re.findall(r'\\input\{([^}]+)\}', text):
-        target = ROOT / (name if name.endswith('.tex') else name + '.tex')
+        source_name = name if name.endswith('.tex') else name + '.tex'
+        target = path.parent / source_name
+        if not target.is_file():
+            target = ROOT / source_name
         if not target.is_file():
             raise ValueError(f'Missing LaTeX input: {name}')
         sources.update(latex_tree(target, (*stack, path)))
