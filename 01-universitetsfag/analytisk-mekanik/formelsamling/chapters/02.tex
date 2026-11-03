@@ -1,58 +1,211 @@
-\clearpage\section{Lagrange, symmetrier og bevarelse}
-\subsection{Euler--Lagrange og generaliseret impuls}
-For en almindelig konservativ mekanisk model er $\mathcal L=T-V$. Hamiltons princip $\delta S=0$ med $S[q]=\int_{t_1}^{t_2}\mathcal L\,\dd t$ og faste endepunkter fører til
-\key{\frac{\dd}{\dd t}\pd{\mathcal L}{\dot q_i}-\pd{\mathcal L}{q_i}=0,\qquad p_i=\pd{\mathcal L}{\dot q_i}.}
-Den generaliserede impuls $p_i$ er ikke generelt $m\dot q_i$; dens form afhænger af kinetisk energi, koordinatvalg og eventuelle hastighedsafhængige led.
-\begin{method}Vælg uafhængige koordinater $q_i$; find $T,V$; opstil $\mathcal L$; differentier efter $q_i$ og $\dot q_i$; anvend Euler--Lagrange; indsæt eventuelle begyndelsesbetingelser.\end{method}
-\subsection{Harmonisk oscillator: standardform}
-For $m>0$ og $k>0$:
-\[\mathcal L=\tfrac12m\dot q^2-\tfrac12kq^2,\qquad \omega_0=\sqrt{k/m}.\]
-Euler--Lagrange giver $m\ddot q+kq=0$, og derfor
-\key{q(t)=A\cos(\omega_0 t)+B\sin(\omega_0 t).}
-\begin{method}Genkend det kvadratiske potentiale og den kvadratiske kinetiske energi. Aflæs $\omega_0=\sqrt{k/m}$, og skriv den generelle løsning. For to uafhængige koordinater gælder én sådan løsning for hver. Hastighedslineære led eller koblinger skal først behandles.\end{method}
-\subsection{Cykliske koordinater og symmetrier}
-Er $\partial\mathcal L/\partial q_i=0$, er $q_i$ cyklisk, og $p_i$ er bevaret. Er $\partial \mathcal L/\partial t=0$, er energifunktionen bevaret (se nedenfor).
-\begin{center}\begin{tabular}{>{\raggedright\arraybackslash}p{34mm}p{54mm}p{57mm}}\toprule Symmetri & Kontrol & Bevaret størrelse\\\midrule
+\clearpage\section{Lagrangeformalismen og bevarelseslove}\label{sec:lagrange}
+\textbf{Fra opstilling til bevægelse.} I kapitel~1 valgte vi uafhængige koordinater, beregnede $T,V$ og opstillede $\mathcal L(q,\dot q,t)$. Hvordan bestemmes nu $q_i(t)$? Vi begynder med Hamiltons princip, udleder Euler--Lagrange og bruger derefter symmetrier, energi og bindinger til at reducere arbejdet.
+
+\subsection{Virkningen og Hamiltons princip}
+Til en mulig bane $q_i(t)$ mellem to faste tidspunkter $t_1,t_2$ knyttes virkningen
+\[
+S[q]=\int_{t_1}^{t_2}\mathcal L(q,\dot q,t)\,\dd t.
+\]
+Hamiltons princip siger, at den fysiske bane gør virkningen \emph{stationær}: $\delta S=0$ for alle tilstrækkeligt små variationer med faste endepunkter,
+$\delta q_i(t_1)=\delta q_i(t_2)=0$. Stationær betyder ikke nødvendigvis et minimum.
+
+Skriv $q_i(t,\varepsilon)=q_i(t)+\varepsilon\eta_i(t)$, hvor $\eta_i(t_1)=\eta_i(t_2)=0$. Den første variation er
+\[
+\delta S=\int_{t_1}^{t_2}\sum_i\left(
+\frac{\partial\mathcal L}{\partial q_i}\delta q_i+
+\frac{\partial\mathcal L}{\partial\dot q_i}\delta\dot q_i
+\right)\dd t.
+\]
+Da $\delta\dot q_i=\dd(\delta q_i)/\dd t$, kan det andet led integreres ved dele:
+\begin{align*}
+\int_{t_1}^{t_2}\frac{\partial\mathcal L}{\partial\dot q_i}
+\frac{\dd(\delta q_i)}{\dd t}\,\dd t
+&=\left[\frac{\partial\mathcal L}{\partial\dot q_i}\delta q_i\right]_{t_1}^{t_2}
+-\int_{t_1}^{t_2}\frac{\dd}{\dd t}
+\left(\frac{\partial\mathcal L}{\partial\dot q_i}\right)\delta q_i\,\dd t\\
+&=-\int_{t_1}^{t_2}\frac{\dd}{\dd t}
+\left(\frac{\partial\mathcal L}{\partial\dot q_i}\right)\delta q_i\,\dd t,
+\end{align*}
+fordi randleddet er nul. Dermed
+\[
+\delta S=\int_{t_1}^{t_2}\sum_i\left[
+\frac{\partial\mathcal L}{\partial q_i}-
+\frac{\dd}{\dd t}\left(\frac{\partial\mathcal L}{\partial\dot q_i}\right)
+\right]\delta q_i\,\dd t.
+\]
+Variationerne er vilkårlige indvendigt i tidsintervallet, så hver koefficient må forsvinde. Vi har således udledt Euler--Lagrange-ligningerne:
+\key{\frac{\dd}{\dd t}\left(\frac{\partial\mathcal L}{\partial\dot q_i}\right)
+-\frac{\partial\mathcal L}{\partial q_i}=0.}
+Udledningen forudsætter tilstrækkeligt glat $\mathcal L$ og uafhængige variationer af de valgte generaliserede koordinater. En alternativ håndtering af bindinger er multiplikatormetoden i afsnit~\ref{sec:lambda}.
+
+\subsection{Euler--Lagrange som fremgangsmåde}
+Definér den generaliserede impuls $p_i=\partial\mathcal L/\partial\dot q_i$. Den lokale ligning er
+$\dd p_i/\dd t=\partial\mathcal L/\partial q_i$; dette er ikke en påstand om, at $p_i$ generelt er bevaret.
+For pendulet fra kapitel~1 har vi
+\[
+\mathcal L=\frac12ml^2\dot\theta^2+mgl\cos\theta,\quad
+\frac{\partial\mathcal L}{\partial\dot\theta}=ml^2\dot\theta,\quad
+\frac{\partial\mathcal L}{\partial\theta}=-mgl\sin\theta.
+\]
+Derfor
+\[
+ml^2\ddot\theta+mgl\sin\theta=0
+\quad\Longrightarrow\quad
+\boxed{\ddot\theta+\frac gl\sin\theta=0.}
+\]
+Dette er en \emph{differentialligning} for $\theta(t)$, ikke selve tidsløsningen. Hvis en ikke-konservativ generaliseret kraft $\mathcal Q_i^{\mathrm{(nk)}}$ ikke allerede er beskrevet i $\mathcal L$, gælder i stedet
+\[
+\boxed{\frac{\dd}{\dd t}\frac{\partial\mathcal L}{\partial\dot q_i}
+-\frac{\partial\mathcal L}{\partial q_i}=\mathcal Q_i^{\mathrm{(nk)}}.}
+\]
+Eksempelvis giver lineær dæmpning $\mathcal Q^{\mathrm{(nk)}}=-b\dot q$ med $b>0$ et ekstra led i ligningen; man må ikke behandle almindelig friktion som et konservativt $V(q)$.
+\begin{method}Vælg $q_i$ og $\mathcal L$, udregn først $\partial\mathcal L/\partial\dot q_i$, differentier derefter \emph{totalt} efter tiden, og træk $\partial\mathcal L/\partial q_i$ fra. Indsæt eventuelle ikke-konservative generaliserede kræfter, kontroller dimensioner/fortegn, og anvend initialdata til løsningen.\end{method}
+
+\subsection{Den harmoniske oscillator i én og to dimensioner}
+For et kvadratisk potentiale i én dimension,
+\[
+\mathcal L=\frac12m\dot q^2-\frac12kq^2,\qquad m,k>0,
+\]
+giver Euler--Lagrange $m\ddot q+kq=0$. Sæt $\omega=\sqrt{k/m}$; ligningen har løsningen
+\key{q(t)=A\cos(\omega t)+B\sin(\omega t).}
+Givet $q(0)=q_0$ og $\dot q(0)=v_0$ bliver $A=q_0$ og $B=v_0/\omega$. En generel begyndelsestid $t_0$ håndteres tilsvarende ved at skrive løsningen med $(t-t_0)$.
+
+For en isotrop oscillator i et plan er
+\[
+\mathcal L=\frac12m(\dot x^2+\dot y^2)-\frac12m\omega^2(x^2+y^2),
+\quad \ddot x+\omega^2x=0,\ \ddot y+\omega^2y=0.
+\]
+Begge komponenter har samme frekvens:
+\[
+x=A\cos\omega t+B\sin\omega t,\qquad
+y=C\cos\omega t+D\sin\omega t.
+\]
+Som vektorligning er $\vv r(t)=\vv a\cos\omega t+\vv b\sin\omega t$. Derfor er banen billedet af en enhedscirkel under den lineære afbildning med kolonnerne $\vv a$ og $\vv b$: i almindelighed en ellipse med centrum i origo. Er $\vv a$ og $\vv b$ lineært afhængige, degenererer ellipsen til et linjestykke; er de ortogonale med samme længde, bliver banen en cirkel.
+\begin{center}
+\begin{tikzpicture}[scale=.80]
+\draw[->,gray!70](-3.2,0)--(3.3,0)node[right]{$x$};
+\draw[->,gray!70](0,-2.0)--(0,2.0)node[above]{$y$};
+\draw[accent,very thick,rotate=25] (0,0) ellipse (2.45 and 1.17);
+\fill (0,0) circle (1.3pt) node[below right,scale=.82]{$O$};
+\draw[->,thick,red!70!black] (0,0)--(1.8,.72) node[above right]{$\vv r(t)$};
+\node[accent,scale=.84] at (-2.7,1.55){Ellipse};
+\end{tikzpicture}
+\end{center}
+\textbf{Fortolkning.} Det er parameteren $t$, der gennemløber ellipsen; den særlige oscillator--Kepler-forbindelse senere i pensum anvender generelt \emph{ikke} den samme tidsparameter. Banens form alene afgør derfor ikke tidsudviklingen.
+\begin{method}Genkend et kvadratisk potentiale, aflæs frekvensen, løs for hver uafhængig koordinat og fastlæg alle konstanter fra startposition og starthastighed. Ved koblede oscillatorer kan normalmodemetoder være nødvendige.\end{method}
+
+\subsection{Symmetrier, cykliske koordinater og impulsmoment}
+\textbf{Kan vi finde bevarede størrelser uden at løse ligningerne?} Hvis $\mathcal L$ er uafhængig af en generaliseret koordinat $q_i$, siger Euler--Lagrange direkte
+\[
+\frac{\partial\mathcal L}{\partial q_i}=0
+\quad\Longrightarrow\quad
+\frac{\dd}{\dd t}\frac{\partial\mathcal L}{\partial\dot q_i}=0
+\quad\Longrightarrow\quad \boxed{p_i=\mathrm{konstant}}.
+\]
+En sådan $q_i$ kaldes \emph{cyklisk}. Sammenhængen mellem symmetri og bevarelse er bredere: et kontinuerligt transformationsinvariant virkningsprincip giver Noether-bevarelseslove også i koordinater, hvor symmetrien ikke fremstår som en enkelt cyklisk variabel.
+\begin{center}\small\renewcommand{\arraystretch}{1.17}
+\begin{tabular}{p{40mm}p{49mm}p{51mm}}\toprule
+Symmetri & Simpel lokal test & Bevaret størrelse\\\midrule
 Translation i $x$ & $\partial\mathcal L/\partial x=0$ & $p_x=\partial\mathcal L/\partial\dot x$\\
 Rotation om $z$ & $\partial\mathcal L/\partial\phi=0$ & $p_\phi=\partial\mathcal L/\partial\dot\phi$\\
-Tidsforskydning & $\partial\mathcal L/\partial t=0$ & $h=\sum_i\dot q_i p_i-\mathcal L$\\\bottomrule\end{tabular}\end{center}
-\begin{note}Ved centralbevægelse er $p_\phi=mr^2\dot\phi$, men \textbf{ikke} for alle rotationssymmetriske systemer. Udtrykket bestemmes altid fra $\partial\mathcal L/\partial\dot\phi$.\end{note}
-\subsection{Impulsmoment: definition og komponenter}\label{sec:angular}
-For en partikel i et inertialsystem med \emph{mekanisk} impuls $\vv p=m\dot{\vv r}$ defineres impulsmomentet omkring origo som
-\key{\vv L=\vv r\times\vv p,\quad L_x=yp_z-zp_y,\quad L_y=zp_x-xp_z,\quad L_z=xp_y-yp_x.}
-\begin{center}\begin{tikzpicture}[scale=.78,>=stealth]
-\draw[->,gray](-.3,0)--(4.2,0)node[right]{$x$};\draw[->,gray](0,-.3)--(0,2.6)node[above]{$y$};
-\draw[->,thick,accent](0,0)--(2.65,1.75)node[above right]{$\vv r$};\draw[->,thick](2.65,1.75)--(3.63,2.3)node[right]{$\vv p$};
-\draw[accent] (1.15,0) arc (0:33.4:1.15);\node[accent] at(1.39,.42){$\phi$};\node at(1.1,-.65){$L_z=xp_y-yp_x$};
-\end{tikzpicture}\end{center}
-Med centrale kræfter er $\vv\tau=\vv r\times\vv F=0$, så $\dd\vv L/\dd t=0$. I plan polarbevægelse er den mekaniske $z$-komponent $L_z=mr^2\dot\phi$; i et generelt kanonisk system må man skelne mellem mekanisk og kanonisk impuls.
-\subsection{Energifunktionen og tidsafhængighed}
-Definér $h=\sum_i\dot q_i p_i-\mathcal L$. På en løsning af Euler--Lagrange gælder
-\key{\od ht=-\pd{\mathcal L}{t}.}
-Hvis $\mathcal L$ er tidsuafhængig, er $h$ konstant. For sædvanlig kinetisk energi kvadratisk i hastigheder og hastighedsuafhængigt $V$ er $h=T+V$.
-Ved endimensional konservativ bevægelse kan $E=\frac12m\dot q^2+V(q)$ integreres for at finde $q(t)$. Den generelle energiintegrationsmetode, inklusive fortegnsvalg og vendepunkter, er udledt i kapitel~\ref{sec:central} under \emph{Metode 2}.
-\subsection{Ækvivalente Lagrangefunktioner}
-Lagrangefunktioner, som adskiller sig med en total tidsafledt $\dd F(q,t)/\dd t$, giver de samme Euler--Lagrange-ligninger:
-\[\mathcal L'=\mathcal L+\od Ft,\qquad \od Ft=\sum_i\pd F{q_i}\dot q_i+\pd Ft.\]
+Tidsforskydning & $\partial\mathcal L/\partial t=0$ & $h=\sum_i\dot q_i p_i-\mathcal L$\\\bottomrule
+\end{tabular}\end{center}
+I kartesiske inertielle koordinater med mekanisk impuls $\vv p=m\dot{\vv r}$ er impulsmomentet omkring origo
+\key{\vv L=\vv r\times\vv p,\qquad
+L_x=yp_z-zp_y,\quad L_y=zp_x-xp_z,\quad L_z=xp_y-yp_x.}
+\begin{center}
+\begin{tikzpicture}[scale=.78,>=stealth]
+\draw[->,gray](-.3,0)--(4.2,0)node[right]{$x$};
+\draw[->,gray](0,-.3)--(0,2.6)node[above]{$y$};
+\draw[->,thick,accent](0,0)--(2.65,1.75)node[above right]{$\vv r$};
+\draw[->,thick](2.65,1.75)--(3.63,2.3)node[right]{$\vv p$};
+\draw[accent](1.15,0) arc (0:33.4:1.15);
+\node[accent] at (1.39,.42){$\phi$};
+\node at (1.1,-.65){$L_z=xp_y-yp_x$};
+\end{tikzpicture}
+\end{center}
+Ved en central kraft er drejningsmomentet $\vv\tau=\vv r\times\vv F=0$, så $\dd\vv L/\dd t=0$. I polære koordinater og uden ekstra hastighedsafhængige led er $L_z=p_\phi=mr^2\dot\phi$ for én partikel; for tolegemer bruges den reducerede masse i kapitel~\ref{sec:central}. Skeln mellem kanonisk og mekanisk impuls, hvor de ikke er ens.
+\begin{method}Find koordinater, som ikke forekommer eksplicit i $\mathcal L$; differentier efter deres hastigheder for at få $p_i$. Ved rotationssymmetri: fastlæg akse, kontroller drejningsmoment eller cyklisk vinkel, og angiv den bevarede komponent af $\vv L$. Test symmetrien frem for automatisk at antage alle tre komponenter bevaret.\end{method}
 
-\subsubsection*{Kontrol af en total tidsafledt}
-\[\boxed{\mathcal L_2-\mathcal L_1=\frac{\mathrm dF(q,t)}{\mathrm dt},\qquad \frac{\mathrm dF}{\mathrm dt}=\sum_i\frac{\partial F}{\partial q_i}\dot q_i+\frac{\partial F}{\partial t}.}\]
-\begin{method}Beregn forskellen $\mathcal L_2-\mathcal L_1$. Sammenlign hastighedsleddene med $\partial F/\partial q_i$ og de øvrige led med $\partial F/\partial t$. Verificér hele udtrykket; én matchende del er ikke nok.\end{method}
-For $\mathcal L_2-\mathcal L_1=V(q)+tV'(q)\dot q$ kan vælges $F=tV(q)$, fordi $\mathrm d(tV(q(t)))/\mathrm dt=V(q)+tV'(q)\dot q$. Virkningen ændres kun med randleddet $F(q(t_2),t_2)-F(q(t_1),t_1)$, hvis variation er nul ved faste endepunkter. De kanoniske impulser kan derimod forskydes: $p_i^{(2)}=p_i^{(1)}+\partial F/\partial q_i$.
+\subsection{Energifunktionen og tidsinvarians}
+Definér
+\[
+h(q,\dot q,t)=\sum_i\dot q_i\frac{\partial\mathcal L}{\partial\dot q_i}-\mathcal L.
+\]
+Differentier totalt:
+\begin{align*}
+\frac{\dd h}{\dd t}
+&=\sum_i\left(\ddot q_i\frac{\partial\mathcal L}{\partial\dot q_i}
++\dot q_i\frac{\dd}{\dd t}\frac{\partial\mathcal L}{\partial\dot q_i}\right)
+-\sum_i\left(\frac{\partial\mathcal L}{\partial q_i}\dot q_i
++\frac{\partial\mathcal L}{\partial\dot q_i}\ddot q_i\right)
+-\frac{\partial\mathcal L}{\partial t}\\
+&=\sum_i\dot q_i\left(\frac{\dd}{\dd t}
+\frac{\partial\mathcal L}{\partial\dot q_i}
+-\frac{\partial\mathcal L}{\partial q_i}\right)
+-\frac{\partial\mathcal L}{\partial t}.
+\end{align*}
+På løsninger af Euler--Lagrange med ingen ikke-konservative ydre generaliserede kræfter forsvinder parenteserne, og derfor
+\key{\frac{\dd h}{\dd t}=-\frac{\partial\mathcal L}{\partial t}.}
+En tidsuafhængig Lagrangefunktion bevarer altså $h$. Hvis $\mathcal L=T-V$ med $V$ uafhængig af hastighederne og $T$ homogen af grad to i $\dot q_i$ uden andre hastighedsled, giver Eulers homogenitetssætning $\sum_i\dot q_i(\partial T/\partial\dot q_i)=2T$ og dermed $h=T+V$. Det gælder ikke ukritisk i reonome koordinater, systemer med hastighedsafhængige potentialer eller ved eksplicit tidsafhængighed.
+\begin{method}Beregn $h=\sum_i\dot q_ip_i-\mathcal L$, ikke blot $T+V$ per automatik. Kontrollér $\partial\mathcal L/\partial t$ og eventuelle ikke-konservative kræfter, brug $h=E$ med initialbetingelser og kontrollér energiens dimensionsenhed. Den senere Hamiltonfunktion opstår ved Legendretransformation, når impulserne kan inverteres for hastighederne (kapitel~5).\end{method}
+Ved ét konservativt koordinat kan $E=\frac12m\dot q^2+V(q)$ integreres for at finde $q(t)$; fortegnsvalg og vendepunkter er udledt som \emph{energiintegration} i kapitel~\ref{sec:central}.
 
-\subsection{Hamiltons princip og variation}
-Lad $S[q]=\int_{t_1}^{t_2}\mathcal L(q,\dot q,t)\dd t$. Den fysiske bane opfylder $\delta S=0$ med $\delta q_i(t_1)=\delta q_i(t_2)=0$. Integration ved dele giver
-\[\delta S=\int_{t_1}^{t_2}\sum_i\left(\pd{\mathcal L}{q_i}-\od{}{t}\pd{\mathcal L}{\dot q_i}\right)\delta q_i\,\dd t=0.\]
-Derved fremkommer Euler--Lagrange-ligningerne.
+\subsection{Ækvivalente Lagrangefunktioner og total tidsafledt}
+To Lagrangefunktioner af formen
+\[
+\mathcal L_2(q,\dot q,t)=\mathcal L_1(q,\dot q,t)+
+\frac{\dd F(q,t)}{\dd t}
+\]
+giver samme Euler--Lagrange-ligninger med faste konfigurationsendepunkter, fordi
+\[
+S_2-S_1=\int_{t_1}^{t_2}\frac{\dd F}{\dd t}\dd t
+=F(q(t_2),t_2)-F(q(t_1),t_1),
+\]
+og variationen af dette randled er nul.
+For at \emph{afgøre} ækvivalens skal forskellen sammenlignes med
+\key{\frac{\dd F}{\dd t}=
+\sum_i\frac{\partial F}{\partial q_i}\dot q_i+
+\frac{\partial F}{\partial t}.}
+Fremgangsmåden er at beregne $\Delta\mathcal L=\mathcal L_2-\mathcal L_1$, indsamle koefficienterne foran de uafhængige hastigheder, integrere dem til en kandidat $F(q,t)$ med en vilkårlig funktion af de resterende koordinater og tiden, og så kontrollere \emph{alle} koefficienter samt det hastighedsuafhængige led. Lokalt kræver dette kompatible krydsafledte mellem hastighedskoefficienterne.
 
-\subsection{Invertibilitet ved koordinatskift}
-Et almindeligt koordinatskift $Q_i=Q_i(q_1,\ldots,q_n,t)$ skal kunne inverteres lokalt. Den inverse funktionssætning giver den praktiske betingelse
-\[\boxed{\det\left(\frac{\partial Q_i}{\partial q_j}\right)\neq0.}\]
-Hvis determinanten forsvinder, kan de nye koordinater ikke bruges som et lokalt uafhængigt koordinatsystem. \textbf{Dette er ikke kanonicitetstesten}: et skift i faserummet skal desuden bevare de fundamentale Poissonparenteser (afsnit~\ref{sec:canon}).
+\textbf{Eksempel.} Givet
+\[
+\Delta\mathcal L=tV'(q)\dot q+V(q)
+\]
+har vi $\partial F/\partial q=tV'(q)$. Integrationen efter $q$ giver
+$F(q,t)=tV(q)+f(t)$. Kravet $\partial F/\partial t=V(q)$ medfører $f'(t)=0$ og derfor
+\[
+\boxed{F(q,t)=tV(q)+C,\qquad
+\frac{\dd F}{\dd t}=tV'(q)\dot q+V(q).}
+\]
+Hvis forskellen er en total tidsafledt, er det en \emph{tilstrækkelig} betingelse for samme bevægelsesligninger; hvis testen fejler, følger det ikke automatisk, at ligningerne er forskellige. Impulserne kan forskydes:
+\[
+p_i^{(2)}=p_i^{(1)}+\frac{\partial F}{\partial q_i}.
+\]
+Dette giver en naturlig forbindelse til de senere genererende funktioner i kapitel~6.
+\begin{method}Beregn $\Delta\mathcal L$; sammenlign hastighedsled med $F_{q_i}$; integrér og medtag vilkårlige funktioner af øvrige variable; brug de resterende koefficienter og $F_t$ til at fastlægge dem; differentier hele kandidaten og kontrollér lighed med $\Delta\mathcal L$.\end{method}
 
-\subsection{Lagrange-multiplikatorer}\label{sec:lambda}
-For holonome bindinger $f_\alpha(q,t)=0$ kan man bruge $\mathcal L'=\mathcal L+\sum_\alpha\lambda_\alpha f_\alpha$. Dermed
-\key{\od{}{t}\pd{\mathcal L}{\dot q_i}-\pd{\mathcal L}{q_i}=\sum_\alpha\lambda_\alpha\pd{f_\alpha}{q_i},\qquad f_\alpha=0.}
-\begin{method}Opstil almindelig $\mathcal L$ og bindinger $f_\alpha=0$; skriv modifierede Euler--Lagrange-ligninger; brug $f_\alpha=0$ samt tidsafledte; løs for $q_i$ og $\lambda_\alpha$; oversæt multiplikatorerne til de fysiske bindingskræfter.\end{method}
-\begin{note}Multiplikatoren afhænger af bindingens normalisering. For kontaktbetingelser kontrolleres normalreaktionen $N\geq0$ og løft fra underlaget ved $N=0$.\end{note}
+\subsection{Bindinger og Lagrange-multiplikatorer}\label{sec:lambda}
+Kapitel~1 viste, at holonome bindinger ofte kan elimineres med koordinatvalg. Hvis det er uhensigtsmæssigt, kan man bevare redundante koordinater og pålægge $f_\alpha(q,t)=0$ ved multiplikatorer $\lambda_\alpha$.
+For den angivne fortegnskonvention
+$\mathcal L'=\mathcal L+\sum_\alpha\lambda_\alpha f_\alpha$,
+med variation også i $\lambda_\alpha$, fås for ideelle holonome bindinger
+\key{\frac{\dd}{\dd t}\frac{\partial\mathcal L}{\partial\dot q_i}
+-\frac{\partial\mathcal L}{\partial q_i}
+=\sum_\alpha\lambda_\alpha\frac{\partial f_\alpha}{\partial q_i},
+\qquad f_\alpha(q,t)=0.}
+Multiplikatorerne giver den generaliserede bindingskraft; deres numeriske værdi afhænger af bindingernes normalisering. For pendulet er vinklen $\theta$ én fri koordinat, men man kan i stedet arbejde med $(x,y)$ og $x^2+y^2-l^2=0$ samt én $\lambda$. For kontaktproblemer, hvor kontakt kan ophøre, skal $N\ge0$ kontrolleres; ved $N=0$ må den pålagte binding eventuelt ophæves.
+\begin{method}Opstil $\mathcal L$ i de valgte (eventuelt redundante) koordinater; tilføj $\sum_\alpha\lambda_\alpha f_\alpha$; skriv de modificerede Euler--Lagrange-ligninger og bindinger; differentier om nødvendigt bindingerne; løs for koordinater og multiplikatorer; oversæt til fysiske bindingskræfter og tjek kontaktbetingelser.\end{method}
 
+\subsection{Metodevalg og overgang til bevægede referencesystemer}
+\begin{center}\small\renewcommand{\arraystretch}{1.16}
+\begin{tabular}{p{58mm}p{79mm}}\toprule
+Opgavespørgsmål & Første metode\\\midrule
+Find bevægelsesligningen & Euler--Lagrange; tilføj eventuelle $\mathcal Q_i^{\mathrm{(nk)}}$\\
+Find bevarede impulser & Cykliske koordinater eller Noethers symmetri\\
+Find energibevarelse & $h=\sum\dot q_ip_i-\mathcal L$ og $\partial\mathcal L/\partial t$\\
+Vis to Lagrangefunktioner ækvivalente & Søg en total tidsafledt $\dd F/\dd t$\\
+Find kræfter fra ikke-eliminerede bindinger & Lagrange-multiplikatorer\\\bottomrule
+\end{tabular}\end{center}
+Vi har indtil nu opstillet bevægelsen i et inertielt system eller i en allerede angivet koordinatbeskrivelse. Hvad ændres, når selve origo accelererer, eller koordinatbasen roterer? Det undersøges i kapitel~4 om ikke-inertielle referencesystemer; her må også tidsafledte af koordinatbasen medtages.
