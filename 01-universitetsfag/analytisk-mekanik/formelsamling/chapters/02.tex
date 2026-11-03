@@ -4,6 +4,21 @@ For en almindelig konservativ mekanisk model er $\mathcal L=T-V$. Hamiltons prin
 \key{\frac{\dd}{\dd t}\pd{\mathcal L}{\dot q_i}-\pd{\mathcal L}{q_i}=0,\qquad p_i=\pd{\mathcal L}{\dot q_i}.}
 Den generaliserede impuls $p_i$ er ikke generelt $m\dot q_i$; dens form afhænger af kinetisk energi, koordinatvalg og eventuelle hastighedsafhængige led.
 \begin{method}Vælg uafhængige koordinater $q_i$; find $T,V$; opstil $\mathcal L$; differentier efter $q_i$ og $\dot q_i$; anvend Euler--Lagrange; indsæt eventuelle begyndelsesbetingelser.\end{method}
+\textbf{Fra fysisk system til den ligning, der faktisk skal løses.}
+Når en opgave giver positioner, bindinger og kræfter frem for $\mathcal L$, er det første arbejde at vælge de \emph{uafhængige} koordinater. Brug $\vv r_a(q,t)$ og kædereglen fra kapitel~1 til at finde $\dot{\vv r}_a$; beregn dernæst $T=\sum_a m_a|\dot{\vv r}_a|^2/2$ og et eventuelt $V(q,t)$. Først nu opstilles $\mathcal L=T-V$ og
+\[
+\frac{\dd}{\dd t}\frac{\partial\mathcal L}{\partial\dot q_i}
+-\frac{\partial\mathcal L}{\partial q_i}=0.
+\]
+\begin{method}\textbf{Når der spørges efter bevægelsen:}
+(1) udled \emph{alle} Euler--Lagrange-ligninger;
+(2) brug cykliske koordinater til at finde konstante impulser (afsnit 2.3);
+(3) undersøg energifunktionen (afsnit 2.5);
+(4) indsæt bevarelseslovene for at reducere antallet af ukendte;
+(5) genkend den resterende ODE, bestem dens \emph{fulde} løsning med frie konstanter, og fastlæg dem fra begyndelsesdata;
+(6) kontrollér både bindingerne og de oprindelige ligninger.
+Hvis det er \emph{bindingskraften}, der efterspørges, må bindingen i stedet ofte fastholdes med multiplikatorer (afsnit~\ref{sec:lambda}).\end{method}
+
 \subsection{Harmonisk oscillator: standardform}
 For $m>0$ og $k>0$:
 \[\mathcal L=\tfrac12m\dot q^2-\tfrac12kq^2,\qquad \omega_0=\sqrt{k/m}.\]
@@ -34,6 +49,9 @@ For en partikel i et inertialsystem med \emph{mekanisk} impuls $\vv p=m\dot{\vv 
 \draw[accent] (1.15,0) arc (0:33.4:1.15);\node[accent] at(1.39,.42){$\phi$};\node at(1.1,-.65){$L_z=xp_y-yp_x$};
 \end{tikzpicture}\end{center}
 Med centrale kræfter er $\vv\tau=\vv r\times\vv F=0$, så $\dd\vv L/\dd t=0$. I plan polarbevægelse er den mekaniske $z$-komponent $L_z=mr^2\dot\phi$; i et generelt kanonisk system må man skelne mellem mekanisk og kanonisk impuls.
+\textbf{Hvorfor kommer symmetrierne før løsningen?}
+En bevaret impuls eller energifunktion erstatter en bevægelsesligning med en førsteordensrelation. Det er netop den reduktion, der gør centralbevægelse til ét radialt energiproblem i kapitel~3. Husk, at en cyklisk koordinat kun betyder $\partial\mathcal L/\partial q_i=0$; den pågældende \emph{koordinat} behøver ikke være konstant.
+
 \subsection{Energifunktionen og tidsafhængighed}
 Definér $h=\sum_i\dot q_i p_i-\mathcal L$. På en løsning af Euler--Lagrange gælder
 \key{\od ht=-\pd{\mathcal L}{t}.}
