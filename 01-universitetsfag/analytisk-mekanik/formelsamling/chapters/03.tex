@@ -260,13 +260,18 @@ $E<0$ & $0\le e<1$ & Ellipse (cirkel ved $e=0$)\\
 $E=0$ & $e=1$ & Parabel\\
 $E>0$ & $e>1$ & Hyperbel\\\bottomrule\end{tabular}\end{center}
 \begin{center}\begin{tikzpicture}[scale=.82]
-\draw[->,gray!70] (-3.35,0)--(3.4,0) node[right] {$x$};\draw[->,gray!70] (0,-2.1)--(0,2.25) node[above] {$y$};
+\draw[->,gray!70] (-3.35,0)--(7.6,0) node[right] {$x$};\draw[->,gray!70] (0,-2.1)--(0,2.25) node[above] {$y$};
 \draw[accent,very thick] (-1.85,0) ellipse (1.4 and 1.02);
 \fill[black] (-1.3,0) circle(1.6pt) node[above right,scale=.75]{Fokus};
 \node[accent,scale=.85] at (-2.8,1.45) {Ellipse $e<1$};
 \begin{scope}[xshift=2.05cm,yshift=-.05cm]
 \draw[red!65!black,very thick,domain=-1.18:1.18,samples=90] plot ({.55+0.48*\x*\x},{1.05*\x});
 \node[red!65!black,scale=.85] at (1.0,1.65) {Parabel $e=1$};
+\end{scope}
+\begin{scope}[xshift=5.0cm]
+\draw[accent!80!black,very thick,domain=-1.15:1.15,samples=65]
+plot ({.48+.55*cosh(\x r)},{.95*sinh(\x r)});
+\node[accent!80!black,scale=.85] at (1.05,1.75) {Hyperbel $e>1$};
 \end{scope}
 \end{tikzpicture}\\[-1mm]{\small\itshape Skematisk illustration af keglesnit; hyperblen svarer til $e>1$.}\end{center}
 \textbf{Ellipsegeometri:} Kraftcentret ligger i et brændpunkt, ikke i centrum. For en ellipse gælder $r_{\min}=a(1-e)$, $r_{\max}=a(1+e)$ og $b=a\sqrt{1-e^2}$.
@@ -364,9 +369,9 @@ Hastighedsvektorens spids bevæger sig altså på en cirkel med radius $k/|\ell|
 \fill (0,0) circle (1.5pt) node[below left] {$0$};
 \fill (0,1.75) circle (1.4pt);
 \node[left] at (0,1.75) {$ke/\ell$};
-\draw[->,thick] (0,0)--(-1.04,2.53) node[above left] {$\vv v$};
+\draw[->,thick] (0,0)--(-1.04,2.53) node[above left=7pt] {$\vv v$};
 \draw[->,accent,thick] (0,1.75)--(-1.04,2.53)
-node[midway,above left] {\scriptsize $k/|\ell|$};
+node[midway,right=6pt] {\scriptsize $k/|\ell|$};
 \end{tikzpicture}
 
 {\small\itshape Hodografens cirkel i hastighedsrummet. For ubundne Keplerbaner gennemløbes kun en del af cirklen.}
