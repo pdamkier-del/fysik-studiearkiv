@@ -1,14 +1,10 @@
 \clearpage\section{Accelererede og roterende referencesystemer}\label{sec:roterende}
-\textbf{Fysisk problem.} Newtons lov og den sædvanlige kinetiske energi har deres enkleste form i et inertialsystem. En observatør i en accelererende elevator eller på den roterende Jord bruger derimod andre koordinater. Målet er at beskrive \emph{den samme fysiske bevægelse} i disse koordinater uden at indføre ekstra reelle vekselvirkninger. De ekstra inertialed fremkommer ved at transformere position, hastighed og acceleration.
+\textbf{Overgang fra kapitel 1--2.} Vi kan allerede beskrive en partikel med generaliserede koordinater og indsætte et koordinatskift i Lagrangefunktionen. Hvad sker der, hvis koordinatsystemets origo selv accelererer, eller dets basis roterer? Newtons anden lov gælder i et inertialsystem $I$, men vi vil beskrive \emph{samme bevægelse} i et bevæget system $R$. Den centrale metode er at transformere positionen, differentiere korrekt og først derefter udlede dynamikken.
 
-\subsection{Koordinater, konvention og de to fremgangsmåder}
+\subsection{Det fysiske problem og koordinattransformationen}
 Lad $I$ betegne et inertialsystem, $R$ et translations- og rotationsbevæget system, $\vv a(t)$ det nye origos position målt i $I$, og $\mathsf Q(t)$ en \emph{ortogonal} rotationsmatrix, som omsætter komponenter fra $R$ til $I$: $\mathsf Q^{\mathsf T}\mathsf Q=\mathsf 1$. For en partikel er
 \key{\vv x_I(t)=\vv a(t)+\mathsf Q(t)\vv r_R(t).}
 Alle vektorer i de efterfølgende krydsprodukter udtrykkes i samme basis. Symbolet $\vv\Omega$ er det roterende systems vinkelhastighed \emph{i forhold til} det inertielle system; $\dot{\vv\Omega}$ er den fysiske tidsafledte (for $\vv\Omega$ er rotationsleddet $\vv\Omega\times\vv\Omega=0$).
-
-\textbf{Newton-metoden:} differentier den transformerede position to gange og indsæt i $m\vv a_I=\vv F_{\rm reel}$. Metoden er især effektiv, når den reelle kraft allerede er kendt som vektor, eller når man ønsker en førsteordenskorrektion.
-
-\textbf{Lagrange-metoden:} begynd med en \emph{gyldig inertiel} $\mathcal L_I(\vv x_I,\dot{\vv x}_I,t)$; indsæt $\vv x_I(\vv r_R,t)$ og $\dot{\vv x}_I(\vv r_R,\dot{\vv r}_R,t)$, og anvend derpå Euler--Lagrange på $\vv r_R$. Dette virker for en glat, invertibel (lokalt) koordinattransformation, også når den afhænger eksplicit af tiden. Transformér \emph{hele} Lagrangefunktionen, inklusive potentiale og eventuelle bindinger. Den enkle form $\mathcal L=T-V$ forudsætter her sædvanlig kinetisk energi og et potentiale, der kan transformeres tilsvarende.
 
 \subsection{Transportformlen: hvorfor tidsafledte ændres}
 Skriv $\vv A_I=\mathsf Q\vv A_R$ for en vilkårlig geometrisk vektor. Produktreglen giver
@@ -29,7 +25,7 @@ Den er ikke en ny kraftlov: den fortæller alene, at en vektor kan ændre kompon
 \]
 Differentier én gang: $\dot{\mathsf Q}\vv r_R=\mathsf Q(\vv\Omega_R\times\vv r_R)$. \emph{Konventionen for fortegnet ændres}, hvis transformationen skrives den modsatte vej. Tjek altid, hvilken vej matricen virker.
 
-\subsection{Hastighed og acceleration udledt trin for trin}
+\subsection{Hastighed og acceleration: afled alle inertialed}
 Ud fra $\vv x_I=\vv a+\vv r$ (hvor $\vv r=\mathsf Q\vv r_R$ er den relative positionsvektor) og transportformlen følger
 \[
 \vv v_I=\dot{\vv a}+\vv v_R+\vv\Omega\times\vv r.
@@ -53,7 +49,7 @@ Dermed er den \emph{generelle} accelerationsformel
 +\vv\Omega\times(\vv\Omega\times\vv r).}
 Coriolisfaktoren $2$ skyldes, at ét $\vv\Omega\times\vv v_R$ kommer fra hastighedens transportafledte og ét fra differentiering af $\vv\Omega\times\vv r$. Glemmer man ét af dem, fås en forkert ligning.
 
-\subsection{Newtons ligning i det ikke-inertielle system}
+\subsection{Newtons ligning og de tilsyneladende kræfter}
 Indsæt accelerationen i $m\vv a_I=\vv F_{\rm reel}$ og isolér $\vv a_R$:
 \begin{align*}
 m\vv a_R={}&\vv F_{\rm reel}
@@ -72,7 +68,8 @@ $-m\vv\Omega\times(\vv\Omega\times\vv r)$ & Rotation og afstand til rotationsaks
 \end{tabular}\end{center}
 Alle disse er \emph{fiktive i den forstand}, at de ikke skyldes yderligere fysisk vekselvirkning; de er nødvendige, når Newtons ligning skrives med den relative acceleration. Kraften $\vv F_{\rm reel}$ skal evalueres ved den fysiske position $\vv x_I=\vv a+\mathsf Q\vv r_R$.
 
-\subsection{Lagrange-metoden: inertialeddene opstår automatisk}\label{sec:lagrot}
+\subsection{Fra inertiel kinetisk energi til Lagrangeformalismen}
+\label{sec:lagrot}
 Tag en partikel med masse $m$ og inertiel Lagrangefunktion
 \[
 \mathcal L_I=\frac12m\dot{\vv x}_I^2-V_I(\vv x_I,t).
@@ -115,7 +112,7 @@ m\ddot{\vv r}=-\nabla_R V_R
 \]
 nøjagtig som Newton-metoden. En accelereret origo giver yderligere $-m\ddot{\vv a}$, når dets bevægelse behandles konsistent. Et tidsafhængigt, samlet led i $\mathcal L$ kan udelades, men et koordinatafhængigt led må \emph{ikke} blot fjernes.
 
-\subsection{Alternativt: inertielt system med rent translaterende origo}
+\subsection{Rent translaterende referencesystem som kontrol}
 Ved $\mathsf Q=\mathsf 1$ er $\vv x_I=\vv a(t)+\vv r$ og
 \[
 \mathcal L_R=\tfrac12m|\dot{\vv r}+\dot{\vv a}|^2-V_I(\vv a+\vv r,t).
@@ -130,7 +127,12 @@ Op til et totalt tidsafledt led og et rent tidsled er
 \]
 Her kan man læse et \emph{effektivt inertialpotentiale} $V_{\rm inerti}=m\ddot{\vv a}\cdot\vv r$ af. Det giver kraften $-\nabla V_{\rm inerti}=-m\ddot{\vv a}$. Dette specialtilfælde er et godt check af fortegnet.
 
-\subsection{Praktisk løsningsprocedure i eksamensopgaver}\label{sec:rotmethod}
+\subsection{To eksamensmetoder og fortegnskontrol}
+\textbf{Newton-metoden:} differentier den transformerede position to gange og indsæt i $m\vv a_I=\vv F_{\rm reel}$. Metoden er især effektiv, når den reelle kraft allerede er kendt som vektor, eller når man ønsker en førsteordenskorrektion.
+
+\textbf{Lagrange-metoden:} begynd med en \emph{gyldig inertiel} $\mathcal L_I(\vv x_I,\dot{\vv x}_I,t)$; indsæt $\vv x_I(\vv r_R,t)$ og $\dot{\vv x}_I(\vv r_R,\dot{\vv r}_R,t)$, og anvend derpå Euler--Lagrange på $\vv r_R$. Dette virker for en glat, invertibel (lokalt) koordinattransformation, også når den afhænger eksplicit af tiden. Transformér \emph{hele} Lagrangefunktionen, inklusive potentiale og eventuelle bindinger. Den enkle form $\mathcal L=T-V$ forudsætter her sædvanlig kinetisk energi og et potentiale, der kan transformeres tilsvarende.
+
+\label{sec:rotmethod}
 \begin{method}
 (1) Vælg og tegn inertiel og bevæget basis; skriv entydigt $\vv x_I=\vv a+\mathsf Q\vv r_R$, og angiv vinklers positive retning.
 (2) Find $\vv\Omega$, $\dot{\vv\Omega}$, $\dot{\vv a}$ og $\ddot{\vv a}$.
@@ -149,3 +151,5 @@ som en førsteordenskorrektion i $\Omega$. Centrifugalleddet ændrer den lokale 
 For et Foucaultpendul med små udsving er den langsomme drejning af svingningsplanet relativt til Jorden bestemt af den lokale lodrette komponent $\Omega\sin\lambda$, hvor $\lambda$ er breddegraden. I denne tilnærmelse er præcessionshastighedens størrelse $|\Omega\sin\lambda|$. Retning afhænger af halvkugle og fortegnskonvention. Dette er en \emph{anvendelse} af Coriolisleddet, ikke et selvstændigt udgangspunkt for koordinattransformationerne.
 
 \begin{note}Problem Set 5 (2026), især rotationen af koordinater og fiktive kræfter, samt Problem Set 6, opgave 7, anvender netop denne metode; her behandles også tidsafhængig $\vv\Omega$ og Eulerleddet. Undersøg altid de præcise opgavetekster frem for at antage, at Foucaultpendulet er et selvstændigt tidligere eksamensspørgsmål.\end{note}
+
+\textbf{Overgang til Hamilton.} Koordinattransformationen ændrer ikke den fysiske bevægelse. Når den \emph{fulde} transformerede Lagrangefunktion bruges i Euler--Lagrange, fremkommer både Coriolis-, centrifugal-, Euler- og translationsleddene uden at indføre nye vekselvirkninger. Samtidig ser vi, at den kanoniske impuls i et roterende system ikke nødvendigvis er $m\vv v_R$. Det motiverer næste trin: beskriv dynamikken ved koordinater og \emph{kanoniske impulser} i stedet for koordinater og hastigheder (kapitel~5).
