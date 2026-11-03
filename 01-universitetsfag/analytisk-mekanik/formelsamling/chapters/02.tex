@@ -17,6 +17,14 @@ Translation i $x$ & $\partial\mathcal L/\partial x=0$ & $p_x=\partial\mathcal L/
 Rotation om $z$ & $\partial\mathcal L/\partial\phi=0$ & $p_\phi=\partial\mathcal L/\partial\dot\phi$\\
 Tidsforskydning & $\partial\mathcal L/\partial t=0$ & $h=\sum_i\dot q_i p_i-\mathcal L$\\\bottomrule\end{tabular}\end{center}
 \begin{note}Ved centralbevægelse er $p_\phi=mr^2\dot\phi$, men \textbf{ikke} for alle rotationssymmetriske systemer. Udtrykket bestemmes altid fra $\partial\mathcal L/\partial\dot\phi$.\end{note}
+\textbf{Noether i praktisk brug.}
+Ved en infinitesimal symmetri $q_i\to q_i+\varepsilon \eta_i(q,t)$, som ændrer Lagrangefunktionen højst med en total tidsafledt $\delta\mathcal L=\varepsilon\,\dd B/\dd t$, er
+\[
+\boxed{J=\sum_i p_i\eta_i-B=\text{konstant}},
+\qquad p_i=\frac{\partial\mathcal L}{\partial\dot q_i}.
+\]
+Dette er den brugbare punkttransformationsform af Noethers teorem (uden separat tidsomparametrisering); ved ren translation i $x$ giver den $p_x$, ved rotation om $z$ giver den $L_z$. Test \emph{selve} symmetrien: en generator er ikke automatisk bevaret. En tilsvarende og mere generel Hamiltonsk kontrol findes i afsnit~\ref{sec:pb}.
+
 \subsection{Impulsmoment: definition og komponenter}\label{sec:angular}
 For en partikel i et inertialsystem med \emph{mekanisk} impuls $\vv p=m\dot{\vv r}$ defineres impulsmomentet omkring origo som
 \key{\vv L=\vv r\times\vv p,\quad L_x=yp_z-zp_y,\quad L_y=zp_x-xp_z,\quad L_z=xp_y-yp_x.}
@@ -55,4 +63,18 @@ For holonome bindinger $f_\alpha(q,t)=0$ kan man bruge $\mathcal L'=\mathcal L+\
 \key{\od{}{t}\pd{\mathcal L}{\dot q_i}-\pd{\mathcal L}{q_i}=\sum_\alpha\lambda_\alpha\pd{f_\alpha}{q_i},\qquad f_\alpha=0.}
 \begin{method}Opstil almindelig $\mathcal L$ og bindinger $f_\alpha=0$; skriv modifierede Euler--Lagrange-ligninger; brug $f_\alpha=0$ samt tidsafledte; løs for $q_i$ og $\lambda_\alpha$; oversæt multiplikatorerne til de fysiske bindingskræfter.\end{method}
 \begin{note}Multiplikatoren afhænger af bindingens normalisering. For kontaktbetingelser kontrolleres normalreaktionen $N\geq0$ og løft fra underlaget ved $N=0$.\end{note}
+\textbf{Kontakt og take-off (eksamen 2025, opgave 1).}
+Ved en ensidig binding $y\ge0$ er den pålagte holonome relation $y=0$ kun gyldig, mens kontakten er aktiv. For
+\[
+\mathcal L=\frac12m\dot y^2+\alpha yt-mgy,
+\qquad y=0\ \text{under kontakt},
+\]
+er den påførte kraft $\alpha t-mg$ og den nødvendige normalreaktion
+$N=mg-\alpha t$. Kontakten kan kun opretholdes for $N\ge0$, og den ophører ved
+\[
+\boxed{t_{\mathrm{takeoff}}=\frac{mg}{\alpha}}\quad(\alpha>0).
+\]
+Efter dette tidspunkt sættes $N=0$ og den frie ligning $m\ddot y=\alpha t-mg$ løses med kontinuerte $y,\dot y$ ved løft. En multiplikator må aldrig mekanisk videreføres som en negativ kontaktkraft.
+\begin{method}Kontaktmetode: opstil $\mathcal L+\lambda f$, løs det pålagte system, omsæt $\lambda$ til den \emph{fysiske} normalreaktion $N$ efter fortegnskonventionen, kontroller $N\ge0$, find det første $N=0$, og skift derefter til den frie bevægelsesligning med passende overgangsdata.\end{method}
+
 
