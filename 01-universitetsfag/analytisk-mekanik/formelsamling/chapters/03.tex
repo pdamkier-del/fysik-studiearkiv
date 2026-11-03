@@ -70,7 +70,44 @@ E&=\dot r\frac{\partial\mathcal L}{\partial\dot r}
 &=\frac12\mu\dot r^2+\frac12\mu r^2\dot\phi^2+V(r)
 =\frac12\mu\dot r^2+\frac{\ell^2}{2\mu r^2}+V(r).
 \end{align*}
-Radialbevægelsen er således et éndimensionalt energiproblem, mens vinkelbevægelsen bestemmes efterfølgende af $\dot\phi=\ell/(\mu r^2)$.
+Radialbevægelsen er således et éndimensionalt energiproblem. Vi definerer det effektive potentiale
+\key{V_{\mathrm{eff}}(r)=V(r)+\frac{\ell^2}{2\mu r^2},
+\qquad E=\frac12\mu\dot r^2+V_{\mathrm{eff}}(r).}
+Det andet led stammer fra tangentielt bevægelsesenergi, ikke fra en ekstra vekselvirkning. Vinkelbevægelsen findes efterfølgende fra $\dot\phi=\ell/(\mu r^2)$.
+
+\textbf{Geometrisk forklaring (eksamen 2022, opgave 4g).}
+Lad en fri partikel med masse $m$ bevæge sig med konstant fart $v$ langs en ret linje. Når origo $O$ vælges uden for linjen, ændres den radiale afstand, selv om den faktiske acceleration er nul. I polære koordinater har vi
+\[
+V(r)=0,\qquad E=\frac12m(\dot r^2+r^2\dot\phi^2)
+=\frac12m\dot r^2+\frac{\ell^2}{2mr^2}.
+\]
+Vælg tidsnulpunktet ved banens mindste afstand $r_{\min}$ fra origo. Her er $\dot r(0)=0$ og $E=mv^2/2$. Den retvinklede trekant viser:
+\begin{center}
+\begin{tikzpicture}[scale=.88,>=stealth]
+\coordinate (O) at (0,0);
+\coordinate (A) at (0,2.3);
+\coordinate (B) at (4.5,2.3);
+\draw[gray!75,thick] (-.85,2.3)--(5.4,2.3) node[right,black]{fri bane};
+\draw[->,accent,thick] (O)--(A);
+\draw[->,accent,thick] (O)--(B) node[midway,below right] {$r(t)$};
+\draw[->,thick] (.3,2.75)--(4.2,2.75) node[midway,above] {$vt$};
+\draw[thick] (0,2.03)--(.27,2.03)--(.27,2.3);
+\fill (O) circle (1.5pt) node[below left] {$O$};
+\fill (A) circle (1.5pt) node[above left] {$P(0)$};
+\fill (B) circle (1.5pt) node[above right] {$P(t)$};
+\node[left] at (0,1.13) {$r_{\min}$};
+\end{tikzpicture}
+
+{\small\itshape Retvinklet trekant mellem origo og den frie partikels positioner.}
+\end{center}
+\[
+r(t)^2=r_{\min}^2+(vt)^2
+\quad\Longrightarrow\quad
+\boxed{r(t)=\sqrt{r_{\min}^2+\frac{2E}{m}t^2}}.
+\]
+I eksamen 2022.4b er den endimensionale Hamiltonfunktion
+$H=p^2/(2m)+k/q^2$. Den samme radialligning fremkommer ved identifikationen $q=r$ og $k=\ell^2/(2m)$. I det endimensionale problem er $k/q^2$ et fysisk potentiale; her er $\ell^2/(2mr^2)$ alene den tangentielle kinetiske energi. Den fysiske radiale accelerationskomponent er $a_r=\ddot r-r\dot\phi^2=0$, selv om $\ddot r=\ell^2/(m^2r^3)>0$ for $\ell\ne0$.
+
 
 \subsection{Tre metoder til at løse centralkraftproblemet}
 De samme bevarelseslove giver tre forskellige løsningsveje. Valget afhænger af opgavens ukendte og af, om der ønskes en kvalitativ klassifikation, en tidsfunktion eller en geometrisk bane.
@@ -178,6 +215,15 @@ Samtidig er energiudtrykket
 \[u''+\left(1-\frac{\mu^2A}{\ell^2}\right)u=0.\]
 Koefficientens fortegn afgør, om løsningen er trigonometrisk ($>0$), lineær ($=0$) eller hyperbolsk/eksponentiel ($<0$). De generelle konstanter bestemmes derefter af energien og begyndelsesdata; en $\cosh$-form repræsenterer kun bestemte integrationskonstanter.
 \begin{method}Ud fra en radialkraft: find $F(1/u)$, opstil Binet-ODE'en, klassificér differentialligningen (harmonisk, eksponentiel osv.), løs $u(\phi)$, og brug energien eller begyndelsesdata til at bestemme integrationskonstanter.\end{method}
+
+\textbf{Omvendt Binet: find den centrale kraft fra banen.}
+Hvis $r(\phi)$ og $\ell\ne0$ er kendt, kan vi beregne $u=1/r$, $u'$ og $u''$, og derefter isolere kraften i Binet:
+\key{F(r)=-\frac{\ell^2}{\mu}u^2(u''+u),\quad u=\frac1r,\qquad
+V(r)=-\int F(r)\,\dd r+C.}
+Eksempel: $u=(1+e\cos\phi)/p$ giver $u''+u=1/p$ og dermed
+$F(r)=-\ell^2/(\mu p r^2)$. Med $p=\ell^2/(\mu k)$ genfindes $F=-k/r^2$.
+Kontrollér, at resultatet kun afhænger af $r$, og at den fundne kraft er fysisk konsistent med domæne og begyndelsesbetingelser. Hvis en eksplicit $\phi$-afhængighed bliver tilbage, kan en central kraft ikke uden videre udledes. \textbf{Bemærk:} eksamen 2025.3 handler om et ikke-rotationssymmetrisk potentiale og er ikke et eksempel på omvendt Binet.
+\begin{method}Givet $r(\phi)$: beregn $u,u',u''$, isolér $F$, eliminér $\phi$, integrér $F=-V'$, og kontrollér domæne, enheder og $\ell\ne0$.\end{method}
 
 \subsubsection*{Hvordan løses den fremkomne differentialligning?}
 For en ligning $u''+\omega^2u=c$ er det afgørende først at undersøge fortegnet af $\omega^2$. Ved $\omega^2>0$ er
