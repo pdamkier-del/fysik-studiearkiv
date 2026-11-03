@@ -1,4 +1,4 @@
-\clearpage\section{Hamilton--Jacobi-teori}
+\clearpage\section{Hamilton--Jacobi-teori}\label{sec:hj}
 \subsection{Hovedligningen og hovedfunktionen}
 Den tidsafhængige Hamilton--Jacobi-ligning for hovedfunktionen $S(q,\alpha,t)$ er
 \key{H\left(q,\pd S q,t\right)+\pd St=0,\qquad p_i=\pd S{q_i}.}
@@ -20,7 +20,7 @@ For $H=p^2/(2m)+V(q)$ fås $W'=\pm\sqrt{2m[E-V(q)]}$. For $n$ frihedsgrader erst
 
 \subsubsection*{HJ efter en første kanonisk transformation (2020.1)}
 Antag, at en tidligere transformation $(q,p)\mapsto(Q,P)$ har givet den tidsuafhængige Hamiltonfunktion
-\[\widetilde H(Q,P)=\frac{P^2}{2m}+\frac{kQ^2}{2}+\frac{\gamma}{2m}QP.\]
+\[\widetilde H_{\rm mellem}(Q,P)=\frac{P^2}{2m}+\frac{kQ^2}{2}+\frac{\gamma}{2m}QP.\]
 Ved HJ-metoden er det nu $P=W_Q$ (\emph{ikke} den oprindelige $p$), og derfor bliver
 \[\frac{(W_Q)^2}{2m}+\frac{kQ^2}{2}+\frac{\gamma Q}{2m}W_Q=E.\]
 Dette er en andengradsligning i $W_Q$. Med $\omega^2=k/m-\gamma^2/(4m^2)>0$ fås
@@ -78,6 +78,6 @@ Så er $p=P$ og $Q=q-Pt/m$ konstanter langs den nye bevægelse. Det rene tidsled
 \textbf{Adskil koordinatsæt:} Hvis en tidligere kanonisk transformation allerede gav $(Q,P)$ og $\widetilde H_{\rm mellem}(Q,P,t)$, skal HJ nu opstilles i \emph{mellemkoordinaterne}, fx med generator $S(Q,\alpha,t)$. Dens afledte giver mellemimpulsen $P=\partial S/\partial Q$ og nye konstanter $\beta=\partial S/\partial\alpha$. Først derefter anvendes den inverse \emph{første} transformation for at finde de oprindelige $(q,p)$. Brug ikke samme bogstav til to forskellige koordinatsæt uden at definere det.
 \begin{method}Tidsafhængig HJ: (1) identificér det Hamiltonske koordinatsæt, PDE'en vedrører; (2) behold $S_t$ med egne argumenter fastholdt; (3) find et regulært fuldstændigt integral; (4) bestem $\alpha_i,\beta_i$ fra initialdata; (5) transformer tilbage gennem alle tidligere koordinatskift; (6) kontroller PDE, domæne og bevægelsesligninger.\end{method}
 
-For eksplicit tidsafhængig $H(q,p,t)$ er separationen $S=W(q)-Et$ ikke generelt mulig. Hovedligningen er stadig $H(q,\partial_qS,t)+\partial_tS=0$, og den nye Hamiltonfunktion kan stadig vælges $\widetilde H=0$ ved en passende fuldstændig løsning. Genererende funktioner kan afhænge eksplicit af tid, selv når den oprindelige Hamiltonfunktion ikke gør det.
+
 
 
