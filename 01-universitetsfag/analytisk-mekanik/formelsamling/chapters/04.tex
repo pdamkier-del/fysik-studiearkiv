@@ -142,6 +142,25 @@ Her kan man læse et \emph{effektivt inertialpotentiale} $V_{\rm inerti}=m\ddot{
 \textbf{Faldgruber.} Brug aldrig $(\dd\vv A/\dd t)_I=(\dd\vv A/\dd t)_R$ uden at undersøge basisrotationen. Forveksl ikke $\vv v_I$ og $\vv v_R$, eller $\vv p_R$ og $m\vv v_R$. Den roterende Hamiltonfunktion er ikke generelt lig den inertielle energi. Et centralt potentiale i inertialkoordinater bliver ikke nødvendigvis tidsuafhængigt efter en vilkårlig translation.
 
 \subsection{Jordrotation, lodlinje og Foucaultpendul}
+\textbf{Praktisk metode: Coriolis-afbøjning i første orden.}
+Vælg lokalt $\hat{\vv x}$ mod øst, $\hat{\vv y}$ mod nord og $\hat{\vv z}$ opad. På breddegrad $\lambda$ er
+$\vv\Omega=\Omega(\cos\lambda\,\hat{\vv y}+\sin\lambda\,\hat{\vv z})$.
+Ved et legeme, der slippes fra hvile i højden $h$ i forhold til det jordfaste system, er den uperturberede vertikale hastighed
+$v_z^{(0)}=-gt$. Da
+\[
+\vv a_{\mathrm{Cor}}^{(1)}=-2\vv\Omega\times
+\vv v^{(0)}
+=2\Omega gt\cos\lambda\,\hat{\vv x},
+\]
+giver to integrationer med $x(0)=\dot x(0)=0$
+\[
+\boxed{\Delta x_{\mathrm{øst}}
+=\frac{\Omega g\cos\lambda}{3}t_{\mathrm{fald}}^3,
+\qquad t_{\mathrm{fald}}\simeq\sqrt{\frac{2h}{g}}.}
+\]
+Dette er første orden i $\Omega$, for konstant lokalt $g$, lille faldhøjde, ingen luftmodstand og passende startbetingelser. Bruges effektivt $g$, er centrifugalkorrektionen allerede indregnet på denne orden; læg den ikke til igen som om den var uafhængig. Ved andre startdata kan også nord-/sydafvigelser forekomme.
+\begin{method}Udpeg inertielle og roterende variable; skriv $\vv a_R=\vv a_{\rm fysisk}-\vv a_{\rm trans}-2\vv\Omega\times\vv v_R-\dot{\vv\Omega}\times\vv r-\vv\Omega\times(\vv\Omega\times\vv r)$; vælg lokal basis og fortegn; løs først 0.-ordensbanen; integrér dernæst Coriolis-accelerationen og kontrollér gyldighed i $\Omega t$ samt fortegnet for østlig afbøjning.\end{method}
+
 I et Jordfast system med næsten konstant $\vv\Omega$ kan man for frit fald ofte først løse bevægelsen uden Coriolisled og derpå bruge
 $\vv a_{\rm Cor}^{(1)}=-2\vv\Omega\times\vv v^{(0)}$
 som en førsteordenskorrektion i $\Omega$. Centrifugalleddet ændrer den lokale effektive tyngdeacceleration; den tilsyneladende lodlinje peger derfor generelt ikke præcist mod Jordens centrum. Dette ligger til grund for Problem Set 5, opgaverne om lodlinje og østlig afbøjning ved fald.
