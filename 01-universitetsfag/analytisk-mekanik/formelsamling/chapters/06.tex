@@ -5,7 +5,7 @@ H(q,p,t)\longrightarrow (Q,P)\longrightarrow\text{kanonicitet}
 \longrightarrow F_a\longrightarrow\widetilde H(Q,P,t)
 \longrightarrow Q(t),P(t)\longrightarrow q(t),p(t).
 \]
-En opgave kan dog nøjes med ét trin, eksempelvis at teste en given transformation.
+En opgave kan dog nøjes med ét trin, eksempelvis at teste en given transformation. I næste kapitel undersøger vi, om generatoren kan vælges, så den nye Hamiltonfunktion bliver $K=0$ og alle nye fasevariable er konstante.
 
 \subsection{Hvorfor kanoniske transformationer?}
 En kanonisk transformation bevarer den symplektiske struktur og Hamiltonligningernes \emph{form}:
@@ -98,13 +98,7 @@ Koefficienterne foran de uafhængige differentialer giver dermed
 \key{p_i=\frac{\partial F_1}{\partial q_i},\quad
 P_i=-\frac{\partial F_1}{\partial Q_i},\quad
 \widetilde H=H+\frac{\partial F_1}{\partial t}.}
-Andre typer fås ved Legendreomformninger:
-\begin{align*}
-F_2(q,P,t)&=F_1+\sum_iP_iQ_i,\\
-F_3(p,Q,t)&=F_1-\sum_ip_iq_i,\\
-F_4(p,P,t)&=F_1+\sum_iP_iQ_i-\sum_ip_iq_i.
-\end{align*}
-I hvert udtryk elimineres de øvrige variable via transformationsrelationerne, så de anførte argumenter faktisk er de uafhængige.
+For at bruge andre variable som uafhængige argumenter kan vi udføre \emph{Legendretransformationer af randleddet}. Fortegnene og de konkrete udskiftninger udledes i næste afsnit.
 \begin{center}\small\renewcommand{\arraystretch}{1.16}
 \begin{tabular}{p{15mm}p{30mm}p{94mm}}\toprule
 Type & Argumenter & Transformationsrelationer\\\midrule
@@ -114,6 +108,69 @@ $F_3$ & $(p,Q,t)$ & $q_i=-\frac{\partial F_3}{\partial p_i}$,\quad $P_i=-\frac{\
 $F_4$ & $(p,P,t)$ & $q_i=-\frac{\partial F_4}{\partial p_i}$,\quad $Q_i=\frac{\partial F_4}{\partial P_i}$\\\bottomrule
 \end{tabular}\end{center}
 For enhver type er $\widetilde H=H+\left.\partial F_a/\partial t\right|_{\text{egne argumenter}}$; højresiden skal derefter omskrives i $(Q,P,t)$. \emph{Ingen enkelt type} behøver findes globalt; $F_1(q,Q)$ kræver eksempelvis, at $q,Q$ lokalt kan vælges som uafhængige variable (en passende blandet Hessian skal være invertibel).
+
+\subsection{Legendretransformationer mellem de fire typer}\label{sec:gen-legendre}
+\textbf{Problemet.} Generatoren $F_1(q,Q,t)$ bruger to positioner som uafhængige variable. I en opgave kan det være lettere at kende $(q,P)$, $(p,Q)$ eller $(p,P)$. Vi må derfor udskifte de uønskede argumenter \emph{uden at ændre den kanoniske transformation}. Start med differentialet
+\[
+\dd F_1=\sum_i p_i\,\dd q_i-\sum_i P_i\,\dd Q_i+
+\frac{\partial F_1}{\partial t}\dd t.
+\]
+For at erstatte $Q_i$ med $P_i$ lægges $\dd(P_iQ_i)=P_i\,\dd Q_i+Q_i\,\dd P_i$ til. For at erstatte $q_i$ med $p_i$ trækkes $\dd(p_iq_i)=p_i\,\dd q_i+q_i\,\dd p_i$ fra. Heraf fås
+\begin{align*}
+F_2(q,P,t)&=F_1(q,Q,t)+\sum_iP_iQ_i,\\
+F_3(p,Q,t)&=F_1(q,Q,t)-\sum_ip_iq_i,\\
+F_4(p,P,t)&=F_1(q,Q,t)+\sum_iP_iQ_i-\sum_ip_iq_i.
+\end{align*}
+Alle højresider skal omskrives til funktioner \emph{kun af de angivne argumenter}. De inverse relationer følger straks, især
+\[
+\boxed{F_1=F_2-\sum_iP_iQ_i,\qquad
+F_3=F_2-\sum_ip_iq_i-\sum_iP_iQ_i.}
+\]
+\textbf{Visuelt overblik.} Pile i diagrammet angiver skift \emph{fra venstre mod højre eller oppefra og ned}; omvendt skift bruger modsat fortegn:
+\begin{center}
+\begin{tikzpicture}[>=stealth, every node/.style={font=\small}]
+\node[draw=accent,rounded corners=2pt,inner sep=7pt] (f1) at (0,2.3) {$F_1(q,Q)$};
+\node[draw=accent,rounded corners=2pt,inner sep=7pt] (f2) at (8.0,2.3) {$F_2(q,P)$};
+\node[draw=accent,rounded corners=2pt,inner sep=7pt] (f3) at (0,0) {$F_3(p,Q)$};
+\node[draw=accent,rounded corners=2pt,inner sep=7pt] (f4) at (8.0,0) {$F_4(p,P)$};
+\draw[->,thick] (f1) -- node[above] {$+\sum_iP_iQ_i$} (f2);
+\draw[->,thick] (f1) -- node[left,align=right] {$-\sum_i p_iq_i$} (f3);
+\draw[->,thick] (f2) -- node[right] {$-\sum_i p_iq_i$} (f4);
+\draw[->,thick] (f3) -- node[below] {$+\sum_iP_iQ_i$} (f4);
+\end{tikzpicture}
+\end{center}
+Diagrammet angiver \emph{tilføjelsen til generatoren}, ikke blot nye navne for de samme argumenter. Eksempelvis har $F_2$ differentialet
+\[
+\dd F_2=\sum_i p_i\,\dd q_i+\sum_iQ_i\,\dd P_i+
+\frac{\partial F_2}{\partial t}\dd t;
+\]
+deraf læses $p_i=\partial F_2/\partial q_i$ og $Q_i=\partial F_2/\partial P_i$. Det tilsvarende tjek af $F_3=F_2-\sum p_iq_i-\sum P_iQ_i$ giver
+$\dd F_3=-\sum_iq_i\,\dd p_i-\sum_iP_i\,\dd Q_i+(\partial F_3/\partial t)\dd t$.
+Fortegnene i tabellen ovenfor er dermed kontrolleret.
+
+\textbf{Gennemregnet skift $F_2\to F_3$ i én frihedsgrad.} Tag
+\[
+F_2(q,P)=qP+\frac12q^2+\frac14P^2.
+\]
+Det giver $p=\partial F_2/\partial q=P+q$ og
+$Q=\partial F_2/\partial P=q+P/2$. Løs disse \emph{to} ligninger for de argumenter, som skal elimineres:
+\[
+q=2Q-p,\qquad P=2p-2Q.
+\]
+Brug nu \emph{begge} Legendreled:
+\begin{align*}
+F_3(p,Q)&=\bigl[F_2(q,P)-pq-PQ\bigr]_{
+q=2Q-p,\;P=2p-2Q}\\
+&=\boxed{\frac12p^2+Q^2-2pQ}.
+\end{align*}
+Tjek i det nye koordinatsæt:
+\[
+-\frac{\partial F_3}{\partial p}=2Q-p=q,\qquad
+-\frac{\partial F_3}{\partial Q}=2p-2Q=P.
+\]
+Dette eksempel viser, hvorfor \emph{både} $pq$ og $PQ$ skal trækkes fra. De relevante variable skal kunne løses entydigt \emph{lokalt}; her er transformationsjacobien mellem $(q,P)$ og $(p,Q)$ invertibel. I andre opgaver kan en bestemt type fejle lokalt eller globalt, selv om transformationen stadig er kanonisk.
+
+\begin{method}Ved skift mellem generatortyper: (1) markér gamle og ønskede uafhængige argumenter; (2) tilføj $+P_iQ_i$ for $Q_i\to P_i$ og $-p_iq_i$ for $q_i\to p_i$ (sum over udskiftede par); (3) løs transformationsrelationerne for de bortvalgte argumenter; (4) substituér fuldstændigt; (5) kontrollér begge afledte for den nye type og dens gyldighedsområde.\end{method}
 
 \subsection{Find eller kontroller en genererende funktion}\label{sec:findgen}
 \textbf{A. En allerede given generator:} Bestem typen ud fra dens argumenter, differentier efter begge slags variable, og kontrollér begge relationsligninger. Ved $F_2(q,P,t)$ er det
@@ -230,6 +287,6 @@ I kartesiske kanoniske variable er $\vv L=\vv r\times\vv p$ rotationsgeneratoren
 L_x=yp_z-zp_y,\quad
 \PB{L_x}{y}=z,\quad\PB{L_x}{z}=-y,\quad\PB{L_x}{p_y}=p_z.
 \]
-Kun ved en passende rotationssymmetri af Hamiltonfunktionen er $\PB{L_x}{H}=0$ og dermed $L_x$ bevaret. Den videre systematiske reduktion til Hamilton--Jacobi behandles særskilt i kapitel~7.
+Kun ved en passende rotationssymmetri af Hamiltonfunktionen er $\PB{L_x}{H}=0$ og dermed $L_x$ bevaret. Næste skridt er at bruge en \emph{tidsafhængig} type 2-generator til at gøre hele den nye Hamiltonfunktion nul. Det giver Hamilton--Jacobi-teorien i kapitel~7.
 
 \begin{method}\textbf{Hurtigt metodevalg:} Er $(Q,P)$ givet, test Poissonparenteser. Er $F_a$ givet, differentier efter dens argumenter. Skal $F_a$ findes, vælg ansatz eller integration. Skal bevægelsen løses, bestem $\widetilde H$, integrér de nye ligninger, fastlæg konstanter, transformér tilbage, og kontrollér gyldighed samt initialdata.\end{method}
