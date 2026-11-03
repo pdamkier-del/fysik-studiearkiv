@@ -75,6 +75,8 @@ Radialbevægelsen er således et éndimensionalt energiproblem, mens vinkelbevæ
 \subsection{Tre metoder til at løse centralkraftproblemet}
 De samme bevarelseslove giver tre forskellige løsningsveje. Valget afhænger af opgavens ukendte og af, om der ønskes en kvalitativ klassifikation, en tidsfunktion eller en geometrisk bane.
 
+\textbf{Metodevalg efter ukendt:} $V_{\rm eff}$ afgør tilladte radier og stabilitet; energiintegration bestemmer $r(t)$; Binet giver $r(\phi)$; baneintegralet giver $\phi(r)$ implicit. Vælg derfor ikke Binet til en ren stabilitetsopgave, og stop ikke ved $r(\phi)$ hvis der efterspørges tidsudvikling.
+
 \subsubsection*{Metode 1: Mulige radier, cirkelbaner og stabilitet}\label{sec:veff}
 \key{E=\frac12\mu\dot r^2+V_{\rm eff}(r),\qquad V_{\rm eff}(r)=V(r)+\frac{\ell^2}{2\mu r^2}.}
 Den radiale bevægelse svarer til én dimension med et effektivt potentiale. Centrifugalleddet er ikke et nyt fysisk potentiale, men kommer fra den bevarede vinkelbevægelse.
