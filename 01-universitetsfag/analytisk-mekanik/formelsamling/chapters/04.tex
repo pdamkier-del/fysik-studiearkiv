@@ -13,7 +13,10 @@ Alle vektorer i de efterfølgende krydsprodukter udtrykkes i samme basis. Symbol
 \begin{method}\textbf{Vælg vej før beregningen.}
 \emph{Newton:} kender du en reel kraftvektor og søger acceleration eller afbøjning, så transformér accelerationen og isolér de fiktive kræfter i afsnit 4.4.
 \emph{Lagrange:} kender du energien, har du bindinger eller besværlige generaliserede koordinater, så indsæt transformationen i den \emph{inertielle} $\mathcal L$ og differentier som i afsnit 4.5.
-Begge veje beskriver samme dynamik; kombiner ikke deres hastighedsdefinitioner ukritisk. Kontrollér at transformationsmatrixens retning og $\vv\Omega
+Begge veje beskriver samme dynamik; bland ikke deres hastighedsdefinitioner. Fastlæg transformationsmatrixens retning og fortegnet af $\vv\Omega$, før du differentierer. Kontrollér den inertielle grænse $\vv\Omega\to0$.
+\end{method}
+
+\subsection{Transportformlen: hvorfor tidsafledte ændres}
 Skriv $\vv A_I=\mathsf Q\vv A_R$ for en vilkårlig geometrisk vektor. Produktreglen giver
 \[
 \left(\frac{\dd\vv A}{\dd t}\right)_I
