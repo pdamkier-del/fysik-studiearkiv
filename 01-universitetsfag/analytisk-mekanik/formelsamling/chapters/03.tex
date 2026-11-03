@@ -305,6 +305,75 @@ For $V=-k/r$ er den bevarede vektor $\vv A=\vv p\times\vv L-\mu k\hat{\vv r}$ me
 \[\dot{\vv p}\times\vv L=\mu k\left(\frac{\dot{\vv r}}r-\frac{\vv r(\vv r\cdot\dot{\vv r})}{r^3}\right)=\mu k\frac{\mathrm d\hat{\vv r}}{\mathrm dt},\]
 så $\dot{\vv A}=0$. Desuden er $\vv A\cdot\vv r=\ell^2-\mu kr$, som giver banens polarform med periapsis i retning af $\vv A$.
 
+\subsubsection*{En bevaret hastighedsvektor og hodografen (eksamen 2024.2)}
+Binetmetoden udleder Keplerbanen fra differentialligningen for $u=1/r$. Som et alternativ kan vi bruge en bevaret \emph{vektor} fra Newtons lov og samtidig bestemme hastighedsbanen (hodografen). For en partikel med masse $m$ er
+\[
+m\dot{\vv v}=-\frac{k}{r^2}\hat{\vv r},
+\qquad \ell=mr^2\dot\phi,\qquad k>0,\quad \ell\ne0.
+\]
+Polære enhedsvektorer opfylder
+$\dd\hat{\vv r}/\dd\phi=\hat{\vv\phi}$ og
+$\dd\hat{\vv\phi}/\dd\phi=-\hat{\vv r}$. Heraf følger
+\[
+\dot{\vv v}=-\frac{k}{mr^2}\hat{\vv r}
+=\frac{k}{\ell}\dot\phi\,\frac{\dd\hat{\vv\phi}}{\dd\phi}
+=\frac{\dd}{\dd t}\left(\frac{k}{\ell}\hat{\vv\phi}\right).
+\]
+Altså er hastighedsforskydningen
+\key{\vv u=\vv v-\frac{k}{\ell}\hat{\vv\phi}=\mathrm{konstant}.}
+Dette er eksamen 2024.2a--b. Vælg $\phi=0$ ved periapsis, og lad
+$\hat{\vv r}(0)=\hat{\vv x}$, $\hat{\vv\phi}(0)=\hat{\vv y}$ samt $\ell>0$.
+Ved periapsis er $\dot r=0$ og $v_0=\ell/(mr_{\min})$. Energien er
+\[
+E=\frac12mv_0^2-\frac{k}{r_{\min}}
+=\frac12mv_0^2-\frac{mk}{\ell}v_0.
+\]
+Løs denne andengradsligning og vælg den gren, der svarer til \emph{mindste} radius:
+\[
+v_0=\frac{k}{\ell}(1+e),\qquad
+e=\sqrt{1+\frac{2E\ell^2}{mk^2}},
+\qquad
+\vv u=\frac{ke}{\ell}\hat{\vv y}.
+\]
+Den anden algebraiske gren svarer ikke til det valgte periapsispunkt. Fordi
+$\hat{\vv y}\cdot\hat{\vv\phi}=\cos\phi$ og
+$\vv v\cdot\hat{\vv\phi}=r\dot\phi=\ell/(mr)$,
+giver skalarproduktet af den bevarede vektor med $\hat{\vv\phi}$
+\[
+\frac{\ell}{mr}=\frac{k}{\ell}\bigl(1+e\cos\phi\bigr)
+\quad\Longrightarrow\quad
+\boxed{r(\phi)=\frac{\ell^2/(mk)}{1+e\cos\phi}}.
+\]
+Dermed genfindes Binetløsningen. For tolegemeproblemet er den samme udledning gældende med $m\to\mu$.
+
+\textbf{Hodografen: hvorfor er hastighedsbanen en cirkel?}
+Da $\hat{\vv\phi}=(-\sin\phi,\cos\phi)$, bliver de kartesiske hastighedskomponenter
+\[
+v_x=-\frac{k}{\ell}\sin\phi,\qquad
+v_y=\frac{k}{\ell}(e+\cos\phi).
+\]
+Derfor gælder
+\key{v_x^2+\left(v_y-\frac{ke}{\ell}\right)^2
+=\left(\frac{k}{\ell}\right)^2.}
+Hastighedsvektorens spids bevæger sig altså på en cirkel med radius $k/|\ell|$ i $(v_x,v_y)$-planet. Centrum er forskudt med $ke/\ell$ langs $v_y$-aksen under vores orienteringsvalg.
+\begin{center}
+\begin{tikzpicture}[scale=.92,>=stealth]
+\draw[->,gray!70] (-2.4,0)--(2.4,0) node[right] {$v_x$};
+\draw[->,gray!70] (0,-.4)--(0,3.75) node[above] {$v_y$};
+\draw[accent,very thick] (0,1.75) circle (1.3);
+\fill (0,0) circle (1.5pt) node[below left] {$0$};
+\fill (0,1.75) circle (1.4pt);
+\node[left] at (0,1.75) {$ke/\ell$};
+\draw[->,thick] (0,0)--(-1.04,2.53) node[above left] {$\vv v$};
+\draw[->,accent,thick] (0,1.75)--(-1.04,2.53)
+node[midway,above left] {\scriptsize $k/|\ell|$};
+\end{tikzpicture}
+
+{\small\itshape Hodografens cirkel i hastighedsrummet. For ubundne Keplerbaner gennemløbes kun en del af cirklen.}
+\end{center}
+Den bevarede $\vv u$ har dimension hastighed, mens Laplace--Runge--Lenz-vektoren ovenfor har en anden normalisering. Begge udtrykker Keplerproblemets ekstra symmetri, men de må ikke ukritisk identificeres.
+\begin{method}Når en opgave efterspørger en alternativ Keplerudledning eller hodograf: (1) brug $\ell=mr^2\dot\phi$ og afledte af de polære basisvektorer; (2) vis at $\vv u$ er konstant; (3) brug periapsis og energien til at bestemme $e$; (4) tag skalarprodukt med $\hat{\vv\phi}$; (5) omskriv $\vv v$ i kartesiske komponenter for at finde hodografen.\end{method}
+
 \subsubsection*{Virialsætningen uden løsning af banen}
 \textbf{Hvorfor indføre virialen?} Definér $G(t)=\mathbf r(t)\cdot\mathbf p(t)=\mu r\dot r$. Det er en hjælpefunktion, ikke en generelt bevaret størrelse. Ved udadgående bevægelse er $G>0$, indadgående $G<0$, og i et radialt vendepunkt er $G=0$.
 Da $\dot{\vv r}=\vv p/\mu$ og $\dot{\vv p}=\vv F$, giver produktreglen
@@ -312,7 +381,7 @@ Da $\dot{\vv r}=\vv p/\mu$ og $\dot{\vv p}=\vv F$, giver produktreglen
 =2T+\vv r\cdot\vv F=2T-\vv r\cdot\nabla V.\]
 Når $[G(\mathcal T)-G(0)]/\mathcal T\to0$ for lange tidsintervaller, følger
 \[\boxed{2\langle T\rangle=-\langle\vv r\cdot\vv F\rangle=\langle\vv r\cdot\nabla V\rangle}.\]
-For et homogent potentiale $V\propto r^s$ giver Eulers sætning $\vv r\cdot\nabla V=sV$, og altså $\boxed{2\langle T\rangle=s\langle V\rangle}$. Resultatet findes uden først at bestemme banen..
+For et homogent potentiale $V\propto r^s$ giver Eulers sætning $\vv r\cdot\nabla V=sV$, og altså $\boxed{2\langle T\rangle=s\langle V\rangle}$. Resultatet findes uden først at bestemme banen.
 
 For en periodisk bane er $\langle\dot G\rangle=[G(T)-G(0)]/T=0$; for en generel bundet bane kræves blot, at det langsigtede randbidrag $[G(T)-G(0)]/T$ forsvinder. For et bundet Keplersystem ($V=-k/r$) følger med $E=\langle T\rangle+\langle V\rangle$:
 \[\boxed{\langle T\rangle=-E,\qquad\langle V\rangle=2E},\qquad E<0.\]
