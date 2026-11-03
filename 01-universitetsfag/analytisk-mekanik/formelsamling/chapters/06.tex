@@ -1,65 +1,233 @@
-\clearpage\section{Kanoniske transformationer og Poissonparenteser}
-\subsection{Definition og Kroneckers delta}\label{sec:canon}
-En lokalt invertibel transformation $(q,p)\mapsto(Q,P)$ er kanonisk, hvis de fundamentale Poissonparenteser bevares:
-\key{\PB{Q_i}{Q_j}=0,\qquad\PB{P_i}{P_j}=0,\qquad\PB{Q_i}{P_j}=\delta_{ij}.}
-Kroneckers delta er $\delta_{ij}=1$ for $i=j$ og $0$ for $i\ne j$. Ved den direkte test af $(Q,P)$ beregnes parenteserne i de \emph{gamle} variable $(q,p)$. For den inverse transformation kan man i stedet teste de gamle variable i de nye kanoniske variable.
-\begin{note}\textbf{Ét koordinatpar:} $\{Q,Q\}=\{P,P\}=0$ automatisk; kontrollér kun $\{Q,P\}=Q_qP_p-Q_pP_q=1$.\end{note}
-\begin{method}\textbf{Vælg det sæt, funktionerne er udtrykt ved.} Hvis $Q=Q(q,p)$ og $P=P(q,p)$ er opgivet, beregn
-\[\PB QP_{q,p}=\pd Qq\pd Pp-\pd Qp\pd Pq=1.\]
-Hvis der i stedet er opgivet $q=q(Q,P)$ og $p=p(Q,P)$, beregn
-\[\PB qp_{Q,P}=\pd qQ\pd pP-\pd qP\pd pQ=1.\]
-For \emph{én frihedsgrad} og en lokalt invertibel transformation er testene ækvivalente. For flere frihedsgrader skal alle de fundamentale parenteser testes, enten for den direkte eller for den inverse transformation. Bland ikke afledte med hensyn til forskellige koordinatsæt.\end{method}
-\textbf{To koordinatpar:} Kontrollér de seks uafhængige relationer
-\[\PB{Q_1}{P_1}=\PB{Q_2}{P_2}=1,\qquad\PB{Q_1}{P_2}=\PB{Q_2}{P_1}=0,\]
-\[\PB{Q_1}{Q_2}=\PB{P_1}{P_2}=0.\]
-Hver parentes rummer summen over $k=1,2$ af afledte i $(q_k,p_k)$.
-\subsection{Poissonparenteser og regneregler}\label{sec:pb}
-\key{\PB FG=\sum_{k=1}^n\left(\pd F{q_k}\pd G{p_k}-\pd F{p_k}\pd G{q_k}\right).}
-\[\PB F{q_i}=-\pd F{p_i},\qquad\PB F{p_i}=\pd F{q_i},\qquad\PB FG=-\PB GF.\]
-\begin{note}Eksempel fra rotationsgeneratoren, jf. afsnit~\ref{sec:angular}: $L_x=yp_z-zp_y$, derfor $\{L_x,y\}=-\partial L_x/\partial p_y=z$ og $\{L_x,p_y\}=\partial L_x/\partial y=p_z$.\end{note}
-\subsection{Genererende funktioner: fire typer}
-Alle fire typer antages at definere en lokalt invertibel kanonisk transformation. I en standardkonvention:
-\begin{center}\begin{tabular}{llll}\toprule Type & Variable & Gammel impuls/koordinat & Ny impuls/koordinat\\\midrule
-$F_1$&$(q,Q,t)$&$p=\partial_qF_1$&$P=-\partial_QF_1$\\
-$F_2$&$(q,P,t)$&$p=\partial_qF_2$&$Q=\partial_PF_2$\\
-$F_3$&$(p,Q,t)$&$q=-\partial_pF_3$&$P=-\partial_QF_3$\\
-$F_4$&$(p,P,t)$&$q=-\partial_pF_4$&$Q=\partial_PF_4$\\\bottomrule\end{tabular}\end{center}
-For alle typer er $K=H+\partial F_a/\partial t$ med den afledte taget ved fastholdte \emph{uafhængige argumenter til den valgte type}.
-\subsubsection*{Genererende funktioner skrevet med Leibniz-notation}
-\[\begin{aligned}
-F_1(q,Q,t):\quad &p_i=\pd{F_1}{q_i}, &P_i&=-\pd{F_1}{Q_i},\\
-F_2(q,P,t):\quad &p_i=\pd{F_2}{q_i}, &Q_i&=\pd{F_2}{P_i},\\
-F_3(p,Q,t):\quad &q_i=-\pd{F_3}{p_i}, &P_i&=-\pd{F_3}{Q_i},\\
-F_4(p,P,t):\quad &q_i=-\pd{F_4}{p_i}, &Q_i&=\pd{F_4}{P_i}.
-\end{aligned}\]
-\begin{method}\textbf{Kontrollér en given genererende funktion.} Find typen ud fra dens uafhængige argumenter; differentier med hensyn til begge argumenter; sammenlign de resulterende udtryk med den ønskede transformation. For eksempel kræver $S(q,P,t)$, at $p=\partial S/\partial q$ og $Q=\partial S/\partial P$. Tidsleddet $\partial S/\partial t$ bestemmer derimod ændringen af Hamiltonfunktionen og tester ikke alene transformationen.\end{method}
-\begin{method}\textbf{Løs bevægelsen via en kanonisk transformation.} Omskriv $H(q,p,t)$ til $\widetilde H(Q,P,t)$, løs $\dot Q=\partial\widetilde H/\partial P$ og $\dot P=-\partial\widetilde H/\partial Q$, og indsæt derefter $Q(t),P(t)$ i $q(Q,P,t),p(Q,P,t)$.\end{method}
+\clearpage\section{Kanoniske transformationer og Poissonparenteser}\label{sec:canon}
+\textbf{Problem.} Vi har $H(q,p,t)$, hvis Hamiltonligninger kan være vanskelige at integrere. Kan vi finde nye kanoniske variable $(Q,P)$, så ligningerne bliver enklere? Transformationen beskriver \emph{samme fysiske bevægelse} i andre fasevariable. Hovedforløbet er
+\[
+H(q,p,t)\longrightarrow (Q,P)\longrightarrow\text{kanonicitet}
+\longrightarrow F_a\longrightarrow\widetilde H(Q,P,t)
+\longrightarrow Q(t),P(t)\longrightarrow q(t),p(t).
+\]
+En opgave kan dog nøjes med ét trin, eksempelvis at teste en given transformation.
+
+\subsection{Hvorfor kanoniske transformationer?}
+En kanonisk transformation bevarer den symplektiske struktur og Hamiltonligningernes \emph{form}:
+\[
+\dot q_i=\frac{\partial H}{\partial p_i},\quad
+\dot p_i=-\frac{\partial H}{\partial q_i}
+\quad\longrightarrow\quad
+\dot Q_i=\frac{\partial\widetilde H}{\partial P_i},\quad
+\dot P_i=-\frac{\partial\widetilde H}{\partial Q_i}.
+\]
+Transformationen er ikke en ny fysisk kraftlov, og den bevarer ikke nødvendigvis Hamiltonfunktionens numeriske værdi: ved eksplicit tidsafhængighed kan $\widetilde H\ne H$. En vilkårlig koordinatændring i faserummet er ikke automatisk kanonisk.
+
+\subsection{Poissonparenteser og tidsudvikling}\label{sec:pb}
+For funktioner $F(q,p,t)$ og $G(q,p,t)$ defineres
+\key{\PB FG=\sum_{i=1}^{n}\left(
+\frac{\partial F}{\partial q_i}\frac{\partial G}{\partial p_i}
+-\frac{\partial F}{\partial p_i}\frac{\partial G}{\partial q_i}\right).}
+Poissonparenteser er antisymmetriske og bilineære, opfylder produktreglen og Jacobi-identiteten:
+\[
+\PB FG=-\PB GF,\qquad
+\PB{FG}{K}=F\PB GK+G\PB FK,\qquad
+\PB F{\PB GK}+\PB G{\PB KF}+\PB K{\PB FG}=0.
+\]
+Praktiske basisrelationer er
+\[
+\PB F{q_i}=-\frac{\partial F}{\partial p_i},\quad
+\PB F{p_i}=\frac{\partial F}{\partial q_i},\quad
+\PB{q_i}{p_j}=\delta_{ij}.
+\]
+Fra kædereglen og Hamiltons ligninger fås
+\begin{align*}
+\frac{\dd F}{\dd t}
+&=\sum_i\left(\frac{\partial F}{\partial q_i}\dot q_i+
+\frac{\partial F}{\partial p_i}\dot p_i\right)+\frac{\partial F}{\partial t}\\
+&=\sum_i\left(\frac{\partial F}{\partial q_i}\frac{\partial H}{\partial p_i}
+-\frac{\partial F}{\partial p_i}\frac{\partial H}{\partial q_i}\right)
++\frac{\partial F}{\partial t}.
+\end{align*}
+Derfor
+\key{\frac{\dd F}{\dd t}=\PB FH+\frac{\partial F}{\partial t}.}
+En størrelse er bevaret, hvis højresiden er nul langs bevægelsen. Uden eksplicit tidsafhængighed reduceres betingelsen til $\PB FH=0$. Beregn altså $\PB FH$ før en størrelse påstås bevaret; eksempelvis følger $L_z$-bevarelse kun af passende rotationssymmetri af $H$.
+\begin{method}Skriv $F(q,p,t)$, beregn de partielle afledte og indsæt i $\PB FH+\partial F/\partial t$. Kontrollér, om resultatet er nul på det relevante område. Dette er også metoden ved hand-in-opgaver om bevarede størrelser; en præcis reference til Hand-in 3 fra 2026 kræver selve opgaveteksten.\end{method}
+
+\subsection{Kanonicitet: test den givne transformation}
+En lokalt invertibel transformation er kanonisk, hvis alle fundamentale parenteser opfylder
+\key{\PB{Q_i}{Q_j}=0,\quad\PB{P_i}{P_j}=0,\quad
+\PB{Q_i}{P_j}=\delta_{ij},\qquad
+\delta_{ij}=\begin{cases}1&i=j,\\0&i\ne j.\end{cases}}
+Her er $\delta_{ij}$ Kroneckers delta. Ved direkte udtryk $Q(q,p,t),P(q,p,t)$ beregnes parenteserne i \emph{gamle} variable; ved opgivne inverse udtryk $q(Q,P,t),p(Q,P,t)$ kan man omvendt kontrollere de gamle par i \emph{nye} variable. Tiden holdes fast under parentesberegningen.
+For ét koordinatpar er $\PB QQ=\PB PP=0$ automatisk, og derfor er den ene betingelse
+\[
+\boxed{\PB QP_{q,p}=
+\frac{\partial Q}{\partial q}\frac{\partial P}{\partial p}
+-\frac{\partial Q}{\partial p}\frac{\partial P}{\partial q}=1}
+\]
+tilstrækkelig ved lokal invertibilitet. For to par må der også kontrolleres krydsrelationer:
+\[
+\PB{Q_1}{P_1}=\PB{Q_2}{P_2}=1,\quad
+\PB{Q_1}{P_2}=\PB{Q_2}{P_1}
+=\PB{Q_1}{Q_2}=\PB{P_1}{P_2}=0.
+\]
+\textbf{Eksamen 2023, opgave 2.} En faserumsrotation gives af
+\[
+p=P\cos\theta-Q\sin\theta,\qquad
+q=P\sin\theta+Q\cos\theta.
+\]
+Invertér: $Q=q\cos\theta-p\sin\theta$, $P=q\sin\theta+p\cos\theta$. Da
+$\PB QP=\cos^2\theta+\sin^2\theta=1$, er den kanonisk. For $\theta=0$ fås identiteten; ved $\theta=\pi/2$ fås $q=P,p=-Q$.
+\begin{method}Identificér først, hvilket koordinatsæt de givne funktioner afhænger af; beregn alle relevante parenteser; kontrollér domæne og lokal invertibilitet; bland aldrig afledte fra to forskellige koordinatsæt.\end{method}
+
+\subsection{Hvor kommer genererende funktioner fra?}
+Et system med fasevirkning
+\[
+S=\int_{t_1}^{t_2}\left(\sum_i p_i\dot q_i-H\right)\dd t
+\]
+beskrives af samme stationære bevægelse, hvis integranden i de nye variable blot adskiller sig ved et totalt tidsafledt randled. I differentialform:
+\[
+\sum_i p_i\,\dd q_i-H\,\dd t=
+\sum_iP_i\,\dd Q_i-\widetilde H\,\dd t+\dd F_1(q,Q,t).
+\]
+Udvid det totale differential:
+\[
+\dd F_1=\sum_i\frac{\partial F_1}{\partial q_i}\dd q_i+
+\sum_i\frac{\partial F_1}{\partial Q_i}\dd Q_i+
+\frac{\partial F_1}{\partial t}\dd t.
+\]
+Koefficienterne foran de uafhængige differentialer giver dermed
+\key{p_i=\frac{\partial F_1}{\partial q_i},\quad
+P_i=-\frac{\partial F_1}{\partial Q_i},\quad
+\widetilde H=H+\frac{\partial F_1}{\partial t}.}
+Andre typer fås ved Legendreomformninger:
+\begin{align*}
+F_2(q,P,t)&=F_1+\sum_iP_iQ_i,\\
+F_3(p,Q,t)&=F_1-\sum_ip_iq_i,\\
+F_4(p,P,t)&=F_1+\sum_iP_iQ_i-\sum_ip_iq_i.
+\end{align*}
+I hvert udtryk elimineres de øvrige variable via transformationsrelationerne, så de anførte argumenter faktisk er de uafhængige.
+\begin{center}\small\renewcommand{\arraystretch}{1.16}
+\begin{tabular}{p{15mm}p{30mm}p{94mm}}\toprule
+Type & Argumenter & Transformationsrelationer\\\midrule
+$F_1$ & $(q,Q,t)$ & $p_i=\frac{\partial F_1}{\partial q_i}$,\quad $P_i=-\frac{\partial F_1}{\partial Q_i}$\\
+$F_2$ & $(q,P,t)$ & $p_i=\frac{\partial F_2}{\partial q_i}$,\quad $Q_i=\frac{\partial F_2}{\partial P_i}$\\
+$F_3$ & $(p,Q,t)$ & $q_i=-\frac{\partial F_3}{\partial p_i}$,\quad $P_i=-\frac{\partial F_3}{\partial Q_i}$\\
+$F_4$ & $(p,P,t)$ & $q_i=-\frac{\partial F_4}{\partial p_i}$,\quad $Q_i=\frac{\partial F_4}{\partial P_i}$\\\bottomrule
+\end{tabular}\end{center}
+For enhver type er $\widetilde H=H+\left.\partial F_a/\partial t\right|_{\text{egne argumenter}}$; højresiden skal derefter omskrives i $(Q,P,t)$. \emph{Ingen enkelt type} behøver findes globalt; $F_1(q,Q)$ kræver eksempelvis, at $q,Q$ lokalt kan vælges som uafhængige variable (en passende blandet Hessian skal være invertibel).
+
+\subsection{Find eller kontroller en genererende funktion}\label{sec:findgen}
+\textbf{A. En allerede given generator:} Bestem typen ud fra dens argumenter, differentier efter begge slags variable, og kontrollér begge relationsligninger. Ved $F_2(q,P,t)$ er det
+$p_i=\partial F_2/\partial q_i$ og $Q_i=\partial F_2/\partial P_i$; tidsleddet testes først ved den nye Hamiltonfunktion. Eksamen 2021, opgave 3 har en eksplicit tidsafhængig kompleks $F_1$, så fortegn og partielle tidsafledte er særlig vigtige.
+
+\textbf{B. Ansatz med konstanter (2023, opgave 2):} Start med
+\[
+F_1(q,Q)=AQ^2+Bq^2+CqQ
+\Longrightarrow
+p=2Bq+CQ,\quad P=-2AQ-Cq.
+\]
+Ved $\sin\theta\ne0$ kan faserumsrotationen ovenfor skrives
+\[
+p=\frac{\cos\theta}{\sin\theta}q-\frac{1}{\sin\theta}Q,\qquad
+P=\frac{1}{\sin\theta}q-\frac{\cos\theta}{\sin\theta}Q.
+\]
+Sammenligning led for led giver
+\[
+\boxed{A=B=\frac{\cos\theta}{2\sin\theta},\quad C=-\frac1{\sin\theta},\quad
+F_1=\frac{\cos\theta(q^2+Q^2)-2qQ}{2\sin\theta}.}
+\]
+Ved $\sin\theta=0$ fejler netop denne $F_1$-type, selv om rotationen stadig er kanonisk. Man må da vælge en anden type.
+
+\textbf{C. Integration:} Er transformationen givet som $p=p(q,P,t)$, kan man prøve $F_2$:
+\[
+F_2(q,P,t)=\int^q p(\xi,P,t)\,\dd\xi+f(P,t).
+\]
+Integrationsleddet kan være en vilkårlig funktion af de øvrige uafhængige argumenter; bestem det ved $Q=\partial F_2/\partial P$. Krydsafledte skal stemme, ellers passer den valgte type ikke til transformationen.
+
 \subsection{Den transformerede Hamiltonfunktion}\label{sec:newH}
-\begin{method}\textbf{1.} Identificér transformationen og den korrekte genererende funktion $F_a$. \textbf{2.} Beregn $\partial F_a/\partial t$ ved fastholdte argumenter. \textbf{3.} Invertér for $q=q(Q,P,t)$ og $p=p(Q,P,t)$. \textbf{4.} Indsæt begge i den oprindelige $H$ og tilføj tidsleddet.\end{method}
-\key{\widetilde H(Q,P,t)=H(q,p,t)+\left.\pd{F_a}{t}\right|_{\text{egne argumenter}}.}
-Her skal højresiden til sidst omskrives til $(Q,P,t)$. Hvis $F_a$ er \emph{eksplicit} tidsuafhængig, er tidsleddet nul, men $H$ skal stadig omskrives til $(Q,P)$.
-\textbf{Mini-eksempel.} For $Q=aq$, $P=p/a$ med konstant $a\ne0$ og $H=p^2/(2m)+kq^2/2$ fås $q=Q/a$, $p=aP$, og
-\[K(Q,P)=\frac{a^2P^2}{2m}+\frac{kQ^2}{2a^2}.\]
-\begin{note}Tidsafhængige kanoniske transformationer kræver omhu: $\partial F/\partial t$ er ikke den totale afledte $\dd F/\dd t$.\end{note}
+\key{\widetilde H(Q,P,t)=H(q(Q,P,t),p(Q,P,t),t)+
+\left.\frac{\partial F_a}{\partial t}\right|_{\text{egne argumenter}}.}
+For en eksplicit tidsuafhængig generator er tidsleddet nul, men den gamle Hamiltonfunktion \emph{skal stadig omskrives}. Ved tidsafhængighed er den partielle tidsafledte ikke den totale afledte af $F_a$.
+\begin{method}Kontrollér først transformationsrelationerne. Beregn så $\partial F_a/\partial t$ med dens egne argumenter fastholdt. Genkend om muligt kombinationer i $H$ \emph{før} omfattende inversion; udtryk derefter resultatet udelukkende med $Q,P,t$ og find de nye Hamiltonligninger.\end{method}
+For $Q=aq$, $P=p/a$, $a\ne0$ konstant, genereret af $F_2=aqP$, bliver
+\[
+H=\frac{p^2}{2m}+\frac{kq^2}{2}
+\quad\Longrightarrow\quad
+\widetilde H=\frac{a^2P^2}{2m}+\frac{kQ^2}{2a^2}.
+\]
+\textbf{Eksamen 2022, opgave 4e--f.} For $H=p^2/(2m)+k/q^2$ bruges lokalt transformationen
+\[
+P=p\sqrt{1+\frac{2mk}{p^2q^2}},\qquad
+Q=\frac{q}{\sqrt{1+2mk/(p^2q^2)}}.
+\]
+På området $q>0$, $p\ne0$, $k>0$ har man $QP=qp$ og $P^2=p^2+2mk/q^2$, hvorfor
+\[
+\boxed{\widetilde H(Q,P)=\frac{P^2}{2m}.}
+\]
+Den skrevne transformationsform har en singularitet ved $p=0$: dens kanoniske koordinatkort kan ikke uden videre benyttes gennem det radiale vendepunkt.
 
+\subsection{Løs bevægelsen og bestem integrationskonstanter}
+Med $\widetilde H$ kendt giver Hamiltons ligninger
+\[
+\dot Q_i=\frac{\partial\widetilde H}{\partial P_i},\qquad
+\dot P_i=-\frac{\partial\widetilde H}{\partial Q_i}.
+\]
+Særligt ved $\widetilde H=P^2/(2m)$ er
+\key{P(t)=P_0,\qquad Q(t)=\frac{P_0}{m}(t-t_0)+Q_0.}
+\textbf{Konstanter:} Bevarelsen af energi giver i dette tilfælde $P_0^2=2mE$, men fastlægger ikke fortegnet $P_0=\pm\sqrt{2mE}$. Initialbetingelser, andre bevarede størrelser og den valgte fysiske gren bestemmer fortegnet og $Q_0$.
 
-\subsubsection*{Omvendt opgavetype: find $F$ fra den ønskede $\widetilde H$}
-\begin{method}\textbf{1.} Undersøg, om man kan vælge $\partial F/\partial t=0$ og dermed $\widetilde H=H$. Det er et muligt valg, ikke en almen regel. \textbf{2.} Brug den ønskede $\widetilde H$ til at vælge nye variable, fx $P=H$ hvis $\widetilde H=P$. \textbf{3.} Identificér $F_1$--$F_4$ og isolér den gamle variabel, der passer til dens argumenter. \textbf{4.} Integrér den tilhørende transformationsrelation og husk en vilkårlig funktion af de andre argumenter. \textbf{5.} Differentier for at bestemme den anden nye variabel, og kontrollér begge relationer samt $\widetilde H=H+F_t$.\end{method}
-Eksempel: $H=p^2/(2m)+mgq$, ønsket $\widetilde H=P$ og en type 4-funktion $U(p,P)$. Vælg $U_t=0$ og $P=H$, så
-\[q=\frac{P}{mg}-\frac{p^2}{2m^2g},\quad q=-U_p\quad\Rightarrow\quad\boxed{U(p,P)=-\frac{pP}{mg}+\frac{p^3}{6m^2g}+f(P)},\]
-\[Q=U_P=-\frac{p}{mg}+f'(P).\]
-Vælg eksempelvis $f=0$; $\{Q,P\}_{q,p}=1$. En direkte integration af $F_t=\widetilde H-H$ er generelt utilstrækkelig, fordi den ukendte transformation også bestemmer $q,p$ på højresiden.
+I opgaven fra 2022 giver $QP=qp$ og $P^2=p^2+2mk/q^2$ efter elimination af $p$:
+\[
+P^2Q^2=p^2q^2=P^2q^2-2mk
+\quad\Rightarrow\quad
+q^2=Q^2+\frac{2mk}{P^2}.
+\]
+På den positive gren fås
+\[
+q(t)=\sqrt{\left[\frac{P_0}{m}(t-t_0)+Q_0\right]^2+\frac{2mk}{P_0^2}}.
+\]
+Ved $q(0)=\sqrt{k/E}$, $\dot q(0)=0$ giver den glatte fysiske fortsættelse $Q_0=0$ og
+$q(t)=\sqrt{k/E+(2E/m)t^2}$. Det lokale kanoniske kort er dog singular ved selve vendepunktet; her skal man skelne koordinatkortet fra den glatte fysiske løsning.
 
-\subsection{Oprindelse af de genererende funktioner}
-En kanonisk transformation bevarer Hamiltons variationsprincip, hvis fase-rummets én-former opfylder
-\[\sum_i p_i\,\dd q_i-H\,\dd t=\sum_i P_i\,\dd Q_i-K\,\dd t+\dd F_1(q,Q,t).\]
-Sammenligning af koefficienterne foran $\dd q_i$, $\dd Q_i$ og $\dd t$ giver $p_i=\partial F_1/\partial q_i$, $P_i=-\partial F_1/\partial Q_i$ og $K=H+\partial F_1/\partial t$.
-Ved Legendreomformninger fås $F_2=F_1+\sum_iP_iQ_i$, $F_3=F_1-\sum_i p_iq_i$ og $F_4=F_1+\sum_iP_iQ_i-\sum_i p_iq_i$; dette forklarer fortegnstabellen ovenfor.
-\subsection{Symplektisk Jacobimatrix}
-Sæt $z=(q,p)^T$, $Z=(Q,P)^T$, $M=\partial Z/\partial z$, $J=\left(\begin{smallmatrix}0&I\\-I&0\end{smallmatrix}\right)$. Den kompakte kanonicitetsbetingelse er
-\[\boxed{MJM^T=J.}\]
-Dette er ækvivalent med samtlige fundamentale Poissonparentesbetingelser. Under standardantagelser følger også $M^TJM=J$.
+I \textbf{eksamen 2021, opgave 3} transformeres den harmoniske oscillator med en kompleks tidsafhængig $F_1$ til $\widetilde H=0$, så $Q$ og $P$ er konstanter. Opgavens realitetsbetingelse $P=iQ^*$ skal bevares; med $Q=\alpha$ bestemmer $|\alpha|=\sqrt{E/\omega}$ amplituden, mens fasen stadig bestemmes af begyndelsesdata.
+\begin{method}Løs først de nye ligninger; bestem konstanterne fra energi, begyndelsesbetingelser, andre integraler og fortegns-/definitionsområde; invertér den kanoniske transformation; kontrollér derpå den gamle bevægelsesligning, energien og startdata.\end{method}
 
-\subsection{Rotationsgeneratorer og bevarelse}
-Den mekaniske rotationsgenerator i kanoniske kartesiske variable har $\vv L=\vv r\times\vv p$ for sædvanlige systemer; så $\PB{L_x}{y}=z$, $\PB{L_x}{z}=-y$, $\PB{L_x}{p_y}=p_z$. \emph{Generatorvirkningen} skal ikke forveksles med \emph{bevarelse}: for en tidsuafhængig rotationsinvariant $H$ er $\PB{L_x}{H}=0$, og dermed er $L_x$ bevaret.
+\subsection{Omvendt: vælg en transformation som forenkler $H$}
+Når målet er en ønsket $\widetilde H$, kan det være smart at definere den nye impuls direkte fra gammel energi, fx $P=H$ ved ønsket $\widetilde H=P$. Konstruér så den konjugerede koordinat og kontrollér kanonicitet.
+For
+\[
+H=\frac{p^2}{2m}+mgq,\qquad mg\ne0,
+\]
+vælg $P=H$ og en tidsuafhængig $F_4(p,P)$. Da
+\[
+q=\frac{P}{mg}-\frac{p^2}{2m^2g},\qquad
+q=-\frac{\partial F_4}{\partial p},
+\]
+fås
+\[
+\boxed{F_4(p,P)=-\frac{pP}{mg}+\frac{p^3}{6m^2g}+f(P),\qquad
+Q=\frac{\partial F_4}{\partial P}=-\frac{p}{mg}+f'(P).}
+\]
+Vælges $f=0$, er $\PB QP_{q,p}=1$ og $\widetilde H=P$. Da $\dot Q=1$, $\dot P=0$, får man
+$p=-mgQ$ og $q=P/(mg)-gQ^2/2$. Kontrollér $\dot p=-mg$ og $\dot q=p/m$. En integration af $F_t=\widetilde H-H$ alene er ikke tilstrækkelig, fordi generatorens øvrige afledte også skal passe.
 
+\subsection{Symplektisk matrix, infinitesimale generatorer og rotation}
+Sæt $z=(q_1,\dots,q_n,p_1,\dots,p_n)^T$, $Z=(Q_1,\dots,Q_n,P_1,\dots,P_n)^T$ og
+\[
+M=\frac{\partial Z}{\partial z},\qquad
+J=\begin{pmatrix}0&I\\-I&0\end{pmatrix}.
+\]
+Alle fundamentale parentesrelationer er ækvivalente med
+\key{MJM^T=J,\qquad\text{ækvivalent med }M^TJM=J.}
+En funktion $G(q,p,t)$ kan generere en infinitesimal kanonisk transformation via
+\[
+\delta F=\varepsilon\PB FG,\qquad
+\delta q_i=\varepsilon\frac{\partial G}{\partial p_i},\quad
+\delta p_i=-\varepsilon\frac{\partial G}{\partial q_i}.
+\]
+At være \emph{generator} er forskelligt fra at være \emph{bevaret}: bevarelse kræver $\PB GH+\partial G/\partial t=0$.
+I kartesiske kanoniske variable er $\vv L=\vv r\times\vv p$ rotationsgeneratoren (jf.\ afsnit~\ref{sec:angular}). For eksempel
+\[
+L_x=yp_z-zp_y,\quad
+\PB{L_x}{y}=z,\quad\PB{L_x}{z}=-y,\quad\PB{L_x}{p_y}=p_z.
+\]
+Kun ved en passende rotationssymmetri af Hamiltonfunktionen er $\PB{L_x}{H}=0$ og dermed $L_x$ bevaret. Den videre systematiske reduktion til Hamilton--Jacobi behandles særskilt i kapitel~7.
+
+\begin{method}\textbf{Hurtigt metodevalg:} Er $(Q,P)$ givet, test Poissonparenteser. Er $F_a$ givet, differentier efter dens argumenter. Skal $F_a$ findes, vælg ansatz eller integration. Skal bevægelsen løses, bestem $\widetilde H$, integrér de nye ligninger, fastlæg konstanter, transformér tilbage, og kontrollér gyldighed samt initialdata.\end{method}
