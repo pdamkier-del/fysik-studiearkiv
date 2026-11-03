@@ -172,6 +172,10 @@ $F_4$ & $(p,P,t)$ & $q_i=-\frac{\partial F_4}{\partial p_i}$,\quad $Q_i=\frac{\p
 \end{tabular}\end{center}
 For enhver type er $\widetilde H=H+\left.\partial F_a/\partial t\right|_{\text{egne argumenter}}$; højresiden skal derefter omskrives i $(Q,P,t)$. \emph{Ingen enkelt type} behøver findes globalt; $F_1(q,Q)$ kræver eksempelvis, at $q,Q$ lokalt kan vælges som uafhængige variable (en passende blandet Hessian skal være invertibel).
 
+\textbf{Vælg en genererende funktion ud fra dens uafhængige argumenter.}
+Hvis $(q,Q)$ kan vælges uafhængigt, bruges $F_1$; ved $(q,P)$ bruges $F_2$; ved $(p,Q)$ bruges $F_3$; og ved $(p,P)$ bruges $F_4$. Det er et valg af \emph{lokalt koordinatkort}, ikke fire forskellige fysiske transformationer. Eksempelvis er identiteten naturlig med $F_2=qP$, men har ingen almindelig $F_1(q,Q)$-repræsentation.
+\begin{method}Når transformationen er givet, men generatoren ukendt: (1) omskriv relationerne i et egnet par af blandede variable; (2) vælg $F_a$ efter dette par; (3) integrér den første relationsligning og tilføj en ukendt funktion af det andet argument; (4) bestem denne funktion ved den anden relationsligning; (5) differentier begge relationer på ny. Hvis de er inkonsistente, kontroller fortegn og lokal invertibilitet.\end{method}
+
 \subsection{Find eller kontroller en genererende funktion}\label{sec:findgen}
 \textbf{A. En allerede given generator:} Bestem typen ud fra dens argumenter, differentier efter begge slags variable, og kontrollér begge relationsligninger. Ved $F_2(q,P,t)$ er det
 $p_i=\partial F_2/\partial q_i$ og $Q_i=\partial F_2/\partial P_i$; tidsleddet testes først ved den nye Hamiltonfunktion. Eksamen 2021, opgave 3 har en eksplicit tidsafhængig kompleks $F_1$, så fortegn og partielle tidsafledte er særlig vigtige.
@@ -223,6 +227,9 @@ På området $q>0$, $p\ne0$, $k>0$ har man $QP=qp$ og $P^2=p^2+2mk/q^2$, hvorfor
 Den skrevne transformationsform har en singularitet ved $p=0$: dens kanoniske koordinatkort kan ikke uden videre benyttes gennem det radiale vendepunkt.
 
 \subsection{Løs bevægelsen og bestem integrationskonstanter}
+\textbf{Fra en enkel $\widetilde H$ til en fysisk bane.} Formålet er først opfyldt, når den ønskede gamle koordinat er fundet. (1) Beregn og integrér de nye Hamiltonligninger; (2) transformer begyndelsesdata $(q_0,p_0)$ til $(Q_0,P_0)$; (3) brug eventuelle bevarelseslove som kontrol af størrelserne, ikke som automatisk fortegnsvalg; (4) indsæt $Q(t),P(t)$ i den inverse transformation; (5) verificér de oprindelige bevægelsesligninger. Hvis koordinatkortet er singulært ved et vendepunkt, gælder fortsættelsen af den fysiske bane ikke nødvendigvis samme lokale generator.
+
+
 Med $\widetilde H$ kendt giver Hamiltons ligninger
 \[
 \dot Q_i=\frac{\partial\widetilde H}{\partial P_i},\qquad
