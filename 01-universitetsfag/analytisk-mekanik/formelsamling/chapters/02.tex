@@ -19,6 +19,10 @@ Når en opgave giver positioner, bindinger og kræfter frem for $\mathcal L$, er
 (6) kontrollér både bindingerne og de oprindelige ligninger.
 Hvis det er \emph{bindingskraften}, der efterspørges, må bindingen i stedet ofte fastholdes med multiplikatorer (afsnit~\ref{sec:lambda}).\end{method}
 
+\textbf{Fra problem til bevægelsesligning.}
+Når opgaven giver en fysisk opstilling, er $\mathcal L$ endnu ikke kendt. Vælg uafhængige $q_i$, udtryk alle $\vv r_a(q,t)$, brug kædereglen til $\dot{\vv r}_a$, og beregn $T=\sum_a m_a|\dot{\vv r}_a|^2/2$ samt $V$. Opstil først derefter $\mathcal L=T-V$.
+\begin{method}Søg efter $q_i(t)$: (1) udled alle Euler--Lagrange-ligninger; (2) test cykliske koordinater og tidssymmetri; (3) brug bevarede impulser/energi til at reducere ligningerne; (4) identificér ODE-typen og skriv dens generelle løsning, ikke blot en enkelt gren; (5) bestem konstanterne fra begyndelsesdata og kontrollér både de oprindelige ligninger og bindingerne. Spørges i stedet efter en bindingskraft, skal bindingen ofte beholdes via multiplikatorer, jf. afsnit~\ref{sec:lambda}.\end{method}
+
 \subsection{Harmonisk oscillator: standardform}
 For $m>0$ og $k>0$:
 \[\mathcal L=\tfrac12m\dot q^2-\tfrac12kq^2,\qquad \omega_0=\sqrt{k/m}.\]
@@ -51,6 +55,8 @@ For en partikel i et inertialsystem med \emph{mekanisk} impuls $\vv p=m\dot{\vv 
 Med centrale kræfter er $\vv\tau=\vv r\times\vv F=0$, så $\dd\vv L/\dd t=0$. I plan polarbevægelse er den mekaniske $z$-komponent $L_z=mr^2\dot\phi$; i et generelt kanonisk system må man skelne mellem mekanisk og kanonisk impuls.
 \textbf{Hvorfor kommer symmetrierne før løsningen?}
 En bevaret impuls eller energifunktion erstatter en bevægelsesligning med en førsteordensrelation. Det er netop den reduktion, der gør centralbevægelse til ét radialt energiproblem i kapitel~3. Husk, at en cyklisk koordinat kun betyder $\partial\mathcal L/\partial q_i=0$; den pågældende \emph{koordinat} behøver ikke være konstant.
+
+En bevaret impuls eller energifunktion erstatter en bevægelsesligning med en førsteordensrelation. Det er samme reduktion, som i kapitel~3 gør centralbevægelse til et radialt energiproblem. En cyklisk koordinat betyder $\partial\mathcal L/\partial q_i=0$; selve koordinaten behøver ikke være konstant.
 
 \subsection{Energifunktionen og tidsafhængighed}
 Definér $h=\sum_i\dot q_i p_i-\mathcal L$. På en løsning af Euler--Lagrange gælder
