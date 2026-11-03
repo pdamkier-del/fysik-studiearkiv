@@ -1,5 +1,7 @@
 \clearpage\section{Hamilton--Jacobi-teori}\label{sec:hj}
 \subsection{Hovedligningen og hovedfunktionen}
+\textbf{Fra kapitel 6 til Hamilton--Jacobi.}
+En almindelig kanonisk transformation vælges for at gøre $\widetilde H$ lettere at løse. Hamilton--Jacobi gør målet skarpere: Find en type-2-generator $S(q,\alpha,t)$, så den \emph{nye} Hamiltonfunktion er $\widetilde H=0$. Derefter er dens nye koordinater og impulser konstante. Arbejdet flyttes derfor fra tidsintegration af Hamiltons ODE'er til løsning af én PDE for $S$ og efterfølgende rekonstruktion af bevægelsen.
 Den tidsafhængige Hamilton--Jacobi-ligning for hovedfunktionen $S(q,\alpha,t)$ er
 \key{H\left(q,\pd S q,t\right)+\pd St=0,\qquad p_i=\pd S{q_i}.}
 En \emph{fuldstændig} løsning afhænger af $n$ uafhængige konstanter $\alpha_i$, og yderligere konstanter findes af $\beta_i=\partial S/\partial\alpha_i$.
@@ -10,6 +12,16 @@ Ved én frihedsgrad for $H=p^2/(2m)+V(q)$ har man
 \[W(q,E)=\int^q\sqrt{2m\big(E-V(s)\big)}\,\dd s,\]
 for den valgte fortegnsgren og det klassisk tilladte område. Tiden kan derefter bestemmes via $\beta=\partial S/\partial E$.
 \subsection{Trinvis eksamensmetode}
+\textbf{Vælg HJ, når} en generator, en hovedfunktion/karakteristisk funktion eller separation af bevægelsen efterspørges, eller når et Hamiltonproblem giver en separabel PDE. Ved kun én cyklisk koordinat eller et simpelt effektivt potentiale er en almindelig bevarelseslov eller energiintegration ofte kortere.
+\begin{method}\textbf{Fra HJ-ligning til den søgte bevægelse:}
+(1) udpeg det \emph{gamle} kanoniske par for netop denne HJ-transformation;
+(2) indsæt $p_i=\partial S/\partial q_i$ i $H$ og løs $H(q,\partial_qS,t)+\partial_tS=0$;
+(3) find et \emph{fuldstændigt} integral med $n$ uafhængige parametre $\alpha_i$ (vælg lokal gren og kontrollér den blandede Hessian);
+(4) beregn $p_i=\partial S/\partial q_i$ og $\beta_i=\partial S/\partial\alpha_i$;
+(5) brug begyndelsesdata til at bestemme $\alpha_i,\beta_i$, og løs de sidste relationer for $q_i(t)$;
+(6) hvis HJ blev anvendt efter et tidligere koordinatskift, transformér tilbage til de oprindelige koordinater;
+(7) kontrollér både HJ-PDE'en og de oprindelige Hamiltonligninger. En separeret $W$ uden trinene 4--6 er ikke den fulde bevægelsesløsning.\end{method}
+
 \begin{method}Skriv $H$. Vælg separationsansats, typisk $S=W-Et$ ved tidsuafhængighed. Løs for gradienten $\partial W/\partial q$; integrér til $W$; brug $p_i=\partial S/\partial q_i$ og $\beta_i=\partial S/\partial\alpha_i$ til at finde bevægelsen. Kontroller i Hamiltons ligninger.\end{method}
 
 \subsubsection*{Eksamensguide: fra $H$ til $W$ og derfra til bevægelsen}
