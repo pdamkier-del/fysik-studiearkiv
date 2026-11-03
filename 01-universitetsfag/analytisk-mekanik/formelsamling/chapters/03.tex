@@ -1,14 +1,74 @@
 \clearpage\section{Centralbevægelse}\label{sec:central}
 En central kraft har retning langs radius, $\vv F=F(r)\hat{\vv r}$, og $\vv L=\vv r\times\vv p$ er bevaret. Bevægelsen ligger derfor i et plan (for $\ell\ne0$). Adskil altid \emph{generelle centralpotentialer} fra de særlige formler for Keplerpotentialet $-k/r$.
 
-\subsection{Fra to legemer til radial bevægelse}
-For to masser $m_1,m_2$ defineres $M=m_1+m_2$, $\mu=m_1m_2/M$, $\vv R=(m_1\vv r_1+m_2\vv r_2)/M$ og $\vv r=\vv r_1-\vv r_2$. Positionerne kan rekonstrueres fra $\mathbf r_1=\mathbf R+(m_2/M)\mathbf r$ og $\mathbf r_2=\mathbf R-(m_1/M)\mathbf r$ for konventionen $\mathbf r=\mathbf r_1-\mathbf r_2$. Blandede led i den kinetiske energi ophæver hinanden.
-For et internt potentiale $V(r)$ fås
-\[T=\tfrac12M\dot{\vv R}^{2}+\tfrac12\mu\dot{\vv r}^{2},\qquad \mathcal L_{\rm rel}=\tfrac12\mu(\dot r^{2}+r^{2}\dot\phi^{2})-V(r).\]
-Da $\phi$ er cyklisk, gælder
-\[\boxed{\ell=\frac{\partial\mathcal L}{\partial\dot\phi}=\mu r^{2}\dot\phi=\mathrm{konstant}},\qquad\frac{\mathrm dA}{\mathrm dt}=\frac{\ell}{2\mu}.\]
-For én partikel om et fast kraftcentrum erstattes $\mu$ af dens masse $m$.
+\subsection{Toplegemeproblemet: koordinattransformation og reduceret masse}\label{sec:tolegeme}
+\textbf{Fysisk problem.} To punktmasser $m_1,m_2$ vekselvirker gennem et centralpotentiale $V(r)$, hvor $r=|\vv r_1-\vv r_2|$. Vi vil adskille massemidtpunktets frie bevægelse fra den relative bevægelse. Den inertielle Lagrangefunktion er
+\[
+\mathcal L=\tfrac12m_1\dot{\vv r}_1^{\,2}+\tfrac12m_2\dot{\vv r}_2^{\,2}-V(|\vv r_1-\vv r_2|).
+\]
+Sæt $M=m_1+m_2$ og indfør
+\[
+\vv R=\frac{m_1\vv r_1+m_2\vv r_2}{M},\qquad \vv r=\vv r_1-\vv r_2.
+\]
+Da $\vv r_1=\vv r_2+\vv r$, fås $M\vv R=M\vv r_2+m_1\vv r$. Løs denne ligning for $\vv r_2$ og brug derefter $\vv r_1=\vv r_2+\vv r$:
+\key{\vv r_1=\vv R+\frac{m_2}{M}\vv r,\qquad
+\vv r_2=\vv R-\frac{m_1}{M}\vv r.}
+Differentier begge udtryk og indsæt i $T$. Krydsleddene med $\dot{\vv R}\cdot\dot{\vv r}$ ophæves, fordi
+$m_1m_2/M-m_2m_1/M=0$; koefficienten til $\dot{\vv r}^{\,2}$ er
+\[
+m_1\frac{m_2^2}{M^2}+m_2\frac{m_1^2}{M^2}
+=\frac{m_1m_2(m_1+m_2)}{M^2}=\frac{m_1m_2}{M}\equiv\mu.
+\]
+Dermed fås den \emph{eksakte} separation
+\key{\mathcal L=\frac12M\dot{\vv R}^{\,2}+\mathcal L_{\rm rel},\qquad
+\mathcal L_{\rm rel}=\frac12\mu\dot{\vv r}^{\,2}-V(r),\quad
+\mu=\frac{m_1m_2}{m_1+m_2}.}
+$\vv R$ er cyklisk, så $\vv P=M\dot{\vv R}$ er bevaret. I massemidtpunktssystemet er $\dot{\vv R}=0$, og man løser ét ækvivalent problem for den reducerede masse $\mu$. For en partikel omkring et fast kraftcentrum benyttes massen $m$.
 
+\subsection{Impulsmomentet og planbevægelse}
+I massemidtpunktssystemet er $\vv r_1'=(m_2/M)\vv r$ og $\vv r_2'=-(m_1/M)\vv r$. Det totale impulsmoment \emph{om massemidtpunktet} er
+\begin{align*}
+\vv L_{\rm CM}&=m_1\vv r_1'\times\dot{\vv r}_1'
++m_2\vv r_2'\times\dot{\vv r}_2'\\
+&=\left(m_1\frac{m_2^2}{M^2}+m_2\frac{m_1^2}{M^2}\right)
+\vv r\times\dot{\vv r}
+=\boxed{\mu\vv r\times\dot{\vv r}}.
+\end{align*}
+Dette er den udledning, der efterspørges i \textbf{eksamen 2022, opgave 1}. Om et vilkårligt inertielt origo er $\vv L_{\rm total}=\vv R\times\vv P+\vv L_{\rm CM}$; de to udtryk må ikke forveksles.
+
+Fordi $\vv F=-V'(r)\hat{\vv r}$ er parallel med $\vv r$, fås $\dot{\vv L}=\vv r\times\vv F=0$. Ved $\ell=|\vv L|\ne0$ er bevægelsen derfor begrænset til planet vinkelret på $\vv L$. I dette plan indføres
+\[
+\vv r=r\hat{\vv r},\qquad
+\dot{\vv r}=\dot r\hat{\vv r}+r\dot\phi\hat{\vv\phi},
+\qquad
+\dot{\hat{\vv r}}=\dot\phi\hat{\vv\phi},\quad
+\dot{\hat{\vv\phi}}=-\dot\phi\hat{\vv r}.
+\]
+Så er
+\[
+\mathcal L_{\rm rel}=\tfrac12\mu(\dot r^2+r^2\dot\phi^2)-V(r),\qquad
+\ell=p_\phi=\frac{\partial\mathcal L}{\partial\dot\phi}
+=\mu r^2\dot\phi=\text{konstant}.
+\]
+Fra arealelementet $\dd A=\frac12r^2\dd\phi$ følger
+\key{\frac{\dd A}{\dd t}=\frac{\ell}{2\mu}.}
+Planbevægelse og areallov gælder for \emph{alle} centralpotentialer, ikke blot $V=-k/r$. Ved $\ell=0$ er bevægelsen rent radial, og Binets vinkelparameterisering kan ikke bruges.
+
+\subsection{Fra radial Euler--Lagrange til effektivt potentiale}
+Radialvariablen opfylder
+\[
+\frac{\dd}{\dd t}(\mu\dot r)
+=\mu r\dot\phi^2-V'(r)
+=\frac{\ell^2}{\mu r^3}-V'(r).
+\]
+Da $\mathcal L_{\rm rel}$ ikke afhænger eksplicit af tiden, er
+\begin{align*}
+E&=\dot r\frac{\partial\mathcal L}{\partial\dot r}
++\dot\phi\frac{\partial\mathcal L}{\partial\dot\phi}-\mathcal L\\
+&=\frac12\mu\dot r^2+\frac12\mu r^2\dot\phi^2+V(r)
+=\frac12\mu\dot r^2+\frac{\ell^2}{2\mu r^2}+V(r).
+\end{align*}
+Radialbevægelsen er således et éndimensionalt energiproblem, mens vinkelbevægelsen bestemmes efterfølgende af $\dot\phi=\ell/(\mu r^2)$.
 
 \subsection{Det effektive potentiale: hvad bestemmer det?}\label{sec:veff}
 \key{E=\frac12\mu\dot r^2+V_{\rm eff}(r),\qquad V_{\rm eff}(r)=V(r)+\frac{\ell^2}{2\mu r^2}.}
@@ -43,6 +103,14 @@ En cirkelbane har konstant $r=r_0$ og opfylder $V_{\rm eff}'(r_0)=0$. Sæt $r=r_
 Altså er en eksisterende cirkelbane lineært stabil for $0<\alpha<2$ og ustabil for $\alpha>2$ (for $\alpha=2$ kræves særskilt analyse). Dette er \emph{ikke} en Kepler-specifik excentricitetsregel.
 
 
+\subsection{Radialt tilladt område og beslutning om metode}
+Fra energien følger
+\[
+\dot r=\pm\sqrt{\frac2\mu[E-V_{\rm eff}(r)]}.
+\]
+Man bør derfor \emph{før} en integrationsopgave undersøge grafen for $V_{\rm eff}$: skæringer med $E$ er kandidater til radiale vendepunkter; et lokalt minimum giver en stabil cirkelbane, mens et maksimum er ustabilt. To radiale vendepunkter kan begrænse $r$, men en sådan bane er ikke nødvendigvis lukket. Ved dobbeltrod kan radialbevægelsen nærme sig en stationær radius asymptotisk frem for at vende på almindelig vis.
+\begin{method}Fra en given kraft: (1) integrér $F=-V'$; (2) find $\ell$ og $V_{\rm eff}$; (3) klassificér de tilladte radialintervaller via $E\ge V_{\rm eff}$; (4) vælg radial energiintegration for $r(t)$ eller Binet for $r(\phi)$; (5) fastlæg konstanter med energi og begyndelsesdata. Kontrollér altid $r>0$ og $\ell\ne0$, hvis Binet benyttes.\end{method}
+
 \subsection{Binet: fra radius til vinkelvariablen}\label{sec:binet}
 Sæt $u(\phi)=1/r$ og lad prim betegne afledning efter $\phi$, punkt efter $t$. Under bevaret $\ell\ne0$:
 \begin{center}\small\renewcommand{\arraystretch}{1.22}\begin{tabular}{ll}\toprule Størrelse & Omskrivning\\\midrule
@@ -51,7 +119,15 @@ $\dot\phi$ & $\ell u^2/\mu$\\
 $\dot r$ & $-(\ell/\mu)u'$\\
 $\ddot r$ & $-(\ell^2u^2/\mu^2)u''$\\
 $V(r),\ F(r)$ & $V(1/u),\ F(1/u)$\\\bottomrule\end{tabular}\end{center}
-Fra kædereglen $\dot r=(\mathrm dr/\mathrm d\phi)\dot\phi$ får man $\dot r=-\ell u'/\mu$. Indsæt i $\mu(\ddot r-r\dot\phi^2)=F(r)$:
+Her er de nødvendige kæderegninger udskrevet. Da $r=1/u$ og $\dot\phi=\ell u^2/\mu$ fås
+\begin{align*}
+\frac{\dd r}{\dd\phi}&=-u^{-2}u',
+&\dot r&=\frac{\dd r}{\dd\phi}\dot\phi=-\frac{\ell}{\mu}u',\\
+\ddot r&=-\frac{\ell}{\mu}\frac{\dd u'}{\dd\phi}\dot\phi
+=-\frac{\ell^2u^2}{\mu^2}u'',
+&r\dot\phi^2&=\frac{\ell^2u^3}{\mu^2}.
+\end{align*}
+Indsæt disse udtryk i $\mu(\ddot r-r\dot\phi^2)=F(r)$ og divider med $-\ell^2u^2/\mu$:
 \key{u''+u=-\frac{\mu}{\ell^2u^2}F(1/u),\qquad r(\phi)=\frac{1}{u(\phi)}.}
 Samtidig er energiudtrykket
 \[\boxed{E=\frac{\ell^2}{2\mu}\big[(u')^2+u^2\big]+V(1/u)}.\]
@@ -60,6 +136,12 @@ Samtidig er energiudtrykket
 Koefficientens fortegn afgør, om løsningen er trigonometrisk ($>0$), lineær ($=0$) eller hyperbolsk/eksponentiel ($<0$). De generelle konstanter bestemmes derefter af energien og begyndelsesdata; en $\cosh$-form repræsenterer kun bestemte integrationskonstanter.
 \begin{method}Ud fra en radialkraft: find $F(1/u)$, opstil Binet-ODE'en, klassificér differentialligningen (harmonisk, eksponentiel osv.), løs $u(\phi)$, og brug energien eller begyndelsesdata til at bestemme integrationskonstanter.\end{method}
 
+
+\subsection{Løsningstyper i Binets ligning}
+For en ligning $u''+\omega^2u=c$ er det afgørende først at undersøge fortegnet af $\omega^2$. Ved $\omega^2>0$ er
+$u=c/\omega^2+A\cos(\omega\phi)+B\sin(\omega\phi)$; ved $\omega^2=0$ fås $u=c\phi^2/2+A\phi+B$; og ved $\omega^2<0$ er
+$u=-c/\kappa^2+A e^{\kappa\phi}+B e^{-\kappa\phi}$ med $\kappa=\sqrt{-\omega^2}$. Energi og begyndelsesdata vælger derefter de fysiske konstanter og radier $u>0$.
+For kraften $F=-\mu A/r^3$ fra \textbf{eksamen 2019, opgave 2} er $c=0$ og $\omega^2=1-\mu^2 A/\ell^2$: de tre parameterområder giver henholdsvis trigonometriske, lineære og hyperbolske løsninger. En særlig $\cosh$-løsning må ikke forveksles med det generelle to-konstant-udtryk.
 
 \subsection{Keplerbaner: energi, excentricitet og banetype}\label{sec:kepler}
 \textbf{Kun for} $V(r)=-k/r$, $k>0$, gælder
