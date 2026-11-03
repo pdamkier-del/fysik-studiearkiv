@@ -30,14 +30,54 @@ Ved efterfølgende differentiation med hensyn til $E$ (mens $Q$ holdes fast) og 
 \[Q(t)=\sqrt{\frac{2E}{m\omega^2}}\cos(\omega t+\varphi_0).\]
 Fortegn og fase bestemmes af begyndelsesdata. Hvis første transformation havde $Q=e^{\gamma t/(2m)}q$, skal man til sidst bruge $q(t)=e^{-\gamma t/(2m)}Q(t)$. HJ-konstanten $\beta$ er ikke den tidligere koordinat $Q$.
 
+\subsection{Additiv separation i flere dimensioner}
+Når $H(q,p)$ er autonom, leder vi efter et fuldstændigt integral
+$S(q,\alpha,t)=W(q,\alpha)-Et$. For to frihedsgrader forsøges den \emph{additive ansats}
+\[
+W(q_1,q_2;\alpha)=W_1(q_1;\alpha)+W_2(q_2;\alpha).
+\]
+Antag for eksempel
+\[
+H=\frac{p_1^2}{2m}+\frac{p_2^2}{2m}+V_1(q_1)+V_2(q_2).
+\]
+Indsæt $p_i=\partial W/\partial q_i$:
+\[
+\underbrace{\frac{[W_1'(q_1)]^2}{2m}+V_1(q_1)}_{E_1}
++\underbrace{\frac{[W_2'(q_2)]^2}{2m}+V_2(q_2)}_{E_2}
+=E.
+\]
+Da venstresidens led afhænger af hver sin koordinat, er begge konstante, og $E_1+E_2=E$. Dermed bliver PDE'en til \emph{to ODE'er}:
+\[
+W_i(q_i)=\pm\int^{q_i}\sqrt{2m[E_i-V_i(s)]}\,\dd s,\qquad i=1,2.
+\]
+Et regulært fuldstændigt integral kræver to uafhængige separationsparametre, fx $(E_1,E_2)$, samt
+$\det[\partial^2S/(\partial q_i\partial\alpha_j)]\ne0$ på det valgte område. Energien $E=E_1+E_2$ er ikke en \emph{tredje} uafhængig parameter. Rekonstruktion sker via
+$\beta_i=\partial S/\partial\alpha_i$ og $p_i=\partial S/\partial q_i$, hvorefter $\alpha_i,\beta_i$ bestemmes af begyndelsesdata.
+\begin{method}Ved flerdimensional HJ: (1) indsæt $p_i=\partial W/\partial q_i$; (2) undersøg om $W=\sum_iW_i(q_i)$ er kompatibel med $H$; (3) separér i koordinatafhængige ligninger og identificér $n$ uafhængige parametre; (4) vælg grene, kontroller den blandede Hessian og differentier efter parametrene for at finde $q_i(t)$; (5) kontroller de oprindelige Hamiltonligninger. Separation er en metode, ikke et generelt garanteret resultat.\end{method}
+
 \subsection{Éndimensional fri partikel}
 For $H=p^2/(2m)$ giver $W'=\pm\sqrt{2mE}$ og dermed $S=\pm q\sqrt{2mE}-Et$. Differentiering med hensyn til $E$ giver $t-\beta=\pm q\sqrt{m/(2E)}$ med passende konstantvalg. Dette svarer til konstant impuls og retlinet bevægelse.
 
 \subsection{Hamilton--Jacobi som kanonisk transformation}
 En fuldstændig løsning $S(q,\alpha,t)$ kan bruges som genererende funktion af type $F_2(q,P,t)$ ved at sætte $P_i=\alpha_i$. Den transformerede Hamiltonfunktion opfylder
-\[K=H+\pd St=0,\qquad p_i=\pd S{q_i},\qquad Q_i=\pd S{\alpha_i}=\beta_i.\]
+\[\widetilde H=H+\pd St=0,\qquad p_i=\pd S{q_i},\qquad Q_i=\pd S{\alpha_i}=\beta_i.\]
 De nye variable $(\alpha_i,\beta_i)$ er derfor konstante; bevægelsen i gamle variable findes ved at løse $\beta_i=\partial S/\partial\alpha_i$ og derefter $p_i=\partial S/\partial q_i$. Det kræver en ikke-degenereret fuldstændig løsning.
-\subsection{Tidsafhængig Hamiltonian: hvad ændres?}
-For eksplicit tidsafhængig $H(q,p,t)$ er separationen $S=W(q)-Et$ ikke generelt mulig. Hovedligningen er stadig $H(q,\partial_qS,t)+\partial_tS=0$, og den nye Hamiltonfunktion kan stadig vælges $K=0$ ved en passende fuldstændig løsning. Genererende funktioner kan afhænge eksplicit af tid, selv når den oprindelige Hamiltonfunktion ikke gør det.
+\subsection{Eksplicit tidsafhængig HJ: valg af ansats og variable}
+Når $H(q,p,t)$ afhænger eksplicit af tiden, bruges den \emph{fulde} PDE
+\[
+\boxed{H\left(q,\frac{\partial S}{\partial q},t\right)+
+\left.\frac{\partial S}{\partial t}\right|_{q,P}=0},
+\qquad \widetilde H=0.
+\]
+Man kan ikke generelt antage $S=W(q)-Et$ med en bevaret energi. I stedet forsøges en passende additiv eller anden separationsansats, og både PDE'en og den blandede Hessian kontrolleres. Som kort eksempel giver $H=p^2/(2m)+f(t)$
+\[
+S(q,P,t)=qP-\frac{P^2t}{2m}-\int^t f(\tau)\,\dd\tau.
+\]
+Så er $p=P$ og $Q=q-Pt/m$ konstanter langs den nye bevægelse. Det rene tidsled påvirker hovedfunktionen, men ikke de oprindelige ligninger for $q,p$.
+
+\textbf{Adskil koordinatsæt:} Hvis en tidligere kanonisk transformation allerede gav $(Q,P)$ og $\widetilde H_{\rm mellem}(Q,P,t)$, skal HJ nu opstilles i \emph{mellemkoordinaterne}, fx med generator $S(Q,\alpha,t)$. Dens afledte giver mellemimpulsen $P=\partial S/\partial Q$ og nye konstanter $\beta=\partial S/\partial\alpha$. Først derefter anvendes den inverse \emph{første} transformation for at finde de oprindelige $(q,p)$. Brug ikke samme bogstav til to forskellige koordinatsæt uden at definere det.
+\begin{method}Tidsafhængig HJ: (1) identificér det Hamiltonske koordinatsæt, PDE'en vedrører; (2) behold $S_t$ med egne argumenter fastholdt; (3) find et regulært fuldstændigt integral; (4) bestem $\alpha_i,\beta_i$ fra initialdata; (5) transformer tilbage gennem alle tidligere koordinatskift; (6) kontroller PDE, domæne og bevægelsesligninger.\end{method}
+
+For eksplicit tidsafhængig $H(q,p,t)$ er separationen $S=W(q)-Et$ ikke generelt mulig. Hovedligningen er stadig $H(q,\partial_qS,t)+\partial_tS=0$, og den nye Hamiltonfunktion kan stadig vælges $\widetilde H=0$ ved en passende fuldstændig løsning. Genererende funktioner kan afhænge eksplicit af tid, selv når den oprindelige Hamiltonfunktion ikke gør det.
 
 
