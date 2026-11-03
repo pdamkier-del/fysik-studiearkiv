@@ -1,5 +1,6 @@
 """Compile every retained physics template from the explicit source manifest."""
 import json
+import os
 from pathlib import Path
 import subprocess
 
@@ -13,7 +14,9 @@ for relative in manifest['sources']:
         result = subprocess.run([
             'latexmk', '-lualatex', '-interaction=nonstopmode', '-halt-on-error',
             '-file-line-error', f'-outdir={output}', str(source),
-        ], cwd=root, stdout=console, stderr=subprocess.STDOUT)
+        ], cwd=root, env={**os.environ,
+                       'TEXINPUTS': f"{root / source.parent}{os.pathsep}{os.environ.get('TEXINPUTS', '')}"},
+           stdout=console, stderr=subprocess.STDOUT)
     if result.returncode:
         print((root / output / 'console.log').read_text())
         raise SystemExit(result.returncode)
