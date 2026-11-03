@@ -270,7 +270,7 @@ $E>0$ & $e>1$ & Hyperbel\\\bottomrule\end{tabular}\end{center}
 \end{scope}
 \begin{scope}[xshift=5.0cm]
 \draw[accent!80!black,very thick,domain=-1.15:1.15,samples=65]
-plot ({.48+.55*cosh(\x r)},{.95*sinh(\x r)});
+plot ({.48+.55*sqrt(1+\x*\x)},{.95*\x});
 \node[accent!80!black,scale=.85] at (1.05,1.75) {Hyperbel $e>1$};
 \end{scope}
 \end{tikzpicture}\\[-1mm]{\small\itshape Skematisk illustration af keglesnit; hyperblen svarer til $e>1$.}\end{center}
