@@ -75,7 +75,7 @@ Radialbevægelsen er således et éndimensionalt energiproblem, mens vinkelbevæ
 \subsection{Tre metoder til at løse centralkraftproblemet}
 De samme bevarelseslove giver tre forskellige løsningsveje. Valget afhænger af opgavens ukendte og af, om der ønskes en kvalitativ klassifikation, en tidsfunktion eller en geometrisk bane.
 
-\subsubsection*{Metode 1: Mulige radier, cirkelbaner og stabilitet\label{sec:veff}}
+\subsubsection*{Metode 1: Mulige radier, cirkelbaner og stabilitet}\label{sec:veff}
 \key{E=\frac12\mu\dot r^2+V_{\rm eff}(r),\qquad V_{\rm eff}(r)=V(r)+\frac{\ell^2}{2\mu r^2}.}
 Den radiale bevægelse svarer til én dimension med et effektivt potentiale. Centrifugalleddet er ikke et nyt fysisk potentiale, men kommer fra den bevarede vinkelbevægelse.
 \begin{center}\small\renewcommand{\arraystretch}{1.22}\begin{tabular}{p{47mm}p{91mm}}\toprule
@@ -96,7 +96,7 @@ Er en begrænset bane lukket? & Kræver også $\Delta\phi_{\rm radial}/(2\pi)\in
 \node[anchor=north,font=\scriptsize] at (axis cs:1,-.5) {$r_0$};
 \end{axis}\end{tikzpicture}\\[-1mm]{\small \itshape Et Kepler-eksempel: skæringer med energilinjen giver de radiale vendepunkter. Figuren er skematisk og dimensionsløs.}\end{center}
 
-\subsubsection*{Cirkulære baner og lineær stabilitet\label{sec:circular}}
+\subsubsection*{Cirkulære baner og lineær stabilitet}\label{sec:circular}
 Radialligningen er
 \[\mu\ddot r=\mu r\dot\phi^2-V'(r)=\frac{\ell^2}{\mu r^3}-V'(r)=-V_{\rm eff}'(r).\]
 En cirkelbane har konstant $r=r_0$ og opfylder $V_{\rm eff}'(r_0)=0$. Sæt $r=r_0+\eta$, hvor $|\eta|\ll r_0$. Til første orden gælder
@@ -152,7 +152,7 @@ Med den indadgående gren beskrives samme løsning for $t<0$. Kontrollen er \emp
 De sidste to ligheder bruger $q_0^2=k/E$ og $q^2=q_0^2+2Et^2/m$. Dermed opfyldes både bevægelsesligningen og energiligningen, præcis som i opgave 4c--d.
 \begin{method}Vælg energiintegration, når der spørges efter $q(t)$ eller $r(t)$: bestem energi og fortegnsgren fra initialdata, separér, integrér, håndtér vendepunkter stykkevist, og verificér løsning, initialdata og begge bevægelses-/energiligninger. For centralbevægelse integreres dernæst $\dot\phi$.\end{method}
 
-\subsubsection*{Metode 3: Banens form fra Binets ligning\label{sec:binet}}
+\subsubsection*{Metode 3: Banens form fra Binets ligning}\label{sec:binet}
 Når $r(\phi)$ ønskes, er det mere praktisk at benytte den bevarede størrelse $\ell=\mu r^2\dot\phi$ til at skifte uafhængig variabel fra tid til vinkel. Denne fremgangsmåde forudsætter $\ell\ne0$ og $r>0$.
 
 Sæt $u(\phi)=1/r$ og lad prim betegne afledning efter $\phi$, punkt efter $t$. Under bevaret $\ell\ne0$:
