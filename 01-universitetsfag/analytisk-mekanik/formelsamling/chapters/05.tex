@@ -1,5 +1,8 @@
 \clearpage\section{Hamiltonformalismen}
 \subsection{Legendretransformation og Hamiltons EOM}
+\textbf{Hvorfor skifte formalisme?} Lagrange giver typisk andenordensligninger i $q$. Hamilton giver førsteordensligninger i $(q,p)$ og gør symmetrier, Poissonparenteser og kanoniske transformationer direkte tilgængelige. Impulsen $p_i=\partial\mathcal L/\partial\dot q_i$ er ikke generelt $m\dot q_i$.
+
+
 Find $p_i=\partial\mathcal L/\partial\dot q_i$, løs $\dot q_i(q,p,t)$, og definér Hamiltonfunktionen
 \key{H(q,p,t)=\sum_i p_i\dot q_i-\mathcal L,\qquad \dot q_i=\pd H{p_i},\quad\dot p_i=-\pd H{q_i}.}
 \begin{method}Givet $H$: beregn de to partielle afledte; find $\dot q,\dot p$; hvis opgaven kræver en andenordens EOM, differentier $\dot q$ og eliminer $p$ ved brug af begge Hamiltonligninger. Kontroller ved tilbageindsættelse.\end{method}
@@ -39,6 +42,9 @@ For $F(q,p,t)$ langs Hamiltons bevægelse gælder
 \[\od Ft=\PB FH+\pd Ft,\qquad \od Ht=\pd Ht.\]
 En størrelses $F$ bevarelse kræver $\PB FH+\partial F/\partial t=0$ langs bevægelsen.
 \subsection{Find de oplagte bevarede størrelser fra Hamiltonfunktionen}\label{sec:ham-constants}
+\textbf{Hvorfor lede før integration?} Mangler $q_i$ i $H$, er $p_i$ konstant; mangler eksplicit tid, er $H$ konstant. Begge udsagn kan reducere problemet inden Hamiltons ligninger løses. For mere skjulte integraler bruges den systematiske Poisson- og ansatzmetode i afsnit~\ref{sec:find-conserved}.
+
+
 En Hamiltonfunktion er ikke blot en alternativ bevægelsesligning: dens afhængighed af koordinater og tid viser straks mulige integraler. For autonome kanoniske systemer gælder
 \[
 \dot p_i=-\frac{\partial H}{\partial q_i},\qquad
