@@ -1,43 +1,206 @@
-\clearpage\section{Hamilton--Jacobi-teori}
-\subsection{Hovedligningen og hovedfunktionen}
-Den tidsafhængige Hamilton--Jacobi-ligning for hovedfunktionen $S(q,\alpha,t)$ er
-\key{H\left(q,\pd S q,t\right)+\pd St=0,\qquad p_i=\pd S{q_i}.}
-En \emph{fuldstændig} løsning afhænger af $n$ uafhængige konstanter $\alpha_i$, og yderligere konstanter findes af $\beta_i=\partial S/\partial\alpha_i$.
-\subsection{Tidsuafhængig Hamiltonfunktion}
-Hvis $H$ ikke afhænger eksplicit af $t$, kan man forsøge $S=W(q,\alpha)-Et$, som giver
-\[H\left(q,\pd Wq\right)=E.\]
-Ved én frihedsgrad for $H=p^2/(2m)+V(q)$ har man
-\[W(q,E)=\int^q\sqrt{2m\big(E-V(s)\big)}\,\dd s,\]
-for den valgte fortegnsgren og det klassisk tilladte område. Tiden kan derefter bestemmes via $\beta=\partial S/\partial E$.
-\subsection{Trinvis eksamensmetode}
-\begin{method}Skriv $H$. Vælg separationsansats, typisk $S=W-Et$ ved tidsuafhængighed. Løs for gradienten $\partial W/\partial q$; integrér til $W$; brug $p_i=\partial S/\partial q_i$ og $\beta_i=\partial S/\partial\alpha_i$ til at finde bevægelsen. Kontroller i Hamiltons ligninger.\end{method}
+\clearpage\section{Hamilton--Jacobi-teori}\label{sec:hj}
+\textbf{Fra kanoniske transformationer til løsning af bevægelsen.} I kapitel~\ref{sec:canon} fandt vi, hvordan man kan ændre fasevariable uden at ændre den fysiske bane. Kan vi vælge generatoren så godt, at den \emph{nye Hamiltonfunktion er nul}? Hvis $K(Q,P,t)=0$, giver Hamiltons ligninger straks
+\[
+\dot Q_i=\frac{\partial K}{\partial P_i}=0,\qquad
+\dot P_i=-\frac{\partial K}{\partial Q_i}=0.
+\]
+De nye variable er således konstanter. Hamilton--Jacobi-teorien (HJ) er metoden til at \emph{finde denne transformation} ved at løse en partiel differentialligning for dens generator.
 
-\subsubsection*{Eksamensguide: fra $H$ til $W$ og derfra til bevægelsen}
-For \emph{én frihedsgrad og tidsuafhængig} $H(q,p)$:
-\begin{method}\textbf{1.} Skriv $H(q,p)$. \textbf{2.} Vælg $S(q,E,t)=W(q,E)-Et$. \textbf{3.} Udskift \emph{direkte i Hamiltonfunktionen} $p\mapsto\partial W/\partial q$ og sæt $H(q,W')=E$. \textbf{4.} Isolér $W'$ (ofte en andengradsligning) og integrér $W=\int W'\mathrm dq$. \textbf{5.} Differentier med hensyn til $E$ ved fastholdt $q$: $\boxed{\partial W/\partial E=t+\beta}$. \textbf{6.} Løs denne relation for $q(t)$, og gå eventuelt tilbage gennem en tidligere kanonisk transformation.\end{method}
-For $H=p^2/(2m)+V(q)$ fås $W'=\pm\sqrt{2m[E-V(q)]}$. For $n$ frihedsgrader erstattes \emph{alle} $p_i$ med $\partial W/\partial q_i$; øvrige separationskonstanter opfylder $\beta_j=\partial W/\partial\alpha_j$, mens $-t$ kun optræder ved differentiering efter energi-parameteren i ansatsen $S=W-Et$.
-\textbf{Et vigtigt notationsskel:} I et problem med en forudgående transformation $(q,p)\to(Q,P)$ er den efterfølgende HJ-koordinat $\beta=\partial S/\partial E$ ikke det samme som $Q$.
+\subsection{Hovedfunktionen og udledningen af HJ-ligningen}\label{sec:hj-equation}
+Vælg en tidsafhængig generator af type 2 med egne argumenter $(q,P,t)$:
+\[
+F_2(q,P,t)=S(q,P,t).
+\]
+Fra afsnit~\ref{sec:gen-legendre} ved vi, at
+\[
+p_i=\frac{\partial S}{\partial q_i},\qquad
+Q_i=\frac{\partial S}{\partial P_i},\qquad
+K=H(q,p,t)+\left.\frac{\partial S}{\partial t}\right|_{q,P}.
+\]
+Vælg $S$ sådan, at $K=0$. Efter substitution af $p_i=\partial S/\partial q_i$ fås
+\key{H\left(q_1,\ldots,q_n,
+\frac{\partial S}{\partial q_1},\ldots,\frac{\partial S}{\partial q_n},t\right)
++\frac{\partial S}{\partial t}=0.}
+Funktionen $S$ kaldes \emph{Hamiltons hovedfunktion}. Dens gradient giver de gamle impulser, mens dens parameterafledte giver de nye koordinater. Bemærk, at $\partial S/\partial t$ beregnes ved faste $q,P$; den er ikke $\dd S/\dd t$ langs en bane. HJ er en \emph{førsteordens partiel differentialligning} i $(q,t)$, selv om Hamiltons oprindelige bevægelse kan omfatte mange koblede differentialligninger.
 
-\subsubsection*{HJ efter en første kanonisk transformation (2020.1)}
-Antag, at en tidligere transformation $(q,p)\mapsto(Q,P)$ har givet den tidsuafhængige Hamiltonfunktion
-\[\widetilde H(Q,P)=\frac{P^2}{2m}+\frac{kQ^2}{2}+\frac{\gamma}{2m}QP.\]
-Ved HJ-metoden er det nu $P=W_Q$ (\emph{ikke} den oprindelige $p$), og derfor bliver
-\[\frac{(W_Q)^2}{2m}+\frac{kQ^2}{2}+\frac{\gamma Q}{2m}W_Q=E.\]
-Dette er en andengradsligning i $W_Q$. Med $\omega^2=k/m-\gamma^2/(4m^2)>0$ fås
-\[W_Q=-\frac{\gamma Q}{2}\pm\sqrt{2mE-m^2\omega^2Q^2},\qquad
-\boxed{W=-\frac{\gamma Q^2}{4}\pm\int^Q\sqrt{2mE-m^2\omega^2s^2}\,\mathrm ds}.\]
-Ved efterfølgende differentiation med hensyn til $E$ (mens $Q$ holdes fast) og brug af $\partial W/\partial E=t+\beta$ får man en oscillatorrelation, som kan inverteres til
-\[Q(t)=\sqrt{\frac{2E}{m\omega^2}}\cos(\omega t+\varphi_0).\]
-Fortegn og fase bestemmes af begyndelsesdata. Hvis første transformation havde $Q=e^{\gamma t/(2m)}q$, skal man til sidst bruge $q(t)=e^{-\gamma t/(2m)}Q(t)$. HJ-konstanten $\beta$ er ikke den tidligere koordinat $Q$.
+Samtidig gælder for den oprindelige fasevirkning langs en løsning
+\[
+\frac{\dd S}{\dd t}=
+\sum_i\frac{\partial S}{\partial q_i}\dot q_i+\frac{\partial S}{\partial t}
+=\sum_i p_i\dot q_i-H,
+\]
+når $P$ holdes konstant. Dermed er hovedfunktionen (op til passende rand- og integrationskonstanter) virkningen evalueret langs den klassiske bevægelse. Dette er den konkrete forbindelse til fasevirkningen fra kapitel~5.
 
-\subsection{Éndimensional fri partikel}
-For $H=p^2/(2m)$ giver $W'=\pm\sqrt{2mE}$ og dermed $S=\pm q\sqrt{2mE}-Et$. Differentiering med hensyn til $E$ giver $t-\beta=\pm q\sqrt{m/(2E)}$ med passende konstantvalg. Dette svarer til konstant impuls og retlinet bevægelse.
+\subsection{Tidsuafhængig Hamiltonfunktion: $S$ versus $W$}
+Hvis $H(q,p)$ ikke afhænger eksplicit af $t$, kan man forsøge at separere tiden:
+\[
+S(q,\alpha,t)=W(q,\alpha)-Et.
+\]
+Her er $E$ en separationskonstant, der i den autonome opgave er Hamiltonfunktionens konstante værdi; for $n$ frihedsgrader kan de øvrige $n-1$ uafhængige parametre også indgå i $\alpha$. HJ-ligningen bliver
+\key{H\left(q,\frac{\partial W}{\partial q}\right)=E.}
+$W$ kaldes \emph{Hamiltons karakteristiske funktion}; den er den rumlige del af $S$, ikke en ny Hamiltonfunktion. Ved en frihedsgrad med
+$H=p^2/(2m)+V(q)$ løses først
+\[
+\frac{\partial W}{\partial q}
+=p(q,E)=\pm\sqrt{2m[E-V(q)]},
+\]
+og derpå
+\[
+\boxed{W(q,E)=\pm\int^q\sqrt{2m[E-V(s)]}\,\dd s.}
+\]
+Fortegnet vælges for den relevante impulsgren. Integralet er reelt, hvor $E\ge V(q)$; et vendepunkt kan kræve en ny gren. Ved flervariabel separation $W=\sum_iW_i(q_i;\alpha)$ er dette en \emph{ansats}, som skal kontrolleres ved tilbageindsættelse. Den er ikke mulig for alle Hamiltonfunktioner.
 
-\subsection{Hamilton--Jacobi som kanonisk transformation}
-En fuldstændig løsning $S(q,\alpha,t)$ kan bruges som genererende funktion af type $F_2(q,P,t)$ ved at sætte $P_i=\alpha_i$. Den transformerede Hamiltonfunktion opfylder
-\[K=H+\pd St=0,\qquad p_i=\pd S{q_i},\qquad Q_i=\pd S{\alpha_i}=\beta_i.\]
-De nye variable $(\alpha_i,\beta_i)$ er derfor konstante; bevægelsen i gamle variable findes ved at løse $\beta_i=\partial S/\partial\alpha_i$ og derefter $p_i=\partial S/\partial q_i$. Det kræver en ikke-degenereret fuldstændig løsning.
-\subsection{Tidsafhængig Hamiltonian: hvad ændres?}
-For eksplicit tidsafhængig $H(q,p,t)$ er separationen $S=W(q)-Et$ ikke generelt mulig. Hovedligningen er stadig $H(q,\partial_qS,t)+\partial_tS=0$, og den nye Hamiltonfunktion kan stadig vælges $K=0$ ved en passende fuldstændig løsning. Genererende funktioner kan afhænge eksplicit af tid, selv når den oprindelige Hamiltonfunktion ikke gør det.
+\subsection{Et fuldstændigt integral og rekonstruktion af bevægelsen}
+Det er ikke tilstrækkeligt at finde én funktion, der opfylder HJ-ligningen: vi skal også udlede \emph{den fysiske bane}. Et \emph{partikulært integral} er en enkelt løsning af HJ, mens et \emph{fuldstændigt integral} $S(q,\alpha,t)$ lokalt indeholder $n$ uafhængige parametre $\alpha_i$, sådan at den blandede afledte matrix er regulær:
+\key{\det\left(\frac{\partial^2S}{\partial q_i\partial\alpha_j}\right)\ne0.}
+Denne betingelse gør det muligt lokalt at bruge $S$ som en type 2-generator og rekonstruere løsningen via
+\[
+\boxed{p_i(t)=\frac{\partial S}{\partial q_i},\qquad
+\beta_i=Q_i=\frac{\partial S}{\partial\alpha_i},\qquad
+P_i=\alpha_i.}
+\]
+Da $K=0$, er \emph{både} $\alpha_i$ og $\beta_i$ konstante. For givne initialdata $(q(t_0),p(t_0))$ bestemmes de ved de to sæt relationer ved $t_0$; derefter løses $\beta_i=\partial S/\partial\alpha_i$ for $q_i(t)$, og impulserne findes fra $\partial S/\partial q_i$. Regularitetsbetingelsen er lokal; ved kaustikker, vendepunkter eller koordinatsingulariteter må man ofte skifte gren eller koordinatkort.
 
+For $S=W(q,E,\ldots)-Et$ giver afledning efter energiparameteren
+\[
+\beta_E=\frac{\partial S}{\partial E}
+=\left.\frac{\partial W}{\partial E}\right|_q-t,
+\quad\text{altså}\quad
+\boxed{\frac{\partial W}{\partial E}=t+\beta_E.}
+\]
+Her skal $q$ og de øvrige parametre holdes faste ved den partielle afledte. Andre parametre giver tilsvarende $\beta_j=\partial W/\partial\alpha_j$. Energien bestemmer ikke automatisk alle øvrige konstanter eller den valgte fortegnsgren.
 
+\begin{method}\textbf{Tidsuafhængig HJ:} (1) kontroller $\partial H/\partial t=0$ og vælg $S=W-Et$; (2) erstat \emph{alle} $p_i$ med $\partial W/\partial q_i$; (3) separér, hvis strukturen tillader det, og integrér for $W$ med de nødvendige parametre; (4) differentier $S$ efter parametrene ved faste $q$; (5) bestem $\alpha_i,\beta_i$ fra initialdata og løsningens domæne; (6) løs for $q(t)$, beregn $p(t)$ og verificér Hamiltons ligninger.\end{method}
+
+\subsection{Fri partikel: et helt HJ-forløb}
+Tag $H(q,p)=p^2/(2m)$. En særlig bekvem \emph{fuldstændig} type 2-generator med parameter $P$ er
+\[
+S(q,P,t)=qP-\frac{P^2}{2m}t.
+\]
+Den opfylder
+\[
+\frac1{2m}\left(\frac{\partial S}{\partial q}\right)^2+
+\frac{\partial S}{\partial t}
+=\frac{P^2}{2m}-\frac{P^2}{2m}=0,
+\qquad
+\frac{\partial^2S}{\partial q\partial P}=1\ne0.
+\]
+De gamle og nye variable er
+\[
+p=\frac{\partial S}{\partial q}=P,\qquad
+Q=\frac{\partial S}{\partial P}=q-\frac Pm t.
+\]
+Med $P=P_0$ og $Q=Q_0$ konstante finder vi
+\[
+\boxed{p(t)=P_0,\qquad q(t)=Q_0+\frac{P_0}{m}t.}
+\]
+Dette demonstrerer hele idéen: HJ-generatoren flytter tidsudviklingen ind i en eksplicit tidsafhængig koordinattransformation. Energi $E=P_0^2/(2m)$ fastlægger kun $|P_0|$, ikke fortegnet; begyndelsesdata afgør retningen.
+
+\subsection{Tidsafhængige Hamiltonfunktioner og separation}
+Når $H(q,p,t)$ afhænger eksplicit af tiden, kan man normalt \emph{ikke} sætte $S=W-Et$, men den fulde PDE gælder stadig:
+\[
+H\left(q,\frac{\partial S}{\partial q},t\right)+\frac{\partial S}{\partial t}=0.
+\]
+En tidsafhængig separationsansats kan være mulig i særlige modeller, men skal begrundes. Et simpelt kontroleksempel er $H(q,p,t)=p^2/(2m)+f(t)$, hvor
+\[
+S(q,P,t)=qP-\frac{P^2}{2m}t-\int^t f(\tau)\,\dd\tau
+\]
+opfylder HJ, giver $p=P$ og $Q=q-Pt/m$. Det rene tidsled i $H$ påvirker generatoren, men ikke de klassiske bevægelsesligninger for $q,p$.
+\begin{method}\textbf{Tidsafhængig HJ:} Start fra den fulde PDE, vælg kun en ansats hvis den er konsistent med tidsleddene, find et regulært fuldstændigt integral, bestem $Q_i=\partial S/\partial P_i$, og kontrollér både PDE'en, Hamiltons ligninger og den valgte tids- og parameterg ren.\end{method}
+
+\subsection{HJ efter en tidsafhængig kanonisk transformation: eksamen 2020.1}\label{sec:hj-2020}
+Den oprindelige eksamen 2020, opgave 1, begynder med den dæmpede oscillator
+\[
+\mathcal L(q,\dot q,t)=\frac12e^{\mu t/m}(m\dot q^2-kq^2),
+\qquad m,\mu,k>0.
+\]
+En \emph{første} tidsafhængig generator $F_2(q,P,t)=e^{\mu t/(2m)}qP$ giver
+$Q=e^{\mu t/(2m)}q$ og den tidsuafhængige Hamiltonfunktion
+\[
+\widetilde H(Q,P)=\frac{P^2}{2m}+\frac{kQ^2}{2}+
+\frac{\mu}{2m}QP.
+\]
+Der ønskes nu en \emph{anden} kanonisk transformation med $K=0$, fundet fra HJ. Vi arbejder derfor med de mellemliggende \emph{nye} koordinater $(Q,P)$; HJ skal differentieres med hensyn til $Q$, ikke den oprindelige $q$.
+Vælg $S_{\mathrm{HJ}}(Q,E,t)=W(Q,E)-Et$. Sæt
+$P=\partial W/\partial Q$ og brug energiligningen
+\[
+\frac1{2m}\left(\frac{\partial W}{\partial Q}\right)^2+
+\frac{\mu Q}{2m}\frac{\partial W}{\partial Q}
++\frac{kQ^2}{2}=E.
+\]
+Gang med $2m$ og fuldend kvadratet:
+\[
+\left(W_Q+\frac{\mu Q}{2}\right)^2
+=2mE-\left(mk-\frac{\mu^2}{4}\right)Q^2.
+\]
+For $k>\mu^2/(4m)$ defineres $\omega^2=k/m-\mu^2/(4m^2)>0$, så
+\[
+W_Q=-\frac{\mu Q}{2}
+\pm\sqrt{2mE-m^2\omega^2Q^2},
+\]
+og dermed
+\key{W(Q,E)=-\frac{\mu Q^2}{4}
+\pm\int^Q\sqrt{2mE-m^2\omega^2s^2}\,\dd s.}
+Denne udledning er indholdet af eksamen 2020.1d; udtrykket er lokalt gyldigt på en gren, hvor kvadratroden er reel.
+
+I opgave 1e bestemmes bevægelsen fra \emph{parameterafledningen}, ikke fra $W$ alene:
+\[
+\beta=\frac{\partial S_{\mathrm{HJ}}}{\partial E}
+=\pm\int^Q\frac{m\,\dd s}{\sqrt{2mE-m^2\omega^2s^2}}-t.
+\]
+Sæt $A=\sqrt{2E/(m\omega^2)}$. Integralet giver på en valgt gren
+\[
+t+\beta=\pm\frac1\omega\arcsin\left(\frac QA\right).
+\]
+Efter valg af fase og korrekt stykvis fortsættelse fås
+\[
+Q(t)=A\cos(\omega t+\varphi_0),\qquad
+\boxed{q(t)=A e^{-\mu t/(2m)}\cos(\omega t+\varphi_0).}
+\]
+$E$ er her den \emph{konstante værdi af den transformerede} $\widetilde H$, ikke uden videre den oprindelige oscillators bevarede mekaniske energi. Startposition og starthastighed bestemmer $A,\varphi_0$ på den fysiske gren. Tilbage-transformationen er nødvendig; uden den mangler dæmpningen.
+\begin{method}Ved en forudgående transformation: (1) brug den transformerede Hamiltonfunktion og \emph{dens} koordinater i HJ; (2) fuldend eventuelt kvadratet, find $W_Q$, integrér; (3) brug $\partial W/\partial E=t+\beta$ til tiden; (4) transformér helt tilbage til de oprindelige variable; (5) verificér den oprindelige bevægelsesligning og initialdata.\end{method}
+
+\subsection{Periodiske bevægelser og aktionsvariable: eksamen 2021.4}
+\textbf{Afgrænsning.} Eksamen 2021, opgave 4, bruger \emph{aktions- og vinkelvariable} for periodiske bevægelser, ikke den samme opgave som den direkte HJ-separation i 2020.1. Begrebet hænger sammen med $W$, fordi den klassiske impuls $p=\partial W/\partial q$ kan integreres over en fuld periode. Med eksamenssættets konvention defineres \emph{aktionen}
+\[
+\boxed{J(E)=\oint p(q,E)\,\dd q,\qquad
+\nu=\frac{\partial H(J)}{\partial J}=\frac1T.}
+\]
+$\nu$ måles i omløb pr.\ tid; den tilhørende vinkelhastighed er $2\pi\nu$. Refleksioner ved hårde vægge behandles stykkevist; HJ-generatoren er ikke ét globalt glat udtryk gennem kollisionerne.
+
+\textbf{2021.4a: fri partikel mellem to vægge.} En masse $m$ bevæger sig mellem $x=0$ og $x=L$ og reflekteres elastisk. På de to grene er $p=\pm\sqrt{2mE}$, og
+\[
+J=\oint p\,\dd x=2L\sqrt{2mE},\qquad
+\boxed{H(J)=\frac{J^2}{8mL^2}}.
+\]
+Dermed er
+\[
+\nu=\frac{\partial H}{\partial J}
+=\frac{J}{4mL^2}
+=\frac{|p|}{2mL}.
+\]
+Det er netop den inverse tid for frem-og-tilbage-bevægelsen $T=2L/(|p|/m)$.
+
+\textbf{2021.4b: frit fald og elastisk refleksion.} En partikel tabes fra højden $h$ og spejles ved jorden. For $E=mgh$ er den positive gren
+$p(x,E)=\sqrt{2m(E-mgx)}$. Derfor
+\begin{align*}
+J(E)&=2\int_0^{E/(mg)}\sqrt{2m(E-mgx)}\,\dd x\\
+&=\frac{4\sqrt{2m}}{3mg}E^{3/2},
+\end{align*}
+og omskrivning giver
+\[
+\boxed{H(J)=\left(\frac{3g}{4}\sqrt{\frac m2}\,J\right)^{2/3}.}
+\]
+Differentiér efter $J$ og indsæt $E=mgh$:
+\[
+\boxed{\nu=\frac{\partial H}{\partial J}
+=\frac12\sqrt{\frac{g}{2h}}.}
+\]
+Dette stemmer med den direkte fald-og-retur-tid $T=2\sqrt{2h/g}$. Begge eksempler demonstrerer, at et \emph{aktionsintegral} kan bestemme periodetiden uden at løse $x(t)$ eksplicit.
+\begin{method}Ved periodiske 1D-problemer: identificér de to grene af $p(q,E)$, beregn $J=\oint p\,\dd q$ med korrekt orientering, isolér $H(J)$ og find $\nu=\partial H/\partial J$. Ved hårde refleksioner opdeles integralet i glatte stykker. Kontrollér ved at beregne den direkte periodetid.\end{method}
+
+\subsection{Samlet metodevalg og forbindelse til kanoniske transformationer}
+\begin{method}
+\textbf{HJ for tidsuafhængigt $H$:} Sæt $S=W-Et$, løs $H(q,\partial_qW)=E$ og find banen fra $\partial W/\partial E=t+\beta_E$. \textbf{HJ for tidsafhængigt $H$:} Løs hele $H(q,\partial_qS,t)+S_t=0$ og brug et regulært fuldstændigt integral. \textbf{Efter en forudgående transformation:} Brug dens nye koordinater og transformér tilbage til sidst. \textbf{Periodisk bevægelse:} Overvej $J=\oint p\,\dd q$ og $\nu=\partial H/\partial J$. Alle metoder kræver kontrol af grene, integrationskonstanter, regularitet og de oprindelige bevægelsesligninger.
+\end{method}
+Hamilton--Jacobi er således ikke en konkurrerende fysisk teori: den bruger præcis de kanoniske transformationer fra foregående kapitel til at vælge en beskrivelse, hvor dynamikken ligger i selve transformationen og de nye variable er konstanter.
