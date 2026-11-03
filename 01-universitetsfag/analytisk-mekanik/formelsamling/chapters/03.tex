@@ -1,7 +1,7 @@
 \clearpage\section{Centralbevægelse}\label{sec:central}
 \textbf{Fysisk problem.} To punktmasser $m_1$ og $m_2$ påvirker hinanden gennem et centralpotentiale $V(r)$, hvor $r$ er afstanden mellem dem. Vi vil bestemme deres fulde bevægelse. Først reducerer vi systemet ved koordinatskift, finder bevarelseslove og radialligning, og derefter vælger vi metode afhængigt af, om vi søger tilladte radier, tidsforløbet $r(t)$ eller banens form $r(\phi)$. De to sidste er ikke det samme.
 
-\subsection{Fra to legemer til ét radialt problem}
+\subsection{Fra to legemer til ét relativt problem}
 \subsubsection*{Koordinatskift, reduceret masse og relativ Lagrangefunktion}
 \label{sec:tolegeme}
 \textbf{Fysisk problem.} To punktmasser $m_1,m_2$ vekselvirker gennem et centralpotentiale $V(r)$, hvor $r=|\vv r_1-\vv r_2|$. Vi vil adskille massemidtpunktets frie bevægelse fra den relative bevægelse. Den inertielle Lagrangefunktion er
@@ -27,7 +27,7 @@ Dermed fås den \emph{eksakte} separation
 \mu=\frac{m_1m_2}{m_1+m_2}.}
 $\vv R$ er cyklisk, så $\vv P=M\dot{\vv R}$ er bevaret. I massemidtpunktssystemet er $\dot{\vv R}=0$, og man løser ét ækvivalent problem for den reducerede masse $\mu$. For en partikel omkring et fast kraftcentrum benyttes massen $m$.
 
-\subsubsection*{Impulsmoment, bevægelsesplan og polære koordinater}
+\subsection{Bevaret impulsmoment og planbevægelse}
 I massemidtpunktssystemet er $\vv r_1'=(m_2/M)\vv r$ og $\vv r_2'=-(m_1/M)\vv r$. Det totale impulsmoment \emph{om massemidtpunktet} er
 \begin{align*}
 \vv L_{\rm CM}&=m_1\vv r_1'\times\dot{\vv r}_1'
@@ -56,7 +56,7 @@ Fra arealelementet $\dd A=\frac12r^2\dd\phi$ følger
 \key{\frac{\dd A}{\dd t}=\frac{\ell}{2\mu}.}
 Planbevægelse og areallov gælder for \emph{alle} centralpotentialer, ikke blot $V=-k/r$. Ved $\ell=0$ er bevægelsen rent radial, og Binets vinkelparameterisering kan ikke bruges.
 
-\subsubsection*{Radialligning, energi og effektivt potentiale}
+\subsection{Radialligning, energi og det effektive potentiale}
 Radialvariablen opfylder
 \[
 \frac{\dd}{\dd t}(\mu\dot r)
@@ -109,7 +109,7 @@ I eksamen 2022.4b er den endimensionale Hamiltonfunktion
 $H=p^2/(2m)+k/q^2$. Den samme radialligning fremkommer ved identifikationen $q=r$ og $k=\ell^2/(2m)$. I det endimensionale problem er $k/q^2$ et fysisk potentiale; her er $\ell^2/(2mr^2)$ alene den tangentielle kinetiske energi. Den fysiske radiale accelerationskomponent er $a_r=\ddot r-r\dot\phi^2=0$, selv om $\ddot r=\ell^2/(m^2r^3)>0$ for $\ell\ne0$.
 
 
-\subsection{Tre metoder til at løse centralkraftproblemet}
+\subsection{Tre generelle løsningsmetoder}
 De samme bevarelseslove giver tre forskellige løsningsveje. Valget afhænger af opgavens ukendte og af, om der ønskes en kvalitativ klassifikation, en tidsfunktion eller en geometrisk bane.
 
 \subsubsection*{Metode 1: Mulige radier, cirkelbaner og stabilitet}\label{sec:veff}
@@ -233,7 +233,7 @@ For kraften $F=-\mu A/r^3$ fra \textbf{eksamen 2019, opgave 2} er $c=0$ og $\ome
 
 
 
-\subsection{Keplerpotentialet: hele baneudledningen i ét forløb}
+\subsection{Keplerpotentialet: fra Binet til Keplers love}
 \label{sec:kepler}
 Vi bruger nu den netop udledte \emph{Binetmetode} med det særlige potentiale $V(r)=-k/r$, $k>0$. Her er $F=-V'=-k/r^2$, og derfor
 \[
@@ -294,7 +294,7 @@ For Newtonsk gravitation $k=Gm_1m_2$ og $\mu/k=1/[G(m_1+m_2)]$:
 \[\boxed{T^2=\frac{4\pi^2a^3}{G(m_1+m_2)}}.\]
 Denne periodeformel gælder for bundne Keplerellipser, ikke for alle centralpotentialer.
 
-\subsection{Udvidelser og særlige konsekvenser}
+\subsection{Ekstra bevarelseslove og alternativ Keplerudledning}
 \subsubsection*{Laplace--Runge--Lenz-vektoren}
 \begin{center}\begin{tikzpicture}[scale=.72]
 \draw[accent,thick](0,0) ellipse (3 and 1.6);\fill[black](-2.4,0) circle (2pt) node[below,scale=.8]{Kraftcentrum};
@@ -374,7 +374,7 @@ node[midway,above left] {\scriptsize $k/|\ell|$};
 Den bevarede $\vv u$ har dimension hastighed, mens Laplace--Runge--Lenz-vektoren ovenfor har en anden normalisering. Begge udtrykker Keplerproblemets ekstra symmetri, men de må ikke ukritisk identificeres.
 \begin{method}Når en opgave efterspørger en alternativ Keplerudledning eller hodograf: (1) brug $\ell=mr^2\dot\phi$ og afledte af de polære basisvektorer; (2) vis at $\vv u$ er konstant; (3) brug periapsis og energien til at bestemme $e$; (4) tag skalarprodukt med $\hat{\vv\phi}$; (5) omskriv $\vv v$ i kartesiske komponenter for at finde hodografen.\end{method}
 
-\subsubsection*{Virialsætningen uden løsning af banen}
+\subsection{Videregående centralbevægelse: virial, præcession og spredning}
 \textbf{Hvorfor indføre virialen?} Definér $G(t)=\mathbf r(t)\cdot\mathbf p(t)=\mu r\dot r$. Det er en hjælpefunktion, ikke en generelt bevaret størrelse. Ved udadgående bevægelse er $G>0$, indadgående $G<0$, og i et radialt vendepunkt er $G=0$.
 Da $\dot{\vv r}=\vv p/\mu$ og $\dot{\vv p}=\vv F$, giver produktreglen
 \[\dot G=\dot{\vv r}\cdot\vv p+\vv r\cdot\dot{\vv p}
@@ -406,13 +406,17 @@ Ved asymptotisk hastighed $v_\infty$ og anslagsparameter $b$ er $E=\tfrac12\mu v
 med valgt fortegnskonvention. Det differentielle tværsnit er $\mathrm d\sigma/\mathrm d\Omega=(b/\sin\Theta)|\mathrm db/\mathrm d\Theta|$ for én gren; summer over grene, hvis flere $b$ giver samme $\Theta$.
 \begin{method}Givet $F(r)$ og en indkommende partikel: (1) Integrér $F=-V'$ og vælg potentialets nulpunkt. (2) Find $E=\mu v_\infty^2/2$ og $\ell=\mu v_\infty b$. (3) Find $r_{\min}$ fra $E=V_{\rm eff}(r_{\min})$. (4) Beregn $\phi_0$ og afbøjningsvinklen. (5) Differentier $b(\Theta)$ for at bestemme tværsnittet; tjek eventuelle flere grene.\end{method}
 
-\subsection{Opsummering: praktisk metodevalg}
+\subsection{Samlet eksamensmetode}
 
 \begin{center}\small\renewcommand{\arraystretch}{1.19}\begin{tabular}{p{50mm}p{86mm}}\toprule
 \textbf{Opgavespørgsmål} & \textbf{Vælg metode}\\\midrule
 Mulige radier og vendepunkter & $E\ge V_{\rm eff}$ og $E=V_{\rm eff}$, jf. afsnit~\ref{sec:veff}.\\
 Cirkulær bane og stabilitet & $V_{\rm eff}'(r_0)=0$, $V_{\rm eff}''(r_0)$, jf. afsnit~\ref{sec:circular}.\\
 Find banen $r(\phi)$ fra kraften & $u=1/r$ og Binet, jf. afsnit~\ref{sec:binet}.\\
+Tidsudvikling $r(t)$ & Energiintegration, initialgren og integration af $\dot\phi$.\\
+Central kraft fra kendt bane & Omvendt Binet: $F=-(\ell^2/\mu)u^2(u''+u)$, og $F=-V'$.\\
+Keplers ekstra bevarede vektor & Runge--Lenz eller $\vv u=\vv v-(k/\ell)\hat{\vv\phi}$ (2024.2).\\
+Middelværdier af energi & Virialsætningen med kontrol af randleddet.\\
 Bestem Keplerbanetype & $e=\sqrt{1+2E\ell^2/(\mu k^2)}$, \emph{kun} ved $V=-k/r$.\\
 Er en begrænset bane lukket? & Beregn $\Delta\phi_{\rm radial}/(2\pi)$ og test rationalitet.\\
 Scattering og tværsnit & $E,\ell$ fra $v_\infty,b$; vendepunkt, afbøjningsintegral.\\
