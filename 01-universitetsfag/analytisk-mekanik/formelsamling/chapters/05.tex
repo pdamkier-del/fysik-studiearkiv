@@ -38,6 +38,15 @@ Hamiltonligningerne bliver $\dot q=p/m$, $\dot p=-V'(q)$, så $m\ddot q=-V'(q)$;
 For $F(q,p,t)$ langs Hamiltons bevægelse gælder
 \[\od Ft=\PB FH+\pd Ft,\qquad \od Ht=\pd Ht.\]
 En størrelses $F$ bevarelse kræver $\PB FH+\partial F/\partial t=0$ langs bevægelsen.
+\subsection{Find de oplagte bevarede størrelser fra Hamiltonfunktionen}\label{sec:ham-constants}
+En Hamiltonfunktion er ikke blot en alternativ bevægelsesligning: dens afhængighed af koordinater og tid viser straks mulige integraler. For autonome kanoniske systemer gælder
+\[
+\dot p_i=-\frac{\partial H}{\partial q_i},\qquad
+\frac{\dd H}{\dd t}=\frac{\partial H}{\partial t}.
+\]
+Dermed giver $\partial H/\partial q_i=0$ en bevaret \emph{kanonisk impuls} $p_i$; $\partial H/\partial t=0$ giver en bevaret \emph{Hamiltonfunktion}. Ingen af udsagnene kræver, at $H$ er lig den mekaniske energi $T+V$. Dette skal kontrolleres særskilt ud fra Legendretransformationens antagelser og eventuel tidsafhængighed.
+\begin{method}Start altid med $H(q,p,t)$: (1) kontrollér hvilke $q_i$ der mangler, så $\dot p_i=0$; (2) undersøg eksplicit tidsafhængighed, så $\dd H/\dd t=\partial H/\partial t$; (3) undersøg translationer/rotationer via deres generatorer; (4) hvis ingen oplagte integraler er nok, gå til Poissonparentes-testen og ansatzmetoden i afsnit~\ref{sec:find-conserved}. Skeln mellem konserveret $H$ og fysisk energi.\end{method}
+
 \subsection{Hamiltons ligninger på matrixform og fasevirkningen}
 Med $z=(q_1,\dots,q_n,p_1,\dots,p_n)^T$ og $J=\bigl(\begin{smallmatrix}0&I\\-I&0\end{smallmatrix}\bigr)$:
 \[\dot z=J\nabla_z H,\qquad S[q,p]=\int\left(\sum_i p_i\dot q_i-H\right)\dd t.\]
