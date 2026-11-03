@@ -1,7 +1,9 @@
 \clearpage\section{Centralbevægelse}\label{sec:central}
-En central kraft har retning langs radius, $\vv F=F(r)\hat{\vv r}$, og $\vv L=\vv r\times\vv p$ er bevaret. Bevægelsen ligger derfor i et plan (for $\ell\ne0$). Adskil altid \emph{generelle centralpotentialer} fra de særlige formler for Keplerpotentialet $-k/r$.
+\textbf{Fysisk problem.} To punktmasser $m_1$ og $m_2$ påvirker hinanden gennem et centralpotentiale $V(r)$, hvor $r$ er afstanden mellem dem. Vi vil bestemme deres fulde bevægelse. Først reducerer vi systemet ved koordinatskift, finder bevarelseslove og radialligning, og derefter vælger vi metode afhængigt af, om vi søger tilladte radier, tidsforløbet $r(t)$ eller banens form $r(\phi)$. De to sidste er ikke det samme.
 
-\subsection{Tolegemeproblemet: koordinattransformation og reduceret masse}\label{sec:tolegeme}
+\subsection{Fra to legemer til ét radialt problem}
+\subsubsection*{Koordinatskift, reduceret masse og relativ Lagrangefunktion}
+\label{sec:tolegeme}
 \textbf{Fysisk problem.} To punktmasser $m_1,m_2$ vekselvirker gennem et centralpotentiale $V(r)$, hvor $r=|\vv r_1-\vv r_2|$. Vi vil adskille massemidtpunktets frie bevægelse fra den relative bevægelse. Den inertielle Lagrangefunktion er
 \[
 \mathcal L=\tfrac12m_1\dot{\vv r}_1^{\,2}+\tfrac12m_2\dot{\vv r}_2^{\,2}-V(|\vv r_1-\vv r_2|).
@@ -25,7 +27,7 @@ Dermed fås den \emph{eksakte} separation
 \mu=\frac{m_1m_2}{m_1+m_2}.}
 $\vv R$ er cyklisk, så $\vv P=M\dot{\vv R}$ er bevaret. I massemidtpunktssystemet er $\dot{\vv R}=0$, og man løser ét ækvivalent problem for den reducerede masse $\mu$. For en partikel omkring et fast kraftcentrum benyttes massen $m$.
 
-\subsection{Impulsmomentet og planbevægelse}
+\subsubsection*{Impulsmoment, bevægelsesplan og polære koordinater}
 I massemidtpunktssystemet er $\vv r_1'=(m_2/M)\vv r$ og $\vv r_2'=-(m_1/M)\vv r$. Det totale impulsmoment \emph{om massemidtpunktet} er
 \begin{align*}
 \vv L_{\rm CM}&=m_1\vv r_1'\times\dot{\vv r}_1'
@@ -54,7 +56,7 @@ Fra arealelementet $\dd A=\frac12r^2\dd\phi$ følger
 \key{\frac{\dd A}{\dd t}=\frac{\ell}{2\mu}.}
 Planbevægelse og areallov gælder for \emph{alle} centralpotentialer, ikke blot $V=-k/r$. Ved $\ell=0$ er bevægelsen rent radial, og Binets vinkelparameterisering kan ikke bruges.
 
-\subsection{Fra radial Euler--Lagrange til effektivt potentiale}
+\subsubsection*{Radialligning, energi og effektivt potentiale}
 Radialvariablen opfylder
 \[
 \frac{\dd}{\dd t}(\mu\dot r)
@@ -70,7 +72,10 @@ E&=\dot r\frac{\partial\mathcal L}{\partial\dot r}
 \end{align*}
 Radialbevægelsen er således et éndimensionalt energiproblem, mens vinkelbevægelsen bestemmes efterfølgende af $\dot\phi=\ell/(\mu r^2)$.
 
-\subsection{Det effektive potentiale: hvad bestemmer det?}\label{sec:veff}
+\subsection{Tre metoder til at løse centralkraftproblemet}
+De samme bevarelseslove giver tre forskellige løsningsveje. Valget afhænger af opgavens ukendte og af, om der ønskes en kvalitativ klassifikation, en tidsfunktion eller en geometrisk bane.
+
+\subsubsection*{Metode 1: Mulige radier, cirkelbaner og stabilitet\label{sec:veff}}
 \key{E=\frac12\mu\dot r^2+V_{\rm eff}(r),\qquad V_{\rm eff}(r)=V(r)+\frac{\ell^2}{2\mu r^2}.}
 Den radiale bevægelse svarer til én dimension med et effektivt potentiale. Centrifugalleddet er ikke et nyt fysisk potentiale, men kommer fra den bevarede vinkelbevægelse.
 \begin{center}\small\renewcommand{\arraystretch}{1.22}\begin{tabular}{p{47mm}p{91mm}}\toprule
@@ -91,8 +96,7 @@ Er en begrænset bane lukket? & Kræver også $\Delta\phi_{\rm radial}/(2\pi)\in
 \node[anchor=north,font=\scriptsize] at (axis cs:1,-.5) {$r_0$};
 \end{axis}\end{tikzpicture}\\[-1mm]{\small \itshape Et Kepler-eksempel: skæringer med energilinjen giver de radiale vendepunkter. Figuren er skematisk og dimensionsløs.}\end{center}
 
-
-\subsection{Cirkulære baner og stabilitet}\label{sec:circular}
+\subsubsection*{Cirkulære baner og lineær stabilitet\label{sec:circular}}
 Radialligningen er
 \[\mu\ddot r=\mu r\dot\phi^2-V'(r)=\frac{\ell^2}{\mu r^3}-V'(r)=-V_{\rm eff}'(r).\]
 En cirkelbane har konstant $r=r_0$ og opfylder $V_{\rm eff}'(r_0)=0$. Sæt $r=r_0+\eta$, hvor $|\eta|\ll r_0$. Til første orden gælder
@@ -102,16 +106,55 @@ En cirkelbane har konstant $r=r_0$ og opfylder $V_{\rm eff}'(r_0)=0$. Sæt $r=r_
 \[\frac{\ell^2}{\mu}=a\alpha r_0^{2-\alpha},\qquad V_{\rm eff}''(r_0)=\frac{\ell^2}{\mu r_0^4}(2-\alpha).\]
 Altså er en eksisterende cirkelbane lineært stabil for $0<\alpha<2$ og ustabil for $\alpha>2$ (for $\alpha=2$ kræves særskilt analyse). Dette er \emph{ikke} en Kepler-specifik excentricitetsregel.
 
+Den tilladte radialhastighed er $\dot r=\pm\sqrt{2(E-V_{\rm eff})/\mu}$. Et almindeligt vendepunkt svarer til et fortegnsskift i $\dot r$, mens en dobbeltrod kræver særskilt analyse. To vendepunkter kan give radielt begrænset bevægelse, men ikke nødvendigvis en lukket plan bane.
 
-\subsection{Radialt tilladt område og beslutning om metode}
-Fra energien følger
+\subsubsection*{Metode 2: Tidsudviklingen fra energiintegration}
+\textbf{Målet er nu tidsforløbet, ikke blot den geometriske bane.} For en endimensional, tidsuafhængig bevægelse med kinetisk energi $m\dot q^2/2$ giver energibevarelse
 \[
-\dot r=\pm\sqrt{\frac2\mu[E-V_{\rm eff}(r)]}.
+E=\frac12m\dot q^2+V(q)
+\quad\Longrightarrow\quad
+\dot q=\pm\sqrt{\frac{2}{m}[E-V(q)]}.
 \]
-Man bør derfor \emph{før} en integrationsopgave undersøge grafen for $V_{\rm eff}$: skæringer med $E$ er kandidater til radiale vendepunkter; et lokalt minimum giver en stabil cirkelbane, mens et maksimum er ustabilt. To radiale vendepunkter kan begrænse $r$, men en sådan bane er ikke nødvendigvis lukket. Ved dobbeltrod kan radialbevægelsen nærme sig en stationær radius asymptotisk frem for at vende på almindelig vis.
-\begin{method}Fra en given kraft: (1) integrér $F=-V'$; (2) find $\ell$ og $V_{\rm eff}$; (3) klassificér de tilladte radialintervaller via $E\ge V_{\rm eff}$; (4) vælg radial energiintegration for $r(t)$ eller Binet for $r(\phi)$; (5) fastlæg konstanter med energi og begyndelsesdata. Kontrollér altid $r>0$ og $\ell\ne0$, hvis Binet benyttes.\end{method}
+På et stykke af banen, hvor $\dot q$ har fast fortegn, kan variablerne separeres:
+\[
+\dd t=\pm\sqrt{\frac{m}{2}}\frac{\dd q}{\sqrt{E-V(q)}},
+\qquad
+\boxed{t-t_0=\pm\sqrt{\frac m2}\int_{q_0}^{q(t)}
+\frac{\dd q'}{\sqrt{E-V(q')}}.}
+\]
+Plustegnet anvendes på en stigende gren, minustegnet på en faldende gren, når integrationsgrænserne går fra $q_0$ til $q(t)$. Begyndelsesværdierne $q(t_0)$ og $\dot q(t_0)$ fastlægger $E$ og startgrenen. Integralet bestemmer tiden som funktion af positionen; invertér om muligt for at finde $q(t)$. Ved vendepunkter, hvor $\dot q=0$, må man fortsætte på en ny monoton gren og skifte fortegn. Et dobbelt nulpunkt kan i stedet give en asymptotisk tilnærmelse til en ligevægtsposition.
 
-\subsection{Binet: fra radius til vinkelvariablen}\label{sec:binet}
+\textbf{For centralbevægelse} er den tilsvarende ligning
+\key{t-t_0=\pm\sqrt{\frac{\mu}{2}}
+\int_{r_0}^{r(t)}\frac{\dd\rho}{\sqrt{E-V_{\mathrm{eff}}(\rho)}}.}
+Når $r(t)$ er fundet, bestemmes vinkelbevægelsen af det bevarede impulsmoment:
+\[
+\phi(t)-\phi_0=\int_{t_0}^t\frac{\ell}{\mu r(\tau)^2}\,\dd\tau.
+\]
+Tilsammen giver $r(t)$ og $\phi(t)$ den relative positionsvektor $\vv r(t)$; endelig rekonstrueres $\vv r_1(t)$ og $\vv r_2(t)$ fra massemidtpunktet. Ved $\ell=0$ er bevægelsen radial, og Binetmetoden er ikke tilgængelig.
+
+\textbf{Kontrolopgave: eksamen 2022, opgave 4b--d.} Her er $H=p^2/(2m)+k/q^2$. Med $k,E>0$, $\dot q(0)=0$ og $q_0=\sqrt{k/E}>0$ bliver
+\[
+t=\sqrt{\frac{m}{2E}}\int_{q_0}^q
+\frac{q'\,\dd q'}{\sqrt{q'^2-q_0^2}}.
+\]
+Brug substitutionen $y=(q'^2-q_0^2)/2$, $\dd y=q'\dd q'$, eller direkte differentiation af kvadratroden, og få for den udadgående gren
+\[
+t=\sqrt{\frac{m}{2E}}\sqrt{q^2-q_0^2},\qquad
+\boxed{q(t)=\sqrt{q_0^2+\frac{2E}{m}t^2}}.
+\]
+Med den indadgående gren beskrives samme løsning for $t<0$. Kontrollen er \emph{to selvstændige tests}:
+\[
+\dot q=\frac{2Et}{mq},\qquad
+\ddot q=\frac{2k}{mq^3},\qquad
+\frac12m\dot q^2+\frac{k}{q^2}=E.
+\]
+De sidste to ligheder bruger $q_0^2=k/E$ og $q^2=q_0^2+2Et^2/m$. Dermed opfyldes både bevægelsesligningen og energiligningen, præcis som i opgave 4c--d.
+\begin{method}Vælg energiintegration, når der spørges efter $q(t)$ eller $r(t)$: bestem energi og fortegnsgren fra initialdata, separér, integrér, håndtér vendepunkter stykkevist, og verificér løsning, initialdata og begge bevægelses-/energiligninger. For centralbevægelse integreres dernæst $\dot\phi$.\end{method}
+
+\subsubsection*{Metode 3: Banens form fra Binets ligning\label{sec:binet}}
+Når $r(\phi)$ ønskes, er det mere praktisk at benytte den bevarede størrelse $\ell=\mu r^2\dot\phi$ til at skifte uafhængig variabel fra tid til vinkel. Denne fremgangsmåde forudsætter $\ell\ne0$ og $r>0$.
+
 Sæt $u(\phi)=1/r$ og lad prim betegne afledning efter $\phi$, punkt efter $t$. Under bevaret $\ell\ne0$:
 \begin{center}\small\renewcommand{\arraystretch}{1.22}\begin{tabular}{ll}\toprule Størrelse & Omskrivning\\\midrule
 $r,\ r^2$ & $1/u,\ 1/u^2$\\
@@ -136,16 +179,35 @@ Samtidig er energiudtrykket
 Koefficientens fortegn afgør, om løsningen er trigonometrisk ($>0$), lineær ($=0$) eller hyperbolsk/eksponentiel ($<0$). De generelle konstanter bestemmes derefter af energien og begyndelsesdata; en $\cosh$-form repræsenterer kun bestemte integrationskonstanter.
 \begin{method}Ud fra en radialkraft: find $F(1/u)$, opstil Binet-ODE'en, klassificér differentialligningen (harmonisk, eksponentiel osv.), løs $u(\phi)$, og brug energien eller begyndelsesdata til at bestemme integrationskonstanter.\end{method}
 
-
-\subsection{Løsningstyper i Binets ligning}
+\subsubsection*{Hvordan løses den fremkomne differentialligning?}
 For en ligning $u''+\omega^2u=c$ er det afgørende først at undersøge fortegnet af $\omega^2$. Ved $\omega^2>0$ er
 $u=c/\omega^2+A\cos(\omega\phi)+B\sin(\omega\phi)$; ved $\omega^2=0$ fås $u=c\phi^2/2+A\phi+B$; og ved $\omega^2<0$ er
 $u=-c/\kappa^2+A e^{\kappa\phi}+B e^{-\kappa\phi}$ med $\kappa=\sqrt{-\omega^2}$. Energi og begyndelsesdata vælger derefter de fysiske konstanter og radier $u>0$.
 For kraften $F=-\mu A/r^3$ fra \textbf{eksamen 2019, opgave 2} er $c=0$ og $\omega^2=1-\mu^2 A/\ell^2$: de tre parameterområder giver henholdsvis trigonometriske, lineære og hyperbolske løsninger. En særlig $\cosh$-løsning må ikke forveksles med det generelle to-konstant-udtryk.
 
-\subsection{Keplerbaner: energi, excentricitet og banetype}\label{sec:kepler}
-\textbf{Kun for} $V(r)=-k/r$, $k>0$, gælder
-\[u''+u=\frac{\mu k}{\ell^2},\qquad\boxed{r(\phi)=\frac{p}{1+e\cos(\phi-\phi_0)},\quad p=\frac{\ell^2}{\mu k}},\qquad\boxed{e=\sqrt{1+\frac{2E\ell^2}{\mu k^2}}}.\]
+
+
+\subsection{Keplerpotentialet: hele baneudledningen i ét forløb}
+\label{sec:kepler}
+Vi bruger nu den netop udledte \emph{Binetmetode} med det særlige potentiale $V(r)=-k/r$, $k>0$. Her er $F=-V'=-k/r^2$, og derfor
+\[
+u''+u=\frac{\mu k}{\ell^2},\qquad
+u(\phi)=\frac{\mu k}{\ell^2}+A\cos\phi+B\sin\phi.
+\]
+Skriv $A=C\cos\phi_0$ og $B=C\sin\phi_0$, hvor $C\ge0$, og definér $e=C\ell^2/(\mu k)$. Løsningen bliver
+\key{r(\phi)=\frac{\ell^2/(\mu k)}{1+e\cos(\phi-\phi_0)}.}
+Fasen $\phi_0$ fastlægges af startretningen og er periapsisretningen, når $e>0$. Næste trin er at finde $e$ fra energien og afgøre banetypen. Det er samme geometriske resultat som eksamen 2022, opgave 3 udleder med kompleks notation; vi anvender her den mere generelt genbrugelige Binetmetode.
+
+\subsubsection*{Excentricitet fra energien}
+Med $V=-ku$ og $\dot r=-\ell u'/\mu$ er
+\[E=\frac{\ell^2}{2\mu}[(u')^2+u^2]-ku.\]
+Sæt $u=(\mu k/\ell^2)(1+e\cos\phi)$ (periapsis ved $\phi=0$):
+\[E=\frac{\mu k^2}{2\ell^2}\big[e^2\sin^2\phi+(1+e\cos\phi)^2-2(1+e\cos\phi)\big]=\frac{\mu k^2}{2\ell^2}(e^2-1).\]
+Det giver excentricitetsformlen ovenfor. Ellipsens areal $\pi ab$ og $b^2=ap$ sammen med arealhastigheden giver $T^2=4\pi^2\mu a^3/k$.
+
+
+\subsubsection*{Keglesnit, energi og geometrisk fortolkning}
+Definér $p=\ell^2/(\mu k)$ (semi-latus rectum); sammenhængen mellem $e$ og $E$ udledes nedenfor.
 Ved fast $\ell\neq0$ er den mindste mulige Keplerenergi $E_{\min}=-\mu k^2/(2\ell^2)$, og $e=0$ netop når $E=E_{\min}$. En negativ energi alene er ikke et universelt kriterium for bundne baner ved vilkårlige potentialer.
 \begin{center}\small\renewcommand{\arraystretch}{1.18}\begin{tabular}{lll}\toprule Energi $E$ & Excentricitet $e$ & Banetype\\\midrule
 $E<0$ & $0\le e<1$ & Ellipse (cirkel ved $e=0$)\\
@@ -174,15 +236,7 @@ $E>0$ & $e>1$ & Hyperbel\\\bottomrule\end{tabular}\end{center}
 \textbf{Ellipseformler:} $E=-k/(2a)$, $r_{\min}=a(1-e)$, $r_{\max}=a(1+e)$, og Keplers tredje lov er $T^2=4\pi^2\mu a^3/k$. Arealloven $\dot A=\ell/(2\mu)$ gælder derimod for enhver central kraft.
 
 
-\subsection{Udledning og kontrol af excentriciteten}
-Med $V=-ku$ og $\dot r=-\ell u'/\mu$ er
-\[E=\frac{\ell^2}{2\mu}[(u')^2+u^2]-ku.\]
-Sæt $u=(\mu k/\ell^2)(1+e\cos\phi)$ (periapsis ved $\phi=0$):
-\[E=\frac{\mu k^2}{2\ell^2}\big[e^2\sin^2\phi+(1+e\cos\phi)^2-2(1+e\cos\phi)\big]=\frac{\mu k^2}{2\ell^2}(e^2-1).\]
-Det giver excentricitetsformlen ovenfor. Ellipsens areal $\pi ab$ og $b^2=ap$ sammen med arealhastigheden giver $T^2=4\pi^2\mu a^3/k$.
-
-
-\subsection{Keplers tre love og periodetid}
+\subsubsection*{Keplers tre love ud fra det fundne keglesnit}
 \textbf{Første lov:} For et attraktivt Keplerpotentiale og $E<0$ er banen en ellipse med kraftcentrum i det ene brændpunkt (inklusive cirkelgrænsen $e=0$).
 
 \textbf{Anden lov:} For enhver central kraft (ikke kun $1/r^2$) er arealhastigheden konstant, $\mathrm dA/\mathrm dt=\ell/(2\mu)$. Dette er den geometriske formulering af bevaret impulsmoment.
@@ -194,7 +248,8 @@ For Newtonsk gravitation $k=Gm_1m_2$ og $\mu/k=1/[G(m_1+m_2)]$:
 \[\boxed{T^2=\frac{4\pi^2a^3}{G(m_1+m_2)}}.\]
 Denne periodeformel gælder for bundne Keplerellipser, ikke for alle centralpotentialer.
 
-\subsection{Laplace--Runge--Lenz-vektoren}
+\subsection{Udvidelser og særlige konsekvenser}
+\subsubsection*{Laplace--Runge--Lenz-vektoren}
 \begin{center}\begin{tikzpicture}[scale=.72]
 \draw[accent,thick](0,0) ellipse (3 and 1.6);\fill[black](-2.4,0) circle (2pt) node[below,scale=.8]{Kraftcentrum};
 \draw[->,red!75!black,very thick](-2.4,0)--(-3.1,0) node[midway,above,scale=.85]{$\mathbf A$};
@@ -204,17 +259,18 @@ For $V=-k/r$ er den bevarede vektor $\vv A=\vv p\times\vv L-\mu k\hat{\vv r}$ me
 \[\dot{\vv p}\times\vv L=\mu k\left(\frac{\dot{\vv r}}r-\frac{\vv r(\vv r\cdot\dot{\vv r})}{r^3}\right)=\mu k\frac{\mathrm d\hat{\vv r}}{\mathrm dt},\]
 så $\dot{\vv A}=0$. Desuden er $\vv A\cdot\vv r=\ell^2-\mu kr$, som giver banens polarform med periapsis i retning af $\vv A$.
 
-
-\subsection{Virialsætningen og tidsmidler}
+\subsubsection*{Virialsætningen uden løsning af banen}
 \textbf{Hvorfor indføre virialen?} Definér $G(t)=\mathbf r(t)\cdot\mathbf p(t)=\mu r\dot r$. Det er en hjælpefunktion, ikke en generelt bevaret størrelse. Ved udadgående bevægelse er $G>0$, indadgående $G<0$, og i et radialt vendepunkt er $G=0$.
 For en bundet bevægelse med veldefineret langtidsgennemsnit sættes $G=\vv r\cdot\vv p$, så
-\[\frac{\mathrm dG}{\mathrm dt}=2T-\vv r\cdot\nabla V,\qquad2\langle T\rangle=\langle\vv r\cdot\nabla V\rangle.\]
-Ved homogent $V\propto r^n$ giver det $2\langle T\rangle=n\langle V\rangle$.
+\[\dot G=\dot{\vv r}\cdot\vv p+\vv r\cdot\dot{\vv p}
+=2T+\vv r\cdot\vv F=2T-\vv r\cdot\nabla V,
+\qquad2\langle T\rangle=-\langle\vv r\cdot\vv F\rangle.\]
+For et homogent potentiale $V\propto r^s$ giver Eulers sætning $\vv r\cdot\nabla V=sV$, og altså $\boxed{2\langle T\rangle=s\langle V\rangle}$. Resultatet findes uden først at bestemme banen. For et periodisk system er middelværdien af $\dot G$ over hele perioder nul; mere generelt kræves, at $[G(\mathcal T)-G(0)]/\mathcal T\to0$ for $\mathcal T\to\infty$.
 
 For en periodisk bane er $\langle\dot G\rangle=[G(T)-G(0)]/T=0$; for en generel bundet bane kræves blot, at det langsigtede randbidrag $[G(T)-G(0)]/T$ forsvinder. For et bundet Keplersystem ($V=-k/r$) følger med $E=\langle T\rangle+\langle V\rangle$:
 \[\boxed{\langle T\rangle=-E,\qquad\langle V\rangle=2E},\qquad E<0.\]
 
-\subsection{Modificeret Keplerpotentiale og præcession}
+\subsubsection*{Modificeret Keplerpotentiale og præcession}
 For $F(r)=-k/r^2+\gamma/r^3$ med $k>0$ svarer potentialet til $V(r)=-k/r+\gamma/(2r^2)$. Binet giver
 \[u''+\left(1+\frac{\mu\gamma}{\ell^2}\right)u=\frac{\mu k}{\ell^2}.\]
 Sæt $\nu^2=1+\mu\gamma/\ell^2>0$. En oscillerende løsning er
@@ -222,21 +278,20 @@ Sæt $\nu^2=1+\mu\gamma/\ell^2>0$. En oscillerende løsning er
 \Delta\phi_{\rm radial}=\frac{2\pi}{\nu}.\]
 For $\nu\ne1$ er den næste periapsis generelt forskudt i forhold til én fuld omdrejning; banen er kun lukket for rationelle forhold mellem radial- og vinkelperioderne. Ved en næsten cirkulær bane er $\Delta\phi_{\rm radial}\simeq2\pi\omega_\phi/\omega_r$, hvor $\omega_\phi=\ell/(\mu r_0^2)$.
 
-
-\subsection{Radialperiode, lukning og præcession}
+\subsubsection*{Radialperiode og lukning}
 Hvis der findes to radiale vendepunkter, er vinkelændringen mellem dem
 \[\Delta\phi_{1/2}=\int_{r_{\min}}^{r_{\max}}\frac{\ell\,\mathrm dr}{r^2\sqrt{2\mu[E-V_{\rm eff}(r)]}},\qquad\Delta\phi_{\rm radial}=2\Delta\phi_{1/2}.\]
 En bane er lukket, når $\Delta\phi_{\rm radial}/(2\pi)$ er rationalt. Ved Keplerpotentialet er den $1$, mens andre centralpotentialer kan give præcession. Forskydning fra én periapsis til den næste er $\Delta\phi_{\rm radial}-2\pi$ ved sammenligning med én fuld omdrejning.
 
-
-\subsection{Scattering i centralfelter}
+\subsubsection*{Spredning og differentialt tværsnit}
 For en indkommende ubundet bane i et potentiale med $V(\infty)=0$ er $r_{\min}$ det største positive nulpunkt i $E-V_{\rm eff}(r)=0$. \emph{Anslagsparameteren} $b$ er den vinkelrette afstand mellem kraftcentrum og den uforstyrrede indkommende asymptote.
 Ved asymptotisk hastighed $v_\infty$ og anslagsparameter $b$ er $E=\tfrac12\mu v_\infty^2$, $\ell=\mu v_\infty b$. For en enkeltvendepunktsbane kan afbøjningsvinklen findes fra
 \[\phi_0=\int_{r_{\min}}^\infty\frac{\ell\,\mathrm dr}{r^2\sqrt{2\mu[E-V_{\rm eff}(r)]}},\qquad\Theta=\pi-2\phi_0,\]
 med valgt fortegnskonvention. Det differentielle tværsnit er $\mathrm d\sigma/\mathrm d\Omega=(b/\sin\Theta)|\mathrm db/\mathrm d\Theta|$ for én gren; summer over grene, hvis flere $b$ giver samme $\Theta$.
 \begin{method}Givet $F(r)$ og en indkommende partikel: (1) Integrér $F=-V'$ og vælg potentialets nulpunkt. (2) Find $E=\mu v_\infty^2/2$ og $\ell=\mu v_\infty b$. (3) Find $r_{\min}$ fra $E=V_{\rm eff}(r_{\min})$. (4) Beregn $\phi_0$ og afbøjningsvinklen. (5) Differentier $b(\Theta)$ for at bestemme tværsnittet; tjek eventuelle flere grene.\end{method}
 
-\subsection{Centralbevægelse: hurtigt metodevalg}
+\subsection{Opsummering: praktisk metodevalg}
+
 \begin{center}\small\renewcommand{\arraystretch}{1.19}\begin{tabular}{p{50mm}p{86mm}}\toprule
 \textbf{Opgavespørgsmål} & \textbf{Vælg metode}\\\midrule
 Mulige radier og vendepunkter & $E\ge V_{\rm eff}$ og $E=V_{\rm eff}$, jf. afsnit~\ref{sec:veff}.\\
