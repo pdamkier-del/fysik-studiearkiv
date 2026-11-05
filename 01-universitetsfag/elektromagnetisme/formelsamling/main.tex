@@ -4,5 +4,49 @@
 \title{Formelsamling}
 \author{Fysik-studiearkiv}\date{\today}\maketitle\tableofcontents
 \chapter{Status og afgrænsning}
-Skabelon uden fagligt indhold. Originale noter integreres først, når de foreligger.
+Denne kildefil er endnu ikke den fulde, aktuelle EM1-formelsamling. Følgende metodeafsnit er tilføjet på baggrund af den aktuelle formelsamling, afsnit EV4 (side 7). Øvrige noter afventer integration fra originalen.
+
+\chapter{DEL I -- Elektrisk felt og potentiale}
+\section{EV4 -- Ledere, hulrum og koncentriske ledere}
+\subsection{Koncentriske ledere: ladninger på overflader}
+\textbf{Genkend opgaven:} En indre leder med nettoladning $Q_1$ er omgivet af en koncentrisk ledende skal med nettoladning $Q_2$. Den inderste leder har radius $a$, og skallen har indre og ydre radius $b$ og $c$.
+
+I elektrostatisk ligevægt er det elektriske felt nul \emph{inde i metallet}. Læg en lukket Gauss-flade inde i materialet i den ydre skal ($b<r<c$). Derfor er den omsluttede ladning nul:
+\[
+\oint \mathbf E\cdot d\mathbf a=\frac{Q_{\mathrm{enc}}}{\varepsilon_0}=0
+\quad\Longrightarrow\quad
+Q_1+Q_{\mathrm{inner}}=0,
+\qquad Q_{\mathrm{inner}}=-Q_1.
+\]
+Den ydre skals \emph{nettoladning} er $Q_2$, og den er fordelt på to overflader. Derfor gælder
+\[
+Q_{\mathrm{inner}}+Q_{\mathrm{outer}}=Q_2
+\quad\Longrightarrow\quad
+\boxed{Q_{\mathrm{outer}}=Q_1+Q_2}.
+\]
+Dette er den samme generelle regel som ved en ladning $q$ i et lederhulrum:
+\[
+\boxed{Q_{\mathrm{inner}}=-q},
+\qquad
+\boxed{Q_{\mathrm{outer}}=Q_{\mathrm{leder}}+q}.
+\]
+\textbf{Symboloversættelse i denne opgavetype:}
+$q=Q_1$ er ladningen på den inderste leder;
+$Q_{\mathrm{leder}}=Q_2$ er den \emph{samlede} ladning på den ydre skal;
+$Q_{\mathrm{inner}}=-Q_1$ er ladningen på skallens inderside ved $r=b$;
+$Q_{\mathrm{outer}}=Q_1+Q_2$ er ladningen på skallens yderside ved $r=c$.
+Forveksl ikke $Q_{\mathrm{outer}}$ med $Q_2$.
+
+Ved kuglesymmetri fordeles ladningerne ensartet over de respektive kugleflader. Brug overfladeladningstæthed $\sigma=Q/A$ med $A=4\pi R^2$:
+\[
+\boxed{\sigma_a=\frac{Q_1}{4\pi a^2}},\qquad
+\boxed{\sigma_b=-\frac{Q_1}{4\pi b^2}},\qquad
+\boxed{\sigma_c=\frac{Q_1+Q_2}{4\pi c^2}}.
+\]
+\textbf{Kontrol:} Ladningerne på den ydre skals to sider skal summere til $Q_2$:
+\[
+4\pi b^2\sigma_b+4\pi c^2\sigma_c=Q_2.
+\]
+Det er \emph{ladningerne} $Q$, ikke tæthederne $\sigma$, der skal lægges sammen. Brug Gauss' integralform frem for $\rho=\varepsilon_0\nabla\cdot\mathbf E$, når ladningen ligger på lederoverflader.
+
 \end{document}
