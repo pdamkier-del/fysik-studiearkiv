@@ -37,7 +37,104 @@ $X\wedge Y$ & $\alpha\wedge\beta=-\beta\wedge\alpha$ for 1-forms & Exterior/wedg
 $\star\alpha$ & Hodge dual of a differential form & Converts a $p$-form into a $(4-p)$-form using metric and orientation.\\
 $\det g$ & $g=\det(g_{\mu\nu})$ & $\sqrt{-g}\,\mathrm d^4x$ is the invariant volume form in our signature.\\\bottomrule
 \end{tabular}
-\section*{3. Curvature, torsion and field equations}
+
+\section*{3. Curved coordinates and differentials}
+A \emph{coordinate differential} $dx^\mu$ is an infinitesimal change in a coordinate label, not necessarily a measured physical length. The metric converts it to an interval:
+\begin{equation}
+ds^2=g_{\mu\nu}(x)\,dx^\mu dx^\nu.
+\end{equation}
+For an ordinary flat plane in polar coordinates $(r,\varphi)$,
+\begin{equation}
+ds^2=dr^2+r^2d\varphi^2,
+\qquad g_{ij}=\operatorname{diag}(1,r^2).
+\end{equation}
+At fixed radius, a small angular change $d\varphi$ has physical length $d\ell=r\,d\varphi$. Although the metric components depend on $r$, this plane has zero intrinsic curvature: \emph{curvilinear coordinates are not themselves curved space}.
+
+For the surface of a sphere of radius $L$, in $(\theta,\varphi)$,
+\begin{equation}
+ds^2=L^2(d\theta^2+\sin^2\theta\,d\varphi^2).
+\end{equation}
+Its intrinsic curvature is nonzero. Thus a nonconstant metric is not sufficient to infer nonzero curvature.
+
+\paragraph{Infinitesimal vector change.}
+The components $V^\rho(x)$ at nearby points cannot be compared naively because the coordinate basis may vary. Their \emph{covariant differential} is
+\begin{equation}
+DV^\rho \equiv dx^\mu\nabla_\mu V^\rho
+=dV^\rho+\Gamma^\rho{}_{\mu\nu}V^\nu dx^\mu.
+\end{equation}
+Here $dV^\rho=(\partial_\mu V^\rho)\,dx^\mu$ is the ordinary differential of components; $DV^\rho$ accounts for changes of the basis.
+
+\section*{4. Parallel transport and geodesics}
+Consider a parametrised curve $x^\mu(\lambda)$ with tangent
+$u^\mu=dx^\mu/d\lambda$. A vector is \emph{parallel transported} along it if its covariant rate of change vanishes:
+\begin{equation}
+\boxed{\frac{DV^\rho}{d\lambda}
+=u^\mu\nabla_\mu V^\rho
+=\frac{dV^\rho}{d\lambda}
++\Gamma^\rho{}_{\mu\nu}u^\mu V^\nu=0.}
+\end{equation}
+The vector components need not remain constant: the connection compensates for the moving basis. This is the geometric meaning of parallel transport.
+
+A curve whose tangent parallel-transports itself is an \emph{affinely parametrised autoparallel}:
+\begin{equation}
+u^\mu\nabla_\mu u^\rho=0
+\quad\Longleftrightarrow\quad
+\boxed{\frac{d^2x^\rho}{d\lambda^2}
++\Gamma^\rho{}_{\mu\nu}
+\frac{dx^\mu}{d\lambda}\frac{dx^\nu}{d\lambda}=0.}
+\end{equation}
+In torsion-free GR the Levi--Civita autoparallels agree with metric geodesics that extremise proper length (for an affine parameter). In a general torsionful metric-compatible geometry, the full-connection autoparallels and Levi--Civita extremal-length geodesics need \emph{not} coincide. Their equality requires extra conditions; it must not be assumed automatically in Einstein--Cartan gravity.
+
+\subsection*{Worked example: parallel transport in polar coordinates}
+For the flat polar metric $ds^2=dr^2+r^2d\varphi^2$, the nonzero Levi--Civita connection coefficients are
+\begin{equation}
+\Gamma^r{}_{\varphi\varphi}=-r,\qquad
+\Gamma^\varphi{}_{r\varphi}
+=\Gamma^\varphi{}_{\varphi r}=\frac1r.
+\end{equation}
+For motion along a circle $r=R$ parametrised by $\varphi$, the parallel-transport equations read
+\begin{align}
+\frac{dV^r}{d\varphi}-R\,V^\varphi&=0,\\
+\frac{dV^\varphi}{d\varphi}+\frac{1}{R}V^r&=0.
+\end{align}
+Differentiating the first equation and substituting the second gives
+$d^2V^r/d\varphi^2+V^r=0$. Thus
+\begin{equation}
+V^r=A\cos\varphi+B\sin\varphi,\qquad
+V^\varphi=\frac{-A\sin\varphi+B\cos\varphi}{R}.
+\end{equation}
+The coordinate components vary even though the vector is being parallel transported. This example has \emph{zero curvature and zero torsion}; component changes alone prove neither.
+
+\section*{5. Curvature from comparing transports}
+Parallel-transport a vector around a small closed loop. The net transformation depends on the curvature of the connection. In a torsion-free coordinate description, the commutator of covariant derivatives on a vector is
+\begin{equation}
+[\nabla_\mu,\nabla_\nu]V^\rho
+=R^\rho{}_{\sigma\mu\nu}V^\sigma
+\quad\text{(torsion-free convention)}.
+\end{equation}
+For the full torsionful connection in the same convention,
+\begin{equation}
+[\nabla_\mu,\nabla_\nu]V^\rho
+=R^\rho{}_{\sigma\mu\nu}V^\sigma
+-T^\sigma{}_{\mu\nu}\nabla_\sigma V^\rho.
+\end{equation}
+Curvature controls rotational/linear holonomy; torsion is associated with the infinitesimal closure defect in the Cartan-geometric interpretation. These are distinct properties.
+
+\section*{6. Quick word bank}
+\begin{description}
+\item[Line element] $ds^2$: squared invariant interval obtained from the metric.
+\item[Coordinate differential] $dx^\mu$: infinitesimal coordinate change.
+\item[Covariant differential] $DV^\rho=dx^\mu\nabla_\mu V^\rho$: vector change corrected for the basis.
+\item[Tangent vector] $u^\mu=dx^\mu/d\lambda$: rate of change along a curve.
+\item[Parallel transport] $u^\mu\nabla_\mu V^\rho=0$: vector preserved according to the connection.
+\item[Affine parameter] Parameter for which the autoparallel equation has no extra term proportional to its tangent.
+\item[Geodesic] In GR, a metric extremal-length curve, equivalent to a Levi--Civita autoparallel.
+\item[Autoparallel] Curve whose tangent is parallel transported using the specified connection.
+\item[Holonomy] Change obtained after transport around a loop.
+\item[Intrinsic curvature] Curvature detectable by measurements within a geometry rather than from an embedding.
+\end{description}
+
+\section*{7. Curvature, torsion and field equations}
 \begin{align*}
 \text{Levi--Civita:}\quad & \left\{^\rho{}_{\mu\nu}\right\}=\frac12 g^{\rho\sigma}(\partial_\mu g_{\sigma\nu}+\partial_\nu g_{\sigma\mu}-\partial_\sigma g_{\mu\nu}),\\
 \text{Torsion:}\quad & T^\rho{}_{\mu\nu}=\Gamma^\rho{}_{\mu\nu}-\Gamma^\rho{}_{\nu\mu}=2\Gamma^\rho{}_{[\mu\nu]},\\
@@ -47,7 +144,7 @@ $\det g$ & $g=\det(g_{\mu\nu})$ & $\sqrt{-g}\,\mathrm d^4x$ is the invariant vol
 \text{Einstein tensor:}\quad & G_{\mu\nu}=R_{\mu\nu}-\tfrac12 g_{\mu\nu}R.
 \end{align*}
 \noindent\emph{Be careful:} Riemann-tensor signs and index ordering differ between textbooks. In the first expression above the connection index ordering follows the definition given at the start of this document. The effective Einstein equation $G_{\mu\nu}(\{\})=\kappa T^{\mathrm{eff}}_{\mu\nu}$ uses the torsion-free Levi--Civita curvature after algebraically eliminating torsion in minimal Einstein--Cartan gravity.
-\section*{4. Common mistakes to avoid}
+\section*{8. Common mistakes to avoid}
 \begin{enumerate}\setlength{\itemsep}{1pt}
 \item A connection coefficient $\Gamma^\rho{}_{\mu\nu}$ is \emph{not} a tensor; torsion and contortion are tensors.
 \item $\partial_\mu$ and $\nabla_\mu$ agree on scalars at first derivative, but generally differ on vectors, covectors and second scalar derivatives.
