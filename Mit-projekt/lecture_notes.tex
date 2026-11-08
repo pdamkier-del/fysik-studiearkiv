@@ -147,6 +147,28 @@ For conserved particle number in a homogeneous comoving fluid, $n\propto a^{-3}$
 
 \textbf{Important limitation:} these scalings do not alone demonstrate a nonsingular bounce. One must insert a consistent effective stress tensor into the gravitational equations and verify both $H(t_B)=0$ and $\dot H(t_B)>0$. That is the task of Lecture 3.
 
+\subsection{Mathematical clarification: no circular definition}
+The relations
+\begin{equation}
+T^\rho{}_{\mu\nu}=2\Gamma^\rho{}_{[\mu\nu]},\qquad
+\Gamma^\rho{}_{\mu\nu}=\left\{^\rho{}_{\mu\nu}\right\}+K^\rho{}_{\mu\nu}
+\end{equation}
+are \emph{definitions and a change of geometric variables}, not simultaneous independent dynamical equations. One can start with a metric $g$ and a metric-compatible connection $\Gamma$ and calculate torsion, or use the equivalent data $(g,T)$ to reconstruct $\Gamma$. Metric compatibility fixes the required form of contortion. With $\nabla_\mu V^\rho=\partial_\mu V^\rho+\Gamma^\rho{}_{\mu\nu}V^\nu$ and $K=\Gamma-\{\,\}$, lowering the first index gives
+\begin{align}
+T_{\rho\mu\nu}&=K_{\rho\mu\nu}-K_{\rho\nu\mu},&
+K_{\rho\mu\nu}&=-K_{\nu\mu\rho},\\
+\boxed{K_{\rho\mu\nu}}&=
+\boxed{\frac12\left(T_{\rho\mu\nu}-T_{\mu\nu\rho}+T_{\nu\rho\mu}\right)}.
+\end{align}
+The torsion equation $T=2\Gamma_{[\mu\nu]}$ is a definition. The algebraic relation $K=K(T)$ follows from this definition and metric compatibility. Only the \emph{Cartan field equation}, derived from the action, determines torsion from the matter spin current in minimal EC gravity. One cannot simply use $\Gamma=\{\,\}+T$ because that would in general double the antisymmetric connection difference and fail to satisfy the required index symmetries.
+
+\subsection{Mathematical clarification: the Frenkel condition}
+For a Weyssenhoff spin fluid, $S_{\mu\nu}=-S_{\nu\mu}$ and $S_{\mu\nu}u^\nu=0$. In the local fluid rest frame $u^\nu=(1,0,0,0)$, so
+\begin{equation}
+0=S_{\mu\nu}u^\nu=S_{\mu0}.
+\end{equation}
+Antisymmetry then implies $S_{0i}=S_{i0}=0$, but the spatial components $S_{12},S_{13},S_{23}$ may be nonzero. These are three independent spin components. The condition is part of the Weyssenhoff-fluid model and should not be confused with requiring aligned spins or vanishing spin density. When averaging randomly oriented spins, $\langle S_{\mu\nu}\rangle=0$ does not necessarily imply $\langle S_{\mu\nu}S^{\mu\nu}\rangle=0$.
+
 \subsection{Technical vocabulary}
 \begin{description}[style=nextline]
 \item[Affine connection] $\Gamma^\rho{}_{\mu\nu}$ defines covariant derivatives and parallel transport.
