@@ -1,0 +1,35 @@
+name: Build EC Mathematical Textbook
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Mit-projekt/04-Mathematical-Derivations/chapter_01_geometry_to_EC_action.tex'
+      - '.github/workflows/ec-math-textbook.yml'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LaTeX
+        run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+      - name: Compile twice
+        working-directory: Mit-projekt/04-Mathematical-Derivations
+        run: |
+          pdflatex -interaction=nonstopmode -halt-on-error chapter_01_geometry_to_EC_action.tex
+          pdflatex -interaction=nonstopmode -halt-on-error chapter_01_geometry_to_EC_action.tex
+      - name: Commit PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f Mit-projekt/04-Mathematical-Derivations/chapter_01_geometry_to_EC_action.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "Build EC mathematical textbook chapter 1"
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ec-mathematical-textbook-chapter-1
+          path: Mit-projekt/04-Mathematical-Derivations/chapter_01_geometry_to_EC_action.pdf
