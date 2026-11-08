@@ -1,9 +1,11 @@
-# General Relativity Reference
+# General Relativity — Mathematical Reference
 
-Short, reusable mathematical guides for reading GR and Einstein–Cartan theory.
+This is a separate reference guide for the mathematical tools used in GR and Einstein–Cartan theory.
 
-**GR — Operators and Index Notation** (two-page, typeset PDF): https://drive.google.com/file/d/1hkUpE-WPHrMqZJFSjqcqlwvsyouQAiEl/view
+**Latest compiled reference (including curved differentials and parallel transport):** [GR Operators and Geometric Calculus PDF](gr_operators.pdf)
 
-Topics: partial and covariant derivatives, divergence, d'Alembertian, exterior derivative, Lie derivative, variational symbol, symmetrisation, antisymmetrisation, raising/lowering, contractions, wedge product, Hodge dual, curvature and torsion.
+**LaTeX source:** [gr_operators.tex](gr_operators.tex)
 
-This folder is for generally useful GR tools, not the specific collapse/bounce proofs.
+Topics: partial and covariant derivatives, index notation, line elements in polar and spherical coordinates, covariant differentials, parallel transport, geodesics and autoparallels, curvature and holonomy, torsion and contortion, plus a mathematical word bank.
+
+**Drive:** [05 — General Relativity Reference](https://drive.google.com/drive/folders/11BmtE-4LlOslAoRg9dzhAuV_phJdzHVa). The Drive PDF may be an older edition until the new compiled file is synchronized.
