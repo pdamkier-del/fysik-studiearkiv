@@ -1,0 +1,304 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools,booktabs,array}
+\usepackage[margin=24mm,headheight=14pt]{geometry}
+\usepackage{microtype,xcolor,hyperref,fancyhdr,tcolorbox,enumitem}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black,pdftitle={From Geometry to the Einstein--Cartan Action}}
+\definecolor{deep}{HTML}{17344D}\definecolor{soft}{HTML}{F1F5F8}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small \textsc{Mathematical foundations of Einstein--Cartan gravity}}\fancyhead[R]{\small Chapter 1}\fancyfoot[C]{\thepage}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\setcounter{secnumdepth}{2}
+\newtcolorbox{whybox}{colback=soft,colframe=deep!40,boxrule=.6pt,arc=2mm}
+\newcommand{\LC}{\mathring{\nabla}}
+\newcommand{\C}{\left\{\begin{smallmatrix}\rho\\\mu\nu\end{smallmatrix}\right\}}
+\newcommand{\kappaG}{\kappa}
+\newcommand{\RR}{\mathring{R}}
+\begin{document}
+\begin{center}
+{\small EINSTEIN--CARTAN RESEARCH PROJECT \quad / \quad MATHEMATICAL DERIVATIONS}\par\vspace{5mm}
+{\LARGE\bfseries\color{deep} Chapter 1\\ From Geometry to the Einstein--Cartan Action}\par\vspace{2mm}
+{\large A first-principles textbook chapter, before field variation}\par\vspace{3mm}
+{\small 8 November 2026 \quad $\bullet$ \quad Notation: $(-,+,+,+)$, $c=1$}\par
+\end{center}
+\vspace{2mm}
+\begin{whybox}
+\textbf{Reading goal.} By the end of this chapter you should be able to explain \emph{why} we choose an action for gravity, \emph{how} the metric and connection define torsion and curvature, and \emph{how} replacing the Levi--Civita connection by a metric-compatible Einstein--Cartan connection produces additional contortion terms in the gravitational action. We deliberately \textbf{stop before varying the action}. No Einstein or Cartan field equation is derived here.
+\end{whybox}
+\tableofcontents
+\newpage
+\section{From classical action to gravitational action}
+\subsection{What is an action, and why use one?}
+In analytical mechanics one introduces a path $q(t)$ and an action
+\begin{equation}\label{eq:particle}
+S[q]=\int_{t_1}^{t_2}L(q,\dot q,t)\,dt.
+\end{equation}
+For $L=\tfrac12m\dot q^2-V(q)$, requiring $\delta S=0$ for variations with fixed endpoints yields the Euler--Lagrange equation $d(\partial L/\partial\dot q)/dt-\partial L/\partial q=0$, and hence $m\ddot q=-\partial_qV$.
+
+The action is therefore an organized way of specifying \emph{dynamics}, not merely describing a configuration. A metric tells us the geometry of spacetime; an action tells us which possible metrics satisfy the theory's equations.
+
+A field $\phi(x)$ has values at every spacetime point. Its action is an integral over four coordinates, schematically $S[\phi]=\int d^4x\,\mathcal L(\phi,\partial\phi)$. We will apply this idea to gravitational variables.
+
+\subsection{Why the Ricci scalar?}
+In metric general relativity the fundamental geometric field is the symmetric metric $g_{\mu\nu}(x)$. We seek a local, coordinate-invariant gravitational action. A natural starting assumption is to build it from the metric and a small number of its derivatives, and to choose a minimal form giving second-order metric equations after treating boundary terms correctly.
+
+The curvature of the metric's torsion-free connection produces a scalar $R(g)$, called the \emph{Ricci scalar}. This is an appropriate candidate because the integrand of a coordinate-invariant action must transform as a scalar density. However, $R$ is not a uniquely forced choice: cosmological-constant terms, higher-curvature terms, and alternative gravitational theories are possible. The Einstein--Hilbert choice is the simplest standard curvature term with the required low-energy properties.
+
+\subsection{Why is there a factor $\sqrt{-g}$?}
+A coordinate volume $d^4x=dt\,dx\,dy\,dz$ changes when we replace one set of coordinates by another. The determinant $g=\det(g_{\mu\nu})$ transforms so that
+\begin{equation}\label{eq:volume}
+dV_4=\sqrt{-g}\,d^4x
+\end{equation}
+is invariant under orientation-preserving coordinate changes (for a Lorentzian metric of signature $-+++$). Thus, $\sqrt{-g}R\,d^4x$ can be integrated over spacetime without referring to any privileged coordinates.
+
+\subsection{Why $1/(2\kappa)$?}
+Before determining its normalization, we can write
+\begin{equation}
+S_g=A\int d^4x\,\sqrt{-g}\,R(g).
+\end{equation}
+The coefficient $A$ is fixed by matching the resulting gravitational field equation to Newtonian gravity in the weak-field, slow-motion limit. With $c=1$, this gives $A=1/(16\pi G)=1/(2\kappa)$, where $\kappa=8\pi G$. For orientation, the weak-field relation $g_{00}\simeq-(1+2\Phi)$, together with the linearized $00$ Einstein equation, gives $2\nabla^2\Phi=\kappa\rho$, reproducing $\nabla^2\Phi=4\pi G\rho$. We are \emph{motivating} the coefficient here, not deriving the Einstein field equations in this chapter.
+
+The standard metric gravitational action is therefore
+\begin{equation}\label{eq:EH}
+\boxed{S_{\mathrm{EH}}[g]=\frac1{2\kappa}\int_M d^4x\,\sqrt{-g}\,R(g).}
+\end{equation}
+A matter action $S_m[g,\psi]$ is added to describe the non-gravitational fields $\psi$. A well-posed metric variation on a manifold with a boundary also requires appropriate boundary terms, such as the Gibbons--Hawking--York term for standard Dirichlet boundary conditions. We keep boundary details explicit when needed but focus on bulk expressions.
+
+\begin{whybox}\textbf{Why this matters next.} Equation \eqref{eq:EH} is the baseline that we extend. In Einstein--Cartan theory, we retain the curvature-based action principle but replace the restricted torsion-free connection by a more general \emph{metric-compatible} connection. Its curvature scalar is then $\widetilde R(g,K)$ instead of $R(g)$.\end{whybox}
+
+\section{Metric, connection and parallel transport}
+\subsection{The metric measures intervals}
+For nearby events $x^\mu$ and $x^\mu+dx^\mu$, the metric defines the infinitesimal interval
+\begin{equation}\label{eq:metric}
+\boxed{ds^2=g_{\mu\nu}(x)\,dx^\mu dx^\nu.}
+\end{equation}
+The inverse metric $g^{\mu\nu}$ satisfies $g^{\mu\alpha}g_{\alpha\nu}=\delta^\mu_\nu$, where $\delta^\mu_\nu$ is the Kronecker delta. We raise and lower indices with the metric. Repeated upper/lower indices are summed (Einstein convention).
+
+For example, a flat plane written in polar coordinates satisfies $d\ell^2=dr^2+r^2d\varphi^2$. The coefficient $r^2$ reflects the choice of coordinates; the plane remains flat. \emph{A nonconstant metric coefficient does not automatically mean nonzero curvature.}
+
+\subsection{Why do we need a connection?}
+The metric measures intervals, but does not alone specify a general arbitrary rule for comparing vector components at different points. That comparison is expressed through a connection. In this chapter we fix the following index convention:
+\begin{equation}\label{eq:convention}
+\boxed{\nabla_\mu V^\rho=\partial_\mu V^\rho+\Gamma^\rho{}_{\mu\nu}V^\nu.}
+\end{equation}
+Thus, the \emph{first lower} connection index labels the differentiation direction. This ordering must remain fixed throughout every derivation. Some textbooks use the opposite ordering for the lower indices.
+
+Along a curve $x^\mu(\lambda)$, a parallel-transported vector satisfies
+\begin{equation}
+\frac{dV^\rho}{d\lambda}+\Gamma^\rho{}_{\mu\nu}\frac{dx^\mu}{d\lambda}V^\nu=0.
+\end{equation}
+Even in flat polar coordinates, the \emph{components} of a parallel-transported vector can change because the coordinate basis changes. Curvature cannot be inferred merely from such component changes.
+
+\subsection{Levi--Civita connection and metric compatibility}
+In ordinary metric GR the connection is chosen to be (i) metric-compatible, $\nabla_\lambda g_{\mu\nu}=0$, and (ii) torsion-free. These conditions determine the unique Levi--Civita connection:
+\begin{equation}\label{eq:LC}
+\boxed{\left\{^\rho{}_{\mu\nu}\right\}=\tfrac12g^{\rho\sigma}(\partial_\mu g_{\sigma\nu}+\partial_\nu g_{\sigma\mu}-\partial_\sigma g_{\mu\nu}).}
+\end{equation}
+Metric compatibility means that parallel transport preserves metric inner products. It does \emph{not} require torsion to vanish. Einstein--Cartan theory keeps metric compatibility but removes the torsion-free restriction.
+
+\section{Torsion and contortion from the connection}
+\subsection{Definition of torsion}
+With our convention, the torsion tensor is the antisymmetric part of the connection in its two lower indices:
+\begin{equation}\label{eq:torsion}
+\boxed{T^\rho{}_{\mu\nu}=\widetilde\Gamma^\rho{}_{\mu\nu}-\widetilde\Gamma^\rho{}_{\nu\mu}=2\widetilde\Gamma^\rho{}_{[\mu\nu]}.}
+\end{equation}
+The notation $A_{[\mu\nu]}=\tfrac12(A_{\mu\nu}-A_{\nu\mu})$ means antisymmetrization. Unlike the connection coefficients themselves, torsion is a tensor. The factor of $2$ is conventional: for example, Br\'echet et al. use $Q^\rho{}_{\mu\nu}=\widetilde\Gamma^\rho{}_{[\mu\nu]}=T^\rho{}_{\mu\nu}/2$.
+
+\subsection{Why split the connection?}
+Under metric compatibility we may compare the full connection with the unique Levi--Civita connection of the same metric:
+\begin{equation}\label{eq:split}
+\boxed{\widetilde\Gamma^\rho{}_{\mu\nu}=\left\{^\rho{}_{\mu\nu}\right\}+K^\rho{}_{\mu\nu}.}
+\end{equation}
+The difference $K^\rho{}_{\mu\nu}=\widetilde\Gamma^\rho{}_{\mu\nu}-\{^\rho{}_{\mu\nu}\}$ is the \emph{contortion tensor}. This is an algebraic decomposition, not an additional physical field equation. There is no circular definition: once $g$ and torsion are specified, metric compatibility determines $K$ and hence the full connection.
+
+\subsection{Derive contortion in terms of torsion}
+Lower the first index by $K_{\rho\mu\nu}=g_{\rho\lambda}K^\lambda{}_{\mu\nu}$. Because both full and Levi--Civita connections are metric-compatible, their difference obeys
+\begin{equation}\label{eq:antiK}
+K_{\rho\mu\nu}=-K_{\nu\mu\rho}.
+\end{equation}
+The torsion-free Levi--Civita terms cancel under antisymmetrization, so
+\begin{equation}
+T_{\rho\mu\nu}=K_{\rho\mu\nu}-K_{\rho\nu\mu}.
+\end{equation}
+Using \eqref{eq:antiK}, rewrite the second term: $K_{\rho\nu\mu}=-K_{\mu\nu\rho}$. Thus
+\begin{align*}
+T_{\rho\mu\nu}&=K_{\rho\mu\nu}+K_{\mu\nu\rho},\\
+T_{\mu\nu\rho}&=K_{\mu\nu\rho}+K_{\nu\rho\mu},\\
+T_{\nu\rho\mu}&=K_{\nu\rho\mu}+K_{\rho\mu\nu}.
+\end{align*}
+Add the first and third relations, and subtract the second. The undesired components cancel, leaving
+\begin{equation}\label{eq:contortion}
+\boxed{K_{\rho\mu\nu}=\tfrac12\left(T_{\rho\mu\nu}-T_{\mu\nu\rho}+T_{\nu\rho\mu}\right).}
+\end{equation}
+This identity is specific to our stated index convention. Contortion signs in the literature may look opposite because authors sometimes define $\widetilde\Gamma=\{\}-K$ rather than \eqref{eq:split}.
+
+\begin{whybox}\textbf{Physical versus mathematical statement.} Equations \eqref{eq:torsion}--\eqref{eq:contortion} define geometric quantities and relate them algebraically. They do \emph{not} yet say that spin causes torsion. That statement follows later from the Cartan field equation, derived by varying an action.\end{whybox}
+
+\section{How the connection produces curvature}
+\subsection{From the commutator to the Riemann tensor}
+A connection allows two successive covariant derivatives. Their commutator measures a noncommutativity associated with curvature, plus an additional term when torsion is present. With our convention,
+\begin{equation}\label{eq:commutator}
+[\nabla_\mu,\nabla_\nu]V^\rho=\widetilde R^\rho{}_{\sigma\mu\nu}V^\sigma-T^\lambda{}_{\mu\nu}\nabla_\lambda V^\rho.
+\end{equation}
+The curvature tensor appearing here is constructed by differentiating and multiplying connection coefficients. In a coordinate basis it is
+\begin{equation}\label{eq:riemann}
+\boxed{\begin{aligned}
+\widetilde R^\rho{}_{\sigma\mu\nu}={}&\partial_\mu\widetilde\Gamma^\rho{}_{\nu\sigma}-\partial_\nu\widetilde\Gamma^\rho{}_{\mu\sigma}\\
+&+\widetilde\Gamma^\rho{}_{\mu\lambda}\widetilde\Gamma^\lambda{}_{\nu\sigma}-\widetilde\Gamma^\rho{}_{\nu\lambda}\widetilde\Gamma^\lambda{}_{\mu\sigma}.
+\end{aligned}}
+\end{equation}
+To see \emph{why} there are products of two connections: applying $\nabla_\mu$ to $\nabla_\nu V$ differentiates both $V$ and the coefficients $\Gamma$; the derivative of $V$ already contains a connection term. The combined products of two $\Gamma$s are the resulting quadratic contributions. Equation \eqref{eq:riemann} specifies our Riemann-index and sign convention; alternate textbooks may choose the opposite sign.
+
+\subsection{Ricci tensor and Ricci scalar}
+The Riemann tensor has four indices. Contracting the first and third gives the \emph{Ricci tensor}:
+\begin{equation}\label{eq:ricci}
+\boxed{\widetilde R_{\sigma\nu}=\widetilde R^\rho{}_{\sigma\rho\nu}.}
+\end{equation}
+A further contraction with the inverse metric gives the \emph{Ricci scalar}:
+\begin{equation}\label{eq:ricciscalar}
+\boxed{\widetilde R=g^{\sigma\nu}\widetilde R_{\sigma\nu}.}
+\end{equation}
+In a torsionful geometry, the Ricci tensor need not be symmetric, although its antisymmetric part vanishes when contracted with the symmetric metric. The scalar in \eqref{eq:ricciscalar} is the curvature quantity entering the minimal Einstein--Cartan gravitational action.
+
+\section{The exact curvature decomposition using contortion}
+\subsection{Insert $\widetilde\Gamma=\{\}+K$}
+We now use the precise reason for introducing contortion: it lets us express Einstein--Cartan curvature in terms of familiar GR curvature plus extra terms. In each occurrence of $\widetilde\Gamma$ in \eqref{eq:riemann}, substitute equation \eqref{eq:split}.
+
+The terms containing only Levi--Civita connections form $R^\rho{}_{\sigma\mu\nu}(\{\})$. The pieces linear in $K$ contain $\partial K$ and cross-products $\{\}K$; these recombine into the \emph{Levi--Civita covariant derivative} $\LC_\mu K$. The remaining pieces contain $KK$. This gives the exact tensor identity
+\begin{equation}\label{eq:Rsplit}
+\boxed{\begin{aligned}
+\widetilde R^\rho{}_{\sigma\mu\nu}={}&\RR^\rho{}_{\sigma\mu\nu}
++\LC_\mu K^\rho{}_{\nu\sigma}-\LC_\nu K^\rho{}_{\mu\sigma}\\
+&+K^\rho{}_{\mu\lambda}K^\lambda{}_{\nu\sigma}-K^\rho{}_{\nu\lambda}K^\lambda{}_{\mu\sigma}.
+\end{aligned}}
+\end{equation}
+Here $\LC$ and $\RR$ always mean the torsion-free Levi--Civita derivative and curvature of the same metric $g$. They are not new independent fields.
+
+\subsection{Check the covariant derivative terms}
+To make the middle step transparent, for a $(1,2)$ tensor the Levi--Civita derivative is
+\begin{align}\label{eq:nablaK}
+\LC_\mu K^\rho{}_{\nu\sigma}
+={}&\partial_\mu K^\rho{}_{\nu\sigma}+\left\{^\rho{}_{\mu\lambda}\right\}K^\lambda{}_{\nu\sigma}\notag\\
+&-\left\{^\lambda{}_{\mu\nu}\right\}K^\rho{}_{\lambda\sigma}-\left\{^\lambda{}_{\mu\sigma}\right\}K^\rho{}_{\nu\lambda}.
+\end{align}
+Subtract the expression with $\mu\leftrightarrow\nu$. Because $\{^\lambda{}_{\mu\nu}\}=\{^\lambda{}_{\nu\mu}\}$, the terms multiplying $K^\rho{}_{\lambda\sigma}$ cancel. The other terms reproduce the cross-products $\{\}K$ from the direct expansion. This is why the shorthand $R(\widetilde\Gamma)=R(\{\})+\LC K+K^2$ is legitimate, even though it suppresses important index contractions.
+
+\subsection{Contract to obtain the Ricci tensor}
+Set $\mu=\rho$ and sum in \eqref{eq:Rsplit}. Then
+\begin{equation}\label{eq:Riccisplit}
+\boxed{\begin{aligned}
+\widetilde R_{\sigma\nu}={}&\RR_{\sigma\nu}
++\LC_\rho K^\rho{}_{\nu\sigma}-\LC_\nu K^\rho{}_{\rho\sigma}\\
+&+K^\rho{}_{\rho\lambda}K^\lambda{}_{\nu\sigma}
+-K^\rho{}_{\nu\lambda}K^\lambda{}_{\rho\sigma}.
+\end{aligned}}
+\end{equation}
+Notice that the contraction does not simply \emph{remove} an index: it sets two indices equal and sums over their four possible values.
+
+\subsection{Contract again: the complete Ricci scalar}
+Multiply by $g^{\sigma\nu}$. This produces the full scalar-curvature decomposition:
+\begin{equation}\label{eq:scalardecomp}
+\boxed{\begin{aligned}
+\widetilde R={}&\RR
++g^{\sigma\nu}\left(\LC_\rho K^\rho{}_{\nu\sigma}-\LC_\nu K^\rho{}_{\rho\sigma}\right)\\
+&+g^{\sigma\nu}\left(K^\rho{}_{\rho\lambda}K^\lambda{}_{\nu\sigma}
+-K^\rho{}_{\nu\lambda}K^\lambda{}_{\rho\sigma}\right).
+\end{aligned}}
+\end{equation}
+\emph{This equation is the main mathematical result of Chapter 1.} It is exact for the specified connection decomposition and curvature convention. No field equations have been used.
+
+\subsection{Why the derivative contribution becomes a boundary term}
+Since the Levi--Civita derivative preserves the metric, $\LC_\rho g^{\mu\nu}=0$, we can move the metric through the derivative in equation \eqref{eq:scalardecomp}. Define two vectors
+\begin{equation}
+A^\rho=g^{\sigma\nu}K^\rho{}_{\nu\sigma},\qquad
+B^\nu=g^{\sigma\nu}K^\rho{}_{\rho\sigma}.
+\end{equation}
+Then the derivative terms combine exactly into
+\begin{equation}\label{eq:div}
+g^{\sigma\nu}\left(\LC_\rho K^\rho{}_{\nu\sigma}-\LC_\nu K^\rho{}_{\rho\sigma}\right)
+=\LC_\mu(A^\mu-B^\mu).
+\end{equation}
+For a Levi--Civita divergence,
+\begin{equation}\label{eq:dividentity}
+\boxed{\sqrt{-g}\,\LC_\mu V^\mu=\partial_\mu(\sqrt{-g}\,V^\mu).}
+\end{equation}
+Therefore its spacetime integral becomes a boundary integral by the divergence theorem. Under appropriate boundary conditions, removing it does not alter the \emph{bulk} Euler--Lagrange equations. This statement does not mean the boundary is physically irrelevant; a complete variational principle must keep track of suitable boundary contributions.
+
+The remaining quadratic expression has a precise definition:
+\begin{equation}\label{eq:QK}
+\boxed{Q(K)=g^{\sigma\nu}\left(K^\rho{}_{\rho\lambda}K^\lambda{}_{\nu\sigma}
+-K^\rho{}_{\nu\lambda}K^\lambda{}_{\rho\sigma}\right).}
+\end{equation}
+It is \emph{not} a generic $K^2$ guessed by dimensional analysis: it is a specific contraction derived from the Riemann curvature formula.
+
+\begin{whybox}\textbf{Consistency check.} Setting $K^\rho{}_{\mu\nu}=0$ removes both the derivative and quadratic terms; then $\widetilde R=\RR$, precisely the torsion-free Ricci scalar. This is the correct GR limit.\end{whybox}
+
+\section{The minimal Einstein--Cartan action: our stopping point}
+\subsection{What changes relative to Einstein--Hilbert gravity?}
+We retain the simplest curvature-based gravitational action but replace the Levi--Civita scalar with the scalar of the full metric-compatible connection. Denote collectively by $\psi$ the matter fields, which may carry intrinsic spin. The action is
+\begin{equation}\label{eq:EC}
+\boxed{S[g,K,\psi]=\frac{1}{2\kappa}\int_M d^4x\,\sqrt{-g}\,\widetilde R(g,K)+S_m[g,K,\psi].}
+\end{equation}
+The full connection is given by $\widetilde\Gamma=\{g\}+K$, so the gravitational variables may be taken to be the metric and contortion. Independent variations of the metric and of the \emph{metric-compatible} contortion are equivalent to choosing the metric and a corresponding metric-compatible connection as variables, after the appropriate field redefinition and matter treatment. This choice avoids introducing tetrads at the outset, although tetrads and a spin connection are particularly natural for fundamental spinor fields.
+
+\subsection{Insert the exact decomposition}
+Using equations \eqref{eq:scalardecomp}--\eqref{eq:QK}, and displaying separately the boundary contribution $S_{\partial M}$, we obtain
+\begin{equation}\label{eq:ECbulk}
+\boxed{\begin{aligned}
+S[g,K,\psi]={}&\frac{1}{2\kappa}\int_M d^4x\,\sqrt{-g}\,\left[\RR(g)+Q(K)\right]\\
+&+S_m[g,K,\psi]+S_{\partial M}.
+\end{aligned}}
+\end{equation}
+The gravitational \emph{bulk} action has no derivatives of $K$: the only contortion dependence is quadratic. This gives us an early indication of why torsion will be algebraically determined in \emph{minimal} Einstein--Cartan theory. But that conclusion must be established by variation, and also depends on how the matter action couples to the connection.
+
+\subsection{Why not already insert a Weyssenhoff fluid?}
+A Weyssenhoff fluid is a particular model for matter carrying spin, not a property of geometry itself. Our logical order is: (1) define the general minimal gravitational action, (2) derive its equations by varying its independent fields, (3) choose a consistent spinning-matter model and determine its source terms, (4) eliminate torsion and derive effective matter corrections, and (5) specialize to a collapse metric to test whether a bounce occurs. A homogeneous bounce is not by itself proof of a baby universe or of a successful exterior matching.
+
+The nonlinear Holst/pseudoscalaron extension belongs to a \emph{later} stage. It need not share the purely algebraic torsion dynamics of this minimal model.
+
+\section{Technical vocabulary and distinctions}
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}p{.25\linewidth}p{.68\linewidth}@{}}\toprule
+\textbf{Term} & \textbf{Meaning in this chapter}\\\midrule
+Action & Spacetime integral whose stationary variations determine equations of motion.\\
+Metric $g_{\mu\nu}$ & Tensor defining spacetime intervals and index raising/lowering.\\
+Connection $\Gamma^\rho{}_{\mu\nu}$ & Coefficients specifying covariant differentiation and parallel transport.\\
+Metric compatibility & $\nabla_\lambda g_{\mu\nu}=0$: transported inner products are preserved.\\
+Levi--Civita connection & Unique metric-compatible connection with vanishing torsion.\\
+Torsion $T^\rho{}_{\mu\nu}$ & Antisymmetric part of a connection in its lower indices.\\
+Contortion $K^\rho{}_{\mu\nu}$ & Tensor difference between full and Levi--Civita connections.\\
+Riemann tensor & Curvature built from derivatives and products of the connection.\\
+Ricci tensor / scalar & Successive contractions of the Riemann tensor.\\
+Contraction & Summing over one repeated upper and lower index.\\
+Covariant derivative & Tensorial differentiation using connection corrections.\\
+Total divergence & A term whose invariant bulk integral is a boundary integral.\\
+Independent variable & A field varied separately, subject to the chosen constraints.\\
+Quadratic contortion & The specific scalar $Q(K)$ in equation \eqref{eq:QK}, not arbitrary $K^2$.\\\bottomrule
+\end{tabular}
+\normalsize
+
+\section{Recap and next chapter}
+We have established the following logical chain:
+\begin{equation*}
+\boxed{\begin{gathered}
+g_{\mu\nu}\quad \longrightarrow\quad \{^\rho{}_{\mu\nu}\}(g),\\
+T^\rho{}_{\mu\nu}\ \longleftrightarrow\ K^\rho{}_{\mu\nu},\qquad
+\widetilde\Gamma=\{g\}+K,\\
+\widetilde\Gamma\quad\longrightarrow\quad\widetilde R^\rho{}_{\sigma\mu\nu}
+\quad\longrightarrow\quad\widetilde R_{\mu\nu}\quad\longrightarrow\quad\widetilde R,\\
+\widetilde R=\RR+\LC_\mu(A^\mu-B^\mu)+Q(K),\\
+S[g,K,\psi]=\frac1{2\kappa}\int\sqrt{-g}\,[\RR+Q(K)]\,d^4x+S_m+S_{\partial M}.
+\end{gathered}}
+\end{equation*}
+
+\textbf{Chapter 2 begins by varying this action.} A metric variation gives the gravitational metric equation; a constrained contortion variation gives the Cartan spin--torsion equation. Neither variation is carried out in this chapter.
+
+\section*{Primary sources and reading guidance}
+\begin{enumerate}[leftmargin=*,itemsep=3pt]
+\item S. M. Carroll, \emph{Lecture Notes on General Relativity}, \href{https://arxiv.org/abs/gr-qc/9712019}{arXiv:gr-qc/9712019}. Consult the discussion of differential geometry, curvature and the Hilbert action. Used here for the standard GR framework and motivation.
+\item A. Trautman, \emph{Einstein--Cartan Theory}, \href{https://arxiv.org/abs/gr-qc/0606062}{arXiv:gr-qc/0606062}. Consult the Riemann--Cartan geometry and gravitational Lagrangian sections, especially the metricity and connection decomposition discussion. Used for the minimal EC formulation and the distinction between geometry and field equations.
+\item S. D. Br\'echet, M. P. Hobson and A. N. Lasenby, \emph{Weyssenhoff fluid dynamics in general relativity using a 1+3 covariant approach}, \href{https://arxiv.org/abs/0706.2367}{arXiv:0706.2367}. See Section 2, equations (1)--(15), for their conventions and action; Section 3 for the matter model to be used later. Their torsion and contortion conventions differ from ours.
+\end{enumerate}
+\begin{whybox}\textbf{Scope and honesty.} The geometric identities in this chapter are mathematical consequences of our definitions and metric compatibility. The action is a physical model choice motivated by symmetry, simplicity and established weak-field behavior. A spin-induced bounce requires additional matter and dynamical assumptions and is \emph{not} derived in this chapter.\end{whybox}
+\end{document}
