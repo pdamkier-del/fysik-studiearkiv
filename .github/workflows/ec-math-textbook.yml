@@ -27,6 +27,7 @@ jobs:
           git add -f Mit-projekt/04-Mathematical-Derivations/chapter_01_geometry_to_EC_action.pdf
           if ! git diff --cached --quiet; then
             git commit -m "Build EC mathematical textbook chapter 1"
+            git pull --rebase origin main
             git push
           fi
       - uses: actions/upload-artifact@v4
