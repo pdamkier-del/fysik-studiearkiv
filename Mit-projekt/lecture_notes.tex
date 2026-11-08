@@ -71,8 +71,113 @@ The starting point is an idealised homogeneous spherical collapse model, similar
 \item J. R. Oppenheimer and H. Snyder, \emph{On Continued Gravitational Contraction} (1939).
 \item Hashemi, Jalalzadeh and Ziaie, \emph{Collapse and dispersal of a homogeneous spin fluid in Einstein--Cartan theory}, \url{https://arxiv.org/abs/1407.4103}.
 \end{itemize}
-\section{Lecture 2: Einstein--Cartan Spin and Torsion}
-To be developed after the lesson.
+\section{Lecture 2: Einstein--Cartan Gravity, Spin and Torsion}
+\subsection{Physical motivation}
+General relativity uses the torsion-free Levi--Civita connection. Einstein--Cartan (EC) gravity uses a metric-compatible connection which can also have torsion. In EC theory, intrinsic angular momentum (spin) sources torsion through an \emph{algebraic} field equation. In minimal EC gravity, torsion is not an independently propagating wave-like field. We use $c=1$, $\kappa=8\pi G$ and metric signature $(-,+,+,+)$.
+
+\subsection{Connection and torsion}
+For a vector field $V^\rho$,
+\begin{equation}
+\nabla_\mu V^\rho=\partial_\mu V^\rho+\Gamma^\rho{}_{\mu\nu}V^\nu.
+\end{equation}
+The torsion tensor is the antisymmetric part of the connection:
+\begin{equation}
+\boxed{T^\rho{}_{\mu\nu}=\Gamma^\rho{}_{\mu\nu}-\Gamma^\rho{}_{\nu\mu}
+=2\Gamma^\rho{}_{[\mu\nu]}}.
+\end{equation}
+In GR the Levi--Civita connection is symmetric:
+\begin{equation}
+\left\{^\rho{}_{\mu\nu}\right\}=\frac12 g^{\rho\sigma}(\partial_\mu g_{\sigma\nu}
++\partial_\nu g_{\sigma\mu}-\partial_\sigma g_{\mu\nu}),
+\qquad \left\{^\rho{}_{\mu\nu}\right\}=\left\{^\rho{}_{\nu\mu}\right\}.
+\end{equation}
+For a metric-compatible torsionful connection we define the contortion by
+\begin{equation}
+\Gamma^\rho{}_{\mu\nu}=\left\{^\rho{}_{\mu\nu}\right\}+K^\rho{}_{\mu\nu}.
+\end{equation}
+Trautman and Br\'echet \emph{use different sign and factor conventions} for the contortion and torsion. Do not combine their component equations without translating conventions.
+
+\subsection{Why intrinsic spin matters}
+An energy--momentum tensor describes translational momentum and energy. Matter can additionally carry intrinsic angular momentum (quantum spin), which is distinct from bulk rotation or fluid vorticity. In the EC variational principle, the tetrad (or metric variables) and spin connection are varied independently, producing a gravitational equation and a Cartan spin--torsion equation.
+
+A schematic minimal EC action is
+\begin{equation}
+S[e,\omega,\psi]=\int d^4x\,e
+\left[\frac{1}{2\kappa}\widetilde R(e,\omega)+\mathcal L_m(e,\omega,\psi)\right],
+\end{equation}
+where $e=\det(e_\mu{}^a)$ and $\widetilde R$ is the scalar curvature of the torsionful connection. Br\'echet et al.\ write the analogous action with a cosmological constant in their Eq.~(11).
+
+\subsection{Variation: the field equations}
+Variation with respect to the gravitational coframe gives an Einstein-like equation written using the full connection; variation with respect to the spin connection gives an algebraic equation of the form
+\begin{equation}
+\boxed{T^\rho{}_{\mu\nu}+\text{torsion-trace terms}
+=\kappa\,\tau^\rho{}_{\mu\nu}.}
+\end{equation}
+Here $\tau^\rho{}_{\mu\nu}$ is the intrinsic spin current. The detailed index positions and trace signs depend on convention; compare Trautman Eqs.~(23)--(25) and Br\'echet et al.\ Eqs.~(12)--(15). The crucial point is the absence of derivatives of torsion in this \emph{minimal} Cartan equation:
+\begin{equation}
+\boxed{\text{spin current}\ \longrightarrow\ \text{algebraically determined torsion}.}
+\end{equation}
+If the spin current vanishes, torsion vanishes within minimal EC theory, and the vacuum equations reduce to those of GR.
+
+\subsection{Weyssenhoff spin fluid}
+For a macroscopic spinning fluid, Br\'echet et al.\ introduce the antisymmetric spin density $S_{\mu\nu}=-S_{\nu\mu}$ and the current
+\begin{equation}
+\tau^\lambda{}_{\mu\nu}=u^\lambda S_{\mu\nu},
+\end{equation}
+where $u^\lambda$ is the fluid four-velocity. Their Frenkel condition is
+\begin{equation}
+\boxed{S_{\mu\nu}u^\nu=0}.
+\end{equation}
+It states that the spin tensor is spatial in the fluid's rest frame. Under this condition the torsion trace vanishes in their model, and their Cartan equation reduces to an algebraic relation between torsion and $u^\lambda S_{\mu\nu}$ (their Eq.~(21)). A scalar spin measure is
+\begin{equation}
+\boxed{S^2=\frac12 S_{\mu\nu}S^{\mu\nu}}.
+\end{equation}
+\subsection{Eliminating torsion: effective energy and pressure}
+Because torsion is algebraically related to spin, it can be eliminated from the minimal EC field equations. The resulting Levi--Civita Einstein equations contain \emph{additional terms quadratic in spin}. This is discussed by Trautman in Eqs.~(30)--(32).
+
+In the particular Weyssenhoff-fluid conventions of Br\'echet et al.\ (and with cosmological constant set to zero), Eq.~(25) reads
+\begin{align}
+\boxed{\rho_s=\rho-\kappa S^2},\qquad
+\boxed{p_s=p-\kappa S^2}.
+\end{align}
+These expressions are \emph{model- and convention-dependent}; the full effective stress tensor also contains spin-gradient terms (their Eq.~(24)). They are not a universal replacement for every Einstein--Cartan matter source or every collapse geometry.
+
+\subsection{Connection to gravitational collapse}
+For conserved particle number in a homogeneous comoving fluid, $n\propto a^{-3}$. Under additional assumptions about the spin state and averaging, the mean squared spin density scales as $S^2\propto n^2\propto a^{-6}$. Thus the spin-squared contribution may grow faster under contraction than the ordinary dust energy density $\rho\propto a^{-3}$.
+
+\textbf{Important limitation:} these scalings do not alone demonstrate a nonsingular bounce. One must insert a consistent effective stress tensor into the gravitational equations and verify both $H(t_B)=0$ and $\dot H(t_B)>0$. That is the task of Lecture 3.
+
+\subsection{Technical vocabulary}
+\begin{description}[style=nextline]
+\item[Affine connection] $\Gamma^\rho{}_{\mu\nu}$ defines covariant derivatives and parallel transport.
+\item[Levi--Civita connection] Torsion-free connection uniquely determined by the metric.
+\item[Torsion tensor] $T^\rho{}_{\mu\nu}=2\Gamma^\rho{}_{[\mu\nu]}$.
+\item[Contortion] The difference of the metric-compatible full connection and Levi--Civita connection, with sign conventions stated.
+\item[Intrinsic spin] Internal angular momentum of matter, not the same as macroscopic rotation.
+\item[Spin current] Source of torsion in the Cartan field equation.
+\item[Weyssenhoff fluid] Phenomenological continuum model incorporating an antisymmetric spin density.
+\item[Frenkel condition] $S_{\mu\nu}u^\nu=0$.
+\end{description}
+\subsection{Lecture 2 recap}
+\begin{enumerate}[leftmargin=*]
+\item GR uses a torsion-free Levi--Civita connection; minimal EC permits torsion alongside curvature.
+\item Torsion is the antisymmetric part of the connection and is sourced by intrinsic spin.
+\item In \emph{minimal EC}, the Cartan equation is algebraic: torsion does not independently propagate.
+\item A Weyssenhoff fluid models spinning matter with $S_{\mu\nu}$ and the Frenkel condition.
+\item Eliminating torsion produces effective spin-squared corrections to the GR matter equations.
+\item Growing spin-squared terms during collapse motivate, but do not by themselves prove, a bounce.
+\end{enumerate}
+\subsection{One-minute oral explanation}
+\begin{quote}
+Einstein--Cartan gravity extends general relativity by allowing spacetime torsion in addition to curvature. In minimal Einstein--Cartan theory, intrinsic spin sources torsion through an algebraic field equation. This is different from a new propagating field. For a Weyssenhoff spin fluid, we can eliminate torsion and obtain effective corrections quadratic in spin. These corrections may become important during gravitational collapse, because the squared spin density can grow faster than the ordinary matter density. The next question is whether they are sufficient to produce a consistent bounce.
+\end{quote}
+\subsection{Sources and research boundary}
+\begin{itemize}
+\item A. Trautman, \emph{Einstein--Cartan Theory}, \url{https://arxiv.org/abs/gr-qc/0606062}, especially pp.~3--6, Eqs.~(23)--(25) and (30)--(32).
+\item S. D. Br\'echet et al., \emph{Weyssenhoff fluid dynamics in general relativity using a 1+3 covariant approach}, \url{https://arxiv.org/abs/0706.2367}, especially Eqs.~(11)--(25).
+\end{itemize}
+A \emph{nonlinear Holst extension} can change the torsion sector's degrees of freedom and is \emph{not} derived by these minimal EC equations; it is reserved for a later lecture.
+
 \section{Lecture 3: Spin--Torsion Bounce}
 To be developed after the lesson.
 \section{Lecture 4: Nonlinear Holst Theory}
