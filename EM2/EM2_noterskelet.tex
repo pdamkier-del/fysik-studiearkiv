@@ -1,29 +1,87 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage[danish]{babel}
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage{siunitx}
-\usepackage{geometry}
-\usepackage{hyperref}
+\usepackage{geometry,hyperref}
 \usepackage[most]{tcolorbox}
 \geometry{margin=2.2cm}
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
-
 \newtcolorbox{definitionbox}[1]{title=#1,colback=white,colframe=black!55,breakable}
 \newtcolorbox{derivationbox}[1]{title=Udledning: #1,colback=white,colframe=black!55,breakable}
 \newtcolorbox{examplebox}[1]{title=Eksempel: #1,colback=white,colframe=black!55,breakable}
-
 \title{Elektrodynamik (EM2)\\Eksamensnoter}
-\author{}
-\date{}
-
+\author{}\date{}
 \begin{document}
 \maketitle
 \tableofcontents
-
-% Faglige afsnit indsættes fortløbende efterhånden som pensum gennemgås.
-% Kun forklaringer, definitioner, fysiske argumenter, udledninger,
-% brugbare metoder og relevante eksempler hører hjemme i det færdige dokument.
-
+\newpage
+\section*{Kredsløbsteori}
+\addcontentsline{toc}{section}{Kredsløbsteori}
+\setcounter{section}{6}
+\section{Electrodynamics --- nødvendig repetition fra EM1}
+\section{Conservation Laws}
+\subsection{Charge and Energy}
+\subsubsection{The Continuity Equation}
+\subsubsection{Poynting's Theorem}
+\subsection{Momentum}
+\subsubsection{Newton's Third Law in Electrodynamics}
+\subsubsection{Maxwell's Stress Tensor}
+\subsubsection{Conservation of Momentum}
+\subsubsection{Angular Momentum}
+\section{Electromagnetic Waves}
+\subsection{Waves in One Dimension}
+\subsubsection{The Wave Equation}
+\subsubsection{Sinusoidal Waves}
+\subsubsection{Boundary Conditions: Reflection and Transmission}
+\subsubsection{Polarization}
+\subsection{Electromagnetic Waves in Vacuum}
+\subsubsection{The Wave Equation for E and B}
+\subsubsection{Monochromatic Plane Waves}
+\subsubsection{Energy and Momentum in Electromagnetic Waves}
+\subsection{Electromagnetic Waves in Matter}
+\subsubsection{Propagation in Linear Media}
+\subsubsection{Reflection and Transmission at Normal Incidence}
+\subsubsection{Reflection and Transmission at Oblique Incidence}
+\subsection{Absorption and Dispersion}
+\subsubsection{Electromagnetic Waves in Conductors}
+\subsubsection{Reflection at a Conducting Surface}
+\subsubsection{The Frequency Dependence of Permittivity}
+\subsection{Guided Waves}
+\subsubsection{Wave Guides}
+\subsubsection{TE Waves in a Rectangular Wave Guide}
+\subsubsection{The Coaxial Transmission Line}
+\section{Potentials and Fields}
+\subsection{The Potential Formulation}
+\subsubsection{Scalar and Vector Potentials}
+\subsubsection{Gauge Transformations}
+\subsubsection{Coulomb Gauge and Lorenz Gauge}
+\subsubsection{Lorentz Force Law in Potential Form}
+\subsection{Continuous Distributions}
+% 10.2.2 Jefimenko's Equations er udeladt ifølge EM2-programmet.
+\subsubsection{Retarded Potentials}
+\subsection{Point Charges}
+\subsubsection{Lienard--Wiechert Potentials}
+\subsubsection{The Fields of a Moving Point Charge}
+\section{Radiation}
+\subsection{Dipole Radiation}
+\subsubsection{What Is Radiation?}
+\subsubsection{Electric Dipole Radiation}
+\subsubsection{Magnetic Dipole Radiation}
+\subsection{Power Radiated by a Point Charge}
+\subsubsection{The Larmor Formula}
+\subsubsection{The Lienard Formula}
+% Kun side 493 i pensum.
+\subsection{The Radiation Reaction}
+\section{Electrodynamics and Relativity}
+% Kun siderne 547--549 og 554--574 i pensum.
+\subsection{Relativistic Mechanics (uddrag)}
+\subsubsection{Relativistic Dynamics}
+\subsection{Relativistic Electrodynamics}
+\subsubsection{Magnetism as a Relativistic Phenomenon}
+\subsubsection{How the Fields Transform}
+\subsubsection{The Field Tensor}
+\subsubsection{Electrodynamics in Tensor Notation}
+\subsubsection{Relativistic Potentials}
 \end{document}
