@@ -1,0 +1,27 @@
+name: Build Project Lecture Notes PDF
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Mit-projekt/lecture_notes.tex'
+      - '.github/workflows/project-notes.yml'
+  workflow_dispatch:
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LaTeX
+        run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+      - name: Compile notes
+        working-directory: Mit-projekt
+        run: |
+          pdflatex -interaction=nonstopmode -halt-on-error lecture_notes.tex
+          pdflatex -interaction=nonstopmode -halt-on-error lecture_notes.tex
+      - name: Upload compiled PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-lecture-notes-pdf
+          path: Mit-projekt/lecture_notes.pdf
