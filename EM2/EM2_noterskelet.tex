@@ -1,0 +1,82 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[danish]{babel}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\geometry{margin=2.2cm}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+
+\newtcolorbox{definitionbox}[1]{title=#1,colback=white,colframe=black!55,breakable}
+\newtcolorbox{derivationbox}[1]{title=Udledning: #1,colback=white,colframe=black!55,breakable}
+\newtcolorbox{examtip}[1]{title=Eksamensfokus: #1,colback=white,colframe=black!55,breakable}
+\newcommand{\todo}[1]{\textbf{TODO:} #1}
+
+\title{EM2 -- Elektrodynamik\\Interaktive studienoter}
+\author{}
+\date{2026--2027}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Sådan bruges noterne}
+Dette dokument er master-kilden til EM2-noterne. Hvert emne bygges op i samme rækkefølge:
+\begin{enumerate}[label=\arabic*.]
+  \item intuition og fysisk billede,
+  \item definitioner og antagelser,
+  \item slavisk matematisk udledning,
+  \item typiske opgavetyper,
+  \item eksamensfælder og kontrolspørgsmål.
+\end{enumerate}
+
+\section{Pensum og kursusplan}
+\subsection{Pensum}
+\begin{itemize}
+  \item Kredsløbsnote med opgaver.
+  \item Griffiths, 5. udgave: kap. 7 (s. 298--350, hovedsageligt EM1-forudsat), kap. 8 (s. 362--376), kap. 9 (s. 390--436), kap. 10 (s. 442--467), kap. 11 (s. 472--482 og 487--493), kap. 12 (s. 547--549 og 554--574).
+  \item I uge 51 springes afsnit 10.2.2 over.
+\end{itemize}
+
+\subsection{Ugeplan}
+\begin{itemize}
+  \item Uge 47: kredsløbsnoter; introduktion til udstyr.
+  \item Uge 48: kredsløbsnoter + kap. 8; RC-kreds; Quiz 1.
+  \item Uge 49: kap. 8+9; RCL-kreds; Quiz 2.
+  \item Uge 50: kap. 9--10; induktion og transformer; Quiz 3.
+  \item Uge 51: kap. 10.1--10.3, dog ikke 10.2.2; labseminar; labaflevering 1.
+  \item Uge 1: kap. 11; signaltransmission i kabler; Quiz 4.
+  \item Uge 2: kap. 12; labseminar; labaflevering 2.
+  \item Uge 3: oplæsningsuge og eksamenscafé.
+  \item Uge 4: skriftlig eksamen.
+\end{itemize}
+
+\section{Kredsløb og signaler}
+\todo{Indsæt kredsløbsnotens centrale definitioner, komplekse impedanser, RC/RLC og frekvensrespons.}
+
+\section{Griffiths kapitel 8}
+\todo{Byg noter fra pensumafsnittene.}
+
+\section{Griffiths kapitel 9}
+\todo{Byg noter fra pensumafsnittene.}
+
+\section{Griffiths kapitel 10}
+\todo{Byg noter fra pensumafsnittene; markér 10.2.2 som ikke-pensum i uge 51.}
+
+\section{Griffiths kapitel 11}
+\todo{Byg noter fra s. 472--482 og 487--493.}
+
+\section{Griffiths kapitel 12}
+\todo{Byg noter fra s. 547--549 og 554--574.}
+
+\section{Eksamensbank}
+De gamle eksamenssæt ligger i Drive-mappen \texttt{01\_EKSAMENSOPGAVER}. Senere kan hvert sæt tagges efter metode og kobles direkte til de relevante noteafsnit.
+
+\end{document}
