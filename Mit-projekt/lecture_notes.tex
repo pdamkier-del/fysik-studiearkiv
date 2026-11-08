@@ -1,0 +1,82 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,geometry,hyperref,enumitem}
+\geometry{margin=26mm}
+\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=blue}
+\title{From Gravitational Collapse to Pseudoscalaron Inflation\\Lecture Notes}
+\author{Physics Research Preparation}
+\date{8 November 2026}
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Lecture 1: FLRW Geometry and Gravitational Collapse}
+\subsection{Physical picture}
+We study an idealised, homogeneous, isotropic, spherical cloud of pressureless matter. Fluid elements keep fixed comoving coordinates while the physical distances between them can change. It is not the coordinate labels that shrink; the spatial metric evolves. We work in units $c=1$, use signature $(-,+,+,+)$ and take $t$ to be the proper time of comoving fluid observers. A homogeneous interior is not itself a global black-hole spacetime.
+\subsection{FLRW metric}
+Starting from $ds^2=g_{\mu\nu}dx^\mu dx^\nu$, homogeneity and isotropy motivate the metric
+\begin{equation}
+ds^2=-dt^2+a^2(t)\left[\frac{dr^2}{1-kr^2}+r^2(d\theta^2+\sin^2\theta\,d\varphi^2)\right].
+\end{equation}
+Here $a(t)$ is the scale factor and $k$ is the spatial-curvature parameter. The metric is a symmetry-based ansatz; its evolution must be determined from field equations.
+\subsection{Areal radius of the cloud}
+For the boundary at fixed comoving coordinate $r_b$, the angular metric is $ds^2_{\mathrm{angular}}=a^2r_b^2d\Omega^2$. Comparing with $R^2d\Omega^2$ gives
+\begin{equation}
+\boxed{R(t)=a(t)r_b},\qquad \boxed{\dot R(t)=r_b\dot a(t)}.
+\end{equation}
+Thus $r_b$ remains fixed, but the physical areal radius $R$ decreases if $\dot a<0$. Note: the areal radius is not generally equal to radial proper distance from the centre when $k\neq0$.
+\subsection{Gravitational dynamics}
+For a perfect fluid with energy density $\rho$ and pressure $p$, and with $\Lambda=0$, the FLRW reduction of Einstein's equations gives
+\begin{align}
+H^2+\frac{k}{a^2}&=\frac{8\pi G}{3}\rho,\qquad H\equiv\frac{\dot a}{a},\\
+\frac{\ddot a}{a}&=-\frac{4\pi G}{3}(\rho+3p),\\
+\dot\rho+3H(\rho+p)&=0.
+\end{align}
+\textbf{Contraction requires $H<0$.} A negative acceleration $\ddot a<0$ is not sufficient: an expanding model can also have $\ddot a<0$.
+\subsection{Dust density scaling: step-by-step}
+For pressureless dust, $p=0$, so
+\begin{align}
+\dot\rho+3\frac{\dot a}{a}\rho&=0,\\
+\frac{d\rho}{\rho}&=-3\frac{da}{a},\\
+\ln(\rho/\rho_0)&=-3\ln(a/a_0),\\
+\boxed{\rho(a)}&=\boxed{\rho_0(a_0/a)^3}.
+\end{align}
+A halving of $a$ increases the density by a factor of eight. For an initially static dust cloud with $\rho_i>0$, the first Friedmann equation requires $k>0$ (with $\Lambda=0$).
+\subsection{Vocabulary}
+\begin{description}[style=nextline]
+\item[Metric tensor] $g_{\mu\nu}$ defines spacetime intervals.
+\item[Scale factor] $a(t)$ changes physical separations between comoving points.
+\item[Comoving coordinate] Fixed coordinate label attached to a fluid element.
+\item[Proper time] Time recorded by a comoving clock.
+\item[Areal radius] $R=\sqrt{A/(4\pi)}$ for a spherical surface.
+\item[Hubble parameter] $H=\dot a/a$, negative during contraction.
+\end{description}
+\subsection{Literature and scope}
+Carroll explains FLRW and Friedmann equations in general relativity. Oppenheimer and Snyder (1939) analyse classical homogeneous dust collapse. Hashemi, Jalalzadeh and Ziaie investigate a related homogeneous spin-fluid collapse model in Einstein--Cartan gravity. The torsion-induced bounce is \emph{not} derived in this first lecture.
+\subsection{Lecture 1 recap}
+\begin{enumerate}[leftmargin=*]
+\item FLRW is a homogeneous/isotropic interior metric ansatz.
+\item The boundary's physical areal radius is $R=ar_b$.
+\item Comoving coordinate labels stay fixed; metric distances evolve.
+\item Collapse requires $H<0$; $\ddot a<0$ alone does not establish contraction.
+\item For dust, $\rho\propto a^{-3}$; the density rises as the cloud contracts.
+\item Establishing a complete black-hole spacetime requires additional global matching.
+\end{enumerate}
+\subsection{One-minute oral explanation}
+\begin{quote}
+The starting point is an idealised homogeneous spherical collapse model, similar to Oppenheimer--Snyder collapse. We describe the interior with an FLRW metric. Its scale factor determines physical separations between comoving matter elements. During contraction the scale factor decreases, so the Hubble parameter is negative. For pressureless matter, energy conservation implies $\rho\propto a^{-3}$. We then want to investigate how Einstein--Cartan spin--torsion effects modify this classical picture.
+\end{quote}
+\subsection{Sources}
+\begin{itemize}
+\item S. M. Carroll, \emph{Lecture Notes on General Relativity}, \url{https://arxiv.org/abs/gr-qc/9712019}.
+\item J. R. Oppenheimer and H. Snyder, \emph{On Continued Gravitational Contraction} (1939).
+\item Hashemi, Jalalzadeh and Ziaie, \emph{Collapse and dispersal of a homogeneous spin fluid in Einstein--Cartan theory}, \url{https://arxiv.org/abs/1407.4103}.
+\end{itemize}
+\section{Lecture 2: Einstein--Cartan Spin and Torsion}
+To be developed after the lesson.
+\section{Lecture 3: Spin--Torsion Bounce}
+To be developed after the lesson.
+\section{Lecture 4: Nonlinear Holst Theory}
+To be developed after the lesson.
+\section{Lecture 5: Pseudoscalaron Inflation}
+To be developed after the lesson.
+\end{document}
